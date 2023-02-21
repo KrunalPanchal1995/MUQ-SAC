@@ -1,2 +1,2 @@
 # MUQ-SAC
-/home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/ISOLATED_CODES_FOR_OPTIMIZATION /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/MAKE_INPUT_FILE_TEMPLATES /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/Response_surface
+The suit of code is part of project undertaken for kinetic mechanism optimization framework development. The code includes the temperature-dependent Modified Uncertainty Quantification (MUQ) method and Sampling of Arrhenius Curves (SAC) technique.
