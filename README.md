@@ -1,0 +1,2 @@
+# MUQ-SAC
+/home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/ISOLATED_CODES_FOR_OPTIMIZATION /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/MAKE_INPUT_FILE_TEMPLATES /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/SUPPORTING_CODES/Response_surface
