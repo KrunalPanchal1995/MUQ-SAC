@@ -1,0 +1,44 @@
+#python default modules
+import numpy as np
+import scipy as sp
+import scipy.stats as stats
+from scipy.optimize import minimize
+import os, sys, re, threading, subprocess, time
+from sklearn.preprocessing import PolynomialFeatures
+from collections import OrderedDict
+import matplotlib.pyplot as plt
+import matplotlib as mpl
+mpl.rc('figure', max_open_warning = 0)
+from scipy.linalg import block_diag
+from scipy import optimize as spopt
+import json
+#import yaml
+import ruamel.yaml as yaml
+#try:
+#    import ruamel_yaml as yaml
+#except ImportError:
+#    from ruamel import yaml
+import pandas as pd
+import sensitivity
+import test,Nominal,Optimal
+import generate
+import solution
+from MechManipulator2_0 import Manipulator
+
+
+#program specific modules
+from copy import deepcopy
+from MechanismParser import Parser
+import make_input_file
+import FlameMaster_in_parallel
+import combustion_dataset_class
+import combustion_variable_class
+from combustion_optimization_class import OptimizationTool
+import combustion_target_class
+import data_management
+import simulation_manager
+import Uncertainty as uncertainty
+import MechanismManipulator
+import plotter
+import Input_file_reader
+import statistics
