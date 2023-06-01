@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000028</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Asaba T., Gardiner W.C.Jr., Stubbeman R.F., Proceedings of the Combustion Institute, 1965, (10), 295-302.</description>
+        <referenceDOI>10.1016/S0082-0784(65)80175-8</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 6., open circle</figure>
+        <details>
+            <author>Asaba, T and Gardiner, W C and Stubbelman, R F</author>
+            <journal>Symp (Int) Combust</journal>
+            <pages>295--302</pages>
+            <title>Shock-tube study of the hydrogen-oxygen reaction</title>
+            <volume>10</volume>
+            <year>1965</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>incident shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.98</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.29</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="digitized"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="digitized"  units="us"  />
+
+        <dataPoint><x1>2554</x1><x2>0.460</x2> <x3>29.1</x3></dataPoint>
+        <dataPoint><x1>2420</x1><x2>0.433</x2> <x3>39.5</x3></dataPoint>
+        <dataPoint><x1>2364</x1><x2>0.422</x2> <x3>73.0</x3></dataPoint>
+        <dataPoint><x1>2287</x1><x2>0.407</x2> <x3>83.6</x3></dataPoint>
+        <dataPoint><x1>2231</x1><x2>0.396</x2> <x3>89.8</x3></dataPoint>
+        <dataPoint><x1>2067</x1><x2>0.363</x2> <x3>93.4</x3></dataPoint>
+        <dataPoint><x1>1981</x1><x2>0.346</x2> <x3>69.7</x3></dataPoint>
+        <dataPoint><x1>1794</x1><x2>0.308</x2><x3>117.2</x3></dataPoint>
+        <dataPoint><x1>1770</x1><x2>0.303</x2><x3>136.0</x3></dataPoint>
+        <dataPoint><x1>1738</x1><x2>0.297</x2><x3>224.5</x3></dataPoint>
+        <dataPoint><x1>1681</x1><x2>0.286</x2><x3>250.1</x3></dataPoint>
+        <dataPoint><x1>1653</x1><x2>0.280</x2><x3>272.5</x3></dataPoint>
+        <dataPoint><x1>1633</x1><x2>0.276</x2><x3>230.4</x3></dataPoint>
+        <dataPoint><x1>1615</x1><x2>0.272</x2><x3>261.7</x3></dataPoint>
+        <dataPoint><x1>1602</x1><x2>0.270</x2><x3>287.0</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+</experiment>

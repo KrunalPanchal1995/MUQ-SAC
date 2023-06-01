@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000024</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Wang B.L., Olivier H.; Grönig H., Combustion and Flame, 2003, (133), (1-2), 93-106.</description>
+        <referenceDOI>10.1016/S0010-2180(02)00552-7</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 9., full diamond</figure>
+        <details>
+            <author>Wang, B L and Olivier, H and Gronig, H</author>
+            <journal>Combust Flame</journal>
+            <pages>93--106</pages>
+            <title>Ignition of shock-heated H$_{2}$-air-steam mixtures</title>
+            <volume>133</volume>
+            <year>2003</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>4</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.0900</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1071</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.4029</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"    /><amount units="mole fraction" >0.4000</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.14</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1331.0</x1>  <x2>44.2</x2></dataPoint>
+        <dataPoint><x1>1301.0</x1> <x2>107.2</x2></dataPoint>
+        <dataPoint><x1>1267.0</x1> <x2>205.6</x2></dataPoint>
+        <dataPoint><x1>1245.0</x1> <x2>276.0</x2></dataPoint>
+        <dataPoint><x1>1207.0</x1> <x2>478.2</x2></dataPoint>
+        <dataPoint><x1>1208.0</x1> <x2>625.6</x2></dataPoint>
+        <dataPoint><x1>1201.0</x1> <x2>693.1</x2></dataPoint>
+        <dataPoint><x1>1166.0</x1><x2>1365.6</x2></dataPoint>
+        <dataPoint><x1>1152.0</x1><x2>1399.5</x2></dataPoint>
+        <dataPoint><x1>1126.0</x1><x2>1693.6</x2></dataPoint>
+        <dataPoint><x1>1101.0</x1><x2>1849.0</x2></dataPoint>
+        <dataPoint><x1>1075.3</x1><x2>1775.4</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+</experiment>

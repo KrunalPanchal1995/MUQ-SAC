@@ -1,0 +1,94 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x00200009</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>Guillaume Dayma. Philippe Dagaut. Combustion Science and Technology 178 (2006). Pages 1999-2024</description>
+        <referenceDOI>10.1080/00102200600793171</referenceDOI>
+        <location>Main article. Figure 6. (f)</location>
+        <details>
+            <author>Dayma, Guillame and Dagaut, Philippe</author>
+            <journal>Combustion Science and Technology</journal>
+            <number>10-11</number>
+            <pages>1999--2024</pages>
+            <title>Effects of air contamination on the combustion of hydrogen - effect of NO and NO{\textless}sub{\textgreater}2{\textless}/sub{\textgreater} addition on hydrogen ignition and oxidation kinetics</title>
+            <volume>178</volume>
+            <year>2006</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>jet stirred reactor measurement</experimentType>
+    <apparatus>
+        <kind>jet stirred reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.0025</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"   InChI="1S/N2/c1-2"  SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.987255</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000245</amount></component>
+        </property>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="residence time"                label="t"  sourcetype="reported"   units="s"             ><value>0.24</value></property>
+        <property name="volume"                        label="V"  sourcetype="reported"   units="cm3"           ><value>29.5</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"      chemName="hydrogen"         />
+            <value>971.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"    SMILES="O"         chemName="water"            />
+            <value>392.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"     chemName="nitric oxide"     />
+            <value>25.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO2"  CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"  SMILES="N(=O)[O]"  chemName="nitrogen dioxide" />
+            <value>1.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"     SMILES="O=O"       chemName="oxygen"           />
+            <value>265.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"  id="x1"   label="T"      sourcetype="digitized"  units="K"             />
+        <property name="composition"  id="x2"   label="[H2]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"      chemName="hydrogen"         />
+        </property>
+        <property name="composition"  id="x3"   label="[H2O]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"    SMILES="O"         chemName="water"            />
+        </property>
+        <property name="composition"  id="x4"   label="[O2]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"     SMILES="O=O"       chemName="oxygen"           />
+        </property>
+        <property name="composition"  id="x5"   label="[NO]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"     chemName="nitric oxide"     />
+        </property>
+        <property name="composition"  id="x6"   label="[NO2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO2"  CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"  SMILES="N(=O)[O]"  chemName="nitrogen dioxide" />
+        </property>
+
+        <dataPoint><x1>0746</x1><x2>9.71e-03</x2><x3>1.30e-05</x3><x4>2.58e-03</x4><x5>2.47e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0772</x1><x2>9.59e-03</x2><x3>1.40e-05</x3><x4>2.65e-03</x4><x5>2.48e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0798</x1><x2>9.41e-03</x2><x3>2.70e-05</x3><x4>2.57e-03</x4><x5>2.45e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0825</x1><x2>8.49e-03</x2><x3>3.32e-04</x3><x4>2.25e-03</x4><x5>2.45e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0849</x1><x2>7.64e-03</x2><x3>9.04e-04</x3><x4>1.85e-03</x4><x5>2.45e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0875</x1><x2>6.84e-03</x2><x3>1.66e-03</x3><x4>1.39e-03</x4><x5>2.46e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0900</x1><x2>6.24e-03</x2><x3>2.33e-03</x3><x4>1.09e-03</x4><x5>2.42e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0924</x1><x2>5.72e-03</x2><x3>2.91e-03</x3><x4>7.58e-04</x4><x5>2.39e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0948</x1><x2>5.17e-03</x2><x3>3.24e-03</x3><x4>6.30e-04</x4><x5>2.38e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0973</x1><x2>4.83e-03</x2><x3>3.50e-03</x3><x4>6.42e-04</x4><x5>2.29e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>0999</x1><x2>4.45e-03</x2><x3>3.49e-03</x3><x4>5.94e-04</x4><x5>2.22e-04</x5><x6>0.00e+00</x6></dataPoint>
+        <dataPoint><x1>1048</x1><x2>3.88e-03</x2><x3>3.92e-03</x3><x4>4.54e-04</x4><x5>1.94e-04</x5><x6>0.00e+00</x6></dataPoint>
+    </dataGroup>
+</experiment>

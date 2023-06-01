@@ -1,0 +1,54 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001056</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>J. Herzler; C. Naumann, Combustion Science and Technology 2008, 180, (10-11), 2015-2028.</description>
+        <referenceDOI>10.1080/00102200802269715</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 2, H2/CO/O2/Ar, Phi = 0.5, dilution 1:2, H2 /CO = 50/50, 16 bar series.</table>
+        <details>
+            <author>Herzler, J{\"{u}}rgen and Naumann, Clemens</author>
+            <journal>Combust Sci Technol</journal>
+            <number>10--11</number>
+            <pages>2015--2028</pages>
+            <title>Shock Tube Study of the Ignition of Lean CO/H$_{2}$ Fuel Blends at Intermediate Temperatures and High Pressure</title>
+            <volume>180</volume>
+            <year>2008</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.04364</amount></component>
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.04364</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.08718</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.82554</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.18</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="bar" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>1019</x1><x2>14.11</x2><x3>3430</x3></dataPoint>
+        <dataPoint><x1>1042</x1><x2>15.27</x2><x3>2410</x3></dataPoint>
+        <dataPoint><x1>1051</x1><x2>15.27</x2><x3>1810</x3></dataPoint>
+        <dataPoint><x1>1078</x1><x2>15.84</x2> <x3>692</x3></dataPoint>
+        <dataPoint><x1>1097</x1><x2>15.56</x2> <x3>470</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="max"/>
+</experiment>

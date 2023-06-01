@@ -1,0 +1,108 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202013</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>M. Jazbec et al., 5th Asia-Pacific Conference on Combustion (2005) 245-248</description>
+        <location>Main paper</location>
+        <figure>Fig. 5.</figure>
+        <details>
+            <author>M. Jazbec et al.</author>
+            <journal>Proceedings of the 5th Asia-Pacific Conference on Combustion: The University of Adelaide, Adelaide, Australia, 17-20 July, 2005</journal>
+            <pages>245--248</pages>
+            <publisher>University of Adelaide - School of Mechanical Engineering</publisher>
+            <year>2005</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     /><amount units="mole fraction" >0.00045</amount></component>
+            <component><speciesLink preferredKey="O2"     CAS="7782-44-7"   InChI="1S/O2/c1-2"            SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.00100</amount></component>
+            <component><speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.00010</amount></component>
+            <component><speciesLink preferredKey="N2"     CAS="7727-37-9"   InChI="1S/N2/c1-2"            SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.99845</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="H2"     CAS="1333-74-0"   InChI="1S/H2/h1H"             SMILES="[HH]"       chemName="hydrogen"         />
+            <value>2.42e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+            <value>1.28e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"   />
+            <value>1.33e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CH2O"   CAS="50-00-0"     InChI="1S/CH2O/c1-2/h1H2"     SMILES="C=O"        chemName="formaldehyde"     />
+            <value>6.15e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"         chemName="methanol"         />
+            <value>2.08e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"     />
+            <value>5.1e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO2"    CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"         SMILES="N(=O)[O]"   chemName="nitrogen dioxide" />
+            <value>3.17e-6</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"        sourcetype="digitized"  units="K"             />
+        <property name="composition"     id="x2"   label="[H2]"     sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"     CAS="1333-74-0"   InChI="1S/H2/h1H"             SMILES="[HH]"       chemName="hydrogen"         />
+        </property>
+        <property name="composition"     id="x3"   label="[CO]"     sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+        </property>
+        <property name="composition"     id="x4"   label="[CH3OH]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"         chemName="methanol"         />
+        </property>
+        <property name="composition"     id="x5"   label="[NO2]"    sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO2"    CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"         SMILES="N(=O)[O]"   chemName="nitrogen dioxide" />
+        </property>
+        <property name="composition"     id="x6"   label="[NO]"     sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"     />
+        </property>
+        <property name="composition"     id="x7"   label="[CO2]"    sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"   />
+        </property>
+        <property name="composition"     id="x8"   label="[CH2O]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CH2O"   CAS="50-00-0"     InChI="1S/CH2O/c1-2/h1H2"     SMILES="C=O"        chemName="formaldehyde"     />
+        </property>
+        <property name="residence time"  id="x9"   label="t"        sourcetype="estimated"  units="s"             />
+
+        <dataPoint><x1>0573</x1><x2>0.000E+00</x2><x3>0.000E+00</x3><x4>4.000E-04</x4><x5>1.932E-06</x5><x6>9.082E-05</x6><x7>0.000E+00</x7><x8>4.808E-07</x8><x9>4.20</x9></dataPoint>
+        <dataPoint><x1>0773</x1><x2>0.000E+00</x2><x3>0.000E+00</x3><x4>3.853E-04</x4><x5>6.763E-06</x5><x6>8.599E-05</x6><x7>0.000E+00</x7><x8>4.808E-07</x8><x9>3.35</x9></dataPoint>
+        <dataPoint><x1>0823</x1><x2>1.449E-06</x2><x3>1.887E-05</x3><x4>3.120E-04</x4><x5>2.899E-05</x5><x6>6.329E-05</x6><x7>4.386E-06</x7><x8>5.721E-05</x8><x9>3.15</x9></dataPoint>
+        <dataPoint><x1>0843</x1><x2>5.797E-06</x2><x3>1.075E-04</x3><x4>2.073E-04</x4><x5>3.285E-05</x5><x6>5.942E-05</x6><x7>1.316E-05</x7><x8>6.827E-05</x8><x9>3.06</x9></dataPoint>
+        <dataPoint><x1>0863</x1><x2>1.159E-05</x2><x3>2.038E-04</x3><x4>1.026E-04</x4><x5>1.014E-05</x5><x6>8.164E-05</x6><x7>3.509E-05</x7><x8>1.010E-05</x8><x9>2.97</x9></dataPoint>
+        <dataPoint><x1>0873</x1><x2>1.449E-05</x2><x3>2.189E-04</x3><x4>8.796E-05</x4><x5>1.256E-05</x5><x6>7.971E-05</x6><x7>3.728E-05</x7><x8>4.808E-07</x8><x9>2.93</x9></dataPoint>
+        <dataPoint><x1>0887</x1><x2>1.884E-05</x2><x3>2.321E-04</x3><x4>7.539E-05</x4><x5>5.797E-06</x5><x6>8.599E-05</x6><x7>3.947E-05</x7><x8>4.808E-07</x8><x9>2.87</x9></dataPoint>
+        <dataPoint><x1>0923</x1><x2>3.188E-05</x2><x3>2.528E-04</x3><x4>5.236E-05</x4><x5>3.865E-06</x5><x6>8.792E-05</x6><x7>4.167E-05</x7><x8>0.000E+00</x8><x9>2.72</x9></dataPoint>
+        <dataPoint><x1>0933</x1><x2>3.478E-05</x2><x3>2.679E-04</x3><x4>2.513E-05</x4><x5>1.932E-06</x5><x6>9.034E-05</x6><x7>5.921E-05</x7><x8>0.000E+00</x8><x9>2.68</x9></dataPoint>
+        <dataPoint><x1>0943</x1><x2>2.609E-05</x2><x3>2.642E-04</x3><x4>0.000E+00</x4><x5>1.449E-06</x5><x6>9.034E-05</x6><x7>8.553E-05</x7><x8>4.808E-07</x8><x9>2.64</x9></dataPoint>
+        <dataPoint><x1>0973</x1><x2>1.594E-05</x2><x3>2.453E-04</x3><x4>0.000E+00</x4><x5>1.449E-06</x5><x6>9.034E-05</x6><x7>1.272E-04</x7><x8>4.808E-07</x8><x9>2.51</x9></dataPoint>
+        <dataPoint><x1>0992</x1><x2>4.348E-06</x2><x3>2.189E-04</x3><x4>0.000E+00</x4><x5>1.932E-06</x5><x6>8.986E-05</x6><x7>1.689E-04</x7><x8>4.808E-07</x8><x9>2.43</x9></dataPoint>
+        <dataPoint><x1>1023</x1><x2>1.449E-06</x2><x3>1.962E-04</x3><x4>0.000E+00</x4><x5>9.662E-07</x5><x6>9.082E-05</x6><x7>1.952E-04</x7><x8>4.808E-07</x8><x9>2.30</x9></dataPoint>
+    </dataGroup>
+    <comment>The residence times were estimated with interrpolation based on the following reported data: The reaction was studied in the temperature range of 573-1023 K (with residence times of 2.3-4.2 s)</comment>
+</experiment>

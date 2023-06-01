@@ -1,0 +1,58 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001049</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>A. M. Dean; D. C. Steiner; E. E. Wang, Combustion and Flame 1978, 32, (0), 73-83.</description>
+        <referenceDOI>10.1016/0010-2180(78)90081-0</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 2, mixture C, tau_1 definition.</table>
+        <details>
+            <author>Dean, A M and Steiner, D C and Wang, E E</author>
+            <journal>Combust Flame</journal>
+            <number>0</number>
+            <pages>73--83</pages>
+            <title>A shock tube study of the H$_{2}$/O$_{2}$/CO/Ar and H$_{2}$/N2O/CO/Ar Systems: Measurement of the rate constant for H + N2O = N2 + OH</title>
+            <volume>32</volume>
+            <year>1978</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"          >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       sourcetype="reported"    chemName="hydrogen"        /><amount units="mole fraction" >0.00049</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  sourcetype="reported"    chemName="carbon monoxide" /><amount units="mole fraction" >0.03280</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        sourcetype="reported"    chemName="oxygen"          /><amount units="mole fraction" >0.01010</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       sourcetype="calculated"  chemName="argon"           /><amount units="mole fraction" >0.95661</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>2050</x1><x2>1.23</x2><x3>375</x3></dataPoint>
+        <dataPoint><x1>2140</x1><x2>1.32</x2><x3>320</x3></dataPoint>
+        <dataPoint><x1>2250</x1><x2>1.41</x2><x3>237</x3></dataPoint>
+        <dataPoint><x1>2355</x1><x2>1.50</x2><x3>225</x3></dataPoint>
+        <dataPoint><x1>2560</x1><x2>1.69</x2><x3>126</x3></dataPoint>
+        <dataPoint><x1>2620</x1><x2>1.74</x2><x3>115</x3></dataPoint>
+        <dataPoint><x1>2675</x1><x2>1.80</x2><x3>112</x3></dataPoint>
+        <dataPoint><x1>2765</x1><x2>1.87</x2> <x3>94</x3></dataPoint>
+        <dataPoint><x1>2810</x1><x2>1.91</x2><x3>100</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="CO2;" type="concentration" amount="3.985293E-008" units="mol/cm3"/>
+</experiment>

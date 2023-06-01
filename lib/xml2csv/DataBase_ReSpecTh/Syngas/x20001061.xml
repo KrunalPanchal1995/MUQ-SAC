@@ -1,0 +1,76 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001061</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>I. C. McLean; D. B. Smith; S. C. Taylor, in: Proceedings of the Combustion Institute, 1994; Vol. 25, pp 749-757.</description>
+        <referenceDOI>10.1016/S0082-0784(06)80707-1</referenceDOI>
+        <location>Main Article</location>
+        <figure>open diamond.</figure>
+        <details>
+            <author>McLean, I C and Smith, D B and Taylor, S C</author>
+            <journal>Symp (Int) Combust</journal>
+            <number>1</number>
+            <pages>749--757</pages>
+            <title>The use of carbon monoxide/hydrogen burning velocities to examine the rate of the CO + OH reaction</title>
+            <volume>25</volume>
+            <year>1994</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x4"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x5"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+
+        <dataPoint><x1>5.524860e+000</x1><x2>1.405000e-001</x2><x3>7.400000e-003</x3><x4>1.790000e-001</x4><x5>6.731000e-001</x5></dataPoint>
+        <dataPoint><x1>1.325970e+001</x1><x2>1.693000e-001</x2><x3>8.900000e-003</x3><x4>1.726000e-001</x4><x5>6.491000e-001</x5></dataPoint>
+        <dataPoint><x1>1.657460e+001</x1><x2>1.962000e-001</x2><x3>1.030000e-002</x3><x4>1.667000e-001</x4><x5>6.268000e-001</x5></dataPoint>
+        <dataPoint><x1>2.209940e+001</x1><x2>2.247000e-001</x2><x3>1.180000e-002</x3><x4>1.604000e-001</x4><x5>6.031000e-001</x5></dataPoint>
+        <dataPoint><x1>2.872930e+001</x1><x2>2.544000e-001</x2><x3>1.340000e-002</x3><x4>1.538000e-001</x4><x5>5.784000e-001</x5></dataPoint>
+        <dataPoint><x1>3.425410e+001</x1><x2>2.816000e-001</x2><x3>1.480000e-002</x3><x4>1.478000e-001</x4><x5>5.557000e-001</x5></dataPoint>
+        <dataPoint><x1>3.977900e+001</x1><x2>3.096000e-001</x2><x3>1.630000e-002</x3><x4>1.416000e-001</x4><x5>5.325000e-001</x5></dataPoint>
+        <dataPoint><x1>4.419890e+001</x1><x2>3.377000e-001</x2><x3>1.780000e-002</x3><x4>1.354000e-001</x4><x5>5.091000e-001</x5></dataPoint>
+        <dataPoint><x1>4.972380e+001</x1><x2>3.657000e-001</x2><x3>1.920000e-002</x3><x4>1.292000e-001</x4><x5>4.858000e-001</x5></dataPoint>
+        <dataPoint><x1>5.524860e+001</x1><x2>3.933000e-001</x2><x3>2.070000e-002</x3><x4>1.231000e-001</x4><x5>4.629000e-001</x5></dataPoint>
+        <dataPoint><x1>5.966850e+001</x1><x2>4.221000e-001</x2><x3>2.220000e-002</x3><x4>1.168000e-001</x4><x5>4.390000e-001</x5></dataPoint>
+        <dataPoint><x1>6.187850e+001</x1><x2>4.496000e-001</x2><x3>2.370000e-002</x3><x4>1.107000e-001</x4><x5>4.161000e-001</x5></dataPoint>
+        <dataPoint><x1>6.408840e+001</x1><x2>4.774000e-001</x2><x3>2.510000e-002</x3><x4>1.045000e-001</x4><x5>3.930000e-001</x5></dataPoint>
+        <dataPoint><x1>6.408840e+001</x1><x2>5.048000e-001</x2><x3>2.660000e-002</x3><x4>9.840000e-002</x4><x5>3.701000e-001</x5></dataPoint>
+        <dataPoint><x1>6.298340e+001</x1><x2>5.338000e-001</x2><x3>2.810000e-002</x3><x4>9.200000e-002</x4><x5>3.460000e-001</x5></dataPoint>
+        <dataPoint><x1>5.856350e+001</x1><x2>5.613000e-001</x2><x3>2.950000e-002</x3><x4>8.600000e-002</x4><x5>3.232000e-001</x5></dataPoint>
+        <dataPoint><x1>5.193370e+001</x1><x2>5.896000e-001</x2><x3>3.100000e-002</x3><x4>7.970000e-002</x4><x5>2.997000e-001</x5></dataPoint>
+        <dataPoint><x1>4.309390e+001</x1><x2>6.177000e-001</x2><x3>3.250000e-002</x3><x4>7.350000e-002</x4><x5>2.763000e-001</x5></dataPoint>
+        <dataPoint><x1>2.983430e+001</x1><x2>6.455000e-001</x2><x3>3.400000e-002</x3><x4>6.730000e-002</x4><x5>2.532000e-001</x5></dataPoint>
+        <dataPoint><x1>1.767960e+001</x1><x2>6.735000e-001</x2><x3>3.540000e-002</x3><x4>6.120000e-002</x4><x5>2.299000e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

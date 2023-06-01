@@ -1,0 +1,56 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001004</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Burke, M.P., Chaos, M., Dryer, F.L., Ju, Y., Combustion and Flame, (157), 618-631, 2010.</description>
+        <referenceDOI>10.1016/j.combustflame.2009.08.009</referenceDOI>
+        <location>Supplementary Material.</location>
+        <table>Table A1.</table>
+        <figure>Fig. 12., full square, bath gas: CO2.</figure>
+        <details>
+            <author>Burke, M P and Chaos, M and Dryer, F L and Ju, Y</author>
+            <journal>Combust Flame</journal>
+            <pages>618--631</pages>
+            <title>Negative pressure dependence of mass burning rates of H$_{2}$/CO/O$_{2}$/diluent flames at low flame temperatures</title>
+            <volume>157</volume>
+            <year>2010</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>spherical</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>295</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"      SMILES="[HH]"     chemName="hydrogen"       /><amount units="mole fraction" >0.5495</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"      chemName="oxygen"         /><amount units="mole fraction" >0.1099</amount></component>
+            <component><speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"  chemName="carbon dioxide" /><amount units="mole fraction" >0.3406</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>16.17</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="P"   sourcetype="reported"  units="atm"  />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"  sourcetype="reported"  units="cm/s" />
+
+        <dataPoint> <x1>1</x1><x2>204.9</x2></dataPoint>
+        <dataPoint> <x1>5</x1><x2>115.2</x2></dataPoint>
+        <dataPoint><x1>10</x1> <x2>81.9</x2></dataPoint>
+        <dataPoint><x1>15</x1> <x2>53.8</x2></dataPoint>
+        <dataPoint><x1>20</x1> <x2>24.9</x2></dataPoint>
+        <dataPoint><x1>25</x1> <x2>17.2</x2></dataPoint>
+    </dataGroup>
+</experiment>

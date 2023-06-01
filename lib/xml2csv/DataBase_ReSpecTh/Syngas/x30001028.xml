@@ -1,0 +1,74 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30001028</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>TG. T. Linteris; R. A. Yetter; K. Brezinsky; F. L. Dryer, Combustion and Flame 1991, 86, (1-2), 162-170.</description>
+        <referenceDOI>10.1016/0010-2180(91)90063-H</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 8, cross (absorption) and open square (fluorescence), conceptually belongs to x30001026.xml (Fig. 5).</figure>
+        <details>
+            <author>Linteris, G T and Yetter, R A and Brezinsky, K and Dryer, F L</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>162--170</pages>
+            <title>Hydroxyl Radical Concentration Measurements in Moist Carbon Monoxide Oxidation in a Chemical Kinetic Flow Reactor</title>
+            <volume>86</volume>
+            <year>1991</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>concentration time profile measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>turbulent</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>1115</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.00849</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.00923</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          chemName="water"           /><amount units="mole fraction" >0.00600</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        /><amount units="mole fraction" >0.97628</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="OH"   CAS="3352-57-6"  InChI="1S/HO/h1H"    SMILES="[OH]"       chemName="hydroxyl radical" />
+            <value>2.301e-6</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="time"         id="x1"   label="t"                  sourcetype="digitized"   units="ms"            />
+        <property name="composition"  id="x2"   label="[OH]"               sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="OH"  CAS="3352-57-6"  InChI="1S/H2O/h1H2/p-1"  SMILES="[OH]"       chemName="hydroxyl"        />
+        </property>
+        <property name="composition"  id="x3"   label="[CO interpolated]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"       SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+
+        <dataPoint><x1>1.8200E+01</x1><x2>5.2277E-05</x2><x3>2.2935E-03</x3></dataPoint>
+        <dataPoint><x1>1.8520E+01</x1><x2>4.9406E-05</x2><x3>2.1956E-03</x3></dataPoint>
+        <dataPoint><x1>1.8520E+01</x1><x2>5.1386E-05</x2><x3>2.1956E-03</x3></dataPoint>
+        <dataPoint><x1>1.8540E+01</x1><x2>4.8713E-05</x2><x3>2.1899E-03</x3></dataPoint>
+        <dataPoint><x1>1.8540E+01</x1><x2>5.0000E-05</x2><x3>2.1899E-03</x3></dataPoint>
+        <dataPoint><x1>2.4000E+01</x1><x2>4.5446E-05</x2><x3>1.2088E-03</x3></dataPoint>
+        <dataPoint><x1>2.4000E+01</x1><x2>4.6238E-05</x2><x3>1.2088E-03</x3></dataPoint>
+        <dataPoint><x1>3.1170E+01</x1><x2>3.2970E-05</x2><x3>7.7355E-04</x3></dataPoint>
+        <dataPoint><x1>3.1170E+01</x1><x2>3.3861E-05</x2><x3>7.7355E-04</x3></dataPoint>
+        <dataPoint><x1>3.8340E+01</x1><x2>2.7525E-05</x2><x3>5.1698E-04</x3></dataPoint>
+        <dataPoint><x1>3.8400E+01</x1><x2>2.8218E-05</x2><x3>5.1524E-04</x3></dataPoint>
+        <dataPoint><x1>3.8400E+01</x1><x2>3.0693E-05</x2><x3>5.1524E-04</x3></dataPoint>
+        <dataPoint><x1>4.5100E+01</x1><x2>2.7525E-05</x2><x3>3.5694E-04</x3></dataPoint>
+        <dataPoint><x1>5.9410E+01</x1><x2>1.5743E-05</x2><x3>1.9732E-04</x3></dataPoint>
+        <dataPoint><x1>5.9410E+01</x1><x2>1.6634E-05</x2><x3>1.9732E-04</x3></dataPoint>
+    </dataGroup>
+    <timeshift target="CO" type="relative decrease" amount="0.1500"/>
+</experiment>

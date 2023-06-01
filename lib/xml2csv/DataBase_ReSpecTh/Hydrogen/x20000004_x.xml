@@ -1,0 +1,71 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000004</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Aung, K.T., Hassan, M.I., Faeth,G.M., Combustion and Flame, 1997, (109), 1-24.</description>
+        <referenceDOI>10.1016/S0010-2180(96)00151-4</referenceDOI>
+        <figure>Fig. 6., full circle</figure>
+        <details>
+            <author>Aung, K T and Hassan, M I and Faeth, G M</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>1--24</pages>
+            <title>Flame Stretch Interactions of Laminar Premixed Hydrogen / Air Flames at Normal Temperature and Pressure</title>
+            <volume>109</volume>
+            <year>1997</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>2.35</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint><x1>1.500000e+001</x1><x2>1.118983e-001</x2><x3>1.864864e-001</x3><x4>7.016153e-001</x4></dataPoint>
+        <dataPoint><x1>5.000000e+001</x1><x2>1.589054e-001</x2><x3>1.766103e-001</x3><x4>6.644842e-001</x4></dataPoint>
+        <dataPoint><x1>8.800000e+001</x1><x2>2.011973e-001</x2><x3>1.677187e-001</x3><x4>6.310840e-001</x4></dataPoint>
+        <dataPoint><x1>1.340000e+002</x1><x2>2.394964e-001</x2><x3>1.596939e-001</x3><x4>6.008097e-001</x4></dataPoint>
+        <dataPoint><x1>1.800000e+002</x1><x2>2.743551e-001</x2><x3>1.524088e-001</x3><x4>5.732361e-001</x4></dataPoint>
+        <dataPoint><x1>2.100000e+002</x1><x2>3.060438e-001</x2><x3>1.457279e-001</x3><x4>5.482283e-001</x4></dataPoint>
+        <dataPoint><x1>2.400000e+002</x1><x2>3.351809e-001</x2><x3>1.396407e-001</x3><x4>5.251784e-001</x4></dataPoint>
+        <dataPoint><x1>2.600000e+002</x1><x2>3.865421e-001</x2><x3>1.288474e-001</x3><x4>4.846106e-001</x4></dataPoint>
+        <dataPoint><x1>2.600000e+002</x1><x2>4.093564e-001</x2><x3>1.240418e-001</x3><x4>4.666018e-001</x4></dataPoint>
+        <dataPoint><x1>2.610000e+002</x1><x2>4.305988e-001</x2><x3>1.195967e-001</x3><x4>4.498045e-001</x4></dataPoint>
+        <dataPoint><x1>2.500000e+002</x1><x2>4.686105e-001</x2><x3>1.115963e-001</x3><x4>4.197932e-001</x4></dataPoint>
+        <dataPoint><x1>2.390000e+002</x1><x2>4.968775e-001</x2><x3>1.056771e-001</x3><x4>3.974455e-001</x4></dataPoint>
+        <dataPoint><x1>2.120000e+002</x1><x2>5.219623e-001</x2><x3>1.003940e-001</x3><x4>3.776437e-001</x4></dataPoint>
+        <dataPoint><x1>1.930000e+002</x1><x2>5.540405e-001</x2><x3>9.234008e-002</x3><x4>3.536194e-001</x4></dataPoint>
+        <dataPoint><x1>1.700000e+002</x1><x2>5.952265e-001</x2><x3>8.499835e-002</x3><x4>3.197751e-001</x4></dataPoint>
+        <dataPoint><x1>1.520000e+002</x1><x2>6.115945e-001</x2><x3>8.155133e-002</x3><x4>3.068542e-001</x4></dataPoint>
+        <dataPoint><x1>1.410000e+002</x1><x2>6.268041e-001</x2><x3>7.835052e-002</x3><x4>2.948454e-001</x4></dataPoint>
+        <dataPoint><x1>1.180000e+002</x1><x2>6.539357e-001</x2><x3>7.267843e-002</x3><x4>2.733859e-001</x4></dataPoint>
+        <dataPoint><x1>9.800000e+001</x1><x2>6.773347e-001</x2><x3>6.775096e-002</x3><x4>2.549143e-001</x4></dataPoint>
+    </dataGroup>
+</experiment>

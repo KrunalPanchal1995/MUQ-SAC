@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30000030</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Hashemi, H., Christensen, J.M., Gersen, S., Glarborg, P., Proceedings of the Combustion Institute, 35, 2015.</description>
+        <referenceDOI>10.1016/j.proci.2014.05.101</referenceDOI>
+        <location>Electronic Supplement</location>
+        <table>Table S5.</table>
+        <details>
+            <author>Hashemi, Hamid and Christensen, Jakob M. and Gersen, Sander and Glarborg, Peter</author>
+            <journal>Proceedings of the Combustion Institute</journal>
+            <number>1</number>
+            <pages>553--560</pages>
+            <title>Hydrogen oxidation at high pressure and intermediate temperatures: Experiments and kinetic modeling</title>
+            <volume>35</volume>
+            <year>2015</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="bar"           ><value>50</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.001656</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.939171</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.059173</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+            <value>0.000165</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"     sourcetype="reported"    units="K"             />
+        <property name="residence time"  id="x2"   label="t"     sourcetype="reported"    units="s"             />
+        <property name="composition"     id="x3"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"  SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+
+        <dataPoint><x1>702.5</x1><x2>7.964</x2><x3>1.660000e-003</x3></dataPoint>
+        <dataPoint><x1>723.2</x1><x2>7.804</x2><x3>1.660000e-003</x3></dataPoint>
+        <dataPoint><x1>748.2</x1><x2>7.623</x2><x3>1.650000e-003</x3></dataPoint>
+        <dataPoint><x1>774.6</x1><x2>7.445</x2><x3>1.650000e-003</x3></dataPoint>
+        <dataPoint><x1>798.2</x1><x2>7.146</x2><x3>1.500000e-003</x3></dataPoint>
+        <dataPoint><x1>823.2</x1><x2>6.846</x2><x3>9.200000e-004</x3></dataPoint>
+        <dataPoint><x1>848.0</x1><x2>6.566</x2><x3>3.920000e-004</x3></dataPoint>
+        <dataPoint><x1>873.2</x1><x2>6.451</x2><x3>1.650000e-004</x3></dataPoint>
+        <dataPoint><x1>899.4</x1><x2>6.339</x2><x3>7.100000e-005</x3></dataPoint>
+    </dataGroup>
+</experiment>

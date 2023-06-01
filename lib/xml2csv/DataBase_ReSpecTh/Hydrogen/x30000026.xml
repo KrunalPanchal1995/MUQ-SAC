@@ -1,0 +1,78 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30000026</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>R. A. Yetter; F. L. Dryer; H. Rabitz, Combustion Science and Technology 1991, 79, 129-140.</description>
+        <referenceDOI>10.1080/00102209108951760</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 11</figure>
+        <details>
+            <author>Yetter, R A and Dryer, F L and Rabitz, H</author>
+            <journal>Combust Sci Technol</journal>
+            <pages>129--140</pages>
+            <title>Flow Reactor Studies of Carbon Monoxide/Hydrogen/Oxygen Kinetics</title>
+            <volume>79</volume>
+            <year>1991</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>concentration time profile measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>turbulent</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>910</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.00842</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.01052</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.98106</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+            <value>0.00103</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="generic uncertainty" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+            <value>0.00659</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="time"         id="x1"   label="t"     sourcetype="digitized"  units="ms"            />
+        <property name="composition"  id="x2"   label="[H2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"  id="x3"   label="[O2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+
+        <dataPoint><x1>0.0000E+00</x1><x2>8.4200E-03</x2><x3>1.0520E-02</x3></dataPoint>
+        <dataPoint><x1>4.9600E+00</x1><x2>8.4261E-03</x2><x3>1.0514E-02</x3></dataPoint>
+        <dataPoint><x1>6.6000E+00</x1><x2>8.4274E-03</x2><x3>1.0516E-02</x3></dataPoint>
+        <dataPoint><x1>8.2800E+00</x1><x2>8.4055E-03</x2><x3>1.0517E-02</x3></dataPoint>
+        <dataPoint><x1>9.9600E+00</x1><x2>8.4068E-03</x2><x3>1.0518E-02</x3></dataPoint>
+        <dataPoint><x1>1.1680E+01</x1><x2>8.2457E-03</x2><x3>1.0427E-02</x3></dataPoint>
+        <dataPoint><x1>1.3870E+01</x1><x2>6.7857E-03</x2><x3>9.5699E-03</x3></dataPoint>
+        <dataPoint><x1>1.5030E+01</x1><x2>4.3504E-03</x2><x3>8.4571E-03</x3></dataPoint>
+        <dataPoint><x1>1.6690E+01</x1><x2>1.7066E-03</x2><x3>7.2751E-03</x3></dataPoint>
+        <dataPoint><x1>1.8330E+01</x1><x2>6.6383E-04</x2><x3>6.7891E-03</x3></dataPoint>
+        <dataPoint><x1>1.9920E+01</x1><x2>3.1703E-04</x2><x3>6.6512E-03</x3></dataPoint>
+        <dataPoint><x1>2.1500E+01</x1><x2>1.7903E-04</x2><x3>6.6060E-03</x3></dataPoint>
+        <dataPoint><x1>2.3100E+01</x1><x2>0.0000E+00</x2><x3>6.5840E-03</x3></dataPoint>
+        <dataPoint><x1>2.4740E+01</x1><x2>0.0000E+00</x2><x3>6.5621E-03</x3></dataPoint>
+        <dataPoint><x1>2.6270E+01</x1><x2>0.0000E+00</x2><x3>6.5865E-03</x3></dataPoint>
+        <dataPoint><x1>2.7910E+01</x1><x2>0.0000E+00</x2><x3>6.5877E-03</x3></dataPoint>
+        <dataPoint><x1>2.9550E+01</x1><x2>0.0000E+00</x2><x3>6.5890E-03</x3></dataPoint>
+    </dataGroup>
+    <timeshift target="H2" type="half decrease"/>
+</experiment>

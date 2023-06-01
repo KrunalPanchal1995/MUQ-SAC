@@ -1,0 +1,26 @@
+FlameMaster written by Heinz Pitsch
+
+version                  4.2.1
+executed command         '/home/krunal/FlameMaster/Bin/bin/FlameMan'
+operating system         Linux, version 5.11.0-27-generic
+target architechture     x86_64
+c++ compiler             GNU, version 9.3.0
+c   compiler             GNU, version 9.3.0
+
+use input file 'FlameMaster.input'
+use mechanism file '/home/krunal/Desktop/kmOpt/Fuels/GRIMECH/gri.pre'
+outpath is './output/'
+initial pressure is 1 bar
+use multi geometry species transport model
+model has 53 species
+        5 spherical
+       19 linear
+       29 non-linear
+    -----
+       53 / 53 geometry parameters expected
+numerical evaluation of Jacobian
+use startprofiles file 'H2_p01_0phi1_0000tu0298'
+choose own Grid
+It = 1     GrdPts = 141   Lambda = 0.1   ||dY|| = 8.31546  ||Res|| = 0.000604707
+It = 2     GrdPts = 141   Lambda = 0.1   ||dY|| = 4.0938  ||Res|| = 0.000286146
+It = 2     GrdPts = 141   Lambda = 0.1   ||dY|| = 2.58115  ||Res|| = 0.000180556  modified

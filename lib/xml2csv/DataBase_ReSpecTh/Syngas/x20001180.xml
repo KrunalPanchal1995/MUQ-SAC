@@ -1,0 +1,56 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001180</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>J. Santner; F. L. Dryer; Y. Ju, Proceedings of the Combustion Institute 2012, 34, (1), 719-726.</description>
+        <referenceDOI>10.1016/j.proci.2012.06.065</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 2(b), CO/H2 = 50/50, no H2O dilution.</figure>
+        <details>
+            <author>Santner, Jeffrey and Dryer, Frederick L and Ju, Yiguang</author>
+            <journal>Proc Combust Inst</journal>
+            <number>1</number>
+            <pages>719--726</pages>
+            <title>The effects of water dilution on hydrogen, syngas, and ethylene flames at elevated pressure</title>
+            <volume>34</volume>
+            <year>2013</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>spherical</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"   sourcetype="reported"   units="K"             ><value>393</value></property>
+        <property name="uncertainty"                   label="dT"  sourcetype="reported"   units="K"              reference="temperature"               kind="absolute"  bound="plusminus" ><value>2</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.06088</amount></component>
+            <component><speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"       chemName="helium"          /><amount units="mole fraction" >0.83562</amount></component>
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.05175</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.05175</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>12.22</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="P"   sourcetype="reported"  units="atm"  />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"  sourcetype="reported"  units="cm/s" />
+
+        <dataPoint> <x1>1.0</x1><x2>72.86</x2></dataPoint>
+        <dataPoint> <x1>6.0</x1><x2>35.84</x2></dataPoint>
+        <dataPoint><x1>10.0</x1><x2>28.27</x2></dataPoint>
+    </dataGroup>
+    <comment>There are 5 experimental points in Fig. 2(b), but this file just collected 3 points.</comment>
+</experiment>

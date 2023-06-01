@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001043</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>D. M. Kalitan; J. D. Mertens; M. W. Crofton; E. L. Petersen, Journal of Propulsion and Power 2007, 23, (6), 1291-1303.</description>
+        <referenceDOI>10.2514/1.28123</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 2, H2/CO = 5/95 (mixture 6), mid pressure series.</table>
+        <details>
+            <author>Kalitan, Danielle M and Mertens, John D and Crofton, Mark W and Petersen, Eric L</author>
+            <journal>J Propul Power</journal>
+            <number>6</number>
+            <pages>1291--1303</pages>
+            <title>Ignition and oxidation of lean CO/H$_{2}$ fuel blends in air</title>
+            <volume>23</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.009</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.165</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.175</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        /><amount units="mole fraction" >0.652</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="P"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>2.3</x1> <x2>977</x2><x3>1538</x3></dataPoint>
+        <dataPoint><x1>2.3</x1><x2>1005</x2><x3>1005</x3></dataPoint>
+        <dataPoint><x1>2.2</x1><x2>1010</x2> <x3>780</x3></dataPoint>
+        <dataPoint><x1>2.2</x1><x2>1034</x2> <x3>453</x3></dataPoint>
+        <dataPoint><x1>2.1</x1><x2>1039</x2> <x3>363</x3></dataPoint>
+        <dataPoint><x1>2.1</x1><x2>1085</x2> <x3>191</x3></dataPoint>
+        <dataPoint><x1>2.1</x1><x2>1114</x2> <x3>139</x3></dataPoint>
+        <dataPoint><x1>2.0</x1><x2>1149</x2> <x3>114</x3></dataPoint>
+        <dataPoint><x1>2.0</x1><x2>1167</x2>  <x3>87</x3></dataPoint>
+        <dataPoint><x1>1.9</x1><x2>1181</x2>  <x3>77</x3></dataPoint>
+        <dataPoint><x1>1.9</x1><x2>1230</x2>  <x3>70</x3></dataPoint>
+        <dataPoint><x1>1.9</x1><x2>1285</x2>  <x3>55</x3></dataPoint>
+        <dataPoint><x1>1.7</x1><x2>1304</x2>  <x3>51</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="d/dt max"/>
+</experiment>

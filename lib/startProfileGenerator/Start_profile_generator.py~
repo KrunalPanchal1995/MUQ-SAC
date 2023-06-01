@@ -1,0 +1,408 @@
+import numpy as np
+import FlameMaster_in_parallel 
+import make_input_file
+
+import os, sys
+import shutil
+import subprocess
+
+if len(sys.argv) > 1:
+	input_file = open(sys.argv[1],'r')
+	inputs = input_file.readlines()
+	print("Input file found\n")
+else:
+	print("Please enter a valid input file name as arguement. \n For details of preparing the input file, please see the UserManual\n\nProgram exiting")
+	exit()
+for tag in inputs:
+	if "#" not in tag:
+		
+		if "Flame configuration" in tag:
+			
+			flame_type = tag.split(":")[1].strip()
+			
+		if "FlameMaster pre file" in tag:
+			pre_file = tag.split(":")[1].strip()
+			
+		if "Mechanism file" in tag:
+			mech_file = tag.split(":")[1].strip()
+		
+		if "Thermodynamic parameter file" in tag:
+			thermo_file = tag.split(":")[1].strip()
+		
+		if "Transport file" in tag:
+			transport_file = tag.split(":")[1].strip()
+		
+		if "available profile" in tag:
+			start_profile = tag.split(":")[1].strip()
+			
+		if "available fuel" in tag:
+			available_fuel = tag.split(":")[1].strip()
+			
+		if "available oxidizer" in tag:
+			available_oxidizer = tag.split(":")[1].strip()		
+	
+		if "available bg1" in tag:
+			available_bg1 = tag.split(":")[1].strip()
+		
+		if "available bg2" in tag:
+			available_bg2 = tag.split(":")[1].strip()
+		
+		if "available bg3" in tag:
+			available_bg3 = tag.split(":")[1].strip()
+				
+		if "available global rxn" in tag:
+			available_global_rxn = tag.split(":")[1].strip()
+		
+		if "target profile fuel" in tag:
+			target_fuel = tag.split(":")[1].strip()	
+		
+		if "target oxidizer" in tag:
+			target_oxidizer = tag.split(":")[1].strip()	
+		
+		if "target global rxn" in tag:
+			target_global_rxn = tag.split(":")[1].strip()
+		
+		if "target fuel mole fractions" in tag:
+			target_fuel_x = float(tag.split(":")[1].strip())	
+		
+		if "target oxidizer mole fractions" in tag:
+			target_oxidizer_x = float(tag.split(":")[1].strip())
+		
+		if "target bg1" in tag:
+			target_bg1 = tag.split(":")[1].strip()
+		
+		if "target bg2" in tag:
+			target_bg2 = tag.split(":")[1].strip()
+		
+		if "target bg3" in tag:
+			target_bg3 = tag.split(":")[1].strip()
+		if "target bg1 mole fractions" in tag:
+			target_bg1_x = tag.split(":")[1].strip()
+				
+		if "target bg2 mole fractions" in tag:
+			target_bg2_x = tag.split(":")[1].strip()
+		
+		if "target bg3 mole fractions" in tag:
+			target_bg3_x = tag.split(":")[1].strip()	
+		
+		if "target pressure" in tag:
+			target_pressure = tag.split(":")[1]
+
+			if "bar" in target_pressure.split("[")[1]:
+				target_pressure = float(target_pressure.split("[")[0])*10**5
+				continue
+			elif "atm" in target_pressure.split("[")[1]:
+				target_pressure = float(target_pressure.split("[")[0])*10**5
+				continue
+			elif "Pa" in target_pressure.split("[")[1]:
+				target_pressure = float(target_pressure.split("[")[0])
+				continue
+			else:
+				target_pressure = float(target_pressure.split("[")[0])*10**5
+			continue
+		
+		if "target temperature" in tag:
+			target_temperature = float(tag.split(":")[1].split("[")[0])
+		
+		continue	
+
+
+lines = open(start_profile.strip()).readlines()
+
+for line in lines:
+	if "title" in line:
+		start_profile_type = line.split("=")[1]
+		continue
+	if "mechanism" in line:
+		start_profile_mechanism = line.split("=")[1]
+		start_profile_mechanism = start_profile_mechanism.replace('"', '')
+		continue
+	if "author" in line:
+		start_profile_author = line.split("=")[1]
+		continue
+	if "date" in line:
+		start_profile_date = line.split("=")[1]
+		continue
+	if "fuel" in line and "air" not in line:
+		start_profile_fuel_name = line.split("=")[1]
+		start_profile_fuel_name = start_profile_fuel_name.replace('"', '')
+		continue
+	if "pressure" in line:
+		start_profile_pressure = line.split("=")[1]
+		if "bar" in start_profile_pressure.split("[")[1]:
+			start_profile_pressure = float(start_profile_pressure.split("[")[0])*10**5
+			continue
+		elif "atm" in start_profile_pressure.split("[")[1]:
+			start_profile_pressure = float(start_profile_pressure.split("[")[0])*10**5
+			continue
+		elif "Pa" in start_profile_pressure.split("[")[1]:
+			start_profile_pressure = float(start_profile_pressure.split("[")[0])
+			continue
+		else:
+			start_profile_pressure = float(start_profile_pressure.split("[")[0])*10**5
+		continue
+	if "fuel-air-equivalence-ratio" in line:
+		start_profile_phi = line.split("=")[1]
+		continue
+	if "Tmax" in line:
+		start_profile_Tmax = line.split("=")[1]
+		continue
+	if "T10mm" in line:
+		start_profile_T10mm = line.split("=")[1]
+		continue
+	if "unburnt" in line:
+		start = lines.index(line)+1
+		for j in lines[lines.index(line)+1:]:        
+			if "end" in j:
+				stop = lines.index(j)+1
+		boundary_string = " ".join(list(lines[start:stop]))
+		continue
+	if "burningVelocity" in line:
+		start_profile_fls = line.split("=")[1]
+		continue
+	if "FlameThickness" in line:
+		start_profile_flt = line.split("=")[1]
+		continue
+	if "numOfSpecies" in line:
+		start_profile_species_count = line.split("=")[1]
+		continue
+	if "gridPoints" in line:
+		start_profile_gridPoints = line.split("=")[1]
+		continue
+
+if str(start_profile_fuel_name.strip()) != str(available_fuel.strip()):
+	print("Error in start profile fuel name")
+	raise AssertionError(start_profile_fuel_name)
+
+
+list_bath_gas = []
+if available_bg1 != "".strip():
+	list_bath_gas.append(available_bg1)
+if available_bg2 != "".strip():
+	list_bath_gas.append(available_bg2)
+if available_bg3 != "".strip():
+	list_bath_gas.append(available_bg3)
+
+list_bath_gas_x = []
+for gas in list_bath_gas:
+	for line in boundary_string.split("\n"):
+		if "Molefraction-"+str(gas).strip() in line:
+			list_bath_gas_x.append(float(line.split("=")[1]))
+			continue
+		
+for line in boundary_string.split("\n"):
+	if "Molefraction-"+str(available_fuel) in line:
+		start_profile_fuel_x = float(line.split("=")[1])
+		continue
+	if "Molefraction-"+str(available_oxidizer) in line:
+		start_profile_oxidizer_x = float(line.split("=")[1])
+		continue
+	elif "Temperature" in line:
+		start_profile_temperature = float(line.split("=")[1].split("[")[0])
+	elif "begin" in line:
+		continue
+	elif "end" in line:
+		break
+	else:
+		continue
+
+#Assigning initial boundary condition
+if pre_file.strip() == "":
+	#add run scanman string
+	scanman = ""
+else:
+	scanman = ""
+
+num = 200
+step_x = 0.005 #x
+step_p = 1000 #pa
+step_t = 0.005 #sec
+step_T = 1 #K
+
+Fromfuel_x = np.linspace(start_profile_fuel_x,0,num)
+Tofuel_x = np.linspace(0,target_fuel_x,num)
+oxidizer_x = np.linspace(start_profile_oxidizer_x,target_oxidizer_x,num)
+pressure_x = np.linspace(start_profile_pressure,target_pressure,num)
+temperature_x = np.linspace(start_profile_temperature,target_temperature,num)
+
+if available_bg1 != "" and target_bg1_x !="":
+	bg1_x = np.linspace(list_bath_gas_x[0],float(target_bg1_x),num)
+	bg1_tag = ""
+	bg1 = list_bath_gas[0]
+elif available_bg1 == "" and target_bg1_x !="":
+	bg1_x = np.linspace(0,float(target_bg1_x),num)
+	bg1_tag = ""
+	bg1 = target_bg1
+elif available_bg1 != "" and target_bg1_x.strip =="":
+	bg1_x = np.linspace(list_bath_gas_x[0],0,num)
+	bg1_tag = ""
+	bg1 = list_bath_gas[0]
+else:
+	bg1_x = np.zeros(num)
+	bg1_tag = "#"
+	bg1 = ""
+	
+if available_bg2 != "" and target_bg2_x !="":
+	bg2_x = np.linspace(list_bath_gas_x[1],float(target_bg2_x),num)
+	bg2_tag = ""
+	bg1 = list_bath_gas[0]
+elif available_bg2 == "" and target_bg2_x !="":
+	bg2_x = np.linspace(0,float(target_bg2_x),num)
+	bg2_tag = ""
+	bg2 = target_bg2
+elif available_bg2 != "" and target_bg2_x.strip =="":
+	bg2_x = np.linspace(list_bath_gas_x[1],0,num)
+	bg2_tag = ""
+	bg1 = list_bath_gas[0]
+else:
+	bg2_x = np.zeros(num)
+	bg2_tag = "#"
+	bg2 = ""
+	
+if available_bg3 != "" and target_bg3_x !="":
+	bg3_x = np.linspace(list_bath_gas_x[2],float(target_bg3_x),num)
+	bg3_tag = ""
+	bg2 = list_bath_gas[2]
+elif available_bg3 == "" and target_bg3_x !="":
+	bg3_x = np.linspace(0,float(target_bg3_x),num)
+	bg3_tag = ""
+	bg3 = target_bg3
+elif available_bg3 != "" and target_bg3_x =="":
+	bg3_x = np.linspace(list_bath_gas_x[2],0,num)
+	bg3_tag = ""
+	bg3 = list_bath_gas[2]
+else:
+	bg3_x = np.zeros(num)
+	bg3_tag = "#"
+	bg3 = ""
+
+ToSpecies = target_fuel
+FromSpecies = start_profile_fuel_name
+
+ComputeWithRadiation = "True"
+Thermodiffusion = "True"
+maxgridpoints = 1000
+time_tag = "False"
+
+if "SPG" not in list(os.listdir()):
+	os.mkdir("SPG")
+	os.chdir("SPG")
+else:
+	os.chdir("SPG")
+
+log_file = open("start_profile.log",'a')
+for i in range(num):
+	if i in os.listdir():
+		tag == "restart"
+	else:
+		tag == "start"
+	
+	if tag  == "restart":	
+		fileLog = open("start_profile.log","r").readlines()
+		if os.stat("start_profile.log").st_size == 0:
+			tag = "start"
+			print("Need to restart the simulation by deleting everything")
+			raise AssertionError("Log file empty")
+			break
+		cond = fileLog[-1].split(",")
+		lastCase = int(cond[0])
+		count = lastCase
+		start_profile = cond[1]
+		x_af = cond[2]
+		xo = cond[3]
+		xbg1 = cond[4]
+		xbg2 = cond[5]
+		xbg3 = cond[6]
+		sum_x = x_af+xo+xbg1+xbg2+xbg3
+		x_tf = 1.0-sum_x 
+		xP = cond[7]
+		xT = cond[8]
+		if i < lastCase:
+			continue
+		elif i == lastCase-1:
+			if lastCase in os.listdir():
+				os.rmdir(i)
+	else:
+		x_af = float(Fromfuel_x[i])
+		xo = float(oxidizer_x[i])
+		xbg1 = float(bg1_x[i])
+		xbg2 = float(bg2_x[i])
+		xbg3 = float(bg3_x[i])
+		sum_x = x_af+xo+xbg1+xbg2+xbg3
+		x_tf = 1.0-sum_x 
+		xP = pressure_x[i]
+		xT = temperature_x[i]
+		if x_tf>0.5*x_af:
+			fuel = target_fuel
+			global_rxn = target_global_rxn
+		
+		else:
+			fuel = start_profile_fuel_name.strip()
+			global_rxn = available_global_rxn
+			
+		print("{}\t{}\t{}\n".format(fuel,global_rxn,target_fuel))
+	
+
+	print("Step-{}:- Using start profile: {}".format(i,start_profile))		
+	print(sum_x+x_tf)
+	os.mkdir(str(i))
+	os.chdir(str(i))
+	oxidizer = available_oxidizer
+	loc = os.getcwd()
+	shutil.copy(pre_file,loc)
+	make_input_file.start_profile_generator(start_profile,pre_file,global_rxn,time_tag,fuel,available_fuel,oxidizer,target_fuel,bg1,bg2,bg3, x_af, x_tf, xo, xbg1, xbg2,  xbg3, bg1_tag, bg2_tag, bg3_tag, xP, xT, flame_type, ToSpecies, FromSpecies, ComputeWithRadiation, Thermodiffusion, maxgridpoints)
+	os.mkdir("output")
+	subprocess.call(["chmod","+x","run"])
+	subprocess.call("./run")
+	os.chdir("output")
+	l = list(os.listdir())
+	for files in l:
+		if available_fuel in files or target_fuel in files:
+			#print(i)
+			if files.endswith("noC"):
+				time_tag = "True"
+				os.chdir("..")
+				make_input_file.start_profile_generator(start_profile,pre_file,global_rxn,time_tag,fuel,available_fuel,oxidizer,target_fuel,bg1,bg2,bg3, x_af, x_tf, xo, xbg1, xbg2,  xbg3, bg1_tag, bg2_tag, bg3_tag, xP, xT, flame_type, ToSpecies, FromSpecies, ComputeWithRadiation, Thermodiffusion, maxgridpoints)
+				subprocess.call(["chmod","+x","run"])
+				subprocess.call("./run")
+				os.chdir("output")
+				l = list(os.listdir())
+				for files in l:
+					if available_fuel in files or target_fuel in files:
+						if files.endswith("noC"):
+							raise AssertionError(files)
+							break
+						else:
+							start_profile = os.path.abspath(files)
+							continue
+			else:
+				start_profile = os.path.abspath(files)
+
+	string = "{},{},{},{},{},{},{},{},{}\n".format(i,start_profile,x_af,xo,xbg1,xbg2,xbg3,xP,xT)
+	
+	log_file.write(string)
+	#run_script("run")
+	#start_profile_path = data_management.manage_start_profiles(start_profile_path)
+	os.chdir("../..")
+		
+log_file.close()
+
+# ToSpecies
+# FromSpecies
+# TimeDepFlag
+# maxgridpoints
+# MassFlux
+# ConstMassFlux
+# ContBound
+# ContInc
+# ContType
+# ContSide
+# ComputeWithRadiation
+# Thermodiffusion
+# Flame
+# ExactBackward
+# ReactionFluxAnal
+# DeltaNewGrid
+# OneSolutionOneGrid
+# initialgridpoints
+# maxgridpoints

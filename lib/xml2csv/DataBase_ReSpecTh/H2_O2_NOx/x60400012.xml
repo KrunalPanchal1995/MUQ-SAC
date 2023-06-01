@@ -1,0 +1,112 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400012</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. C. Sausa et al., Combust. Flame. 94 (1993) 407-425</description>
+        <referenceDOI>10.1016/0010-2180(93)90123-K</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 3., rombus, solid triangle, empty triangle</figure>
+        <details>
+            <author>Sausa, R C and Anderson, W R and Dayton, D C and Faust, C M and Howard, S L</author>
+            <journal>Combust Flame</journal>
+            <pages>407--425</pages>
+            <title>Detailed Structure Study of a Low Pressure, Stoichiometric H$_{2}$/N2O/Ar Flame</title>
+            <volume>94</volume>
+            <year>1993</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="Torr"          ><value>20</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="reported"    units="g cm-2 s-1"    ><value>3.41E-3</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.2667</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.2667</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.4666</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      />
+            <value>26370.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"    SMILES="O"           chemName="water"         />
+            <value>26450.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      />
+            <value>32830.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"      sourcetype="digitized"   units="mm"            />
+        <property name="composition"  id="x2"   label="[H2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"  id="x3"   label="[N2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="composition"  id="x4"   label="[H2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"    />
+        </property>
+        <property name="temperature"  id="x5"   label="T"      sourcetype="estimated"   units="K"             />
+
+        <dataPoint><x1>00.842</x1><x2>2.632E-01</x2><x3>5.008E-02</x3><x4>4.028E-02</x4><x5>0643</x5></dataPoint>
+        <dataPoint><x1>01.061</x1><x2>2.637E-01</x2><x3>5.554E-02</x3><x4>4.884E-02</x4><x5>0695</x5></dataPoint>
+        <dataPoint><x1>01.660</x1><x2>2.391E-01</x2><x3>6.356E-02</x3><x4>5.933E-02</x4><x5>0848</x5></dataPoint>
+        <dataPoint><x1>02.077</x1><x2>2.127E-01</x2><x3>7.284E-02</x3><x4>6.755E-02</x4><x5>1003</x5></dataPoint>
+        <dataPoint><x1>02.320</x1><x2>2.106E-01</x2><x3>7.684E-02</x3><x4>7.375E-02</x4><x5>1090</x5></dataPoint>
+        <dataPoint><x1>02.620</x1><x2>2.052E-01</x2><x3>8.195E-02</x3><x4>7.847E-02</x4><x5>1186</x5></dataPoint>
+        <dataPoint><x1>02.997</x1><x2>1.919E-01</x2><x3>8.456E-02</x3><x4>8.420E-02</x4><x5>1278</x5></dataPoint>
+        <dataPoint><x1>03.358</x1><x2>1.884E-01</x2><x3>9.625E-02</x3><x4>9.460E-02</x4><x5>1393</x5></dataPoint>
+        <dataPoint><x1>03.719</x1><x2>1.692E-01</x2><x3>1.014E-01</x3><x4>9.759E-02</x4><x5>1449</x5></dataPoint>
+        <dataPoint><x1>04.174</x1><x2>1.469E-01</x2><x3>1.101E-01</x3><x4>1.038E-01</x4><x5>1535</x5></dataPoint>
+        <dataPoint><x1>04.707</x1><x2>1.358E-01</x2><x3>1.180E-01</x3><x4>1.113E-01</x4><x5>1645</x5></dataPoint>
+        <dataPoint><x1>04.911</x1><x2>1.263E-01</x2><x3>1.199E-01</x3><x4>1.116E-01</x4><x5>1672</x5></dataPoint>
+        <dataPoint><x1>05.225</x1><x2>1.175E-01</x2><x3>1.260E-01</x3><x4>1.155E-01</x4><x5>1715</x5></dataPoint>
+        <dataPoint><x1>05.507</x1><x2>1.103E-01</x2><x3>1.330E-01</x3><x4>1.206E-01</x4><x5>1768</x5></dataPoint>
+        <dataPoint><x1>06.040</x1><x2>9.520E-02</x2><x3>1.425E-01</x3><x4>1.285E-01</x4><x5>1837</x5></dataPoint>
+        <dataPoint><x1>06.589</x1><x2>8.390E-02</x2><x3>1.510E-01</x3><x4>1.388E-01</x4><x5>1911</x5></dataPoint>
+        <dataPoint><x1>07.153</x1><x2>7.953E-02</x2><x3>1.630E-01</x3><x4>1.475E-01</x4><x5>1968</x5></dataPoint>
+        <dataPoint><x1>07.576</x1><x2>7.540E-02</x2><x3>1.707E-01</x3><x4>1.520E-01</x4><x5>1997</x5></dataPoint>
+        <dataPoint><x1>08.062</x1><x2>7.587E-02</x2><x3>1.855E-01</x3><x4>1.602E-01</x4><x5>2057</x5></dataPoint>
+        <dataPoint><x1>08.611</x1><x2>6.926E-02</x2><x3>1.927E-01</x3><x4>1.665E-01</x4><x5>2076</x5></dataPoint>
+        <dataPoint><x1>09.033</x1><x2>6.986E-02</x2><x3>2.054E-01</x3><x4>1.729E-01</x4><x5>2094</x5></dataPoint>
+        <dataPoint><x1>09.488</x1><x2>6.852E-02</x2><x3>2.093E-01</x3><x4>1.778E-01</x4><x5>2109</x5></dataPoint>
+        <dataPoint><x1>10.616</x1><x2>6.508E-02</x2><x3>2.312E-01</x3><x4>1.927E-01</x4><x5>2117</x5></dataPoint>
+        <dataPoint><x1>11.039</x1><x2>6.517E-02</x2><x3>2.384E-01</x3><x4>1.986E-01</x4><x5>2120</x5></dataPoint>
+        <dataPoint><x1>11.540</x1><x2>6.523E-02</x2><x3>2.448E-01</x3><x4>2.050E-01</x4><x5>2122</x5></dataPoint>
+        <dataPoint><x1>12.073</x1><x2>6.145E-02</x2><x3>2.501E-01</x3><x4>2.117E-01</x4><x5>2120</x5></dataPoint>
+        <dataPoint><x1>12.637</x1><x2>5.772E-02</x2><x3>2.607E-01</x3><x4>2.166E-01</x4><x5>2120</x5></dataPoint>
+        <dataPoint><x1>13.201</x1><x2>5.387E-02</x2><x3>2.681E-01</x3><x4>2.198E-01</x4><x5>2115</x5></dataPoint>
+        <dataPoint><x1>14.063</x1><x2>5.011E-02</x2><x3>2.759E-01</x3><x4>2.252E-01</x4><x5>2113</x5></dataPoint>
+        <dataPoint><x1>14.956</x1><x2>5.362E-02</x2><x3>2.804E-01</x3><x4>2.323E-01</x4><x5>2105</x5></dataPoint>
+        <dataPoint><x1>15.975</x1><x2>4.777E-02</x2><x3>2.885E-01</x3><x4>2.358E-01</x4><x5>2092</x5></dataPoint>
+        <dataPoint><x1>17.104</x1><x2>4.387E-02</x2><x3>2.924E-01</x3><x4>2.419E-01</x4><x5>2081</x5></dataPoint>
+        <dataPoint><x1>17.982</x1><x2>4.370E-02</x2><x3>2.944E-01</x3><x4>2.464E-01</x4><x5>2073</x5></dataPoint>
+        <dataPoint><x1>20.020</x1><x2>3.783E-02</x2><x3>2.996E-01</x3><x4>2.534E-01</x4><x5>2051</x5></dataPoint>
+        <dataPoint><x1>22.026</x1><x2>3.564E-02</x2><x3>3.071E-01</x3><x4>2.613E-01</x4><x5>2029</x5></dataPoint>
+        <dataPoint><x1>24.048</x1><x2>2.997E-02</x2><x3>3.096E-01</x3><x4>2.626E-01</x4><x5>2007</x5></dataPoint>
+        <dataPoint><x1>25.961</x1><x2>2.445E-02</x2><x3>3.125E-01</x3><x4>2.631E-01</x4><x5>1988</x5></dataPoint>
+        <dataPoint><x1>27.952</x1><x2>2.940E-02</x2><x3>3.170E-01</x3><x4>2.640E-01</x4><x5>1969</x5></dataPoint>
+        <dataPoint><x1>30.006</x1><x2>2.396E-02</x2><x3>3.205E-01</x3><x4>2.635E-01</x4><x5>1948</x5></dataPoint>
+        <dataPoint><x1>32.076</x1><x2>2.031E-02</x2><x3>3.233E-01</x3><x4>2.635E-01</x4><x5>1927</x5></dataPoint>
+        <dataPoint><x1>33.957</x1><x2>2.013E-02</x2><x3>3.283E-01</x3><x4>2.645E-01</x4><x5>1910</x5></dataPoint>
+    </dataGroup>
+    <comment>The experimental temperature was estimated with linear interpolation based on Fig. 2.</comment>
+    <comment>The concentration profiles are converted from mol/cm3 to mole fractions with the ideal gas law to avoid simulation difficulties</comment>
+</experiment>

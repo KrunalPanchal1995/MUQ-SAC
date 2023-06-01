@@ -1,0 +1,67 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30001014</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>P. Glarborg; D. Kubel; K. DamJohansen; H. M. Chiang; J. W. Bozzelli, International Journal of Chemical Kinetics 1996, 28, (10), 773-790.</description>
+        <referenceDOI>10.1002/(SICI)1097-4601(1996)28:10%3C773::AID-KIN8%3E3.0.CO;2-K</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 6 top, set 2, open circle, CO profile measured (CO/O2/H2O/N2).</figure>
+        <details>
+            <author>Glarborg, Peter and Kubel, Dorte and Dam-Johansen, Kim and Chiang, Hong-Ming and Bozzelli, Joseph W</author>
+            <journal>Int J Chem Kinet</journal>
+            <number>10</number>
+            <pages>773--790</pages>
+            <title>Impact of SO$_{2}$ and NO on CO oxidation under post-flame conditions</title>
+            <volume>28</volume>
+            <year>1996</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>turbulent</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"    units="atm"           ><value>1.05</value></property>
+        <property name="initial composition"          >
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  sourcetype="reported"    chemName="carbon monoxide" /><amount units="mole fraction" >0.000477</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        sourcetype="reported"    chemName="oxygen"          /><amount units="mole fraction" >0.039000</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          sourcetype="reported"    chemName="water"           /><amount units="mole fraction" >0.009000</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        sourcetype="calculated"  chemName="nitrogen"        /><amount units="mole fraction" >0.951523</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>4.103e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="residence time"  id="x1"   label="t"     sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x2"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"  InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="temperature"     id="x3"   label="T"     sourcetype="digitized"   units="K"             />
+
+        <dataPoint><x1>2.5470E-01</x1><x2>4.8372E-04</x2> <x3>910.9</x3></dataPoint>
+        <dataPoint><x1>2.4756E-01</x1><x2>4.8225E-04</x2> <x3>937.2</x3></dataPoint>
+        <dataPoint><x1>2.4062E-01</x1><x2>4.6951E-04</x2> <x3>964.2</x3></dataPoint>
+        <dataPoint><x1>2.3438E-01</x1><x2>4.1627E-04</x2> <x3>989.8</x3></dataPoint>
+        <dataPoint><x1>2.2828E-01</x1><x2>2.6057E-04</x2><x3>1016.3</x3></dataPoint>
+        <dataPoint><x1>2.2263E-01</x1><x2>1.2065E-04</x2><x3>1042.1</x3></dataPoint>
+        <dataPoint><x1>2.1728E-01</x1><x2>5.7272E-05</x2><x3>1067.8</x3></dataPoint>
+        <dataPoint><x1>2.1218E-01</x1><x2>2.9918E-05</x2><x3>1093.4</x3></dataPoint>
+        <dataPoint><x1>2.0707E-01</x1><x2>1.7181E-05</x2><x3>1120.4</x3></dataPoint>
+        <dataPoint><x1>2.0232E-01</x1><x2>1.1207E-05</x2><x3>1146.7</x3></dataPoint>
+        <dataPoint><x1>1.9755E-01</x1><x2>8.5916E-06</x2><x3>1174.4</x3></dataPoint>
+        <dataPoint><x1>1.9333E-01</x1><x2>6.0038E-06</x2><x3>1200.0</x3></dataPoint>
+    </dataGroup>
+</experiment>

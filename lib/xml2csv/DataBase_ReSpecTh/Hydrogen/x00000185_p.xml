@@ -1,0 +1,72 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x00000185_p</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Taylor., S.C., Ph.D. thesis, University of Leeds, 1991.</description>
+        <location>Main Article</location>
+        <figure>Fig. 15</figure>
+        <details>
+            <author>Taylor, S C</author>
+            <school>University of Leeds</school>
+            <title>Burning Velocity and the Influence of Flame Stretch</title>
+            <year>1991</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>spherical</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>296</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint><x1>0.0872e+002</x1><x2>0.8570e-001</x2><x3>1.9200e-001</x3><x4>7.2229e-001</x4></dataPoint>
+        <dataPoint><x1>0.1893e+002</x1><x2>1.1579e-001</x2><x3>1.8568e-001</x3><x4>6.9853e-001</x4></dataPoint>
+        <dataPoint><x1>0.3418e+002</x1><x2>1.4417e-001</x2><x3>1.7972e-001</x3><x4>6.7611e-001</x4></dataPoint>
+        <dataPoint><x1>0.6478e+002</x1><x2>1.7404e-001</x2><x3>1.7345e-001</x3><x4>6.5251e-001</x4></dataPoint>
+        <dataPoint><x1>0.9790e+002</x1><x2>2.0413e-001</x2><x3>1.6713e-001</x3><x4>6.2874e-001</x4></dataPoint>
+        <dataPoint><x1>1.3865e+002</x1><x2>2.3400e-001</x2><x3>1.6086e-001</x3><x4>6.0514e-001</x4></dataPoint>
+        <dataPoint><x1>1.7796e+002</x1><x2>2.6387e-001</x2><x3>1.5459e-001</x3><x4>5.8154e-001</x4></dataPoint>
+        <dataPoint><x1>2.1314e+002</x1><x2>2.9246e-001</x2><x3>1.4858e-001</x3><x4>5.5896e-001</x4></dataPoint>
+        <dataPoint><x1>2.4115e+002</x1><x2>3.2383e-001</x2><x3>1.4200e-001</x3><x4>5.3418e-001</x4></dataPoint>
+        <dataPoint><x1>2.6205e+002</x1><x2>3.5370e-001</x2><x3>1.3572e-001</x3><x4>5.1058e-001</x4></dataPoint>
+        <dataPoint><x1>2.7890e+002</x1><x2>3.8357e-001</x2><x3>1.2945e-001</x3><x4>4.8698e-001</x4></dataPoint>
+        <dataPoint><x1>2.8498e+002</x1><x2>4.1344e-001</x2><x3>1.2318e-001</x3><x4>4.6338e-001</x4></dataPoint>
+        <dataPoint><x1>2.7884e+002</x1><x2>4.4353e-001</x2><x3>1.1686e-001</x3><x4>4.3961e-001</x4></dataPoint>
+        <dataPoint><x1>2.6652e+002</x1><x2>4.7191e-001</x2><x3>1.1090e-001</x3><x4>4.1719e-001</x4></dataPoint>
+        <dataPoint><x1>2.5328e+002</x1><x2>5.0178e-001</x2><x3>1.0463e-001</x3><x4>3.9360e-001</x4></dataPoint>
+        <dataPoint><x1>2.3386e+002</x1><x2>5.3037e-001</x2><x3>0.9862e-001</x3><x4>3.7101e-001</x4></dataPoint>
+        <dataPoint><x1>2.1184e+002</x1><x2>5.6024e-001</x2><x3>0.9235e-001</x3><x4>3.4741e-001</x4></dataPoint>
+        <dataPoint><x1>1.8943e+002</x1><x2>5.8883e-001</x2><x3>0.8634e-001</x3><x4>3.2482e-001</x4></dataPoint>
+        <dataPoint><x1>1.6229e+002</x1><x2>6.1871e-001</x2><x3>0.8007e-001</x3><x4>3.0122e-001</x4></dataPoint>
+        <dataPoint><x1>1.3729e+002</x1><x2>6.4730e-001</x2><x3>0.7407e-001</x3><x4>2.7864e-001</x4></dataPoint>
+        <dataPoint><x1>1.0924e+002</x1><x2>6.7717e-001</x2><x3>0.6779e-001</x3><x4>2.5504e-001</x4></dataPoint>
+    </dataGroup>
+    <comment>Current referenceDOI is just for sorting purposes in ReSpecTh Database.</comment>
+</experiment>

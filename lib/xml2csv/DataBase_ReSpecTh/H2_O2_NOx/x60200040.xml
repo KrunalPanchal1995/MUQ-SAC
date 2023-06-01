@@ -1,0 +1,70 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60200040</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. J. Mainiero &amp; M. Vavpee, Combust. Sci. Technol. 22:3-4 (1980) 171-183</description>
+        <referenceDOI>10.1080/00102208008952380</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 4. rombus</figure>
+        <details>
+            <author>Mainiero, R. J. and Vanpee, M.</author>
+            <journal>Combustion Science and Technology</journal>
+            <month>may</month>
+            <number>3-4</number>
+            <pages>171-183</pages>
+            <publisher>Informa {UK} Limited</publisher>
+            <title>Reaction Mechanisms in Hydrogen-Nitric Oxide Flames</title>
+            <volume>22</volume>
+            <year>1980</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="estimated"   units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="calculated"  units="kg m-2 s-1"    ><value>0.1876</value></property>
+        <property name="initial composition"           sourcetype="reported"   >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.5</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.5</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="OH"  CAS="3352-57-6"   InChI="1S/HO/h1H"   SMILES="[OH]"   chemName="hydroxyl radical" />
+            <value>7501.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"     sourcetype="digitized"  units="cm"            />
+        <property name="composition"  id="x2"   label="[OH]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="OH"  CAS="3352-57-6"  InChI="1S/HO/h1H"  SMILES="[OH]"  chemName="hydroxyl radical" />
+        </property>
+        <property name="temperature"  id="x3"   label="T"     sourcetype="estimated"  units="K"             />
+
+        <dataPoint><x1>0.0784</x1><x2>0.00826</x2><x3>2543</x3></dataPoint>
+        <dataPoint><x1>0.1459</x1><x2>0.03137</x2><x3>2915</x3></dataPoint>
+        <dataPoint><x1>0.2116</x1><x2>0.05234</x2><x3>2971</x3></dataPoint>
+        <dataPoint><x1>0.3475</x1><x2>0.06900</x2><x3>2964</x3></dataPoint>
+        <dataPoint><x1>0.5300</x1><x2>0.07501</x2><x3>3006</x3></dataPoint>
+        <dataPoint><x1>0.8416</x1><x2>0.06791</x2><x3>2971</x3></dataPoint>
+        <dataPoint><x1>1.2884</x1><x2>0.05945</x2><x3>2898</x3></dataPoint>
+        <dataPoint><x1>1.9351</x1><x2>0.05139</x2><x3>2853</x3></dataPoint>
+        <dataPoint><x1>3.2230</x1><x2>0.04412</x2><x3>2806</x3></dataPoint>
+    </dataGroup>
+    <comment>The temperature profile and the inlet gas temperature are estimated based on Fig. 4. squere with interpolation and extrapolation.</comment>
+    <comment>The inlet gas temperature is assumed to be 300 K due to the utility of the simulations and some unclear hints from paper: N2 and NO were introduced as a room temperature mixture...</comment>
+    <comment>The flow rate (F) was calculated as the product of the gas velocity and density. (F = v * rho = v * p * M_ave / R / T)</comment>
+    <comment>The dilution is not reported. I assumed pure reactive gas. Maybe not usable.</comment>
+</experiment>

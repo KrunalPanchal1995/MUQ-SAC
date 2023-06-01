@@ -1,0 +1,44 @@
+!!------------------------------------------------------------------------------------------!!
+!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+!!----
+!! format:																					!!
+!! { "dataset_id":,"specific details": , etc .....}											!!
+!!------------------------------------------------------------------------------------------!!
+
+
+{ "dataset_id": fls_1b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_2a , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_2b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_3a , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_3b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_4a , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_4b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_5a , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_5b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_6a , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": fls_6b , "Exp_type": fls , "solver": cantera}
+{ "dataset_id": flf_1a , "Exp_type": flf , "solver": cantera,"Measurnment": {"type": conc, "species":H,"condition":max},"data_storage":True}
+{ "dataset_id": flf_1b , "Exp_type": flf , "solver": cantera,"Measurnment": {"type": conc, "species":O,"condition":max},"data_storage":True}
+{ "dataset_id": flw_1a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_2a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_3a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_4a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_5a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_6a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_6b , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_7a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_8a , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": flw_8b , "Exp_type": flw , "solver": cantera,"data_storage":True}
+{ "dataset_id": ign_1a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_1b , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_2a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_2b , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_3a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_4a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_4b , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_5a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_6a , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_6b , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_6c , "Exp_type": ign , "solver": cantera}
+{ "dataset_id": ign_6d , "Exp_type": ign , "solver": cantera}
+

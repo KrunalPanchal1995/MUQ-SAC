@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20400001</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>S.P.M. Bane et al., Int. J. Hydr. Energy, 36 (2011) 10107-10116</description>
+        <referenceDOI>10.1016/j.ijhydene.2011.04.232</referenceDOI>
+        <location>Supplementary Material</location>
+        <table>Table 1.</table>
+        <figure>Main article, Fig. 2 (not used)</figure>
+        <details>
+            <author>Bane, S. P. M. and Mével, R. and Coronel, S. A. and Shepherd, J. E.</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>16</number>
+            <pages>10107--10116</pages>
+            <title>Flame burning speeds and combustion characteristics of undiluted and nitrogen-diluted hydrogen-nitrous oxide mixtures</title>
+            <volume>36</volume>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>OPF</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="kPa"  ><value>20</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>3.81</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"               id="x1"   label="T"      sourcetype="reported"    units="K"             />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="composition"               id="x3"   label="[N2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+        </property>
+        <property name="composition"               id="x4"   label="[H2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      />
+        </property>
+        <property name="equivalence ratio"         id="x5"   label="phi"    sourcetype="reported"    units="unitless"      />
+
+        <dataPoint><x1>297.55</x1><x2>018.64</x2><x3>0.8696</x3><x4>0.1304</x4><x5>0.15</x5></dataPoint>
+        <dataPoint><x1>297.85</x1><x2>020.38</x2><x3>0.8696</x3><x4>0.1304</x4><x5>0.15</x5></dataPoint>
+        <dataPoint><x1>294.95</x1><x2>032.74</x2><x3>0.8333</x3><x4>0.1667</x4><x5>0.20</x5></dataPoint>
+        <dataPoint><x1>296.05</x1><x2>032.79</x2><x3>0.8333</x3><x4>0.1667</x4><x5>0.20</x5></dataPoint>
+        <dataPoint><x1>299.75</x1><x2>070.03</x2><x3>0.7692</x3><x4>0.2308</x4><x5>0.30</x5></dataPoint>
+        <dataPoint><x1>299.65</x1><x2>069.86</x2><x3>0.7692</x3><x4>0.2308</x4><x5>0.30</x5></dataPoint>
+        <dataPoint><x1>296.55</x1><x2>112.57</x2><x3>0.7143</x3><x4>0.2857</x4><x5>0.40</x5></dataPoint>
+        <dataPoint><x1>296.75</x1><x2>104.92</x2><x3>0.7143</x3><x4>0.2857</x4><x5>0.40</x5></dataPoint>
+        <dataPoint><x1>297.05</x1><x2>141.55</x2><x3>0.6667</x3><x4>0.3333</x4><x5>0.50</x5></dataPoint>
+        <dataPoint><x1>297.35</x1><x2>149.22</x2><x3>0.6667</x3><x4>0.3333</x4><x5>0.50</x5></dataPoint>
+        <dataPoint><x1>297.35</x1><x2>191.36</x2><x3>0.6250</x3><x4>0.3750</x4><x5>0.60</x5></dataPoint>
+        <dataPoint><x1>297.65</x1><x2>195.11</x2><x3>0.6250</x3><x4>0.3750</x4><x5>0.60</x5></dataPoint>
+        <dataPoint><x1>297.85</x1><x2>258.25</x2><x3>0.5882</x3><x4>0.4118</x4><x5>0.70</x5></dataPoint>
+        <dataPoint><x1>298.15</x1><x2>259.85</x2><x3>0.5882</x3><x4>0.4118</x4><x5>0.70</x5></dataPoint>
+    </dataGroup>
+</experiment>

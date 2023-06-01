@@ -1,0 +1,64 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000002</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Schott G.L., Kinsey J.L., Journal of Chemical Physics, (29), 1177-1182., 1958.</description>
+        <referenceDOI>10.1063/1.1744674</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 3., open triangle</figure>
+        <details>
+            <author>Schott, G L and Kinsey, J L</author>
+            <journal>J Chem Phys</journal>
+            <pages>1177--1182</pages>
+            <title>Kinetic Studies of Hydroxyl Radicals in Shock Waves. II. Induction Times in the Hydrogen-Oxygen Reaction</title>
+            <volume>29</volume>
+            <year>1958</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.02</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.97</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.33</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="digitized"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="digitized"  units="us"  />
+
+        <dataPoint><x1>1670</x1><x2>0.750</x2> <x3>77</x3></dataPoint>
+        <dataPoint><x1>1646</x1><x2>0.736</x2> <x3>78</x3></dataPoint>
+        <dataPoint><x1>1308</x1><x2>0.928</x2><x3>194</x3></dataPoint>
+        <dataPoint><x1>1304</x1><x2>1.846</x2> <x3>85</x3></dataPoint>
+        <dataPoint><x1>1302</x1><x2>1.838</x2> <x3>74</x3></dataPoint>
+        <dataPoint><x1>1312</x1><x2>1.857</x2> <x3>94</x3></dataPoint>
+        <dataPoint><x1>1291</x1><x2>0.913</x2><x3>187</x3></dataPoint>
+        <dataPoint><x1>1086</x1><x2>1.747</x2><x3>360</x3></dataPoint>
+        <dataPoint><x1>1097</x1><x2>1.769</x2><x3>331</x3></dataPoint>
+        <dataPoint><x1>1626</x1><x2>1.454</x2> <x3>45</x3></dataPoint>
+        <dataPoint><x1>1180</x1><x2>1.297</x2><x3>261</x3></dataPoint>
+        <dataPoint><x1>1154</x1><x2>1.259</x2><x3>263</x3></dataPoint>
+        <dataPoint><x1>1836</x1><x2>0.841</x2> <x3>43</x3></dataPoint>
+        <dataPoint><x1>1826</x1><x2>0.834</x2> <x3>48</x3></dataPoint>
+        <dataPoint><x1>1200</x1><x2>1.989</x2><x3>150</x3></dataPoint>
+        <dataPoint><x1>1175</x1><x2>0.876</x2><x3>355</x3></dataPoint>
+        <dataPoint><x1>1616</x1><x2>1.445</x2> <x3>38</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+</experiment>

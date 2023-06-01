@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400062</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>Krishna M. Pamidikkula. Gordon B. Skinner. J. Chem. Phys. 76(1). 1982.</description>
+        <referenceDOI>10.1063/1.442779</referenceDOI>
+        <location>Main article</location>
+        <table>Table I., Mixture 1. (fi = 5.0)</table>
+        <details>
+            <author>Pamidimukkala, K M and Skinner, G B</author>
+            <journal>J Chem Phys</journal>
+            <pages>311--315</pages>
+            <title>Resonance Absorption Measurements of Atom Concentrations in Reacting Gas Mixtures. VIII. Rate Constants for O + H$_{2}$ = OH + H and O + D2 = OD + D from Measurements of O Atoms in Oxidation of H$_{2}$ and D2 by N2O</title>
+            <volume>76</volume>
+            <year>1982</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="ppm"           >20</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.99988</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="ppm"           >100</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+        <property name="uncertainty"     id="x4"   label="d_T"  sourcetype="reported"  units="K"    reference="temperature"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>1919</x1><x2>1.46</x2><x3>600</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2014</x1><x2>1.61</x2><x3>300</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2078</x1><x2>1.55</x2><x3>200</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2079</x1><x2>1.58</x2><x3>200</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2146</x1><x2>1.58</x2><x3>160</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2157</x1><x2>1.61</x2><x3>160</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2249</x1><x2>1.28</x2><x3>120</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2260</x1><x2>1.54</x2><x3>120</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2349</x1><x2>1.40</x2> <x3>80</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2372</x1><x2>1.47</x2> <x3>80</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2419</x1><x2>1.48</x2> <x3>80</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2638</x1><x2>1.75</x2> <x3>40</x3><x4>20</x4></dataPoint>
+        <dataPoint><x1>2781</x1><x2>1.27</x2> <x3>40</x3><x4>20</x4></dataPoint>
+    </dataGroup>
+    <ignitionType target="O" type="max"/>
+</experiment>

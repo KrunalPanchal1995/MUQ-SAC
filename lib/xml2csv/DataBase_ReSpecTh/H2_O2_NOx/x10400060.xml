@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400060</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>Hans Henrici, S. H. Bauer, The Journal of Chemical Physics 50 (1969) 1333-1342</description>
+        <referenceDOI>10.1063/1.1671195</referenceDOI>
+        <location>Main article</location>
+        <table>Table I, dataset A</table>
+        <details>
+            <author>Henrici, H and Bauer, S H</author>
+            <journal>J Chem Phys</journal>
+            <pages>1333</pages>
+            <title>Kinetics of the nitrous oxide-hydrogen reaction</title>
+            <volume>50</volume>
+            <year>1969</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>incident shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.0048</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.99</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.0052</amount></component>
+        </property>
+        <property name="pressure"                      label="p"  sourcetype="estimated"  units="atm"           ><value>1.77</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.32</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="us" />
+
+        <dataPoint><x1>2712</x1> <x2>7.6</x2></dataPoint>
+        <dataPoint><x1>2530</x1> <x2>8.9</x2></dataPoint>
+        <dataPoint><x1>2368</x1><x2>10.8</x2></dataPoint>
+        <dataPoint><x1>2191</x1> <x2>9.3</x2></dataPoint>
+        <dataPoint><x1>2318</x1><x2>17.6</x2></dataPoint>
+        <dataPoint><x1>2195</x1><x2>18.3</x2></dataPoint>
+        <dataPoint><x1>2047</x1><x2>21.8</x2></dataPoint>
+        <dataPoint><x1>1982</x1>  <x2>28</x2></dataPoint>
+        <dataPoint><x1>1880</x1>  <x2>20</x2></dataPoint>
+        <dataPoint><x1>1773</x1>  <x2>65</x2></dataPoint>
+        <dataPoint><x1>1768</x1>  <x2>62</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH" type="relative concentration" amount="0.63" units="unitless"/>
+    <comment>The pressure data is not reported in the article, however it can be found in y:\Projects\NitrogenChemData\NOx_with_syngas\Zhang_CombustFlame_2017\Model predictions. We use this pressure here, however it might not be true...</comment>
+</experiment>

@@ -1,0 +1,36 @@
+DataSet				: fls_
+Target				: Fls
+Fuel_type			: Homogeneous
+Fuel				: {"a":x->H2 =  ,"b":x->CO = ,"c":#,"d":#,"e":#}
+Oxidizer			: x->O2 = 
+Bath_gas1			: 
+Bath_gas2			: 
+Bath_gas3			: 
+Pressure			: 
+Temperature			: 
+Phi					: 
+Unsrt_factor		: ;absolute
+Unit				: mol	atm	K	us	cm/s
+Simulation_type		: isochor
+Measurnment_type	: velocity
+ignition_mode		: spherical flame
+startprofile		: 
+flow_rate			: 
+flow_unit			: 
+Data_structure		: Sr	a	b	Ox	bg1	T	P	Fls	sigma
+
+
+DATA:
+1a	0.296	0.00	0.148	{x->N2 = 0.556}	298.2	1	204.0	20
+1b	0.558	0.00	0.093	{x->N2 = 0.349}	298.2	1	217.0	20
+2a	0.200	0.00	0.10	{x->HE = 0.700}	298.2	1	206.0	20
+2b	0.36	0.00	0.08	{x->HE = 0.56}	298.2	1	249.0	25
+3a	0.138	0.00	0.069	{x->HE = 0.793}	298.2	15	58.0	6
+3b	0.219	0.00	0.063	{x->HE = 0.718}	298.2	15	88.0	9
+4a	0.016	0.309	0.142	{x->N2 = 0.533}	298.2	1	40.0	4
+4b	0.03	0.59	0.08	{x->N2 = 0.3}	298.2	1	52.5	5
+5a	0.148	0.148	0.148	{x->N2 = 0.556}	298.2	1	111.5	20
+5b	0.281	0.281	0.092	{x->N2 = 0.346}	298.2	1	154.5	20
+6a	0.092	0.078	0.174	{x->N2 = 0.656}	298.2	1	10.3	20
+6b	0.029	0.141	0.174	{x->N2 = 0.656}	298.2	1	18.5	20
+

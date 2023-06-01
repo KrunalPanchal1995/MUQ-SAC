@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001078</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>L. D. Thi, Y. Zhang, J. Fu, Z. Huang, Y. Zhang: Study on Ignition Delay of Multi-Component Syngas Using Shock Tube, The Canadian Journal of Chemical Engineering, 2013, in press.</description>
+        <referenceDOI>10.1002/cjce.21938</referenceDOI>
+        <location>Supplementary materials</location>
+        <table>Table 2, SH33 (mixture 2), 1 MPa series.</table>
+        <details>
+            <author>Thi, Luong Dinh and Zhang, Yingjia and Fu, Jin and Huang, Zuohua and Zhang, Yang</author>
+            <journal>Can J Chem Eng</journal>
+            <number>5</number>
+            <pages>861--870</pages>
+            <title>Study on ignition delay of multi-component syngas using shock tube</title>
+            <volume>92</volume>
+            <year>2014</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.01320</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.02680</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.02000</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.94000</amount></component>
+        </property>
+        <property name="pressure rise"                 label="dp/dt"  sourcetype="reported"   units="ms-1"           kind="relative" ><value>0.0422</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint> <x1>8.54</x1><x2>1012</x2><x3>3090</x3></dataPoint>
+        <dataPoint> <x1>9.69</x1><x2>1012</x2><x3>3386</x3></dataPoint>
+        <dataPoint> <x1>9.61</x1><x2>1028</x2><x3>1979</x3></dataPoint>
+        <dataPoint> <x1>9.84</x1><x2>1048</x2><x3>1282</x3></dataPoint>
+        <dataPoint> <x1>9.93</x1><x2>1055</x2><x3>1083</x3></dataPoint>
+        <dataPoint><x1>10.01</x1><x2>1087</x2> <x3>471</x3></dataPoint>
+        <dataPoint> <x1>9.57</x1><x2>1100</x2> <x3>365</x3></dataPoint>
+        <dataPoint> <x1>9.95</x1><x2>1114</x2> <x3>240</x3></dataPoint>
+        <dataPoint><x1>10.21</x1><x2>1154</x2> <x3>125</x3></dataPoint>
+        <dataPoint><x1>10.09</x1><x2>1167</x2>  <x3>96</x3></dataPoint>
+        <dataPoint> <x1>9.94</x1><x2>1203</x2>  <x3>67</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="d/dt max"/>
+</experiment>

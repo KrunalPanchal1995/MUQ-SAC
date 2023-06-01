@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001001</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>E. L. Petersen; D. M. Kalitan; A. B. Barrett; S. C. Reehal; J. D. Mertens; D. J. Beerer; R. L. Hack; V. G. McDonell, Combustion and Flame 2007, 149, (1-2), 244-247.</description>
+        <referenceDOI>10.1016/j.combustflame.2006.12.007</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 1, top</table>
+        <details>
+            <author>Petersen, Eric L and Kalitan, Danielle M and Barrett, Alexander B and Reehal, Shatra C and Mertens, John D and Beerer, David J and Hack, Richard L and McDonell, Vincent G</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>244--247</pages>
+            <title>New syngas/air ignition data at lower temperature and elevated pressure and comparison to current kinetics models</title>
+            <volume>149</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"      SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.0733</amount></component>
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.0971</amount></component>
+            <component><speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  /><amount units="mole fraction" >0.0198</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.1701</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"     SMILES="N#N"        chemName="nitrogen"        /><amount units="mole fraction" >0.6397</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.18</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="P"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>22.3</x1> <x2>943</x2><x3>3340</x3></dataPoint>
+        <dataPoint><x1>20.9</x1> <x2>947</x2><x3>3520</x3></dataPoint>
+        <dataPoint><x1>28.9</x1> <x2>962</x2><x3>2460</x3></dataPoint>
+        <dataPoint><x1>23.8</x1> <x2>987</x2><x3>2010</x3></dataPoint>
+        <dataPoint><x1>20.9</x1> <x2>990</x2><x3>1970</x3></dataPoint>
+        <dataPoint><x1>20.9</x1><x2>1001</x2><x3>1880</x3></dataPoint>
+        <dataPoint><x1>21.6</x1><x2>1013</x2><x3>2030</x3></dataPoint>
+        <dataPoint><x1>32.7</x1><x2>1019</x2><x3>1570</x3></dataPoint>
+        <dataPoint><x1>16.5</x1><x2>1024</x2><x3>2380</x3></dataPoint>
+        <dataPoint><x1>23.7</x1><x2>1033</x2><x3>2150</x3></dataPoint>
+        <dataPoint><x1>18.7</x1><x2>1053</x2><x3>1560</x3></dataPoint>
+        <dataPoint><x1>20.1</x1><x2>1059</x2><x3>1250</x3></dataPoint>
+        <dataPoint><x1>21.4</x1><x2>1148</x2> <x3>380</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+</experiment>

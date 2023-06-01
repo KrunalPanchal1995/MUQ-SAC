@@ -1,0 +1,55 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400016</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>O. Mathieu*, A. Levacque, E.L. Petersen; International Journal of hydrogen energy (2012) 15393-15405; Table2</description>
+        <referenceDOI>10.1016/j.ijhydene.2012.07.071</referenceDOI>
+        <location>Main article</location>
+        <table>Table2</table>
+        <details>
+            <author>Mathieu, O. and Levacque, A. and Petersen, E. L.</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>20</number>
+            <pages>15393--15405</pages>
+            <publisher>Elsevier Ltd</publisher>
+            <title>Effects of N{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}O addition on the ignition of H{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}-O{\textless}sub{\textgreater}2{\textless}/sub{\textgreater} mixtures: Experimental and detailed kinetic modeling study</title>
+            <volume>37</volume>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"     SMILES="O=O"         chemName="oxygen"        /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.9768</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.0032</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="us"  />
+        <property name="pressure"        id="x3"   label="p"    sourcetype="reported"  units="atm" />
+
+        <dataPoint><x1>1229</x1> <x2>64</x2><x3>34.1</x3></dataPoint>
+        <dataPoint><x1>1199</x1><x2>179</x2><x3>34.1</x3></dataPoint>
+        <dataPoint><x1>1182</x1><x2>313</x2><x3>35.0</x3></dataPoint>
+        <dataPoint><x1>1168</x1><x2>426</x2><x3>35.4</x3></dataPoint>
+        <dataPoint><x1>1135</x1><x2>902</x2><x3>35.2</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

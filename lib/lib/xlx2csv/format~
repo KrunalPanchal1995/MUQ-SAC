@@ -1,0 +1,40 @@
+!!------------------------------------------------------------------------------------------!!
+!! Fuel types: Homogeneors or Hetrogeneous, hetrogeneous fuels is given as a dict			!!
+!! Nomenclature:																			!!
+!! ignition delay 	: "Tig" or "ignition delay measurement"									!!
+!! flame speeds		: "Fls" or "laminar burning velocities"									!!
+!! flow reactor		: "Scp" or "flowReactor" or "jet-stirred reactor"						!!
+!! unsrt factor		: "absolute" or "percentage"											!!
+!!																							!!
+!! Standard units: mol Pa K ms	cm/s														!!
+!! If the units are not in standard form the target _file_generator.py will convert the 	!!
+!! units to standard form																	!!
+!! unit = concentration; pressure, temperature, response									!!
+!! Data_structure = fuel,oxidizer,BG1,BG2,BG3,Pressure,Temperature,Time,Phi,tig,fls,spc		!!
+!! start profile can be initial start  profile that contains the fuel						!!
+!! anyother specific details regarding the dataset can be provided in addendum.add			!!
+!!																							!!
+!!------------------------------------------------------------------------------------------!!
+!!_------------------------------------------------------------------------_!!
+!!_________________Header Format (.header file)_____________________________!!
+!!-------------can be written withing the same file as well-----------------!!
+
+
+{"DataSet"				:	fls_ , 
+ "Target"				:	Fls , 
+ "Fuel"					:	{"a":H2,"b":CO},
+ "Oxidizer"				:	O2,
+ "Bath_gas"				:	{"bg1":N2,"bg2":HE}, 
+ "Unsrt"				:	{"type":absolute},
+ "Unit"					:	{"conc":mol,"P":atm,"T":K,"observed":cm/s},
+ "Simulation_type"		:	isochor,
+ "Measurnment_type"		:	velocity,
+ "Flame_type"			:	spherical flame
+ "ignition_mode"		:	,
+ "startprofile"			:	,
+ "flow_rate"			:	,
+ "flow_unit"			:	,
+ "Data_structure"		:	[Sr,a,b,Ox,bg1,T,P,Fls,sigma] 
+ }
+!!	Data as per data structure
+!!	Float values saperated by tab

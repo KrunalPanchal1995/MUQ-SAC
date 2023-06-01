@@ -1,0 +1,95 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400004</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>O.A. Powell et al., Proc. Combust. Inst. 33 (2011) 1053–1062</description>
+        <referenceDOI>10.1016/j.proci.2010.06.042</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 3d.</figure>
+        <details>
+            <author>O.A. Powell and P. Papas and C.B. Dreyer</author>
+            <journal>Proceedings of the Combustion Institute</journal>
+            <number>1</number>
+            <pages>1053--1062</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Flame structure measurements of {NO} in premixed hydrogen{\textendash}nitrous oxide flames</title>
+            <volume>33</volume>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"    units="unitless"      ><value>1.55</value></property>
+        <property name="temperature"                   label="T"    sourcetype="estimated"   units="K"             ><value>298</value></property>
+        <property name="pressure"                      label="p"    sourcetype="reported"    units="atm"           ><value>0.81</value></property>
+        <property name="flow rate"                     label="F"    sourcetype="reported"    units="g cm-2 s-1"    ><value>0.01905</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.2653</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.1712</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      /><amount units="mole fraction" >0.5635</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+            <value>676.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"       sourcetype="digitized"  units="mm"       />
+        <property name="composition"  id="x2"   label="[NO]"    sourcetype="estimated"  units="ppm"      >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="uncertainty"  id="x3"   label="d_[NO]"  sourcetype="reported"   units="unitless"  reference="composition"  kind="relative"  bound="plusminus" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="temperature"  id="x4"   label="T"       sourcetype="estimated"  units="K"        />
+
+        <dataPoint><x1>0.1963</x1> <x2>306</x2><x3>0.2</x3> <x4>570</x4></dataPoint>
+        <dataPoint><x1>0.2996</x1> <x2>320</x2><x3>0.2</x3> <x4>681</x4></dataPoint>
+        <dataPoint><x1>0.4029</x1> <x2>439</x2><x3>0.2</x3> <x4>741</x4></dataPoint>
+        <dataPoint><x1>0.5062</x1> <x2>603</x2><x3>0.2</x3> <x4>819</x4></dataPoint>
+        <dataPoint><x1>0.5992</x1> <x2>786</x2><x3>0.2</x3> <x4>887</x4></dataPoint>
+        <dataPoint><x1>0.7025</x1> <x2>991</x2><x3>0.2</x3> <x4>977</x4></dataPoint>
+        <dataPoint><x1>0.8058</x1><x2>1183</x2><x3>0.2</x3><x4>1047</x4></dataPoint>
+        <dataPoint><x1>0.8988</x1><x2>1362</x2><x3>0.2</x3><x4>1130</x4></dataPoint>
+        <dataPoint><x1>1.0021</x1><x2>1576</x2><x3>0.2</x3><x4>1189</x4></dataPoint>
+        <dataPoint><x1>1.0950</x1><x2>1800</x2><x3>0.2</x3><x4>1259</x4></dataPoint>
+        <dataPoint><x1>1.1984</x1><x2>1933</x2><x3>0.2</x3><x4>1282</x4></dataPoint>
+        <dataPoint><x1>1.3017</x1><x2>2042</x2><x3>0.2</x3><x4>1314</x4></dataPoint>
+        <dataPoint><x1>1.3946</x1><x2>2120</x2><x3>0.2</x3><x4>1344</x4></dataPoint>
+        <dataPoint><x1>1.6942</x1><x2>2353</x2><x3>0.2</x3><x4>1417</x4></dataPoint>
+        <dataPoint><x1>1.9525</x1><x2>2426</x2><x3>0.2</x3><x4>1471</x4></dataPoint>
+        <dataPoint><x1>2.2004</x1><x2>2655</x2><x3>0.2</x3><x4>1536</x4></dataPoint>
+        <dataPoint><x1>2.4587</x1><x2>2810</x2><x3>0.2</x3><x4>1596</x4></dataPoint>
+        <dataPoint><x1>2.6963</x1><x2>2883</x2><x3>0.2</x3><x4>1649</x4></dataPoint>
+        <dataPoint><x1>2.9546</x1><x2>3006</x2><x3>0.2</x3><x4>1712</x4></dataPoint>
+        <dataPoint><x1>3.1922</x1><x2>3134</x2><x3>0.2</x3><x4>1736</x4></dataPoint>
+        <dataPoint><x1>3.6984</x1><x2>3253</x2><x3>0.2</x3><x4>1732</x4></dataPoint>
+        <dataPoint><x1>4.2046</x1><x2>3363</x2><x3>0.2</x3><x4>1729</x4></dataPoint>
+        <dataPoint><x1>4.3905</x1><x2>3363</x2><x3>0.2</x3><x4>1728</x4></dataPoint>
+        <dataPoint><x1>4.7004</x1><x2>3308</x2><x3>0.2</x3><x4>1727</x4></dataPoint>
+        <dataPoint><x1>5.2066</x1><x2>3363</x2><x3>0.2</x3><x4>1725</x4></dataPoint>
+        <dataPoint><x1>5.7025</x1><x2>3349</x2><x3>0.2</x3><x4>1723</x4></dataPoint>
+        <dataPoint><x1>6.1984</x1><x2>3335</x2><x3>0.2</x3><x4>1720</x4></dataPoint>
+        <dataPoint><x1>6.7046</x1><x2>3381</x2><x3>0.2</x3><x4>1719</x4></dataPoint>
+        <dataPoint><x1>7.2004</x1><x2>3367</x2><x3>0.2</x3><x4>1718</x4></dataPoint>
+        <dataPoint><x1>8.2025</x1><x2>3349</x2><x3>0.2</x3><x4>1714</x4></dataPoint>
+    </dataGroup>
+    <comment>A normalized [NO] profile was digitized and then it was multiplied with the concetration value (in ppm) given at the distence above the burner of 4.50 mm. This value is (3277/0.982520), because there was no peak value given in Table 1.</comment>
+    <comment>Inlet temperature was estimated based on the following: The initial inlet gas temperature was measured to be in the range of 295-300 K for the conditions studied. (from paper)</comment>
+    <comment>The temperature profile during the experiment was estimated with linear interpolation based on Fig 1.</comment>
+    <comment>The digitized uncertainty data are left out from the xml because the reported uncertainty is 20% and the digitized data are too small.</comment>
+</experiment>

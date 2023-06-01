@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001014</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>C., Herzler, J., Griebel, P., Curran, H., Keromnes, A., Mantzaras, I., H2-IGCC project: Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured; 2011.</description>
+        <location>Appendix</location>
+        <table>Table 3.1, H2 / O2 / Ar, Phi = 0.1, dilution 1:1, 1 bar series</table>
+        <details>
+            <author>Naumann, Clemens and Herzler, J{\"{u}}rgen and Griebel, Peter and Curran, Henry J and K{\'{e}}romn{\`{e}}s, Alan and Mantzaras, Ioannis</author>
+            <booktitle>7$^{\text{th}}$ Framework Programme FP7-ENERGY-2008-TREN-1 ENERGY-2008-6-CLEAN COAL TECHNOLOGIES, Deliverable 1.1.3</booktitle>
+            <institution>H$_{2}$-IGCC project</institution>
+            <number>Deliverable 1.1.3</number>
+            <title>Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured</title>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.0403</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.2016</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.7581</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.14</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="bar" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint> <x1>889</x1><x2>1.03</x2><x3>3468</x3></dataPoint>
+        <dataPoint> <x1>894</x1><x2>1.07</x2><x3>4709</x3></dataPoint>
+        <dataPoint> <x1>895</x1><x2>1.03</x2><x3>3989</x3></dataPoint>
+        <dataPoint> <x1>897</x1><x2>1.07</x2><x3>3999</x3></dataPoint>
+        <dataPoint> <x1>911</x1><x2>1.06</x2><x3>1107</x3></dataPoint>
+        <dataPoint> <x1>926</x1><x2>1.09</x2> <x3>731</x3></dataPoint>
+        <dataPoint> <x1>927</x1><x2>1.06</x2> <x3>739</x3></dataPoint>
+        <dataPoint> <x1>975</x1><x2>1.12</x2> <x3>329</x3></dataPoint>
+        <dataPoint><x1>1012</x1><x2>1.03</x2> <x3>253</x3></dataPoint>
+        <dataPoint><x1>1061</x1><x2>0.99</x2> <x3>157</x3></dataPoint>
+        <dataPoint><x1>1128</x1><x2>1.22</x2>  <x3>96</x3></dataPoint>
+        <dataPoint><x1>1154</x1><x2>0.69</x2> <x3>136</x3></dataPoint>
+        <dataPoint><x1>1165</x1><x2>1.12</x2>  <x3>84</x3></dataPoint>
+        <dataPoint><x1>1278</x1><x2>0.98</x2>  <x3>60</x3></dataPoint>
+        <dataPoint><x1>1306</x1><x2>0.91</x2>  <x3>58</x3></dataPoint>
+        <dataPoint><x1>1308</x1><x2>0.90</x2>  <x3>60</x3></dataPoint>
+        <dataPoint><x1>1498</x1><x2>0.88</x2>  <x3>34</x3></dataPoint>
+        <dataPoint><x1>1665</x1><x2>1.05</x2>  <x3>20</x3></dataPoint>
+        <dataPoint><x1>1675</x1><x2>1.05</x2>  <x3>18</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="max"/>
+    <comment>Current referenceDOI is just for sorting purposes in ReSpecTh Database.</comment>
+</experiment>

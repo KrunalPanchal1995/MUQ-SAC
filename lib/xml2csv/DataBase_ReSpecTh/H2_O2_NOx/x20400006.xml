@@ -1,0 +1,69 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20400006</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>O. A. Powell et al., Combust. Sci. Tech. 181 (2009), 917-936</description>
+        <referenceDOI>10.1080/00102200902817066</referenceDOI>
+        <location>Main article</location>
+        <figure>Figure 10</figure>
+        <details>
+            <author>Powell, O. A. and Papas, P. and Dreyer, C.</author>
+            <journal>Combustion Science and Technology</journal>
+            <number>7</number>
+            <pages>917-936</pages>
+            <title>Laminar Burning Velocities for Hydrogen-, Methane-, Acetylene-, and Propane-Nitrous Oxide Flames</title>
+            <volume>181</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>LFF</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"  ><value>0.8</value></property>
+        <property name="temperature"                   label="T"  sourcetype="estimated"  units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>1.65</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="uncertainty"               id="x2"   label="d_Sl+"  sourcetype="digitized"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plus"  />
+        <property name="uncertainty"               id="x3"   label="d_Sl-"  sourcetype="digitized"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="minus" />
+        <property name="composition"               id="x4"   label="[N2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+        </property>
+        <property name="composition"               id="x5"   label="[H2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      />
+        </property>
+        <property name="composition"               id="x6"   label="[N2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      />
+        </property>
+        <property name="equivalence ratio"         id="x7"   label="phi"    sourcetype="digitized"   units="unitless"      />
+
+        <dataPoint><x1>27.18</x1><x2>1.70</x2><x3>1.65</x3><x4>0.2230</x4><x5>0.1742</x5><x6>0.6029</x6><x7>0.781</x7></dataPoint>
+        <dataPoint><x1>31.21</x1><x2>1.91</x2><x3>1.86</x3><x4>0.2195</x4><x5>0.1870</x5><x6>0.5935</x6><x7>0.852</x7></dataPoint>
+        <dataPoint><x1>35.86</x1><x2>1.65</x2><x3>1.55</x3><x4>0.2160</x4><x5>0.2000</x5><x6>0.5840</x6><x7>0.926</x7></dataPoint>
+        <dataPoint><x1>38.23</x1><x2>1.70</x2><x3>1.66</x3><x4>0.2126</x4><x5>0.2127</x5><x6>0.5748</x6><x7>1.001</x7></dataPoint>
+        <dataPoint><x1>40.81</x1><x2>1.96</x2><x3>1.97</x3><x4>0.2081</x4><x5>0.2292</x5><x6>0.5627</x6><x7>1.102</x7></dataPoint>
+        <dataPoint><x1>44.32</x1><x2>1.18</x2><x3>1.09</x3><x4>0.2022</x4><x5>0.2509</x5><x6>0.5468</x6><x7>1.241</x7></dataPoint>
+        <dataPoint><x1>43.24</x1><x2>1.70</x2><x3>1.71</x3><x4>0.1954</x4><x5>0.2763</x5><x6>0.5283</x6><x7>1.414</x7></dataPoint>
+        <dataPoint><x1>42.05</x1><x2>1.29</x2><x3>1.30</x3><x4>0.1903</x4><x5>0.2952</x5><x6>0.5145</x6><x7>1.551</x7></dataPoint>
+        <dataPoint><x1>41.28</x1><x2>1.60</x2><x3>1.60</x3><x4>0.1867</x4><x5>0.3085</x5><x6>0.5048</x6><x7>1.652</x7></dataPoint>
+        <dataPoint><x1>37.82</x1><x2>0.77</x2><x3>0.73</x3><x4>0.1816</x4><x5>0.3273</x5><x6>0.4911</x6><x7>1.803</x7></dataPoint>
+        <dataPoint><x1>33.74</x1><x2>0.72</x2><x3>0.83</x3><x4>0.1752</x4><x5>0.3509</x5><x6>0.4739</x6><x7>2.002</x7></dataPoint>
+        <dataPoint><x1>32.40</x1><x2>0.67</x2><x3>0.62</x3><x4>0.1694</x4><x5>0.3727</x5><x6>0.4580</x6><x7>2.200</x7></dataPoint>
+    </dataGroup>
+    <comment>The reactants' inlet temperature was found to be in the range of 295-300 K for the conditions of this investigation. (from paper)</comment>
+</experiment>

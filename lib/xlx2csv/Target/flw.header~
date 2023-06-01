@@ -1,0 +1,21 @@
+!! FlowReactor or Jet-stirredReactor concentration profile
+!! units:
+{"DataSet"				:	flw_ , 
+ "Target"				:	Flw , 
+ "Fuel"					:	{"a":H2,"b":CO},
+ "Oxidizer"				:	O2,
+ "Bath_gas"				:	{"bg1":N2,"bg2":H2O}, 
+ "Pressure:				:	,
+ "Temperature"			:	,
+ "Phi"					:	,
+ "Unsrt"				:	{"type":absolute},
+ "Unit"					:	{"conc":mol,"P":atm,"T":K},
+ "Simulation_type"		:	isochor,
+ "Measurnment_type"		:	concentration
+ "Flame_type"			:	FlowReactor
+ "ignition_mode"		:	,
+ "startprofile"			:	,
+ "flow_rate"			:	,
+ "flow_unit"			:	,
+ "Data_structure"		:	[Sr,a,b,Ox,bg1,bg2,T,P,Flw,sigma,Flw_unit] 
+ }

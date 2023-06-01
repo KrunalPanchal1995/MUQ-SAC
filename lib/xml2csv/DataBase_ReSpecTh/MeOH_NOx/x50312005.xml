@@ -1,0 +1,89 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x50312005</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>C.-Y. Lin et al., Int. J. Chem. Kinet. 22 (1990) 455-482</description>
+        <referenceDOI>10.1002/kin.550220504</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 5.</figure>
+        <details>
+            <author>Lin, Chin-Yu and Wang, Hung-Tai and Lin, M C and Melius, C F</author>
+            <journal>International Journal of Chemical Kinetics</journal>
+            <month>may</month>
+            <number>5</number>
+            <pages>455--482</pages>
+            <publisher>John Wiley and Sons, Ltd</publisher>
+            <title>A shock tube study of the CH2O + NO2 reaction at high temperatures</title>
+            <volume>22</volume>
+            <year>1990</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>concentration time profile measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>incident</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>1142</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>0.5340</value></property>
+        <property name="initial composition"           sourcetype="estimated" >
+            <component><speciesLink preferredKey="CH2O"  CAS="50-00-0"     InChI="1S/CH2O/c1-2/h1H2"  SMILES="C=O"       chemName="formaldehyde"     /><amount units="mole fraction" >0.002994</amount></component>
+            <component><speciesLink preferredKey="NO2"   CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"      SMILES="N(=O)[O]"  chemName="nitrogen dioxide" /><amount units="mole fraction" >0.006487</amount></component>
+            <component><speciesLink preferredKey="AR"    CAS="7440-37-1"   InChI="1S/Ar"              SMILES="[Ar]"      chemName="argon"            /><amount units="mole fraction" >0.990519</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO"    CAS="630-08-0"    InChI="1S/CO/c1-2"         SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+            <value>0.000116</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"    CAS="10102-43-9"  InChI="1S/NO/c1-2"         SMILES="[N]=O"      chemName="nitric oxide"     />
+            <value>0.000205</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="circle">
+        <property name="time"           id="x1"   label="t"       sourcetype="digitized"  units="us"      />
+        <property name="concentration"  id="x2"   label="[CO]"    sourcetype="digitized"  units="mol/cm3" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"  InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+
+        <dataPoint><x1>251.2</x1><x2>3.039E-10</x2></dataPoint>
+        <dataPoint><x1>303.6</x1><x2>8.921E-10</x2></dataPoint>
+        <dataPoint><x1>347.5</x1><x2>1.390E-09</x2></dataPoint>
+        <dataPoint><x1>392.0</x1><x2>1.876E-09</x2></dataPoint>
+        <dataPoint><x1>437.7</x1><x2>2.244E-09</x2></dataPoint>
+        <dataPoint><x1>487.3</x1><x2>2.544E-09</x2></dataPoint>
+        <dataPoint><x1>578.0</x1><x2>2.929E-09</x2></dataPoint>
+        <dataPoint><x1>673.3</x1><x2>3.302E-09</x2></dataPoint>
+        <dataPoint><x1>772.0</x1><x2>3.682E-09</x2></dataPoint>
+        <dataPoint><x1>818.8</x1><x2>3.891E-09</x2></dataPoint>
+    </dataGroup>
+    <comment>The initial composition was estimated because originally 1,3,5-trioxane (C3H6O3) was used as fuel to avoid absorption of the formaldehyde monomer to the shock tube wall.</comment>
+    <comment>Original initial composition was C3H6O3:NO2:Ar=0.001:0.0065:0.9925</comment>
+    <dataGroup id="dg2" label="squere">
+        <property name="time"           id="x3"   label="t"       sourcetype="digitized"  units="us"      />
+        <property name="concentration"  id="x4"   label="[NO]"    sourcetype="digitized"  units="mol/cm3" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+
+        <dataPoint><x3>139.4</x3><x4>1.299E-09</x4></dataPoint>
+        <dataPoint><x3>196.2</x3><x4>1.820E-09</x4></dataPoint>
+        <dataPoint><x3>235.1</x3><x4>2.183E-09</x4></dataPoint>
+        <dataPoint><x3>282.0</x3><x4>2.471E-09</x4></dataPoint>
+        <dataPoint><x3>333.9</x3><x4>2.754E-09</x4></dataPoint>
+        <dataPoint><x3>376.4</x3><x4>3.131E-09</x4></dataPoint>
+        <dataPoint><x3>466.3</x3><x4>4.240E-09</x4></dataPoint>
+        <dataPoint><x3>550.2</x3><x4>5.869E-09</x4></dataPoint>
+        <dataPoint><x3>639.5</x3><x4>7.646E-09</x4></dataPoint>
+        <dataPoint><x3>729.4</x3><x4>8.866E-09</x4></dataPoint>
+    </dataGroup>
+</experiment>

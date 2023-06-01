@@ -1,0 +1,17 @@
+!! Laminar flame speeds experiments
+{"DataSet"				:	fls_ , 
+ "Target"				:	Fls , 
+ "Fuel"					:	{"a":H2,"b":CO},
+ "Oxidizer"				:	O2,
+ "Bath_gas"				:	{"bg1":N2,"bg2":HE}, 
+ "Unsrt"				:	{"type":absolute},
+ "Unit"					:	{"conc":mol,"P":atm,"T":K,"observed":cm/s},
+ "Simulation_type"		:	isochor,
+ "Measurnment_type"		:	velocity,
+ "Flame_type"			:	spherical flame
+ "ignition_mode"		:	,
+ "startprofile"			:	,
+ "flow_rate"			:	,
+ "flow_unit"			:	,
+ "Data_structure"		:	[Sr,a,b,Ox,bg1,bg2,T,P,Fls,sigma] 
+ }

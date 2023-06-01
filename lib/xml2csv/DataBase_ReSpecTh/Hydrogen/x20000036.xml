@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000036</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Egolfopoulos, F.N., Law, C.K., Proceedings of the Combustion Institute, 1990, (23), 333-340.</description>
+        <referenceDOI>10.1016/S0082-0784(06)80276-6</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 4., open square</figure>
+        <details>
+            <author>Egolfopoulos, F N and Law, C K</author>
+            <journal>Symp (Int) Combust</journal>
+            <number>1</number>
+            <pages>333--340</pages>
+            <title>An experimental and computational study of the burning rates of ultra-lean to moderately-rich H$_{2}$/O$_{2}$/N2 laminar flames with pressure variations</title>
+            <volume>23</volume>
+            <year>1991</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint><x1>1.630000e+001</x1><x2>9.888939e-002</x2><x3>9.643352e-002</x3><x4>8.046771e-001</x4></dataPoint>
+        <dataPoint><x1>2.140000e+001</x1><x2>1.173873e-001</x2><x3>9.445546e-002</x3><x4>7.881573e-001</x4></dataPoint>
+        <dataPoint><x1>2.660000e+001</x1><x2>1.349876e-001</x2><x3>9.250812e-002</x3><x4>7.725043e-001</x4></dataPoint>
+        <dataPoint><x1>3.500000e+001</x1><x2>1.523041e-001</x2><x3>9.074857e-002</x3><x4>7.569474e-001</x4></dataPoint>
+        <dataPoint><x1>4.340000e+001</x1><x2>1.686541e-001</x2><x3>8.896359e-002</x3><x4>7.423823e-001</x4></dataPoint>
+        <dataPoint><x1>5.610000e+001</x1><x2>1.844326e-001</x2><x3>8.729465e-002</x3><x4>7.282727e-001</x4></dataPoint>
+        <dataPoint><x1>7.590000e+001</x1><x2>1.998992e-001</x2><x3>8.557633e-002</x3><x4>7.145245e-001</x4></dataPoint>
+        <dataPoint><x1>8.410000e+001</x1><x2>2.113591e-001</x2><x3>8.440489e-002</x3><x4>7.042360e-001</x4></dataPoint>
+    </dataGroup>
+</experiment>

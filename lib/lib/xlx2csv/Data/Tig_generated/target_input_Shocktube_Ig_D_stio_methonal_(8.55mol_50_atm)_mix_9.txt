@@ -1,0 +1,13 @@
+targets_count	:	55
+mechanism	:	Nagy_2017_methanol.mech
+fuel	:	CH3OH
+global_reaction	:	CH3OH + 1.5 O2 == CO2 + 2 H2O
+parallel_threads	:	7
+uncertainty_data	:	errors.unsrt
+bin_file	:	Nagy_2017_methanol.bin	
+targets:
+1, target = Tig, simulation = isochor, Fuel = 5.7, O2 = 8.55,N2 = 0, AR = 85.75, T = 0.7718, P = 49.18, phi = 1, observed = 29.3644, deviation = 5.6748#Burke16_Shocktube_Ig_D_stio_methonal_(8.55mol_50_atm)_mix_9.txt
+2, target = Tig, simulation = isochor, Fuel = 5.7, O2 = 8.55,N2 = 0, AR = 85.75, T = 0.8801, P = 49.18, phi = 1, observed = 157.7683, deviation = 28.3555#Burke16_Shocktube_Ig_D_stio_methonal_(8.55mol_50_atm)_mix_9.txt
+3, target = Tig, simulation = isochor, Fuel = 5.7, O2 = 8.55,N2 = 0, AR = 85.75, T = 0.9489, P = 49.18, phi = 1, observed = 460.645, deviation = 89.0212#Burke16_Shocktube_Ig_D_stio_methonal_(8.55mol_50_atm)_mix_9.txt
+4, target = Tig, simulation = isochor, Fuel = 5.7, O2 = 8.55,N2 = 0, AR = 85.75, T = 1.0012, P = 49.18, phi = 1, observed = 1052.6336, deviation = 203.425#Burke16_Shocktube_Ig_D_stio_methonal_(8.55mol_50_atm)_mix_9.txt
+5, target = Tig, simulation = isochor, Fuel = 5.7, O2 = 8.55,N2 = 0, AR = 85.75, T = 1.0058, P = 49.18, phi = 1, observed = 1120.7402, deviation = 201.4293#Burke16_Shocktube_Ig_D_stio_methonal_(8.55mol_50_atm)_mix_9.txt

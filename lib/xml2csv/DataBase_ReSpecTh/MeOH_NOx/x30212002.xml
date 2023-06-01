@@ -1,0 +1,109 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30212002</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>P. Glarborg et al., Combust. Flame 132 (2003), 629-638</description>
+        <referenceDOI>10.1016/S0010-2180(02)00535-7</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2. and 3., Set 4</figure>
+        <details>
+            <author>Glarborg, P. and Alzueta, M. U. and Kjaergaard, K. and Dam-Johansen, K.</author>
+            <journal>Combustion and Flame</journal>
+            <number>4</number>
+            <pages>629--638</pages>
+            <title>Oxidation of formaldehyde and its interaction with nitric oxide in a flow reactor</title>
+            <volume>132</volume>
+            <year>2003</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="estimated"  units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="CH2O"  CAS="50-00-0"     InChI="1S/CH2O/c1-2/h1H2"  SMILES="C=O"    chemName="formaldehyde" /><amount units="mole fraction" >0.000668</amount></component>
+            <component><speciesLink preferredKey="O2"    CAS="7782-44-7"   InChI="1S/O2/c1-2"         SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.009000</amount></component>
+            <component><speciesLink preferredKey="NO"    CAS="10102-43-9"  InChI="1S/NO/c1-2"         SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000525</amount></component>
+            <component><speciesLink preferredKey="H2O"   CAS="7732-18-5"   InChI="1S/H2O/h1H2"        SMILES="O"      chemName="water"        /><amount units="mole fraction" >0.017000</amount></component>
+            <component><speciesLink preferredKey="N2"    CAS="7727-37-9"   InChI="1S/N2/c1-2"         SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.972807</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO"    CAS="630-08-0"    InChI="1S/CO/c1-2"         SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>2.23e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO2"   CAS="124-38-9"    InChI="1S/CO2/c2-1-3"      SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+            <value>2.24e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"    CAS="10102-43-9"  InChI="1S/NO/c1-2"         SMILES="[N]=O"      chemName="nitric oxide"    />
+            <value>2.4e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x01"  label="T"        sourcetype="digitized"   units="K"             />
+        <property name="residence time"  id="x02"  label="t"        sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x03"  label="[CO]"     sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"    InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"     id="x04"  label="[CO2]"    sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"    InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+        <property name="composition"     id="x05"  label="[NO]"     sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"      chemName="nitric oxide"    />
+        </property>
+        <property name="uncertainty"     id="x06"  label="d_T"      sourcetype="reported"    units="K"              reference="temperature"     kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x07"  label="d_t"      sourcetype="calculated"  units="s"              reference="residence time"  kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x08"  label="d_[CO]"   sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"    InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="uncertainty"     id="x09"  label="d_[CO2]"  sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"    InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+        <property name="uncertainty"     id="x10"  label="d_[NO]"   sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"      chemName="nitric oxide"    />
+        </property>
+
+        <dataPoint><x01>0790.3</x01><x02>0.1518</x02><x03>4.281E-07</x03><x04>0.000E+00</x04><x05>5.207E-04</x05><x06>5</x06><x07>0.0005</x07><x08>1.00E-05</x08><x09>1.00E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>0808.1</x01><x02>0.1485</x02><x03>1.205E-05</x03><x04>0.000E+00</x04><x05>5.140E-04</x05><x06>5</x06><x07>0.0005</x07><x08>1.00E-05</x08><x09>1.00E-05</x09><x10>2.57E-05</x10></dataPoint>
+        <dataPoint><x01>0825.3</x01><x02>0.1454</x02><x03>3.501E-05</x03><x04>0.000E+00</x04><x05>5.005E-04</x05><x06>5</x06><x07>0.0005</x07><x08>1.00E-05</x08><x09>1.00E-05</x09><x10>2.50E-05</x10></dataPoint>
+        <dataPoint><x01>0846.6</x01><x02>0.1417</x02><x03>7.622E-05</x03><x04>0.000E+00</x04><x05>4.747E-04</x05><x06>5</x06><x07>0.0004</x07><x08>1.00E-05</x08><x09>1.00E-05</x09><x10>2.37E-05</x10></dataPoint>
+        <dataPoint><x01>0864.8</x01><x02>0.1388</x02><x03>1.674E-04</x03><x04>6.037E-06</x04><x05>4.286E-04</x05><x06>5</x06><x07>0.0004</x07><x08>1.00E-05</x08><x09>1.00E-05</x09><x10>2.14E-05</x10></dataPoint>
+        <dataPoint><x01>0882.6</x01><x02>0.1360</x02><x03>3.267E-04</x03><x04>1.539E-05</x04><x05>3.674E-04</x05><x06>5</x06><x07>0.0004</x07><x08>1.63E-05</x08><x09>1.00E-05</x09><x10>1.84E-05</x10></dataPoint>
+        <dataPoint><x01>0902.2</x01><x02>0.1330</x02><x03>4.702E-04</x03><x04>2.928E-05</x04><x05>3.281E-04</x05><x06>5</x06><x07>0.0004</x07><x08>2.35E-05</x08><x09>1.00E-05</x09><x10>1.64E-05</x10></dataPoint>
+        <dataPoint><x01>0920.4</x01><x02>0.1304</x02><x03>5.386E-04</x03><x04>3.864E-05</x04><x05>3.241E-04</x05><x06>5</x06><x07>0.0004</x07><x08>2.69E-05</x08><x09>1.00E-05</x09><x10>1.62E-05</x10></dataPoint>
+        <dataPoint><x01>0938.9</x01><x02>0.1278</x02><x03>5.707E-04</x03><x04>5.254E-05</x04><x05>3.514E-04</x05><x06>5</x06><x07>0.0004</x07><x08>2.85E-05</x08><x09>1.00E-05</x09><x10>1.76E-05</x10></dataPoint>
+        <dataPoint><x01>0958.4</x01><x02>0.1252</x02><x03>6.096E-04</x03><x04>6.418E-05</x04><x05>3.841E-04</x05><x06>5</x06><x07>0.0003</x07><x08>3.05E-05</x08><x09>1.00E-05</x09><x10>1.92E-05</x10></dataPoint>
+        <dataPoint><x01>0976.9</x01><x02>0.1228</x02><x03>6.281E-04</x03><x04>7.580E-05</x04><x05>4.264E-04</x05><x06>5</x06><x07>0.0003</x07><x08>3.14E-05</x08><x09>1.00E-05</x09><x10>2.13E-05</x10></dataPoint>
+        <dataPoint><x01>0996.5</x01><x02>0.1204</x02><x03>5.806E-04</x03><x04>1.238E-04</x04><x05>4.755E-04</x05><x06>5</x06><x07>0.0003</x07><x08>2.90E-05</x08><x09>1.00E-05</x09><x10>2.38E-05</x10></dataPoint>
+        <dataPoint><x01>1014.7</x01><x02>0.1183</x02><x03>4.536E-04</x03><x04>2.536E-04</x04><x05>5.082E-04</x05><x06>5</x06><x07>0.0003</x07><x08>2.27E-05</x08><x09>1.27E-05</x09><x10>2.54E-05</x10></dataPoint>
+        <dataPoint><x01>1032.9</x01><x02>0.1162</x02><x03>3.561E-04</x03><x04>3.766E-04</x04><x05>5.192E-04</x05><x06>5</x06><x07>0.0003</x07><x08>1.78E-05</x08><x09>1.88E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1053.1</x01><x02>0.1140</x02><x03>3.042E-04</x03><x04>4.428E-04</x04><x05>5.193E-04</x05><x06>5</x06><x07>0.0003</x07><x08>1.52E-05</x08><x09>2.21E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1071.0</x01><x02>0.1120</x02><x03>2.476E-04</x03><x04>4.976E-04</x04><x05>5.194E-04</x05><x06>5</x06><x07>0.0003</x07><x08>1.24E-05</x08><x09>2.49E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1090.5</x01><x02>0.1100</x02><x03>1.774E-04</x03><x04>5.888E-04</x04><x05>5.195E-04</x05><x06>5</x06><x07>0.0003</x07><x08>1.00E-05</x08><x09>2.94E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1109.1</x01><x02>0.1082</x02><x03>1.413E-04</x03><x04>5.959E-04</x04><x05>5.196E-04</x05><x06>5</x06><x07>0.0003</x07><x08>1.00E-05</x08><x09>2.98E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1129.0</x01><x02>0.1063</x02><x03>1.098E-04</x03><x04>5.984E-04</x04><x05>5.170E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>2.99E-05</x09><x10>2.58E-05</x10></dataPoint>
+        <dataPoint><x01>1148.2</x01><x02>0.1045</x02><x03>9.188E-05</x03><x04>6.078E-04</x04><x05>5.198E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.04E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1166.4</x01><x02>0.1029</x02><x03>7.850E-05</x03><x04>6.308E-04</x04><x05>5.199E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.15E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1185.0</x01><x02>0.1013</x02><x03>7.195E-05</x03><x04>6.151E-04</x04><x05>5.200E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.08E-05</x09><x10>2.60E-05</x10></dataPoint>
+        <dataPoint><x01>1203.9</x01><x02>0.0997</x02><x03>5.858E-05</x03><x04>6.518E-04</x04><x05>5.214E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.26E-05</x09><x10>2.61E-05</x10></dataPoint>
+        <dataPoint><x01>1224.1</x01><x02>0.0980</x02><x03>4.977E-05</x03><x04>6.520E-04</x04><x05>5.229E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.26E-05</x09><x10>2.61E-05</x10></dataPoint>
+        <dataPoint><x01>1241.3</x01><x02>0.0967</x02><x03>2.502E-05</x03><x04>6.500E-04</x04><x05>5.230E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.25E-05</x09><x10>2.61E-05</x10></dataPoint>
+        <dataPoint><x01>1260.9</x01><x02>0.0952</x02><x03>2.530E-05</x03><x04>6.617E-04</x04><x05>5.258E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.31E-05</x09><x10>2.63E-05</x10></dataPoint>
+        <dataPoint><x01>1281.8</x01><x02>0.0936</x02><x03>3.468E-05</x03><x04>6.620E-04</x04><x05>5.327E-04</x05><x06>5</x06><x07>0.0002</x07><x08>1.00E-05</x08><x09>3.31E-05</x09><x10>2.66E-05</x10></dataPoint>
+    </dataGroup>
+    <comment>This xml file is the updated ReSpecTh 2. version of x30002218CH2O_NOx.xml by C. Olm</comment>
+</experiment>

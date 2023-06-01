@@ -1,0 +1,80 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400027</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>J. A. Vanderhoff et al., Combust. Flame. 65 (1986) 45-51</description>
+        <referenceDOI>10.1016/0010-2180(86)90071-4</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2. (c) triangle</figure>
+        <details>
+            <author>John A. Vanderhoff and Steven W. Bunte and Anthony J. Kotlar and Richard A. Beyer</author>
+            <journal>Combustion and Flame</journal>
+            <month>jul</month>
+            <number>1</number>
+            <pages>45--51</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Temperature and concentration profiles in hydrogen-nitrous oxide flames</title>
+            <volume>65</volume>
+            <year>1986</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"    units="unitless"      ><value>0.89</value></property>
+        <property name="temperature"                   label="T"    sourcetype="estimated"   units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"    sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="flow rate"                     label="F"    sourcetype="estimated"   units="kg m-2 s-1"    ><value>0.3322</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.1766</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.1984</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.6250</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"     SMILES="O=O"         chemName="oxygen"        />
+            <value>2758.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"       sourcetype="digitized"   units="mm"            />
+        <property name="composition"  id="x2"   label="[O2]"    sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"  chemName="oxygen" />
+        </property>
+        <property name="uncertainty"  id="x3"   label="d_[O2]"  sourcetype="reported"    units="unitless"       reference="composition"  kind="relative"  bound="plusminus" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"  chemName="oxygen" />
+        </property>
+        <property name="temperature"  id="x4"   label="T"       sourcetype="estimated"   units="K"             />
+
+        <dataPoint><x1>0.333</x1><x2>0.01782</x2><x3>0.1</x3><x4>1832</x4></dataPoint>
+        <dataPoint><x1>0.452</x1><x2>0.02446</x2><x3>0.1</x3><x4>1878</x4></dataPoint>
+        <dataPoint><x1>0.690</x1><x2>0.02587</x2><x3>0.1</x3><x4>1898</x4></dataPoint>
+        <dataPoint><x1>0.833</x1><x2>0.02758</x2><x3>0.1</x3><x4>1909</x4></dataPoint>
+        <dataPoint><x1>1.143</x1><x2>0.02758</x2><x3>0.1</x3><x4>1915</x4></dataPoint>
+        <dataPoint><x1>1.262</x1><x2>0.01963</x2><x3>0.1</x3><x4>1919</x4></dataPoint>
+        <dataPoint><x1>1.476</x1><x2>0.02326</x2><x3>0.1</x3><x4>1922</x4></dataPoint>
+        <dataPoint><x1>1.762</x1><x2>0.02205</x2><x3>0.1</x3><x4>1928</x4></dataPoint>
+        <dataPoint><x1>2.286</x1><x2>0.02003</x2><x3>0.1</x3><x4>1933</x4></dataPoint>
+        <dataPoint><x1>3.262</x1><x2>0.02013</x2><x3>0.1</x3><x4>1922</x4></dataPoint>
+        <dataPoint><x1>4.262</x1><x2>0.01953</x2><x3>0.1</x3><x4>1915</x4></dataPoint>
+        <dataPoint><x1>6.310</x1><x2>0.01852</x2><x3>0.1</x3><x4>1888</x4></dataPoint>
+        <dataPoint><x1>8.286</x1><x2>0.01953</x2><x3>0.1</x3><x4>1852</x4></dataPoint>
+        <dataPoint><x1>10.29</x1><x2>0.01812</x2><x3>0.1</x3><x4>1818</x4></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature is assumed to be 300 K instead of 1700 K due to similar flames and the utility of the simulations. (At positions closest to the burner surface the flame temperature is in excess of 1700 K - from paper)</comment>
+    <comment>The flow rate (F) was calculated by the following data and formula: F[l/min] = 40 l/min, M_average = 0.03402 kg/mol, d = 0.06 m, A = (d/2)^2*PI; F[kg m-2 s-1] = const * F[l/min] * M_average / A . Where const = 6,903*10^-4 (=p/R/T/6E4)</comment>
+    <comment>The standard temperature in this definition is 70 °F (294.26 K). If I used the value of 298.15 K the difference would be 1.3%.</comment>
+    <comment>The experimental temperature was estimated with linear interpolation based on Fig. 2. (a) squere</comment>
+</experiment>

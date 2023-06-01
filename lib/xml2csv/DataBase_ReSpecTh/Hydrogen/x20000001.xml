@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000001</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Takahashi, F., Mizomoto, M., Ikai,S., Alternative Energy Sources III, 1983, (5), 447-457.</description>
+        <location>Main Article</location>
+        <figure>Fig. 1., open circle</figure>
+        <details>
+            <author>Takahashi, F and Mizomoto, M and Ikai, S</author>
+            <journal>Alternative Energy Sources III</journal>
+            <pages>447–457</pages>
+            <title>Laminar burning velocities of hydrogen/oxygen/inert gas mixtures</title>
+            <volume>5</volume>
+            <year>1983</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>8.53</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint><x1>1.971000e+002</x1><x2>2.813757e-001</x2><x3>1.509382e-001</x3><x4>5.676861e-001</x4></dataPoint>
+        <dataPoint><x1>2.180000e+002</x1><x2>2.827538e-001</x2><x3>1.506331e-001</x3><x4>5.666131e-001</x4></dataPoint>
+        <dataPoint><x1>2.760000e+002</x1><x2>3.453246e-001</x2><x3>1.375046e-001</x3><x4>5.171709e-001</x4></dataPoint>
+        <dataPoint><x1>3.031000e+002</x1><x2>3.862054e-001</x2><x3>1.288725e-001</x3><x4>4.849221e-001</x4></dataPoint>
+        <dataPoint><x1>3.083000e+002</x1><x2>4.432012e-001</x2><x3>1.169237e-001</x3><x4>4.398751e-001</x4></dataPoint>
+        <dataPoint><x1>2.877000e+002</x1><x2>4.947158e-001</x2><x3>1.060900e-001</x3><x4>3.991942e-001</x4></dataPoint>
+        <dataPoint><x1>2.613000e+002</x1><x2>5.417482e-001</x2><x3>9.622183e-002</x3><x4>3.620300e-001</x4></dataPoint>
+        <dataPoint><x1>2.358000e+002</x1><x2>5.921177e-001</x2><x3>8.563882e-002</x3><x4>3.222435e-001</x4></dataPoint>
+        <dataPoint><x1>1.827000e+002</x1><x2>6.477782e-001</x2><x3>7.395693e-002</x3><x4>2.782649e-001</x4></dataPoint>
+    </dataGroup>
+    <comment>Current referenceDOI is just for sorting purposes in ReSpecTh Database.</comment>
+</experiment>

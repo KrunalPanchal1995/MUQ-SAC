@@ -1,0 +1,76 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001155</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>M. C. Krejci, O. Mathieu, A. J. Vissotski, S. Ravi, T. G. Sikes, E. L. Petersen, A. Kérmonès, W. Metcalfe and H. J. Curran, Gas Turbines: Combustion, Fuels, and Emissions, 2013, 135, page information is unknown.</description>
+        <referenceDOI>10.1115/gt2012-69290</referenceDOI>
+        <location>Main Article</location>
+        <table>Table A3, H2/CO = 50/50, 15% H2O addition.</table>
+        <details>
+            <author>Krejci, M C and Mathieu, O and Vissotski, A J and Ravi, S and Sikes, T G and Petersen, E L and K{\'{e}}romn{\`{e}}s, A and Metcalfe, W K and Curran, H J</author>
+            <journal>Proceedings of the ASME Turbo Expo, June 11-15, 2012, Copenhagen, Denmark, Paper GT2012--69290</journal>
+            <pages>931--948</pages>
+            <title>Laminar flame speed and ignition delay time data for the kinetic modeling of hydrogen and syngas fuel blends</title>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>2.29</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"               id="x1"   label="T"      sourcetype="reported"    units="K"             />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="composition"               id="x3"   label="[H2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x4"   label="[CO]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x5"   label="[O2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x6"   label="[N2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="composition"               id="x7"   label="[H2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          chemName="water"           />
+        </property>
+
+        <dataPoint><x1>4.24e+02</x1> <x2>84.8</x2><x3>9.7220e-02</x3><x4>9.7220e-02</x4><x5>1.620300e-01</x5><x6>6.092300e-01</x6><x7>3.431000e-02</x7></dataPoint>
+        <dataPoint><x1>4.24e+02</x1><x2>123.2</x2><x3>1.1495e-01</x3><x4>1.1495e-01</x4><x5>1.532600e-01</x5><x6>5.762700e-01</x6><x7>4.057000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>171.2</x2><x3>1.3581e-01</x3><x4>1.3581e-01</x4><x5>1.429500e-01</x5><x6>5.375000e-01</x6><x7>4.793000e-02</x7></dataPoint>
+        <dataPoint><x1>4.22e+02</x1><x2>168.3</x2><x3>1.3581e-01</x3><x4>1.3581e-01</x4><x5>1.429500e-01</x5><x6>5.375000e-01</x6><x7>4.793000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>168.1</x2><x3>1.3581e-01</x3><x4>1.3581e-01</x4><x5>1.429500e-01</x5><x6>5.375000e-01</x6><x7>4.793000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>167.2</x2><x3>1.3581e-01</x3><x4>1.3581e-01</x4><x5>1.429500e-01</x5><x6>5.375000e-01</x6><x7>4.793000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>167.1</x2><x3>1.3581e-01</x3><x4>1.3581e-01</x4><x5>1.429500e-01</x5><x6>5.375000e-01</x6><x7>4.793000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>204.4</x2><x3>1.5403e-01</x3><x4>1.5403e-01</x4><x5>1.339400e-01</x5><x6>5.036200e-01</x6><x7>5.436000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>237.4</x2><x3>1.7010e-01</x3><x4>1.7010e-01</x4><x5>1.260000e-01</x5><x6>4.737600e-01</x6><x7>6.004000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>264.2</x2><x3>1.9092e-01</x3><x4>1.9092e-01</x4><x5>1.157100e-01</x5><x6>4.350700e-01</x6><x7>6.738000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>272.4</x2><x3>2.0584e-01</x3><x4>2.0584e-01</x4><x5>1.083400e-01</x5><x6>4.073400e-01</x6><x7>7.265000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>269.3</x2><x3>2.1647e-01</x3><x4>2.1647e-01</x4><x5>1.030800e-01</x5><x6>3.875800e-01</x6><x7>7.640000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>251.6</x2><x3>2.3902e-01</x3><x4>2.3902e-01</x4><x5>9.193000e-02</x5><x6>3.456600e-01</x6><x7>8.436000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>216.7</x2><x3>2.5717e-01</x3><x4>2.5717e-01</x4><x5>8.296000e-02</x5><x6>3.119300e-01</x6><x7>9.077000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>179.3</x2><x3>2.7210e-01</x3><x4>2.7210e-01</x4><x5>7.558000e-02</x5><x6>2.841900e-01</x6><x7>9.603000e-02</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>142.5</x2><x3>2.8458e-01</x3><x4>2.8458e-01</x4><x5>6.941000e-02</x5><x6>2.609800e-01</x6><x7>1.004400e-01</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1><x2>112.5</x2><x3>2.9319e-01</x3><x4>2.9319e-01</x4><x5>6.515000e-02</x5><x6>2.449800e-01</x6><x7>1.034800e-01</x7></dataPoint>
+        <dataPoint><x1>4.23e+02</x1> <x2>82.6</x2><x3>3.0258e-01</x3><x4>3.0258e-01</x4><x5>6.052000e-02</x5><x6>2.275400e-01</x6><x7>1.067900e-01</x7></dataPoint>
+    </dataGroup>
+    <comment>Article described in Version 1.0 is inexistent, which is "M. C. Krejci; A. J. Vissotski; S. Ravi; W. K. Metcalfe; A. Keromnes; H. J. Curran; E. L. Petersen, Proceedings of the Combustion Institute 2012, 34, in press.". Current article is still not available, yet it has been published.</comment>
+</experiment>

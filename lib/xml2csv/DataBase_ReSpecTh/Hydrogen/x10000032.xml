@@ -1,0 +1,57 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000032</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Zhang, Y., Huang, Z., Wei, L., Zhang, J., Law, C.K., Combustion and Flame, (159), 918-931, 2012.</description>
+        <referenceDOI>10.1016/j.combustflame.2011.09.010</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 9., full triangle</figure>
+        <details>
+            <author>Zhang, Yingjia and Huang, Zuohua and Wei, Liangjie and Zhang, Jiaxiang and Law, Chung K</author>
+            <journal>Combust Flame</journal>
+            <number>3</number>
+            <pages>918--931</pages>
+            <title>Experimental and modeling study on ignition delays of lean mixtures of methane, hydrogen, oxygen, and argon at elevated pressures</title>
+            <volume>159</volume>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="bar"           ><value>20</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.03471</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.03471</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.93058</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.23</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="ms" />
+
+        <dataPoint><x1>1.267427e+003</x1>   <x2>9.869e-003</x2></dataPoint>
+        <dataPoint><x1>1.169591e+003</x1><x2>5.678583e-002</x2></dataPoint>
+        <dataPoint><x1>1.135074e+003</x1><x2>2.993850e-001</x2></dataPoint>
+        <dataPoint><x1>1.092896e+003</x1><x2>1.024307e+000</x2></dataPoint>
+        <dataPoint><x1>1.081081e+003</x1><x2>1.168665e+000</x2></dataPoint>
+        <dataPoint><x1>1.064963e+003</x1><x2>2.057880e+000</x2></dataPoint>
+        <dataPoint><x1>1.026694e+003</x1><x2>3.274462e+000</x2></dataPoint>
+        <dataPoint><x1>1.011122e+003</x1><x2>3.127519e+000</x2></dataPoint>
+        <dataPoint><x1>1.012146e+003</x1><x2>4.130855e+000</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="d/dt max"/>
+</experiment>

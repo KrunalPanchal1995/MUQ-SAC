@@ -1,0 +1,156 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x40001002_5</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>G. Mittal; C. J. Sung; R. A. Yetter, International Journal of Chemical Kinetics 2006, 38, 516-529.</description>
+        <referenceDOI>10.1002/kin.20180</referenceDOI>
+        <location>Main Article + Personal Communication Channel</location>
+        <figure>Fig. 6, open circle</figure>
+        <details>
+            <author>Mittal, G and Sung, C J and Yetter, R A</author>
+            <journal>Int J Chem Kinet</journal>
+            <number>8</number>
+            <pages>516--529</pages>
+            <title>Autoignition of H$_{2}$/CO at Elevated Pressures in a Rapid Compression Machine</title>
+            <volume>38</volume>
+            <year>2006</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>rapid compression machine</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.12500</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.06250</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.18125</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.63125</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="measured data">
+        <property name="ignition delay"  id="x1"   label="tau"            sourcetype="reported"  units="ms"   />
+        <property name="temperature"     id="x2"   label="T"              sourcetype="reported"  units="K"    />
+        <property name="pressure"        id="x3"   label="p"              sourcetype="reported"  units="Torr" />
+
+        <dataPoint><x1>12.9</x1><x2>296.9</x2><x3>1217.0</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+    <dataGroup id="dg2" label="V-t history" dataPointLink="all">
+        <property name="time"    id="x4"   label="t"            sourcetype="calculated"  units="s"   />
+        <property name="volume"  id="x5"   label="V"            sourcetype="calculated"  units="cm3" />
+
+        <dataPoint><x4>0.00E+000</x4><x5>5.57619375000E+002</x5></dataPoint>
+        <dataPoint><x4>1.00E-003</x4><x5>5.56558789894E+002</x5></dataPoint>
+        <dataPoint><x4>2.00E-003</x4><x5>5.53377034574E+002</x5></dataPoint>
+        <dataPoint><x4>3.00E-003</x4><x5>5.48074109043E+002</x5></dataPoint>
+        <dataPoint><x4>4.00E-003</x4><x5>5.40650013298E+002</x5></dataPoint>
+        <dataPoint><x4>5.00E-003</x4><x5>5.31104747340E+002</x5></dataPoint>
+        <dataPoint><x4>6.00E-003</x4><x5>5.19438311170E+002</x5></dataPoint>
+        <dataPoint><x4>7.00E-003</x4><x5>5.05650704787E+002</x5></dataPoint>
+        <dataPoint><x4>8.00E-003</x4><x5>4.89741928191E+002</x5></dataPoint>
+        <dataPoint><x4>9.00E-003</x4><x5>4.71711981383E+002</x5></dataPoint>
+        <dataPoint><x4>1.00E-002</x4><x5>4.51560864362E+002</x5></dataPoint>
+        <dataPoint><x4>1.10E-002</x4><x5>4.30349162234E+002</x5></dataPoint>
+        <dataPoint><x4>1.20E-002</x4><x5>4.09137460106E+002</x5></dataPoint>
+        <dataPoint><x4>1.30E-002</x4><x5>3.87925757979E+002</x5></dataPoint>
+        <dataPoint><x4>1.40E-002</x4><x5>3.66714055851E+002</x5></dataPoint>
+        <dataPoint><x4>1.50E-002</x4><x5>3.45502353723E+002</x5></dataPoint>
+        <dataPoint><x4>1.60E-002</x4><x5>3.24290651596E+002</x5></dataPoint>
+        <dataPoint><x4>1.70E-002</x4><x5>3.03078949468E+002</x5></dataPoint>
+        <dataPoint><x4>1.80E-002</x4><x5>2.81867247340E+002</x5></dataPoint>
+        <dataPoint><x4>1.90E-002</x4><x5>2.60655545213E+002</x5></dataPoint>
+        <dataPoint><x4>2.00E-002</x4><x5>2.39443843085E+002</x5></dataPoint>
+        <dataPoint><x4>2.10E-002</x4><x5>2.18232140957E+002</x5></dataPoint>
+        <dataPoint><x4>2.20E-002</x4><x5>1.97020438830E+002</x5></dataPoint>
+        <dataPoint><x4>2.30E-002</x4><x5>1.75808736702E+002</x5></dataPoint>
+        <dataPoint><x4>2.40E-002</x4><x5>1.54597034574E+002</x5></dataPoint>
+        <dataPoint><x4>2.50E-002</x4><x5>1.33385332447E+002</x5></dataPoint>
+        <dataPoint><x4>2.60E-002</x4><x5>1.12173630319E+002</x5></dataPoint>
+        <dataPoint><x4>2.70E-002</x4><x5>9.09619281915E+001</x5></dataPoint>
+        <dataPoint><x4>2.80E-002</x4><x5>7.32855097518E+001</x5></dataPoint>
+        <dataPoint><x4>2.90E-002</x4><x5>6.26796586879E+001</x5></dataPoint>
+        <dataPoint><x4>3.00E-002</x4><x5>5.91443750000E+001</x5></dataPoint>
+        <dataPoint><x4>3.10E-002</x4><x5>5.96158421673E+001</x5></dataPoint>
+        <dataPoint><x4>3.20E-002</x4><x5>6.00275880429E+001</x5></dataPoint>
+        <dataPoint><x4>3.30E-002</x4><x5>6.03921112362E+001</x5></dataPoint>
+        <dataPoint><x4>3.40E-002</x4><x5>6.07194958084E+001</x5></dataPoint>
+        <dataPoint><x4>3.50E-002</x4><x5>6.10177901703E+001</x5></dataPoint>
+        <dataPoint><x4>3.60E-002</x4><x5>6.12933394487E+001</x5></dataPoint>
+        <dataPoint><x4>3.70E-002</x4><x5>6.15510756469E+001</x5></dataPoint>
+        <dataPoint><x4>3.80E-002</x4><x5>6.17947696360E+001</x5></dataPoint>
+        <dataPoint><x4>3.90E-002</x4><x5>6.20272487397E+001</x5></dataPoint>
+        <dataPoint><x4>4.00E-002</x4><x5>6.22505834093E+001</x5></dataPoint>
+        <dataPoint><x4>4.10E-002</x4><x5>6.24662462378E+001</x5></dataPoint>
+        <dataPoint><x4>4.20E-002</x4><x5>6.26752463172E+001</x5></dataPoint>
+        <dataPoint><x4>4.30E-002</x4><x5>6.28782417168E+001</x5></dataPoint>
+        <dataPoint><x4>4.40E-002</x4><x5>6.30756326432E+001</x5></dataPoint>
+        <dataPoint><x4>4.50E-002</x4><x5>6.32676376328E+001</x5></dataPoint>
+        <dataPoint><x4>4.60E-002</x4><x5>6.34543549325E+001</x5></dataPoint>
+        <dataPoint><x4>4.70E-002</x4><x5>6.36358110388E+001</x5></dataPoint>
+        <dataPoint><x4>4.80E-002</x4><x5>6.38119981875E+001</x5></dataPoint>
+        <dataPoint><x4>4.90E-002</x4><x5>6.39829024191E+001</x5></dataPoint>
+        <dataPoint><x4>5.00E-002</x4><x5>6.41485236913E+001</x5></dataPoint>
+        <dataPoint><x4>5.10E-002</x4><x5>6.43088893572E+001</x5></dataPoint>
+        <dataPoint><x4>5.20E-002</x4><x5>6.44640621926E+001</x5></dataPoint>
+        <dataPoint><x4>5.30E-002</x4><x5>6.46141440248E+001</x5></dataPoint>
+        <dataPoint><x4>5.40E-002</x4><x5>6.47592758918E+001</x5></dataPoint>
+        <dataPoint><x4>5.50E-002</x4><x5>6.48996355493E+001</x5></dataPoint>
+        <dataPoint><x4>5.60E-002</x4><x5>6.50354330376E+001</x5></dataPoint>
+        <dataPoint><x4>5.70E-002</x4><x5>6.51669049199E+001</x5></dataPoint>
+        <dataPoint><x4>5.80E-002</x4><x5>6.52943077168E+001</x5></dataPoint>
+        <dataPoint><x4>5.90E-002</x4><x5>6.54179109765E+001</x5></dataPoint>
+        <dataPoint><x4>6.00E-002</x4><x5>6.55379903430E+001</x5></dataPoint>
+        <dataPoint><x4>6.10E-002</x4><x5>6.56548209193E+001</x5></dataPoint>
+        <dataPoint><x4>6.20E-002</x4><x5>6.57686711540E+001</x5></dataPoint>
+        <dataPoint><x4>6.30E-002</x4><x5>6.58797974277E+001</x5></dataPoint>
+        <dataPoint><x4>6.40E-002</x4><x5>6.59884394616E+001</x5></dataPoint>
+        <dataPoint><x4>6.50E-002</x4><x5>6.60948166264E+001</x5></dataPoint>
+        <dataPoint><x4>6.60E-002</x4><x5>6.61991251914E+001</x5></dataPoint>
+        <dataPoint><x4>6.70E-002</x4><x5>6.63015365153E+001</x5></dataPoint>
+        <dataPoint><x4>6.80E-002</x4><x5>6.64021961546E+001</x5></dataPoint>
+        <dataPoint><x4>6.90E-002</x4><x5>6.65012238379E+001</x5></dataPoint>
+        <dataPoint><x4>7.00E-002</x4><x5>6.65987142350E+001</x5></dataPoint>
+        <dataPoint><x4>7.10E-002</x4><x5>6.66947384322E+001</x5></dataPoint>
+        <dataPoint><x4>7.20E-002</x4><x5>6.67893460128E+001</x5></dataPoint>
+        <dataPoint><x4>7.30E-002</x4><x5>6.68825676354E+001</x5></dataPoint>
+        <dataPoint><x4>7.40E-002</x4><x5>6.69744179921E+001</x5></dataPoint>
+        <dataPoint><x4>7.50E-002</x4><x5>6.70648990312E+001</x5></dataPoint>
+        <dataPoint><x4>7.60E-002</x4><x5>6.71540033273E+001</x5></dataPoint>
+        <dataPoint><x4>7.70E-002</x4><x5>6.72417174836E+001</x5></dataPoint>
+        <dataPoint><x4>7.80E-002</x4><x5>6.73280254604E+001</x5></dataPoint>
+        <dataPoint><x4>7.90E-002</x4><x5>6.74129117278E+001</x5></dataPoint>
+        <dataPoint><x4>8.00E-002</x4><x5>6.74963641515E+001</x5></dataPoint>
+        <dataPoint><x4>8.10E-002</x4><x5>6.75783765327E+001</x5></dataPoint>
+        <dataPoint><x4>8.20E-002</x4><x5>6.76589507342E+001</x5></dataPoint>
+        <dataPoint><x4>8.30E-002</x4><x5>6.77380983390E+001</x5></dataPoint>
+        <dataPoint><x4>8.40E-002</x4><x5>6.78158418022E+001</x5></dataPoint>
+        <dataPoint><x4>8.50E-002</x4><x5>6.78922150722E+001</x5></dataPoint>
+        <dataPoint><x4>8.60E-002</x4><x5>6.79672636718E+001</x5></dataPoint>
+        <dataPoint><x4>8.70E-002</x4><x5>6.80410442468E+001</x5></dataPoint>
+        <dataPoint><x4>8.80E-002</x4><x5>6.81136236036E+001</x5></dataPoint>
+        <dataPoint><x4>8.90E-002</x4><x5>6.81850772731E+001</x5></dataPoint>
+        <dataPoint><x4>9.00E-002</x4><x5>6.82554876524E+001</x5></dataPoint>
+        <dataPoint><x4>9.10E-002</x4><x5>6.83249417885E+001</x5></dataPoint>
+        <dataPoint><x4>9.20E-002</x4><x5>6.83935288811E+001</x5></dataPoint>
+        <dataPoint><x4>9.30E-002</x4><x5>6.84613375925E+001</x5></dataPoint>
+        <dataPoint><x4>9.40E-002</x4><x5>6.85284532604E+001</x5></dataPoint>
+        <dataPoint><x4>9.50E-002</x4><x5>6.85949551185E+001</x5></dataPoint>
+        <dataPoint><x4>9.60E-002</x4><x5>6.86609136322E+001</x5></dataPoint>
+        <dataPoint><x4>9.70E-002</x4><x5>6.87263880623E+001</x5></dataPoint>
+        <dataPoint><x4>9.80E-002</x4><x5>6.87914243656E+001</x5></dataPoint>
+        <dataPoint><x4>9.90E-002</x4><x5>6.88560535425E+001</x5></dataPoint>
+        <dataPoint><x4>1.00E-001</x4><x5>6.89202905308E+001</x5></dataPoint>
+    </dataGroup>
+</experiment>

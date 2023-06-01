@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000040b</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Kwon, O.C., Faeth, G.M., Combustion and Flame, 2001, (124), 590-610.</description>
+        <referenceDOI>10.1016/S0010-2180(00)00229-7</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 2, H2/O2/Ar, p=1atm, phi varried</table>
+        <details>
+            <author>Kwon, O C and Faeth, G M</author>
+            <journal>Combust Flame</journal>
+            <number>4</number>
+            <pages>590--610</pages>
+            <title>Flame/Stretch Interactions of Premixed Hydrogen-Fueled Flames: Measurements and Predictions</title>
+            <volume>124</volume>
+            <year>2001</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"   sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"   sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="uncertainty"                   label="dT"  sourcetype="reported"   units="K"     reference="temperature"               kind="absolute"  bound="plusminus" ><value>3</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>6.34</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="reported"    units="mm/s"          />
+        <property name="composition"               id="x2"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="[Ar]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    />
+        </property>
+
+        <dataPoint><x1>2540</x1><x2>2.743902e-001</x2><x3>1.524390e-001</x3><x4>5.731707e-001</x4></dataPoint>
+        <dataPoint><x1>3160</x1><x2>3.351955e-001</x2><x3>1.396648e-001</x3><x4>5.251397e-001</x4></dataPoint>
+        <dataPoint><x1>3450</x1><x2>3.865979e-001</x2><x3>1.288660e-001</x3><x4>4.845361e-001</x4></dataPoint>
+        <dataPoint><x1>3500</x1><x2>4.306220e-001</x2><x3>1.196172e-001</x3><x4>4.497608e-001</x4></dataPoint>
+        <dataPoint><x1>3220</x1><x2>4.968288e-001</x2><x3>1.057082e-001</x3><x4>3.974630e-001</x4></dataPoint>
+        <dataPoint><x1>2560</x1><x2>5.576208e-001</x2><x3>0.929368e-001</x3><x4>3.494424e-001</x4></dataPoint>
+        <dataPoint><x1>2080</x1><x2>6.117455e-001</x2><x3>0.815661e-001</x3><x4>3.066884e-001</x4></dataPoint>
+    </dataGroup>
+</experiment>

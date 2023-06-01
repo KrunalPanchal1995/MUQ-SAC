@@ -1,0 +1,65 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x00000069</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Petersen, E.L., Davison, D.F., Rohrig, M., Hanson, R.K., Proceedings of the 20th International Symposum on Shock Waves, 1996, 941-946.</description>
+        <referenceDOI>10.1016/s0082-0784(96)80289-x</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig.3</figure>
+        <details>
+            <author>Petersen, E L and R{\"{o}}hrig, M and Davidson, D F and Hanson, R K and Bowman, C T</author>
+            <journal>Symp (Int) Combust</journal>
+            <pages>799--806</pages>
+            <title>High-pressure methane oxidation behind reflected shock waves</title>
+            <volume>26</volume>
+            <year>1996</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>64</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.0010</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.0005</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.9985</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.18</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1577</x1> <x2>34.9</x2></dataPoint>
+        <dataPoint><x1>1481</x1> <x2>53.2</x2></dataPoint>
+        <dataPoint><x1>1577</x1> <x2>31.1</x2></dataPoint>
+        <dataPoint><x1>1616</x1> <x2>29.2</x2></dataPoint>
+        <dataPoint><x1>1585</x1> <x2>37.7</x2></dataPoint>
+        <dataPoint><x1>1577</x1> <x2>42.1</x2></dataPoint>
+        <dataPoint><x1>1585</x1> <x2>40.5</x2></dataPoint>
+        <dataPoint><x1>1575</x1> <x2>49.3</x2></dataPoint>
+        <dataPoint><x1>1555</x1> <x2>49.1</x2></dataPoint>
+        <dataPoint><x1>1560</x1> <x2>46.8</x2></dataPoint>
+        <dataPoint><x1>1553</x1> <x2>39.3</x2></dataPoint>
+        <dataPoint><x1>1524</x1> <x2>49.3</x2></dataPoint>
+        <dataPoint><x1>1876</x1> <x2>21.4</x2></dataPoint>
+        <dataPoint><x1>1366</x1><x2>201.5</x2></dataPoint>
+        <dataPoint><x1>1462</x1> <x2>94.2</x2></dataPoint>
+        <dataPoint><x1>1361</x1><x2>145.2</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="d/dt max"/>
+    <comment>Current referenceDOI is just for sorting purposes in ReSpecTh Database.</comment>
+</experiment>

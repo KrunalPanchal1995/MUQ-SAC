@@ -1,0 +1,76 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400011</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. C. Sausa et al., Combust. Flame. 94 (1993) 407-425</description>
+        <referenceDOI>10.1016/0010-2180(93)90123-K</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 3., circle</figure>
+        <details>
+            <author>Sausa, R C and Anderson, W R and Dayton, D C and Faust, C M and Howard, S L</author>
+            <journal>Combust Flame</journal>
+            <pages>407--425</pages>
+            <title>Detailed Structure Study of a Low Pressure, Stoichiometric H$_{2}$/N2O/Ar Flame</title>
+            <volume>94</volume>
+            <year>1993</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="Torr"          ><value>20</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="reported"    units="g cm-2 s-1"    ><value>3.41E-3</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.2667</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.2667</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.4666</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+            <value>39750.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"      sourcetype="digitized"   units="mm"            />
+        <property name="composition"  id="x2"   label="[N2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+        </property>
+        <property name="temperature"  id="x3"   label="T"      sourcetype="estimated"   units="K"             />
+
+        <dataPoint><x1>01.516</x1><x2>3.919E-01</x2><x3>0813</x3></dataPoint>
+        <dataPoint><x1>02.183</x1><x2>3.975E-01</x2><x3>1057</x3></dataPoint>
+        <dataPoint><x1>02.800</x1><x2>3.707E-01</x2><x3>1227</x3></dataPoint>
+        <dataPoint><x1>03.415</x1><x2>3.583E-01</x2><x3>1397</x3></dataPoint>
+        <dataPoint><x1>04.076</x1><x2>3.274E-01</x2><x3>1515</x3></dataPoint>
+        <dataPoint><x1>04.691</x1><x2>2.971E-01</x2><x3>1642</x3></dataPoint>
+        <dataPoint><x1>05.352</x1><x2>2.512E-01</x2><x3>1744</x3></dataPoint>
+        <dataPoint><x1>06.013</x1><x2>2.045E-01</x2><x3>1834</x3></dataPoint>
+        <dataPoint><x1>06.627</x1><x2>1.497E-01</x2><x3>1915</x3></dataPoint>
+        <dataPoint><x1>07.241</x1><x2>1.060E-01</x2><x3>1978</x3></dataPoint>
+        <dataPoint><x1>07.854</x1><x2>6.956E-02</x2><x3>2030</x3></dataPoint>
+        <dataPoint><x1>08.513</x1><x2>4.554E-02</x2><x3>2074</x3></dataPoint>
+        <dataPoint><x1>09.125</x1><x2>2.948E-02</x2><x3>2098</x3></dataPoint>
+        <dataPoint><x1>09.784</x1><x2>1.857E-02</x2><x3>2114</x3></dataPoint>
+        <dataPoint><x1>11.008</x1><x2>9.307E-03</x2><x3>2120</x3></dataPoint>
+        <dataPoint><x1>12.937</x1><x2>1.860E-03</x2><x3>2118</x3></dataPoint>
+        <dataPoint><x1>14.207</x1><x2>1.854E-03</x2><x3>2111</x3></dataPoint>
+        <dataPoint><x1>15.430</x1><x2>3.687E-03</x2><x3>2099</x3></dataPoint>
+        <dataPoint><x1>17.970</x1><x2>1.821E-03</x2><x3>2073</x3></dataPoint>
+    </dataGroup>
+    <comment>The experimental temperature was estimated with linear interpolation based on Fig. 2.</comment>
+    <comment>The concentration profiles are converted from mol/cm3 to mole fractions with the ideal gas law to avoid simulation difficulties</comment>
+</experiment>

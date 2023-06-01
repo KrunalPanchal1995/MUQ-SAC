@@ -1,0 +1,90 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400009</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. C. Sausa et al., Proc. Comb. Inst. 26 (1996) 1043-1052</description>
+        <referenceDOI>10.1016/S0082-0784(96)80318-3</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2., empty squere (N2), solid squere (H2O); Fig. 4., soild circle (NO)</figure>
+        <details>
+            <author>R.C. Sausa and G. Singh and G.W. Lemire and W.R. Anderson</author>
+            <journal>Symposium (International) on Combustion</journal>
+            <month>jan</month>
+            <number>1</number>
+            <pages>1043--1052</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Molecular beam mass spectrometric and modeling studies of neat and {NH}3-doped low-pressure H2/N2O/Ar flames: Formation and consumption of {NO</title>
+            <volume>26</volume>
+            <year>1996</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>400</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="Torr"          ><value>30</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="calculated"  units="kg m-2 s-1"    ><value>0.03048</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.3828</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.3527</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.2645</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"    SMILES="O"           chemName="water"         />
+            <value>34110.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      />
+            <value>33470.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+            <value>1681.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"      sourcetype="digitized"  units="mm"            />
+        <property name="composition"  id="x2"   label="[N2]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"   SMILES="N#N"    chemName="nitrogen"     />
+        </property>
+        <property name="composition"  id="x3"   label="[H2O]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"  SMILES="O"      chemName="water"        />
+        </property>
+        <property name="composition"  id="x4"   label="[NO]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"   SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="temperature"  id="x5"   label="T"      sourcetype="estimated"  units="K"             />
+
+        <dataPoint><x1>00.795</x1><x2>0.0193</x2><x3>0.0131</x3><x4>2.984E-05</x4><x5>0555</x5></dataPoint>
+        <dataPoint><x1>01.803</x1><x2>0.0616</x2><x3>0.0609</x3><x4>5.814E-05</x4><x5>0818</x5></dataPoint>
+        <dataPoint><x1>02.803</x1><x2>0.1211</x2><x3>0.1079</x3><x4>5.828E-04</x4><x5>1112</x5></dataPoint>
+        <dataPoint><x1>03.795</x1><x2>0.1786</x2><x3>0.1647</x3><x4>3.376E-03</x4><x5>1411</x5></dataPoint>
+        <dataPoint><x1>04.788</x1><x2>0.2353</x2><x3>0.2159</x3><x4>5.638E-03</x4><x5>1640</x5></dataPoint>
+        <dataPoint><x1>05.795</x1><x2>0.2852</x2><x3>0.2782</x3><x4>1.091E-02</x4><x5>1794</x5></dataPoint>
+        <dataPoint><x1>06.787</x1><x2>0.3128</x2><x3>0.3066</x3><x4>1.321E-02</x4><x5>1886</x5></dataPoint>
+        <dataPoint><x1>07.788</x1><x2>0.3280</x2><x3>0.3322</x3><x4>1.473E-02</x4><x5>1930</x5></dataPoint>
+        <dataPoint><x1>08.787</x1><x2>0.3307</x2><x3>0.3411</x3><x4>1.568E-02</x4><x5>1944</x5></dataPoint>
+        <dataPoint><x1>09.795</x1><x2>0.3347</x2><x3>0.3410</x3><x4>1.617E-02</x4><x5>1929</x5></dataPoint>
+        <dataPoint><x1>10.787</x1><x2>0.3277</x2><x3>0.3395</x3><x4>1.634E-02</x4><x5>1901</x5></dataPoint>
+        <dataPoint><x1>11.787</x1><x2>0.3297</x2><x3>0.3401</x3><x4>1.665E-02</x4><x5>1876</x5></dataPoint>
+        <dataPoint><x1>12.803</x1><x2>0.3282</x2><x3>0.3352</x3><x4>1.661E-02</x4><x5>1848</x5></dataPoint>
+        <dataPoint><x1>13.803</x1><x2>0.3233</x2><x3>0.3351</x3><x4>1.681E-02</x4><x5>1825</x5></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature is related to the zero point on the temperature profile on Figure 1.</comment>
+    <comment>The flow rate (F) was calculated by the following data and formula: F[slm] = 4.65 slm, M_average = 26.84 g/mol, d = 6 cm, A = (d/2)^2*PI; F[kg m-2 s-1] = const * F[slm] * M_average / A . Where const = 6,905*10^-4 based on http://www.dgflo.com/unitsofflow.pdf and the ideal gas law with values given above.</comment>
+    <comment>The standard temperature in this definition is 70 °F (294.26 K). If I used the value of 298.15 K the difference would be 1.3%.</comment>
+    <comment>The experimental temperature was estimated with linear interpolation based on Figure 1.</comment>
+</experiment>

@@ -1,0 +1,55 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000001</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Skinner G.B., Ringrose G.H., Journal of Chemical Physics, (42) 2190-2192., 1965.</description>
+        <referenceDOI>10.1063/1.1696266</referenceDOI>
+        <location>Main Text</location>
+        <table>Table I.</table>
+        <details>
+            <author>Skinner, G B and Ringrose, G H</author>
+            <journal>J Chem Phys</journal>
+            <pages>2190--2192</pages>
+            <title>Ignition Delays of a Hydrogen-Oxygen-Argon Mixture at Relatively Low Temperatures</title>
+            <volume>42</volume>
+            <year>1965</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>5</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.08</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.02</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.90</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.21</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="us" />
+
+        <dataPoint> <x1>964</x1><x2>15000</x2></dataPoint>
+        <dataPoint> <x1>965</x1><x2>10000</x2></dataPoint>
+        <dataPoint> <x1>981</x1> <x2>4300</x2></dataPoint>
+        <dataPoint><x1>1004</x1> <x2>1700</x2></dataPoint>
+        <dataPoint><x1>1005</x1> <x2>2300</x2></dataPoint>
+        <dataPoint><x1>1024</x1>  <x2>900</x2></dataPoint>
+        <dataPoint><x1>1075</x1>  <x2>220</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+</experiment>

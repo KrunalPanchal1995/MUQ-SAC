@@ -1,0 +1,31 @@
+# Input file for automatically generating start profiles
+
+
+
+
+Flame configuration		:	UnstretchedPremixed
+FlameMaster pre file	:	/media/krunal/data/Simulations/12_July/gri.30.pre
+
+
+available profile		:	/media/krunal/data/Simulations/12_July/H2_p01_0phi1_1000tu0298(con1)
+available fuel			:	H2
+available oxidizer		:	O2
+available bg1			:	N2
+available bg2			:	
+available bg3			:	
+available global rxn	:	H2 + 2O2 = 2H20
+
+
+target profile fuel		:	CH3OH
+target oxidizer			:	O2
+target global rxn		:	CH3OH + 1.5O2 = CO2 + 2H20
+target fuel mole fractions		:	0.0892529
+target oxidizer mole fractions	:	0.210027
+target bg1				:	N2
+target bg2				:	
+target bg3				:	
+target bg1 mole fractions	:	0.691832
+target bg2 mole fractions	:	
+target bg3 mole fractions	:
+target pressure			:	1 [bar]
+target temperature		:	343 [K]

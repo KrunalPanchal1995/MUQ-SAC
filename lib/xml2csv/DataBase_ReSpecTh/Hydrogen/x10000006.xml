@@ -1,0 +1,65 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000006</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Fujimoto, S., Suzuki, M., Memoirs of the Defense Academy, Japan, 1967, (VII., 3), 1037-1046.</description>
+        <location>Main Article</location>
+        <table>Table 1.</table>
+        <details>
+            <author>Fujimoto, D and Suzuki, M</author>
+            <journal>Memoirs Defense Academy, Japan</journal>
+            <number>3</number>
+            <pages>1037--1046</pages>
+            <title>The induction period of hydrogen-oxygen and methane-oxygen mixtures in a shock tube</title>
+            <volume>7</volume>
+            <year>1967</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.20</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.10</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.70</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="P"    sourcetype="reported"  units="Torr" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"    />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"   />
+
+        <dataPoint><x1>1270</x1> <x2>835</x2><x3>2227</x3></dataPoint>
+        <dataPoint> <x1>685</x1> <x2>866</x2><x3>2019</x3></dataPoint>
+        <dataPoint> <x1>701</x1> <x2>886</x2><x3>1525</x3></dataPoint>
+        <dataPoint> <x1>750</x1> <x2>910</x2><x3>1302</x3></dataPoint>
+        <dataPoint> <x1>765</x1> <x2>920</x2><x3>1059</x3></dataPoint>
+        <dataPoint> <x1>810</x1> <x2>945</x2><x3>1014</x3></dataPoint>
+        <dataPoint> <x1>870</x1> <x2>980</x2> <x3>888</x3></dataPoint>
+        <dataPoint> <x1>985</x1><x2>1045</x2> <x3>543</x3></dataPoint>
+        <dataPoint><x1>1115</x1><x2>1120</x2> <x3>177</x3></dataPoint>
+        <dataPoint><x1>1260</x1><x2>1200</x2> <x3>156</x3></dataPoint>
+        <dataPoint><x1>1310</x1><x2>1225</x2> <x3>130</x3></dataPoint>
+        <dataPoint><x1>1335</x1><x2>1240</x2> <x3>143</x3></dataPoint>
+        <dataPoint><x1>1365</x1><x2>1250</x2> <x3>115</x3></dataPoint>
+        <dataPoint><x1>1410</x1><x2>1280</x2> <x3>109</x3></dataPoint>
+        <dataPoint><x1>1455</x1><x2>1300</x2> <x3>117</x3></dataPoint>
+        <dataPoint><x1>1525</x1><x2>1335</x2>  <x3>84</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+    <comment>Current referenceDOI is just for sorting purposes in ReSpecTh Database.</comment>
+</experiment>

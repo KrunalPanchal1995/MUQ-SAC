@@ -1,0 +1,84 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x50001004</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>R. Sivaramakrishnan; A. Comandini; R. S. Tranter; K. Brezinsky; S. G. Davis; H. Wang, Proceedings of the Combustion Institute 2007, 31, (1), 429-437.</description>
+        <referenceDOI>10.1016/j.proci.2006.08.057</referenceDOI>
+        <location>Supplemental Material</location>
+        <table>Table S4.</table>
+        <details>
+            <author>Sivaramakrishnan, R and Comandini, A and Tranter, R S and Brezinsky, K and Davis, S G and Wang, H</author>
+            <journal>Proc Combust Inst</journal>
+            <pages>429--437</pages>
+            <title>Combustion of CO/H$_{2}$ mixtures at elevated pressures</title>
+            <volume>31</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>reflected shock in shock tube ("kind" has to be flow reactor for formal reasons</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.000176</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.000475</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.000325</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.999024</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>5.943e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+            <value>8.152e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"        chemName="oxygen"          />
+            <value>9.742e-6</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"      sourcetype="reported"    units="K"             />
+        <property name="composition"     id="x2"   label="[CO]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"     id="x3"   label="[CO2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+        <property name="composition"     id="x4"   label="[O2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="residence time"  id="x5"   label="t"      sourcetype="reported"    units="s"             />
+        <property name="pressure"        id="x6"   label="P"      sourcetype="reported"    units="atm"           />
+
+        <dataPoint><x1>1128</x1><x2>0.0004767</x2><x3>0.0000032</x3><x4>0.0003240</x4><x5>0.00126</x5><x6>499.5</x6></dataPoint>
+        <dataPoint><x1>1189</x1><x2>0.0004765</x2><x3>0.0000037</x3><x4>0.0003229</x4><x5>0.00138</x5><x6>476.3</x6></dataPoint>
+        <dataPoint><x1>1229</x1><x2>0.0004647</x2><x3>0.0000048</x3><x4>0.0003172</x4><x5>0.00139</x5><x6>476.3</x6></dataPoint>
+        <dataPoint><x1>1263</x1><x2>0.0004688</x2><x3>0.0000097</x3><x4>0.0003217</x4><x5>0.00138</x5><x6>469.5</x6></dataPoint>
+        <dataPoint><x1>1285</x1><x2>0.0004531</x2><x3>0.0000239</x3><x4>0.0003130</x4><x5>0.00143</x5><x6>472.9</x6></dataPoint>
+        <dataPoint><x1>1293</x1><x2>0.0004496</x2><x3>0.0000353</x3><x4>0.0003105</x4><x5>0.00151</x5><x6>457.3</x6></dataPoint>
+        <dataPoint><x1>1299</x1><x2>0.0004480</x2><x3>0.0000296</x3><x4>0.0003074</x4><x5>0.00122</x5><x6>400.8</x6></dataPoint>
+        <dataPoint><x1>1303</x1><x2>0.0004500</x2><x3>0.0000374</x3><x4>0.0003010</x4><x5>0.00113</x5><x6>439.6</x6></dataPoint>
+        <dataPoint><x1>1314</x1><x2>0.0004397</x2><x3>0.0000452</x3><x4>0.0002929</x4><x5>0.00115</x5><x6>437.5</x6></dataPoint>
+        <dataPoint><x1>1337</x1><x2>0.0004258</x2><x3>0.0000848</x3><x4>0.0002588</x4><x5>0.00147</x5><x6>452.5</x6></dataPoint>
+        <dataPoint><x1>1358</x1><x2>0.0004105</x2><x3>0.0001068</x3><x4>0.0002447</x4><x5>0.00126</x5><x6>435.5</x6></dataPoint>
+        <dataPoint><x1>1377</x1><x2>0.0003757</x2><x3>0.0001326</x3><x4>0.0002130</x4><x5>0.00131</x5><x6>421.9</x6></dataPoint>
+        <dataPoint><x1>1379</x1><x2>0.0003868</x2><x3>0.0001211</x3><x4>0.0002227</x4><x5>0.00125</x5><x6>442.3</x6></dataPoint>
+        <dataPoint><x1>1387</x1><x2>0.0003709</x2><x3>0.0001371</x3><x4>0.0002026</x4><x5>0.00123</x5><x6>458.6</x6></dataPoint>
+        <dataPoint><x1>1392</x1><x2>0.0003611</x2><x3>0.0001503</x3><x4>0.0002087</x4><x5>0.00115</x5><x6>435.5</x6></dataPoint>
+        <dataPoint><x1>1414</x1><x2>0.0003437</x2><x3>0.0001754</x3><x4>0.0001832</x4><x5>0.00130</x5><x6>420.5</x6></dataPoint>
+    </dataGroup>
+</experiment>

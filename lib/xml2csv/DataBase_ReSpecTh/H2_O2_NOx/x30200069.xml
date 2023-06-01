@@ -1,0 +1,75 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30200069</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>M. A. Mueller et al., The Combust. Inst. 27 (1998) 177-184. Figure 5. squere</description>
+        <referenceDOI>10.1016/S0082-0784(98)80403-7</referenceDOI>
+        <location>Main article</location>
+        <figure>Figure 5. squere</figure>
+        <details>
+            <author>Mueller, M A and Yetter, R A and Dryer, F L</author>
+            <journal>Symp (Int) Combust</journal>
+            <number>1</number>
+            <pages>177--184</pages>
+            <title>Measurement of the rate constant for H+O2+M -&gt; HO2 + M (M=N2, Ar) using kinetic modeling of the high-pressure H2/O2/NOx reaction</title>
+            <volume>27</volume>
+            <year>1998</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>concentration time profile measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>10</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>803</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.02</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="ppm"           >107</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"   InChI="1S/N2/c1-2"  SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.969893</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     />
+            <value>482.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="time"         id="x1"   label="t"     sourcetype="digitized"  units="s"             />
+        <property name="composition"  id="x2"   label="[H2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"  SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+
+        <dataPoint><x1>0.074</x1><x2>0.009504</x2></dataPoint>
+        <dataPoint><x1>0.100</x1><x2>0.009184</x2></dataPoint>
+        <dataPoint><x1>0.135</x1><x2>0.008711</x2></dataPoint>
+        <dataPoint><x1>0.183</x1><x2>0.008225</x2></dataPoint>
+        <dataPoint><x1>0.238</x1><x2>0.007572</x2></dataPoint>
+        <dataPoint><x1>0.308</x1><x2>0.007035</x2></dataPoint>
+        <dataPoint><x1>0.388</x1><x2>0.006422</x2></dataPoint>
+        <dataPoint><x1>0.471</x1><x2>0.005488</x2></dataPoint>
+        <dataPoint><x1>0.556</x1><x2>0.004695</x2></dataPoint>
+        <dataPoint><x1>0.641</x1><x2>0.003557</x2></dataPoint>
+        <dataPoint><x1>0.722</x1><x2>0.002905</x2></dataPoint>
+        <dataPoint><x1>0.805</x1><x2>0.002176</x2></dataPoint>
+        <dataPoint><x1>0.888</x1><x2>0.001998</x2></dataPoint>
+        <dataPoint><x1>0.969</x1><x2>0.001910</x2></dataPoint>
+        <dataPoint><x1>1.052</x1><x2>0.001847</x2></dataPoint>
+        <dataPoint><x1>1.135</x1><x2>0.001669</x2></dataPoint>
+        <dataPoint><x1>1.220</x1><x2>0.001452</x2></dataPoint>
+        <dataPoint><x1>1.303</x1><x2>0.001223</x2></dataPoint>
+        <dataPoint><x1>1.386</x1><x2>0.001083</x2></dataPoint>
+        <dataPoint><x1>1.471</x1><x2>0.000982</x2></dataPoint>
+    </dataGroup>
+    <timeshift target="H2" type="half decrease"/>
+</experiment>

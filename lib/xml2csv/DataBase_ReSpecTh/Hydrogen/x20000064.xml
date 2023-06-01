@@ -1,0 +1,67 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000064</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Qiao, L., Gu, Y., Dahm, W.J.A., Oran, E.S., Faeth, G.M., Combustion and Flame, (151), 196-208, 2007.</description>
+        <referenceDOI>10.1016/j.combustflame.2007.06.013</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 4., full triangle</figure>
+        <details>
+            <author>Qiao, L and Gu, Y and Dahm, W J A and Oran, E S and Faeth, G M</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>196--208</pages>
+            <title>A study of the effects of diluents on near-limit H$_{2}$--air flames in microgravity at normal and reduced pressures</title>
+            <volume>151</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>293.15</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>5.45</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="composition"               id="x5"   label="[Ar]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    />
+        </property>
+
+        <dataPoint><x1>2.905078e+002</x1><x2>4.306220e-001</x2><x3>1.196172e-001</x3><x4>4.497608e-001</x4><x5>0.000000e+000</x5></dataPoint>
+        <dataPoint><x1>2.408267e+002</x1><x2>3.875598e-001</x2><x3>1.076555e-001</x3><x4>4.047847e-001</x4><x5>1.000000e-001</x5></dataPoint>
+        <dataPoint><x1>2.008293e+002</x1><x2>3.444976e-001</x2><x3>9.569378e-002</x3><x4>3.598086e-001</x4><x5>2.000000e-001</x5></dataPoint>
+        <dataPoint><x1>1.507272e+002</x1><x2>3.014354e-001</x2><x3>8.373206e-002</x3><x4>3.148325e-001</x4><x5>3.000000e-001</x5></dataPoint>
+        <dataPoint><x1>1.176346e+002</x1><x2>2.583732e-001</x2><x3>7.177034e-002</x3><x4>2.698565e-001</x4><x5>4.000000e-001</x5></dataPoint>
+        <dataPoint><x1>7.401606e+001</x1><x2>2.153110e-001</x2><x3>5.980861e-002</x3><x4>2.248804e-001</x4><x5>5.000000e-001</x5></dataPoint>
+        <dataPoint><x1>5.635741e+001</x1><x2>1.937799e-001</x2><x3>5.382775e-002</x3><x4>2.023923e-001</x4><x5>5.500000e-001</x5></dataPoint>
+        <dataPoint><x1>2.891871e+001</x1><x2>1.722488e-001</x2><x3>4.784689e-002</x3><x4>1.799043e-001</x4><x5>6.000000e-001</x5></dataPoint>
+        <dataPoint><x1>1.863851e+001</x1><x2>1.550239e-001</x2><x3>4.306220e-002</x3><x4>1.619139e-001</x4><x5>6.400000e-001</x5></dataPoint>
+        <dataPoint><x1>1.571058e+001</x1><x2>1.464115e-001</x2><x3>4.066986e-002</x3><x4>1.529187e-001</x4><x5>6.600000e-001</x5></dataPoint>
+        <dataPoint><x1>9.383040e+000</x1><x2>1.377990e-001</x2><x3>3.827751e-002</x3><x4>1.439234e-001</x4><x5>6.800000e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

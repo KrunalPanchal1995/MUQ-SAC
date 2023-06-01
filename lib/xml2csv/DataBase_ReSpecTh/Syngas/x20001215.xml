@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001215</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>S. Voss, S. Hartl, C. Hasse, Int. J. Hydrogen Energy, 2014, 39, 19810-19817.</description>
+        <referenceDOI>10.1016/j.ijhydene.2014.09.093</referenceDOI>
+        <location>Main Article + Experimental Data Copy from Author</location>
+        <figure>Fig. 8, H2/CO/N2+air, H2/CO=4, 70% dilution series.</figure>
+        <details>
+            <author>Voss, Stefan and Hartl, Sandra and Hasse, Christian</author>
+            <journal>Int J Hydrogen Energy</journal>
+            <pages>19810--19817</pages>
+            <title>Determination of laminar burning velocities for lean low calorific H$_{2}$/N$_{2}$ and H$_{2}$/CO/N$_{2}$ gas mixtures</title>
+            <volume>39</volume>
+            <year>2014</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>HFM</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>0.955</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"               id="x1"   label="[H2]"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x2"   label="[CO]"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x4"   label="[N2]"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="laminar burning velocity"  id="x5"   label="Sl"    sourcetype="reported"  units="cm/s"          />
+
+        <dataPoint><x1>0.118812</x1><x2>0.029703</x2><x3>0.106082</x3><x4>0.745403</x4><x5>18.64</x5></dataPoint>
+        <dataPoint><x1>0.126816</x1><x2>0.031704</x2><x3>0.099075</x3><x4>0.742404</x4><x5>23.45</x5></dataPoint>
+        <dataPoint><x1>0.133829</x1><x2>0.033457</x2><x3>0.092937</x3><x4>0.739777</x4><x5>29.05</x5></dataPoint>
+        <dataPoint><x1>0.140023</x1><x2>0.035006</x2><x3>0.087515</x3><x4>0.737456</x4><x5>34.60</x5></dataPoint>
+        <dataPoint><x1>0.145535</x1><x2>0.036384</x2><x3>0.082690</x3><x4>0.735391</x4><x5>39.59</x5></dataPoint>
+        <dataPoint><x1>0.150470</x1><x2>0.037618</x2><x3>0.078370</x3><x4>0.733542</x4><x5>43.22</x5></dataPoint>
+        <dataPoint><x1>0.154916</x1><x2>0.038729</x2><x3>0.074479</x3><x4>0.731877</x4><x5>44.77</x5></dataPoint>
+        <dataPoint><x1>0.158940</x1><x2>0.039735</x2><x3>0.070956</x3><x4>0.730369</x4><x5>44.14</x5></dataPoint>
+        <dataPoint><x1>0.162602</x1><x2>0.040650</x2><x3>0.067751</x3><x4>0.728997</x4><x5>41.66</x5></dataPoint>
+    </dataGroup>
+    <comment>The pressure value in this file are different from one in original paper, but existing data are from author (maybe original data records are more accurate).</comment>
+</experiment>

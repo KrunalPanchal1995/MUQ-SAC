@@ -1,0 +1,91 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60200025</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. J. Roby et al., Combust. Flame. 70 (1987) 119-123</description>
+        <referenceDOI>10.1016/0010-2180(87)90163-5</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2.</figure>
+        <details>
+            <author>R.J. Roby and C.T. Bowman</author>
+            <journal>Combustion and Flame</journal>
+            <month>oct</month>
+            <number>1</number>
+            <pages>119--123</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Formation of N2O in laminar, premixed, fuel-rich flames</title>
+            <volume>70</volume>
+            <year>1987</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"    units="unitless"      ><value>1.6</value></property>
+        <property name="temperature"                   label="T"    sourcetype="estimated"   units="K"             ><value>950</value></property>
+        <property name="pressure"                      label="p"    sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="flow rate"                     label="F"    sourcetype="estimated"   units="kg m-2 s-1"    ><value>0.47</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.2624</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.0819</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"   InChI="1S/Ar"       SMILES="[Ar]"   chemName="argon"        /><amount units="mole fraction" >0.6540</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="ppm"           >1750</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      />
+            <value>28.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+            <value>3.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"   InChI="1S/H3N/h1H3"    SMILES="N"           chemName="ammonia"       />
+            <value>9.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+            <value>131.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"      sourcetype="digitized"   units="mm"  />
+        <property name="composition"  id="x2"   label="[NH3]"  sourcetype="digitized"   units="ppm" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"   InChI="1S/H3N/h1H3"    SMILES="N"           chemName="ammonia"       />
+        </property>
+        <property name="composition"  id="x3"   label="[NO]"   sourcetype="calculated"  units="ppm" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+        </property>
+        <property name="composition"  id="x4"   label="[N2]"   sourcetype="calculated"  units="ppm" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      />
+        </property>
+        <property name="composition"  id="x5"   label="[N2O]"  sourcetype="digitized"   units="ppm" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+        </property>
+        <property name="temperature"  id="x6"   label="T"      sourcetype="estimated"   units="K"   />
+
+        <dataPoint><x1>1.018</x1><x2>88.97</x2><x3>1309</x3><x4>282.4</x4><x5>9.633</x5><x6>1601</x6></dataPoint>
+        <dataPoint><x1>2.010</x1><x2>63.59</x2><x3>1303</x3><x4>257.3</x4><x5>14.69</x5><x6>1589</x6></dataPoint>
+        <dataPoint><x1>5.028</x1><x2>23.87</x2><x3>1263</x3><x4>278.2</x4><x5>8.259</x5><x6>1555</x6></dataPoint>
+        <dataPoint><x1>10.03</x1><x2>10.84</x2><x3>1251</x3><x4>258.2</x4><x5>5.160</x5><x6>1498</x6></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature was not reported. The estimation (950 K) was based on a similar flame reported by R. J. Martin et al., Combust. Flame. 80 (1990) 238-255.</comment>
+    <comment>Details of the estimation: In the flame by Roby T_max = 1600 K, same in the flame by Martin wich has 970 K burner surface temperature. This Roby article also says the levels of additives (NO) produced temperature perturbations of less than 30 K.</comment>
+    <comment>The flow rate (F) was calculated by the following data and formula: M_average = 0.02929 kg/mol, l_meas = 0.01 m, t = 0.005 s, p = 101325 Pa, R = 8.314 Pa m^3 mol^-1 K^-1, T = 1520 K; F[kg m-2 s-1] = M_average * l_meas * p / t / R / T.</comment>
+    <comment>Details of the estimation: Species and temperature measurements were made at positions from 1.0 mm to 10.0 mm above the burner surface, corresponding to reaction times from 0.5 ms to 5.0 ms. Over this range of positions, temperatures decreased from 1601K to 1498K. (from paper)</comment>
+    <comment>I assumed the flame reaches 10 mm above the burner in 5 ms and the mean temperature in this volume is 1520 K. (Based on the reported and estimated data: 950 K at 0 mm, 1600 K at 1 mm, 1500 K at 10 mm.)</comment>
+    <comment>The temperature profile is estimated with linear interpolation based on the main text: Species and temperature measurements were made at positions from 1.0 mm to 10.0 mm above the burner surface, corresponding to reaction times from 0.5 ms to 5.0 ms. Over this range of positions, temperatures decreased from 1601K to 1498K. (from paper)</comment>
+</experiment>

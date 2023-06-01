@@ -1,0 +1,52 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000056</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Burke. M.P., Dryer, F.L., Ju, Y., Proceedings of the Combustion Institute, (33), 905-912, 2011.</description>
+        <referenceDOI>10.1016/j.proci.2010.05.021</referenceDOI>
+        <location>Electr. Suppl.</location>
+        <table>Table S1.</table>
+        <details>
+            <author>Burke, Michael P and Dryer, Frederick L and Ju, Yiguang</author>
+            <journal>Proc Combust Inst</journal>
+            <number>1</number>
+            <pages>905--912</pages>
+            <title>Assessment of kinetic modeling for lean H$_{2}$/CH$_{4}$/O$_{2}$/diluent flames at high pressures</title>
+            <volume>33</volume>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>295</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.1236</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1236</amount></component>
+            <component><speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"  chemName="helium"   /><amount units="mole fraction" >0.7528</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"  sourcetype="reported"  units="cm/s" />
+        <property name="pressure"                  id="x2"   label="P"   sourcetype="reported"  units="atm"  />
+
+        <dataPoint><x1>105.1</x1> <x2>1.0</x2></dataPoint>
+        <dataPoint> <x1>64.3</x1> <x2>5.0</x2></dataPoint>
+        <dataPoint> <x1>40.1</x1><x2>10.0</x2></dataPoint>
+    </dataGroup>
+</experiment>

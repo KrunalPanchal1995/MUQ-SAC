@@ -1,0 +1,57 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/g00000010</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Herzler, J., Naumann, C., Proceedings of the Combustion Institute, 2009, (32), 213-220.</description>
+        <referenceDOI>10.1016/j.proci.2008.07.034</referenceDOI>
+        <location>Supplementary Materials</location>
+        <table>Table S1. phi=0.5, 100% H2</table>
+        <figure>Fig. 12., full circle(not used)</figure>
+        <details>
+            <author>Herzler, J{\"{u}}rgen and Naumann, Clemens</author>
+            <journal>Proc Combust Inst</journal>
+            <number>1</number>
+            <pages>213--220</pages>
+            <title>Shock-tube study of the ignition of methane/ethane/hydrogen mixtures with hydrogen contents from 0{\%} to 100{\%} at different pressures</title>
+            <volume>32</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.034603</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.034900</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.930497</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.17</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>1035</x1><x2>3.78</x2> <x3>373</x3></dataPoint>
+        <dataPoint><x1>1021</x1><x2>4.04</x2> <x3>539</x3></dataPoint>
+        <dataPoint><x1>1010</x1><x2>4.09</x2> <x3>779</x3></dataPoint>
+        <dataPoint> <x1>999</x1><x2>4.07</x2><x3>1530</x3></dataPoint>
+        <dataPoint> <x1>998</x1><x2>4.00</x2><x3>1320</x3></dataPoint>
+        <dataPoint> <x1>992</x1><x2>4.04</x2><x3>2060</x3></dataPoint>
+        <dataPoint> <x1>972</x1><x2>3.95</x2><x3>3410</x3></dataPoint>
+        <dataPoint> <x1>958</x1><x2>3.93</x2><x3>4290</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*;" type="max"/>
+</experiment>

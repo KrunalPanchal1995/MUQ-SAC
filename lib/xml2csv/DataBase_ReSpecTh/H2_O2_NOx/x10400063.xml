@@ -1,0 +1,58 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400063</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>C.R. Mulvihill et al., Combust. Flame 196 (2018) 478–486</description>
+        <referenceDOI>10.1016/j.combustflame.2018.07.003</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 6a.</figure>
+        <details>
+            <author>Mulvihill, Clayton R. and Mathieu, Olivier and Petersen, Eric L.</author>
+            <journal>Combustion and Flame</journal>
+            <number>in press</number>
+            <pages>478--486</pages>
+            <publisher>Elsevier Inc.</publisher>
+            <title>The unimportance of the reaction H{\textless}sub{\textgreater}2{\textless}/sub{\textgreater} + N{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}O â‡† H{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}O + N{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}: A shock-tube study using H{\textless}sub{\textgreater}2{\textless}/sub{\textgreater}O time histories and ignition delay times</title>
+            <volume>196</volume>
+            <year>2018</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="calculated"  units="atm"           ><value>0.685</value></property>
+        <property name="initial composition"           sourcetype="reported"   >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.8</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"      sourcetype="calculated"  units="K"        />
+        <property name="ignition delay"  id="x2"   label="tau"    sourcetype="digitized"   units="us"       />
+        <property name="uncertainty"     id="x3"   label="d_tau"  sourcetype="reported"    units="unitless"  reference="ignition delay"  kind="relative"  bound="plusminus" />
+
+        <dataPoint><x1>1248</x1><x2>932</x2><x3>0.15</x3></dataPoint>
+        <dataPoint><x1>1272</x1><x2>766</x2><x3>0.15</x3></dataPoint>
+        <dataPoint><x1>1318</x1><x2>476</x2><x3>0.15</x3></dataPoint>
+        <dataPoint><x1>1356</x1><x2>318</x2><x3>0.15</x3></dataPoint>
+        <dataPoint><x1>1399</x1><x2>254</x2><x3>0.15</x3></dataPoint>
+        <dataPoint><x1>1491</x1><x2>163</x2><x3>0.15</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+    <comment>The reported pressure is: 0.68-0.69 atm. The mean value is used.</comment>
+</experiment>

@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000020</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Bhaskaran K.A., Gupta M.C., Just, T.H., Combustion and Flame, 1973, (21), (1), 45-48.</description>
+        <referenceDOI>10.1016/0010-2180(73)90005-9</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 4., open circle</figure>
+        <details>
+            <author>Bhaskaran, K A and Gupta, M C and Just, Th</author>
+            <journal>Combust Flame</journal>
+            <number>1</number>
+            <pages>45--48</pages>
+            <title>Shock tube study of the effect of unsymmetric dimethyl hydrazine on the ignition characteristics of hydrogen-air mixtures</title>
+            <volume>21</volume>
+            <year>1973</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>2.5</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.2959</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1479</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.5562</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1323</x1> <x2>10.1</x2></dataPoint>
+        <dataPoint><x1>1289</x1> <x2>12.5</x2></dataPoint>
+        <dataPoint><x1>1268</x1> <x2>12.8</x2></dataPoint>
+        <dataPoint><x1>1258</x1> <x2>12.1</x2></dataPoint>
+        <dataPoint><x1>1232</x1> <x2>15.0</x2></dataPoint>
+        <dataPoint><x1>1200</x1> <x2>18.1</x2></dataPoint>
+        <dataPoint><x1>1180</x1> <x2>21.0</x2></dataPoint>
+        <dataPoint><x1>1171</x1> <x2>21.8</x2></dataPoint>
+        <dataPoint><x1>1116</x1> <x2>35.5</x2></dataPoint>
+        <dataPoint><x1>1098</x1> <x2>44.9</x2></dataPoint>
+        <dataPoint><x1>1081</x1> <x2>64.4</x2></dataPoint>
+        <dataPoint><x1>1077</x1> <x2>58.2</x2></dataPoint>
+        <dataPoint><x1>1067</x1> <x2>86.1</x2></dataPoint>
+        <dataPoint><x1>1038</x1><x2>191.6</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+</experiment>

@@ -1,0 +1,79 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60400034</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>V.P. Balakhnine, J. Vandooren, P.J. Van Tiggelen, Combust. Flame 28 (1977) 165-173</description>
+        <referenceDOI>10.1016/0010-2180(77)90022-0</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2. solid circle</figure>
+        <details>
+            <author>Balakhnine, V P and Vandooren, J and Van Tiggelen, P J</author>
+            <journal>Combust Flame</journal>
+            <pages>165</pages>
+            <title>Reaction Mechanism and Rate Constants in Lean Hydrogen-Nitrous Oxide Flames</title>
+            <volume>28</volume>
+            <year>1977</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="estimated"   units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="torr"          ><value>40</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="calculated"  units="kg m-2 s-1"    ><value>0.01845</value></property>
+        <property name="initial composition"           sourcetype="reported"   >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.314</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.686</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H"    CAS="12385-13-6"  InChI="1S/H"           SMILES="[H]"         chemName="hydrogen atom" />
+            <value>24.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"    sourcetype="digitized"   units="cm"            />
+        <property name="composition"  id="x2"   label="[H]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H"  CAS="12385-13-6"  InChI="1S/H"  SMILES="[H]"  chemName="hydrogen atom" />
+        </property>
+        <property name="temperature"  id="x3"   label="T"    sourcetype="estimated"   units="K"             />
+
+        <dataPoint><x1>0.2308</x1><x2>1.624E-05</x2> <x3>300</x3></dataPoint>
+        <dataPoint><x1>0.3103</x1><x2>2.555E-05</x2> <x3>498</x3></dataPoint>
+        <dataPoint><x1>0.4129</x1><x2>4.695E-05</x2> <x3>754</x3></dataPoint>
+        <dataPoint><x1>0.5146</x1><x2>7.923E-05</x2><x3>1008</x3></dataPoint>
+        <dataPoint><x1>0.6194</x1><x2>7.290E-05</x2><x3>1270</x3></dataPoint>
+        <dataPoint><x1>0.7085</x1><x2>6.241E-05</x2><x3>1485</x3></dataPoint>
+        <dataPoint><x1>0.8058</x1><x2>4.975E-05</x2><x3>1706</x3></dataPoint>
+        <dataPoint><x1>0.9026</x1><x2>4.282E-05</x2><x3>1835</x3></dataPoint>
+        <dataPoint><x1>1.0073</x1><x2>3.808E-05</x2><x3>1900</x3></dataPoint>
+        <dataPoint><x1>1.1119</x1><x2>3.393E-05</x2><x3>1919</x3></dataPoint>
+        <dataPoint><x1>1.2165</x1><x2>3.057E-05</x2><x3>1937</x3></dataPoint>
+        <dataPoint><x1>1.4094</x1><x2>2.583E-05</x2><x3>1969</x3></dataPoint>
+        <dataPoint><x1>1.6103</x1><x2>2.188E-05</x2><x3>1967</x3></dataPoint>
+        <dataPoint><x1>1.8111</x1><x2>1.853E-05</x2><x3>1947</x3></dataPoint>
+        <dataPoint><x1>2.0120</x1><x2>1.538E-05</x2><x3>1926</x3></dataPoint>
+        <dataPoint><x1>2.2128</x1><x2>1.242E-05</x2><x3>1906</x3></dataPoint>
+        <dataPoint><x1>2.4055</x1><x2>1.006E-05</x2><x3>1887</x3></dataPoint>
+        <dataPoint><x1>2.6143</x1><x2>8.092E-06</x2><x3>1866</x3></dataPoint>
+        <dataPoint><x1>2.8149</x1><x2>6.720E-06</x2><x3>1845</x3></dataPoint>
+        <dataPoint><x1>3.0156</x1><x2>5.150E-06</x2><x3>1825</x3></dataPoint>
+        <dataPoint><x1>3.2083</x1><x2>3.777E-06</x2><x3>1806</x3></dataPoint>
+        <dataPoint><x1>3.4170</x1><x2>2.604E-06</x2><x3>1785</x3></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature is assumed to be room temperature (300 K) based on the reported temperature profiles, experimental setup and other work of the authors but any clear reference cannot be find for that</comment>
+    <comment>The experimental temperature profile was estimated with linear interpolation based on Fig. 2. top axis.</comment>
+    <comment>The flow rate (F) was calculated as the product of the gas velocity and density. (F = v * rho = v * p * M_ave / R / T)</comment>
+</experiment>

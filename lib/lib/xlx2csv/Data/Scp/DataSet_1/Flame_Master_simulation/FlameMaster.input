@@ -1,0 +1,79 @@
+############
+# Numerics #
+############
+
+RelTol = 1.0e-10
+AbsTol = 1.0e-12
+
+TStart = 0
+TEnd = 0.0015
+
+
+########################
+# Sensitivity Analysis #
+########################
+
+#SensAnalReac is TRUE
+#SensAnalSpec is TRUE
+
+#FirstSensRate = 5
+
+#SensMax is TRUE
+#SensFinal is TRUE
+
+#SensObjAll is TRUE
+#SensObj is OH
+#SensObj is H
+
+SensAnalFac = 2.0
+
+
+#######
+# I/O #
+#######
+
+AdditionalOutput is TRUE
+WriteEverySolution is TRUE
+PrintMolarFractions is TRUE
+
+OutputPath is ./output
+NOutputs = 50
+
+#############
+# Chemistry #
+#############
+
+MechanismFile is mechanism.pre
+globalReaction is CH3OH+1.5O2==CO2+2H2O;
+
+fuel is CH3OH
+oxidizer is O2
+
+#########
+# Flame #
+#########
+
+Flame is isochor Homo Reactor
+#Flame is Isobar Homo Reactor
+#ExactBackward is TRUE
+
+#phi = 2.0
+
+Pressure = 210000.0
+
+
+#######################
+# Boundary conditions #
+#######################
+
+#ContInc = -25
+#ContType is Temperature
+#ContBound = 800
+
+InitialCond {
+	t = 1567
+	X->CH3OH = 0.01
+	X->N2 = 0.0
+	X->O2 = 0.0
+	x->AR = 0.99
+}

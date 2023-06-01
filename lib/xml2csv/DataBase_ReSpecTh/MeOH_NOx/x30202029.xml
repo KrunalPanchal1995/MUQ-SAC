@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202029</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R.K. Lyon et al., Combust. Flame 81 (1990) 30-39</description>
+        <referenceDOI>10.1016/0010-2180(90)90067-2</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 3. squere</figure>
+        <details>
+            <author>Lyon, Richard K and Cole, Jerald A and Kramlich, John C and Chen, Shi L</author>
+            <journal>Combustion and Flame</journal>
+            <number>1</number>
+            <pages>30--39</pages>
+            <title>The selective reduction of SO3 to SO2 and the oxidation of NO to NO2 by methanol</title>
+            <volume>81</volume>
+            <year>1990</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="estimated"  units="atm"           ><value>1</value></property>
+        <property name="residence time"                label="t"  sourcetype="reported"   units="s"             ><value>0.024</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     /><amount units="mole fraction" >0.000400</amount></component>
+            <component><speciesLink preferredKey="O2"     CAS="7782-44-7"   InChI="1S/O2/c1-2"            SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000215</amount></component>
+            <component><speciesLink preferredKey="HE"     CAS="7440-59-7"   InChI="1S/He"                 SMILES="[He]"   chemName="helium"       /><amount units="mole fraction" >0.949385</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" />
+            <value>4.67e-6</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"  id="x1"   label="T"     sourcetype="digitized"  units="K"             />
+        <property name="composition"  id="x2"   label="[NO]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+
+        <dataPoint><x1>1025</x1><x2>9.473E-05</x2></dataPoint>
+        <dataPoint><x1>1074</x1><x2>6.660E-05</x2></dataPoint>
+        <dataPoint><x1>1123</x1><x2>4.493E-05</x2></dataPoint>
+        <dataPoint><x1>1173</x1><x2>4.075E-05</x2></dataPoint>
+        <dataPoint><x1>1222</x1><x2>5.268E-05</x2></dataPoint>
+        <dataPoint><x1>1276</x1><x2>7.059E-05</x2></dataPoint>
+        <dataPoint><x1>1325</x1><x2>1.364E-04</x2></dataPoint>
+    </dataGroup>
+</experiment>

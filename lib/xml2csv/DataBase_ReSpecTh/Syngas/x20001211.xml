@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001211</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>F. Wu, A. P. Kelley, C. Tang, D. Zhu, C. K. Law, Int. J. Hydrogen Energy 35 (2011), 13171-13180.</description>
+        <referenceDOI>10.1016/j.ijhydene.2011.07.021</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 14, open sircle.</figure>
+        <details>
+            <author>Wu, Fujia and Kelley, Andrew P and Tang, Chenglong and Zhu, Delin and Law, Chung K</author>
+            <journal>Int J Hydrogen Energy</journal>
+            <pages>13171--13180</pages>
+            <title>Measurement and correlation of laminar flame speeds of CO and C$_{2}$ hydrocarbons with hydrogen addition at atmospheric and elevated pressures</title>
+            <volume>36</volume>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>OPF</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"   sourcetype="reported"   units="K"    ><value>293</value></property>
+        <property name="uncertainty"                   label="dT"  sourcetype="reported"   units="K"     reference="temperature"               kind="absolute"  bound="plusminus" ><value>2</value></property>
+        <property name="pressure"                      label="P"   sourcetype="reported"   units="atm"  ><value>20</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"               id="x1"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x2"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x4"   label="[He]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"       chemName="helium"          />
+        </property>
+        <property name="laminar burning velocity"  id="x5"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="uncertainty"               id="x6"   sourcetype="digitized"   units="cm/s"           reference="Sl"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>0.00083</x1><x2>0.29503</x2><x3>0.08802</x3><x4>0.61612</x4><x5>13.82</x5><x6>1.45</x6></dataPoint>
+        <dataPoint><x1>0.00365</x1><x2>0.29221</x2><x3>0.08802</x3><x4>0.61612</x4><x5>20.92</x5><x6>1.45</x6></dataPoint>
+        <dataPoint><x1>0.00897</x1><x2>0.28689</x2><x3>0.08802</x3><x4>0.61612</x4><x5>30.66</x5><x6>1.45</x6></dataPoint>
+        <dataPoint><x1>0.01740</x1><x2>0.27845</x2><x3>0.08802</x3><x4>0.61612</x4><x5>37.24</x5><x6>1.32</x6></dataPoint>
+        <dataPoint><x1>0.03287</x1><x2>0.26298</x2><x3>0.08802</x3><x4>0.61612</x4><x5>47.63</x5><x6>1.71</x6></dataPoint>
+        <dataPoint><x1>0.04671</x1><x2>0.24914</x2><x3>0.08802</x3><x4>0.61612</x4><x5>54.74</x5><x6>1.97</x6></dataPoint>
+        <dataPoint><x1>0.05917</x1><x2>0.23669</x2><x3>0.08802</x3><x4>0.61612</x4><x5>61.84</x5><x6>2.24</x6></dataPoint>
+        <dataPoint><x1>0.07044</x1><x2>0.22542</x2><x3>0.08802</x3><x4>0.61612</x4><x5>68.42</x5><x6>2.50</x6></dataPoint>
+    </dataGroup>
+</experiment>

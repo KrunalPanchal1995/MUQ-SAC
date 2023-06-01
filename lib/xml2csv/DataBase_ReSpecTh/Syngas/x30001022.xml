@@ -1,0 +1,72 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30001022</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>M. U. Alzueta; R. Bilbao; P. Glarborg, Combustion and Flame 2001, 127, (4), 2234-2251.</description>
+        <referenceDOI>10.1016/S0010-2180(01)00325-X</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 3 bottom, open square, set 7a.</figure>
+        <details>
+            <author>Alzueta, Maria U and Bilbao, Rafael and Glarborg, Peter</author>
+            <journal>Combust Flame</journal>
+            <pages>2234--2251</pages>
+            <title>Inhibition and sensitization of fuel oxidation by SO$_{2}$</title>
+            <volume>127</volume>
+            <year>2001</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"    units="bar"           ><value>1.05</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.000107</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.000112</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          chemName="water"           /><amount units="mole fraction" >0.005000</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        /><amount units="mole fraction" >0.994781</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="generic uncertainty" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>1.07e-6</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="residence time"  id="x1"   label="t"     sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x2"   label="[CO]"  sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"  InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="temperature"     id="x3"   label="T"     sourcetype="digitized"   units="K"             />
+
+        <dataPoint><x1>1.4052E-01</x1><x2>8.9092E-05</x2><x3>1430.4</x3></dataPoint>
+        <dataPoint><x1>1.4269E-01</x1><x2>9.0967E-05</x2><x3>1408.7</x3></dataPoint>
+        <dataPoint><x1>1.4549E-01</x1><x2>9.2026E-05</x2><x3>1381.6</x3></dataPoint>
+        <dataPoint><x1>1.4840E-01</x1><x2>9.3085E-05</x2><x3>1354.4</x3></dataPoint>
+        <dataPoint><x1>1.5098E-01</x1><x2>9.4147E-05</x2><x3>1331.3</x3></dataPoint>
+        <dataPoint><x1>1.5348E-01</x1><x2>9.5751E-05</x2><x3>1309.6</x3></dataPoint>
+        <dataPoint><x1>1.5590E-01</x1><x2>9.7897E-05</x2><x3>1289.3</x3></dataPoint>
+        <dataPoint><x1>1.5840E-01</x1><x2>1.0004E-04</x2><x3>1268.9</x3></dataPoint>
+        <dataPoint><x1>1.6456E-01</x1><x2>1.0217E-04</x2><x3>1221.4</x3></dataPoint>
+        <dataPoint><x1>1.6754E-01</x1><x2>1.0404E-04</x2><x3>1199.7</x3></dataPoint>
+        <dataPoint><x1>1.7142E-01</x1><x2>1.0537E-04</x2><x3>1172.6</x3></dataPoint>
+        <dataPoint><x1>1.7383E-01</x1><x2>1.0667E-04</x2><x3>1156.3</x3></dataPoint>
+        <dataPoint><x1>1.7908E-01</x1><x2>1.0700E-04</x2><x3>1122.4</x3></dataPoint>
+        <dataPoint><x1>1.8284E-01</x1><x2>1.0700E-04</x2><x3>1099.3</x3></dataPoint>
+        <dataPoint><x1>1.8914E-01</x1><x2>1.0700E-04</x2><x3>1062.7</x3></dataPoint>
+        <dataPoint><x1>1.9487E-01</x1><x2>1.0700E-04</x2><x3>1031.5</x3></dataPoint>
+        <dataPoint><x1>2.0122E-01</x1><x2>1.0700E-04</x2> <x3>998.9</x3></dataPoint>
+        <dataPoint><x1>2.1309E-01</x1><x2>1.0700E-04</x2> <x3>943.3</x3></dataPoint>
+        <dataPoint><x1>2.2337E-01</x1><x2>1.0700E-04</x2> <x3>899.9</x3></dataPoint>
+    </dataGroup>
+</experiment>

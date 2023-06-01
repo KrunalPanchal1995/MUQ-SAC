@@ -1,0 +1,22 @@
+targets_count	:	55
+mechanism	:	Nagy_2017_methanol.mech
+fuel	:	CH3OH
+global_reaction	:	CH3OH + 1.5 O2 == CO2 + 2 H2O
+parallel_threads	:	7
+uncertainty_data	:	errors.unsrt
+bin_file	:	Nagy_2017_methanol.bin	
+targets:
+1, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.7015, P = 10.12, phi = 1, observed = 48.7683, deviation = 9.3297#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+2, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.7325, P = 10.12, phi = 1, observed = 91.9594, deviation = 18.0853#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+3, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.7618, P = 10.12, phi = 1, observed = 146.2001, deviation = 27.969#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+4, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.793, P = 10.12, phi = 1, observed = 233.4992, deviation = 45.9212#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+5, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.8091, P = 10.12, phi = 1, observed = 287.2543, deviation = 54.9535#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+6, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.8449, P = 10.12, phi = 1, observed = 544.2128, deviation = 101.2078#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt
+7, target = Tig, simulation = isochor, Fuel = 3.1, O2 = 4.65,N2 = 0, AR = 92.25, T = 0.9171, P = 10.12, phi = 1, observed = 1376.3683, deviation = 255.9801#Burke16_Noorani_et_al_Shock_tube_Ig_D_stoichiometric_methanol_(3.7 mol %)_mix-
+tures _10_atm_mix_13.txt

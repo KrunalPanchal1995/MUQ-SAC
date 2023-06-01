@@ -1,0 +1,23 @@
+DataSet				: fls_1a
+Target				: Fls
+Fuel_type			: Homogeneous
+Fuel				: {"a":x->H2 = 0.296,"b":x->CO = 0.00,"c":#,"d":#,"e":#}
+Oxidizer			: x->O2 = 0.148
+Bath_gas1			: x->N2 = 0.556
+Bath_gas2			:
+Bath_gas3			:
+Pressure			: 1
+Temperature			: 298.2
+Phi					: 1
+Unsrt_factor		: 20 ; absolute
+Unit				: mol	atm	K	us	cm/s
+Simulation_type		: isochor
+Measurnment_type	: OHEX;1.0
+ignition_mode		: spherical flame
+startprofile		: 
+flow_rate			:
+flow_unit			:
+Data_structure		: Fls
+
+DATA:
+204 

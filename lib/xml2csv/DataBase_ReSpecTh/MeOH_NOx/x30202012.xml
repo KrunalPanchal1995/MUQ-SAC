@@ -1,0 +1,68 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202012</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>M. Jazbec et al., 5th Asia-Pacific Conference on Combustion (2005) 245-248</description>
+        <location>Main paper</location>
+        <figure>Fig. 4. rombus</figure>
+        <details>
+            <author>M. Jazbec et al.</author>
+            <journal>Proceedings of the 5th Asia-Pacific Conference on Combustion: The University of Adelaide, Adelaide, Australia, 17-20 July, 2005</journal>
+            <pages>245--248</pages>
+            <publisher>University of Adelaide - School of Mechanical Engineering</publisher>
+            <year>2005</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"  InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"  chemName="methanol" />
+            <value>1.12e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="initial composition"  id="x1"   label="[CH3OH]_init"  sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     />
+        </property>
+        <property name="initial composition"  id="x2"   label="[O2]_init"     sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="O2"     CAS="7782-44-7"   InChI="1S/O2/c1-2"            SMILES="O=O"    chemName="oxygen"       />
+        </property>
+        <property name="initial composition"  id="x3"   label="[NO]_init"     sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="initial composition"  id="x4"   label="[N2]_init"     sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="N2"     CAS="7727-37-9"   InChI="1S/N2/c1-2"            SMILES="N#N"    chemName="nitrogen"     />
+        </property>
+        <property name="temperature"          id="x5"   label="T"             sourcetype="digitized"  units="K"             />
+        <property name="composition"          id="x6"   label="[CH3OH]"       sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     />
+        </property>
+        <property name="residence time"       id="x7"   label="t"             sourcetype="estimated"  units="s"             />
+
+        <dataPoint><x1>0.00045</x1><x2>0.00000</x2><x3>0.00010</x3><x4>0.99945</x4><x5>1023</x5><x6>2.297E-04</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00010</x2><x3>0.00010</x3><x4>0.99935</x4><x5>1023</x5><x6>2.081E-04</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00020</x2><x3>0.00010</x3><x4>0.99925</x4><x5>1023</x5><x6>1.279E-04</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00030</x2><x3>0.00010</x3><x4>0.99915</x4><x5>1023</x5><x6>5.135E-05</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00040</x2><x3>0.00010</x3><x4>0.99905</x4><x5>1023</x5><x6>0.000E+00</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00050</x2><x3>0.00010</x3><x4>0.99895</x4><x5>1023</x5><x6>0.000E+00</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00070</x2><x3>0.00010</x3><x4>0.99875</x4><x5>1023</x5><x6>0.000E+00</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00100</x2><x3>0.00010</x3><x4>0.99845</x4><x5>1023</x5><x6>0.000E+00</x6><x7>2.30</x7></dataPoint>
+        <dataPoint><x1>0.00045</x1><x2>0.00150</x2><x3>0.00010</x3><x4>0.99795</x4><x5>1023</x5><x6>0.000E+00</x6><x7>2.30</x7></dataPoint>
+    </dataGroup>
+    <comment>The residence times were estimated with intepolation based on the following reported data: The reaction was studied in the temperature range of 573-1023 K (with residence times of 2.3-4.2 s)</comment>
+</experiment>

@@ -1,0 +1,57 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400029</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>Y. Hidaka et al., Bull. Chem. Soc. Jpn. 58 (1985) 2911-2916, Fig 6b. circle</description>
+        <referenceDOI>10.1246/bcsj.58.2911</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig 6b. circle</figure>
+        <details>
+            <author>Hidaka, Y and Takuma, H and Suga, M</author>
+            <journal>Bull Chem Soc Jpn</journal>
+            <pages>2911</pages>
+            <title>Shock-tube studies of N2O decomposition and N2O-H2 reaction</title>
+            <volume>58</volume>
+            <year>1985</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>incident shock wave</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="estimated"  units="atm"           ><value>0.85</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.02</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.01</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.97</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1791</x1><x2>019</x2></dataPoint>
+        <dataPoint><x1>1727</x1><x2>022</x2></dataPoint>
+        <dataPoint><x1>1708</x1><x2>027</x2></dataPoint>
+        <dataPoint><x1>1622</x1><x2>038</x2></dataPoint>
+        <dataPoint><x1>1610</x1><x2>043</x2></dataPoint>
+        <dataPoint><x1>1577</x1><x2>051</x2></dataPoint>
+        <dataPoint><x1>1486</x1><x2>109</x2></dataPoint>
+        <dataPoint><x1>1468</x1><x2>116</x2></dataPoint>
+        <dataPoint><x1>1462</x1><x2>137</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="N2O" type="baseline max intercept from d/dt"/>
+</experiment>

@@ -1,0 +1,57 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10200005</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>A. D. Snyder et al., AFAPL-TR-65-93 (1965), Table 5.</description>
+        <location>Main article</location>
+        <table>Table 5.</table>
+        <details>
+            <author>Snyder, A D and Robertson, J and Zanders, D L and Skinner, G B</author>
+            <journal>Technical report AFAPL-TR-65-93</journal>
+            <title>Shock tube studies of fuel-air ignition characteristics</title>
+            <year>1965</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="calculated"  units="atm"           ><value>2.04</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.3487</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.1744</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.0500</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"   InChI="1S/N2/c1-2"  SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.4269</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.16</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="ms" />
+
+        <dataPoint><x1>925.0</x1><x2>0.20</x2></dataPoint>
+        <dataPoint><x1>910.0</x1><x2>0.34</x2></dataPoint>
+        <dataPoint><x1>910.0</x1><x2>0.40</x2></dataPoint>
+        <dataPoint><x1>879.4</x1><x2>0.75</x2></dataPoint>
+        <dataPoint><x1>856.1</x1><x2>1.40</x2></dataPoint>
+        <dataPoint><x1>854.4</x1><x2>1.40</x2></dataPoint>
+        <dataPoint><x1>834.4</x1><x2>2.00</x2></dataPoint>
+        <dataPoint><x1>821.1</x1><x2>3.20</x2></dataPoint>
+        <dataPoint><x1>800.0</x1><x2>6.40</x2></dataPoint>
+        <dataPoint><x1>798.9</x1><x2>6.60</x2></dataPoint>
+        <dataPoint><x1>796.1</x1><x2>7.80</x2></dataPoint>
+        <dataPoint><x1>788.9</x1><x2>3.20</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="d/dt max"/>
+</experiment>

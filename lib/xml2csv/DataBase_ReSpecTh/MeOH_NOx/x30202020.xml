@@ -1,0 +1,120 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202020</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>K. Hjuler et al., Ind. Eng. Chem. Res. 34 (1995) 1882-1888</description>
+        <referenceDOI>10.1021/ie00044a040</referenceDOI>
+        <location>Main paper</location>
+        <table>Table 1.</table>
+        <figure>Fig. 3. open symbols</figure>
+        <details>
+            <author>Hjuler, Klaus and Glarborg, Peter and Dam-Johansen, Kim</author>
+            <journal>Industrial and Engineering Chemistry Research</journal>
+            <month>may</month>
+            <number>5</number>
+            <pages>1882--1888</pages>
+            <publisher>American Chemical Society</publisher>
+            <title>Mutually Promoted Thermal Oxidation of Nitric Oxide and Organic Compounds</title>
+            <volume>34</volume>
+            <year>1995</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     /><amount units="mole fraction" >0.000419</amount></component>
+            <component><speciesLink preferredKey="O2"     CAS="7782-44-7"   InChI="1S/O2/c1-2"            SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.04</amount></component>
+            <component><speciesLink preferredKey="H2O"    CAS="7732-18-5"   InChI="1S/H2O/h1H2"           SMILES="O"      chemName="water"        /><amount units="mole fraction" >0.000001</amount></component>
+            <component><speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000477</amount></component>
+            <component><speciesLink preferredKey="N2"     CAS="7727-37-9"   InChI="1S/N2/c1-2"            SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.959103</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+            <value>1.03e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"   />
+            <value>8.18e-6</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"     />
+            <value>3.45e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO2"    CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"         SMILES="N(=O)[O]"   chemName="nitrogen dioxide" />
+            <value>4.55e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x01"  label="T"        sourcetype="digitized"   units="K"             />
+        <property name="residence time"  id="x02"  label="t"        sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x03"  label="[CO]"     sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"    InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+        </property>
+        <property name="composition"     id="x04"  label="[CO2]"    sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"    InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"   />
+        </property>
+        <property name="composition"     id="x05"  label="[NO]"     sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"      chemName="nitric oxide"     />
+        </property>
+        <property name="composition"     id="x06"  label="[NO2]"    sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="NO2"  CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"  SMILES="N(=O)[O]"   chemName="nitrogen dioxide" />
+        </property>
+        <property name="uncertainty"     id="x07"  label="d_T"      sourcetype="reported"    units="K"              reference="temperature"     kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x08"  label="d_t"      sourcetype="calculated"  units="s"              reference="residence time"  kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x09"  label="d_[CO]"   sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"    InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide"  />
+        </property>
+        <property name="uncertainty"     id="x10"  label="d_[CO2]"  sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"    InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"   />
+        </property>
+        <property name="uncertainty"     id="x11"  label="d_[NO]"   sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"      chemName="nitric oxide"     />
+        </property>
+        <property name="uncertainty"     id="x12"  label="d_[NO2]"  sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="NO2"  CAS="10102-44-0"  InChI="1S/NO2/c2-1-3"  SMILES="N(=O)[O]"   chemName="nitrogen dioxide" />
+        </property>
+
+        <dataPoint> <x01>670.4</x01><x02>0.2968</x02><x03>0.000E+00</x03><x04>6.330E-06</x04><x05>4.696E-04</x05><x06>5.084E-06</x06><x07>7</x07><x08>0.0031</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.409E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>696.3</x01><x02>0.2858</x02><x03>0.000E+00</x03><x04>6.330E-06</x04><x05>4.697E-04</x05><x06>5.171E-06</x06><x07>7</x07><x08>0.0029</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.409E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>722.3</x01><x02>0.2755</x02><x03>2.110E-06</x03><x04>4.220E-06</x04><x05>4.698E-04</x05><x06>2.838E-06</x06><x07>7</x07><x08>0.0027</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.409E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>747.9</x01><x02>0.2661</x02><x03>8.440E-06</x03><x04>0.000E+00</x04><x05>4.699E-04</x05><x06>5.350E-06</x06><x07>7</x07><x08>0.0025</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.410E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>774.2</x01><x02>0.2570</x02><x03>8.440E-06</x03><x04>0.000E+00</x04><x05>4.676E-04</x05><x06>7.857E-06</x06><x07>7</x07><x08>0.0023</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.403E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>800.2</x01><x02>0.2487</x02><x03>1.055E-05</x03><x04>0.000E+00</x04><x05>4.604E-04</x05><x06>1.279E-05</x06><x07>7</x07><x08>0.0022</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.381E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>826.1</x01><x02>0.2409</x02><x03>1.899E-05</x03><x04>0.000E+00</x04><x05>4.411E-04</x05><x06>3.223E-05</x06><x07>7</x07><x08>0.0020</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.323E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint> <x01>851.2</x01><x02>0.2338</x02><x03>5.486E-05</x03><x04>2.110E-06</x04><x05>3.638E-04</x05><x06>1.098E-04</x06><x07>7</x07><x08>0.0019</x08><x09>5.000E-06</x09><x10>5.000E-06</x10><x11>1.091E-05</x11><x12>2.195E-05</x12></dataPoint>
+        <dataPoint> <x01>877.0</x01><x02>0.2269</x02><x03>1.878E-04</x03><x04>1.055E-05</x04><x05>1.727E-04</x05><x06>2.816E-04</x06><x07>7</x07><x08>0.0018</x08><x09>5.634E-06</x09><x10>5.000E-06</x10><x11>5.182E-06</x11><x12>5.633E-05</x12></dataPoint>
+        <dataPoint> <x01>902.8</x01><x02>0.2204</x02><x03>2.891E-04</x03><x04>2.110E-05</x04><x05>8.089E-05</x05><x06>3.712E-04</x06><x07>7</x07><x08>0.0017</x08><x09>8.672E-06</x09><x10>5.000E-06</x10><x11>5.000E-06</x11><x12>7.425E-05</x12></dataPoint>
+        <dataPoint> <x01>927.5</x01><x02>0.2146</x02><x03>3.271E-04</x03><x04>2.954E-05</x04><x05>6.888E-05</x05><x06>3.858E-04</x06><x07>7</x07><x08>0.0016</x08><x09>9.812E-06</x09><x10>5.000E-06</x10><x11>5.000E-06</x11><x12>7.717E-05</x12></dataPoint>
+        <dataPoint> <x01>953.4</x01><x02>0.2087</x02><x03>3.418E-04</x03><x04>4.009E-05</x04><x05>7.864E-05</x05><x06>3.763E-04</x06><x07>7</x07><x08>0.0015</x08><x09>1.025E-05</x09><x10>5.000E-06</x10><x11>5.000E-06</x11><x12>7.525E-05</x12></dataPoint>
+        <dataPoint> <x01>979.0</x01><x02>0.2033</x02><x03>3.503E-04</x03><x04>4.853E-05</x04><x05>1.174E-04</x05><x06>3.400E-04</x06><x07>7</x07><x08>0.0015</x08><x09>1.051E-05</x09><x10>5.000E-06</x10><x11>5.000E-06</x11><x12>6.801E-05</x12></dataPoint>
+        <dataPoint><x01>1004.5</x01><x02>0.1981</x02><x03>3.503E-04</x03><x04>5.697E-05</x04><x05>1.587E-04</x05><x06>3.038E-04</x06><x07>7</x07><x08>0.0014</x08><x09>1.051E-05</x09><x10>5.000E-06</x10><x11>5.000E-06</x11><x12>6.077E-05</x12></dataPoint>
+        <dataPoint><x01>1028.9</x01><x02>0.1934</x02><x03>3.418E-04</x03><x04>6.752E-05</x04><x05>2.531E-04</x05><x06>2.168E-04</x06><x07>7</x07><x08>0.0013</x08><x09>1.025E-05</x09><x10>5.000E-06</x10><x11>7.594E-06</x11><x12>4.337E-05</x12></dataPoint>
+        <dataPoint><x01>1054.1</x01><x02>0.1888</x02><x03>2.701E-04</x03><x04>1.435E-04</x04><x05>4.468E-04</x05><x06>2.335E-05</x06><x07>7</x07><x08>0.0013</x08><x09>8.103E-06</x09><x10>5.000E-06</x10><x11>1.340E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1078.4</x01><x02>0.1845</x02><x03>1.899E-04</x03><x04>2.194E-04</x04><x05>4.614E-04</x05><x06>1.133E-05</x06><x07>7</x07><x08>0.0012</x08><x09>5.697E-06</x09><x10>6.583E-06</x10><x11>1.384E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1104.4</x01><x02>0.1802</x02><x03>1.561E-04</x03><x04>2.532E-04</x04><x05>4.615E-04</x05><x06>9.004E-06</x06><x07>7</x07><x08>0.0011</x08><x09>5.000E-06</x09><x10>7.596E-06</x10><x11>1.384E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1129.2</x01><x02>0.1762</x02><x03>1.308E-04</x03><x04>2.806E-04</x04><x05>4.640E-04</x05><x06>9.086E-06</x06><x07>7</x07><x08>0.0011</x08><x09>5.000E-06</x09><x10>8.419E-06</x10><x11>1.392E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1154.3</x01><x02>0.1724</x02><x03>1.076E-04</x03><x04>3.039E-04</x04><x05>4.641E-04</x05><x06>9.173E-06</x06><x07>7</x07><x08>0.0010</x08><x09>5.000E-06</x09><x10>9.116E-06</x10><x11>1.392E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1178.7</x01><x02>0.1688</x02><x03>8.862E-05</x03><x04>3.250E-04</x04><x05>4.641E-04</x05><x06>9.260E-06</x06><x07>7</x07><x08>0.0010</x08><x09>5.000E-06</x09><x10>9.749E-06</x10><x11>1.392E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1203.1</x01><x02>0.1654</x02><x03>7.385E-05</x03><x04>3.418E-04</x04><x05>4.666E-04</x05><x06>9.347E-06</x06><x07>7</x07><x08>0.0010</x08><x09>5.000E-06</x09><x10>1.025E-05</x10><x11>1.400E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1228.3</x01><x02>0.1620</x02><x03>5.908E-05</x03><x04>3.524E-04</x04><x05>4.643E-04</x05><x06>7.009E-06</x06><x07>7</x07><x08>0.0009</x08><x09>5.000E-06</x09><x10>1.057E-05</x10><x11>1.393E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1251.5</x01><x02>0.1590</x02><x03>4.853E-05</x03><x04>3.629E-04</x04><x05>4.668E-04</x05><x06>4.671E-06</x06><x07>7</x07><x08>0.0009</x08><x09>5.000E-06</x09><x10>1.089E-05</x10><x11>1.400E-05</x11><x12>2.000E-05</x12></dataPoint>
+        <dataPoint><x01>1272.3</x01><x02>0.1564</x02><x03>4.009E-05</x03><x04>3.714E-04</x04><x05>4.669E-04</x05><x06>7.161E-06</x06><x07>7</x07><x08>0.0009</x08><x09>5.000E-06</x09><x10>1.114E-05</x10><x11>1.401E-05</x11><x12>2.000E-05</x12></dataPoint>
+    </dataGroup>
+    <comment>Trace amount of water presents initially: 1 ppm is assumed</comment>
+</experiment>

@@ -1,0 +1,69 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/g00000007psr</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Le Cong, T., Dagaut,P., Energy and Fuels, 2009, (23), (1), 725-734.</description>
+        <referenceDOI>10.1021/ef800832q</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 7. H2 open diamond, O2 open circle</figure>
+        <details>
+            <author>Le Cong}, T and Dagaut, P</author>
+            <journal>Energy Fuels</journal>
+            <number>2</number>
+            <pages>725--734</pages>
+            <title>Experimental and Detailed Modeling Study of the Effect of Water Vapor on the Kinetics of Combustion of Hydrogen and Natural Gas, Impact on NO$_{x}$</title>
+            <volume>23</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>jet stirred reactor measurement</experimentType>
+    <apparatus>
+        <kind>stirred reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="volume"                        label="V"    sourcetype="reported"    units="cm3"           ><value>30</value></property>
+        <property name="pressure"                      label="P"    sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="residence time"                label="tau"  sourcetype="reported"    units="ms"            ><value>120</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.00928</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.01100</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.87972</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"    /><amount units="mole fraction" >0.10000</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+            <value>0.00087</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+            <value>0.00023</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"  id="x1"   label="T"     sourcetype="digitized"  units="K"             />
+        <property name="composition"  id="x2"   label="[H2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"  id="x3"   label="[O2]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+
+        <dataPoint> <x1>888</x1><x2>0.00926</x2><x3>0.011000</x3></dataPoint>
+        <dataPoint> <x1>903</x1><x2>0.01100</x2><x3>0.011000</x3></dataPoint>
+        <dataPoint> <x1>925</x1><x2>0.01150</x2><x3>0.010930</x3></dataPoint>
+        <dataPoint> <x1>950</x1><x2>0.00839</x2><x3>0.009700</x3></dataPoint>
+        <dataPoint> <x1>974</x1><x2>0.00432</x2><x3>0.007530</x3></dataPoint>
+        <dataPoint><x1>1002</x1><x2>0.00259</x2><x3>0.006575</x3></dataPoint>
+        <dataPoint><x1>1026</x1><x2>0.00105</x2><x3>0.005770</x3></dataPoint>
+    </dataGroup>
+</experiment>

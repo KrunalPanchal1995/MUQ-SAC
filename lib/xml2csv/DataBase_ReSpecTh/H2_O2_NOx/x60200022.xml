@@ -1,0 +1,106 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60200022</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. J. Cattolica et al., Proc. Comb. Inst. 22 (1988) 1165-1173</description>
+        <referenceDOI>10.1016/S0082-0784(89)80127-4</referenceDOI>
+        <location>Main paper</location>
+        <table>TABLE II</table>
+        <figure>Fig. 4. (b), squere</figure>
+        <details>
+            <author>R.J. Cattolica and J.A. Cavolowsky and T.G. Mataga</author>
+            <journal>Symposium (International) on Combustion</journal>
+            <month>jan</month>
+            <number>1</number>
+            <pages>1165--1173</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Laser-fluorescence measurements of nitric oxide in low-pressure H2/O2/No flames</title>
+            <volume>22</volume>
+            <year>1989</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"    units="unitless"      ><value>0.98</value></property>
+        <property name="temperature"                   label="T"    sourcetype="estimated"   units="K"             ><value>293</value></property>
+        <property name="pressure"                      label="p"    sourcetype="reported"    units="Torr"          ><value>76</value></property>
+        <property name="flow rate"                     label="F"    sourcetype="calculated"  units="kg m-2 s-1"    ><value>0.04989</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.3291</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.1677</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"   InChI="1S/Ar"       SMILES="[Ar]"   chemName="argon"        /><amount units="mole fraction" >0.4957</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.008752</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+            <value>1305.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"     sourcetype="digitized"   units="cm"            />
+        <property name="composition"  id="x2"   label="[NO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="temperature"  id="x3"   label="T"     sourcetype="estimated"   units="K"             />
+
+        <dataPoint><x1>0.105</x1><x2>6.429E-03</x2> <x3>427</x3></dataPoint>
+        <dataPoint><x1>0.306</x1><x2>7.657E-03</x2> <x3>669</x3></dataPoint>
+        <dataPoint><x1>0.415</x1><x2>8.632E-03</x2> <x3>801</x3></dataPoint>
+        <dataPoint><x1>0.506</x1><x2>9.185E-03</x2> <x3>911</x3></dataPoint>
+        <dataPoint><x1>0.606</x1><x2>1.032E-02</x2><x3>1031</x3></dataPoint>
+        <dataPoint><x1>0.706</x1><x2>1.087E-02</x2><x3>1152</x3></dataPoint>
+        <dataPoint><x1>0.806</x1><x2>1.208E-02</x2><x3>1273</x3></dataPoint>
+        <dataPoint><x1>0.901</x1><x2>1.252E-02</x2><x3>1388</x3></dataPoint>
+        <dataPoint><x1>0.896</x1><x2>1.245E-02</x2><x3>1381</x3></dataPoint>
+        <dataPoint><x1>0.992</x1><x2>1.305E-02</x2><x3>1497</x3></dataPoint>
+        <dataPoint><x1>1.101</x1><x2>1.252E-02</x2><x3>1504</x3></dataPoint>
+        <dataPoint><x1>1.196</x1><x2>1.298E-02</x2><x3>1501</x3></dataPoint>
+        <dataPoint><x1>1.301</x1><x2>1.262E-02</x2><x3>1498</x3></dataPoint>
+        <dataPoint><x1>1.396</x1><x2>1.207E-02</x2><x3>1495</x3></dataPoint>
+        <dataPoint><x1>1.501</x1><x2>1.197E-02</x2><x3>1491</x3></dataPoint>
+        <dataPoint><x1>1.596</x1><x2>1.180E-02</x2><x3>1489</x3></dataPoint>
+        <dataPoint><x1>1.696</x1><x2>1.166E-02</x2><x3>1485</x3></dataPoint>
+        <dataPoint><x1>1.796</x1><x2>1.149E-02</x2><x3>1482</x3></dataPoint>
+        <dataPoint><x1>1.896</x1><x2>1.121E-02</x2><x3>1479</x3></dataPoint>
+        <dataPoint><x1>1.996</x1><x2>1.108E-02</x2><x3>1476</x3></dataPoint>
+        <dataPoint><x1>2.091</x1><x2>1.139E-02</x2><x3>1473</x3></dataPoint>
+        <dataPoint><x1>2.195</x1><x2>1.136E-02</x2><x3>1470</x3></dataPoint>
+        <dataPoint><x1>2.295</x1><x2>1.108E-02</x2><x3>1467</x3></dataPoint>
+        <dataPoint><x1>2.391</x1><x2>1.128E-02</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>2.491</x1><x2>1.093E-02</x2><x3>1461</x3></dataPoint>
+        <dataPoint><x1>2.590</x1><x2>1.091E-02</x2><x3>1458</x3></dataPoint>
+        <dataPoint><x1>2.695</x1><x2>1.066E-02</x2><x3>1454</x3></dataPoint>
+        <dataPoint><x1>2.795</x1><x2>1.064E-02</x2><x3>1451</x3></dataPoint>
+        <dataPoint><x1>2.899</x1><x2>1.073E-02</x2><x3>1448</x3></dataPoint>
+        <dataPoint><x1>2.999</x1><x2>1.038E-02</x2><x3>1445</x3></dataPoint>
+        <dataPoint><x1>3.099</x1><x2>1.033E-02</x2><x3>1442</x3></dataPoint>
+        <dataPoint><x1>3.203</x1><x2>1.041E-02</x2><x3>1439</x3></dataPoint>
+        <dataPoint><x1>3.303</x1><x2>1.021E-02</x2><x3>1436</x3></dataPoint>
+        <dataPoint><x1>3.394</x1><x2>1.040E-02</x2><x3>1433</x3></dataPoint>
+        <dataPoint><x1>3.499</x1><x2>1.049E-02</x2><x3>1430</x3></dataPoint>
+        <dataPoint><x1>3.598</x1><x2>1.025E-02</x2><x3>1426</x3></dataPoint>
+        <dataPoint><x1>3.698</x1><x2>1.047E-02</x2><x3>1423</x3></dataPoint>
+        <dataPoint><x1>3.803</x1><x2>9.850E-03</x2><x3>1420</x3></dataPoint>
+        <dataPoint><x1>3.903</x1><x2>1.022E-02</x2><x3>1417</x3></dataPoint>
+        <dataPoint><x1>3.998</x1><x2>1.023E-02</x2><x3>1414</x3></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature is assumed to be normal temperature (293 K).</comment>
+    <comment>The temperature profile was estimated with linear interpolation based on TABLE II</comment>
+    <comment>The flow rate (F) was calculated by the following data and formula: F[liter/min] = 7.81 l/min, M_average = 26.07 g/mol, d = 6 cm, A = (d/2)^2*PI; F[kg m-2 s-1] = const * F[liter/min] * M_average / A . Where const = 6,929*10^-4 (= p/R/T/6E4)</comment>
+    <comment>The temperature in this definition (NTP) is 20 °C (293.15 K) and the pressure is 1 atm.</comment>
+    <comment>The concentration profiles are converted from molecule/cm3 to mole fractions with the ideal gas law to avoid simulation difficulties</comment>
+</experiment>

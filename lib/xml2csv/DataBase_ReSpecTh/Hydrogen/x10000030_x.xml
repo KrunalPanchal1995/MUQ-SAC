@@ -1,0 +1,56 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000030</fileDOI>
+    <fileVersion>
+        <major>3</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Zhang, Y., Huang, Z., Wei, L., Zhang, J., Law, C.K., Combustion and Flame, (159), 918-931, 2012.</description>
+        <referenceDOI>10.1016/j.combustflame.2011.09.010</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 9., full square</figure>
+        <details>
+            <author>Zhang, Yingjia and Huang, Zuohua and Wei, Liangjie and Zhang, Jiaxiang and Law, Chung K</author>
+            <journal>Combust Flame</journal>
+            <number>3</number>
+            <pages>918--931</pages>
+            <title>Experimental and modeling study on ignition delays of lean mixtures of methane, hydrogen, oxygen, and argon at elevated pressures</title>
+            <volume>159</volume>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="bar"           ><value>5</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.03471</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.03471</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.93058</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.14</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="ms" />
+
+        <dataPoint><x1>1.194743e+003</x1><x2>2.232698e-002</x2></dataPoint>
+        <dataPoint><x1>1.122334e+003</x1><x2>6.275669e-002</x2></dataPoint>
+        <dataPoint><x1>1.051525e+003</x1><x2>28.62134e-002</x2></dataPoint>
+        <dataPoint><x1>1.038422e+003</x1><x2>51.92064e-002</x2></dataPoint>
+        <dataPoint><x1>1.033058e+003</x1><x2>85.24521e-002</x2></dataPoint>
+        <dataPoint><x1>1.023541e+003</x1><x2>126.6252e-002</x2></dataPoint>
+        <dataPoint><x1>1.023541e+003</x1><x2>154.3441e-002</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="d/dt max"/>
+	<comment>File version 3.0: exponent +002 has been corrected to -002 for the last two data points. Thanks for Karl Chatelain finding the mistake.</comment>
+</experiment>

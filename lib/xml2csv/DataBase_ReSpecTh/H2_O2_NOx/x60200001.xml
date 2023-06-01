@@ -1,0 +1,81 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60200001</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>A.G. Shmakov et al., Combust. Flame. 157 (2010) 556-565</description>
+        <referenceDOI>10.1016/j.combustflame.2009.10.008</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 2., diamond; Fig. 8., open circle</figure>
+        <details>
+            <author>A.G. Shmakov and O.P. Korobeinichev and I.V. Rybitskaya and A.A. Chernov and D.A. Knyazkov and T.A. Bolshova and A.A. Konnov</author>
+            <journal>Combustion and Flame</journal>
+            <month>mar</month>
+            <number>3</number>
+            <pages>556--565</pages>
+            <publisher>Elsevier {BV</publisher>
+            <title>Formation and consumption of {NO} in H2$\mathplus$O2$\mathplus$N2 flames doped with {NO} or {NH}3 at atmospheric pressure</title>
+            <volume>157</volume>
+            <year>2010</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>308</value></property>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="flow rate"                     label="F"  sourcetype="calculated"  units="kg m-2 s-1"    ><value>0.3117</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.1642</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.1746</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"   InChI="1S/N2/c1-2"  SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.6609</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.0003</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+            <value>38.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"     sourcetype="digitized"  units="mm"            />
+        <property name="composition"  id="x2"   label="[NO]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="temperature"  id="x3"   label="T"     sourcetype="estimated"  units="K"             />
+
+        <dataPoint><x1>00.0911</x1><x2>0.000248</x2><x3>0552</x3></dataPoint>
+        <dataPoint><x1>00.5008</x1><x2>0.000289</x2><x3>1213</x3></dataPoint>
+        <dataPoint><x1>00.8878</x1><x2>0.000341</x2><x3>1423</x3></dataPoint>
+        <dataPoint><x1>01.0927</x1><x2>0.000317</x2><x3>1454</x3></dataPoint>
+        <dataPoint><x1>01.4797</x1><x2>0.000329</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>01.8894</x1><x2>0.000348</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>02.2081</x1><x2>0.000331</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>02.5951</x1><x2>0.000310</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>02.9821</x1><x2>0.000319</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>03.9837</x1><x2>0.000315</x2><x3>1464</x3></dataPoint>
+        <dataPoint><x1>05.0081</x1><x2>0.000343</x2><x3>1455</x3></dataPoint>
+        <dataPoint><x1>05.9870</x1><x2>0.000348</x2><x3>1445</x3></dataPoint>
+        <dataPoint><x1>06.9886</x1><x2>0.000371</x2><x3>1435</x3></dataPoint>
+        <dataPoint><x1>07.9902</x1><x2>0.000374</x2><x3>1425</x3></dataPoint>
+        <dataPoint><x1>08.9919</x1><x2>0.000378</x2><x3>1415</x3></dataPoint>
+        <dataPoint><x1>09.9935</x1><x2>0.000385</x2><x3>1404</x3></dataPoint>
+        <dataPoint><x1>11.0179</x1><x2>0.000390</x2><x3>1394</x3></dataPoint>
+        <dataPoint><x1>11.9967</x1><x2>0.000378</x2><x3>1384</x3></dataPoint>
+        <dataPoint><x1>12.9984</x1><x2>0.000381</x2><x3>1374</x3></dataPoint>
+        <dataPoint><x1>15.0016</x1><x2>0.000383</x2><x3>1354</x3></dataPoint>
+    </dataGroup>
+    <comment>The temperature profile is estimated based on Fig. 2. with interpolation and extrapolation.</comment>
+    <comment>The flow rate (F) was calculated as the product of the gas velocity. (F = v * rho = v * p * M_ave / R / T)</comment>
+</experiment>

@@ -1,0 +1,75 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x60200008</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>A.V. Sepman et al., Appl. Phys. B 77 (2003) 109-117</description>
+        <referenceDOI>10.1007/s00340-003-1250-3</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 7. squere, medium T</figure>
+        <details>
+            <author>A.V. Sepman and V.M. van Essen and A.V. Mokhov and H.B. Levinsky</author>
+            <journal>Applied Physics B</journal>
+            <month>aug</month>
+            <number>1</number>
+            <pages>109--117</pages>
+            <publisher>Springer Science and Business Media {LLC</publisher>
+            <title>Cavity ring-down measurements of seeded {NO} in premixed atmospheric-pressure H2/air and {CH}4/air flames</title>
+            <volume>77</volume>
+            <year>2003</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless"      ><value>0.6</value></property>
+        <property name="temperature"                   label="T"    sourcetype="estimated"  units="K"             ><value>300</value></property>
+        <property name="pressure"                      label="p"    sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="flow rate"                     label="F"    sourcetype="reported"   units="g cm-2 s-1"    ><value>0.02</value></property>
+        <property name="initial composition"           sourcetype="estimated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"   InChI="1S/H2/h1H"   SMILES="[HH]"   chemName="hydrogen"     /><amount units="mole fraction" >0.1548</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"   InChI="1S/O2/c1-2"  SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.1290</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"   InChI="1S/N2/c1-2"  SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.7160</amount></component>
+            <component><speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.0002</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+            <value>19.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="distance"     id="x1"   label="l"       sourcetype="reported"    units="mm"       />
+        <property name="composition"  id="x2"   label="[NO]"    sourcetype="estimated"   units="ppm"      >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="uncertainty"  id="x3"   label="d_[NO]"  sourcetype="calculated"  units="unitless"  reference="composition"  kind="relative"  bound="plusminus" >
+            <speciesLink preferredKey="NO"  CAS="10102-43-9"  InChI="1S/NO/c1-2"  SMILES="[N]=O"  chemName="nitric oxide" />
+        </property>
+        <property name="temperature"  id="x4"   label="T"       sourcetype="digitized"   units="K"        />
+        <property name="uncertainty"  id="x5"   label="d_T"     sourcetype="digitized"   units="K"         reference="temperature"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>5</x1><x2>186</x2><x3>0.08</x3><x4>1570</x4><x5>40</x5></dataPoint>
+    </dataGroup>
+    <comment>The inlet gas temperature (room temperature) is assumed to be 300 K.</comment>
+    <comment>The initial composition was estimated based on the following:</comment>
+    <comment>1. The phi values were reported. (phi = [H2] / 2[O2])</comment>
+    <comment>2. "The NO mole fraction added to the unburned mixtures was nominally 200 ppm." (from paper) ([NO] = 0.0002)</comment>
+    <comment>3. The N2 had tow different sources. One is air diluent ([N2]_air) and the otherone is neat N2 ([N2]_neat) . "The ratio of N2 to fuel in the mixtures did not exceed 0.2" (from paper) So I assumed that [N2]_neat = 0.2. Moreover [N2] = [N2]_neat + [N2]_air.</comment>
+    <comment>4. I rejected to use the following: "supposing that air is composed of 20.95% O2 and 70.95% N2" (from paper). I assumed the following air composition: [N2]_air / [O2] = 0.8 / 0.2 = 4.</comment>
+    <comment>5. [NO] + [H2] + [O2] + [N2]_air + [N2]_neat = 1. Five variable, five equations.</comment>
+    <comment>The experimental NO is reported on Fig. 7. in relative values. (X_NO^meas / X_NO^add) I assumed X_NO^add = 229 ppm due to the following: "When corrected for the change in the number of moles, this results in a mole fraction of 229 ppm in the hot gases." (from paper)</comment>
+    <comment>On Fig. 7. the temperatures are obviously identifiable with the phi and mass flow values.</comment>
+    <comment>The uncertainty of the measured [NO] was calculated as the 95% confidence intervall of the measured data on fig 7. with the highest scatter (rombus, high T)</comment>
+</experiment>

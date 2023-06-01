@@ -1,0 +1,108 @@
+#count (H2):785
+#count (H2CO):36
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+total_reactions: 30
+
+parallel_threads: 10
+
+targets_count: 36 
+
+#################################################
+# 		Chemical Kinetics  Data  				#
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Homogeneous or Hetrogeneous----#
+# -----fuel/s : seperate each fuels by ";"------#
+#################################################
+
+bin: /home/krunal/Desktop/Objectives/Objective_1/Source_Code/bin
+
+solver_bin: /home/krunal/FlameMaster/Bin
+
+fileType: chemkin 
+
+fuelClass: Multi
+
+fuel/s: {a: H2, b: CO}
+
+global_reaction: H2+CO+O2==CO2+H2O
+
+#########################
+# Input file Location   #
+#	Data           		#
+#########################
+
+mechanism: data/.mech
+
+Initial_pre_file: data/.pre
+
+uncertainty_data: data/.xml
+
+thermo_file: data/.thermo
+
+trans_file: data/.tran	
+
+targets: data/target.input
+
+addendum: data/target.add
+
+################################################
+# 			Start file Generator 			   #
+#______________________________________________#
+#											   #			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+
+Fls:
+ Flame: UnstretchedPremixed
+ 
+ StartProfilesFile: data/H2_p01_0phi1_0000tu0298
+	
+ CopyTo: ./startprofile
+
+ fuel: {key: Mono,From: H2}
+ 
+ oxidizer: {key: Mono, From: O2}
+ 
+ bathGas: {key: Mono, From: N2}
+ 
+ globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+ units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+Flf:
+  Flame: UnstretchedPremixed
+ 
+ StartProfilesFile: data/H2_p01_0phi1_0000tu0298
+	
+ CopyTo: ./startprofile
+
+ fuel: {key: Mono,From: H2}
+ 
+ oxidizer: {key: Mono, From: O2}
+ 
+ bathGas: {key: Mono, From: N2}
+ 
+ globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+ units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 
+#####################################
+# 			Stastical Parameters    #
+#				Data  	            #
+#####################################
+
+Design_of_PRS: Monte-Carlo
+
+#Design_of_PRS: LHS-maximin
+
+Order_of_PRS: 2	

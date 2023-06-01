@@ -1,0 +1,72 @@
+##########################################################################
+#  Flat flame experiment                                                 #
+#  Types of flat flame  : HeatFlux; FlatFlame                            #
+#  To find temperature, we need to give the temperature profile as input #
+##########################################################################
+
+###########
+#  	I/O  ##
+#        ##
+########### #############################################
+# Only provide info if the variable is constant         #
+#------------------------------------------------------ #
+# (i.e if you wish to create a file for each and every  #
+# dataset saperately. You can create a single file wrt  #
+# the type of exp also. The given sample is for dataSet #
+# wrt experiment type.                                  #
+#-------------------------------------------------------#
+# Data can be given in both header and body. By providi-#
+#-ng the structure for body, one can create dataset of  #
+# any type.                                             # 
+#########################################################
+
+DataSet: flf_  
+
+Target:	Flf 
+
+Fuel:	{a: H2, b: CO}
+
+Oxidizer:	O2
+
+Bath_gas:	{bg1: AR} 
+
+Pressure:	
+
+Temperature:	
+
+Phi:
+
+Simulation_type:	isochor
+
+Measurnment_type:	conc
+
+Flame_type:	HeatFlux
+
+ignition_mode:	
+
+startprofile:	
+
+flow_rate:	
+
+flow_unit:	
+
+############
+# Data #####
+############
+
+Unsrt: {type: absolute}
+
+Unit: {conc: mol, P: atm, T: K, observed: cm/s}
+
+Data_structure:	
+ - Sr
+ - a
+ - b
+ - Ox
+ - bg1
+ - T
+ - P
+ - Flf
+ - sigma
+ 
+

@@ -1,0 +1,21 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+
+
+fls_1a:
+ solver: cantera
+  
+flf_1a:
+ ExpTempFile: ExpTempFile/flf
+ solver: FlameMaster
+
+flf_1b:
+ ExpTempFile: ExpTempFile/flf
+ solver: FlameMaster
+

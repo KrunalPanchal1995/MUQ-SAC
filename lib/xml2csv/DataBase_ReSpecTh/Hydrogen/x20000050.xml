@@ -1,0 +1,58 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000050</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Tang, C., Huang, Z., Jin, C., He, J., Wang, J., International Journal of Hydrogen Energy, (33), 2008, 4906-4914, 2008.</description>
+        <referenceDOI>10.1016/j.ijhydene.2008.06.063</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 8., full triangle</figure>
+        <details>
+            <author>Tang, Chenglong and Huang, Zuohua and Jin, Chun and He, Jiajia and Wang, Jinhua and Wang, Xibin and Miao, Haiyan</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <pages>4906--4914</pages>
+            <title>Laminar burning velocities and combustion characteristics of propane{\textendash}hydrogen{\textendash}air premixed flames</title>
+            <volume>33</volume>
+            <year>2008</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>8.47</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint><x1>9.659500e+001</x1><x2>2.013423e-001</x2><x3>1.677852e-001</x3><x4>6.308725e-001</x4></dataPoint>
+        <dataPoint><x1>1.642720e+002</x1><x2>2.515723e-001</x2><x3>1.572327e-001</x3><x4>5.911950e-001</x4></dataPoint>
+        <dataPoint><x1>2.125440e+002</x1><x2>2.958580e-001</x2><x3>1.479290e-001</x3><x4>5.562130e-001</x4></dataPoint>
+        <dataPoint><x1>2.374530e+002</x1><x2>3.351955e-001</x2><x3>1.396648e-001</x3><x4>5.251397e-001</x4></dataPoint>
+        <dataPoint><x1>2.559970e+002</x1><x2>3.703704e-001</x2><x3>1.322751e-001</x3><x4>4.973545e-001</x4></dataPoint>
+        <dataPoint><x1>2.750060e+002</x1><x2>4.020101e-001</x2><x3>1.256281e-001</x3><x4>4.723618e-001</x4></dataPoint>
+    </dataGroup>
+</experiment>

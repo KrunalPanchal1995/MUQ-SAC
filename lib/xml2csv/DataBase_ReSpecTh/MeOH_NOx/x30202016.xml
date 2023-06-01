@@ -1,0 +1,101 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202016</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>M.U. Alzueta et al., Energy and Fuels 15 (2001) 724-729</description>
+        <referenceDOI>10.1021/ef0002602</referenceDOI>
+        <location>Main paper</location>
+        <figure>Figs. 6-8 and 10, full triangle, phi=1.14</figure>
+        <details>
+            <author>Alzueta, M U and Bilbao, R and Finestra, M</author>
+            <journal>Energy and Fuels</journal>
+            <number>3</number>
+            <pages>724--729</pages>
+            <title>Methanol oxidation and its interaction with nitric oxide</title>
+            <volume>15</volume>
+            <year>2001</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     /><amount units="mole fraction" >0.000450</amount></component>
+            <component><speciesLink preferredKey="O2"     CAS="7782-44-7"   InChI="1S/O2/c1-2"            SMILES="O=O"    chemName="oxygen"       /><amount units="mole fraction" >0.000771</amount></component>
+            <component><speciesLink preferredKey="H2O"    CAS="7732-18-5"   InChI="1S/H2O/h1H2"           SMILES="O"      chemName="water"        /><amount units="mole fraction" >0.011000</amount></component>
+            <component><speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000416</amount></component>
+            <component><speciesLink preferredKey="N2"     CAS="7727-37-9"   InChI="1S/N2/c1-2"            SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.987363</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>1.12e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+            <value>4.65e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"         chemName="methanol"        />
+            <value>1.24e-5</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"    />
+            <value>2.03e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x01"  label="T"          sourcetype="digitized"   units="K"             />
+        <property name="residence time"  id="x02"  label="t"          sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x03"  label="[CH3OH]"    sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"         chemName="methanol"        />
+        </property>
+        <property name="composition"     id="x04"  label="[CO]"       sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"     id="x05"  label="[CO2]"      sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+        <property name="composition"     id="x06"  label="[NO]"       sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"    />
+        </property>
+        <property name="uncertainty"     id="x07"  label="d_T"        sourcetype="reported"    units="K"              reference="temperature"     kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x08"  label="d_t"        sourcetype="calculated"  units="s"              reference="residence time"  kind="absolute"  bound="plusminus" />
+        <property name="uncertainty"     id="x09"  label="d_[CH3OH]"  sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"         chemName="methanol"        />
+        </property>
+        <property name="uncertainty"     id="x10"  label="d_[CO]"     sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO"     CAS="630-08-0"    InChI="1S/CO/c1-2"            SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="uncertainty"     id="x11"  label="d_[CO2]"    sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="CO2"    CAS="124-38-9"    InChI="1S/CO2/c2-1-3"         SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+        <property name="uncertainty"     id="x12"  label="d_[NO]"     sourcetype="calculated"  units="mole fraction"  reference="composition"     kind="absolute"  bound="plusminus" >
+            <speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"      chemName="nitric oxide"    />
+        </property>
+
+        <dataPoint><x01>0875</x01><x02>0.2080</x02><x03>4.500E-04</x03><x04>0.000E+00</x04><x05>0.000E+00</x05><x06>4.076E-04</x06><x07>5</x07><x08>0.0012</x08><x09>2.25E-05</x09><x10>1.00E-05</x10><x11>1.00E-05</x11><x12>2.04E-05</x12></dataPoint>
+        <dataPoint><x01>1013</x01><x02>0.1797</x02><x03>3.245E-04</x03><x04>2.381E-05</x04><x05>1.723E-06</x05><x06>4.021E-04</x06><x07>5</x07><x08>0.0009</x08><x09>1.62E-05</x09><x10>1.00E-05</x10><x11>1.00E-05</x11><x12>2.01E-05</x12></dataPoint>
+        <dataPoint><x01>1063</x01><x02>0.1712</x02><x03>1.137E-04</x03><x04>1.709E-04</x04><x05>2.883E-05</x05><x06>4.074E-04</x06><x07>5</x07><x08>0.0008</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>1.00E-05</x11><x12>2.04E-05</x12></dataPoint>
+        <dataPoint><x01>1121</x01><x02>0.1624</x02><x03>1.526E-05</x03><x04>1.420E-04</x04><x05>3.159E-04</x05><x06>4.073E-04</x06><x07>5</x07><x08>0.0007</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>1.58E-05</x11><x12>2.04E-05</x12></dataPoint>
+        <dataPoint><x01>1160</x01><x02>0.1569</x02><x03>4.003E-06</x03><x04>1.079E-04</x04><x05>3.969E-04</x05><x06>4.036E-04</x06><x07>5</x07><x08>0.0007</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>1.98E-05</x11><x12>2.02E-05</x12></dataPoint>
+        <dataPoint><x01>1213</x01><x02>0.1500</x02><x03>0.000E+00</x03><x04>4.556E-05</x04><x05>4.513E-04</x05><x06>4.009E-04</x06><x07>5</x07><x08>0.0006</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>2.26E-05</x11><x12>2.00E-05</x12></dataPoint>
+        <dataPoint><x01>1281</x01><x02>0.1421</x02><x03>0.000E+00</x03><x04>0.000E+00</x04><x05>4.496E-04</x05><x06>4.008E-04</x06><x07>5</x07><x08>0.0006</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>2.25E-05</x11><x12>2.00E-05</x12></dataPoint>
+        <dataPoint><x01>1323</x01><x02>0.1376</x02><x03>0.000E+00</x03><x04>0.000E+00</x04><x05>4.496E-04</x05><x06>3.998E-04</x06><x07>5</x07><x08>0.0005</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>2.25E-05</x11><x12>2.00E-05</x12></dataPoint>
+        <dataPoint><x01>1393</x01><x02>0.1307</x02><x03>0.000E+00</x03><x04>0.000E+00</x04><x05>4.524E-04</x05><x06>3.962E-04</x06><x07>5</x07><x08>0.0005</x08><x09>1.00E-05</x09><x10>1.00E-05</x10><x11>2.26E-05</x11><x12>1.98E-05</x12></dataPoint>
+    </dataGroup>
+    <comment>This xml file is the updated ReSpecTh 2.2 version of x30002005NOx.xml by C. Olm</comment>
+</experiment>

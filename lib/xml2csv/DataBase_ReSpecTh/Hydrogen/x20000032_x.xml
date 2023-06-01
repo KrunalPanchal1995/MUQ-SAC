@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000032_x</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Aung, K.T., Hassan, M.I., Faeth, G.M., Combustion and Flame, 1998, (112), 1-15.</description>
+        <referenceDOI>10.1016/S0010-2180(97)81753-1</referenceDOI>
+        <location>Main Article</location>
+        <table>Table. 2</table>
+        <figure>Fig. 7. bottom, full circle</figure>
+        <details>
+            <author>Aung, K T and Hassan, M I and Faeth, G M</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>1--15</pages>
+            <title>Effects of Pressure and Nitrogen Dilution on Flame / Stretch Interactions of Laminar Premixed H$_{2}$ / O$_{2}$ / N2 Flames</title>
+            <volume>112</volume>
+            <year>1998</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"   sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"   sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="uncertainty"                   label="dT"  sourcetype="reported"   units="K"     reference="temperature"               kind="absolute"  bound="plusminus" ><value>3</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="reported"    units="mm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint> <x1>160</x1><x2>1.303641e-001</x2><x3>1.086737e-001</x3><x4>7.609622e-001</x4></dataPoint>
+        <dataPoint> <x1>450</x1><x2>1.665537e-001</x2><x3>1.041398e-001</x3><x4>7.293066e-001</x4></dataPoint>
+        <dataPoint> <x1>770</x1><x2>2.000000e-001</x2><x3>1.000000e-001</x3><x4>7.000000e-001</x4></dataPoint>
+        <dataPoint><x1>1000</x1><x2>2.306362e-001</x2><x3>9.613561e-002</x3><x4>6.732282e-001</x4></dataPoint>
+        <dataPoint><x1>1140</x1><x2>2.725190e-001</x2><x3>9.090329e-002</x3><x4>6.365777e-001</x4></dataPoint>
+        <dataPoint><x1>1160</x1><x2>3.104423e-001</x2><x3>8.623398e-002</x3><x4>6.033237e-001</x4></dataPoint>
+        <dataPoint><x1>1140</x1><x2>3.333083e-001</x2><x3>8.332708e-002</x3><x4>5.833646e-001</x4></dataPoint>
+        <dataPoint><x1>1120</x1><x2>3.547622e-001</x2><x3>8.062778e-002</x3><x4>5.646100e-001</x4></dataPoint>
+        <dataPoint> <x1>960</x1><x2>3.938661e-001</x2><x3>7.575013e-002</x3><x4>5.303838e-001</x4></dataPoint>
+        <dataPoint> <x1>860</x1><x2>4.287041e-001</x2><x3>7.141972e-002</x3><x4>4.998762e-001</x4></dataPoint>
+    </dataGroup>
+    <comment>The reported data are from Table 2.</comment>
+</experiment>

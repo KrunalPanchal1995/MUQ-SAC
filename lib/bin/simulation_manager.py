@@ -1,0 +1,217 @@
+import os, shutil, re, math #default python modules
+import make_input_file #program specific modules
+import MechanismManipulator
+import numpy as np
+import pandas as pd
+from pyDOE import *
+home_dir = os.getcwd()
+import multiprocessing
+import subprocess
+import time
+import sys
+#function to create directories and the required input files in a systematic way directories are named with the reaction index
+class SM():
+	def __init__(self,opt_dict,cd, order,ap, ind, foc, m, th,tr, ml,ml_type, rUsrt, fUsrt, mUsrt, thUsrt, trUsrt, tl, f, gr,thfl, trfl, spl, dis, sim, ac):
+		
+		self.opt_dict = opt_dict
+		self.case_dir = cd
+		self.order = order
+		self.activeParameters = ap 
+		self.ind = ind
+		self.foc = foc 
+		self.mBody = m
+		self.thm = th
+		self.trans = tr
+		self.mech_loc = ml
+		self.rxnUnsert = rUsrt
+		self.focUnsert = fUsrt
+		self.tbdUnsert = mUsrt
+		self.thermoUnsert = thUsrt
+		self.transUnsert = trUsrt
+		self.target_list = tl 
+		self.fuel = f
+		self.g_reaction = gr
+		self.thermo_file_location = thfl
+		self.trans_file_location = trfl 
+		self.s_p_location = spl 
+		self.design = dis
+		self.simulation = sim
+		self.allowed_count = ac
+		self.progress = []
+		self.fileType = ml_type
+		#print(ml_type)
+		if ml_type.strip() == "chemkin":
+			self.file_specific_command = "-f chemkin"
+		else:
+			self.file_specific_command = ""
+		#print(self.file_specific_command)
+	
+	def log_result(self,result):
+		self.progress.append(result[0])
+		sys.stdout.write("\r{:06.2f}% of simulation is complete".format(len(progress)/float(result[1])*100))
+		sys.stdout.flush()
+
+		#l.acquire()
+		f = open("case_progress",'a')
+		f.write("case"+result[0]+"\n")
+		f.close()
+		#l.release()
+
+	def makeDir(self,case,total_targets):
+		
+		self.beta_list = []	
+		if self.simulation =='sa':
+			self.sim_ = 7*self.n
+		# taking 2 as perturbation factor
+			self.beta_=[]
+			c = []
+			center_point = self.n
+			for i in range(self.sim_):
+			    temp = 2*np.random.random(self.n)-1
+			    c.append(temp)
+			beta = np.matrix(c)
+			#beta = np.vstack(beta3)
+			for i in beta:
+			    self.beta_.append(np.array(i)[0])		
+	
+	
+		if self.simulation =='Opt':
+			#Initializing the sampling size
+			self.sim_ = len(2*np.random.random(2*int(self.n_))-1)
+			#Initializing the design for the response surface
+			if self.design == 'LHS-maximin':  #Latin hypercube sampling (Maximin)
+				self.beta_ = 2*lhs(self.n,samples = sim_,criterion='centermaximin')-1	
+			elif self.design == 'Monte-Carlo': #Monte-carlo sampling
+				self.beta_ = []
+				for i in range(self.sim_):
+					temp = (2*np.random.random(self.n)-1)
+					self.beta_.append(temp)
+			elif self.design == 'Legendre':
+				self.beta_ = np.matrix(pd.read_csv(home_dir+'/outfile_ortho.csv'))
+				self.beta_ = self.beta_.tolist()
+				print(self.beta_[0])
+				print("Beta list (Legendre) found !! Shape of beta list {}".format(np.shape(beta_)))
+	
+		if self.simulation == "Original":
+			self.sim_ = 1
+			self.beta_ = []
+			for i in range(self.sim_):
+				temp = 0*(2*np.random.random(self.n)-1)
+				self.beta_.append(temp)
+	
+		self.sim_dict = {}
+		if os.path.isdir(os.getcwd()+"/case-"+str(case)) == True:
+			os.chdir("case-"+str(case))
+		else:
+			os.mkdir("case-"+str(case))
+			os.chdir("case-"+str(case))  	# make a dir for a target
+			#get into that dir
+		#print("Required simulations = {}".format(self.sim_))
+		for i in range(self.sim_):
+			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") == True: 
+				continue
+			elif os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:
+				print("Output is not there, re creating the folder {}".format(i))
+				self.beta_list.append(self.beta_[i]);
+				#print(self.beta_[i])
+				#beta_rxn,beta_foc,beta_mol,beta_ther,beta_tras=
+				beta_dict = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],self.simulation,"False")
+				#print(beta_dict)
+				#beta_r.append(beta_rxn)
+				#beta_f.append(beta_foc)
+				#beta_m.append(beta_mol)
+				#beta_th.append(beta_ther)
+				#beta_ts.append(beta_tras)
+				self.sim_dict[str(i)] = beta_dict
+				#print("starting to create the input files")
+				make_input_file.create_input_file(self.opt_dict,self.target_list[case], self.fuel, self.g_reaction, self.thermo_file_location, self.trans_file_location,self.s_p_location,self.file_specific_command) #generate input file
+				self.dir_list.append(os.path.abspath('run'))
+				os.mkdir('output')
+				os.chdir('..')
+				continue
+		
+			elif os.path.isdir(os.getcwd()+"/"+str(i)) != True: 
+				os.mkdir(str(i))
+				os.chdir(str(i))
+				self.beta_list.append(self.beta_[i]);
+				#beta_rxn,beta_foc,beta_m,beta_th,beta_ts = 
+				beta_dict = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],self.simulation,"False")
+				self.sim_dict[str(i)] = beta_dict
+				make_input_file.create_input_file(self.target_list[case], self.fuel, self.g_reaction, self.thermo_file_location, self.trans_file_location,self.s_p_location,self.file_specific_command) #generate input file
+				self.dir_list.append(os.path.abspath('run').strip("\n"))
+				os.mkdir('output')
+				os.chdir('..')
+				continue
+			else:
+				continue
+		
+			#file_rxn.open("reactions.perturb",'w')
+			#file_rxn.write()
+		return (case,total_targets),self.sim_dict
+
+
+
+	def make_directories_for_simulation(self):
+		self.MechManipulator = MechanismManipulator.MechanismManipulator(self.mech_loc,self.fileType,self.thermo_file_location,self.trans_file_location,self.ind,self.foc,self.mBody,self.thm,self.trans,self.rxnUnsert, self.focUnsert, self.tbdUnsert, self.thermoUnsert, self.transUnsert)
+		self.R_list=self.ind
+		self.foc_list = self.foc
+		self.molecule = []
+		for i in self.mBody:
+			self.molecule.append(self.tbdUnsert[i].branches.split(","))
+		
+		self.thermo_list = self.thm
+		self.transport_list = self.trans
+		self.n = 3*len(self.ind)+len(self.foc)+len(np.asarray(self.molecule).flatten())+7*len(self.thm)+2*len(self.trans)
+		
+		self.dir_list = []	
+		if self.order == 2:
+			self.n_ = 1 + 2*self.n + (self.n*(self.n-1))/2
+		#Third order
+		if self.order == 3:
+			self.n_ = 1 + 3*self.n + (self.n*(self.n-1))/2+(self.n*(self.n-1)*(self.n-2))/6+(self.n*(self.n-1))
+
+		#Fourth order
+		if self.order == 4:		
+			self.n_ = 1 + 4*self.n + (self.n*(self.n-1))/2+(self.n*(self.n-1)*(self.n-2))/6+(self.n*(self.n-1)*(self.n-2)*(self.n-3))/24+3*(self.n*(self.n-1))+ (self.n*(self.n-1)*(self.n-2))	
+
+		#Fifth order		
+		if self.order == 5:
+			self.n_ = 1 + 5*self.n + (self.n*(self.n-1))/2+(self.n*(self.n-1)*(self.n-2))/6+(self.n*(self.n-1)*(self.n-2)*(self.n-3))/24+(self.n*(self.n-1)*(self.n-2)*(self.n-3)*(self.n-4))/120+5*(self.n*(self.n-1))+3*(self.n*(self.n-1)*(self.n-2))
+
+		#Initializing sampling size
+	
+		count = 0
+		start_time = time.time()
+		print("Creating Directories for simulations......\n\n\n This may take a while... Please be patient...\n\n ")
+		#Parallel_jobs = multiprocessing.Pool(self.allowed_count-1)
+		self.case_manipulation = {}
+		for case in self.case_dir:
+			#Parallel_jobs.apply_async(self.makeDir, args = (case,len(self.case_dir)), callback = self.log_result)
+			progress,dict_ = self.makeDir(case,len(self.case_dir))
+			self.case_manipulation[str(case)] = dict_
+			s = ''
+			for k in self.beta_list:
+				for l in k:
+					s +='{},'.format(l)
+				s +='\n'
+			ff = open('../Data/Simulations/Beta_list_case-'+str(case)+'.csv','w')
+			ff.write(s)
+			ff.close(); 
+			os.chdir('..')
+		#Parallel_jobs.close()
+		#Parallel_jobs.join()
+		
+		self.params_manipulation = {}
+		for j in self.activeParameters:
+			self.case_database = {}
+			self.param_case_manipulation = {}
+			for case in self.case_dir:
+				temp = []
+				for i,dictionary in enumerate(self.sim_dict):
+					temp.append(self.case_manipulation[str(case)][str(i)][str(j)])
+				self.case_database[str(case)] = temp
+			self.params_manipulation[str(j)] = self.case_database
+			
+		#print(self.params_manipulation)
+		
+		return self.dir_list,self.params_manipulation

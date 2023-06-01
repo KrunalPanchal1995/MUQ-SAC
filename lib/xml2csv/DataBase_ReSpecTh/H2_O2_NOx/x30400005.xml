@@ -1,0 +1,73 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30400005</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>T. Hulgaard et al., AIChE J., 39 (1993) 1342-1354, Figure 4. Circle</description>
+        <referenceDOI>10.1002/aic.690390811</referenceDOI>
+        <location>Main article</location>
+        <figure>Figure 4. Circle</figure>
+        <details>
+            <author>Hulgaard, T and Dam-Johansen, K</author>
+            <journal>AIChE J</journal>
+            <number>8</number>
+            <pages>1342--1354</pages>
+            <title>Homogenous Nitrous Oxide Formation and Destruction under Combustion Conditions</title>
+            <volume>39</volume>
+            <year>1993</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="estimated"  units="atm"           ><value>1.04</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="ppm"           >215</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"     SMILES="O=O"         chemName="oxygen"        /><amount units="mole fraction" >0.04</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="ppm"           >400</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"   InChI="1S/N2/c1-2"     SMILES="N#N"         chemName="nitrogen"      /><amount units="mole fraction" >0.959385</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+            <value>2.0</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="ppm"            reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+            <value>11.0</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="residence time"  id="x1"   label="t"      sourcetype="calculated"  units="s"   />
+        <property name="temperature"     id="x2"   label="T"      sourcetype="digitized"   units="K"   />
+        <property name="composition"     id="x3"   label="[N2O]"  sourcetype="digitized"   units="ppm" >
+            <speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" />
+        </property>
+        <property name="composition"     id="x4"   label="[NO]"   sourcetype="digitized"   units="ppm" >
+            <speciesLink preferredKey="NO"   CAS="10102-43-9"  InChI="1S/NO/c1-2"     SMILES="[N]=O"       chemName="nitric oxide"  />
+        </property>
+
+        <dataPoint><x1>0.0673</x1> <x2>965</x2><x3>215</x3><x4>0.9</x4></dataPoint>
+        <dataPoint><x1>0.0639</x1><x2>1018</x2><x3>214</x3><x4>0.8</x4></dataPoint>
+        <dataPoint><x1>0.0607</x1><x2>1070</x2><x3>210</x3><x4>1.2</x4></dataPoint>
+        <dataPoint><x1>0.0580</x1><x2>1121</x2><x3>206</x3><x4>1.0</x4></dataPoint>
+        <dataPoint><x1>0.0565</x1><x2>1150</x2><x3>203</x3><x4>1.3</x4></dataPoint>
+        <dataPoint><x1>0.0550</x1><x2>1183</x2><x3>197</x3><x4>1.5</x4></dataPoint>
+        <dataPoint><x1>0.0536</x1><x2>1212</x2><x3>187</x3><x4>2.1</x4></dataPoint>
+        <dataPoint><x1>0.0524</x1><x2>1239</x2><x3>172</x3><x4>3.2</x4></dataPoint>
+        <dataPoint><x1>0.0512</x1><x2>1270</x2><x3>146</x3><x4>4.0</x4></dataPoint>
+        <dataPoint><x1>0.0501</x1><x2>1298</x2><x3>114</x3><x4>4.8</x4></dataPoint>
+        <dataPoint><x1>0.0490</x1><x2>1326</x2> <x3>79</x3><x4>5.1</x4></dataPoint>
+        <dataPoint><x1>0.0476</x1><x2>1366</x2> <x3>34</x3><x4>5.5</x4></dataPoint>
+    </dataGroup>
+</experiment>

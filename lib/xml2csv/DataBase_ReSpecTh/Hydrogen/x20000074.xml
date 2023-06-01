@@ -1,0 +1,71 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000074</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>C. Dong; Q. Zhou; Q. Zhao; Y. Zhang; T. Xu; S. Hui, Fuel, 2009, 88, (10), 1858-1863.</description>
+        <referenceDOI>10.1016/j.fuel.2009.04.024</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 6, open blue diamond, H2/(CO+ H2) = 100%</figure>
+        <details>
+            <author>Dong, Chen and Zhou, Qulan and Zhao, Qinxin and Zhang, Yaqing and Xu, Tongmo and Hui, Shien</author>
+            <journal>Fuel</journal>
+            <number>10</number>
+            <pages>1858--1863</pages>
+            <title>Experimental study on the laminar flame speed of hydrogen/carbon monoxide/air mixtures</title>
+            <volume>88</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>293</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>7.52</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="Laminar Flame Speed">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"                   sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"                 sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"                 sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_N2"                 sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" />
+        </property>
+
+        <dataPoint> <x1>38.5</x1><x2>0.1439</x2><x3>0.1799</x3><x4>0.6763</x4></dataPoint>
+        <dataPoint> <x1>61.5</x1><x2>0.1736</x2><x3>0.1736</x3><x4>0.6528</x4></dataPoint>
+        <dataPoint> <x1>94.0</x1><x2>0.2013</x2><x3>0.1678</x3><x4>0.6309</x4></dataPoint>
+        <dataPoint><x1>149.0</x1><x2>0.2273</x2><x3>0.1623</x3><x4>0.6104</x4></dataPoint>
+        <dataPoint><x1>167.0</x1><x2>0.2516</x2><x3>0.1572</x3><x4>0.5912</x4></dataPoint>
+        <dataPoint><x1>188.5</x1><x2>0.2744</x2><x3>0.1524</x3><x4>0.5732</x4></dataPoint>
+        <dataPoint><x1>198.0</x1><x2>0.2959</x2><x3>0.1479</x3><x4>0.5562</x4></dataPoint>
+        <dataPoint><x1>233.0</x1><x2>0.3161</x2><x3>0.1437</x3><x4>0.5402</x4></dataPoint>
+        <dataPoint><x1>237.5</x1><x2>0.3352</x2><x3>0.1397</x3><x4>0.5251</x4></dataPoint>
+        <dataPoint><x1>262.0</x1><x2>0.3533</x2><x3>0.1359</x3><x4>0.5109</x4></dataPoint>
+        <dataPoint><x1>262.5</x1><x2>0.3704</x2><x3>0.1323</x3><x4>0.4974</x4></dataPoint>
+        <dataPoint><x1>271.5</x1><x2>0.3866</x2><x3>0.1289</x3><x4>0.4845</x4></dataPoint>
+        <dataPoint><x1>283.0</x1><x2>0.4020</x2><x3>0.1256</x3><x4>0.4724</x4></dataPoint>
+        <dataPoint><x1>289.0</x1><x2>0.4167</x2><x3>0.1225</x3><x4>0.4608</x4></dataPoint>
+        <dataPoint><x1>281.5</x1><x2>0.4306</x2><x3>0.1196</x3><x4>0.4498</x4></dataPoint>
+        <dataPoint><x1>278.5</x1><x2>0.4439</x2><x3>0.1168</x3><x4>0.4393</x4></dataPoint>
+        <dataPoint><x1>271.0</x1><x2>0.4566</x2><x3>0.1142</x3><x4>0.4292</x4></dataPoint>
+        <dataPoint><x1>259.0</x1><x2>0.4688</x2><x3>0.1116</x3><x4>0.4196</x4></dataPoint>
+    </dataGroup>
+</experiment>

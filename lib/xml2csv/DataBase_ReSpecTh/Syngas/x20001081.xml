@@ -1,0 +1,73 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001081</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>J. Natarajan; T. Lieuwen; J. Seitzman, Combustion and Flame 2007, 151, (1-2), 104-119.</description>
+        <referenceDOI>10.1016/j.combustflame.2007.05.003</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 13, H2/CO = 95/5, 0% CO2 dilution, green square.</figure>
+        <details>
+            <author>Natarajan, J and Lieuwen, T and Seitzman, J</author>
+            <journal>Combust Flame</journal>
+            <number>1--2</number>
+            <pages>104--119</pages>
+            <title>Laminar flame speeds of H$_{2}$/CO mixtures: Effect of CO$_{2}$ dilution, preheat temperature, and pressure</title>
+            <volume>151</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>500</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>4.81</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[CO]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[H2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"      SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x4"   label="[O2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x5"   label="[N2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"     SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="composition"               id="x6"   label="[CO2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  />
+        </property>
+
+        <dataPoint><x1>1.183630e+002</x1><x2>8.100000e-003</x2><x3>1.543000e-001</x3><x4>1.674000e-001</x4><x5>6.295000e-001</x5><x6>4.060000e-002</x6></dataPoint>
+        <dataPoint><x1>1.316370e+002</x1><x2>8.500000e-003</x2><x3>1.618000e-001</x3><x4>1.654000e-001</x4><x5>6.218000e-001</x5><x6>4.260000e-002</x6></dataPoint>
+        <dataPoint><x1>1.471240e+002</x1><x2>8.900000e-003</x2><x3>1.690000e-001</x3><x4>1.634000e-001</x4><x5>6.143000e-001</x5><x6>4.450000e-002</x6></dataPoint>
+        <dataPoint><x1>1.615040e+002</x1><x2>9.300000e-003</x2><x3>1.758000e-001</x3><x4>1.615000e-001</x4><x5>6.071000e-001</x5><x6>4.630000e-002</x6></dataPoint>
+        <dataPoint><x1>1.648230e+002</x1><x2>9.500000e-003</x2><x3>1.806000e-001</x3><x4>1.602000e-001</x4><x5>6.022000e-001</x5><x6>4.750000e-002</x6></dataPoint>
+        <dataPoint><x1>1.891590e+002</x1><x2>1.000000e-002</x2><x3>1.905000e-001</x3><x4>1.574000e-001</x4><x5>5.919000e-001</x5><x6>5.010000e-002</x6></dataPoint>
+        <dataPoint><x1>2.334070e+002</x1><x2>1.060000e-002</x2><x3>2.007000e-001</x3><x4>1.546000e-001</x4><x5>5.813000e-001</x5><x6>5.280000e-002</x6></dataPoint>
+        <dataPoint><x1>2.522120e+002</x1><x2>1.090000e-002</x2><x3>2.078000e-001</x3><x4>1.526000e-001</x4><x5>5.739000e-001</x5><x6>5.470000e-002</x6></dataPoint>
+        <dataPoint><x1>2.688050e+002</x1><x2>1.130000e-002</x2><x3>2.150000e-001</x3><x4>1.507000e-001</x4><x5>5.665000e-001</x5><x6>5.660000e-002</x6></dataPoint>
+        <dataPoint><x1>2.831860e+002</x1><x2>1.170000e-002</x2><x3>2.219000e-001</x3><x4>1.487000e-001</x4><x5>5.593000e-001</x5><x6>5.840000e-002</x6></dataPoint>
+        <dataPoint><x1>2.975660e+002</x1><x2>1.200000e-002</x2><x3>2.287000e-001</x3><x4>1.469000e-001</x4><x5>5.522000e-001</x5><x6>6.020000e-002</x6></dataPoint>
+        <dataPoint><x1>3.119470e+002</x1><x2>1.240000e-002</x2><x3>2.351000e-001</x3><x4>1.451000e-001</x4><x5>5.456000e-001</x5><x6>6.190000e-002</x6></dataPoint>
+        <dataPoint><x1>3.241150e+002</x1><x2>1.270000e-002</x2><x3>2.415000e-001</x3><x4>1.433000e-001</x4><x5>5.389000e-001</x5><x6>6.360000e-002</x6></dataPoint>
+        <dataPoint><x1>3.373890e+002</x1><x2>1.300000e-002</x2><x3>2.478000e-001</x3><x4>1.416000e-001</x4><x5>5.323000e-001</x5><x6>6.520000e-002</x6></dataPoint>
+    </dataGroup>
+</experiment>

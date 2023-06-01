@@ -1,0 +1,96 @@
+
+############
+# Numerics #
+############
+
+#### Newton solver ####
+TimeDepFlag = FALSE
+DeltaTStart = 1.0e-8
+DeltaTMax = 1.0e5
+UseNumericalJac is TRUE
+UseSecondOrdJac is TRUE
+UseModifiedNewton = TRUE
+
+DampFlag = TRUE
+LambdaMin = 1.0e-2
+
+MaxIter = 5000
+TolRes = 1.0e-15
+TolDy = 1e-4
+
+#### grid ####
+
+DeltaNewGrid = 25
+OneSolutionOneGrid = TRUE
+initialgridpoints =  141
+
+maxgridpoints = 300
+q = -0.25
+R = 60
+
+########################
+# Sensitivity Analysis #
+########################
+
+#ReactionFluxAnal is TRUE
+
+#######
+# I/O #
+#######
+
+#WriteEverySolution = TRUE
+#PrintMolarFractions is TRUE
+#AdditionalOutput is TRUE
+
+OutputPath is ./output
+StartProfilesFile is H2_p01_0phi1_0000tu0298
+
+#############
+# Chemistry #
+#############
+
+MechanismFile is /home/krunal/Desktop/kmOpt/Fuels/GRIMECH/gri.pre
+globalReaction is H2+O2+CO==CO2+H2O;
+
+fuel is H2
+fuel is H2
+fuel is CO
+
+oxidizer is O2
+
+#########
+# Flame #
+#########
+
+Flame is UnstretchedPremixed
+ExactBackward is TRUE
+
+#phi = 
+
+pressure = 101350
+
+ComputeWithRadiation is True
+Thermodiffusion is True
+
+#######################
+# Boundary conditions #
+#######################
+
+#ConstMassFlux is TRUE
+#MassFlux = 0.3
+
+Unburnt Side {
+	dirichlet {
+		t = 298.2
+		x->H2=0.016
+		x->CO=0.309
+		x->O2=0.142
+		x->N2=0.533
+		x->AR=0.0
+		x->H2O=0.0
+		
+	}
+}
+
+
+

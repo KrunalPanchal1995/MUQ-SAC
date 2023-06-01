@@ -1,0 +1,16 @@
+{"DataSet"				:	fls_ , 
+ "Target"				:	Fls , 
+ "Fuel"					:	{"a":H2,"b":CO},
+ "Oxidizer"				:	O2,
+ "Bath_gas"				:	{"bg1":AR}, 
+ "Unsrt"				:	{"type":absolute},
+ "Unit"					:	{"conc":mol,"P":atm,"T":K,"observed":us},
+ "Simulation_type"		:	isochor,
+ "Measurnment_type"		:	TimeDelay,
+ "Flame_type"			:	,
+ "ignition_mode"		:	,
+ "startprofile"			:	,
+ "flow_rate"			:	,
+ "flow_unit"			:	,
+ "Data_structure"		:	[Sr,a,b,Ox,bg1,T,P,Fls,sigma] 
+ }

@@ -1,0 +1,56 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001072</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>M. C. Krejci; O. Mathieu; A. J. Vissotski; S. Ravi; T. G. Sikes; E. L. Petersen; A. Keromnes; W. K. Metcalfe; H. J. Curran, Proceedings of ASME Turbo Expo 2012-GT2012, June 11-15, Copenhagen, Denmark 2012, Paper GT2012-69290.</description>
+        <referenceDOI>10.1115/gt2012-69290</referenceDOI>
+        <location>Appendix</location>
+        <table>Table A9, H2/CO/O2/Ar = 0.001/0.009/0.01/0.98, mid pressure series.</table>
+        <details>
+            <author>Krejci, M C and Mathieu, O and Vissotski, A J and Ravi, S and Sikes, T G and Petersen, E L and K{\'{e}}romn{\`{e}}s, A and Metcalfe, W K and Curran, H J</author>
+            <journal>Proceedings of the ASME Turbo Expo, June 11-15, 2012, Copenhagen, Denmark, Paper GT2012--69290</journal>
+            <pages>931--948</pages>
+            <title>Laminar flame speed and ignition delay time data for the kinetic modeling of hydrogen and syngas fuel blends</title>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.001</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.009</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.010</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.980</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>11.0</x1><x2>1388</x2>  <x3>82.0</x3></dataPoint>
+        <dataPoint><x1>11.5</x1><x2>1381</x2>  <x3>87.0</x3></dataPoint>
+        <dataPoint><x1>11.7</x1><x2>1306</x2> <x3>120.0</x3></dataPoint>
+        <dataPoint><x1>11.9</x1><x2>1270</x2> <x3>143.0</x3></dataPoint>
+        <dataPoint><x1>12.0</x1><x2>1229</x2> <x3>191.0</x3></dataPoint>
+        <dataPoint><x1>12.0</x1><x2>1181</x2> <x3>372.0</x3></dataPoint>
+        <dataPoint><x1>12.1</x1><x2>1145</x2> <x3>576.0</x3></dataPoint>
+        <dataPoint><x1>12.4</x1><x2>1136</x2> <x3>627.0</x3></dataPoint>
+        <dataPoint><x1>13.0</x1><x2>1116</x2><x3>1439.0</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="d/dt max"/>
+</experiment>

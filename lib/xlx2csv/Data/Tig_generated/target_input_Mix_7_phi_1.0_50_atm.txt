@@ -1,0 +1,13 @@
+targets_count	:	55
+mechanism	:	Nagy_2017_methanol.mech
+fuel	:	CH3OH
+global_reaction	:	CH3OH + 1.5 O2 == CO2 + 2 H2O
+parallel_threads	:	7
+uncertainty_data	:	errors.unsrt
+bin_file	:	Nagy_2017_methanol.bin	
+targets:
+1, target = Tig, simulation = isochor, Fuel = 12.28, O2 = 18.43,N2 = 69.29, AR = 0, T = 0.8238, P = 49.27, phi = 1, observed = 29.1757, deviation = 5.7552#Burke16_Mix_7_phi_1.0_50_atm.txt
+2, target = Tig, simulation = isochor, Fuel = 12.28, O2 = 18.43,N2 = 69.29, AR = 0, T = 0.8591, P = 49.27, phi = 1, observed = 43.8506, deviation = 8.8994#Burke16_Mix_7_phi_1.0_50_atm.txt
+3, target = Tig, simulation = isochor, Fuel = 12.28, O2 = 18.43,N2 = 69.29, AR = 0, T = 0.9181, P = 49.27, phi = 1, observed = 138.6677, deviation = 27.3539#Burke16_Mix_7_phi_1.0_50_atm.txt
+4, target = Tig, simulation = isochor, Fuel = 12.28, O2 = 18.43,N2 = 69.29, AR = 0, T = 0.9495, P = 49.27, phi = 1, observed = 255.5097, deviation = 48.9565#Burke16_Mix_7_phi_1.0_50_atm.txt
+5, target = Tig, simulation = isochor, Fuel = 12.28, O2 = 18.43,N2 = 69.29, AR = 0, T = 1.0114, P = 49.27, phi = 1, observed = 687.7784, deviation = 131.7806#Burke16_Mix_7_phi_1.0_50_atm.txt

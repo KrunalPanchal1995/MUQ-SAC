@@ -1,0 +1,55 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000072_x</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Qin, X., Kobayashi, H., Niioka, T., Experimental Thermal and Fluid Science, (21) 58-63, 2000.</description>
+        <referenceDOI>10.1016/S0894-1777(99)00054-0</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 4b. full triangle</figure>
+        <details>
+            <author>Qin, Xiao and Kobayashi, Hideaki and Niioka, Takashi</author>
+            <journal>Exp Therm Fluid Sci</journal>
+            <pages>58--63</pages>
+            <title>Laminar burning velocity of hydrogen-air premixed flames at elevated pressure</title>
+            <volume>21</volume>
+            <year>2000</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"             ><value>298</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.4566</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1142</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.4292</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>7.63</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="P"   sourcetype="digitized"  units="Pa"   />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"  sourcetype="digitized"  units="cm/s" />
+
+        <dataPoint><x1>9.990100e+004</x1><x2>3.320900e+002</x2></dataPoint>
+        <dataPoint><x1>1.200000e+005</x1><x2>3.281400e+002</x2></dataPoint>
+        <dataPoint><x1>1.401490e+005</x1><x2>3.157300e+002</x2></dataPoint>
+        <dataPoint><x1>1.599120e+005</x1><x2>3.287700e+002</x2></dataPoint>
+        <dataPoint><x1>1.801400e+005</x1><x2>3.237100e+002</x2></dataPoint>
+        <dataPoint><x1>2.002210e+005</x1><x2>3.169500e+002</x2></dataPoint>
+        <dataPoint><x1>2.200800e+005</x1><x2>3.120800e+002</x2></dataPoint>
+    </dataGroup>
+</experiment>

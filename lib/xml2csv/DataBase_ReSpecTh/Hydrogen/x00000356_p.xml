@@ -1,0 +1,106 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x00000356</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Cheng, R.K., Oppenheim, A.K., Combustion and Flame, 1984, (58) 125-139.</description>
+        <referenceDOI>10.1016/0010-2180(84)90088-9</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 4., open triangle</figure>
+        <details>
+            <author>Cheng, R K and Oppenheim, A K</author>
+            <journal>Combust Flame</journal>
+            <number>2</number>
+            <pages>125--139</pages>
+            <title>Autoignition in methane-hydrogen mixtures</title>
+            <volume>58</volume>
+            <year>1984</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.0667</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.0333</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.9000</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.24</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="ignition delay">
+        <property name="temperature"     id="x1"   label="T5"              sourcetype="digitized"  units="K"   />
+        <property name="pressure"        id="x2"   label="P5"              sourcetype="digitized"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"             sourcetype="digitized"  units="us"  />
+
+        <dataPoint><x1>1281</x1><x2>2.393</x2> <x3>52.0</x3></dataPoint>
+        <dataPoint><x1>1427</x1><x2>2.896</x2> <x3>28.0</x3></dataPoint>
+        <dataPoint><x1>1277</x1><x2>2.395</x2> <x3>62.0</x3></dataPoint>
+        <dataPoint><x1>1202</x1><x2>2.159</x2> <x3>90.0</x3></dataPoint>
+        <dataPoint><x1>1051</x1><x2>1.729</x2><x3>233.0</x3></dataPoint>
+        <dataPoint><x1>1184</x1><x2>2.007</x2> <x3>65.0</x3></dataPoint>
+        <dataPoint><x1>1228</x1><x2>2.139</x2> <x3>72.0</x3></dataPoint>
+        <dataPoint><x1>1209</x1><x2>2.078</x2> <x3>72.0</x3></dataPoint>
+        <dataPoint><x1>1364</x1><x2>2.531</x2> <x3>25.0</x3></dataPoint>
+        <dataPoint><x1>1117</x1><x2>1.723</x2><x3>157.0</x3></dataPoint>
+        <dataPoint><x1>1257</x1><x2>2.101</x2> <x3>60.0</x3></dataPoint>
+        <dataPoint><x1>1066</x1><x2>1.590</x2><x3>158.0</x3></dataPoint>
+        <dataPoint><x1>1271</x1><x2>2.145</x2> <x3>62.0</x3></dataPoint>
+        <dataPoint><x1>1146</x1><x2>1.807</x2><x3>118.0</x3></dataPoint>
+        <dataPoint><x1>1117</x1><x2>1.631</x2><x3>145.0</x3></dataPoint>
+        <dataPoint><x1>1146</x1><x2>1.701</x2><x3>128.0</x3></dataPoint>
+        <dataPoint><x1>1242</x1><x2>1.961</x2> <x3>75.0</x3></dataPoint>
+        <dataPoint><x1>1318</x1><x2>2.162</x2> <x3>45.0</x3></dataPoint>
+        <dataPoint><x1>1152</x1><x2>1.618</x2><x3>115.0</x3></dataPoint>
+        <dataPoint><x1>1252</x1><x2>1.864</x2> <x3>72.0</x3></dataPoint>
+        <dataPoint><x1>1293</x1><x2>1.966</x2> <x3>57.0</x3></dataPoint>
+        <dataPoint><x1>1272</x1><x2>1.920</x2> <x3>67.0</x3></dataPoint>
+        <dataPoint><x1>1264</x1><x2>1.785</x2> <x3>75.0</x3></dataPoint>
+        <dataPoint><x1>1111</x1><x2>1.435</x2><x3>175.0</x3></dataPoint>
+        <dataPoint><x1>1199</x1><x2>1.636</x2> <x3>90.0</x3></dataPoint>
+        <dataPoint><x1>1184</x1><x2>1.596</x2> <x3>86.0</x3></dataPoint>
+        <dataPoint><x1>1227</x1><x2>1.701</x2> <x3>62.0</x3></dataPoint>
+        <dataPoint><x1>1293</x1><x2>1.834</x2> <x3>53.0</x3></dataPoint>
+        <dataPoint><x1>1325</x1><x2>1.930</x2> <x3>53.0</x3></dataPoint>
+        <dataPoint><x1>1218</x1><x2>1.527</x2><x3>135.0</x3></dataPoint>
+        <dataPoint><x1>1282</x1><x2>1.689</x2> <x3>71.0</x3></dataPoint>
+        <dataPoint><x1>1206</x1><x2>1.534</x2><x3>110.0</x3></dataPoint>
+        <dataPoint><x1>1260</x1><x2>1.647</x2> <x3>75.0</x3></dataPoint>
+        <dataPoint><x1>1405</x1><x2>1.973</x2> <x3>38.0</x3></dataPoint>
+        <dataPoint><x1>1213</x1><x2>1.439</x2> <x3>98.0</x3></dataPoint>
+        <dataPoint><x1>1368</x1><x2>1.754</x2> <x3>43.0</x3></dataPoint>
+        <dataPoint><x1>1239</x1><x2>1.491</x2> <x3>85.0</x3></dataPoint>
+        <dataPoint><x1>1277</x1><x2>1.453</x2> <x3>79.0</x3></dataPoint>
+        <dataPoint><x1>1347</x1><x2>1.585</x2> <x3>50.0</x3></dataPoint>
+        <dataPoint><x1>1318</x1><x2>2.668</x2> <x3>42.0</x3></dataPoint>
+        <dataPoint><x1>1220</x1><x2>2.347</x2> <x3>65.0</x3></dataPoint>
+        <dataPoint><x1>1247</x1><x2>2.436</x2> <x3>57.0</x3></dataPoint>
+        <dataPoint><x1>1189</x1><x2>2.263</x2> <x3>73.0</x3></dataPoint>
+        <dataPoint><x1>1146</x1><x2>2.131</x2> <x3>93.0</x3></dataPoint>
+        <dataPoint><x1>1099</x1><x2>1.982</x2><x3>428.0</x3></dataPoint>
+        <dataPoint><x1>1025</x1><x2>1.834</x2><x3>282.0</x3></dataPoint>
+        <dataPoint><x1>1145</x1><x2>2.227</x2><x3>103.0</x3></dataPoint>
+        <dataPoint><x1>1190</x1><x2>2.381</x2> <x3>73.0</x3></dataPoint>
+        <dataPoint><x1>1220</x1><x2>2.482</x2> <x3>62.0</x3></dataPoint>
+        <dataPoint><x1>1181</x1><x2>2.350</x2> <x3>70.0</x3></dataPoint>
+        <dataPoint><x1>1199</x1><x2>2.391</x2> <x3>62.0</x3></dataPoint>
+        <dataPoint><x1>1098</x1><x2>1.959</x2><x3>170.0</x3></dataPoint>
+        <dataPoint><x1>1242</x1><x2>1.892</x2> <x3>63.0</x3></dataPoint>
+        <dataPoint><x1>1012</x1><x2>1.350</x2><x3>375.0</x3></dataPoint>
+        <dataPoint><x1>1312</x1><x2>2.008</x2> <x3>48.0</x3></dataPoint>
+        <dataPoint><x1>1125</x1><x2>1.544</x2><x3>189.0</x3></dataPoint>
+        <dataPoint><x1>1364</x1><x2>1.746</x2> <x3>44.0</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+</experiment>

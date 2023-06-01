@@ -1,0 +1,154 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x40001053</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>A. Keromnes; W. K. Metcalfe; K. Heufer; H. J. Curran; N. Donohoe; A. K. Das; C. J. Sung; J. Herzler; C. Naumann; P. Griebel; O. Mathieu; M. C. Krejci; E. Petersen; W. J. Pitz; H. J. Curran, Combustion and Flame 2012, submitted.</description>
+        <referenceDOI>10.1016/j.combustflame.2013.01.001</referenceDOI>
+        <location>Date in this file are from personal communication channel</location>
+        <figure>H2/CO = 5/95, Phi = 0.35, 32 bar series.</figure>
+        <details>
+            <author>K{\'{e}}romn{\`{e}}s, Alan and Metcalfe, Wayne K and Heufer, Karl A and Donohoe, Nicola and Das, Apurba K and Sung, Chih-Jen and Herzler, J{\"{u}}rgen and Naumann, Clemens and Griebel, Peter and Mathieu, Olivier and Krejci, Michael C and Petersen, Eric L and Pitz, William J and Curran, Henry J</author>
+            <journal>Combust Flame</journal>
+            <number>6</number>
+            <pages>995--1011</pages>
+            <title>An experimental and detailed chemical kinetic modeling study of hydrogen and syngas mixture oxidation at elevated pressures</title>
+            <volume>160</volume>
+            <year>2013</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>rapid compression machine</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.00641</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.12175</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.18308</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        /><amount units="mole fraction" >0.34438</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.34438</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.15</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="measured data">
+        <property name="pressure"        id="x1"   label="P"              sourcetype="reported"  units="mbar" />
+        <property name="temperature"     id="x2"   label="T"              sourcetype="reported"  units="K"    />
+        <property name="ignition delay"  id="x3"   label="tau"            sourcetype="reported"  units="ms"   />
+
+        <dataPoint><x1>1121</x1><x2>366</x2><x3>119.80</x3></dataPoint>
+        <dataPoint><x1>1121</x1><x2>366</x2><x3>121.70</x3></dataPoint>
+        <dataPoint><x1>1119</x1><x2>366</x2><x3>122.60</x3></dataPoint>
+        <dataPoint><x1>1119</x1><x2>381</x2> <x3>14.60</x3></dataPoint>
+        <dataPoint><x1>1123</x1><x2>381</x2> <x3>14.30</x3></dataPoint>
+        <dataPoint><x1>1119</x1><x2>381</x2> <x3>11.50</x3></dataPoint>
+        <dataPoint><x1>1124</x1><x2>386</x2>  <x3>6.90</x3></dataPoint>
+        <dataPoint><x1>1125</x1><x2>386</x2>  <x3>7.50</x3></dataPoint>
+        <dataPoint><x1>1118</x1><x2>386</x2>  <x3>7.40</x3></dataPoint>
+        <dataPoint><x1>1122</x1><x2>391</x2>  <x3>6.70</x3></dataPoint>
+        <dataPoint><x1>1123</x1><x2>391</x2>  <x3>6.30</x3></dataPoint>
+        <dataPoint><x1>1126</x1><x2>391</x2>  <x3>4.40</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+    <comment>The data in this files are not included in the paper descriped in description. However, data in this file are in same series with data in paper in description.</comment>
+    <dataGroup id="dg2" label="V-t history" dataPointLink="all">
+        <property name="time"    id="x4"   label="t"            sourcetype="estimated"  units="s"   />
+        <property name="volume"  id="x5"   label="V"            sourcetype="estimated"  units="cm3" />
+
+        <dataPoint><x4>0.000000e+000</x4><x5>1.000000e+000</x5></dataPoint>
+        <dataPoint><x4>1.000000e-006</x4><x5>9.845340e-001</x5></dataPoint>
+        <dataPoint><x4>1.472380e-003</x4><x5>9.432087e-001</x5></dataPoint>
+        <dataPoint><x4>1.845430e-003</x4><x5>9.305359e-001</x5></dataPoint>
+        <dataPoint><x4>2.187210e-003</x4><x5>9.124511e-001</x5></dataPoint>
+        <dataPoint><x4>2.524010e-003</x4><x5>9.016202e-001</x5></dataPoint>
+        <dataPoint><x4>2.846040e-003</x4><x5>8.943560e-001</x5></dataPoint>
+        <dataPoint><x4>3.179460e-003</x4><x5>8.781872e-001</x5></dataPoint>
+        <dataPoint><x4>3.506590e-003</x4><x5>8.616198e-001</x5></dataPoint>
+        <dataPoint><x4>3.838910e-003</x4><x5>8.420009e-001</x5></dataPoint>
+        <dataPoint><x4>4.177620e-003</x4><x5>8.178375e-001</x5></dataPoint>
+        <dataPoint><x4>4.510480e-003</x4><x5>8.018810e-001</x5></dataPoint>
+        <dataPoint><x4>4.837350e-003</x4><x5>7.856403e-001</x5></dataPoint>
+        <dataPoint><x4>5.177450e-003</x4><x5>7.588677e-001</x5></dataPoint>
+        <dataPoint><x4>5.503140e-003</x4><x5>7.392267e-001</x5></dataPoint>
+        <dataPoint><x4>5.841760e-003</x4><x5>7.109369e-001</x5></dataPoint>
+        <dataPoint><x4>6.172740e-003</x4><x5>6.908462e-001</x5></dataPoint>
+        <dataPoint><x4>6.501640e-003</x4><x5>6.685690e-001</x5></dataPoint>
+        <dataPoint><x4>6.840180e-003</x4><x5>6.429421e-001</x5></dataPoint>
+        <dataPoint><x4>7.168880e-003</x4><x5>6.215567e-001</x5></dataPoint>
+        <dataPoint><x4>7.505760e-003</x4><x5>5.933709e-001</x5></dataPoint>
+        <dataPoint><x4>7.836390e-003</x4><x5>5.704316e-001</x5></dataPoint>
+        <dataPoint><x4>8.172630e-003</x4><x5>5.443588e-001</x5></dataPoint>
+        <dataPoint><x4>8.504540e-003</x4><x5>5.187073e-001</x5></dataPoint>
+        <dataPoint><x4>8.837770e-003</x4><x5>4.942966e-001</x5></dataPoint>
+        <dataPoint><x4>9.172370e-003</x4><x5>4.698692e-001</x5></dataPoint>
+        <dataPoint><x4>9.501800e-003</x4><x5>4.489554e-001</x5></dataPoint>
+        <dataPoint><x4>9.839040e-003</x4><x5>4.232431e-001</x5></dataPoint>
+        <dataPoint><x4>1.016858e-002</x4><x5>3.995651e-001</x5></dataPoint>
+        <dataPoint><x4>1.050132e-002</x4><x5>3.749417e-001</x5></dataPoint>
+        <dataPoint><x4>1.083887e-002</x4><x5>3.488083e-001</x5></dataPoint>
+        <dataPoint><x4>1.116781e-002</x4><x5>3.253578e-001</x5></dataPoint>
+        <dataPoint><x4>1.150053e-002</x4><x5>3.025680e-001</x5></dataPoint>
+        <dataPoint><x4>1.183839e-002</x4><x5>2.761487e-001</x5></dataPoint>
+        <dataPoint><x4>1.216838e-002</x4><x5>2.530393e-001</x5></dataPoint>
+        <dataPoint><x4>1.250190e-002</x4><x5>2.286362e-001</x5></dataPoint>
+        <dataPoint><x4>1.283546e-002</x4><x5>2.031732e-001</x5></dataPoint>
+        <dataPoint><x4>1.316890e-002</x4><x5>1.797529e-001</x5></dataPoint>
+        <dataPoint><x4>1.350356e-002</x4><x5>1.590954e-001</x5></dataPoint>
+        <dataPoint><x4>1.383737e-002</x4><x5>1.427570e-001</x5></dataPoint>
+        <dataPoint><x4>1.417002e-002</x4><x5>1.297220e-001</x5></dataPoint>
+        <dataPoint><x4>1.450486e-002</x4><x5>1.180873e-001</x5></dataPoint>
+        <dataPoint><x4>1.483937e-002</x4><x5>1.105928e-001</x5></dataPoint>
+        <dataPoint><x4>1.517844e-002</x4><x5>1.078328e-001</x5></dataPoint>
+        <dataPoint><x4>1.551672e-002</x4><x5>1.062590e-001</x5></dataPoint>
+        <dataPoint><x4>1.585421e-002</x4><x5>1.049950e-001</x5></dataPoint>
+        <dataPoint><x4>1.619090e-002</x4><x5>1.042210e-001</x5></dataPoint>
+        <dataPoint><x4>1.718670e-002</x4><x5>1.039284e-001</x5></dataPoint>
+        <dataPoint><x4>1.786206e-002</x4><x5>1.041465e-001</x5></dataPoint>
+        <dataPoint><x4>1.952400e-002</x4><x5>1.055717e-001</x5></dataPoint>
+        <dataPoint><x4>2.014191e-002</x4><x5>1.058551e-001</x5></dataPoint>
+        <dataPoint><x4>2.120365e-002</x4><x5>1.060263e-001</x5></dataPoint>
+        <dataPoint><x4>2.284809e-002</x4><x5>1.068678e-001</x5></dataPoint>
+        <dataPoint><x4>2.351375e-002</x4><x5>1.073979e-001</x5></dataPoint>
+        <dataPoint><x4>2.485086e-002</x4><x5>1.086539e-001</x5></dataPoint>
+        <dataPoint><x4>2.552522e-002</x4><x5>1.090961e-001</x5></dataPoint>
+        <dataPoint><x4>2.621517e-002</x4><x5>1.094163e-001</x5></dataPoint>
+        <dataPoint><x4>2.852042e-002</x4><x5>1.099499e-001</x5></dataPoint>
+        <dataPoint><x4>3.018590e-002</x4><x5>1.108790e-001</x5></dataPoint>
+        <dataPoint><x4>3.153640e-002</x4><x5>1.118542e-001</x5></dataPoint>
+        <dataPoint><x4>4.587510e-002</x4><x5>1.177848e-001</x5></dataPoint>
+        <dataPoint><x4>4.851030e-002</x4><x5>1.185987e-001</x5></dataPoint>
+        <dataPoint><x4>5.086490e-002</x4><x5>1.196919e-001</x5></dataPoint>
+        <dataPoint><x4>5.619790e-002</x4><x5>1.215590e-001</x5></dataPoint>
+        <dataPoint><x4>5.721420e-002</x4><x5>1.220072e-001</x5></dataPoint>
+        <dataPoint><x4>6.523390e-002</x4><x5>1.248734e-001</x5></dataPoint>
+        <dataPoint><x4>7.419860e-002</x4><x5>1.279155e-001</x5></dataPoint>
+        <dataPoint><x4>8.186600e-002</x4><x5>1.303974e-001</x5></dataPoint>
+        <dataPoint><x4>8.919060e-002</x4><x5>1.326608e-001</x5></dataPoint>
+        <dataPoint><x4>9.684560e-002</x4><x5>1.348782e-001</x5></dataPoint>
+        <dataPoint><x4>1.028927e-001</x4><x5>1.365775e-001</x5></dataPoint>
+        <dataPoint><x4>1.153016e-001</x4><x5>1.398487e-001</x5></dataPoint>
+        <dataPoint><x4>1.309264e-001</x4><x5>1.434066e-001</x5></dataPoint>
+        <dataPoint><x4>1.405903e-001</x4><x5>1.451447e-001</x5></dataPoint>
+        <dataPoint><x4>1.502241e-001</x4><x5>1.464734e-001</x5></dataPoint>
+        <dataPoint><x4>1.622993e-001</x4><x5>1.479466e-001</x5></dataPoint>
+        <dataPoint><x4>1.895776e-001</x4><x5>1.506744e-001</x5></dataPoint>
+        <dataPoint><x4>2.339055e-001</x4><x5>1.543951e-001</x5></dataPoint>
+        <dataPoint><x4>2.402341e-001</x4><x5>1.548434e-001</x5></dataPoint>
+        <dataPoint><x4>2.415509e-001</x4><x5>1.550236e-001</x5></dataPoint>
+        <dataPoint><x4>2.791966e-001</x4><x5>1.580221e-001</x5></dataPoint>
+        <dataPoint><x4>3.046351e-001</x4><x5>1.600136e-001</x5></dataPoint>
+        <dataPoint><x4>3.612625e-001</x4><x5>1.645363e-001</x5></dataPoint>
+        <dataPoint><x4>3.708920e-001</x4><x5>1.652171e-001</x5></dataPoint>
+        <dataPoint><x4>3.915506e-001</x4><x5>1.669246e-001</x5></dataPoint>
+        <dataPoint><x4>4.291265e-001</x4><x5>1.697470e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

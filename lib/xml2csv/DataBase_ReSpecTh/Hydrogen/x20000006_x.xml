@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000006</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Tse, S.D.,Zhu, D.L., Law, C.K., Proceedings of the Combustion Institute, 2000, (28), 1793-1800.</description>
+        <referenceDOI>10.1016/S0082-0784(00)80581-0</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 5a., open circle</figure>
+        <details>
+            <author>Tse, S D and Zhu, D L and Law, C K</author>
+            <journal>Proc Combust Inst</journal>
+            <pages>1793--1800</pages>
+            <title>Morphology and burning rates of expanding spherical flames in H$_{2}$/O$_{2}$/inert mixtures up to 60 atmospheres</title>
+            <volume>28</volume>
+            <year>2000</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>3.23</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="X_H2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_O2"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x4"   label="X_He"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"  chemName="helium"   />
+        </property>
+
+        <dataPoint><x1>113.1</x1><x2>1.285939e-001</x2><x3>1.088948e-001</x3><x4>7.625113e-001</x4></dataPoint>
+        <dataPoint><x1>144.1</x1><x2>1.509565e-001</x2><x3>1.061591e-001</x3><x4>7.428844e-001</x4></dataPoint>
+        <dataPoint><x1>178.8</x1><x2>1.752278e-001</x2><x3>1.031232e-001</x3><x4>7.216490e-001</x4></dataPoint>
+        <dataPoint><x1>205.4</x1><x2>2.024834e-001</x2><x3>9.967715e-002</x3><x4>6.978394e-001</x4></dataPoint>
+        <dataPoint><x1>242.8</x1><x2>2.403752e-001</x2><x3>9.497584e-002</x3><x4>6.646489e-001</x4></dataPoint>
+        <dataPoint><x1>260.4</x1><x2>2.746585e-001</x2><x3>9.067825e-002</x3><x4>6.346633e-001</x4></dataPoint>
+        <dataPoint><x1>266.7</x1><x2>3.061467e-001</x2><x3>8.674156e-002</x3><x4>6.071117e-001</x4></dataPoint>
+        <dataPoint><x1>260.4</x1><x2>3.349398e-001</x2><x3>8.313253e-002</x3><x4>5.819277e-001</x4></dataPoint>
+        <dataPoint><x1>249.1</x1><x2>3.614120e-001</x2><x3>7.984123e-002</x3><x4>5.587468e-001</x4></dataPoint>
+        <dataPoint><x1>239.2</x1><x2>3.865511e-001</x2><x3>7.666426e-002</x3><x4>5.367847e-001</x4></dataPoint>
+    </dataGroup>
+</experiment>

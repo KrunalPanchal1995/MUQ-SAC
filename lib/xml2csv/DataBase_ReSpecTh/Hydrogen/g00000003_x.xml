@@ -1,0 +1,56 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/g00000003</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Chaumeix, N., Pichon, S., Lafosse, F., Paillard, C.-E., International Journal of Hydrogen Energy, 2007, (32) 2216-2226.</description>
+        <referenceDOI>10.1016/j.ijhydene.2007.04.008</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 1</table>
+        <figure>Fig. 12., right, open diamond</figure>
+        <details>
+            <author>Chaumeix, N and Pichon, S and Lafosse, F and Paillard, C E</author>
+            <journal>Int J Hydrogen Energy</journal>
+            <number>13</number>
+            <pages>2216--2226</pages>
+            <title>Role of chemical kinetics on the detonation properties of hydrogen /natural gas/air mixtures</title>
+            <volume>32</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"   sourcetype="calculated"  units="kPa"           ><value>221</value></property>
+        <property name="uncertainty"                   label="dP"  sourcetype="calculated"  units="kPa"            reference="pressure"        kind="absolute"  bound="plusminus" ><value>12</value></property>
+        <property name="initial composition"           sourcetype="reported"   >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.00444</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.00556</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.99000</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1164.48</x1><x2>471.54</x2></dataPoint>
+        <dataPoint><x1>1164.97</x1><x2>448.03</x2></dataPoint>
+        <dataPoint><x1>1264.20</x1><x2>291.57</x2></dataPoint>
+        <dataPoint><x1>1332.57</x1><x2>205.93</x2></dataPoint>
+        <dataPoint><x1>1519.18</x1> <x2>88.11</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="relative concentration" amount="0.5" units="unitless"/>
+    <comment>The pressure changed according to Table 1.</comment>
+</experiment>

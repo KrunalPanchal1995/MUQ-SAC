@@ -1,0 +1,67 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x00000357</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Cohen, A., Larsen, J., 1967, Report BRL 1386, technical report, original PrIMe file</description>
+        <referenceDOI>10.1017/s0037677900105637</referenceDOI>
+        <details>
+            <author>Cohen, A and Larsen, J</author>
+            <journal>Technical Report BRL 1386 (Ballistics Research Laboratories)</journal>
+            <title>No Title</title>
+            <year>1967</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.2</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.7</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.27</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="ignition delay">
+        <property name="temperature"     id="x1"   label="T5"              sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P5"              sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"             sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>1583</x1><x2>0.528</x2> <x3>27.6</x3></dataPoint>
+        <dataPoint><x1>1510</x1><x2>0.493</x2> <x3>32.5</x3></dataPoint>
+        <dataPoint><x1>1430</x1><x2>0.454</x2> <x3>47.4</x3></dataPoint>
+        <dataPoint><x1>1242</x1><x2>0.362</x2><x3>116.1</x3></dataPoint>
+        <dataPoint><x1>1197</x1><x2>0.340</x2><x3>148.4</x3></dataPoint>
+        <dataPoint><x1>1015</x1><x2>0.251</x2><x3>705.7</x3></dataPoint>
+        <dataPoint><x1>1455</x1><x2>0.928</x2> <x3>18.4</x3></dataPoint>
+        <dataPoint><x1>1243</x1><x2>0.722</x2> <x3>51.9</x3></dataPoint>
+        <dataPoint><x1>1202</x1><x2>0.683</x2><x3>119.7</x3></dataPoint>
+        <dataPoint><x1>1165</x1><x2>0.646</x2><x3>108.5</x3></dataPoint>
+        <dataPoint><x1>1145</x1><x2>0.627</x2><x3>165.8</x3></dataPoint>
+        <dataPoint><x1>1091</x1><x2>0.574</x2><x3>148.8</x3></dataPoint>
+        <dataPoint><x1>1064</x1><x2>0.548</x2><x3>196.0</x3></dataPoint>
+        <dataPoint><x1>1014</x1><x2>0.499</x2><x3>530.9</x3></dataPoint>
+        <dataPoint> <x1>951</x1><x2>0.438</x2><x3>524.2</x3></dataPoint>
+        <dataPoint><x1>1094</x1><x2>1.444</x2> <x3>75.4</x3></dataPoint>
+        <dataPoint><x1>1036</x1><x2>1.303</x2><x3>105.9</x3></dataPoint>
+        <dataPoint><x1>1005</x1><x2>1.229</x2><x3>132.6</x3></dataPoint>
+        <dataPoint> <x1>941</x1><x2>1.071</x2><x3>393.0</x3></dataPoint>
+        <dataPoint><x1>1089</x1><x2>0.572</x2> <x3>97.9</x3></dataPoint>
+        <dataPoint><x1>1033</x1><x2>0.518</x2><x3>203.4</x3></dataPoint>
+        <dataPoint> <x1>966</x1><x2>1.357</x2><x3>183.7</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="p;" type="d/dt max"/>
+    <comment>There is no article source, the sourcetype is unavailable.</comment>
+</experiment>

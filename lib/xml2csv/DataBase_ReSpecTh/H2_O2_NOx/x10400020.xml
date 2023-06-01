@@ -1,0 +1,74 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400020</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>R. Mevel et al., Proc. Comb. Inst. 32 (2009) 359-366, Fig 1b. circle</description>
+        <referenceDOI>10.1016/j.proci.2008.06.171</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig 1b. circle</figure>
+        <details>
+            <author>M{\'{e}}vel, R and Javoy, S and Lafosse, F and Chaumeix, N and Dupre, G and Paillard C-E</author>
+            <journal>Proc Combust Inst</journal>
+            <pages>359--366</pages>
+            <title>Hydrogen-nitrous oxide delay times: {S}hock tube experimental study and kinetic modelling</title>
+            <volume>32</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"    units="kPa"           ><value>300</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.003333</amount></component>
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.006667</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.99</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.13</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint> <x1>2354.40922</x1><x2>2.49948</x2></dataPoint>
+        <dataPoint>  <x1>2197.2034</x1><x2>4.68005</x2></dataPoint>
+        <dataPoint><x1>2102.527659</x1><x2>5.61182</x2></dataPoint>
+        <dataPoint><x1>2083.945492</x1><x2>6.19605</x2></dataPoint>
+        <dataPoint><x1>2083.945492</x1><x2>6.84109</x2></dataPoint>
+        <dataPoint><x1>1990.156685</x1>  <x2>6.404</x2></dataPoint>
+        <dataPoint><x1>1990.156685</x1><x2>8.06882</x2></dataPoint>
+        <dataPoint><x1>1998.588996</x1><x2>8.61954</x2></dataPoint>
+        <dataPoint> <x1>1995.76897</x1><x2>9.83629</x2></dataPoint>
+        <dataPoint><x1>1891.710901</x1><x2>9.67527</x2></dataPoint>
+        <dataPoint><x1>1899.328018</x1><x2>11.9909</x2></dataPoint>
+        <dataPoint> <x1>1859.39618</x1><x2>12.8093</x2></dataPoint>
+        <dataPoint><x1>1818.767131</x1> <x2>22.452</x2></dataPoint>
+        <dataPoint> <x1>1795.68676</x1> <x2>20.335</x2></dataPoint>
+        <dataPoint><x1>1755.584074</x1><x2>24.3835</x2></dataPoint>
+        <dataPoint><x1>1734.069966</x1><x2>23.5917</x2></dataPoint>
+        <dataPoint><x1>1670.600932</x1><x2>39.3534</x2></dataPoint>
+        <dataPoint><x1>1654.971534</x1> <x2>36.839</x2></dataPoint>
+        <dataPoint><x1>1609.784917</x1> <x2>55.657</x2></dataPoint>
+        <dataPoint>   <x1>1539.717</x1> <x2>78.715</x2></dataPoint>
+        <dataPoint><x1>1528.077663</x1><x2>66.7379</x2></dataPoint>
+        <dataPoint><x1>1498.940249</x1><x2>86.9097</x2></dataPoint>
+        <dataPoint><x1>1469.367364</x1><x2>102.507</x2></dataPoint>
+        <dataPoint><x1>1452.772544</x1><x2>113.178</x2></dataPoint>
+        <dataPoint><x1>1446.830429</x1><x2>120.903</x2></dataPoint>
+        <dataPoint><x1>1416.416551</x1><x2>147.387</x2></dataPoint>
+        <dataPoint><x1>1405.163413</x1><x2>154.869</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="relative concentration" amount="0.5" units="unitless"/>
+</experiment>

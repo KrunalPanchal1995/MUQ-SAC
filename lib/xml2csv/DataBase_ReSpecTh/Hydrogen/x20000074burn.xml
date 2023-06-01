@@ -1,0 +1,68 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000074burn</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Paletskii, A.A., Kuibida, L.V., Bolshova, T.A., Korobeinichev, O.P., Fristrom, R.M., Combustion, Explosion, and Shock Waves, (32), (3), 245-250 , 1996.</description>
+        <referenceDOI>10.1007/BF01998452</referenceDOI>
+        <location>Main Article + Personal Communication Channel</location>
+        <figure>Fig. 1. all</figure>
+        <details>
+            <author>Paletskii, A A and Kuibida, L V and Bolshova, T A and Korobeinichev, O P and Fristrom, R M</author>
+            <journal>Combustion, Explosion and Shock Waves</journal>
+            <number>3</number>
+            <pages>245--250</pages>
+            <title>Study of the structure of a ten-atmosphere H$_{2}$-O$_{2}$-Ar flame using molecular-beam inlet mass-spectrometrometric probing</title>
+            <volume>32</volume>
+            <year>1996</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"          label="T init"     sourcetype="reported"  units="K"             ><value>363</value></property>
+        <property name="pressure"             label="P"          sourcetype="reported"  units="atm"           ><value>1</value></property>
+        <property name="flow rate"            label="flow rate"  sourcetype="reported"  units="g cm-2 s-1"    ><value>0.038</value></property>
+        <property name="initial composition"  sourcetype="reported" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.85</amount></component>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="distance"     id="x1"   label="x"      sourcetype="reported"  units="mm"            />
+        <property name="composition"  id="x2"   label="[H2]"   sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"  id="x3"   label="[H2O]"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"    />
+        </property>
+        <property name="composition"  id="x4"   label="[O2]"   sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+
+        <dataPoint><x1>0.000000e+000</x1><x2>9.814000e-002</x2><x3>7.690000e-004</x3><x4>5.007000e-002</x4></dataPoint>
+        <dataPoint><x1>2.000000e-001</x1><x2>8.966000e-002</x2><x3>6.320000e-003</x3><x4>4.870000e-002</x4></dataPoint>
+        <dataPoint><x1>4.000000e-001</x1><x2>6.764000e-002</x2><x3>1.557000e-002</x3><x4>4.469000e-002</x4></dataPoint>
+        <dataPoint><x1>6.000000e-001</x1><x2>4.700000e-002</x2><x3>3.502000e-002</x3><x4>3.529000e-002</x4></dataPoint>
+        <dataPoint><x1>8.000000e-001</x1><x2>2.865000e-002</x2><x3>6.218000e-002</x3><x4>2.372000e-002</x4></dataPoint>
+        <dataPoint><x1>1.000000e+000</x1><x2>1.387000e-002</x2><x3>8.764000e-002</x3><x4>1.278000e-002</x4></dataPoint>
+        <dataPoint><x1>1.200000e+000</x1><x2>9.100000e-003</x2><x3>1.015400e-001</x3><x4>6.310000e-003</x4></dataPoint>
+        <dataPoint><x1>1.400000e+000</x1><x2>6.640000e-003</x2><x3>1.027700e-001</x3><x4>3.070000e-003</x4></dataPoint>
+        <dataPoint><x1>1.600000e+000</x1><x2>6.000000e-003</x2><x3>1.012400e-001</x3><x4>1.540000e-003</x4></dataPoint>
+    </dataGroup>
+</experiment>

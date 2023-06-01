@@ -1,0 +1,21 @@
+targets_count	:	55
+mechanism	:	Nagy_2017_methanol.mech
+fuel	:	CH3OH
+global_reaction	:	CH3OH + 1.5 O2 == CO2 + 2 H2O
+parallel_threads	:	7
+uncertainty_data	:	errors.unsrt
+bin_file	:	Nagy_2017_methanol.bin	
+targets:
+1, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7070, P = 1.96, phi = 2, observed = 71.9686, deviation = 14.39372#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+2, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7279, P = 1.96, phi = 2, observed = 98.3953, deviation = 19.67906#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+3, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7292, P = 1.96, phi = 2, observed = 101.6309, deviation = 20.32618#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+4, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7711, P = 1.96, phi = 2, observed = 183.9234, deviation = 36.78468#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+5, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7825, P = 1.96, phi = 2, observed = 218.5639, deviation = 43.71278#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+6, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.7870, P = 1.96, phi = 2, observed = 240.8424, deviation = 48.16848#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+7, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.8149, P = 1.96, phi = 2, observed = 351.2913, deviation = 70.25826#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+8, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.8232, P = 1.96, phi = 2, observed = 408.5462, deviation = 81.70924#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+9, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.8416, P = 1.96, phi = 2, observed = 475.1328, deviation = 95.02656#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+10, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.8848, P = 1.96, phi = 2, observed = 897.7628, deviation = 179.55256#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+11, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.8937, P = 1.96, phi = 2, observed = 1150.5088, deviation = 230.10176#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+12, target = Tig, simulation = isochor, Fuel = 21.88, O2 = 16.41,N2 = 0, AR = 61.71, T = 0.9300, P = 1.96, phi = 2, observed = 1889.5, deviation = 377.89974#Burke16_Mix_14_phi_2.0_CH3OH_AIR.txt
+

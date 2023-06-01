@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30202046</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-08-31</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>N. Murakami et al., J. Fuel Soc. Japan 61 (1982) 276-284</description>
+        <referenceDOI>10.3775/jie.61.276</referenceDOI>
+        <location>Main paper</location>
+        <figure>Fig. 6. cross</figure>
+        <details>
+            <author>Nobuaki MURAKAMI, Nobuyuki KOJIMA, Minoru HASHIGUCHI</author>
+            <journal>J. Fuel Soc. Japan</journal>
+            <number>4</number>
+            <pages>276--284</pages>
+            <title>Oxidation of NO to NO2 in the Flue Gas (I)</title>
+            <volume>61</volume>
+            <year>1982</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>outlet concentration measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="estimated"   units="atm"           ><value>1</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     /><amount units="mole fraction" >0.000177</amount></component>
+            <component><speciesLink preferredKey="NO"     CAS="10102-43-9"  InChI="1S/NO/c1-2"            SMILES="[N]=O"  chemName="nitric oxide" /><amount units="mole fraction" >0.000135</amount></component>
+            <component><speciesLink preferredKey="N2"     CAS="7727-37-9"   InChI="1S/N2/c1-2"            SMILES="N#N"    chemName="nitrogen"     /><amount units="mole fraction" >0.999688</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="combined from scatter and reported uncertainty" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"     InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"     chemName="methanol"     />
+            <value>1.67e-5</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1" label="Fig. 6. cross">
+        <property name="temperature"     id="x1"   label="T"              sourcetype="digitized"   units="K"             />
+        <property name="residence time"  id="x2"   label="t"              sourcetype="calculated"  units="s"             />
+        <property name="composition"     id="x3"   label="[CH3OH]"        sourcetype="digitized"   units="mole fraction" >
+            <speciesLink preferredKey="CH3OH"  CAS="67-56-1"  InChI="1S/CH4O/c1-2/h2H,1H3"  SMILES="CO"  chemName="methanol" />
+        </property>
+        <property name="uncertainty"     id="x4"   label="d_T"            sourcetype="reported"    units="K"              reference="temperature"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint> <x1>983</x1><x2>0.36</x2><x3>1.673E-04</x3><x4>5</x4></dataPoint>
+        <dataPoint><x1>1064</x1><x2>0.32</x2><x3>1.457E-04</x3><x4>5</x4></dataPoint>
+        <dataPoint><x1>1107</x1><x2>0.31</x2><x3>1.152E-04</x3><x4>5</x4></dataPoint>
+        <dataPoint><x1>1138</x1><x2>0.29</x2><x3>8.523E-05</x3><x4>5</x4></dataPoint>
+        <dataPoint><x1>1167</x1><x2>0.28</x2><x3>4.336E-05</x3><x4>5</x4></dataPoint>
+        <dataPoint><x1>1219</x1><x2>0.26</x2><x3>2.031E-05</x3><x4>5</x4></dataPoint>
+    </dataGroup>
+    <comment>Residence time was calculated with linear interpolation based on the following reported sentence:</comment>
+    <comment>The reaction time in the figure is the value at 600 °C, which is 1.13 times and 0.90 times the reported value at 500 °C and 700 °C, respectively</comment>
+</experiment>

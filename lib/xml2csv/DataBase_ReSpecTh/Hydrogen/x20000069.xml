@@ -1,0 +1,117 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000069</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Vandooren, J., Bian, J., Twenty-Third Symposium (Internationl) on Combustion/The Combustion Institute, 341-346, 1990.</description>
+        <referenceDOI>10.1016/S0082-0784(06)80277-8</referenceDOI>
+        <location>Main Artecle</location>
+        <figure>Fig. 1-6., star</figure>
+        <details>
+            <author>Vandooren, Jacques and Bian, Jiang</author>
+            <journal>Symp (Int) Combust</journal>
+            <number>1</number>
+            <pages>341--346</pages>
+            <title>Validation of H$_{2}$/O$_{2}$ reaction mechanisms by comparison with the experimental structure of a rich hydrogen-oxygen flame</title>
+            <volume>23</volume>
+            <year>1991</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>burner stabilized flame speciation measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>burner-stabilized</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"   sourcetype="reported"  units="K"             ><value>575</value></property>
+        <property name="pressure"                      label="P"   sourcetype="reported"  units="kPa"           ><value>4.75</value></property>
+        <property name="laminar burning velocity"      label="Sl"  sourcetype="reported"  units="cm/s"          ><value>131</value></property>
+        <property name="initial composition"           sourcetype="reported" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.397</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.103</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.500</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen"         />
+            <value>0.02</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"           />
+            <value>0.02</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"            />
+            <value>0.02</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="H"    CAS="12385-13-6"  InChI="1S/H"         SMILES="[H]"   chemName="hydrogen atom"    />
+            <value>0.1</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="O"    CAS="17778-80-2"  InChI="1S/O"         SMILES="[O]"   chemName="oxygen atom"      />
+            <value>0.1</value>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="composition"  kind="relative"  method="reported uncertainty" >
+            <speciesLink preferredKey="OH"   CAS="3352-57-6"   InChI="1S/HO/h1H"    SMILES="[OH]"  chemName="hydroxyl radical" />
+            <value>0.1</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="distance"     id="x1"   label="x"      sourcetype="digitized"  units="cm"            />
+        <property name="temperature"  id="x2"   label="T"      sourcetype="digitized"  units="K"             />
+        <property name="composition"  id="x3"   label="[H2]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen"         />
+        </property>
+        <property name="composition"  id="x4"   label="[O2]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"   InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"           />
+        </property>
+        <property name="composition"  id="x5"   label="[H2O]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"   InChI="1S/H2O/h1H2"  SMILES="O"     chemName="water"            />
+        </property>
+        <property name="composition"  id="x6"   label="[H]"    sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="H"    CAS="12385-13-6"  InChI="1S/H"         SMILES="[H]"   chemName="hydrogen atom"    />
+        </property>
+        <property name="composition"  id="x7"   label="[O]"    sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="O"    CAS="17778-80-2"  InChI="1S/O"         SMILES="[O]"   chemName="oxygen atom"      />
+        </property>
+        <property name="composition"  id="x8"   label="[OH]"   sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="OH"   CAS="3352-57-6"   InChI="1S/HO/h1H"    SMILES="[OH]"  chemName="hydroxyl radical" />
+        </property>
+
+        <dataPoint><x1>2.000000e-001</x1><x2>7.139700e+002</x2><x3>2.879700e-001</x3><x4>1.043800e-001</x4><x5>1.946000e-002</x5><x6>4.590000e-003</x6><x7>1.685500e-004</x7><x8>8.340700e-005</x8></dataPoint>
+        <dataPoint><x1>2.500000e-001</x1><x2>7.539900e+002</x2><x3>2.788700e-001</x3><x4>9.828000e-002</x4><x5>2.866000e-002</x5><x6>9.830000e-003</x6><x7>3.571100e-004</x7><x8>1.468700e-004</x8></dataPoint>
+        <dataPoint><x1>3.000000e-001</x1><x2>8.191200e+002</x2><x3>2.685300e-001</x3><x4>9.114000e-002</x4><x5>4.214000e-002</x5><x6>1.321000e-002</x6><x7>5.841500e-004</x7><x8>2.808900e-004</x8></dataPoint>
+        <dataPoint><x1>3.500000e-001</x1><x2>8.658100e+002</x2><x3>2.554800e-001</x3><x4>7.991000e-002</x4><x5>5.873000e-002</x5><x6>1.882000e-002</x6><x7>8.027200e-004</x7><x8>3.301200e-004</x8></dataPoint>
+        <dataPoint><x1>4.000000e-001</x1><x2>9.153800e+002</x2><x3>2.418100e-001</x3><x4>6.868000e-002</x4><x5>7.888000e-002</x5><x6>2.371000e-002</x6><x7>1.090000e-003</x7><x8>4.666200e-004</x8></dataPoint>
+        <dataPoint><x1>4.500000e-001</x1><x2>9.617400e+002</x2><x3>2.297900e-001</x3><x4>5.947000e-002</x4><x5>9.800000e-002</x5><x6>3.164000e-002</x6><x7>1.370000e-003</x7><x8>5.255100e-004</x8></dataPoint>
+        <dataPoint><x1>5.000000e-001</x1><x2>1.005200e+003</x2><x3>2.184100e-001</x3><x4>4.878000e-002</x4><x5>1.206800e-001</x5><x6>3.808000e-002</x6><x7>1.580000e-003</x7><x8>6.738100e-004</x8></dataPoint>
+        <dataPoint><x1>5.500000e-001</x1><x2>1.046100e+003</x2><x3>2.064100e-001</x3><x4>4.049000e-002</x4><x5>1.365600e-001</x5><x6>4.400000e-002</x6><x7>1.950000e-003</x7><x8>7.065900e-004</x8></dataPoint>
+        <dataPoint><x1>6.000000e-001</x1><x2>1.088900e+003</x2><x3>1.945000e-001</x3><x4>3.165000e-002</x4><x5>1.574200e-001</x5><x6>4.942000e-002</x6><x7>1.990000e-003</x7><x8>7.864700e-004</x8></dataPoint>
+        <dataPoint><x1>6.500000e-001</x1><x2>1.111200e+003</x2><x3>1.864500e-001</x3><x4>2.467000e-002</x4><x5>1.698000e-001</x5><x6>5.364000e-002</x6><x7>1.900000e-003</x7><x8>7.953700e-004</x8></dataPoint>
+        <dataPoint><x1>7.000000e-001</x1><x2>1.131100e+003</x2><x3>1.796400e-001</x3><x4>1.787000e-002</x4><x5>1.828900e-001</x5><x6>5.788000e-002</x6><x7>1.620000e-003</x7><x8>7.244200e-004</x8></dataPoint>
+        <dataPoint><x1>7.500000e-001</x1><x2>1.141300e+003</x2><x3>1.761700e-001</x3><x4>1.383000e-002</x4><x5>1.899600e-001</x5><x6>6.040000e-002</x6><x7>1.460000e-003</x7><x8>6.623500e-004</x8></dataPoint>
+        <dataPoint><x1>8.000000e-001</x1><x2>1.151300e+003</x2><x3>1.636500e-001</x3><x4>1.070000e-002</x4><x5>1.991700e-001</x5><x6>6.347000e-002</x6><x7>1.210000e-003</x7><x8>6.174500e-004</x8></dataPoint>
+        <dataPoint><x1>8.500000e-001</x1><x2>1.160500e+003</x2><x3>1.675600e-001</x3><x4>8.140000e-003</x4><x5>2.052000e-001</x5><x6>6.398000e-002</x6><x7>1.010000e-003</x7><x8>5.768000e-004</x8></dataPoint>
+        <dataPoint><x1>9.000000e-001</x1><x2>1.168200e+003</x2><x3>1.640900e-001</x3><x4>5.760000e-003</x4><x5>2.098000e-001</x5><x6>6.585000e-002</x6><x7>8.150300e-004</x7><x8>5.432600e-004</x8></dataPoint>
+        <dataPoint><x1>9.500000e-001</x1><x2>1.170400e+003</x2><x3>1.629100e-001</x3><x4>3.750000e-003</x4><x5>2.112300e-001</x5><x6>6.654000e-002</x6><x7>7.019000e-004</x7><x8>5.172600e-004</x8></dataPoint>
+        <dataPoint><x1>1.000000e+000</x1><x2>1.171700e+003</x2><x3>1.634900e-001</x3><x4>3.580000e-003</x4><x5>2.140900e-001</x5><x6>6.723000e-002</x6><x7>5.803000e-004</x7><x8>4.908900e-004</x8></dataPoint>
+        <dataPoint><x1>1.100000e+000</x1><x2>1.166600e+003</x2><x3>1.611200e-001</x3><x4>3.410000e-003</x4><x5>2.194100e-001</x5><x6>6.725000e-002</x6><x7>3.409400e-004</x7><x8>4.452300e-004</x8></dataPoint>
+        <dataPoint><x1>1.200000e+000</x1><x2>1.161500e+003</x2><x3>1.610500e-001</x3><x4>1.950000e-003</x4><x5>2.183200e-001</x5><x6>6.523000e-002</x6><x7>2.439700e-004</x7><x8>4.302400e-004</x8></dataPoint>
+        <dataPoint><x1>1.300000e+000</x1><x2>1.156500e+003</x2><x3>1.615900e-001</x3><x4>4.895100e-004</x4><x5>2.194300e-001</x5><x6>6.492000e-002</x6><x7>2.016400e-004</x7><x8>4.203000e-004</x8></dataPoint>
+        <dataPoint><x1>1.400000e+000</x1><x2>1.151400e+003</x2><x3>1.620400e-001</x3><x4>0.000000e+000</x4><x5>2.204800e-001</x5><x6>6.444000e-002</x6><x7>1.308400e-004</x7><x8>4.078600e-004</x8></dataPoint>
+        <dataPoint><x1>1.700000e+000</x1><x2>1.136200e+003</x2><x3>1.657700e-001</x3><x4>0.000000e+000</x4><x5>2.169500e-001</x5><x6>6.182000e-002</x6><x7>1.139100e-004</x7><x8>3.843000e-004</x8></dataPoint>
+        <dataPoint><x1>2.200000e+000</x1><x2>1.111600e+003</x2><x3>1.683000e-001</x3><x4>0.000000e+000</x4><x5>2.188200e-001</x5><x6>5.448000e-002</x6><x7>1.139100e-004</x7><x8>3.525800e-004</x8></dataPoint>
+        <dataPoint><x1>2.700000e+000</x1><x2>1.087200e+003</x2><x3>1.679100e-001</x3><x4>0.000000e+000</x4><x5>2.220500e-001</x5><x6>4.903000e-002</x6><x7>1.092900e-004</x7><x8>3.347300e-004</x8></dataPoint>
+    </dataGroup>
+</experiment>

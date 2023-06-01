@@ -1,0 +1,54 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10400002</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2019-06-21</firstPublicationDate>
+    <lastModificationDate>2020-11-13</lastModificationDate>
+    <bibliographyLink>
+        <description>I.N. Kosarev, S.M. Starikovskaia, A.Yu. Starikovsii; Combustion and Flame 151 (2007) 61-73; Table2</description>
+        <referenceDOI>10.1016/j.combustflame.2007.06.009</referenceDOI>
+        <location>Main article</location>
+        <table>Table2</table>
+        <details>
+            <author>Kosarev, I. N. and Starikovskaia, S. M. and Starikovskii, A. Yu</author>
+            <journal>Combustion and Flame</journal>
+            <number>1-2</number>
+            <pages>61--73</pages>
+            <title>The kinetics of autoignition of rich N2O-H-2-O-2-Ar mixtures at high temperatures</title>
+            <volume>151</volume>
+            <year>2007</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="N2O"  CAS="10024-97-2"  InChI="1S/N2O/c1-2-3"  SMILES="N#[N+][O-]"  chemName="nitrous oxide" /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"   InChI="1S/H2/h1H"      SMILES="[HH]"        chemName="hydrogen"      /><amount units="mole fraction" >0.1</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"   InChI="1S/Ar"          SMILES="[Ar]"        chemName="argon"         /><amount units="mole fraction" >0.8</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1" label="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>1574</x1><x2>0.22</x2> <x3>94</x3></dataPoint>
+        <dataPoint><x1>1461</x1><x2>0.29</x2><x3>146</x3></dataPoint>
+        <dataPoint><x1>1396</x1><x2>0.36</x2><x3>203</x3></dataPoint>
+        <dataPoint><x1>1328</x1><x2>0.39</x2><x3>287</x3></dataPoint>
+        <dataPoint><x1>1312</x1><x2>0.40</x2><x3>339</x3></dataPoint>
+        <dataPoint><x1>1288</x1><x2>0.47</x2><x3>422</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

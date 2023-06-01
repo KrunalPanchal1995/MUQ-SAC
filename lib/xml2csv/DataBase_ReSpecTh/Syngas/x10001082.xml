@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001082</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>L. D. Thi, Y. Zhang, J. Fu, Z. Huang, Y. Zhang: Study on Ignition Delay of Multi-Component Syngas Using Shock Tube, The Canadian Journal of Chemical Engineering, 2013, in press.</description>
+        <referenceDOI>10.1002/cjce.21938</referenceDOI>
+        <location>Supplementary materials</location>
+        <table>Table 2, SH50C30 (mixture 3), 2 MPa series.</table>
+        <details>
+            <author>Thi, Luong Dinh and Zhang, Yingjia and Fu, Jin and Huang, Zuohua and Zhang, Yang</author>
+            <journal>Can J Chem Eng</journal>
+            <number>5</number>
+            <pages>861--870</pages>
+            <title>Study on ignition delay of multi-component syngas using shock tube</title>
+            <volume>92</volume>
+            <year>2014</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"      SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.01556</amount></component>
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"     SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.01556</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"     SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.01556</amount></component>
+            <component><speciesLink preferredKey="CO2"  CAS="124-38-9"   InChI="1S/CO2/c2-1-3"  SMILES="C(=O)=O"    chemName="carbon dioxide"  /><amount units="mole fraction" >0.01333</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"          SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.94000</amount></component>
+        </property>
+        <property name="pressure rise"                 label="dp/dt"  sourcetype="reported"   units="ms-1"           kind="relative" ><value>0.0422</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.14</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>19.26</x1><x2>1051</x2><x3>3141</x3></dataPoint>
+        <dataPoint><x1>20.28</x1><x2>1068</x2><x3>2645</x3></dataPoint>
+        <dataPoint><x1>20.22</x1><x2>1104</x2><x3>1115</x3></dataPoint>
+        <dataPoint><x1>19.49</x1><x2>1108</x2> <x3>996</x3></dataPoint>
+        <dataPoint><x1>19.66</x1><x2>1127</x2> <x3>641</x3></dataPoint>
+        <dataPoint><x1>20.01</x1><x2>1151</x2> <x3>256</x3></dataPoint>
+        <dataPoint><x1>19.84</x1><x2>1186</x2> <x3>120</x3></dataPoint>
+        <dataPoint><x1>20.48</x1><x2>1189</x2> <x3>130</x3></dataPoint>
+        <dataPoint><x1>20.19</x1><x2>1239</x2>  <x3>47</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="d/dt max"/>
+</experiment>

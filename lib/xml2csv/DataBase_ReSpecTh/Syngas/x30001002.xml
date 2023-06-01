@@ -1,0 +1,77 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x30001002</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>M. A. Mueller; R. A. Yetter; F. L. Dryer, International Journal of Chemical Kinetics 1999, 31, 705-724.</description>
+        <referenceDOI>10.1002/(SICI)1097-4601(1999)31:10%3C705::AID-JCK4%3E3.0.CO;2-#</referenceDOI>
+        <location>Main Article</location>
+        <table>Table A2. and Fig. 1.</table>
+        <details>
+            <author>Mueller, M A and Yetter, R A and Dryer, F L</author>
+            <journal>Int J Chem Kinet</journal>
+            <number>10</number>
+            <pages>705--724</pages>
+            <publisher>Wiley</publisher>
+            <title>Flow reactor studies and kinetic modeling of the H2/O2/NOx and CO/H2O/O2/NOx reactions</title>
+            <volume>31</volume>
+            <year>1999</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>concentration time profile measurement</experimentType>
+    <apparatus>
+        <kind>flow reactor</kind>
+        <mode>turbulent</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>1038</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"    units="atm"           ><value>1</value></property>
+        <property name="initial composition"          >
+            <component><speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  sourcetype="reported"    chemName="carbon monoxide" /><amount units="mole fraction" >0.0101</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        sourcetype="reported"    chemName="oxygen"          /><amount units="mole fraction" >0.0052</amount></component>
+            <component><speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          sourcetype="reported"    chemName="water"           /><amount units="mole fraction" >0.0065</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        sourcetype="calculated"  chemName="nitrogen"        /><amount units="mole fraction" >0.9782</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="mole fraction"  reference="composition"  kind="absolute"  method="statistical scatter" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+            <value>0.0002629</value>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="time"         id="x1"   label="t"     sourcetype="digitized"  units="s"             />
+        <property name="composition"  id="x2"   label="[CO]"  sourcetype="digitized"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"  InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+
+        <dataPoint><x1>0.0000E+00</x1><x2>1.0100E-02</x2></dataPoint>
+        <dataPoint><x1>5.0123E-03</x1><x2>8.5619E-03</x2></dataPoint>
+        <dataPoint><x1>6.5813E-03</x1><x2>7.1933E-03</x2></dataPoint>
+        <dataPoint><x1>9.2401E-03</x1><x2>5.8081E-03</x2></dataPoint>
+        <dataPoint><x1>1.4117E-02</x1><x2>4.4729E-03</x2></dataPoint>
+        <dataPoint><x1>1.9031E-02</x1><x2>3.2211E-03</x2></dataPoint>
+        <dataPoint><x1>2.4060E-02</x1><x2>2.2198E-03</x2></dataPoint>
+        <dataPoint><x1>3.0339E-02</x1><x2>1.5522E-03</x2></dataPoint>
+        <dataPoint><x1>3.7823E-02</x1><x2>1.1182E-03</x2></dataPoint>
+        <dataPoint><x1>4.4285E-02</x1><x2>8.5118E-04</x2></dataPoint>
+        <dataPoint><x1>4.9703E-02</x1><x2>7.0097E-04</x2></dataPoint>
+        <dataPoint><x1>5.7324E-02</x1><x2>5.6746E-04</x2></dataPoint>
+        <dataPoint><x1>6.3870E-02</x1><x2>4.8401E-04</x2></dataPoint>
+        <dataPoint><x1>7.0432E-02</x1><x2>4.3394E-04</x2></dataPoint>
+        <dataPoint><x1>7.8091E-02</x1><x2>3.8387E-04</x2></dataPoint>
+        <dataPoint><x1>8.3570E-02</x1><x2>3.6718E-04</x2></dataPoint>
+        <dataPoint><x1>9.0139E-02</x1><x2>3.3380E-04</x2></dataPoint>
+        <dataPoint><x1>9.6723E-02</x1><x2>3.3380E-04</x2></dataPoint>
+        <dataPoint><x1>1.0220E-01</x1><x2>3.0042E-04</x2></dataPoint>
+        <dataPoint><x1>1.1096E-01</x1><x2>2.6704E-04</x2></dataPoint>
+    </dataGroup>
+    <timeshift target="CO" type="half decrease"/>
+</experiment>

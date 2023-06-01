@@ -1,0 +1,53 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20000039c</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Kwon, O.C., Faeth, G.M., Combustion and Flame, 2001, (124), 590-610.</description>
+        <referenceDOI>10.1016/S0010-2180(00)00229-7</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 3, H2/O2/He, phi=4.5, pressure varied</table>
+        <details>
+            <author>Kwon, O C and Faeth, G M</author>
+            <journal>Combust Flame</journal>
+            <number>4</number>
+            <pages>590--610</pages>
+            <title>Flame/Stretch Interactions of Premixed Hydrogen-Fueled Flames: Measurements and Predictions</title>
+            <volume>124</volume>
+            <year>2001</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >6.540698e-001</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.726744e-001</amount></component>
+            <component><speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"  chemName="helium"   /><amount units="mole fraction" >2.732558e-001</amount></component>
+        </property>
+        <property name="temperature"                   label="T"   sourcetype="reported"    units="K"             ><value>298</value></property>
+        <property name="uncertainty"                   label="dT"  sourcetype="reported"    units="K"              reference="temperature"               kind="absolute"  bound="plusminus" ><value>3</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>7.5</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="P"   sourcetype="reported"  units="atm"  />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"  sourcetype="reported"  units="mm/s" />
+
+        <dataPoint><x1>1.0</x1><x2>1980</x2></dataPoint>
+        <dataPoint><x1>2.0</x1><x2>1870</x2></dataPoint>
+        <dataPoint><x1>3.0</x1><x2>1910</x2></dataPoint>
+    </dataGroup>
+</experiment>

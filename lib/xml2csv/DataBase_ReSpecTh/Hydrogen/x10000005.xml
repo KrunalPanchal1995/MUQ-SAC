@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10000005</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Slack M.W., Combustion and Flame, (28), 241-249., 1977.</description>
+        <referenceDOI>10.1016/0010-2180(77)90031-1</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 2., full circle</figure>
+        <details>
+            <author>Slack, M W</author>
+            <journal>Combust Flame</journal>
+            <pages>241--249</pages>
+            <title>Rate coefficient for H + O$_{2}$ + M = HO$_{2}$ + M evaluated from shock tube measurements of induction times</title>
+            <volume>28</volume>
+            <year>1977</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"           ><value>2</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.2958</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.1479</amount></component>
+            <component><speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"   chemName="nitrogen" /><amount units="mole fraction" >0.5563</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.17</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1184</x1> <x2>22.3</x2></dataPoint>
+        <dataPoint><x1>1169</x1> <x2>21.2</x2></dataPoint>
+        <dataPoint><x1>1143</x1> <x2>27.3</x2></dataPoint>
+        <dataPoint><x1>1102</x1> <x2>36.6</x2></dataPoint>
+        <dataPoint><x1>1076</x1> <x2>48.5</x2></dataPoint>
+        <dataPoint><x1>1059</x1> <x2>58.7</x2></dataPoint>
+        <dataPoint><x1>1045</x1> <x2>81.4</x2></dataPoint>
+        <dataPoint><x1>1031</x1><x2>118.2</x2></dataPoint>
+        <dataPoint><x1>1028</x1><x2>146.3</x2></dataPoint>
+        <dataPoint><x1>1024</x1><x2>124.0</x2></dataPoint>
+        <dataPoint><x1>1013</x1><x2>281.3</x2></dataPoint>
+        <dataPoint><x1>1004</x1><x2>361.4</x2></dataPoint>
+        <dataPoint> <x1>993</x1><x2>308.4</x2></dataPoint>
+        <dataPoint> <x1>993</x1><x2>492.0</x2></dataPoint>
+        <dataPoint> <x1>992</x1><x2>421.9</x2></dataPoint>
+        <dataPoint> <x1>984</x1><x2>637.9</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="d/dt max"/>
+</experiment>

@@ -1,0 +1,43 @@
+#########
+# Input #
+#########
+Inputs: {bin: /home/krunal/Desktop/kmOpt/bin, Flame: UnstretchedPremixed, MechanismFile: /home/krunal/Desktop/kmOpt/Fuels/GRIMECH/gri.pre, StartProfilesFile: H2_p01_0phi1_0000tu0298}
+#######################
+# Boundary conditions #
+#######################
+Boundary:
+
+ - fuel:
+	 - key: Multi,
+	 -From: H2,
+	 - To: 	
+	 	- a:H2
+	 	- b:CO
+	 	- c:
+	 	- d:
+	 - ToConc : 
+	 	- a:0.016
+	 	- b:0.309
+	 	- c
+	 	- d	
+ - oxidizer:		
+	 - key: Mono
+	 - From: O2
+	 - To:O2
+	 - ToConc: 0.142
+ - bathGas:
+	 - key: Multi
+	 - From: N2
+	 - To: 
+	   - bg1:N2
+	   - bg2:AR
+	   - bg3:H2O
+	 - ToConc:
+	   - bg1:0.533
+	   - bg2:0.00
+	   - bg3:0.00
+ - globalReaction:
+	 - FromRxn: 2H2+O2==2H2O
+	 - ToRxn: H2+O2+CO==CO2+H2O
+ - pressure:	101350 "Pa"
+ - temperature:	298.2 "K"
