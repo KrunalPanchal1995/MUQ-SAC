@@ -21,14 +21,14 @@ class combustion_target():
 		self.molecularWt["co"] = 28
 		self.molecularWt["h2"] = 2
 		self.molecularWt["o2"] = 32
-		self.molecularWt["CO2"] = 0
+		self.molecularWt["CO2"] = 44
 		self.molecularWt["AR"] = 0
-		self.molecularWt["HE"] = 0
-		self.molecularWt["CO2"] = 0
+		self.molecularWt["HE"] = 2
+		self.molecularWt["CO2"] = 44
 		self.molecularWt["Ar"] = 0
-		self.molecularWt["He"] = 0
-		self.molecularWt["N2"] = 0
-		self.molecularWt["H2O"] = 0
+		self.molecularWt["He"] = 2
+		self.molecularWt["N2"] = 28
+		self.molecularWt["H2O"] = 18
 		self.stoichiometry = {}
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["H2"] = 0.5
@@ -546,7 +546,7 @@ class combustion_target():
 		#print(len(row))
 		coeff = self.resCoef
 		
-		print(len(coeff))
+		#print(len(coeff))
 		#if self.PRS_type == "Partial":
 		#	if self.activeIndexDict is not None:
 		#		row = []
