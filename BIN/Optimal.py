@@ -25,7 +25,7 @@ def simulations(optInputs,iFile,case_dir,rps_order,activeParameters, reaction_in
 		os.chdir("Opt")
 		optDir = os.getcwd()
 
-
+	
 	print("Generate Directories and mechanism files for Optimization\n")
 	sim_type = "Opt"
 	if os.path.isfile("progress") == False:

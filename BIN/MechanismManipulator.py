@@ -177,6 +177,16 @@ class MechanismManipulator():
 								index+=1
 							self.PerturbingReactions[r] = mechLine
 							mechLine = "" 
+						elif "PLOG" in f_mech[f_mech.index(i)+1]:
+							self.chemtag[r] = 6
+							start = f_mech.index(i)  
+							mechLine += f_mech[start]
+							index = 1
+							while "PLOG" in f_mech[start+index]:
+								mechLine += f_mech[start+index]
+								index+=1
+							self.PerturbingReactions[r] = mechLine
+							mechLine = "" 
 						else:
 							self.chemtag[r] = 0
 							mechLine += i
@@ -310,16 +320,19 @@ class MechanismManipulator():
 			#print("rxn founds")
 			#print(count_Arrhenius_params)
 			#print(count_Arrhenius_params)
+			#print(beta)
 			beta_rxn = beta[0:count_Arrhenius_params]
 			beta_selection = transformation[0:count_Arrhenius_params]
 			beta_per_rxn = []
 			beta_selection_per_rxn = []
 			count_rxn = 0
+			#print(beta_rxn)
 			for i in self.ReactionList:
 				zemp = []
 				ramp = []
 				if count_rxn < count_Arrhenius_params:
 					for j in range(temp[i]):
+					
 						zemp.append(beta_rxn[count_rxn])
 						ramp.append(beta_selection[count_rxn])
 						count_rxn+=1
@@ -332,7 +345,7 @@ class MechanismManipulator():
 				self.RBeta_Dict[rxn] = np.asarray(beta_per_rxn[index])
 			for index,rxn in enumerate(self.ReactionList):
 				self.RBeta_select_Dict[rxn] = beta_selection_per_rxn[index]
-			
+			dicti = {}
 			#print("\nDictionary in Mechmanipulator\n")
 			#print(self.RBeta_select_Dict)
 			#raise AssertionError("Stop")
@@ -350,7 +363,7 @@ class MechanismManipulator():
 				#print(NewReaction)
 				#print("\n")
 				NewMechanismString = NewMechanismString.replace(self.PerturbingReactions[rxn],NewReaction)	
-					
+				
 		else:
 			#print("rxn not founds")
 			count_rxn = 0
@@ -571,9 +584,10 @@ class MechanismManipulator():
 
 	def ModifyReaction(self,reaction_str,target,beta,selection,rxn, sens_AL,isOpt):
 		#print(rxn)
-		
+		dictionary = {}
 		#print(type(index))
 		rxn_type = self.rxnUnsrt[rxn].type
+		
 		branch_bool = self.rxnUnsrt[rxn].branching
 		rxn_sub_type = self.rxnUnsrt[rxn].sub_type
 		#print(rxn_sub_type)
@@ -595,6 +609,7 @@ class MechanismManipulator():
 				#print(reaction_str)
 				
 				reaction_str = self.getNewBranchRxn(reaction_str,branches,rxn,beta,selection,isOpt)
+				
 				#print("\t After perturbation {} \n".format(reaction_str))
 			elif rxn_sub_type.strip() == "duplicate":
 				#print("Duplicate")
@@ -609,6 +624,7 @@ class MechanismManipulator():
 				#print("Going to the func")
 				reaction_str = self.getNewDuplicateRxn(reaction_str,rxn,beta,selection,isOpt,"A",kdup_A,kdup_B)
 				#reaction_str = self.getNewDuplicateRxn(reaction_str,base_rxn+":B",beta,isOpt,"B",0,kdup_B)
+				
 			else:
 				#print("Forward Rxn")
 		#		print("\nReaction type:\n\n{}".format(rxn_type[0]))
@@ -619,36 +635,54 @@ class MechanismManipulator():
 				#print(reaction_str)
 				#print(beta)
 				reaction_str = self.getNewRxn(reaction_str,rxn,beta,selection,isOpt)			 
-					
+				
+				
 		elif rxn_type.strip() == "pressure_dependent":
-			#print(rxn)
-			#print(rxn[0])
-			#print("Before perturbation = {}".format(reaction_str))
-			base_rxn = rxn.split(":")[0]
-			kDelta_HPL = 0
-			kDelta_LPL = 0
-			kDelta_FoC = 0 
-			if base_rxn+":High" in self.ReactionList:
-				kDelta_HPL = 1
-			if base_rxn+":Low" in self.ReactionList:
-				kDelta_LPL = 1
-			if base_rxn+":FoC" in self.ReactionList:
-				kDelta_FoC = 1
-				#print("\nReaction type:\n\n{}".format(rxn_type[0]))
-				#print("Foc FOUND IN LIST")
-			#print(kDelta_HPL,kDelta_LPL,kDelta_FoC)
-			
-			reaction_str = self.getNewUpperLimits(reaction_str,base_rxn+":High",beta,selection,isOpt,kDelta_HPL)
-			reaction_str = self.getNewLowerLimits(reaction_str,base_rxn+":Low",beta,selection,isOpt,kDelta_LPL)
-			reaction_str = self.getNewFallOffCurve(reaction_str,target,base_rxn+":FoC",beta,selection,isOpt,kDelta_FoC)	
-		
+			pressure_type = self.rxnUnsrt[rxn].pressure_type
+			if pressure_type == "PLOG":
+				base_rxn = rxn.split(":")[0]
+				kDelta_HPL = 0
+				kDelta_LPL = 0
+				if base_rxn+":High" in self.ReactionList:
+					kDelta_HPL = 1
+				if base_rxn+":Low" in self.ReactionList:
+					kDelta_LPL = 1
+					#print("\nReaction type:\n\n{}".format(rxn_type[0]))
+					#print("Foc FOUND IN LIST")
+				#print(kDelta_HPL,kDelta_LPL,kDelta_FoC)
+				
+				reaction_str = self.getPLOGHigh(reaction_str,base_rxn+":High",beta,selection,isOpt,kDelta_HPL)
+				reaction_str = self.getPLOGLow(reaction_str,base_rxn+":Low",beta,selection,isOpt,kDelta_LPL)
+				
+			else:
+				#print(rxn)
+				#print(rxn[0])
+				#print("Before perturbation = {}".format(reaction_str))
+				base_rxn = rxn.split(":")[0]
+				kDelta_HPL = 0
+				kDelta_LPL = 0
+				kDelta_FoC = 0 
+				if base_rxn+":High" in self.ReactionList:
+					kDelta_HPL = 1
+				if base_rxn+":Low" in self.ReactionList:
+					kDelta_LPL = 1
+				if base_rxn+":FoC" in self.ReactionList:
+					kDelta_FoC = 1
+					#print("\nReaction type:\n\n{}".format(rxn_type[0]))
+					#print("Foc FOUND IN LIST")
+				#print(kDelta_HPL,kDelta_LPL,kDelta_FoC)
+				
+				reaction_str = self.getNewUpperLimits(reaction_str,base_rxn+":High",beta,selection,isOpt,kDelta_HPL)
+				reaction_str = self.getNewLowerLimits(reaction_str,base_rxn+":Low",beta,selection,isOpt,kDelta_LPL)
+				reaction_str = self.getNewFallOffCurve(reaction_str,target,base_rxn+":FoC",beta,selection,isOpt,kDelta_FoC)	 
 			
 		else: 
 			print("Plz give correct input\n")	
 		
 		#print("\nAfter perturbation\n\n{}".format(reaction))		 
 		#print("\t After perturbation = {}".format(reaction_str))
-		return reaction_str 
+		
+		return reaction_str
 	
 
 	
@@ -947,6 +981,7 @@ class MechanismManipulator():
 		
 	def getNewDuplicateRxn(self,reaction,rxn,beta,selection,isOpt,whichRxn,kDa,kDb):
 		#print(self.fileType)
+		rxn_dict = {}
 		if self.fileType == "FlameMaster":
 			w = re.compile(r'.*:?.*->.*A\s*?=\s*?(\S*E\S*)?\s*n\s*?=\s*(\S*)?\s*E\s*?=\s*(\S*)?\s*.*\}}?'.format(), re.DOTALL | re.IGNORECASE)
 			match1 = re.search(w, reaction)
@@ -1035,19 +1070,25 @@ class MechanismManipulator():
 				
 				M = 3/(np.log(10.0));		
 				choleskyMatrix = self.rxnUnsrt[rxn].cholskyDeCorrelateMat
+				perturb_factor = self.rxnUnsrt[rxn].perturb_factor
 				zeta = self.rxnUnsrt[rxn].zeta_matrix
 				beta = self.RBeta_Dict[rxn]
 				#print(np.dot(choleskyMatrix,beta*zeta).flatten())		
 				##print(f"selected: {selection}\n")
 				##print(f"Before selection rxn : {reaction}\n")	
-				if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+				if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+					rxn_dict[rxn] = np.array([alpha,n,epsilon])
+					rxn_dict["cholesky"] = choleskyMatrix
 					log_Arrhenius = np.array([alpha,n,epsilon]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "A1":
 					log_Arrhenius = np.array([alpha,n,epsilon]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "Monte-Carlo-All":
 					log_Arrhenius = np.array([alpha,n,epsilon]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+				elif self.design == "A-facto":
+					log_Arrhenius = np.array([alpha,n,epsilon]) + np.asarray([selection*perturb_factor*beta,0,0]).flatten()
 				#need to convert back to original values
 				Arrhenius = [np.exp(log_Arrhenius[0]), log_Arrhenius[1], 1.987*log_Arrhenius[2]]			
+				
 				aString = '{:.3E}'.format(Arrhenius[0])
 				ga = "   "
 				nString = '{:.3f}'.format(Arrhenius[1])
@@ -1061,17 +1102,22 @@ class MechanismManipulator():
 				
 				M = 3/(np.log(10.0));		
 				choleskyMatrix = self.rxnUnsrt[rxn].cholskyDeCorrelateMat
+				perturb_factor = self.rxnUnsrt[rxn].perturb_factor
 				zeta = self.rxnUnsrt[rxn].zeta_matrix
 				beta = self.RBeta_Dict[rxn]
 				#print(f"selected: {selection}\n")
 				#print(f"Before selection rxn : {reaction}\n")
 				#print(np.dot(choleskyMatrix,beta*zeta).flatten())
-				if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+				if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+					rxn_dict[rxn] = np.array([alpha_dup,n_dup,epsilon_dup])
+					rxn_dict["cholesky"] = choleskyMatrix
 					log_Arrhenius = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "A1":
 					log_Arrhenius = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "Monte-Carlo-All":
 					log_Arrhenius = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+				elif self.design == "A-facto":
+					log_Arrhenius = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray([selection*perturb_factor*beta,0,0]).flatten()
 				#need to convert back to original values
 				Arrhenius = [np.exp(log_Arrhenius[0]), log_Arrhenius[1], 1.987*log_Arrhenius[2]]			
 			
@@ -1090,12 +1136,11 @@ class MechanismManipulator():
 				rxn_b = rxn.split(":")[0]+":B"
 				
 				choleskyMatrix_a = self.rxnUnsrt[rxn_a].cholskyDeCorrelateMat
-				
+				perturb_factor_a = self.rxnUnsrt[rxn_a].perturb_factor
 				choleskyMatrix_b = self.rxnUnsrt[rxn_b].cholskyDeCorrelateMat
-				
+				perturb_factor_b = self.rxnUnsrt[rxn_b].perturb_factor
 				M = 3/(np.log(10.0));		
 				
-				choleskyMatrix_a = self.rxnUnsrt[rxn_a].cholskyDeCorrelateMat
 				zeta_a = self.rxnUnsrt[rxn_a].zeta_matrix
 				beta_a = self.RBeta_Dict[rxn_a]
 				zeta_b = self.rxnUnsrt[rxn_b].zeta_matrix
@@ -1105,40 +1150,46 @@ class MechanismManipulator():
 				#print(f"selected: {selection_a}\n")
 				#print(f"selected: {selection_b}\n")
 				#print(f"Before selection_a rxn : {reaction}\n")
-				if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+				if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+					rxn_dict[rxn] = np.array([alpha,n,epsilon])
+					rxn_dict["cholesky"] = choleskyMatrix_a
 					log_Arrhenius_a = np.array([alpha,n,epsilon]) + np.asarray(selection_a*np.asarray(np.dot(choleskyMatrix_a,beta_a)).flatten()).flatten()
+					log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,beta_b)).flatten()).flatten()
+				
 				elif self.design == "A1":
 					log_Arrhenius_a = np.array([alpha,n,epsilon]) + np.asarray(selection_a*np.asarray(np.dot(choleskyMatrix_a,beta_a)).flatten()).flatten()
+					log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,beta_b)).flatten()).flatten()
+				
 				elif self.design == "Monte-Carlo-All":	
 					log_Arrhenius_a = np.array([alpha,n,epsilon]) + np.asarray(selection_a*np.asarray(np.dot(choleskyMatrix_a,zeta_a.T.dot(beta_a.T).T)).flatten()).flatten()
+					log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,beta_b)).flatten()).flatten()
+				elif self.design == "A-facto":
+					log_Arrhenius_a = np.array([alpha,n,epsilon]) + np.asarray([selection_a[0]*perturb_factor_a*beta_a,0,0]).flatten()
+					log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray([selection_b[0]*perturb_factor_b*beta_b,0,0]).flatten()
 				#need to convert back to original values
-				Arrhenius_a = [np.exp(log_Arrhenius_a[0]), log_Arrhenius_a[1], 1.987*log_Arrhenius_a[2]]			
-				#print(np.dot(choleskyMatrix,beta*zeta).flatten())		
 				
+				Arrhenius_a = [float(np.exp(log_Arrhenius_a[0])), log_Arrhenius_a[1], 1.987*log_Arrhenius_a[2]]			
+				#print(np.dot(choleskyMatrix,beta*zeta).flatten())		
 				#need to convert back to original values
-						
+				#print(Arrhenius_a)
 				aString = '{:.3E}'.format(Arrhenius_a[0])
 				ga = "   "
 				nString = '{:.3f}'.format(Arrhenius_a[1])
 				gb = "   "
 				eString = '{:.3E}'.format(Arrhenius_a[2])
-				
 				ratesA = aString+ga+nString+gb+eString
-					
+				
 				#print(np.dot(choleskyMatrix,beta*zeta).flatten())
-				log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,beta_b)).flatten()).flatten()
+				#log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,beta_b)).flatten()).flatten()
 				#log_Arrhenius_b = np.array([alpha_dup,n_dup,epsilon_dup]) + np.asarray(selection_b*np.asarray(np.dot(choleskyMatrix_b,zeta_b.T.dot(beta_b.T).T)).flatten()).flatten()
 				#need to convert back to original values
-				Arrhenius_b = [np.exp(log_Arrhenius_b[0]), log_Arrhenius_b[1], 1.987*log_Arrhenius_b[2]]			
-			
+				Arrhenius_b = [float(np.exp(log_Arrhenius_b[0])), log_Arrhenius_b[1], 1.987*log_Arrhenius_b[2]]			
 				aString_dup = '{:.3E}'.format(Arrhenius_b[0])
 				ga = "   "
 				nString_dup = '{:.3f}'.format(Arrhenius_b[1])
 				gb = "   "
 				eString_dup = '{:.3E}'.format(Arrhenius_b[2])
-				
 				ratesB = aString_dup+ga+nString_dup+gb+eString_dup
-			
 				reaction = RxnA + ratesA + dup_flag1_rxnB + ratesB + dup_flag2		
 				#print(f"After selection rxn : {reaction}\n")
 			else:
@@ -1150,7 +1201,173 @@ class MechanismManipulator():
 			
 		return reaction
 
+	
+	def getPLOGHigh(self,reaction,rxn,beta,selection,isOpt,delta):
+		if delta == 1:
+			if self.fileType == "chemkin":
+				if self.chemtag[rxn] == 6:
+					if "factor" in self.rxnUnsrt[rxn].perturbation_type:
+						plog_count = reaction.count("PLOG")
+						high_string = mechLine.split("\n")[0]
+						dict_plog = {}
+						high_rate_pattern = re.compile(r'((.*?\<\=\>.*? \s*?)((-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))(\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?.*?\n?(\s*?.*?\/\s*?.*\/?\s*?.*?\n?))))',re.DOTALL|re.IGNORECASE)
+						#pattern = re.compile(high_rate_pattern,re.DOTALL|re.IGNORECASE)
+						high_group = re.search(high_rate_pattern, high_string)
+						dict_plog["high_pressure"] = {}
+						dict_plog["high_pressure"]["reaction"] = high_group.group(1)
+						dict_plog["high_pressure"]["expression"] = high_group.group(2)
+						dict_plog["high_pressure"]["ne+comments"] = high_group.group(7)
+						dict_plog["high_pressure"]["A"] = high_group.group(5)
+						dict_plog["high_pressure"]["n"] = high_group.group(8)
+						dict_plog["high_pressure"]["Ea"] = high_group.group(10)
+						dict_plog["high_pressure"]["comment"] = high_group.group(13)
+						"""
+						Perturbing the high pressure limits
+						"""
+						a = float(dict_plog["high_pressure"]["A"])
+						alpha = np.log(a)
+						
+						choleskyMatrix = self.rxnUnsrt[rxn].perturb_factor
+						zeta = self.rxnUnsrt[rxn].zeta_matrix
+						beta = self.RBeta_Dict[rxn]
+						selection = np.asarray(self.RBeta_select_Dict[rxn])
+						
+						if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+							rxn_dict[rxn] = np.array([alpha])
+							rxn_dict["cholesky"] = choleskyMatrix
+							log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+						elif self.design == "A1":
+							log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+						elif self.design == "Monte-Carlo-All":
+							log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta*zeta)).flatten()).flatten()
+						elif self.design == "A-facto":
+							log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+						Arrhenius_highPressureLimit = [np.exp(log_Arrhenius[0])]
+										
+						new_high = dict_plog["high_pressure"]["expression"]+str(Arrhenius_highPressureLimit[0])+dict_plog["high_pressure"]["ne+comments"]
+						
+						New_Reaction = ""
+						
+						New_Reaction += new_high+"\n"
+						#print(new_high)
+						for i in range(plog_count):		
+							plog_pattern = r'(\s*?PLOG\s*?\/\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?-?((\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?\/\s*?)'
+							pattern = re.compile(plog_pattern,re.DOTALL|re.IGNORECASE)
+							plog_group = re.search(pattern, mechLine.split("\n")[i+1])
+							#print(plog_group.group())
+							dict_plog[i+1] = {}
+							dict_plog[i+1]["string"] = plog_group.group(1)
+							dict_plog[i+1]["Plog+pressure"] = plog_group.group(2)
+							dict_plog[i+1]["ne+comment"] = plog_group.group(10)
+							
+							dict_plog[i+1]["P"] = plog_group.group(2)
+							dict_plog[i+1]["A"] = plog_group.group(5)
+							dict_plog[i+1]["n"] = plog_group.group(8)
+							dict_plog[i+1]["Ea"] = plog_group.group(11)
+							dict_plog[i+1]["Comment"] = plog_group.group(17)
+							
+							
+							a_plog = float(dict_plog[i+1]["A"])
+							alpha = np.log(a_plog)
+							
+							choleskyMatrix = self.rxnUnsrt[rxn].perturb_factor
+							zeta = self.rxnUnsrt[rxn].zeta_matrix
+							beta = self.RBeta_Dict[rxn]
+							selection = np.asarray(self.RBeta_select_Dict[rxn])
+							
+							if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+								rxn_dict[rxn] = np.array([alpha])
+								rxn_dict["cholesky"] = choleskyMatrix
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							elif self.design == "A1":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							elif self.design == "Monte-Carlo-All":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta*zeta)).flatten()).flatten()
+							elif self.design == "A-facto":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0])]							
+							new_plog = dict_plog[i+1]["Plog+pressure"]+str(Arrhenius_lowPressureLimit[0])+dict_plog[i+1]["ne+comment"]
+							New_Reaction +=new_plog+"\n"
+						reaction = New_Reaction						
+					## Assuming low factor uncertainty applied to all the PLOG expressions
+					
+				
+					#print(f"reaction after selection = {reaction}")
+			else:
+				print("Input kinetic mechansim file is invalid")
+		else:
+			reaction = reaction
+		#print(reaction)
+		return reaction
+		
+
+	def getPLOGLow(self,reaction,rxn,beta,selection,isOpt,delta):
+		if delta == 1:
+			if self.fileType == "chemkin":
+				if self.chemtag[rxn] == 6:
+					if "factor" in self.rxnUnsrt[rxn].perturbation_type:
+						plog_count = reaction.count("PLOG")
+						high_string = mechLine.split("\n")[0]
+						dict_plog = {}
+						high_rate_pattern = re.compile(r'((.*?\<\=\>.*? \s*?)((-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))(\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?.*?\n?(\s*?.*?\/\s*?.*\/?\s*?.*?\n?))))',re.DOTALL|re.IGNORECASE)
+						#pattern = re.compile(high_rate_pattern,re.DOTALL|re.IGNORECASE)
+						high_group = re.search(high_rate_pattern, high_string)
+						dict_plog["high_pressure"] = {}
+						dict_plog["high_pressure"]["reaction"] = high_group.group(1)
+										
+						new_high = dict_plog["high_pressure"]["reaction"]
+						
+						New_Reaction = ""
+						New_Reaction += new_high+"\n"
+						#print(new_high)
+						for i in range(plog_count):		
+							plog_pattern = r'(\s*?PLOG\s*?\/\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?-?((\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?(-?(\d\.?\d*[Ee][+\-]?\d+|(\d+\.\d*|\d*\.\d+)|\d+))\s*?\/\s*?)'
+							pattern = re.compile(plog_pattern,re.DOTALL|re.IGNORECASE)
+							plog_group = re.search(pattern, mechLine.split("\n")[i+1])
+							#print(plog_group.group())
+							dict_plog[i+1] = {}
+							dict_plog[i+1]["string"] = plog_group.group(1)
+							dict_plog[i+1]["Plog+pressure"] = plog_group.group(2)
+							dict_plog[i+1]["ne+comment"] = plog_group.group(10)
+							dict_plog[i+1]["P"] = plog_group.group(2)
+							dict_plog[i+1]["A"] = plog_group.group(5)
+							dict_plog[i+1]["n"] = plog_group.group(8)
+							dict_plog[i+1]["Ea"] = plog_group.group(11)
+							dict_plog[i+1]["Comment"] = plog_group.group(17)
+							a_plog = float(dict_plog[i+1]["A"])
+							alpha = np.log(a_plog)
+							choleskyMatrix = self.rxnUnsrt[rxn].perturb_factor
+							zeta = self.rxnUnsrt[rxn].zeta_matrix
+							beta = self.RBeta_Dict[rxn]
+							selection = np.asarray(self.RBeta_select_Dict[rxn])
+							if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+								rxn_dict[rxn] = np.array([alpha])
+								rxn_dict["cholesky"] = choleskyMatrix
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							elif self.design == "A1":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							elif self.design == "Monte-Carlo-All":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta*zeta)).flatten()).flatten()
+							elif self.design == "A-facto":
+								log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+							Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0])]							
+							new_plog = dict_plog[i+1]["Plog+pressure"]+str(Arrhenius_lowPressureLimit[0])+dict_plog[i+1]["ne+comment"]
+							New_Reaction +=new_plog+"\n"
+						reaction = New_Reaction						
+					## Assuming low factor uncertainty applied to all the PLOG expressions
+					
+				
+					#print(f"reaction after selection = {reaction}")
+			else:
+				print("Input kinetic mechansim file is invalid")
+		else:
+			reaction = reaction
+		#print(reaction)
+		return reaction
+		
+		
 	def getNewUpperLimits(self,reaction,rxn,beta,selection,isOpt,delta):
+		rxn_dict = {}
 		if delta == 1:
 			if self.fileType == "FlameMaster":
 				w = re.compile(r'(\d*\w):\s*(.*)\s*->\s*(.*)\s*?\{\s*?Ai\s*?=\s*?(\S*E\S*)?\s*ni\s*?=\s*(\S*)?\s*Ei\s*?=\s*(\S*)?\s*A\s*?=\s*?(\S*E\S*)?\s*n\s*?=\s*(\S*)?\s*E\s*?=\s*(\S*)?\s*fca\s*?=\s*?(\S*E\S*)?\s*?fcta\s*?=\s*?(\S*E\S*)?\s*?fcb\s*?=\s*?(\S*E\S*)?\s*?fctb\s*?=\s*?(\S*E\S*)?\s*?fcc\s*?=\s*?(\S*)?\s*?fctc\s*?=\s*?(\S*E\S*).*', re.DOTALL | re.IGNORECASE)
@@ -1261,13 +1478,17 @@ class MechanismManipulator():
 					#epsilon = e/1.987
 					
 					self.nominal_highPressureLimit = np.array([alpha])
-					if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+					if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+						rxn_dict[rxn] = np.array([alpha])
+						rxn_dict["cholesky"] = choleskyMatrix
 						log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "A1":
 						log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "Monte-Carlo-All":
 						log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta*zeta)).flatten()).flatten()
-					Arrhenius_highPressureLimit = [np.exp(log_Arrhenius[0]),n,1.987*epsilon]
+					elif self.design == "A-facto":
+						log_Arrhenius = np.array([alpha])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
+					Arrhenius_highPressureLimit = [np.exp(log_Arrhenius[0])]
 									
 					new_high = '{:.3E}'.format(Arrhenius_highPressureLimit[0])+ne
 					
@@ -1291,6 +1512,7 @@ class MechanismManipulator():
 					epsilon = e/1.987
 					
 					choleskyMatrix = self.rxnUnsrt[rxn].cholskyDeCorrelateMat
+					perturb_factor = self.rxnUnsrt[rxn].perturb_factor
 					zeta = self.rxnUnsrt[rxn].zeta_matrix
 					beta = self.RBeta_Dict[rxn]
 					selection = np.asarray(self.RBeta_select_Dict[rxn])
@@ -1298,12 +1520,17 @@ class MechanismManipulator():
 					#print(f"reaction before selection: {reaction}")
 					
 					self.nominal_highPressureLimit = np.array([alpha,n,epsilon])
-					if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+					if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+						rxn_dict[rxn] = np.array([alpha,n,epsilon])
+						rxn_dict["cholesky"] = choleskyMatrix
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "A1":
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "Monte-Carlo-All":
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+					elif self.design == "A-facto":
+						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray([selection*np.asarray(np.dot(perturb_factor,beta)).flatten(),0,0]).flatten()
+					
 					Arrhenius_highPressureLimit = [np.exp(log_Arrhenius[0]),log_Arrhenius[1],1.987*log_Arrhenius[2]]
 					
 					new_high = '{:.3E}'.format(Arrhenius_highPressureLimit[0])+"   "+'{:.3f}'.format(Arrhenius_highPressureLimit[1])+"    "+'{:.3E}'.format(Arrhenius_highPressureLimit[2])+"\n"
@@ -1319,6 +1546,7 @@ class MechanismManipulator():
 	
 	def getNewLowerLimits(self,reaction,rxn,beta,selection,isOpt,delta):
 		#print(reaction)
+		rxn_dict = {}
 		if delta == 1:
 			if self.fileType == "FlameMaster":
 				w = re.compile(r'(\d*\w):\s*(.*)\s*->\s*(.*)\s*?\{\s*?Ai\s*?=\s*?(\S*E\S*)?\s*ni\s*?=\s*(\S*)?\s*Ei\s*?=\s*(\S*)?\s*A\s*?=\s*?(\S*E\S*)?\s*n\s*?=\s*(\S*)?\s*E\s*?=\s*(\S*)?\s*fca\s*?=\s*?(\S*E\S*)?\s*?fcta\s*?=\s*?(\S*E\S*)?\s*?fcb\s*?=\s*?(\S*E\S*)?\s*?fctb\s*?=\s*?(\S*E\S*)?\s*?fcc\s*?=\s*?(\S*)?\s*?fctc\s*?=\s*?(\S*E\S*).*', re.DOTALL | re.IGNORECASE)
@@ -1427,12 +1655,17 @@ class MechanismManipulator():
 					epsilon = e/1.987
 					
 					self.nominal_highPressureLimit = np.array([alpha,n,epsilon])
-					if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+					if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+						rxn_dict[rxn] = np.array([alpha])
+						rxn_dict["cholesky"] = choleskyMatrix
 						log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "A1":
 						log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "Monte-Carlo-All":
 						log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+					elif self.design == "A-facto":
+						log_Arrhenius = np.array([alpha])+ np.asarray([selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()]).flatten()
+					
 					Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0]),n,1.987*epsilon]
 									
 					new_low = x1+'{:.3E}'.format(Arrhenius_lowPressureLimit[0])+x2
@@ -1460,19 +1693,25 @@ class MechanismManipulator():
 					epsilon = e/1.987
 					
 					choleskyMatrix = self.rxnUnsrt[rxn].cholskyDeCorrelateMat
+					perturb_factor = self.rxnUnsrt[rxn].perturb_factor
 					zeta = self.rxnUnsrt[rxn].zeta_matrix
 					beta = self.RBeta_Dict[rxn]
 					selection = np.asarray(self.RBeta_select_Dict[rxn])
 					#print(f"selection for low is : {selection}")
 					#print(f"reaction before selection: {reaction}")
 					self.nominal_highPressureLimit = np.array([alpha,n,epsilon])
-					if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+					if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+						rxn_dict[rxn] = np.array([alpha,n,epsilon])
+						rxn_dict["cholesky"] = choleskyMatrix
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 					elif self.design == "A1":
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 						
 					elif self.design == "Monte-Carlo-All":
 						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+					elif self.design == "A-facto":
+						log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray([selection*np.asarray(np.dot(perturb_factor,beta)).flatten(),0,0]).flatten()
+					
 					Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0]),log_Arrhenius[1],1.987*log_Arrhenius[2]]
 					
 					new_low = x1+'{:.3E}'.format(Arrhenius_lowPressureLimit[0])+"   "+'{:.3f}'.format(Arrhenius_lowPressureLimit[1])+"    "+'{:.3E}'.format(Arrhenius_lowPressureLimit[2])+x3
@@ -1488,6 +1727,7 @@ class MechanismManipulator():
 	
 	
 	def getNewFallOffCurve(self,reaction,target,rxn,beta,selection,isOpt,delta):
+		rxn_dict ={}
 		if delta == 1:
 			if self.fileType == "FlameMaster":
 				#print("Entered Foc subroutine!!")
@@ -1586,6 +1826,7 @@ class MechanismManipulator():
 	
 	
 	def getNewRxn(self,reaction,rxn,beta,selection,isOpt):
+		rxn_dict = {}
 		#print(f"----------Entered Mechanism Manipulator ------------\n\n\tReaction\n\n{rxn}\nBeta\n\n{beta}\n\nSelection\n\n\t{selection}\n")
 		#print(self.fileType)
 		#print(self.chemtag[rxn])
@@ -1657,13 +1898,17 @@ class MechanismManipulator():
 				beta = self.RBeta_Dict[rxn]
 				#print(f"selection is: {selection}")
 				#print(f"reaction before selection: {reaction}")
-				if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":	
+				if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":	
+					rxn_dict[rxn] = np.array([alpha])
+					rxn_dict["cholesky"] = choleskyMatrix
 					log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta[0]).flatten())).flatten()
 				elif self.design == "A1":	
 					log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta[0]).flatten())).flatten()
 				elif self.design == "Monte-Carlo-All":
 					log_Arrhenius = np.array([alpha])+np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta[0]*zeta).flatten())).flatten()
-				
+				elif self.design == "A-facto":
+					log_Arrhenius = np.array([alpha])+ np.asarray([selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()]).flatten()
+						
 				Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0]),n,1.987*epsilon]
 				new_A = Arrhenius_lowPressureLimit[0]
 				new_n = Arrhenius_lowPressureLimit[1]
@@ -1671,6 +1916,7 @@ class MechanismManipulator():
 							 
 			else:				
 				choleskyMatrix = self.rxnUnsrt[rxn].cholskyDeCorrelateMat
+				perturb_factor = self.rxnUnsrt[rxn].perturb_factor
 				zeta = self.rxnUnsrt[rxn].zeta_matrix
 				#print(type(zeta))
 				beta = self.RBeta_Dict[rxn]
@@ -1681,12 +1927,17 @@ class MechanismManipulator():
 				p1 = np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()
 				##print(f"p1 = {p1}")
 				#print(selection*p1)
-				if self.design == "B1" or self.design == "B1-Mix" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP":
+				if self.design == "B1-only" or self.design == "A1+B1+C1" or self.design == "B1-factorial" or self.design == "B1-MC" or  self.design == "SAMAP" or  self.design == "A1+C1" or self.design == "C1-only" or  self.design == "B1+C1" or self.design == "A1+B1":
+					rxn_dict[rxn] = np.array([alpha,n,epsilon])
+					rxn_dict["cholesky"] = choleskyMatrix
 					log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "A1":
 					log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,beta)).flatten()).flatten()
 				elif self.design == "Monte-Carlo-All":
 					log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray(selection*np.asarray(np.dot(choleskyMatrix,zeta.T.dot(beta.T).T)).flatten()).flatten()
+				elif self.design == "A-facto":
+					log_Arrhenius = np.array([alpha,n,epsilon])+ np.asarray([selection*np.asarray(np.dot(perturb_factor,beta)).flatten(),0,0]).flatten()
+				
 				Arrhenius_lowPressureLimit = [np.exp(log_Arrhenius[0]),log_Arrhenius[1],1.987*log_Arrhenius[2]]
 				
 				new_A = Arrhenius_lowPressureLimit[0]
@@ -1702,6 +1953,7 @@ class MechanismManipulator():
 	
 	
 	def getNewThermo_low(self,thermoParams,index,beta,isOpt,delta):
+		rxn_dict = {}
 		if delta ==1:
 			#searching the Lennard-Jonnes potential hard sphere diameter (\sigma_{ij})
 			pattern = re.compile(r'\n*?([\w\d]*)\s*?(.*?G)\s*?(\d+\.?\d+)\s*?(\d+\.?\d+)\s*s*?(\d+\.?\d+)\s*?.*?1\s*?.*?\n?\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?2\n?\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?3\n?\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?(-?\d*\.?\d+[Ee][+\-]?\d+)\s*?4\n?',re.DOTALL|re.IGNORECASE)

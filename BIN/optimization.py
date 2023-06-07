@@ -13,11 +13,11 @@ from scipy.linalg import block_diag
 from scipy import optimize as spopt
 import json
 #import yaml
-import ruamel.yaml as yaml
-#try:
-#    import ruamel_yaml as yaml
-#except ImportError:
-#    from ruamel import yaml
+#import ruamel.yaml as yaml
+try:
+    import ruamel_yaml as yaml
+except ImportError:
+    from ruamel import yaml
 import pandas as pd
 import sensitivity
 import test,Nominal,Optimal
@@ -192,6 +192,12 @@ selectedParams = deepcopy(activeParameters)#.deepcopy()
 #string = yaml.dump(new_mechanism,default_flow_style=False)#,explicit_start=True,width=70)
 #f = open("new_mech.yaml","w").write(string)
 #raise AssertionError("Plz wait the code is incomplete yet!!")
+unsrtDatabase = {}
+reac = []
+for index,rxn in enumerate(unsrt_data):
+	reac.append(rxn)
+	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
+	
 """
 BranchingRxns = []
 #pDeptRxns=[]
@@ -250,7 +256,7 @@ response_surface_dict = {}
 ########### DO SENSITIVITY ANALYSIS ######################!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 #print(activeParameters)
-
+"""
 sensDir,manipulation_dict,sim_dict,response_surface_dict,sensitivityDict,activeIndexDict,optimization_bounds,optimization_init_guess,activeReactions = sensitivity.analysis(optInputs,
 										iFile,case_dir,
 										rps_order,
@@ -294,18 +300,17 @@ sensDir,manipulation_dict,sim_dict,response_surface_dict,sensitivityDict,activeI
 sensDir = {}
 activeReactions = {}
 activeIndexDict = {}
-"""
+
 if "PRS" in optInputs["Type"]["optimization_type"]: 
 	testDir,manipulation_dict,sim_dict,response_surface_dict = test.simulations(optInputs,iFile,case_dir,rps_order,activeParameters, reaction_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index, mech_file_location, fileType, rxnUnsrt_data, focUnsrt_data,tbdUnsrt_data, thermoUnsrt_data, transportUnsrt_data, target_list, fuel, global_reaction, thermo_file_location,trans_file_location,startProfile_location,design_type,parallel_threads,file_specific_input,rIndex,unsrt_data,manipulation_dict,sim_dict,response_surface_dict,selectedParams,manipulationDict,activeIndexDict,activeReactions)
 	########### DO Original ANALYSIS ######################!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
 	
-
 	originalDir,manipulation_dict,sim_dict,response_surface_dict = Nominal.simulations(optInputs,iFile,case_dir,rps_order,activeParameters, reaction_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index, mech_file_location, fileType, rxnUnsrt_data, focUnsrt_data,tbdUnsrt_data, thermoUnsrt_data, transportUnsrt_data, target_list, fuel, global_reaction, thermo_file_location, trans_file_location,startProfile_location,design_type,parallel_threads,file_specific_input,rIndex,unsrt_data,manipulation_dict,sim_dict,response_surface_dict,selectedParams,manipulationDict,activeIndexDict,activeReactions)
-
+	
+	
 	########### DO Original ANALYSIS ######################!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-	optDir,manipulation_dict,sim_dict,response_surface_dict = Optimal.simulations(optInputs,iFile,case_dir,rps_order,activeParameters, reaction_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index, mech_file_location, fileType, rxnUnsrt_data, focUnsrt_data,tbdUnsrt_data, thermoUnsrt_data, transportUnsrt_data, target_list, fuel, global_reaction, thermo_file_location, trans_file_location,startProfile_location,design_type,parallel_threads,file_specific_input,rIndex,unsrt_data,manipulation_dict,sim_dict,response_surface_dict,selectedParams,manipulationDict,activeIndexDict,activeReactions)
+	
+	optDir,manipulation_dict,sim_dict,response_surface_dict = Optimal.simulations(optInputs,iFile,case_dir,rps_order,activeParameters, reaction_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index, mech_file_location, fileType, rxnUnsrt_data, focUnsrt_data,tbdUnsrt_data, thermoUnsrt_data, transportUnsrt_data, target_list, fuel, global_reaction, thermo_file_location,trans_file_location,startProfile_location,design_type,parallel_threads,file_specific_input,rIndex,unsrt_data,manipulation_dict,sim_dict,response_surface_dict,selectedParams,manipulationDict,activeIndexDict,activeReactions)
 
 	############################################       
 	#	RESPONSE SURFACE DEVELOPMENT       #
@@ -497,7 +502,7 @@ for case in target_list:
 	
 	#model_priorResponse[case], model_priorUnsrt[case] = case.evaluateResponse(np.zeros(var),cov_x=np.eye(var))
 	#model_posteriorResponse[case],model_posteriorUnsrt[case] = case.evaluateResponse(opt,cov_x=cov_opt)
-#	model_posteriorResponse[case] = case.evaluate(opt,stats_[order])
+	model_posteriorResponse[case] = case.evaluate(opt,stats_[order])
 ###################################################      
 ########                        	 ###########              
 ########   	 Post Data Analysis      ###########           
@@ -514,7 +519,7 @@ new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt,reaction_index,np.ones
 #new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
 string = yaml.dump(new_mechanism,default_flow_style=False)
 f = open("new_mech.yaml","w").write(string)
-raise AssertionError("Stop!!")
+#raise AssertionError("Stop!!")
 #MechManipulator = MechanismManipulator.MechanismManipulator(mech_file_location,fileType,thermo_file_location,trans_file_location,reaction_index,fallOffCurve_index,thirdBody_index,thermo_index,transport_index,rxnUnsrt_data, focUnsrt_data,tbdUnsrt_data, thermoUnsrt_data,transportUnsrt_data,selectedParams,activeIndexDict,design_type=design_type)
 #a,b,c,param_opt_dict = MechManipulator.GeneratePerturbedMechanism(target_list,opt_zeta,np.ones(len(selectedParams)),reaction_index,"Opt","True")
 
@@ -626,7 +631,7 @@ count = 0
 #print(manipulation_dict)
 
 parametric_space = {}
-for i in activeParameters:
+for i in reac:
 	temp_database = {}
 	temp_database["unsrtDatabase"] = unsrtDatabase[str(i)]
 	#temp_database["sensitivityManipulations"] = manipulation_dict["sa"][str(i)]

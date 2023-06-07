@@ -124,28 +124,21 @@ target_file.close()
 UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
 unsrt_data,rxnUnsrt_data,focUnsrt_data,tbdUnsrt_data,thermoUnsrt_data,transportUnsrt_data, reaction_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index = UncertDataSet.extract_uncertainty();
 print("Uncertainty analysis finished")
-BranchingRxns = []
-#pDeptRxns=[]
-activeParameters = []
 unsrtDatabase = {}
-thirdBody_dict = {}
-total_m_params = []                                                   
-rIndex = []
-rIndex_dict = {}
 for index,rxn in enumerate(reaction_index):
-	branch_bool = rxnUnsrt_data[rxn].branching
-	if branch_bool.strip() == "True":
-		BranchingRxns.append(rxnUnsrt_data[rxn].rxn) 
-	activeParameters.append(rxn)
+	print(rxn)
 	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
-	rIndex.append(unsrt_data[rxn].rIndex)
-	rIndex_dict[unsrt_data[rxn].rIndex] = rxn
+
+for index,rxn in enumerate(plog_boundary_index):
+	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
+
+for index,rxn in enumerate(plog_index):
+	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
+		
 for i in fallOffCurve_index:
-	activeParameters.append(i)
 	unsrtDatabase[i] = unsrt_data[i].getDtList()
 
 for i in thirdBody_index:
-	activeParameters.append(i)
 	unsrtDatabase[i] = unsrt_data[i].getDtList()
 	temp = []
 	for j in unsrt_data[i].branches.split(","):
@@ -154,12 +147,11 @@ for i in thirdBody_index:
 	total_m_params.append(temp)
 	
 for i in thermo_index:
-	activeParameters.append(i)
 	unsrtDatabase[i] = unsrt_data[i].getDtList()
 
 for i in transport_index:
-	activeParameters.append(i)
-	unsrtDatabase[i] = unsrt_data[i].getDtList()
+	unsrtDatabase[i] = unsrt_data[i].getDtList()	
+	
 
 print("Uncertainty data acquired \n")
 #print(rIndex_dict)

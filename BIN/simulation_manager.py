@@ -171,15 +171,15 @@ def run_generate_dir(location):
 	os.mkdir(location)
 	os.mkdir(location+"/output")
 	
-def run_executable_files(location,file_name,n):
-	os.chdir(location)
+def run_executable_files(args):
+	os.chdir(args[0])
 	#file_paste = open("run","w")
 	#file_paste.write(string)
 	#file_paste.close()
 	#print(location[i])	
 	#subprocess.check_call([str(location[i])+"/"+file_name])
-	subprocess.call(["./"+file_name])
-	return (location,n)
+	subprocess.call(["./"+args[1]])
+	return (args[0],args[2])
 
 def run_map(params):
 	location = str(params[4])
@@ -192,14 +192,20 @@ def run_map(params):
 	runScript = open(location+"/run","w").write(params[3])
 	subprocess.call(["chmod","+x",location+"/run_convertor"])
 	subprocess.call(["chmod","+x",location+"/run"])
+	del yaml_string
+	del location
+	#return (params[4])
 
 def run_direct_map(file_dict):
 	location = str(file_dict["mkdir"])
 	#print(location)
 	betaFile = open(location+"/beta.txt",'w').write(str(file_dict["beta"]))
-	mechFile = open(location+"/mechanism.mech",'w').write(file_dict["mechanism"])
-	thermoFile = open(location+"/thermo.therm",'w').write(file_dict["thermo"])
-	transportFile = open(location+"/transport.trans",'w').write(file_dict["transport"])
+	#mechFile = open(location+"/mechanism.mech",'w').write(file_dict["mechanism"])
+	yaml_string = yaml.dump(file_dict["mechanism"],default_flow_style=False)
+	yamlfile = open(location+"/mechanism.yaml","w").write(yaml_string)
+	del yaml_string
+	#thermoFile = open(location+"/thermo.therm",'w').write(file_dict["thermo"])
+	#transportFile = open(location+"/transport.trans",'w').write(file_dict["transport"])
 	sim = open(location+"/cantera_.py",'w').write(file_dict["simulationInputString"])
 	sim = open(location+"/FlameMaster.input",'w').write(file_dict["simulationInputString"])
 	extract = open(location+"/extract.py",'w').write(file_dict["extractString"])
@@ -208,6 +214,7 @@ def run_direct_map(file_dict):
 	#print(location+"/run_convertor")
 	subprocess.call(["chmod","+x",location+"/run_convertor"])
 	subprocess.call(["chmod","+x",location+"/run"])
+	del location
 	
 def run_copy_files(i,sim_dict,mech_dict,thermo_dict,trans_dict,run_convert_dict,run_dict,locations,n):
 	#os.mkdir(location)
@@ -291,11 +298,17 @@ class Worker():
 		self.parallel_zeta_dict = {}
 		
 	def callback_run(self, result):
-		self.progress.append(result[0])
-		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+		#print(result)
+		string=""
+		for i in result:
+			self.progress.append(i[0])
+			string+=f"{i[0]}/run\n"
+			total = i[1]
+		#string+="\n"
+		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(total)*100))
 		sys.stdout.flush()
 		f = open('../progress','+a')
-		f.write(result[0]+"/run"+"\n")
+		f.write(string)
 		f.close()
 		
 	def callback_runConvertor(self, result):
@@ -306,6 +319,16 @@ class Worker():
 	def callback_create(self, result):
 		self.progress.append(result[0])
 		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+		sys.stdout.flush()
+		
+	def callback_create_1(self, result):
+		#string=""
+		#for i in result:
+		#	self.progress.append(i[0])
+			#string+=f"{i[0]}\n"
+			#total = i[1]
+		#self.progress.append(result[0])
+		sys.stdout.write("\t\t\r{} is complete".format(len(result)))
 		sys.stdout.flush()
 		#self.pool.terminate()
 
@@ -398,7 +421,6 @@ class Worker():
 				
 	
 	def do_unsrt_b(self,data,sampling_points):
-		
 		for args in range(sampling_points):
 			self.pool.apply_async(run_sampling_b, 
 				  args=(1,data,data["generators_b"][args],sampling_points,), 
@@ -408,20 +430,21 @@ class Worker():
 		self.pool.terminate()
 		return self.generator,self.parallized_zeta
 	
-	def do_job_async_convertor(self,location,file_name):
-		for args in location:
-			self.pool.apply_async(run_executable_files, 
-				  args=(args,file_name,len(location)), 
-				  callback=self.callback_runConvertor,error_callback=self.callback_error)
+	def do_job_async_convertor(self,args):
+			#self.pool.apply_async(run_executable_files, 
+			#	  args=(args,file_name,len(location)), 
+			#	  callback=self.callback_runConvertor,error_callback=self.callback_error)
+		self.pool.map_async(run_executable_files,args,callback=self.callback_run)
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
 	
-	def do_job_async(self,location,file_name):
-		for args in location:
-			self.pool.apply_async(run_executable_files, 
-				  args=(args,file_name,len(location)), 
-				  callback=self.callback_run,error_callback=self.callback_error)
+	def do_job_async(self,args):
+
+			#self.pool.apply_async(run_executable_files, 
+			#	  args=(arg,file_name,len(location)), 
+			#	  callback=self.callback_run,error_callback=self.callback_error)
+		self.pool.map_async(run_executable_files,args,callback=self.callback_run,error_callback=self.callback_error)
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
@@ -457,7 +480,7 @@ class Worker():
 		self.pool.terminate()
 	
 	def do_job_map_create(self,params):
-		self.pool.map_async(run_map,params)
+		self.pool.map_async(run_map,params,callback=self.callback_create_1)
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
@@ -661,32 +684,50 @@ class SM():
 		output_list = []
 		beta_transformed = np.ones(len(beta))
 		for ind,case in enumerate(case_index):
-			file_dict = {}
-			file_dict["beta"] = beta
+			if "A-facto" in self.design:
+				file_dict = {}
+				file_dict["beta"] = beta
+				beta_ = []
+				for i in beta:
+					beta_.append(i)
+			else:
+				file_dict = {}
+				file_dict["beta"] = beta
+				"""
+				Get the zeta's using the beta
+				"""
+			"""	
+				count = 0
+				generators = {}
+				data = {}
+				reactionList = self.ind
+				for i,rxn in enumerate(self.ind):
+					data[rxn] = self.unsrt[rxn].data
+					activeParams = self.unsrt[rxn].activeParameters
+					gen = []
+					for i in range(len(activeParams)):
+						gen.append(beta[count])
+						count+=1
+					generators[rxn] = np.asarray(gen)	
+				X = Worker(10)
+				zeta_dict = X.do_job_async_unsrt_direct(data,generators,len(beta))
+				del X
+				beta_ = []
+				for i in self.ind:
+					beta_.extend(list(zeta_dict[i]))
+				beta_ = np.asarray(beta_)
+			
 			"""
-			Get the zeta's using the beta
-			"""
-			count = 0
-			generators = {}
-			data = {}
-			reactionList = self.ind
-			for i,rxn in enumerate(self.ind):
-				data[rxn] = self.unsrt[rxn].data
-				activeParams = self.unsrt[rxn].activeParameters
-				gen = []
-				for i in range(len(activeParams)):
-					gen.append(beta[count])
-					count+=1
-				generators[rxn] = np.asarray(gen)	
-			X = Worker(10)
-			zeta_dict = X.do_job_async_unsrt_direct(data,generators,len(beta))
-			del X
-			beta_ = []
-			for i in self.ind:
-				beta_.extend(list(zeta_dict[i]))
-			beta_ = np.asarray(beta_)
-			file_dict["mechanism"],file_dict["thermo"],file_dict["transport"],sim = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],beta_transformed,reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-			file_dict["simulationInputString"],file_dict["file_convertor_script"],file_dict["run_script"],file_dict["extractString"] = make_input_file.create_input_file(case,iter_number,self.opt_dict,self.old_dict,cases[ind], self.fuel, self.g_reaction, self.thermo_file_location, self.trans_file_location,self.s_p_location,self.file_specific_command) #generate input file
+			beta_= beta
+			#print(beta_)
+			file_dict["mechanism"],sim = manipulator(self.copy_of_mech,self.unsrt,beta_,self.ind,beta_transformed).doPerturbation()
+			i = 100 #samples
+			
+			file_dict["simulationInputString"],file_dict["file_convertor_script"],file_dict["run_script"],file_dict["extractString"] = make_input_file.create_input_file(case,i,self.opt_dict,self.old_dict,self.target_list[case], self.fuel, self.g_reaction, self.thermo_file_location, self.trans_file_location,self.s_p_location,self.file_specific_command) #generate input file
+			
+			#yaml_dict[str(i)],sim_dict[str(i)] = manipulator(self.copy_of_mech,self.unsrt,self.beta_[i],self.ind,beta_transformed).doPerturbation()
+			#file_dict["mechanism"],file_dict["thermo"],file_dict["transport"],sim = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],beta_transformed,reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
+			#file_dict["simulationInputString"],file_dict["file_convertor_script"],file_dict["run_script"],file_dict["extractString"] = make_input_file.create_input_file(case,iter_number,self.opt_dict,self.old_dict,cases[ind], self.fuel, self.g_reaction, self.thermo_file_location, self.trans_file_location,self.s_p_location,self.file_specific_command) #generate input file
 		#dir_list.append(str(i))
 			file_dict["run_convert"] = start+"/case-"+str(case)+"/run_convertor"
 			file_dict["run_list"] = start+"/case-"+str(case)+"/run"
@@ -700,16 +741,20 @@ class SM():
 		return dictionary_list,mkdir_list,dir_run_list,run_convert_list,output_list
 		
 	def getSimulatedValues(self,beta,case_index,cases,iter_number,objective):
-
-		self.MechManipulator = MechanismManipulator.MechanismManipulator(self.mech_loc,self.fileType,self.thermo_file_location,
-										self.trans_file_location,self.ind,self.foc,self.mBody,
-										self.thm,self.trans,self.unsrt, self.focUnsert, 
-										self.tbdUnsert, self.thermoUnsert, self.transUnsert,
-										self.selectedParams,self.activeIndexDict,design_type=self.design)
+		#print(os.getcwd())
+		originalMech = Parser(self.mech_loc).mech
+		self.copy_of_mech = deepcopy(originalMech)#.deepcopy()
+		#self.MechManipulator = MechanismManipulator.MechanismManipulator(self.mech_loc,self.fileType,self.thermo_file_location,
+		#								self.trans_file_location,self.ind,self.foc,self.mBody,
+		#								self.thm,self.trans,self.unsrt, self.focUnsert, 
+		#								self.tbdUnsert, self.thermoUnsert, self.transUnsert,
+		#								self.selectedParams,self.activeIndexDict,design_type=self.design)
 		print(f"Starting direct simulations: Iteration number {iter_number}, total cases to simulate: {len(case_index)}")
 		dictionary_list,mkdir_list,dir_run_list,run_convert_list,output_list = self.getSimulationFiles(case_index,cases,beta,iter_number)
 		start_time = time.time()
-			
+		
+		#print(mkdir_list)
+		#print(dictionary_list)
 		W = Worker(int(self.allowed_count))
 		#W.do_job_executor(dir_list)
 		W.do_job_map(mkdir_list)
@@ -722,12 +767,25 @@ class SM():
 		print("\tRequired files for {} iteration is generated\n".format(iter_number))
 		
 		U = Worker(int(self.allowed_count))
-		U.do_job_async_convertor(run_convert_list,"run_convertor")
+		file_n = []
+		length = []
+		for i in run_convert_list:
+			file_n.append("run_convertor")
+			length.append(len(run_convert_list))
+		args_convert = list(zip(run_convert_list,file_n,length))
+		U.do_job_async_convertor(args_convert)
 		
-		print("\tFiles converted to standard input files for iteration \n".format(iter_number))
+		#print("\tFiles converted to standard input files for iteration \n".format(iter_number))
+		
+		file_n = []
+		length = []
+		for i in dir_run_list:
+			file_n.append("run")
+			length.append(len(dir_run_list))
+		args_run = list(zip(dir_run_list,file_n,length))
 		
 		X = Worker(int(self.allowed_count))
-		X.do_job_async(dir_run_list,"run")
+		X.do_job_async(args_run)
 		
 		print("\tSimulations for {} iteration is Done!!".format(iter_number))
 			
@@ -739,6 +797,7 @@ class SM():
 		print("Performed {} Simulations....".format(len(dir_run_list)))
 		print("Time for performing simulations : {h} hours,  {m} minutes, {s} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
 		del W,V,U,X
+		
 		"""
 		Extracting outputs for direct simulations
 		"""
@@ -750,10 +809,9 @@ class SM():
 			eta_list = data_management.extract_direct_simulation_values(index,output_list[i],self.target_list,self.fuel)
 			directSimulation.extend(eta_list)
 		os.chdir("..")
-		#sample = open("samplefile.txt","+a")
-		#sample.write(f"{iter_number},{objective}\n")
+		sample = open("samplefile.txt","+a")
+		sample.write(f"{iter_number},{objective}\n")
 		return directSimulation
-	
 		
 	def getDirectoryList(self,case,ind):
 		
@@ -847,6 +905,9 @@ class SM():
 				#beta_transformed = self.manipulatorDict["selection"]
 				beta_transformed = np.ones(len(self.beta_list[0]))
 				
+			#print(self.beta_list[0])
+			#print(beta_transformed[0])
+			#raise AssertionError("Stop!!")
 			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:
 				shutil.rmtree(str(i))
 				yaml_dict[str(i)],sim_dict[str(i)] = manipulator(self.copy_of_mech,self.unsrt,self.beta_[i],self.ind,beta_transformed).doPerturbation()
@@ -1012,18 +1073,48 @@ class SM():
 				self.sim_ = len(self.beta_)
 			
 			elif self.design == 'A-facto': 
-				print(self.n)
-				self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
-				#self.beta_.extend(list(np.eye(self.n)))
-				#self.beta_.extend(list(-1*np.eye(self.n)))
-				#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				self.sim_ = len(self.beta_)
-				self.generators = np.asarray(self.beta_)
-				self.X = np.asarray(self.beta_)
-				self.y = np.asarray(self.beta_)
+				#print(self.n)
+				self.beta_=[]
+				task = "complete"
+				if "Data" in os.listdir():
+					os.chdir("Data/Simulations")
+					if f"Beta_list_case-0.csv" in os.listdir():
+						#print(great)
+						#print(os.getcwd())
+						
+						A_file = open("Beta_list_case-0.csv","r").readlines() 
+						self.sim_ = len(A_file)
+						print(self.sim_)
+						A = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])	
+						A_gen_file = open("Generator_list_case-0.csv","r").readlines() 
+						A_gen = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_gen_file])	
+						
+						
+						X_file = open("NormalizedBeta_list_case-0.csv","r").readlines() 
+						X_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						y_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						self.beta_ = np.asarray(A)
+						#print(self.beta_)
+						self.generators = np.asarray(A_gen)
+						
+						self.X = np.asarray(X_dash)
+						self.y = np.asarray(y_dash)
+						os.chdir("../..")
+					else:
+						os.chdir("../..")
+						task = "incomplete"
+				if task != "complete":
+					self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
+					self.beta_.extend(list(np.eye(self.n)))
+					#self.beta_.extend(list(-1*np.eye(self.n)))
+					#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					self.sim_ = len(self.beta_)
+					self.generators = np.asarray(self.beta_)
+					self.X = np.asarray(self.beta_)
+					self.y = np.asarray(self.beta_)
 			
 			elif self.design == "B1":
 				self.beta_=[]
@@ -5031,21 +5122,50 @@ class SM():
 			#cov = 0.33*np.eye(self.n)
 			#self.beta_ = list(np.random.multivariate_normal(mean,cov,self.sim_))
 			if self.design == 'A-facto': 
-				
-				self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
-				#self.beta_.extend(list(np.eye(self.n)))
-				#self.beta_.extend(list(-1*np.eye(self.n)))
-				#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				self.sim_ = len(self.beta_)
-				#self.beta_ = np.asarray(A)
-				#print(len(self.beta_))
-				#print(self.beta_)
-				self.generators = np.asarray(self.beta_)
-				self.X = np.asarray(self.beta_)
-				self.y = np.asarray(self.beta_)
+				self.beta_=[]
+				task = "complete"
+				if "Data" in os.listdir():
+					os.chdir("Data/Simulations")
+					if f"Beta_list_case-0.csv" in os.listdir():
+						#print(great)
+						#print(os.getcwd())
+						
+						A_file = open("Beta_list_case-0.csv","r").readlines() 
+						self.sim_ = len(A_file)
+						print(self.sim_)
+						A = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])	
+						A_gen_file = open("Generator_list_case-0.csv","r").readlines() 
+						A_gen = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_gen_file])	
+						
+						
+						X_file = open("NormalizedBeta_list_case-0.csv","r").readlines() 
+						X_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						y_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						self.beta_ = np.asarray(A)
+						#print(self.beta_)
+						self.generators = np.asarray(A_gen)
+						
+						self.X = np.asarray(X_dash)
+						self.y = np.asarray(y_dash)
+						os.chdir("../..")
+					else:
+						os.chdir("../..")
+						task = "incomplete"
+				if task != "complete":
+					self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
+					self.beta_.extend(list(np.eye(self.n)))
+					#self.beta_.extend(list(-1*np.eye(self.n)))
+					#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					self.sim_ = len(self.beta_)
+					#self.beta_ = np.asarray(A)
+					#print(len(self.beta_))
+					#print(self.beta_)
+					self.generators = np.asarray(self.beta_)
+					self.X = np.asarray(self.beta_)
+					self.y = np.asarray(self.beta_)
 			elif self.design == "Monte-Carlo-All":
 				#mean = np.zeros(self.n)
 				#cov = 0.33*np.eye(self.n)
@@ -7165,6 +7285,8 @@ class SM():
 						self.X = np.asarray(X_dash)
 						self.y = np.asarray(y_dash)
 						os.chdir("../..")
+						#print(self.X[0])
+						#raise AssertionError("Stop!!")
 					else:
 						os.chdir("../..")
 						task = "incomplete"
@@ -9116,18 +9238,47 @@ class SM():
 				self.beta_.extend(list(np.zeros(self.n)))
 				self.sim_ = len(self.beta_)
 			elif self.design == 'A-facto': 
-				
-				self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
-				#self.beta_.extend(list(np.eye(self.n)))
-				#self.beta_.extend(list(-1*np.eye(self.n)))
-				#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				#self.beta_.extend(list(np.zeros(self.n)))
-				self.sim_ = len(self.beta_)
-				self.generators = np.asarray(self.beta_)
-				self.X = np.asarray(self.beta_)
-				self.y = np.asarray(self.beta_)
+				self.beta_=[]
+				task = "complete"
+				if "Data" in os.listdir():
+					os.chdir("Data/Simulations")
+					if f"Beta_list_case-0.csv" in os.listdir():
+						#print(great)
+						#print(os.getcwd())
+						
+						A_file = open("Beta_list_case-0.csv","r").readlines() 
+						self.sim_ = len(A_file)
+						print(self.sim_)
+						A = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])	
+						A_gen_file = open("Generator_list_case-0.csv","r").readlines() 
+						A_gen = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_gen_file])	
+						
+						
+						X_file = open("NormalizedBeta_list_case-0.csv","r").readlines() 
+						X_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						y_dash = np.asarray([np.asarray(np.float_(i[:-1].strip(",").split(","))) for i in A_file])
+						self.beta_ = np.asarray(A)
+						#print(self.beta_)
+						self.generators = np.asarray(A_gen)
+						
+						self.X = np.asarray(X_dash)
+						self.y = np.asarray(y_dash)
+						os.chdir("../..")
+					else:
+						os.chdir("../..")
+						task = "incomplete"
+				if task != "complete":
+					self.beta_ = list(2* np.random.random_sample((self.sim_,self.n)) - 1)
+					#self.beta_.extend(list(np.eye(self.n)))
+					#self.beta_.extend(list(-1*np.eye(self.n)))
+					#self.beta_.extend(list(bbdesign(self.n)[0:int(0.3*self.sim_)]))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					#self.beta_.extend(list(np.zeros(self.n)))
+					self.sim_ = len(self.beta_)
+					self.generators = np.asarray(self.beta_)
+					self.X = np.asarray(self.beta_)
+					self.y = np.asarray(self.beta_)
 			
 			elif self.design == 'Monte-Carlo-All': #Monte-carlo sampling
 				#mean = np.zeros(self.n)
@@ -14555,8 +14706,15 @@ class SM():
 			
 			del V
 			
+			file_n = []
+			length = []
+			for i in locations:
+				file_n.append("run_convertor")
+				length.append(len(locations))
+			args = list(zip(locations,file_n,length))
 			U = Worker(allowed_count)
-			U.do_job_async_convertor(locations,"run_convertor")
+			#U.do_job_async_convertor(locations,"run_convertor")
+			U.do_job_async_convertor(args)
 			
 			del U
 			
@@ -14568,7 +14726,15 @@ class SM():
 			print("\tFiles converted to standard input files for case - {}\n".format(case))
 			
 			X = Worker(allowed_count)
-			X.do_job_async(locations,"run")
+			file_n = []
+			length = []
+			for i in locations:
+				file_n.append("run")
+				length.append(len(locations))
+			args = list(zip(locations,file_n,length))
+			#X.do_job_async(locations,"run")
+			X.do_job_async(args)
+			
 			del X
 			print("\tSimulations for case - {} is Done!!".format(case))
 				

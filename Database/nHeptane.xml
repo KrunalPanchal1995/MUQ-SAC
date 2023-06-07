@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty>
+	<PLOG rxn = "AC3H5OOH&#032;&#60;&#61;&#62;&#032;C2H3CHO&#032;+&#032;H2O" no = "R1:High">
+	 <class>PLOG</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple> True </multiple>
+			<branches></branches>
+			<pressure_limit>High</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	<PLOG rxn = "AC3H5OOH&#032;&#60;&#61;&#62;&#032;C2H3CHO&#032;+&#032;H2O" no = "R1:Low">
+	 <class>PLOG</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple> True </multiple>
+			<branches></branches>
+			<pressure_limit>Low</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	
+	<PLOG-Interconnectedness>
+	  <class>PLOG</class>
+	  <InterConnectedRxns>R1:High,R1:Low</InterConnectedRxns>
+	  <RxnCount>3</RxnCount>
+	  <unsrtQuantType>Interpolation</unsrtQuantType>
+	</PLOG-Interconnectedness>	
+	
+	<PLOG rxn = "C3H6&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;C3H6OH1-2" no = "R2a:High">
+	 <class>PLOG-Duplicate</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>A</branches>
+			<pressure_limit>High</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	<PLOG rxn = "C3H6&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;C3H6OH1-2" no = "R2a:Low">
+	 <class>PLOG-Duplicate</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>A</branches>
+			<pressure_limit>Low</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	<PLOG-Interconnectedness>
+	  <class>PLOG-Duplicate</class>
+	  <InterConnectedRxns>R2a:High,R2a:Low</InterConnectedRxns>
+	  <RxnCount>7</RxnCount>
+	  <unsrtQuantType>Interpolation</unsrtQuantType>
+	</PLOG-Interconnectedness>
+	<PLOG rxn = "C3H6&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;C3H6OH1-2" no = "R2b:High">
+	 <class>PLOG-Duplicate</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>B</branches>
+			<pressure_limit>High</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	<PLOG rxn = "C3H6&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;C3H6OH1-2" no = "R2b:Low">
+	 <class>PLOG-Duplicate</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>B</branches>
+			<pressure_limit>Low</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</PLOG>
+	<PLOG-Interconnectedness>
+	  <class>PLOG-Duplicate</class>
+	  <InterConnectedRxns>R2b:High,R2b:Low</InterConnectedRxns>
+	  <RxnCount>7</RxnCount>
+	  <unsrtQuantType>Interpolation</unsrtQuantType>
+	</PLOG-Interconnectedness>
+	
+	<reaction rxn = "C2H&#032;+&#032;CH3&#032;&#60;&#61;&#62;&#032;C3H4-P" no = "R3">
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "C4H10&#032;(+M)&#032;&#60;&#61;&#62;&#032;2&#032;C2H5&#032;(+M)" no = "R4:High">
+	 <class>Falloff</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple> True </multiple>
+			<branches>HPL</branches>
+			<pressure_limit>High</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "C4H10&#032;(+M)&#032;&#60;&#61;&#62;&#032;2&#032;C2H5&#032;(+M)" no = "R4:Low">
+	 <class>Falloff</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>LPL</branches>
+			<pressure_limit>Low</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "C4H8OOH1-4O2&#032;&#60;&#61;&#62;&#032;C4H72-1,4OOH" no = "R5a">
+	 <class>Duplicate</class>
+		<type>pressure_independent</type>
+		<sub_type name = "duplicate">
+			<multiple> True </multiple>
+			<branches>A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "C4H8OOH1-4O2&#032;&#60;&#61;&#62;&#032;C4H72-1,4OOH" no = "R5b">
+	 <class>Duplicate</class>
+		<type>pressure_independent</type>
+		<sub_type name = "duplicate">
+			<multiple> True </multiple>
+			<branches>B</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "H2&#032;+&#032;M&#032;&#60;&#61;&#62;&#032;2&#032;H&#032;+&#032;M" no = "R5b">
+	 <class>ThirdBody</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple>False</multiple>
+			<branches></branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+</uncertainty>

@@ -19,12 +19,18 @@ from sklearn.linear_model import HuberRegressor, LinearRegression
 from sklearn.isotonic import IsotonicRegression
 from sklearn.linear_model import QuantileRegressor
 from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
+
 class ResponseSurface(object):
 	def __init__(self,xdata,ydata,responseOrder):
 		self.X = xdata
 		self.Y = ydata
 		self.order = int(responseOrder)
 	
+	def create_Neural_Network(self):
+		self.regr = MLP(hidden_layer_sizes=(31,30,15),max_iter=1500).fit(self.X,self.Y)
+		self.regr_fit = self.regr.predict(self.X)
+		#self.regr.score(self.X,self.Y)
+		print(self.regr.score(self.X,self.Y))
 	def create_SVR_response_surface(self):
 		#print(self.Y)
 		self.svr = SVR().fit(self.X,self.Y)

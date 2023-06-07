@@ -9,12 +9,12 @@ import json
 from scipy.interpolate import InterpolatedUnivariateSpline
 import statistics
 import pandas as pd
-
+import time
+from scipy.optimize import minimize
 class combustion_target():
 ###Class definition and acquisition of input parameters.	
 	def __init__(self,data,addendum,index):
 		self.molecularWt = {}
-		self.molecularWt["NC7H16"] = 100
 		self.molecularWt["CO"] = 28
 		self.molecularWt["H2"] = 2
 		self.molecularWt["O2"] = 32
@@ -29,8 +29,8 @@ class combustion_target():
 		self.molecularWt["He"] = 0
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
+		self.molecularWt["NC7H16"] = 100.21
 		self.stoichiometry = {}
-		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["H2"] = 0.5
 		self.stoichiometry["CO"] = 0.5
 		self.stoichiometry["O2"] = 0.0
@@ -45,7 +45,7 @@ class combustion_target():
 		self.stoichiometry["Ar"] = 0.0
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
-		
+		self.stoichiometry["NC7H16"] = 11
 		self.data = data
 		parameters = self.data.split('|')
 		self.dataSet_id = parameters[1].strip("\t")
@@ -545,8 +545,8 @@ class combustion_target():
 		row = BZeta
 		#print(len(row))
 		coeff = self.resCoef
-		
-		print(len(coeff))
+		#print(len(coeff))
+		#print(len(row))
 		#if self.PRS_type == "Partial":
 		#	if self.activeIndexDict is not None:
 		#		row = []
@@ -664,7 +664,7 @@ class combustion_target():
 		return val
 		
 	def evaluateResponse(self,x,cov_x=None):
-		print(len(x))
+		#print(len(x))
 		if self.PRS_type == "Partial":
 			if self.activeIndexDict is not None:
 				count = 0
@@ -679,7 +679,7 @@ class combustion_target():
 			x = np.asarray(x_)
 		val = self.zero
 		val += np.dot(self.a,x)
-		print(len(self.a))
+		#print(len(self.a))
 		#print(len(x))
 		if cov_x is not None:
 			a_times_cov = np.dot(self.a,cov_x)
@@ -939,6 +939,19 @@ class combustion_target():
 	#def getSAB_coefficients(self,reaction_index,unsrt,order):
 	def maxColumn(self,L):    
     		return list(map(max, zip(*L)))
+	def objective(self,z):
+		"""
+		(Ax-y) + penalty = 0
+		"""
+		A = self.BTrsMatrix
+		prediction = A.dot(z)
+		simulation = self.actualValue
+		residual = (prediction - simulation)
+		obj = np.dot(residual,residual.T)
+		for i in z:
+			obj+=i**2
+		return obj
+		
 	def create_response_surface(self,reaction_index,unsrt,order,selected=None,activeParams=None,PRS_type = "Full"):
 		self.PRS_type = PRS_type
 		self.selectedParams = selected
@@ -956,8 +969,11 @@ class combustion_target():
 		Y = np.array(self.ydata)
 		#print(np.shape(Y))
 		BTrsMatrix = self.MatPolyFitTransform(int(order))
-		
-		#print(len(selected))
+		print(np.shape(BTrsMatrix))
+		self.BTrsMatrix = np.matrix(BTrsMatrix)
+		#print(np.matrix(BTrsMatrix))
+		self.actualValue = Y
+ 		#print(len(selected))
 		#print(len(X[0]))
 		stringX = ""
 		#Singular Value analysis		
@@ -969,7 +985,7 @@ class combustion_target():
 		#sv.write(string)
 		#sv.close()
 		#S = s/s[0]
-		#significant_singular_values = len(self.ydata)
+		significant_singular_values = len(self.ydata)
 		#for i in range(len(S)):
 		#	if S[i] < 10**(-3):
 		#		significant_singular_values = i
@@ -1008,17 +1024,35 @@ class combustion_target():
 			norm_b_2 = 1
 		else:
 		"""
+		"""
+		Doing least square using QR decomposition
+		"""
+		
 		Q, R = np.linalg.qr(BTrsMatrix)
 	#print(self.ydata)
 		y = np.dot(np.transpose(Q),self.ydata)
 		self.x = np.linalg.solve(R,np.transpose(y))
+		
+		"""
+		coeff_size = np.asarray(self.BTrsMatrix[0]).flatten()
+		guess = np.ones(len(coeff_size))
+		strat = time.time()
+		x = minimize(self.objective,guess,method="SLSQP")
+		stop = time.time()
+		print(f"time taken is {stop-strat}")
+		print(x)
+		self.x = x.x
+		"""
+		"""
+		Using the penalty function to fit the response surface
+		"""		
 	
-		norm_Ax_b_0 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 0)
-		norm_b_0 = np.linalg.norm(abs(y),ord = 0)
-		norm_Ax_b_1 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 1)
-		norm_b_1 = np.linalg.norm(abs(y),ord = 1)
-		norm_Ax_b_2 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 2)
-		norm_b_2 = np.linalg.norm(abs(y),ord = 2)
+		#norm_Ax_b_0 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 0)
+		#norm_b_0 = np.linalg.norm(abs(y),ord = 0)
+		#norm_Ax_b_1 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 1)
+		#norm_b_1 = np.linalg.norm(abs(y),ord = 1)
+		#norm_Ax_b_2 = np.linalg.norm(abs(np.dot(R,self.x)-y),ord = 2)
+		#norm_b_2 = np.linalg.norm(abs(y),ord = 2)
 		#norm_Ax_b_inf = np.linalg.norm(np.dot(R,x)-y,ord = 'inf',axis = 1)
 		#norm_b_inf = np.linalg.norm(y,ord = 'inf',axis = 1)
 		
@@ -1075,8 +1109,8 @@ class combustion_target():
 		
 		
 		MaxTauError = max(np.abs(TraError))
-		#string = 'Significant singular values\n'
-		#string += '{}\n'.format(significant_singular_values)
+		string = 'Significant singular values\n'
+		string += '{}\n'.format(significant_singular_values)
 		string = 'Max relative error in ln(Tau)\n'
 		string += '{}\n'.format(self.MaxError)
 		string = 'Max % relative error in ln(Tau)\n'
@@ -1090,11 +1124,11 @@ class combustion_target():
 		string += 'Conditioning Number of BTrsMatrix\n'
 		string += '{}\n'.format(LA.cond(BTrsMatrix))
 		string += 'Relative error based on 0-norm for ln(Tau)\n,'
-		string += '{}\n'.format(abs((norm_Ax_b_0-norm_b_0))/norm_b_0)
-		string += 'Relative error based on 1-norm ln(Tau)\n'
-		string += '{}\n'.format(abs(norm_Ax_b_1-norm_b_1)/norm_b_1)
-		string += 'Relative error based on 2-norm ln(Tau)\n'
-		string += '{}\n'.format(abs(norm_Ax_b_2-norm_b_2)/norm_b_2)
+		#string += '{}\n'.format(abs((norm_Ax_b_0-norm_b_0))/norm_b_0)
+		#string += 'Relative error based on 1-norm ln(Tau)\n'
+		#string += '{}\n'.format(abs(norm_Ax_b_1-norm_b_1)/norm_b_1)
+		#string += 'Relative error based on 2-norm ln(Tau)\n'
+		#string += '{}\n'.format(abs(norm_Ax_b_2-norm_b_2)/norm_b_2)
 		#string += 'Relative error based on inf-norm ln(Tau)\n'
 		#string += '{}\n'.format((norm_Ax_b_inf-norm_b_inf)/norm_b_inf)
 		ff.write(string)
@@ -1120,6 +1154,8 @@ class combustion_target():
 			x_= x
 		target_value = self.resCoef[0]
 		count = 1
+		#print(len(x))
+		#print(len(self.resCoef))
 		for i in x_:
 			target_value += self.resCoef[count]*i
 			count +=1

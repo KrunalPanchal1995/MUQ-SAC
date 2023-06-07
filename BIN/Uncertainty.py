@@ -987,8 +987,14 @@ class UncertaintyExtractor(object):
 		self.kappa = self.Theta.T.dot(P)
 		self.zeta_curved_type_B,index,zeta_lim = self.getConstrainedUnsrtZeta(flag=True)
 		self.zeta_curved_type_C = self.getConstrainedUnsrtZeta(flag=False)
+		self.kright_fact = -1
+		self.kleft_fact = 1
+		#self.zeta_class = self.getC2Zeta(flag=True)
+		
 		zeta = np.array([[self.zeta.x[0],self.zeta.x[1],self.zeta.x[2]],[-self.zeta_curved_type_B[0][0],-self.zeta_curved_type_B[0][1],-self.zeta_curved_type_B[0][2]],[self.zeta_curved_type_C.x[0],self.zeta_curved_type_C.x[1],self.zeta_curved_type_C.x[2]]])
 		self.zeta_matrix = np.matrix(zeta)
+		
+		
 		"""
 		fig, axs = plt.subplots(2, 1, figsize=(15,20))
 
@@ -1089,6 +1095,7 @@ class reaction(UncertaintyExtractor):
 		if self.type == "pressure_dependent" and self.pressure_limit.strip() != "":
 			if self.pressure_limit == "High":
 				self.rxn_Details = DATA["reactions"][self.index]
+				print()
 				self.rxn_dict = self.rxn_Details["high-P-rate-constant"]
 				self.nominal = [np.log(self.rxn_dict["A"]),self.rxn_dict["b"],self.rxn_dict["Ea"]/1.987]
 			else:
@@ -2716,4 +2723,4 @@ class uncertaintyData:
 		#print(self.root)
 		return self.unsrt_data,self.reactionUnsrt,self.plogUnsrt,self.interconnectedRxn, self.focUnsrt, self.trdBodyUnsrt, self.thermoUnsrt, self.transportUnsrt, self.Reactionlist,self.PlogRxnlist,self.interConnectedlist,self.focList,self.mList,self.thermoList,self.transportList
 	
-		
+		kright_fact

@@ -103,6 +103,7 @@ def generate_target_value_tables(locations, t_list, case, fuel,sens_AL):
 		#print(i[:-4]+"output/")
 		#print(t_list[case])
 		#print(data_loc.index(i))
+		#print(i)
 		
 		eta,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i))
 		if "N/A" in str(eta):
@@ -169,6 +170,7 @@ def extract_output(case,fuel,path,index):
 					eta = np.log(float(line[1])*10)	#us/micro seconds
 				else:
 					eta = np.log(100*10000)
+				
 			else:
 				eta = "N/A"
 				string = path
@@ -415,7 +417,9 @@ def generate_optimized_mechanism(mech_file_location, reaction_index, unsrt_data,
 
 def getTestingData(sensDir,case):
 	#print(os.getcwd())
+	#print(f"{sensDir}")
 	y_file = open(sensDir+"/Data/Simulations/sim_data_case-"+str(case)+".lst","r").readlines()
+	#print(y_file)
 	#x_file = open(sensDir+"/Data/Simulations/Generator_list_case-"+str(case)+".csv","r").readlines()
 	x_file = open(sensDir+"/Data/Simulations/Beta_list_case-"+str(case)+".csv","r").readlines()
 	#x_file = open(sensDir+"/Data/Simulations/NormalizedBeta_list_case-"+str(case)+".csv","r").readlines()

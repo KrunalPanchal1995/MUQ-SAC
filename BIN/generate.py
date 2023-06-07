@@ -39,6 +39,7 @@ def response_surface(sensDir,testDir,optDir,optInputs,case_dir,response_surface_
 		temp_rs_opt[str(k)] = case.resCoef
 		print("Testing the response surface for case-{}\n".format(target_list.index(case)))
 		xData_testing, yData_testing = data_management.getTestingData(testDir,case_dir[target_list.index(case)])
+		#print(f"xTest = {xData_testing}\n\ny_data = {yData_testing}")
 		actual_error_testing = []
 		error_testing = []
 		error_testing_relative = []
@@ -92,7 +93,7 @@ def response_surface(sensDir,testDir,optDir,optInputs,case_dir,response_surface_
 		h_train,hmean_train,hstd_train = statistics(list(yData_training))
 		pdf_train = stats.norm.pdf(h_train, hmean_train, hstd_train)
 		
-		print(hmean_train)
+		#print(hmean_train)
 		h_test,hmean_test,hstd_test = statistics(list(yData_testing))
 		pdf_test = stats.norm.pdf(h_test, hmean_test, hstd_test)
 		
@@ -298,7 +299,9 @@ def response_surface(sensDir,testDir,optDir,optInputs,case_dir,response_surface_
 	"""
 	generate a dict for cases that will be optimized using response surface and cases that will be run using direct simulations
 	"""
-	max_testing_error_criteria = 2 #percentage
+	#max_testing_error_criteria = 2 #percentage
+	max_testing_error_criteria = 10 #percentage
+	
 	case_prs_selection_dict = {}
 	#print(case_max_error)
 	count = 0
@@ -309,6 +312,13 @@ def response_surface(sensDir,testDir,optDir,optInputs,case_dir,response_surface_
 		else:
 			case_prs_selection_dict[i] = 1
 	
+	#print(os.getcwd())
+	if "Rejected_PRS" in os.listdir():
+		fil_prs = open("Rejected_PRS","r").readlines()
+		for i in fil_prs:
+			case_prs_selection_dict[int(i)] = 0
+	#print(case_prs_selection_dict)
+	#raise AssertionError("Stop!")
 	#print(k,count)
 	os.chdir("..")
 	
