@@ -1,0 +1,152 @@
+#count (H2):785
+#count (H2CO):36
+#targets_count(Tig_all): 1334
+#targets_count: 152
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+ 
+ optimization_type: PRS
+ 
+ Algorithm_type: gradient-based
+ 
+ Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+
+ total_reactions: 26
+
+ parallel_threads: 100
+ 
+ targets_count: 40
+#################################################
+# 		Chemical Kinetics  Data  	 #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono              ----#
+# -----fuel/s : written in YAML format    ------#
+#################################################
+
+Bin:
+
+ bin: /home/krithika/Desktop/KineticMechanismOptimization/source_code/bin
+
+ solver_bin: /home/krithika/FlameMaster/Bin/bin
+ 
+ samap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+ 
+ jpdap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+ 
+Inputs:
+
+ fileType: chemkin 
+
+ fuelClass: Multi
+
+ fuel/s: {a: NC7H16}
+
+ global_reaction: NC7H16+11O2==7CO2+8H2O
+
+#########################
+# Input file Location   #
+#	Data            #
+#########################
+
+Locations:
+ 
+ mechanism: /home/krunal/Desktop/Objectives/Objective_3/MUQ-SAC/Database/Test/heptane_632.yaml
+ 
+ Initial_pre_file: /home/krithika/FlameMaster/Data/H2.allstar3.pre
+ 
+ uncertainty_data: /home/krunal/Desktop/Objectives/Objective_3/MUQ-SAC/Database/Test/Test.xml
+ 
+ thermo_file: /home/krithika/Desktop/KineticMechanismOptimization/Mechanism/nHeptane/thermo.dat
+
+ trans_file: /home/krithika/Desktop/KineticMechanismOptimization/Mechanism/nHeptane/Transport.dat
+ 
+ targets: /home/krunal/Desktop/Objectives/Objective_3/MUQ-SAC/Database/Test/ALL_T_Targets.target
+
+# targets: /home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/n-Heptane/nHeptane.out
+ 
+ addendum: /home/krunal/Desktop/Objectives/Objective_3/MUQ-SAC/Database/Test/nHeptane.add
+
+################################################
+# 	 Start file Generator 			#
+#______________________________________________#
+#						#			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+StartProfilesData:
+
+ Fls:
+  Flame: UnstretchedPremixed
+
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+  
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+  
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: N2}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+ Flf:
+  Flame: UnstretchedPremixed
+ 
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: AR}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 
+#####################################
+# 	Stastical Parameters        #
+#           Data                    #
+#####################################
+
+Stats:
+ 
+#Design_of_PRS: Monte-Carlo-All
+
+#Design_of_PRS: Monte-Carlo
+
+#Design_of_PRS: LHS-maximin
+
+#Design_of_PRS: B1
+ 
+#Design_of_PRS: A1+B1+C1
+  
+ Design_of_PRS: A-facto
+ 
+ Order_of_PRS: 2
+ 
+ Sampling_of_PRS: 4
+ 
+ PRS_type: Full

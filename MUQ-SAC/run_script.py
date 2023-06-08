@@ -25,31 +25,36 @@ try:
 except ImportError:
     from ruamel import yaml
 import pandas as pd
-import sensitivity
-import test,Nominal,Optimal
-import generate
-import solution
+
+####################################
+##  Importing the sampling file   ##
+##                                ##
+####################################
+#import sensitivity
+#import test,Nominal,Optimal
+#import generate
+#import solution
 from MechManipulator2_0 import Manipulator
 #program specific modules
 from copy import deepcopy
 from MechanismParser import Parser
-import make_input_file
-import FlameMaster_in_parallel
-import combustion_dataset_class
-import combustion_variable_class
-from combustion_optimization_class import OptimizationTool
+#import make_input_file
+#import FlameMaster_in_parallel
+#import combustion_dataset_class
+#import combustion_variable_class
+#from combustion_optimization_class import OptimizationTool
 import combustion_target_class
-import data_management
-import data_management as dm
-import simulation_manager
+#import data_management
+#import data_management as dm
+#import simulation_manager
 import Uncertainty as uncertainty
-import MechanismManipulator
-import plotter
-import Input_file_reader
-import statistics
-import ParallelWorkers as pk
+#import MechanismManipulator
+#import plotter
+#import Input_file_reader
+#import statistics
+#import ParallelWorkers as pk
 from mpire import WorkerPool
-import ResponseSurface as PRS
+#import ResponseSurface as PRS
 ### KEY WORDS #######
 optType = "optimization_type"
 targets = "targets"
@@ -112,15 +117,15 @@ targets_count = int(dataCounts["targets_count"])
 rps_order = stats_[order]
 print("Parallel threads are {}".format(parallel_threads))
 targetLines = open(locations[targets],'r').readlines()
-#print(targetLines)
 addendum = yaml.safe_load(open(locations[add],'r').read())
-##!!!  MAKE A LIST OF TARGET CLASS CONTAINING EACH TARGET AS A CASE
-def filter_list(List):
-	temp = []
-	for i in List:
-		if i != "":
-			temp.append(i)
-	return temp
+
+
+####################################################
+##  Unloading the target data	  		          ##
+## TARGET CLASS CONTAINING EACH TARGET AS A	CASE  ##
+####################################################
+
+
 target_list = []
 c_index = 0
 string_target = ""
@@ -138,17 +143,36 @@ target_file = open("target_data.txt","w")
 target_file.write(string_target)
 target_file.close()
 
-#print(targetLines)
-##!!!  MAKE A LIST OF TARGET CLASS CONTAINING EACH TARGET AS A CA
-##########Obtain uncertainty data from user input file!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+############################################
+##  Uncertainty Quantification  		  ##
+##  									  ##
+############################################
+
 UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
-unsrt_data,rxnUnsrt_data,plogUnsrt_data,plog_interpolated_data,focUnsrt_data,tbdUnsrt_data,thermoUnsrt_data,transportUnsrt_data, reaction_index,plog_boundary_index,plog_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index = UncertDataSet.extract_uncertainty();
+
+############################################
+##   Get unsrt data from UncertDataSet    ##
+############################################
+
+unsrt_data = UncertDataSet.extract_uncertainty();
+#unsrt_data,rxnUnsrt_data,plogUnsrt_data,plog_interpolated_data,focUnsrt_data,tbdUnsrt_data,thermoUnsrt_data,transportUnsrt_data, reaction_index,plog_boundary_index,plog_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index = UncertDataSet.extract_uncertainty();
 print("Uncertainty analysis finished")
+
+###########################################################
+#### Printing the reactions and their index in the file ###
+###########################################################
+
 string_Rxn = ""
 for i in unsrt_data:
 	string_Rxn += f"{i}\t{unsrt_data[i].index}\n"
 file_rxn = open("RXN.csv","w").write(string_Rxn)
 
+
+######################################################################
+##  CREATING A DICTIONARY CONTAINING ALL THE DATA FROM UNSRT CLASS  ##
+## 																    ##
+######################################################################
 manipulationDict = {}
 selection = []
 Cholesky_list = []
@@ -173,9 +197,24 @@ manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
 manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
 manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
 
-for i in rxnUnsrt_data:
-	print(i)
+print(manipulationDict["activeParameters"])
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+raise AssertionError("The Target class and Uncertainty class")
 """
 Selection of the parameters
 """
@@ -211,40 +250,8 @@ for i in transport_index:
 	unsrtDatabase[i] = unsrt_data[i].getDtList()	
 	
 
-#print(rIndex_dict)
-manipulationDict = {}
-selection = []
-Cholesky_list = []
-zeta_list = []
-activeParameters = []
-nominal_list = []
-rxn_list = []
-rIndex = []
-for rxn in unsrt_data:
-	#print(i)
-	rxn_list.append(rxn)
-	selection.extend(unsrt_data[rxn].selection)
-	Cholesky_list.append(unsrt_data[rxn].cholskyDeCorrelateMat)
-	zeta_list.append(unsrt_data[rxn].perturb_factor)
-	activeParameters.extend(unsrt_data[rxn].activeParameters)
-	nominal_list.append(unsrt_data[rxn].nominal)
-	rIndex.append(unsrt_data[rxn].rIndex)
-	
-manipulationDict["selection"] = deepcopy(selection)#.deepcopy()
-manipulationDict["Cholesky"] = deepcopy(Cholesky_list)#.deepcopy()
-manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
-manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
-manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
-
-for i in rxnUnsrt_data:
-	print(i)
-
-"""
-Selection of the parameters
-"""
-print(activeParameters)
-selectedParams = deepcopy(activeParameters)#.deepcopy()
-
+raise AssertionError("The Target class and Uncertainty class")
+#
 """
 Get the samples from the simulation manager
 """

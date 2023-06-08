@@ -2721,6 +2721,5 @@ class uncertaintyData:
 			
 	def extract_uncertainty(self):
 		#print(self.root)
-		return self.unsrt_data,self.reactionUnsrt,self.plogUnsrt,self.interconnectedRxn, self.focUnsrt, self.trdBodyUnsrt, self.thermoUnsrt, self.transportUnsrt, self.Reactionlist,self.PlogRxnlist,self.interConnectedlist,self.focList,self.mList,self.thermoList,self.transportList
-	
-		kright_fact
+		return self.unsrt_data#,self.reactionUnsrt,self.plogUnsrt,self.interconnectedRxn, self.focUnsrt, self.trdBodyUnsrt, self.thermoUnsrt, self.transportUnsrt, self.Reactionlist,self.PlogRxnlist,self.interConnectedlist,self.focList,self.mList,self.thermoList,self.transportList
+
