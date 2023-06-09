@@ -1182,7 +1182,7 @@ class reaction(UncertaintyExtractor):
 			self.perturb_factor =  [min(self.uncertainties)]
 			self.solution = 1.0
 			#self.getUncorreationMatrix = np.array([[1.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0]])
-			self.cholskyDeCorrelateMat = np.array([1.0])
+			self.cholskyDeCorrelateMat = np.array([min(self.uncertainties)])
 			self.zeta_Matrix = 1
 			self.activeParameters = [self.rIndex+'_A']
 			self.selection = [1.0,0.0,0.0]
@@ -1495,7 +1495,7 @@ class PLOG_Interconnectedness(UncertaintyExtractor):
 			self.perturb_factor =  [min(self.uncertainties)]
 			self.solution = 1.0
 			#self.getUncorreationMatrix = np.array([[1.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0]])
-			self.cholskyDeCorrelateMat = np.array([1.0])
+			self.cholskyDeCorrelateMat = np.array([min(self.uncertainties)])
 			self.zeta_Matrix = 1
 			self.activeParameters = [self.rIndex+'_A']
 			self.selection = [1.0,0.0,0.0]
@@ -1675,7 +1675,7 @@ class PLOG(UncertaintyExtractor):
 			self.perturb_factor =  [min(self.uncertainties)]
 			self.solution = 1.0
 			#self.getUncorreationMatrix = np.array([[1.0,0.0,0.0],[0.0,0.0,0.0],[0.0,0.0,0.0]])
-			self.cholskyDeCorrelateMat = np.array([1.0])
+			self.cholskyDeCorrelateMat = np.array([min(self.uncertainties)])
 			self.zeta_Matrix = 1
 			self.activeParameters = [self.rIndex+'_A']
 			self.selection = [1.0,0.0,0.0]

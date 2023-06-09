@@ -202,18 +202,6 @@ print(manipulationDict["activeParameters"])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 raise AssertionError("The Target class and Uncertainty class")
 """
 Selection of the parameters

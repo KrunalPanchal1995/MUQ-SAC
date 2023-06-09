@@ -302,7 +302,16 @@ Unburnt Side {{
 	run_file.close()
 	subprocess.call(["chmod","+x",'run_generate'])
 
-def create_input_file(case,sample,opt_dict,old_dict, target,fuel, g_reaction, thermo_file_location, trans_file_location,startProfile_location,file_specific_command):
+def create_input_file(case,opt_dict,old_dict, target,fuel, g_reaction, thermo_file_location, trans_file_location,startProfile_location,file_specific_command):
+	
+	
+	
+	thermo_file_location =
+	trans_file_location =
+	startProfile_location = 
+	file_specific_command =
+	fuel = 
+	g_reaction = 
 	
 	global_reaction = ''
 	instring = ''

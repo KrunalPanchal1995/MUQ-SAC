@@ -8,102 +8,70 @@ from copy import deepcopy
 ###
 
 class Manipulator:
-	def __init__(self,copy_of_mech,unsrt_object,perturbation,rxn_list,parameter_selection):
-		self.mechanism = deepcopy(copy_of_mech)
-		#self.initial_mech = copy_of_mech
+	def __init__(self,copy_of_mech,unsrt_object,perturbation):
+		
+		self.mechanism = copy_of_mech
 		self.unsrt = unsrt_object
 		self.perturbation = perturbation
-		self.rxn_list = rxn_list
-		self.selection = parameter_selection
+		self.rxn_list = [rxn for rxn in self.unsrt]
 		
 	def getRxnPerturbationDict(self):
 		perturb = {}
-		selection = {}
-		#print(len(self.selection))
-		#print(self.selection)
-		#print(len(self.perturbation))
 		count = 0
-		print(self.rxn_list)
-		#print(len(self.rxn_list))
 		for rxn in self.rxn_list:
-			
 			len_active_parameters = len(self.unsrt[rxn].activeParameters)
-			#print(len_active_parameters)
-			temp = []
-			temp_1 = []
-			#print(len_active_parameters)
-			#print(count)
+			temp = []			
 			for i in range(len_active_parameters):
 				temp.append(self.perturbation[count])
-				temp_1.append(self.selection[count])
 				count+=1
-			#print(count)
-			perturb[rxn] = np.asarray(temp)
-			selection[rxn] = np.asarray(temp_1)
-		
-		return perturb,selection	
+			perturb[rxn] = np.asarray(temp)		
+		return perturb
+	
 	
 	def getRxnType(self):
 		rxn_type = {}
-		#print(self.rxn_list)
-		#for i in self.unsrt:
-		#	print(i)
 		for rxn in self.rxn_list:
 			rxn_type[rxn] = self.unsrt[rxn].classification
 		return rxn_type
 		
-	def ElementaryPerturbation(self,rxn,beta,selection,mechanism):
-		index = self.unsrt[rxn].index
-		cov = self.unsrt[rxn].cholskyDeCorrelateMat
+	def ElementaryPerturbation(self,rxn,beta,mechanism):
+		
+		"""
+		This function perturbes the Elementary reactions:
+			Inputs:
+				1) Rxn object
+				2) Rxn perturbation factor (beta)
+					- For A-factor type perturbation the L (choleskyDeCorrelateMat) is a factor
+					- For all Arrhenius parameter perturbation, L is a matrix storing the uncertainty data
+			Output:
+				perturbed reaction using the following formula
+				
+				$p = p_0 + L\zeta$		
+		
+		"""
+		
+		
+		index = self.unsrt[rxn].index# To search the reaction from Yaml dictionary
+		cov = self.unsrt[rxn].cholskyDeCorrelateMat #The L matrix storing the uncertainty data
 		zeta = self.unsrt[rxn].solution
 		perturbation_factor = self.unsrt[rxn].perturb_factor
-		#perturbation_factor = np.array([1,1,1])#this is kept to see how the search iteration data is coming
 		p0 = self.unsrt[rxn].nominal
-		#print(p0)
-		#unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
 		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
 		convertor = np.asarray(self.unsrt[rxn].selection)
-		#print(f"Perturbation factor = {perturbation_factor}")
-		#print("\n")
-		#print(beta)
-		#print("\n")
-		#print(f"Convertor = {convertor}")
-		#print("\n")
-		#print(unsrt_perturbation)
 		p = p0+convertor*unsrt_perturbation
-		#print(p)
+		
+		"""
+		The new perturbed reaction replaces the prior Arrhenius parameters 
+		"""
 		reaction_details = mechanism["reactions"][index]["rate-constant"]
 		reaction_details["A"] = float(np.exp(p[0]))
 		reaction_details["b"] = float(p[1])
 		reaction_details["Ea"] = float(p[2]*1.987)
 		mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
-		after = mechanism["reactions"][index]["rate-constant"]
-		#print(f"{rxn}\t{cov}\t{p}\t{beta}\t{after}\n")
+		
 		return mechanism
-		
-	def DuplicatePerturbation(self,rxn,beta,selection,mechanism):
-		index = self.unsrt[rxn].index
-		cov = self.unsrt[rxn].cholskyDeCorrelateMat
-		zeta = self.unsrt[rxn].solution
-		perturbation_factor = self.unsrt[rxn].perturb_factor
-		#perturbation_factor = np.array([1,1,1])
-		p0 = self.unsrt[rxn].nominal
-		#selection = np.asarray(self.unsrt[rxn].selection)
-		#unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
-		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
-		convertor = np.asarray(self.unsrt[rxn].selection)
-		
-		p = p0+convertor*unsrt_perturbation
-		reaction_details = mechanism["reactions"][index]["rate-constant"]
-		#print(reaction_details)
-		#raise AssertionError("STOP!!")
-		reaction_details["A"] = float(np.exp(p[0]))
-		reaction_details["b"] = float(p[1])
-		reaction_details["Ea"] = float(p[2]*1.987)
-		mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
-		return mechanism
-		
-	def PlogPerturbation(self,rxn,beta,selection,mechanism):
+				
+	def PlogPerturbation(self,rxn,beta,mechanism):
 		if "PLOG" in rxn:
 			rxn_split_index = int(rxn.split(":")[1].split("_")[1])
 			
@@ -136,7 +104,7 @@ class Manipulator:
 		#print(f"\tAfter\t{after}\n")
 		return mechanism
 		
-	def BranchingReactions(self,rxn,beta,selection,mechanism):
+	def BranchingReactions(self,rxn,beta,mechanism):
 		indexes = []
 		rxn_index = self.unsrt[rxn].index
 		indexes.append(rxn_index)
@@ -188,16 +156,14 @@ class Manipulator:
 	def ThirdBodyPerturbation(self,rxn,beta,mechanism):
 		pass
 		
-	def TroePerturbation(self,rxn,beta,selection,mechanism):
+	def TroePerturbation(self,rxn,beta,mechanism):
+		
 		P_limit = self.unsrt[rxn].pressure_limit
 		index = self.unsrt[rxn].index
 		cov = self.unsrt[rxn].cholskyDeCorrelateMat
 		zeta = self.unsrt[rxn].solution
 		perturbation_factor = self.unsrt[rxn].perturb_factor
-		#perturbation_factor = np.array([1,1,1])
 		p0 = self.unsrt[rxn].nominal
-		#selection = np.asarray(self.unsrt[rxn].selection)
-		#unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
 		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
 		convertor = np.asarray(self.unsrt[rxn].selection)
 		
@@ -215,19 +181,13 @@ class Manipulator:
 		else:
 			mechanism["reactions"][index]["low-P-rate-constant"] = deepcopy(reaction_details)
 		
-		#print(mechanism["reactions"][index])
-		#raise AssertionError("TROE check")
 		return mechanism
 		
 		
 	def doPerturbation(self):
 		rxn_type = self.getRxnType()
-		perturb,selection = self.getRxnPerturbationDict()
+		perturb = self.getRxnPerturbationDict()
 		mechanism = self.mechanism
-		#print("\n==========Before====\n")
-		#print(mechanism["reactions"][47])
-		#print(perturb)
-		#raise AssertionError("Stop!!")
 		
 		for rxn in self.rxn_list:
 			beta = np.asarray(perturb[rxn])
@@ -235,47 +195,38 @@ class Manipulator:
 			
 			if type_of_rxn == "Elementary":
 				index = self.unsrt[rxn].index
-				#a = mechanism["reactions"][index]
-				#print(f"Before\t{a}\n")
-				#print(index)
-				new_mechanism = self.ElementaryPerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.ElementaryPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
-				#mechanism["reactions"][index]
-				#print(f"After\t{b}\n")
-				#print(a==b)
+			
 			if type_of_rxn == "PLOG":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.PlogPerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.PlogPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
 				
 			if type_of_rxn == "PLOG-Duplicate":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.PlogPerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.PlogPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
 				
 			if type_of_rxn == "Duplicate":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.DuplicatePerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.ElementaryPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
 				
 			if type_of_rxn == "Falloff":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.TroePerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.TroePerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
 				
 			if type_of_rxn == "ThirdBody":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.ElementaryPerturbation(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.ElementaryPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
 				
 			if type_of_rxn == "BranchingRxn":
 				index = self.unsrt[rxn].index
-				new_mechanism = self.BranchingReactions(rxn,beta,selection[rxn],mechanism)
+				new_mechanism = self.BranchingReactions(rxn,beta,mechanism)
 				mechanism = new_mechanism
-		#string = yaml.dump(new_mechanism,default_flow_style=False)
-		#print(mechanism == self.mechanism)
-		#print(mechanism["reactions"][47])
-		#raise AssertionError("Elementary rxn")
 		return mechanism,perturb
 	
 	
