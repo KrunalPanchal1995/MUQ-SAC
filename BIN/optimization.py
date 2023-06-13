@@ -164,6 +164,8 @@ manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
 manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
 manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
 
+raise AssertionError("First stop!!")
+
 for i in rxnUnsrt_data:
 	print(i)
 

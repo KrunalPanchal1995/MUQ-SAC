@@ -302,24 +302,20 @@ Unburnt Side {{
 	run_file.close()
 	subprocess.call(["chmod","+x",'run_generate'])
 
-def create_input_file(case,opt_dict,old_dict, target,fuel, g_reaction, thermo_file_location, trans_file_location,startProfile_location,file_specific_command):
+def create_input_file(case,opt_dict,target):
+
+	thermo_file_location = opt_dict["Locations"]["thermo_file"]
+	trans_file_location = opt_dict["Locations"]["trans_file"]
+	startProfile_location = opt_dict["StartProfilesData"]
+	file_specific_command = "-f chemkin"
 	
-	
-	
-	thermo_file_location =
-	trans_file_location =
-	startProfile_location = 
-	file_specific_command =
-	fuel = 
-	g_reaction = 
-	
-	global_reaction = ''
+	global_reaction = opt_dict["Inputs"]["global_reaction"]
 	instring = ''
 	fuel = target.fuel
 	P = target.pressure
 	#print(target.target)
-	for i in g_reaction:
-		global_reaction += i
+	#for i in g_reaction:
+	#	global_reaction += i
 
 	# Defining the default variables with solver specific keys:
 	# In later version this moduel is to be shifted in combustion_target_class
