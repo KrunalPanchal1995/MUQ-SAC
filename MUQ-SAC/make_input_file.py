@@ -2240,7 +2240,7 @@ ck2yaml --input=mechanism.mech --thermo=thermo.therm --transport=transport.trans
 		#s_convert_2 = """"""
 		
 		s_run = """#!/bin/bash
-python3.9 cantera_.py &> solve"""
+python3 cantera_.py &> solve"""
 		#run_file.write(s)
 		#run_file.close()
 		#subprocess.call(["chmod","+x",'run'])

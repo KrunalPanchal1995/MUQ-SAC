@@ -51,11 +51,17 @@ class Worker():
 		self.progress = []
 		
 	def callback_run(self, result):
-		self.progress.append(result[0])
-		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+		#print(result)
+		string=""
+		for i in result:
+			self.progress.append(i[0])
+			string+=f"{i[0]}/run\n"
+			total = i[1]
+		#string+="\n"
+		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(total)*100))
 		sys.stdout.flush()
-		f = open('../progress','a')
-		f.write(result[0]+"/run"+"\n")
+		f = open('../progress','+a')
+		f.write(string)
 		f.close()
 		
 	def callback_create(self, result):
@@ -286,7 +292,7 @@ class SM(object):
 			minutes = (dt%3600)/60
 			seconds = dt%60
 			#os.system("clear")
-			print("Performed {} Simulations....".format(self.sim_))
+			print("Performed {} Simulations....".format(len(locations)))
 			print("Time for performing simulations : {h} hours,  {m} minutes, {s} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
 			#print(locations)
 			#del W,V,U,X
