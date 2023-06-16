@@ -75,7 +75,7 @@ def extract_index_and_uncertainty(uns):
 
 #Once the simulations are completed, this function goes through all the locations where FlameMaster simulation is performed and read the output value based on the type of target.
 #and print as a text file containg four columns. First three contain location information and last column contain  target value.
-def generate_target_value_tables(locations, t_list, case, fuel,sens_AL):
+def generate_target_value_tables(locations, t_list, case, fuel):
 	#print(locations)
 	list_fuel = []
 	if "dict" in str(type(fuel)):
@@ -95,6 +95,7 @@ def generate_target_value_tables(locations, t_list, case, fuel,sens_AL):
 	
 	data =''
 	failed_sim = ""
+	ETA = []
 	for i in data_loc:
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")
@@ -125,8 +126,8 @@ def generate_target_value_tables(locations, t_list, case, fuel,sens_AL):
 			#print(eta)
 			data += "{}\t{}\n".format(folderName , eta)
 			file_loc.close()
-	
-	return data,failed_sim
+			ETA.append(eta)
+	return data,failed_sim,ETA
 
 def extract_direct_simulation_values(case,loc,target_list,fuel):
 	data =''

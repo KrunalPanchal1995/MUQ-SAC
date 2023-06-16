@@ -10,7 +10,7 @@ from copy import deepcopy
 class Manipulator:
 	def __init__(self,copy_of_mech,unsrt_object,perturbation):
 		
-		self.mechanism = copy_of_mech
+		self.mechanism = deepcopy(copy_of_mech)
 		self.unsrt = unsrt_object
 		self.perturbation = perturbation
 		#print(perturbation)
@@ -64,12 +64,15 @@ class Manipulator:
 		"""
 		The new perturbed reaction replaces the prior Arrhenius parameters 
 		"""
+		#print("Before")
+		#print(mechanism["reactions"][index]["rate-constant"])
 		reaction_details = mechanism["reactions"][index]["rate-constant"]
 		reaction_details["A"] = float(np.exp(p[0]))
 		reaction_details["b"] = float(p[1])
 		reaction_details["Ea"] = float(p[2]*1.987)
 		mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
-		
+		#print("After")
+		#print(mechanism["reactions"][index]["rate-constant"])
 		return mechanism
 				
 	def PlogPerturbation(self,rxn,beta,mechanism):
@@ -82,7 +85,7 @@ class Manipulator:
 		p0 = self.unsrt[rxn].nominal
 		perturbation_factor = self.unsrt[rxn].perturb_factor
 		#selection = np.asarray(self.unsrt[rxn].selection)
-		unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
+		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
 		convertor = np.asarray(self.unsrt[rxn].selection)
 		
 		p = p0+convertor*unsrt_perturbation
@@ -129,28 +132,16 @@ class Manipulator:
 		#	print(index)
 			reaction_details = mechanism["reactions"][index]["rate-constant"]
 			p0 = np.asarray([float(np.log(reaction_details["A"])), float(reaction_details["b"]), float(reaction_details["Ea"]/1.987)])
-		#	print(p0)
-		#	print(type(p0))
-			unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
-		#	print(unsrt_perturbation)
-		#	print(convertor*unsrt_perturbation)
-		#	print(type(unsrt_perturbation))
-		#	print(type(convertor))
-		#	print(type(convertor*unsrt_perturbation))
+		
+			unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
 			p = p0+np.asarray(convertor*unsrt_perturbation)
-		#	print(p)
-		#	print(type(p))
+		
 			reaction_details["A"] = float(np.exp(p[0]))
 			reaction_details["b"] = float(p[1])
 			reaction_details["Ea"] = float(p[2]*1.987)
 			mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
 		
-		#for index in indexes:
-		#	reaction_details = mechanism["reactions"][index]["rate-constant"]
-			#p0 = np.asrray([reaction_details["A"],reaction_details["b"],reaction_details["Ea"]])
-		#	print(reaction_details)
 		
-		#print("Perturbation Done!!")
 		
 		return mechanism
 
@@ -198,7 +189,7 @@ class Manipulator:
 				index = self.unsrt[rxn].index
 				new_mechanism = self.ElementaryPerturbation(rxn,beta,mechanism)
 				mechanism = new_mechanism
-			
+				
 			if type_of_rxn == "PLOG":
 				index = self.unsrt[rxn].index
 				new_mechanism = self.PlogPerturbation(rxn,beta,mechanism)

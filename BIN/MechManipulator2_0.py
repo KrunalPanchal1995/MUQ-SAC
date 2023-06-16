@@ -81,7 +81,7 @@ class Manipulator:
 		p0 = self.unsrt[rxn].nominal
 		perturbation_factor = self.unsrt[rxn].perturb_factor
 		#selection = np.asarray(self.unsrt[rxn].selection)
-		unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
+		unsrt_perturbation = np.asarray(cov.dot(beta.dot(perturbation_factor))).flatten()
 		convertor = np.asarray(self.unsrt[rxn].selection)
 		
 		p = p0+convertor*unsrt_perturbation
@@ -130,7 +130,7 @@ class Manipulator:
 			p0 = np.asarray([float(np.log(reaction_details["A"])), float(reaction_details["b"]), float(reaction_details["Ea"]/1.987)])
 		#	print(p0)
 		#	print(type(p0))
-			unsrt_perturbation = np.asarray(cov.dot(selection*beta.dot(perturbation_factor))).flatten()
+			unsrt_perturbation = np.asarray(cov.dot(beta.dot(perturbation_factor))).flatten()
 		#	print(unsrt_perturbation)
 		#	print(convertor*unsrt_perturbation)
 		#	print(type(unsrt_perturbation))

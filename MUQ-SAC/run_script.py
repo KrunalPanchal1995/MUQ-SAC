@@ -42,9 +42,9 @@ from MechanismParser import Parser
 #import FlameMaster_in_parallel
 #import combustion_dataset_class
 #import combustion_variable_class
-#from combustion_optimization_class import OptimizationTool
+from combustion_optimization_class import OptimizationTool
 import combustion_target_class
-#import data_management
+import data_management
 #import data_management as dm
 import simulation_manager2_0 as simulator
 import Uncertainty as uncertainty
@@ -55,7 +55,7 @@ import Uncertainty as uncertainty
 #import ParallelWorkers as pk
 from mpire import WorkerPool
 import DesignMatrix as DM
-#import ResponseSurface as PRS
+import ResponseSurface as PRS
 ### KEY WORDS #######
 optType = "optimization_type"
 targets = "targets"
@@ -224,44 +224,6 @@ else:
 	design_matrix = []
 	for row in design_matrix_file:
 		design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
-#print(np.shape(design_matrix))
-
-"""
-Selection of the parameters
-"""
-#print(activeParameters)
-#selectedParams = deepcopy(activeParameters)#.deepcopy()
-"""
-
-unsrtDatabase = {}
-for index,rxn in enumerate(unsrt_data):
-	print(rxn)
-	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
-
-for index,rxn in enumerate(plog_boundary_index):
-	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
-
-for index,rxn in enumerate(plog_index):
-	unsrtDatabase[rxn] = unsrt_data[rxn].getDtList()
-		
-for i in fallOffCurve_index:
-	unsrtDatabase[i] = unsrt_data[i].getDtList()
-
-for i in thirdBody_index:
-	unsrtDatabase[i] = unsrt_data[i].getDtList()
-	temp = []
-	for j in unsrt_data[i].branches.split(","):
-		temp.append(j)
-	thirdBody_dict[i] = temp
-	total_m_params.append(temp)
-	
-for i in thermo_index:
-	unsrtDatabase[i] = unsrt_data[i].getDtList()
-
-for i in transport_index:
-	unsrtDatabase[i] = unsrt_data[i].getDtList()	
-	
-"""
 
 
 ##############################################################
@@ -269,17 +231,66 @@ for i in transport_index:
 ##     The goal is to test the design matrix                ##
 ##############################################################
 
-
-
 if "Opt" not in os.listdir():
 	os.mkdir("Opt")
+	optDir = os.getcwd()
 	os.chdir("Opt")
+	os.mkdir("Data")
+	os.chdir("Data")
+	os.mkdir("Simulations")
+	os.mkdir("ResponseSurface")
+	os.chdir("..")
 else:
 	os.chdir("Opt")
-simulator.SM(target_list,optInputs,unsrt_data,design_matrix).make_dir_in_parallel()
-os.chdir("..")
-raise AssertionError("The Target class, Uncertainty class, Design Matrix")
+	optDir = os.getcwd()
 
+if os.path.isfile("progress") == False:
+	FlameMaster_Execution_location = simulator.SM(target_list,optInputs,unsrt_data,design_matrix).make_dir_in_parallel()
+	raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations")
+else:
+	print("Progress file detected")
+	progress = open(optDir+"/progress",'r').readlines()
+	FlameMaster_Execution_location = []
+	with open(optDir+"/locations") as infile:
+		for line in infile:
+			FlameMaster_Execution_location.append(line)
+	FlameMaster_Execution_location = open(optDir+"/locations",'r').readlines()
+	missing_location = data_management.find_missing_location(FlameMaster_Execution_location, progress)
+
+#############################################
+##     Extracting simulation results       ##
+##       (The module if validated          ##
+#############################################
+temp_sim_opt = {}
+for case in case_dir:	
+	os.chdir("case-"+str(case))	
+	data_sheet,failed_sim, ETA = data_management.generate_target_value_tables(FlameMaster_Execution_location, target_list, case, fuel)
+	temp_sim_opt[str(case)] = ETA
+	f = open('../Data/Simulations/sim_data_case-'+str(case)+'.lst','w').write(data_sheet)
+	g = open('../Data/Simulations/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim)
+	#f.write(data_sheet)
+	#f.close()
+	os.chdir(optDir)
+
+###############################################
+##      Generating the response surface      ##
+##                                           ##
+###############################################
+
+ResponseSurfaces = {}
+for case in temp_sim_opt:
+	yData = np.asarray(temp_sim_opt[case]).flatten()
+	xData = np.asarray(design_matrix)
+	Response = PRS.ResponseSurface(xData,yData)
+	Response.create_response_surface()
+	ResponseSurfaces[case] = Response
+	
+raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
+
+##################################################
+##        Optimization Procedure                ##
+##   Inputs: Traget list and Response Surfaces  ## 
+##################################################
 
 
 

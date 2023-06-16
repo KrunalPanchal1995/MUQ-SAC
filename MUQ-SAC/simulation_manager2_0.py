@@ -177,9 +177,14 @@ class SM(object):
 		#print(len(self.design_matrix))
 		for i in range(len(self.design_matrix)):
 			self.beta_ = self.design_matrix[i]
+			#print(self.beta_)
 			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:
 				shutil.rmtree(str(i))
 				yaml_dict[str(i)],sim_dict[str(i)] = manipulator(self.copy_of_mech,self.unsrt,self.beta_).doPerturbation()
+				#print("Generating the files\n")
+				#print(yaml_dict[str(i)]["reactions"])
+				#print("-----------------------------------\n\n")
+				
 				instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
 				dir_list.append(str(i))
 				run_convert_dict[str(i)] = start+"/"+str(i)
@@ -192,18 +197,31 @@ class SM(object):
 				run_convert_dict[str(i)] = start+"/"+str(i)
 				run_list[str(i)] = start+"/"+str(i)
 				self.dir_list.append(start+"/"+str(i)+"/run")
+				#print("Generating the files\n")
+				#print(yaml_dict[str(i)]["reactions"])
+				#print("-----------------------------------\n\n")
+				
 			else:
 				
 				yaml_dict[str(i)],sim_dict[str(i)] = manipulator(self.copy_of_mech,self.unsrt,self.beta_).doPerturbation()#Makes the perturbed mechanism
 				instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+				#print("Generating the files\n")
+				#print(yaml_dict[str(i)]["reactions"])
+				#print("-----------------------------------\n\n")
+				
 				run_convert_dict[str(i)] = start+"/"+str(i)
 				run_list[str(i)] = start+"/"+str(i)
 				self.dir_list.append(start+"/"+str(i)+"/run")
 				continue	
+		#print(yaml_dict)
 		return  yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract,sim_dict
 		
 	
 	def make_dir_in_parallel(self):
+		
+		Prior_Mechanism = Parser(self.mech_loc).mech
+		self.copy_of_mech = copy.deepcopy(Prior_Mechanism)
+		
 		start_time = time.time()
 		print("Creating Directories for simulations......\n\n\n This may take a while... Please be patient...\n\n ")
 		#Parallel_jobs = multiprocessing.Pool(self.allowed_count-1)
@@ -256,12 +274,12 @@ class SM(object):
 			run = []
 			locations = []
 			extract = []
-			for i in dir_list:
-				instring.append(instring_dict[i])
-				yaml_list.append(yaml_dict[i])
-				run.append(s_run_dict[i])
-				locations.append(run_list[i])
-				extract.append(extract_list[i])
+			for i in range(len(self.design_matrix)):
+				instring.append(instring_dict[str(i)])
+				yaml_list.append(yaml_dict[str(i)])
+				run.append(s_run_dict[str(i)])
+				locations.append(run_list[str(i)])
+				extract.append(extract_list[str(i)])
 			#params = list(zip(mech,thermo,trans,instring,convertor,run,locations,extract))
 			params = list(zip(yaml_list,instring,run,locations,extract))
 			
@@ -298,7 +316,10 @@ class SM(object):
 			#del W,V,U,X
 			
 			#self.case_manipulation[str(case)] = sim_dict
-			
+			simulation_locations = open(optDir+"/locations",'+a')
+			for loc in locations:
+				simulation_locations.write(i+"\n")
+			simulation_locations.close()
 			
 			os.chdir('..')
 			
