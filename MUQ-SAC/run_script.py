@@ -4,7 +4,8 @@ import scipy as sp
 import scipy.stats as stats
 from scipy.optimize import minimize
 import os, sys, re, threading, subprocess, time
-from sklearn.preprocessing import PolynomialFeatures
+from sklearn.model_selection import train_test_split
+#from sklearn.preprocessing import PolynomialFeatures
 from collections import OrderedDict
 import matplotlib.pyplot as plt
 import matplotlib as mpl
@@ -42,7 +43,7 @@ from MechanismParser import Parser
 #import FlameMaster_in_parallel
 #import combustion_dataset_class
 #import combustion_variable_class
-from combustion_optimization_class import OptimizationTool
+#from combustion_optimization_class import OptimizationTool
 import combustion_target_class
 import data_management
 #import data_management as dm
@@ -278,11 +279,18 @@ for case in case_dir:
 ###############################################
 
 ResponseSurfaces = {}
-for case in temp_sim_opt:
+for case_index,case in enumerate(temp_sim_opt):
 	yData = np.asarray(temp_sim_opt[case]).flatten()
 	xData = np.asarray(design_matrix)
-	Response = PRS.ResponseSurface(xData,yData)
+	xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
+									random_state=104, 
+                                	test_size=0.2, 
+                                   	shuffle=True)
+	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index)
 	Response.create_response_surface()
+	Response.test(xTest,yTest)
+	Response.plot()
+	print(Response.case)
 	ResponseSurfaces[case] = Response
 	
 raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")

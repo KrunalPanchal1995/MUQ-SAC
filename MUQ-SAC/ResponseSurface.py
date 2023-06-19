@@ -21,9 +21,11 @@ from sklearn.linear_model import QuantileRegressor
 from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
 
 class ResponseSurface(object):
-	def __init__(self,xdata,ydata,responseOrder=2):
+	def __init__(self,xdata,ydata,case,case_index,responseOrder=2):
 		self.X = xdata
 		self.Y = ydata
+		self.case = case
+		self.case_index = case_index
 		self.order = int(responseOrder)
 	
 	def create_Neural_Network(self):
@@ -36,6 +38,38 @@ class ResponseSurface(object):
 		self.svr = SVR().fit(self.X,self.Y)
 		self.svr_yfit = self.svr.predict(self.X)
 
+	def test(self,xTest,yTest):
+		self.y_Test_Predict = []
+		self.y_Test_simulation = yTest
+		for sample in xTest:
+			self.y_Test_Predict.append(self.evaluate(sample))
+		
+	def plot(self):
+		self.error_testing = []
+		self.error_testing_relative = []
+		for index,sample in enumerate(self.y_Test_simulation):
+			self.error_testing.append(float(np.asarray(self.y_Test_Predict)[index])-sample)
+			self.error_testing_relative.append((self.y_Test_Predict[index]-sample)/(sample)*100)
+		
+		self.ytestMaxError = max(self.error_testing_relative)
+		self.yTestMeanError = statistics.mean(self.error_testing_relative)
+		
+		fig = plt.figure()
+		ax = fig.add_subplot()
+		plt.xlabel("Response Surface estimation")
+		plt.ylabel("Direct Simulation")
+		plt.plot(np.asarray(self.y_Test_simulation),np.asarray(self.y_Test_Predict),"k.",ms=8,label=f"Testing (max error = {self.ytestMaxError :.3f}%, mean error = {self.yTestMeanError:.3f}%)")
+		#plt.scatter(np.asarray(yData_testing), np.asarray(Sim_value_testing), color="none", edgecolor="black")
+		plt.scatter(np.asarray(self.Y), np.asarray(self.resFramWrk), color="none", edgecolor="green",label=f"Training (max error = {self.MaxError:.3f}%, mean error = {self.MeanError:.3f}%)")
+	
+		x = np.linspace(0,500,1000)
+		plt.xlim(min(np.asarray(self.Y))*0.98,max(np.asarray(self.Y))*1.02)
+		plt.ylim(min(np.asarray(self.resFramWrk))*0.98,max(np.asarray(self.resFramWrk))*1.02)
+		plt.plot(x,x,"-",label="parity line")
+		plt.legend(loc="upper left")
+		print(os.getcwd())
+		plt.savefig('../Plots/Parity_plot_case_'+str(self.case_index)+'_training.png',bbox_inches="tight")	
+	
 	def create_gauss_response_surface(self):
 		kernel = DotProduct() + WhiteKernel()
 		self.gpr = GaussianProcessRegressor(kernel=kernel,
@@ -128,8 +162,8 @@ class ResponseSurface(object):
 		"""
 		error details
 		"""
-		self.MaxError = max(self.error)
-		self.MeanError = statistics.mean(self.error)
+		#self.MaxError = max(self.error)
+		#self.MeanError = statistics.mean(self.error)
 		
 		self.RMS = math.sqrt(sum(self.RMS_error)/len(self.RMS_error))
 		self.MaxError = max(self.relative_error)
