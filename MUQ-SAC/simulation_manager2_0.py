@@ -230,6 +230,7 @@ class SM(object):
 		self.dir_list = []
 		self.generator_list = []
 		self.generators = []
+		optDir = os.getcwd()
 		#self.n = 0
 		#for i in self.unsrt:
 		#	self.n+=len(self.unsrt[i].activeparameters)
