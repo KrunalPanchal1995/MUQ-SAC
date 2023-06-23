@@ -140,7 +140,7 @@ class OptimizationTool(object):
 					case_stvd.append(np.log(case.std_dvtn))
 					case_systematic_error.append(abs(np.log(case.observed)-val))
 					#target_weights.append(dataset_weights)	
-			else:
+			#else:
 				#rejected_PRS.append(case)
 				
 		self.count +=1
