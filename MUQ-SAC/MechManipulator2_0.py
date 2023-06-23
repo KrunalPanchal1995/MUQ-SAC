@@ -64,15 +64,15 @@ class Manipulator:
 		"""
 		The new perturbed reaction replaces the prior Arrhenius parameters 
 		"""
-		print("Before")
-		print(mechanism["reactions"][index]["rate-constant"])
+		#print("Before")
+		#print(mechanism["reactions"][index]["rate-constant"])
 		reaction_details = mechanism["reactions"][index]["rate-constant"]
 		reaction_details["A"] = float(np.exp(p[0]))
 		reaction_details["b"] = float(p[1])
 		reaction_details["Ea"] = float(p[2]*1.987)
 		mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
-		print("After")
-		print(mechanism["reactions"][index]["rate-constant"])
+		#print("After")
+		#print(mechanism["reactions"][index]["rate-constant"])
 		return mechanism
 				
 	def PlogPerturbation(self,rxn,beta,mechanism):
@@ -99,14 +99,14 @@ class Manipulator:
 		
 		reaction_details = mechanism["reactions"][index]["rate-constants"][pressure_index]
 		
-		print(f"==================\n\tBefore\t{reaction_details}\n")
+		#print(f"==================\n\tBefore\t{reaction_details}\n")
 		reaction_details["A"] = float(np.exp(p[0]))
 		reaction_details["b"] = float(p[1])
 		reaction_details["Ea"] = float(p[2]*1.987)
 		#print(reaction_details)
 		mechanism["reactions"][index]["rate-constants"][pressure_index] = deepcopy(reaction_details)
 		after = mechanism["reactions"][index]["rate-constants"][pressure_index]
-		print(f"\tAfter\t{after}\n")
+		#print(f"\tAfter\t{after}\n")
 		return mechanism
 		
 	def BranchingReactions(self,rxn,beta,mechanism):
@@ -166,19 +166,19 @@ class Manipulator:
 			reaction_details = mechanism["reactions"][index]["high-P-rate-constant"]
 		else:
 			reaction_details = mechanism["reactions"][index]["low-P-rate-constant"]
-		print("=================\n\tTroe Before\n")
-		print(reaction_details)
+		#print("=================\n\tTroe Before\n")
+		#print(reaction_details)
 		reaction_details["A"] = float(np.exp(p[0]))
 		reaction_details["b"] = float(p[1])
 		reaction_details["Ea"] = float(p[2]*1.987)
 		if P_limit == "High":
 			mechanism["reactions"][index]["high-P-rate-constant"] = deepcopy(reaction_details)
-			print("===================\n\tTroe After\n")
-			print(mechanism["reactions"][index]["high-P-rate-constant"] )
+		#	print("===================\n\tTroe After\n")
+		#	print(mechanism["reactions"][index]["high-P-rate-constant"] )
 		else:
 			mechanism["reactions"][index]["low-P-rate-constant"] = deepcopy(reaction_details)
-			print("===================\n\tTroe After\n")
-			print(mechanism["reactions"][index]["low-P-rate-constant"] )
+		#	print("===================\n\tTroe After\n")
+		#	print(mechanism["reactions"][index]["low-P-rate-constant"] )
 		return mechanism
 		
 		
