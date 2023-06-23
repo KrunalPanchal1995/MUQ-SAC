@@ -6,7 +6,7 @@ import time
 from matplotlib import pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
-import pygad
+#import pygad
 style.use("fivethirtyeight")
 import os
 from scipy.optimize import rosen, differential_evolution
@@ -336,129 +336,86 @@ class OptimizationTool(object):
 			return fitness
 		return fitness_func_T_indi
 		
-	def run_optimization_with_selected_PRS(self,
-					       simulator,
-					       selectedPRS,
-					       method="gradient-based",
-					       algorithm="SLSQP",
-					       initial_guess=None,
-					       bounds=None,
-					       bounds_array = None,
-					       initial_covariance=None):
+	def run_optimization_with_selected_PRS(self,Unsrt_data,ResponseSurfaces,Input_data):
 	   
-		self.simulator = simulator
-		self.selected_prs = selectedPRS
-		self.solution = Solution(initial_guess,
-					 covariance_x=initial_covariance,
-					 initial_x=initial_guess,
-					 initial_covariance=initial_covariance)
-	 
-		if "solution.save" in os.listdir():
-			print("Optimization is already finished\n")
-			save = open("solution.save","r").readlines()
-			save_zeta = open("solution_zeta.save","r").readlines()
-			optimal_parameters = []
-			optimal_parameters_zeta = []
-			for line in save:
-				optimal_parameters.append(float(line.split("=")[1].strip("\n")))
+		self.unsrt = Unsrt_data
+		self.ResponseSurfaces = ResponseSurfaces
+		self.Input_data = Input_data
+		
+		self.init_guess = np.zeros(len(self.rxn_index))	
+		bounds = Bounds(list(-np.ones(len(self.init_guess))))
+		
+		if Input_data["Stats"]["Design_of_PRS"] == "A-facto":
+		
 			
-			for line in save:
-				optimal_parameters_zeta.append(float(line.split("=")[1].strip("\n")))
+			opt_output = minimize(self.obj_func_of_selected_PRS,initial_guess,bounds=bounds,method=algorithm)
+			print(opt_output)
+			optimal_parameters = np.asarray(opt_output.x)
+		else:
+			self.rxn_index = []
+			for rxn in self.unsrt:
+				self.rxn_index.append(rxn)
 			
+			self.T = np.linspace(300,2500,50)
+			self.init_guess = np.zeros(len(self.T)*len(self.rxn_index))
 			
+			bounds = Bounds(list(-np.ones(len(self.init_guess))))
+		"""
+		Finding the optimal parameters
+		"""
+		print("<<<<<<<<<<<<<<<<FOUND BEST SOLUTION>>>>>>>>>>>>>>>>>>>>>\n")
+		print(f"{solution}")
+		kappa_curve = {}
+		count = 0
+		for i in rxn_index:
+			temp = []
+			for j in range(len(self.T)):
+				temp.append(optimal_parameters[count])
+				count += 1
+			#Kappa = np.exp(np.log(kappa_0[i]) + temp*(np.log(kappa_max[i])-np.log(kappa_0[i])))
+			Kappa = kappa_0[i] + temp*(kappa_max[i]-kappa_0[i])
+			#print(Kappa)
+			kappa_curve[i] = np.asarray(Kappa).flatten()
 			
-		else:	
-			if "gradient-based" in method:
-				
-				self.rxn_index = self.simulator.ind		
-				
-				
-				fitness_function = self.fitness_function_factory()
-				
-				
-				self.rxn_index = self.simulator.ind
-				self.rxn_unsrt_data = self.simulator.rxnUnsert
-				cholesky_dict = {}
-				self.activeParameters = {}
-				
-				self.kappa_0 = {}
-				self.kappa_max = {}
-				#T = np.array([300,1500,3500])
-				self.T = np.linspace(300,2500,50)
-				self.init_guess = np.zeros(len(self.T)*len(self.rxn_index))
-				T = np.linspace(300,2500,50)
-				theta = np.array([T/T,np.log(T),-1/T])
-				#self.theta_inv = np.linalg.inv(theta.T)
-				for i in self.rxn_index:
-					self.activeParameters[i] = self.rxn_unsrt_data[i].activeParameters
-					self.kappa_0[i] = self.rxn_unsrt_data[i].getNominal(T)
-					self.kappa_max[i] = self.rxn_unsrt_data[i].getKappaMax(T)
-				
-				#bnds = (1/3)*np.ones(len(initial_guess))
-				bounds = Bounds(list(-np.ones(len(self.init_guess))),
-				
-				
-				
-				opt_output = minimize(self.obj_func_of_selected_PRS,initial_guess,bounds=bounds,method=algorithm)
-				print(opt_output)
-				
-				optimal_parameters = np.asarray(opt_output.x)
-				"""
-				Finding the optimal parameters
-				"""
-				print("<<<<<<<<<<<<<<<<FOUND BEST SOLUTION>>>>>>>>>>>>>>>>>>>>>\n")
-				print(f"{solution}")
-				kappa_curve = {}
-				count = 0
-				for i in rxn_index:
-					temp = []
-					for j in range(len(self.T)):
-						temp.append(optimal_parameters[count])
-						count += 1
-					#Kappa = np.exp(np.log(kappa_0[i]) + temp*(np.log(kappa_max[i])-np.log(kappa_0[i])))
-					Kappa = kappa_0[i] + temp*(kappa_max[i]-kappa_0[i])
-					#print(Kappa)
-					kappa_curve[i] = np.asarray(Kappa).flatten()
-					
-				
-				zeta = {}
-				#print(gen)
-				for i in rxn_index:
-					zeta[i] = rxn_unsrt_data[i].getZeta_typeA(kappa_curve[i])
-				optimal_parameters_zeta = []
-				for i in rxn_index:
-					temp = list(zeta[i])
-					optimal_parameters_zeta.extend(temp)
-				optimal_parameters_zeta = np.asarray(optimal_parameters_zeta)	
-			
-				
-				
-				
-				"""
-				-----------------------------------------
-				Transformation 1.0 of the optimal parameters:
-				-----------------------------------------
-				
-				     X =  __ln(kappa/kappa_0)____
-					   ln(kappa_max/kappa_0)
-				    
-				  ln(kappa) - ln(kappa_0) = X*[ln(kappa_max) - ln(kappa_0)]
-				  
-				  ln(kappa) = ln(kappa_0) + X*[ln(kappa_max) - ln(kappa_0)]
-				     
-				-----------------------------------------
-				Transformation 2.0 of the optimal parameters:
-				-----------------------------------------
-				
-				     X =  ___kappa__-__kappa_0__
-					    kappa_max - kappa_0
-				    
-				  kappa - kappa_0 = X*[kappa_max - kappa_0]
-				  
-				  kappa = kappa_0 + X*[kappa_max - kappa_0]
-				
-				
-				"""
+		
+		zeta = {}
+		#print(gen)
+		for i in rxn_index:
+			zeta[i] = rxn_unsrt_data[i].getZeta_typeA(kappa_curve[i])
+		optimal_parameters_zeta = []
+		for i in rxn_index:
+			temp = list(zeta[i])
+			optimal_parameters_zeta.extend(temp)
+		optimal_parameters_zeta = np.asarray(optimal_parameters_zeta)	
+	
+		
+		
+		
+		"""
+		-----------------------------------------
+		Transformation 1.0 of the optimal parameters:
+		-----------------------------------------
+		
+		     X =  __ln(kappa/kappa_0)____
+			   ln(kappa_max/kappa_0)
+		    
+		  ln(kappa) - ln(kappa_0) = X*[ln(kappa_max) - ln(kappa_0)]
+		  
+		  ln(kappa) = ln(kappa_0) + X*[ln(kappa_max) - ln(kappa_0)]
+		     
+		-----------------------------------------
+		Transformation 2.0 of the optimal parameters:
+		-----------------------------------------
+		
+		     X =  ___kappa__-__kappa_0__
+			    kappa_max - kappa_0
+		    
+		  kappa - kappa_0 = X*[kappa_max - kappa_0]
+		  
+		  kappa = kappa_0 + X*[kappa_max - kappa_0]
+		
+		
+		"""
 				
 		return np.asarray(optimal_parameters),np.asarray(optimal_parameters_zeta)
 	

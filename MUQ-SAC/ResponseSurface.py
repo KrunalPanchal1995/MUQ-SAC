@@ -44,7 +44,6 @@ class ResponseSurface(object):
 		for sample in xTest:
 			self.y_Test_Predict.append(self.evaluate(sample))
 		
-	def plot(self):
 		self.error_testing = []
 		self.error_testing_relative = []
 		for index,sample in enumerate(self.y_Test_simulation):
@@ -53,7 +52,13 @@ class ResponseSurface(object):
 		
 		self.ytestMaxError = max(self.error_testing_relative)
 		self.yTestMeanError = statistics.mean(self.error_testing_relative)
+		if self.ytestMaxError > 2:#if maximum error in PRS testing is greater than 2 percentage, the response surface is rejected
+			self.selection = 0
+		else:
+			self.selection = 1
 		
+	def plot(self):
+				
 		fig = plt.figure()
 		ax = fig.add_subplot()
 		plt.xlabel("Response Surface estimation")

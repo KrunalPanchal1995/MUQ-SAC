@@ -44,6 +44,7 @@ from MechanismParser import Parser
 #import combustion_dataset_class
 #import combustion_variable_class
 #from combustion_optimization_class import OptimizationTool
+from OptimizationTool import OptimizationTool as Optimizer
 import combustion_target_class
 import data_management
 #import data_management as dm
@@ -290,7 +291,7 @@ for case_index,case in enumerate(temp_sim_opt):
 	Response.create_response_surface()
 	Response.test(xTest,yTest)
 	Response.plot()
-	print(Response.case)
+	#print(Response.case)
 	ResponseSurfaces[case] = Response
 	
 raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
@@ -300,7 +301,7 @@ raise AssertionError("The Target class, Uncertainty class, Design Matrix and Sim
 ##   Inputs: Traget list and Response Surfaces  ## 
 ##################################################
 
-
+opt, opt_zeta = Optimizer(target_list).run_optimization_with_selected_PRS(unsrt_data,ResponseSurfaces,optInputs)
 
 
 
