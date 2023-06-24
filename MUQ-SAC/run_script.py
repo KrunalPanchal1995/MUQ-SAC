@@ -280,6 +280,7 @@ for case in case_dir:
 ###############################################
 
 ResponseSurfaces = {}
+selected_PRS = {}
 for case_index,case in enumerate(temp_sim_opt):
 	yData = np.asarray(temp_sim_opt[case]).flatten()
 	xData = np.asarray(design_matrix)
@@ -292,9 +293,9 @@ for case_index,case in enumerate(temp_sim_opt):
 	Response.test(xTest,yTest)
 	Response.plot()
 	#print(Response.case)
-	ResponseSurfaces[case] = Response
+	ResponseSurfaces[case_index] = Response
 	
-raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
+#raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
 
 ##################################################
 ##        Optimization Procedure                ##
@@ -305,7 +306,7 @@ opt, opt_zeta = Optimizer(target_list).run_optimization_with_selected_PRS(unsrt_
 
 
 
-
+raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
 
 
 
