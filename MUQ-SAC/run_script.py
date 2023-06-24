@@ -248,7 +248,7 @@ else:
 
 if os.path.isfile("progress") == False:
 	FlameMaster_Execution_location = simulator.SM(target_list,optInputs,unsrt_data,design_matrix).make_dir_in_parallel()
-	raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations")
+	#raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations")
 else:
 	print("Progress file detected")
 	progress = open(optDir+"/progress",'r').readlines()
