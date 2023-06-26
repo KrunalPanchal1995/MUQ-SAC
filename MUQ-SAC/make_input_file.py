@@ -805,7 +805,7 @@ reactorNetwork = ct.ReactorNet([r])
 
 stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
-index_a = stateVariableNames.index("{delay_def}")
+#index_a = stateVariableNames.index("{delay_def}")
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
