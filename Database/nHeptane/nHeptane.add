@@ -28,6 +28,12 @@
 # specific_cond: 
 # mol_wt: 17
 
+flf_NC7H16:
+ solver: cantera
+ residenceTime: 1
+ maxSimulationTime: 3
+ species: NC7H16
+ 
 ign_phi0_5_p13_5:
  solver: cantera
  ign_delay_def: CH
