@@ -302,6 +302,7 @@ Unburnt Side {{
 	run_file.close()
 	subprocess.call(["chmod","+x",'run_generate'])
 
+
 def create_input_file(case,opt_dict,target):
 
 	thermo_file_location = opt_dict["Locations"]["thermo_file"]
@@ -324,7 +325,74 @@ def create_input_file(case,opt_dict,target):
 	#print(target.target)
 	if target.input_file != None:
 		instring = open(target.input_file,'r').read()
-	
+			
+	elif "Flf" in target.target:
+		if "cantera" in target.add["solver"]:
+			instring = """#!/usr/bin/python
+import numpy as np
+import matplotlib.pyplot as plt
+import cantera as ct
+import time
+import pandas as pd
+
+gas = ct.Solution('mechanism.yaml')
+
+reactorTemperature = {temperature} #Kelvin
+reactorPressure = {pressure} #in atm. This equals 1.06 bars
+concentrations = {species_conc}
+gas.TPX = reactorTemperature, reactorPressure, concentrations 
+
+residenceTime = {residenceTime} #s
+
+reactorVolume = 1 #m3
+
+pressureValveCoefficient = 0.01
+maxPressureRiseAllowed = 0.01
+
+maxSimulationTime = {maxSimTime} # seconds
+
+fuelAirMixtureTank = ct.Reservoir(gas)
+exhaust = ct.Reservoir(gas)
+
+stirredReactor = ct.IdealGasReactor(gas, energy='off', volume=reactorVolume)
+
+massFlowController = ct.MassFlowController(upstream=fuelAirMixtureTank,
+                                           downstream=stirredReactor,
+                                           mdot=stirredReactor.mass/residenceTime)
+
+pressureRegulator = ct.Valve(upstream=stirredReactor,
+                             downstream=exhaust,
+                             K=pressureValveCoefficient)
+
+reactorNetwork = ct.ReactorNet([stirredReactor])
+columnNames = [stirredReactor.component_name(item) for item in range(stirredReactor.n_vars)]
+columnNames = ['pressure'] + columnNames
+
+# use the above list to create a DataFrame
+timeHistory = pd.DataFrame(columns=columnNames)
+tic = time.time()
+t = 0
+while t < maxSimulationTime:
+    t = reactorNetwork.step()
+    
+state = np.hstack([stirredReactor.thermo.P, 
+                   stirredReactor.mass, 
+                   stirredReactor.volume, 
+                   stirredReactor.T, 
+                   stirredReactor.thermo.X])
+
+toc = time.time()
+
+concentrations = stirredReactor.thermo.X
+
+# Store the result in the dataframe that indexes by temperature
+timeHistory.loc[reactorTemperature] = state
+Flf = str(timeHistory['{species}']).split("\\n")[0].split("    ")[1]
+flf_file = open("output/flf.out",'w')
+flf_file.write("#T(K)    flf(conc.)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,Flf))
+flf_file.close()""".format(temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=target.add["species"],residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
+			extract = """
+		"""
 	elif "Tig" in target.target:
 		#print(target.ignition_type)
 		#print(target.target)
@@ -1440,7 +1508,8 @@ Unburnt Side {{
 			
 			extract = """
 		"""
-	elif "Flf" in target.target:
+	
+	elif "Flf_a" in target.target:
 		if "cantera" in target.add["solver"]:
 				
 			instring = """#!/usr/bin/python

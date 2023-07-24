@@ -301,11 +301,11 @@ def extract_output(case,fuel,path,index):
 		#return eta,string
 	elif case.target.strip() == "Flf":
 		if "cantera" in case.add["solver"]:
-			out_file = open(path+"result.dout",'r').readlines()
-			string = path +"result.dout"
-			line = out_file[0].split("	")
+			out_file = open(path+"flf.out",'r').readlines()
+			string = path +"flf.out"
+			line = out_file[1].split("	")
 			if len(line) == 2:
-				eta = float(line[1])*100	#%mole
+				eta = float(line[1])	#%mole
 			else:
 				eta = 100
 		else:
