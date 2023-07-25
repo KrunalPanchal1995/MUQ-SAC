@@ -360,7 +360,7 @@ class combustion_target():
 			
 		self.initialCond = self.getInitialCond()
 		if "Flf" in self.target:
-		
+			#print(self.add)
 			if "ExpTempFile" not in self.add:
 				self.add["ExpTempFile"] = ""
 				self.burner_temp = 0

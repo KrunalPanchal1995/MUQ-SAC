@@ -19,6 +19,7 @@ import time
 import sys
 import concurrent.futures
 import asyncio
+
 #import yaml
 #import ruamel.yaml as yaml
 try:
@@ -136,7 +137,8 @@ string_target = ""
 for target in targetLines[:targets_count]:
 	if "#" in target:
 		target = target[:target.index('#')]	
-	t = combustion_target_class.combustion_target(target,addendum,c_index)
+	add = deepcopy(addendum)
+	t = combustion_target_class.combustion_target(target,add,c_index)
 	string_target+=f"{t.dataSet_id}|{t.target}|{t.species_dict}|{t.temperature}|{t.pressure}|{t.phi}|{t.observed}|{t.std_dvtn}\n"
 	c_index +=1
 	target_list.append(t)
