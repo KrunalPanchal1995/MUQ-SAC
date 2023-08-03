@@ -10,6 +10,7 @@ import time
 import sys
 import copy
 import yaml
+import concurrent.futures
 ### Program specific modules
 import make_input_file 
 from MechManipulator2_0 import Manipulator as manipulator
@@ -21,16 +22,18 @@ from MechanismParser import Parser
 ##  is systematic ways. Prallel computing ##
 ##  is done to make the process fast      ##
 ############################################
-def run_generate_dir(location):
+def run_generate_dir(location,total):
 	os.mkdir(location)
 	os.mkdir(location+"/output")
+	return (location,total)
 
 def run_map(params):
 	location = str(params[3])
 	yaml_string = yaml.dump(params[0],default_flow_style=False)
-	yamlfile = open(location+"/mechanism.yaml","w").write(yaml_string)
-	sim = open(location+"/cantera_.py",'w').write(params[1])
-	sim = open(location+"/FlameMaster.input",'w').write(params[1])
+	with open(location+"/mechanism.yaml","w") as yamlfile:
+		yamlfile.write(yaml_string)
+	sim1 = open(location+"/cantera_.py",'w').write(params[1])
+	sim2= open(location+"/FlameMaster.input",'w').write(params[1])
 	extract = open(location+"/extract.py",'w').write(params[4])
 	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
 	runScript = open(location+"/run","w").write(params[2])
@@ -38,18 +41,25 @@ def run_map(params):
 	subprocess.call(["chmod","+x",location+"/run"])
 	del yaml_string
 	del location
+	del yamlfile, sim1, sim2,extract,runScript
 	return (params[3])
 	
 def run_executable_files(args):
 	os.chdir(args[0])
 	subprocess.call(["./"+args[1]])
 	return (args[0],args[2])
-
+def update_progress(progress, total):
+	sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(progress) / float(total) * 100))
+	sys.stdout.flush()
 class Worker():
 	def __init__(self, workers):
 		self.pool = multiprocessing.Pool(processes=workers)
+		self.pool1 = concurrent.futures.ProcessPoolExecutor(max_workers=workers)
 		self.progress = []
 		
+	def update_progress(self, total):
+        	update_progress(self.progress, total)
+        	
 	def callback_run(self, result):
 		#print(result)
 		string=""
@@ -64,12 +74,15 @@ class Worker():
 		f.write(string)
 		f.close()
 		
-	def callback_create(self, result):
-		self.progress.append(result[0])
-		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
-		sys.stdout.flush()
+	#def callback_create(self, result):
+	#	self.progress.append(result[0])
+	#	sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+	#	sys.stdout.flush()
 		#self.pool.terminate()
-	
+	def callback_create(self, future):
+		result = future.result()
+		self.progress.append(result[0])
+		self.update_progress(result[-1])
 	def custom_error_callback(self,error):
    	 	print(f'Got an error: {error}')
    
@@ -82,13 +95,24 @@ class Worker():
 		self.pool.join()
 		self.pool.terminate()
 	
-	def do_job_map(self,locations):
-		self.pool.map_async(run_generate_dir,locations)
-		self.pool.close()
-		self.pool.join()
-		self.pool.terminate()
+	def do_job_map(self, locations):
+		futures = [self.pool1.submit(run_generate_dir, location,len(locations)) for location in locations]
+		for future in concurrent.futures.as_completed(futures):
+		    self.callback_create(future)
+	#def do_job_map(self,locations):
+	#	self.pool.map_async(run_generate_dir,locations)
+	#	self.pool.close()
+	#	self.pool.join()
+	#	self.pool.terminate()
+	
+	#def do_job_map_create(self, params):
+	 #       futures = [self.pool1.submit(run_map, param,len(params)) for param in params]
+	  #      for future in concurrent.futures.as_completed(futures):
+	   #     	self.callback_create(future)
 	
 	def do_job_map_create(self,params):
+	#	for param in params:
+	#		self.pool.apply_async(run_map,args=(param,))
 		self.pool.map_async(run_map,params,error_callback=self.custom_error_callback)
 		self.pool.close()
 		self.pool.join()
@@ -264,7 +288,7 @@ class SM(object):
 			###########################################
 			
 			
-			V = Worker(allowed_count)
+			#V = Worker(allowed_count)
 			yaml_list = []
 			mech = []
 			thermo = []
@@ -283,11 +307,28 @@ class SM(object):
 				extract.append(extract_list[str(i)])
 			#params = list(zip(mech,thermo,trans,instring,convertor,run,locations,extract))
 			params = list(zip(yaml_list,instring,run,locations,extract))
-			
-			V.do_job_map_create(params)
-			print("\tRequired files for case - {} is generated\n".format(case))
-			del V
-			
+			tic = time.time()
+			for param in params:
+				location = str(param[3])
+				yaml_string = yaml.dump(param[0],default_flow_style=False)
+				with open(location+"/mechanism.yaml","w") as yamlfile:
+					yamlfile.write(yaml_string)
+				sim1 = open(location+"/cantera_.py",'w').write(param[1])
+				sim2= open(location+"/FlameMaster.input",'w').write(param[1])
+				extract = open(location+"/extract.py",'w').write(param[4])
+				#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
+				runScript = open(location+"/run","w").write(param[2])
+				#subprocess.call(["chmod","+x",location+"/run_convertor"])
+				subprocess.call(["chmod","+x",location+"/run"])
+			tok = time.time()	
+			#chunk_size = 500
+			#chunks = [params[i:i+chunk_size] for i in range(0, len(params), chunk_size)]
+			#for params in chunks:
+			#	V = Worker(allowed_count)
+			#	V.do_job_map_create(params)
+			#	del V
+			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tik)%60))
+						
 			
 			###########################################
 			##   Running the files                   ##

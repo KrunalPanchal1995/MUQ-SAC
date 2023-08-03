@@ -14,7 +14,7 @@ class DesignMatrix(object):
 		self.sim = sample_length
 		self.design = design
 		self.n = ind
-		self.allowed_count = 10
+		self.allowed_count = 100
 	def getClassA_Curves(self,n_a):
 		"""
 			This defination generates n_a numbers of class-A type curves 
@@ -84,8 +84,14 @@ class DesignMatrix(object):
 	def getSamples(self):
 		
 		if self.design == 'A-facto': 
-			design_matrix = list(2* np.random.random_sample((self.sim,self.n)) - 1)
+			design_matrix = list(2* np.random.random_sample((self.sim*5,self.n)) - 1)
 			design_matrix.extend(list(np.eye(self.n)))
+			s =""
+			for row in design_matrix:
+				for element in row:
+					s+=f"{element},"
+				s+="\n"
+			ff = open('DesignMatrix.csv','w').write(s)
 			return np.asarray(design_matrix)
 		elif self.design == "A1+B1+C1":
 			design_matrix = []

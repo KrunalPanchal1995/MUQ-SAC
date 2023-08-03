@@ -31,7 +31,7 @@
 flf_NC7H16:
  solver: cantera
  residenceTime: 1
- maxSimulationTime: 3
+ maxSimulationTime: 10
  species: NC7H16
  
 ign_phi0_5_p13_5:
