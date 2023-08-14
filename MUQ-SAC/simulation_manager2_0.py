@@ -27,22 +27,27 @@ def run_generate_dir(location,total):
 	os.mkdir(location+"/output")
 	return (location,total)
 
-def run_map(params):
-	location = str(params[3])
+def run_map_2(params):
+	location = str(params[1])
 	yaml_string = yaml.dump(params[0],default_flow_style=False)
 	with open(location+"/mechanism.yaml","w") as yamlfile:
 		yamlfile.write(yaml_string)
-	sim1 = open(location+"/cantera_.py",'w').write(params[1])
-	sim2= open(location+"/FlameMaster.input",'w').write(params[1])
-	extract = open(location+"/extract.py",'w').write(params[4])
+	return (params[1])
+
+def run_map(params):
+	location = str(params[2])
+	
+	sim1 = open(location+"/cantera_.py",'w').write(params[0])
+	sim2= open(location+"/FlameMaster.input",'w').write(params[0])
+	extract = open(location+"/extract.py",'w').write(params[3])
 	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
-	runScript = open(location+"/run","w").write(params[2])
+	runScript = open(location+"/run","w").write(params[1])
 	#subprocess.call(["chmod","+x",location+"/run_convertor"])
 	subprocess.call(["chmod","+x",location+"/run"])
-	del yaml_string
+	
 	del location
-	del yamlfile, sim1, sim2,extract,runScript
-	return (params[3])
+	del sim1, sim2,extract,runScript
+	return (params[2])
 	
 def run_executable_files(args):
 	os.chdir(args[0])
@@ -89,6 +94,8 @@ class Worker():
 	def callback_error(self,result):
 		print('error', result)
    
+	
+	
 	def do_job_async(self,args):
 		self.pool.map_async(run_executable_files,args,callback=self.callback_run,error_callback=self.callback_error)
 		self.pool.close()
@@ -110,6 +117,13 @@ class Worker():
 	  #      for future in concurrent.futures.as_completed(futures):
 	   #     	self.callback_create(future)
 	
+	def do_job_map_create_2(self,params):
+	#	for param in params:
+	#		self.pool.apply_async(run_map,args=(param,))
+		self.pool.map_async(run_map_2,params,error_callback=self.custom_error_callback)
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()
 	def do_job_map_create(self,params):
 	#	for param in params:
 	#		self.pool.apply_async(run_map,args=(param,))
@@ -278,6 +292,7 @@ class SM(object):
 			###########################################
 			start_time = time.time()
 			W = Worker(allowed_count)
+			
 			W.do_job_map(dir_list)
 			print("\tDirectories for case - {} is generated\n".format(case))
 			del W
@@ -306,29 +321,41 @@ class SM(object):
 				locations.append(run_list[str(i)])
 				extract.append(extract_list[str(i)])
 			#params = list(zip(mech,thermo,trans,instring,convertor,run,locations,extract))
-			params = list(zip(yaml_list,instring,run,locations,extract))
+			params = list(zip(instring,run,locations,extract))
+			params2 = list(zip(yaml_list,locations))
 			tic = time.time()
-			for param in params:
-				location = str(param[3])
-				yaml_string = yaml.dump(param[0],default_flow_style=False)
-				with open(location+"/mechanism.yaml","w") as yamlfile:
-					yamlfile.write(yaml_string)
-				sim1 = open(location+"/cantera_.py",'w').write(param[1])
-				sim2= open(location+"/FlameMaster.input",'w').write(param[1])
-				extract = open(location+"/extract.py",'w').write(param[4])
-				#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
-				runScript = open(location+"/run","w").write(param[2])
-				#subprocess.call(["chmod","+x",location+"/run_convertor"])
-				subprocess.call(["chmod","+x",location+"/run"])
-			tok = time.time()	
+			#for param in params:
+			#	location = str(param[3])
+			#	yaml_string = yaml.dump(param[0],default_flow_style=False)
+			#	with open(location+"/mechanism.yaml","w") as yamlfile:
+			#		yamlfile.write(yaml_string)
+			#	sim1 = open(location+"/cantera_.py",'w').write(param[1])
+			#	sim2= open(location+"/FlameMaster.input",'w').write(param[1])
+			#	extract = open(location+"/extract.py",'w').write(param[4])
+			#	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
+			#	runScript = open(location+"/run","w").write(param[2])
+			#	#subprocess.call(["chmod","+x",location+"/run_convertor"])
+			#	subprocess.call(["chmod","+x",location+"/run"])
+			V = Worker(allowed_count)
+			V.do_job_map_create(params)
+			del V	
 			#chunk_size = 500
 			#chunks = [params[i:i+chunk_size] for i in range(0, len(params), chunk_size)]
 			#for params in chunks:
 			#	V = Worker(allowed_count)
 			#	V.do_job_map_create(params)
 			#	del V
-			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tik)%60))
-						
+			tok = time.time()
+			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
+			tic = time.time()
+			chunk_size = 250
+			chunks = [params2[i:i+chunk_size] for i in range(0, len(params2), chunk_size)]
+			for params2 in chunks:
+				W = Worker(allowed_count)
+				W.do_job_map_create_2(params2)
+				del W
+			tok = time.time()	
+			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
 			
 			###########################################
 			##   Running the files                   ##

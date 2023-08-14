@@ -123,7 +123,7 @@ print("Parallel threads are {}".format(parallel_threads))
 targetLines = open(locations[targets],'r').readlines()
 addendum = yaml.safe_load(open(locations[add],'r').read())
 
-
+print(design_type)
 ####################################################
 ##  Unloading the target data	  		          ##
 ## TARGET CLASS CONTAINING EACH TARGET AS A	CASE  ##
@@ -222,7 +222,7 @@ Output:
 """
 
 if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,1000,len(manipulationDict["activeParameters"])).getSamples()
+	design_matrix = DM.DesignMatrix(unsrt_data,design_type,350,len(manipulationDict["activeParameters"])).getSamples()
 else:
 	design_matrix_file = open("DesignMatrix.csv").readlines()
 	design_matrix = []
@@ -288,7 +288,7 @@ for case_index,case in enumerate(temp_sim_opt):
 	xData = np.asarray(design_matrix)
 	xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
 									random_state=104, 
-                                	test_size=0.2, 
+                                	test_size=0.8, 
                                    	shuffle=True)
 	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index)
 	Response.create_response_surface()
@@ -298,13 +298,35 @@ for case_index,case in enumerate(temp_sim_opt):
 	ResponseSurfaces[case_index] = Response
 	
 #raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
-
+os.chdir("..")
 ##################################################
 ##        Optimization Procedure                ##
 ##   Inputs: Traget list and Response Surfaces  ## 
 ##################################################
 
 opt, opt_zeta = Optimizer(target_list).run_optimization_with_selected_PRS(unsrt_data,ResponseSurfaces,optInputs)
+
+string_save = ""
+for i, j in enumerate(activeParameters):
+	print("\n{}=\t{}".format(activeParameters[i], opt_zeta[i]))
+	string_save+="{}=\t{}\n".format(activeParameters[i], opt_zeta[i])
+save = open("solution_zeta.save","w").write(string_save)
+
+
+string_save = ""
+for i, j in enumerate(activeParameters):
+	print("\n{}=\t{}".format(activeParameters[i], opt[i]))
+	string_save+="{}=\t{}\n".format(activeParameters[i], opt[i])
+save = open("solution.save","w").write(string_save)
+
+
+originalMech = Parser(mech_file_location).mech
+copy_of_mech = deepcopy(originalMech)#.deepcopy()
+new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt).doPerturbation()
+
+#new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
+string = yaml.dump(new_mechanism,default_flow_style=False)
+f = open("new_mech.yaml","w").write(string)
 
 
 
