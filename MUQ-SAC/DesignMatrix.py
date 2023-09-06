@@ -97,6 +97,7 @@ class DesignMatrix(object):
 			ff = open('DesignMatrix.csv','w').write(s)
 			return np.asarray(design_matrix)
 		elif self.design == "A1+B1+C1":
+			tic = time.time()
 			design_matrix = []
 			#Take the sample_length and divide it into following
 			# 		n_a:n_b:n_c = 100:450:450
@@ -106,10 +107,12 @@ class DesignMatrix(object):
 			#      V: Unshuffled vector (numpy-array)
 			#	 V_s: Shuffled vector (
 			
-			n_a = int(0.1*self.sim)
-			n_b = int(0.45*self.sim)
-			n_c = self.sim-n_a-n_b
-			
+			#n_a = int(0.1*self.sim)
+			#n_b = int(0.45*self.sim)
+			#n_c = self.sim-n_a-n_b
+			n_a = 10
+			n_b = 10
+			n_c = 10
 			a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
 			b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
 			c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples
@@ -127,7 +130,7 @@ class DesignMatrix(object):
 					temp.append(sample_c)
 				V[rxn] = np.asarray(temp)
 			
-			
+			"""
 			V_s = {}#Doing random shuffling
 			#Deepcopy the unshuffled samples first
 			V_copy = copy.deepcopy(V)
@@ -138,14 +141,14 @@ class DesignMatrix(object):
 					column.extend(np.asarray(V_copy[rxn]))
 				V_s[rxn] = np.asarray(column)	
 			
-				
+			"""	
 			V_linear_comb = {}#Doing linear combination to populate the matrix
 			for rxn in self.unsrt:
 				temp = []
-				for i in range(5000):
-					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,100)])
-					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,450)])
-					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,450)])
+				for i in range(15000):
+					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
+					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
+					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
 					x,y,z = self.generatePointOnSphere()
 					####
 					temp.append(x*zeta_a+y*zeta_b+z*zeta_c)
@@ -160,18 +163,20 @@ class DesignMatrix(object):
 					
 				design_matrix.append(row)
 			
+			"""
 			for i in range(4000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
-				
-			for i in range(5000):
+			"""	
+			for i in range(15000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_linear_comb[rxn][i])
 				design_matrix.append(row)
-			
+			tok = time.time()
+			print("Time taken to construct Design Matrix: {}".format(tok - tic))
 			s =""
 			for row in design_matrix:
 				for element in row:

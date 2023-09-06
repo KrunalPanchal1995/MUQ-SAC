@@ -280,117 +280,119 @@ class SM(object):
 		
 		"""		
 		for case_index,case in enumerate(self.case_dir):
-		
-			self.beta_list = []
-			yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract_list,sim_dict = self.getDirectoryList(case,case_index)
-			
-			
-			
-			###########################################
-			##   Generated directories in parallel   ##
-			##                                       ##
-			###########################################
-			start_time = time.time()
-			W = Worker(allowed_count)
-			
-			W.do_job_map(dir_list)
-			print("\tDirectories for case - {} is generated\n".format(case))
-			del W
-			
-			###########################################
-			##   Generated required files            ##
-			##        in parallel                    ##
-			###########################################
-			
-			
-			#V = Worker(allowed_count)
-			yaml_list = []
-			mech = []
-			thermo = []
-			trans = []
-			instring = []
-			#convertor  = []
-			#convertor_2  = []
-			run = []
-			locations = []
-			extract = []
-			for i in range(len(self.design_matrix)):
-				instring.append(instring_dict[str(i)])
-				yaml_list.append(yaml_dict[str(i)])
-				run.append(s_run_dict[str(i)])
-				locations.append(run_list[str(i)])
-				extract.append(extract_list[str(i)])
-			#params = list(zip(mech,thermo,trans,instring,convertor,run,locations,extract))
-			params = list(zip(instring,run,locations,extract))
-			params2 = list(zip(yaml_list,locations))
-			tic = time.time()
-			#for param in params:
-			#	location = str(param[3])
-			#	yaml_string = yaml.dump(param[0],default_flow_style=False)
-			#	with open(location+"/mechanism.yaml","w") as yamlfile:
-			#		yamlfile.write(yaml_string)
-			#	sim1 = open(location+"/cantera_.py",'w').write(param[1])
-			#	sim2= open(location+"/FlameMaster.input",'w').write(param[1])
-			#	extract = open(location+"/extract.py",'w').write(param[4])
-			#	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
-			#	runScript = open(location+"/run","w").write(param[2])
-			#	#subprocess.call(["chmod","+x",location+"/run_convertor"])
-			#	subprocess.call(["chmod","+x",location+"/run"])
-			V = Worker(allowed_count)
-			V.do_job_map_create(params)
-			del V	
-			#chunk_size = 500
-			#chunks = [params[i:i+chunk_size] for i in range(0, len(params), chunk_size)]
-			#for params in chunks:
-			#	V = Worker(allowed_count)
-			#	V.do_job_map_create(params)
-			#	del V
-			tok = time.time()
-			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
-			tic = time.time()
-			chunk_size = 250
-			chunks = [params2[i:i+chunk_size] for i in range(0, len(params2), chunk_size)]
-			for params2 in chunks:
-				W = Worker(allowed_count)
-				W.do_job_map_create_2(params2)
-				del W
-			tok = time.time()	
-			print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
-			
-			###########################################
-			##   Running the files                   ##
-			##        in parallel                    ##
-			###########################################
-			
-			X = Worker(allowed_count)
-			file_n = []
-			length = []
-			for i in locations:
-				file_n.append("run")
-				length.append(len(locations))
-			args = list(zip(locations,file_n,length))
-			X.do_job_async(args)
-			
-			del X
-			print("\tSimulations for case - {} is Done!!".format(case))
+			if "case-"+str(case_index) in os.listdir():
+				print("Case-{index} is generated".format(index = case_index))
+			else:
+				self.beta_list = []
+				yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract_list,sim_dict = self.getDirectoryList(case,case_index)
 				
-			dt = int(time.time() - start_time)
-			hours = dt/3600
-			minutes = (dt%3600)/60
-			seconds = dt%60
-			#os.system("clear")
-			print("Performed {} Simulations....".format(len(locations)))
-			print("Time for performing simulations : {h} hours,  {m} minutes, {s} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
-			#print(locations)
-			#del W,V,U,X
+				
+				
+				###########################################
+				##   Generated directories in parallel   ##
+				##                                       ##
+				###########################################
+				start_time = time.time()
+				W = Worker(allowed_count)
+				
+				W.do_job_map(dir_list)
+				print("\tDirectories for case - {} is generated\n".format(case))
+				del W
+				
+				###########################################
+				##   Generated required files            ##
+				##        in parallel                    ##
+				###########################################
+				
+				
+				#V = Worker(allowed_count)
+				yaml_list = []
+				mech = []
+				thermo = []
+				trans = []
+				instring = []
+				#convertor  = []
+				#convertor_2  = []
+				run = []
+				locations = []
+				extract = []
+				for i in range(len(self.design_matrix)):
+					instring.append(instring_dict[str(i)])
+					yaml_list.append(yaml_dict[str(i)])
+					run.append(s_run_dict[str(i)])
+					locations.append(run_list[str(i)])
+					extract.append(extract_list[str(i)])
+				#params = list(zip(mech,thermo,trans,instring,convertor,run,locations,extract))
+				params = list(zip(instring,run,locations,extract))
+				params2 = list(zip(yaml_list,locations))
+				tic = time.time()
+				#for param in params:
+				#	location = str(param[3])
+				#	yaml_string = yaml.dump(param[0],default_flow_style=False)
+				#	with open(location+"/mechanism.yaml","w") as yamlfile:
+				#		yamlfile.write(yaml_string)
+				#	sim1 = open(location+"/cantera_.py",'w').write(param[1])
+				#	sim2= open(location+"/FlameMaster.input",'w').write(param[1])
+				#	extract = open(location+"/extract.py",'w').write(param[4])
+				#	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
+				#	runScript = open(location+"/run","w").write(param[2])
+				#	#subprocess.call(["chmod","+x",location+"/run_convertor"])
+				#	subprocess.call(["chmod","+x",location+"/run"])
+				V = Worker(allowed_count)
+				V.do_job_map_create(params)
+				del V	
+				#chunk_size = 500
+				#chunks = [params[i:i+chunk_size] for i in range(0, len(params), chunk_size)]
+				#for params in chunks:
+				#	V = Worker(allowed_count)
+				#	V.do_job_map_create(params)
+				#	del V
+				tok = time.time()
+				print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
+				tic = time.time()
+				chunk_size = 250
+				chunks = [params2[i:i+chunk_size] for i in range(0, len(params2), chunk_size)]
+				for params2 in chunks:
+					W = Worker(allowed_count)
+					W.do_job_map_create_2(params2)
+					del W
+				tok = time.time()	
+				print("\tRequired files for case - {} is generated in {} hours, {} minutes, {} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
+				
+				###########################################
+				##   Running the files                   ##
+				##        in parallel                    ##
+				###########################################
+				
+				X = Worker(allowed_count)
+				file_n = []
+				length = []
+				for i in locations:
+					file_n.append("run")
+					length.append(len(locations))
+				args = list(zip(locations,file_n,length))
+				X.do_job_async(args)
+				
+				del X
+				print("\tSimulations for case - {} is Done!!".format(case))
+					
+				dt = int(time.time() - start_time)
+				hours = dt/3600
+				minutes = (dt%3600)/60
+				seconds = dt%60
+				#os.system("clear")
+				print("Performed {} Simulations....".format(len(locations)))
+				print("Time for performing simulations : {h} hours,  {m} minutes, {s} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
+				#print(locations)
+				#del W,V,U,X
+				
+				#self.case_manipulation[str(case)] = sim_dict
+				simulation_locations = open(optDir+"/locations",'+a')
+				for loc in locations:
+					simulation_locations.write(i+"\n")
+				simulation_locations.close()
 			
-			#self.case_manipulation[str(case)] = sim_dict
-			simulation_locations = open(optDir+"/locations",'+a')
-			for loc in locations:
-				simulation_locations.write(i+"\n")
-			simulation_locations.close()
-			
-			os.chdir('..')
+				os.chdir('..')
 			
 		#Parallel_jobs.close()
 		#Parallel_jobs.join()

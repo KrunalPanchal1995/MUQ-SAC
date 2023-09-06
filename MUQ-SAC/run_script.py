@@ -222,13 +222,13 @@ Output:
 """
 
 if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,350,len(manipulationDict["activeParameters"])).getSamples()
+	design_matrix = DM.DesignMatrix(unsrt_data,design_type,2000,len(manipulationDict["activeParameters"])).getSamples()
 else:
 	design_matrix_file = open("DesignMatrix.csv").readlines()
 	design_matrix = []
 	for row in design_matrix_file:
 		design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
-
+#raise AssertionError("Design Matrix created!!")
 
 ##############################################################
 ##     Doing simulations using the design matrix            ## 
@@ -286,10 +286,14 @@ selected_PRS = {}
 for case_index,case in enumerate(temp_sim_opt):
 	yData = np.asarray(temp_sim_opt[case]).flatten()
 	xData = np.asarray(design_matrix)
+	#print(np.shape(xData))
+	#print(np.shape(yData))
 	xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
 									random_state=104, 
-                                	test_size=0.8, 
+                                	test_size=0.1, 
                                    	shuffle=True)
+	#print(np.shape(xTest))
+	#print(np.shape(yTrain))
 	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index)
 	Response.create_response_surface()
 	Response.test(xTest,yTest)

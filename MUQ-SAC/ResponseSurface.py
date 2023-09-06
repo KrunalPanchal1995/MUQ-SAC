@@ -176,7 +176,10 @@ class ResponseSurface(object):
 		
 	def create_response_surface(self):
 		self.BTrsMatrix = self.MatPolyFitTransform()
+		#print(np.shape(self.X))
 		self.Q, self.R = np.linalg.qr(self.BTrsMatrix)
+		#print(np.shape(self.Q))
+		#print(np.shape(self.R))
 		y = np.dot(np.transpose(self.Q),self.Y)
 		self.coeff = np.linalg.solve(self.R,np.transpose(y))
 		
