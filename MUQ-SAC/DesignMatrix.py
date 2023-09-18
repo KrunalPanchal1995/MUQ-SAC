@@ -154,17 +154,17 @@ class DesignMatrix(object):
 				temp_n = []
 				nom = nominal[rxn]
 				cholesky = ch[rxn]
-				for sample_b in b_curves_dict[rxn]: 
-					k = nom + np.asarray(cholesky.dot(sample_b)).flatten()
+				for sample_c in c_curves_dict[rxn]: 
+					k = nom + np.asarray(cholesky.dot(sample_c)).flatten()
 					temp_n.append(abs(nom[1]-k[1]))
-					temp.append(sample_b)
+					temp.append(sample_c)
 				delta_n[rxn] = max(temp_n)
 				V_opt[rxn] = np.asarray(temp)
 			
 			print(delta_n)
 			raise AssertionError("delta_n part is ongoing")
-			
 			"""
+			
 			"""
 			for rxn in self.unsrt:
 				T = (Temp[rxn][0] + Temp[rxn][-1])/2	
