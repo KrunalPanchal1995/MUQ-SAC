@@ -77,6 +77,8 @@ def extract_index_and_uncertainty(uns):
 #and print as a text file containg four columns. First three contain location information and last column contain  target value.
 def generate_target_value_tables(locations, t_list, case, fuel):
 	#print(locations)
+	#print(os.getcwd())
+	#raise AssertionError("Generating PRS from the data available")
 	list_fuel = []
 	if "dict" in str(type(fuel)):
 		for i in fuel:

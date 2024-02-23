@@ -204,156 +204,61 @@ manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
 
 print(manipulationDict["activeParameters"])
 
-##################################################################
-##  Use the unsrt data to sample the Arrhenius curves           ##
-##  MUQ-SAC: Method of Uncertainty Quantification and           ##
-##	Sampling of Arrhenius Curves                                ##
-##################################################################
+import os
+import numpy as np
+import itertools as it
+import more_itertools as mit
+dict_ = {}
+for rxn in unsrt_data:
+	dict_[rxn] = []
+file_open = open("zeta_guess_values.txt","r").readlines()
 
-"""
-Function Inputs:
-	Unsrt Data:
-Output:
-	Desired Number of Samples - n_s for
-		- Class A curves
-		- Class B curves
-		- Class C curves
-
-"""
-
-if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,500,len(manipulationDict["activeParameters"])).getSamples()
-else:
-	design_matrix_file = open("DesignMatrix.csv").readlines()
-	design_matrix = []
-	for row in design_matrix_file:
-		design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
-#raise AssertionError("Design Matrix created!!")
-
-##############################################################
-##     Doing simulations using the design matrix            ## 
-##     The goal is to test the design matrix                ##
-##############################################################
-
-if "Opt" not in os.listdir():
-	os.mkdir("Opt")
-	optDir = os.getcwd()
-	os.chdir("Opt")
-	os.mkdir("Data")
-	os.chdir("Data")
-	os.mkdir("Simulations")
-	os.mkdir("ResponseSurface")
-	os.chdir("..")
-else:
-	os.chdir("Opt")
-	optDir = os.getcwd()
-
-if os.path.isfile("progress") == False:
-	FlameMaster_Execution_location = simulator.SM(target_list,optInputs,unsrt_data,design_matrix).make_dir_in_parallel()
-	#raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations")
-else:
-	print("Progress file detected")
-	progress = open(optDir+"/progress",'r').readlines()
-	FlameMaster_Execution_location = []
-	with open(optDir+"/locations") as infile:
-		for line in infile:
-			FlameMaster_Execution_location.append(line)
-	#FlameMaster_Execution_location = open(optDir+"/locations",'r').readlines()
-	#missing_location = data_management.find_missing_location(FlameMaster_Execution_location, progress)
-
-#############################################
-##     Extracting simulation results       ##
-##       (The module if validated          ##
-#############################################
-temp_sim_opt = {}
-for case in case_dir:	
-	os.chdir("Data/Simulations")
-	if "sim_data_case-"+str(case)+".lst" in os.listdir():
-		ETA = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
-		temp_sim_opt[str(case)] = ETA
-		os.chdir(optDir)
-		#print(ETA)
-		#raise AssertionError("Generating ETA list for all cases")	
-	else:
-		os.chdir(optDir)
-		os.chdir("case-"+str(case))	
-		data_sheet,failed_sim, ETA = data_management.generate_target_value_tables(FlameMaster_Execution_location, target_list, case, fuel)
-		#print(data_sheet)
-		#raise AssertionError("!STOP")
-		temp_sim_opt[str(case)] = ETA
-		f = open('../Data/Simulations/sim_data_case-'+str(case)+'.lst','w').write(data_sheet)
-		g = open('../Data/Simulations/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim)
-		#f.write(data_sheet)
-		#f.close()
-		os.chdir(optDir)
-
-###############################################
-##      Generating the response surface      ##
-##                                           ##
-###############################################
-
-ResponseSurfaces = {}
-selected_PRS = {}
-for case_index,case in enumerate(temp_sim_opt):
-	yData = np.asarray(temp_sim_opt[case]).flatten()
-	xData = np.asarray(design_matrix)
-	#print(np.shape(xData))
-	#print(np.shape(yData))
+for line in file_open:
+	list_1 = line.strip("\n").split(",")
+	list_1 = [float(i) for i in list_1]
+	n = 3
+	iterable = list_1
+	list_2 = list(mit.chunked(iterable, n))
+	list_2 = [np.asarray(i) for i in list_2]
+	for ind,rxn in enumerate(unsrt_data):
+		dict_[rxn].append(list_2[ind])
+	#print(dict_)
+	#print(list_2)
 	#raise AssertionError("Stop!!")
-	xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
-									random_state=104, 
-                                	test_size=0.1, 
-                                   	shuffle=True)
-	#print(np.shape(xTest))
-	#print(np.shape(yTrain))
-	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index)
-	Response.create_response_surface()
-	Response.test(xTest,yTest)
-	Response.plot(case_index)
-	#print(Response.case)
-	ResponseSurfaces[case_index] = Response
-	#print(Response.selection)
-	del xTrain,xTest,yTrain,yTest
-#raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
-os.chdir("..")
-##################################################
-##        Optimization Procedure                ##
-##   Inputs: Traget list and Response Surfaces  ## 
-##################################################
-
-opt, opt_zeta,posterior_cov = Optimizer(target_list).run_optimization_with_selected_PRS(unsrt_data,ResponseSurfaces,optInputs)
-
-string_save = ""
-for i, j in enumerate(activeParameters):
-	print("\n{}=\t{}".format(activeParameters[i], opt_zeta[i]))
-	string_save+="{}=\t{}\n".format(activeParameters[i], opt_zeta[i])
-save = open("solution_zeta.save","w").write(string_save)
-
-
-#string_save = ""
-#for i, j in enumerate(activeParameters):
-#	print("\n{}=\t{}".format(activeParameters[i], opt[i]))
-#	string_save+="{}=\t{}\n".format(activeParameters[i], opt[i])
-#save = open("solution.save","w").write(string_save)
-
-
-originalMech = Parser(mech_file_location).mech
-copy_of_mech = deepcopy(originalMech)#.deepcopy()
-new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
-
-#new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-string = yaml.dump(new_mechanism,default_flow_style=False)
-f = open("new_mech.yaml","w").write(string)
-
-
-
-raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
-
-
-
-
-
-
-
-
-
+delta_n = {}
+p = {}
+V_opt = {}
+V = {}#Populating V for unshuffled portion of the design matrix
+ch = {}
+nominal = {}
+p_max = {}
+p_min = {}
+theta = {}
+Temp = {}
+d_n = {}
+for rxn in dict_:
+	ch[rxn] = unsrt_data[rxn].cholskyDeCorrelateMat
+	nominal[rxn] = unsrt_data[rxn].nominal
+	p = unsrt_data[rxn].nominal
+	p_max[rxn] = unsrt_data[rxn].P_max
+	p_min[rxn] = unsrt_data[rxn].P_min
+	Temp[rxn] = unsrt_data[rxn].temperatures
+	Tp = unsrt_data[rxn].temperatures
+	Theta_p = np.array([Tp/Tp,np.log(Tp),-1/(Tp)])
+	kmax = Theta_p.T.dot(p_max[rxn])
+	kmin = Theta_p.T.dot(p_min[rxn])
+	ka_o = Theta_p.T.dot(nominal[rxn])
+	zeta_list = dict_[rxn]
+	fig = plt.figure()
+	plt.title(str(rxn))
+	plt.xlabel(r"1000/T\K$^{-1}$")
+	plt.ylabel(r"$log_{10}(k)$ / $s^{-1}$ or $log_{10}$(k) / $cm^{3}\,molecule^{-1}\,s^{-1}$")
+	plt.plot(1/Tp,kmax,'k--',label="Uncertainty limits")
+	plt.plot(1/Tp,kmin,'k--')
+	plt.plot(1/Tp,ka_o,'b-',label='Prior rate constant')
+	for zeta in zeta_list:
+		p_zet = p + np.asarray(np.dot(ch[rxn],zeta)).flatten();
+		k =  Theta_p.T.dot(p_zet)
+		plt.plot(1/Tp,k,'r-',linewidth=0.55)
+	plt.legend()
+	plt.savefig("Plots/reaction_"+str(rxn)+".png",bbox_inches='tight')

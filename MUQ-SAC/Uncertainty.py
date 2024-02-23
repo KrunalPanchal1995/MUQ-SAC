@@ -885,21 +885,40 @@ class UncertaintyExtractor(object):
 		f = opt_kappa - QtLZ
 		obj = np.dot(f,f)
 		return obj
-		
+	def _obj_delta_n(self,z):
+	    	f = ((self.kappa_d_n-self.kappa_0)-np.array(self.theta_for_kappa.T.dot(self.L.dot(z))).flatten())
+	    	obj = np.dot(f,f)
+	    	return obj
+
+	def constraint_d_n(self,z):
+		return 2 - np.array(self.L.dot(z)).flatten()[1]	
 	def getZeta_typeA(self,kappa):
-		T = np.linspace(300,2500,50)
+		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
 		self.theta_for_kappa = np.array([T/T,np.log(T),-1/T])
 		P = self.ArrheniusParams
 		#print(P)
 		self.kappa_0 = self.theta_for_kappa.T.dot(P)
+		self.kappa_d_n = kappa
 		#print(self.kappa_0)
+		"""
+		Constrained zeta
+		"""
+		guess = np.array([10,1,10])
+		con1 = {'type': 'ineq', 'fun': self.constraint_d_n}
+		cons = [con1]
+		fit = minimize(self._obj_delta_n,guess,constraints=cons)
+		zeta = fit.x
+		
+		"""
+		Un-constrained zeta
+		"""
 		#self.kappa = kappa
-		y = kappa - self.kappa_0
-		A = self.theta_for_kappa.T
-		Q,R = np.linalg.qr(A)
-		y_dash = Q.T.dot(y)
-		x = np.linalg.solve(R,y_dash.T)
-		zeta = np.linalg.solve(self.L,x.T)
+		#y = kappa - self.kappa_0
+		#A = self.theta_for_kappa.T
+		#Q,R = np.linalg.qr(A)
+		#y_dash = Q.T.dot(y)
+		#x = np.linalg.solve(R,y_dash.T)
+		#zeta = np.linalg.solve(self.L,x.T)
 		
 		#print(self.kappa)
 		#K = self.kappa - self.kappa_0
@@ -907,7 +926,13 @@ class UncertaintyExtractor(object):
 		#zeta = np.linalg.inv(self.L).dot(theta_inv.dot(K))
 		#zeta = minimize(self.obj_get_kappa,self.guess_z,method="Nelder-Mead")
 		return zeta
-	
+	def getZeta_typeB(self,kappa):
+		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
+		self.theta_for_kappa = np.array([T/T,np.log(T),-1/T])
+		P = self.ArrheniusParams
+		#print(P)
+		self.kappa_0 = self.theta_for_kappa.T.dot(P)
+		self.kappa_d_n = kappa
 	def getZetaFromGen(self,generator):
 		P = self.ArrheniusParams
 		self.cov = self.getCovariance()
@@ -1223,7 +1248,7 @@ class reaction(UncertaintyExtractor):
 		return self.Unsrt_dict
 	
 	def getKappaMax(self,T):
-		T = np.asarray(T)
+		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
 		theta = np.array([T/T,np.log(T),-1/T])
 		return np.asarray(theta.T.dot(self.P_max)).flatten()
 	
@@ -1336,7 +1361,7 @@ class reaction(UncertaintyExtractor):
 		return self.P
 	
 	def getNominal(self,T):
-		T = np.asarray(T)
+		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
 		theta = np.array([T/T,np.log(T),-1/T])
 		return np.asarray(theta.T.dot(self.P)).flatten()
 	

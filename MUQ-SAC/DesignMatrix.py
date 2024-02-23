@@ -101,23 +101,57 @@ class DesignMatrix(object):
 			tic = time.time()
 			design_matrix = []
 			#Take the sample_length and divide it into following
-			# 		n_a:n_b:n_c = 100:450:450
+			# 		n_a:n_b:n_c = 10:45:45
+			#               Original samples = 3000
 			#		Random shuffle = 4000
-			#       Linear combination =  5000
+			#              Linear combination =  5000
 			#      
 			#      V: Unshuffled vector (numpy-array)
 			#	 V_s: Shuffled vector (
 			
-			#n_a = int(0.1*self.sim)
-			#n_b = int(0.45*self.sim)
-			#n_c = self.sim-n_a-n_b
+			n_a = int(0.1*self.sim)
+			n_b = int(0.45*self.sim)
+			n_c = self.sim-n_a-n_b
 			
-			#n_a = 100
-			#n_b = 100
-			#n_c = 100
-			#a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
-			#b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
-			#c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
+			
+			a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
+			b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
+			c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
+			V_ = {}
+			for rxn in self.unsrt:
+				temp = []
+				for sample_a in a_curves_dict[rxn]: 
+					temp.append(sample_a)
+				for sample_b in b_curves_dict[rxn]: 
+					temp.append(sample_b)
+				for sample_c in c_curves_dict[rxn]: 
+					temp.append(sample_c)
+				V_[rxn] = np.asarray(temp)
+			
+			V_s = {}#Doing random shuffling
+			#Deepcopy the unshuffled samples first
+			V_copy = copy.deepcopy(V_)
+			for rxn in self.unsrt:				
+				column = []
+				for i in range(300):
+					np.random.shuffle(V_copy[rxn])
+					column.extend(np.asarray(V_copy[rxn]))
+				V_s[rxn] = np.asarray(column)	
+			
+			V_linear_comb = {}#Doing linear combination to populate the matrix
+			for rxn in self.unsrt:
+				temp = []
+				for i in range(200):
+					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
+					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
+					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
+					x,y,z = self.generatePointOnSphere()
+					####
+					temp.append(x*zeta_a+y*zeta_b+z*zeta_c)
+				
+				V_linear_comb[rxn] = np.asarray(temp)
+				
+									
 			delta_n = {}
 			p = {}
 			V_opt = {}
@@ -188,6 +222,9 @@ class DesignMatrix(object):
 			#plot the zetas
 			#print(percentage)
 			#Solving for a line passing from 3 points
+			d_n = {}
+			_delta_n = {}
+			dict_delta_n = {}
 			percentage = {}
 			for rxn in self.unsrt:
 				T =np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
@@ -200,6 +237,8 @@ class DesignMatrix(object):
 				Theta_p = np.array([Tp/Tp,np.log(Tp),-1/(Tp)])
 				P_max = P + np.asarray(np.dot(cov,zet)).flatten();
 				P_min = P - np.asarray(np.dot(cov,zet)).flatten();
+				
+				d_n[rxn] = abs(P[1]-P_max[1])
 				kmax = Theta_p.T.dot(P_max)
 				kmin = Theta_p.T.dot(P_min)
 				ka_o = Theta_p.T.dot(P)
@@ -211,10 +250,12 @@ class DesignMatrix(object):
 				f = abs(kmax-ka_o)
 				temp = []
 				outside = []
-				for _ in range(15000):
+				not_selected = []
+				temp_n = []
+				while len(temp)<500:
 					random = 2*np.random.rand(3)-1
 					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
-					P_mid = P + random[1]*(6/7)*np.asarray(np.dot(cov,zet)).flatten()
+					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
 					P_left = P + random[2]*np.asarray(np.dot(cov,zet)).flatten()
 					Theta_left = np.array([T[0]/T[0],np.log(T[0]),-1/(T[0])])
 					Theta_mid = np.array([T[1]/T[1],np.log(T[1]),-1/(T[1])])
@@ -231,72 +272,74 @@ class DesignMatrix(object):
 					zeta_ = np.linalg.solve(M,y)
 					func = np.asarray([(i.T.dot(cov.dot(zeta_))) for i in Theta_p.T])
 					P_found = P + np.asarray(np.dot(cov,zeta_)).flatten()
+					n_ = abs(P[1]-P_found[1])
+					temp_n.append(n_)
 					kappa_found = Theta_p.T.dot(P_found)
 					f_found = abs(kappa_found-ka_o)
 					if max(f)<max(f_found):
 						outside.append(zeta_)
-					#plt.plot(1/Tp,kappa_found,"r-",linewidth=0.25)
-					temp.append(zeta_)
+					if n_ > 2:	
+						#plt.plot(1/Tp,kappa_found,"r-",linewidth=0.25)
+						#temp.append(zeta_)#for unconstrained zeta
+						not_selected.append(zeta_)
+						_delta_n[n_] = zeta_
+						
+					else:
+						temp.append(zeta_)
+						_delta_n[n_] = zeta_
 					#print(zeta_)
-				percentage[rxn] = (len(outside)/len(temp))*100
+				percentage[rxn] = (len(not_selected)/len(temp))*100
+				delta_n[rxn] = max(temp_n)
 				
+				dict_delta_n[rxn] = _delta_n[max(temp_n)]
 				V[rxn] = temp
-			
+				
+				#print(len(temp))
 				
 				#plt.show()
 			#print(percentage)
-				
+			#print(percentage)	
+			#print("------------------------------------\nNominal!!\n\n")
+			#print(nominal)
+			#print("------------------------------------\nCovariance!!\n\n")
+			#print(ch)
+			#print("------------------------------------\nZeta!!\n\n")
+			#print(zeta)
+			#print(Temp)
+			#print(d_n)
+			#print(delta_n)
+			#print(dict_delta_n)
 			#raise AssertionError("New")	
-			"""
-			V_s = {}#Doing random shuffling
-			#Deepcopy the unshuffled samples first
-			V_copy = copy.deepcopy(V)
-			for rxn in self.unsrt:				
-				column = []
-				for i in range(4):
-					np.random.shuffle(V_copy[rxn])
-					column.extend(np.asarray(V_copy[rxn]))
-				V_s[rxn] = np.asarray(column)	
 			
-			"""	
-			"""
-			V_linear_comb = {}#Doing linear combination to populate the matrix
-			for rxn in self.unsrt:
-				temp = []
-				for i in range(15000):
-					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
-					x,y,z = self.generatePointOnSphere()
-					####
-					temp.append(x*zeta_a+y*zeta_b+z*zeta_c)
-				
-				V_linear_comb[rxn] = np.asarray(temp)
-				
-			"""
 					
-			for i in range(15000):
+			for i in range(self.sim):
+				row = []
+				for rxn in self.unsrt:
+					row.extend(V_[rxn][i])
+					
+				design_matrix.append(row)
+			
+			
+			#RANDOM SHUFFLING
+			for i in range(300):
+				row = []
+				for rxn in self.unsrt:
+					row.extend(V_s[rxn][i])
+				design_matrix.append(row)
+				
+			
+			for i in range(200):
+				row = []
+				for rxn in self.unsrt:
+					row.extend(V_linear_comb[rxn][i])
+				design_matrix.append(row)
+			
+			for i in range(500):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])
 					
 				design_matrix.append(row)
-			
-			
-			"""
-			for i in range(4000):
-				row = []
-				for rxn in self.unsrt:
-					row.extend(V_s[rxn][i])
-				design_matrix.append(row)
-			"""	
-			"""
-			for i in range(15000):
-				row = []
-				for rxn in self.unsrt:
-					row.extend(V_linear_comb[rxn][i])
-				design_matrix.append(row)
-			"""
 			tok = time.time()
 			print("Time taken to construct Design Matrix: {}".format(tok - tic))
 			s =""

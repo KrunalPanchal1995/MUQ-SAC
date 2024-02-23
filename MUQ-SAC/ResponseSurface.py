@@ -57,7 +57,7 @@ class ResponseSurface(object):
 		else:
 			self.selection = 1
 		
-	def plot(self):
+	def plot(self,index):
 				
 		fig = plt.figure()
 		ax = fig.add_subplot()
@@ -72,7 +72,7 @@ class ResponseSurface(object):
 		plt.ylim(min(np.asarray(self.resFramWrk))*0.98,max(np.asarray(self.resFramWrk))*1.02)
 		plt.plot(x,x,"-",label="parity line")
 		plt.legend(loc="upper left")
-		print(os.getcwd())
+		print(os.getcwd(),index)
 		plt.savefig('../Plots/Parity_plot_case_'+str(self.case_index)+'_training.png',bbox_inches="tight")	
 	
 	def create_gauss_response_surface(self):
@@ -173,33 +173,49 @@ class ResponseSurface(object):
 		self.RMS = math.sqrt(sum(self.RMS_error)/len(self.RMS_error))
 		self.MaxError = max(self.relative_error)
 		self.MeanError = statistics.mean(self.relative_error)
+		del self.X,self.BTrsMatrix,self.Q, self.R
 		
 	def create_response_surface(self):
-		self.BTrsMatrix = self.MatPolyFitTransform()
-		#print(np.shape(self.X))
-		self.Q, self.R = np.linalg.qr(self.BTrsMatrix)
-		#print(np.shape(self.Q))
-		#print(np.shape(self.R))
-		y = np.dot(np.transpose(self.Q),self.Y)
-		self.coeff = np.linalg.solve(self.R,np.transpose(y))
 		
+		if os.getcwd()+'/Data/ResponseSurface/responsecoef_case-'+str(self.case_index)+'.csv' is True:
+			#print("The file is there") 
+			f = open(os.getcwd()+'/Data/ResponseSurface/responsecoef_case-'+str(self.case_index)+'.csv','r').readlines()
+			self.coeff = np.asarray([float(i) for i in f[1:]])
+			#print(self.coeff)
+			#print("The file is there")
+		
+		else:
+			self.BTrsMatrix = self.MatPolyFitTransform()
+			#print(np.shape(self.X))
+			self.Q, self.R = np.linalg.qr(self.BTrsMatrix)
+			#print(np.shape(self.Q))
+			#print(np.shape(self.R))
+			y = np.dot(np.transpose(self.Q),self.Y)
+			self.coeff = np.linalg.solve(self.R,np.transpose(y))
+			#print(self.coeff)
+			"""
+			Writing the response surface for checking the co-efficients
+			"""
+			rr = open(os.getcwd()+'/Data/ResponseSurface/responsecoef_case-'+str(self.case_index)+'.csv','w')		
+			res = "Coefficients\n"
+			for i in self.coeff:
+				res +='{}\n'.format(float(i))
+			rr.write(res)
+			rr.close()		
+			
+			if self.order == 2:
+				self.zero,self.a,self.b = self.resCoeffTransform(self.order)
+
+			del self.BTrsMatrix,self.Q, self.R
+		#raise AssertionError("Fast PRS")
 		#coeff_size = np.asarray(self.BTrsMatrix[0]).flatten()
 		#guess = np.ones(len(coeff_size))
 		#x = minimize(self.objective,guess,method="SLSQP")
 		#self.coeff = x.x
-		if self.order == 2:
-			self.zero,self.a,self.b = self.resCoeffTransform(self.order)
+		
 		
 			
-		"""
-		Writing the response surface for checking the co-efficients
-		"""
-		rr = open(os.getcwd()+'/Data/ResponseSurface/responsecoef.csv','w')		
-		res = "Coefficients\n"
-		for i in self.coeff:
-			res +='{}\n'.format(float(i))
-		rr.write(res)
-		rr.close()	
+			
 
 	
 		"""
@@ -248,7 +264,7 @@ class ResponseSurface(object):
 		self.RMS = math.sqrt(sum(self.RMS_error)/len(self.RMS_error))
 		self.MaxError = max(self.relative_error)
 		self.MeanError = statistics.mean(self.relative_error)
-		
+		del self.X
 	
 	def MatPolyFitTransform(self):
 		BTrsMatrix = []
@@ -372,7 +388,7 @@ class ResponseSurface(object):
 		x = list(x)
 		#print("\tx{} (type-{}) in response surface is\n".format(x,type(x)))
 		for i,opt in enumerate(x):
-			j.append(self.jacobian_element(self.resCoef,x,opt,i,resp_order))
+			j.append(self.jacobian_element(self.coeff,x,opt,i,2))
 		return j 
 	
 	def estimate(self,x):
