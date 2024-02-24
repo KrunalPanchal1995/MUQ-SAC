@@ -1,0 +1,23 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: cantera
+#Butanoate
+ing_Ethyl_Butanoate:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+
+ing_Butanoate:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 86

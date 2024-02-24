@@ -133,7 +133,7 @@ class DesignMatrix(object):
 			V_copy = copy.deepcopy(V_)
 			for rxn in self.unsrt:				
 				column = []
-				for i in range(300):
+				for i in range(1000):
 					np.random.shuffle(V_copy[rxn])
 					column.extend(np.asarray(V_copy[rxn]))
 				V_s[rxn] = np.asarray(column)	
@@ -141,7 +141,7 @@ class DesignMatrix(object):
 			V_linear_comb = {}#Doing linear combination to populate the matrix
 			for rxn in self.unsrt:
 				temp = []
-				for i in range(200):
+				for i in range(1000):
 					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
 					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
 					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
@@ -252,7 +252,7 @@ class DesignMatrix(object):
 				outside = []
 				not_selected = []
 				temp_n = []
-				while len(temp)<500:
+				while len(temp)<1500:
 					random = 2*np.random.rand(3)-1
 					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
 					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
@@ -321,20 +321,20 @@ class DesignMatrix(object):
 			
 			
 			#RANDOM SHUFFLING
-			for i in range(300):
+			for i in range(1000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
 				
 			
-			for i in range(200):
+			for i in range(1000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_linear_comb[rxn][i])
 				design_matrix.append(row)
 			
-			for i in range(500):
+			for i in range(1500):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])

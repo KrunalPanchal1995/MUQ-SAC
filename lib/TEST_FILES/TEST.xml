@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty>
+	<reaction rxn = "NC7H16&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;C7H15-1&#032;+&#032;H2O" no = "R2273">
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<temp>300,2500</temp>
+		<unsrt>1.3863,1.3863</unsrt>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>		
+	</reaction>
+	<reaction rxn = "C7H15-2&#032;(+M)&#032;&#60;=&#62;&#032;PC4H9&#032;+&#032;C3H6&#032;(+M)" no = "R2310:High">
+	 <class>Falloff</class>
+		<type>pressure_dependent</type>
+		<sub_type name = "forward">
+			<multiple>True</multiple>
+			<branches>HPL</branches>
+			<pressure_limit>High</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<temp>300,2500</temp>
+		<unsrt>1.3863,1.3863</unsrt>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
+	</reaction>
+	<reaction rxn = "HO2&#032;+&#032;OH&#032;&#60;&#61;&#62;&#032;H2O&#032;+&#032;O2" no = "R8b">
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "duplicate">
+			<multiple>True</multiple>
+			<branches>B</branches>
+			<pressure_limit>low</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/MUQ-SAC/Database/Test_syngas_data/unsrt/R8b.csv</file>	
+	</reaction>
+</uncertainty>

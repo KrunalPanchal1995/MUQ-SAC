@@ -222,7 +222,7 @@ Output:
 """
 
 if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,500,len(manipulationDict["activeParameters"])).getSamples()
+	design_matrix = DM.DesignMatrix(unsrt_data,design_type,3000,len(manipulationDict["activeParameters"])).getSamples()
 else:
 	design_matrix_file = open("DesignMatrix.csv").readlines()
 	design_matrix = []

@@ -30,6 +30,7 @@ class combustion_target():
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
 		self.molecularWt["NC7H16"] = 100.21
+		self.molecularWt["MB-C5H10O2"] = 86
 		self.stoichiometry = {}
 		self.stoichiometry["H2"] = 0.5
 		self.stoichiometry["CO"] = 0.5
@@ -46,6 +47,7 @@ class combustion_target():
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
 		self.stoichiometry["NC7H16"] = 11
+		self.stoichiometry["MB-C5H10O2"] = 6.5
 		self.data = data
 		parameters = self.data.split('|')
 		self.dataSet_id = parameters[1].strip("\t")
