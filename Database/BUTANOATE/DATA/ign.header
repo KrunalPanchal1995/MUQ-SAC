@@ -64,7 +64,7 @@ Ignition_mode: reflected
 
 Unsrt: {type: absolute}
 
-Unit: {conc: mol, P: bar, T: K, observed: ms}
+Unit: {conc: mol, P: bar, T: K, observed: us}
 
 Data_structure:
  - Sr
