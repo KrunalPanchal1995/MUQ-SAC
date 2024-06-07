@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/g00000008</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2013-11-25</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>Pang, G.A., Davison, D.F., Hanson, R.K., Proceedings of the Combustion Institute, 2009, (32), 181-188.</description>
+        <referenceDOI>10.1016/j.proci.2008.06.014</referenceDOI>
+        <location>Supplementary Materials, Table 2</location>
+        <figure>Fig. 5., full square(not used)</figure>
+        <details>
+            <author>Pang, G A and Davidson, D F and Hanson, R K</author>
+            <journal>Proc Combust Inst</journal>
+            <pages>181--188</pages>
+            <title>Experimental study and modeling of shock tube ignition delay times for hydrogen--oxygen--argon mixtures at low temperatures</title>
+            <volume>32</volume>
+            <year>2009</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"  chemName="hydrogen" /><amount units="mole fraction" >0.15</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"   chemName="oxygen"   /><amount units="mole fraction" >0.18</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"  chemName="argon"    /><amount units="mole fraction" >0.67</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.18</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="atm" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint> <x1>906</x1><x2>3.500</x2><x3>9130.00</x3></dataPoint>
+        <dataPoint> <x1>908</x1><x2>3.400</x2><x3>6210.00</x3></dataPoint>
+        <dataPoint> <x1>909</x1><x2>3.400</x2><x3>6185.00</x3></dataPoint>
+        <dataPoint> <x1>919</x1><x2>3.400</x2><x3>6645.00</x3></dataPoint>
+        <dataPoint> <x1>928</x1><x2>3.400</x2><x3>3595.00</x3></dataPoint>
+        <dataPoint> <x1>943</x1><x2>3.400</x2><x3>3280.00</x3></dataPoint>
+        <dataPoint> <x1>951</x1><x2>3.300</x2><x3>2810.00</x3></dataPoint>
+        <dataPoint> <x1>963</x1><x2>3.300</x2><x3>1614.00</x3></dataPoint>
+        <dataPoint> <x1>969</x1><x2>3.200</x2><x3>1268.00</x3></dataPoint>
+        <dataPoint> <x1>992</x1><x2>3.200</x2> <x3>581.50</x3></dataPoint>
+        <dataPoint> <x1>999</x1><x2>3.100</x2> <x3>352.00</x3></dataPoint>
+        <dataPoint><x1>1027</x1><x2>3.100</x2>  <x3>82.00</x3></dataPoint>
+        <dataPoint><x1>1049</x1><x2>3.000</x2>  <x3>46.55</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH;" type="max"/>
+</experiment>

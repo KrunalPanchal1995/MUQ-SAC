@@ -1,0 +1,1368 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: cantera
+
+#actual
+#x10001001:
+# solver: cantera
+# ign_delay_def: p
+# ign_cond: dt-max
+# specific_cond: 
+# mol_wt: 17
+#BoundaryLayer: True
+g00000001:
+
+g00000002:
+
+g00000003:
+
+x10001080_SH70:
+ solver: FlameMaster
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ BoundaryLayer: True
+ dpdt:
+  916. : 4.22
+  920. : 4.22
+  959. : 4.22
+  968. : 4.22
+  1005. : 4.22
+  1037. : 4.22
+  1064. : 4.22
+  1100. : 4.22
+  1118. : 4.22
+  1200. : 4.22
+
+g00000007_PANG:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ BoundaryLayer: True
+ specific_cond:
+ dpdt: 
+  869.: 2
+  880.: 2
+  900.: 2
+  915.: 2
+  930.: 2
+  945.: 2
+  960.: 2
+  975.: 2
+  990.: 2
+  1005.: 2
+  1020.: 2
+  1035.: 2
+  1050.: 2
+  1065.: 2
+  1080.: 2
+  1095.: 2
+  1110.: 2
+  1125.: 2
+  1140.: 2
+  1155.: 2
+  1170.: 2
+ mol_wt: 17
+ 
+g00000007:
+ solver: FlameMaster
+ ign_delay_def: OH
+ ign_cond: max
+ BoundaryLayer: True
+ specific_cond:
+ dpdt: 
+  924.: 2.15
+  930.: 2.14
+  931.: 1.97
+  938.: 2.24
+  939.: 2.16
+  944.: 2.95
+  949.: 4.16
+  957.: 3.83
+  958.: 2.08
+  964.: 2.99
+  967.: 3.58
+  971.: 6.55
+  973.: 5.46
+  975.: 2.73
+  977.: 3.12
+  981.: 2.57
+  984.: 6.21
+  987.: 3.73
+  992.: 3.36
+  1000.: 5.18
+  1003.: 6.42
+  1010.: 5.45
+  1014.: 5.9
+  1021.: 4.38
+  1102.: 5.93
+  1118.: 2.13
+ mol_wt: 17
+
+g00000008:
+ solver: FlameMaster
+ ign_delay_def: OH
+ ign_cond: max
+ BoundaryLayer: True
+ specific_cond:
+ dpdt: 
+  906.: 2.01
+  908.: 3.14
+  909.: 1.84
+  919.: 2.15
+  928.: 2.14
+  943.: 2.43
+  951.: 6.5
+  963.: 1.42
+  969.: 1.42
+  992.: 4.35
+  999.: 6.9
+  1027.: 1.2
+  1049.: 0
+ mol_wt: 17
+
+g00000009:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+g00000010:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+g00000011:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+g00000012:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+g00000013:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+g00000014_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x00000065_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x00000066_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x00000067_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x00000068_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x00000069_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x00000070_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x00000071_p:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x00000356_p:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 
+
+x10000019:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 
+
+x00000357_p:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 
+ 
+x10000001:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10000002:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10000005:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000006:
+
+x10000007:
+
+x10000008:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000016:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000017_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000020:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 
+ 
+x10000021_x:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000022:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000023:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000024_x:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000025:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10000026:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10000027_x:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000028:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000029_x:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000030_x:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10000031:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10000032:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001001:
+ solver: FlameMaster
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ BoundaryLayer: True
+ dpdt:
+  943. : 2.0
+  947. : 2.0
+  962. : 2.0
+  987. : 2.0
+  990. : 2.0
+  1001. : 2.0
+  1013. : 2.0
+  1019. : 2.0
+  1024. : 2.0
+  1033. : 2.0
+  1053. : 2.0
+  1059. : 2.0
+  1148. : 2.0 
+ mol_wt: 
+ 
+x10001009:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001010:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001011:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 
+
+x10001012_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001013:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17 
+
+x10001014:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17 
+
+x10001015:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17 
+
+x10001016:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17 
+
+x10001017:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001018:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001019_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10001020:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+
+x10001021_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10001022:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10001023:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001024_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001025:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001026:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001027_x:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001028:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001029:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001030:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001031:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001032:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001033:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001034:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001035:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001036:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001037:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001038:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001039:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001040:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001041:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001042:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001043:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001044:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001049:
+ solver: cantera
+ ign_delay_def: CO2
+ ign_cond: specific
+ specific_cond: 2.4E+16;molecule/cm3
+ exp_conc: 
+  2050: 4.42E+18
+  2140: 4.52E+18
+  2250: 4.60E+18
+  2355: 4.69E+18
+  2560: 4.84E+18
+  2620: 4.87E+18
+  2675: 4.95E+18
+  2765: 4.96E+18
+  2810: 4.99E+18
+ exp_conc_unit: molecule/cm3
+ mol_wt: 44
+
+x10001050:
+ solver: cantera
+ ign_delay_def: CO2
+ ign_cond: specific
+ specific_cond: 8.0E+15;molecule/cm3
+ exp_conc: 
+  2050: 4.42E+18
+  2140: 4.52E+18
+  2250: 4.60E+18
+  2355: 4.69E+18
+  2560: 4.84E+18
+  2620: 4.87E+18
+  2675: 4.95E+18
+  2765: 4.96E+18
+  2810: 4.99E+18
+ exp_conc_unit: molecule/cm3
+ mol_wt: 44
+
+x10001051:
+ solver: cantera
+ ign_delay_def: CO2
+ ign_cond: specific
+ specific_cond: 3.0E+16;molecule/cm3
+ exp_conc: 
+  2070: 4.95E+18
+  2160: 5.07E+18
+  2215: 5.11E+18
+  2325: 5.21E+18
+  2375: 5.24E+18
+  2475: 5.34E+18
+  2565: 5.38E+18
+  2625: 5.45E+18
+  2700: 5.49E+18
+  2740: 5.55E+18
+  2820: 5.55E+18
+  2870: 5.63E+18
+ exp_conc_unit: molecule/cm3
+ mol_wt: 44
+
+x10001052:
+ solver: cantera
+ ign_delay_def: CO2
+ ign_cond: specific
+ specific_cond: 1.0E+16;molecule/cm3
+ exp_conc: 
+  2070: 4.95E+18
+  2160: 5.07E+18
+  2215: 5.11E+18
+  2325: 5.21E+18
+  2375: 5.24E+18
+  2475: 5.34E+18
+  2565: 5.38E+18
+  2625: 5.45E+18
+  2700: 5.49E+18
+  2740: 5.55E+18
+  2820: 5.55E+18
+  2870: 5.63E+18
+ exp_conc_unit: molecule/cm3
+ mol_wt: 44
+ 
+x10001053:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001054:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001055:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10001056:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001057:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ 
+x10001058:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+x10001059:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001060:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001061:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001062:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001063:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001064:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001065:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001066:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001067:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001068:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001069:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001070:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001071:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001072:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001073:
+ solver: cantera
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x10001080:
+ solver: FlameMaster
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ BoundaryLayer: True
+ dpdt:
+  916. : 4.22
+  920. : 4.22
+  959. : 4.22
+  968. : 4.22
+  1005. : 4.22
+  1037. : 4.22
+  1064. : 4.22
+  1100. : 4.22
+  1118. : 4.22
+  1200. : 4.22
+  
+x10001083:
+ solver: FlameMaster
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ BoundaryLayer: True
+ dpdt:
+  925. : 4.22
+  928. : 4.22
+  956. : 4.22
+  958. : 4.22
+  961. : 4.22
+  997. : 4.22
+  1041. : 4.22
+  1042. : 4.22
+  1089. : 4.22
+  1117. : 4.22
+  1141. : 4.22
+  1150. : 4.22
+
+x20000027:
+ solver: cantera
+
+x20000028:
+ solver: cantera
+
+x20000029:
+ solver: cantera
+
+x20000030:
+ solver: cantera
+
+x20000031:
+ solver: cantera
+ 
+x20001001:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+
+x20001003:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+ 
+x20001004:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+ 
+x20001005:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+ 
+x20001006:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+
+x20001030:
+ solver: cantera
+ 
+x20001031:
+ solver: cantera
+ 
+x20001032:
+ solver: cantera
+ 
+x20001033:
+ solver: cantera
+
+x20001034:
+ solver: cantera
+ 
+x20001035:
+ solver: cantera
+ 
+x20001040:
+ solver: cantera
+
+x20001044:
+ solver: cantera
+
+x20001060:
+ solver: cantera
+
+x20001061:
+ solver: cantera
+
+x20001068:
+ solver: cantera
+ 
+x20001105:
+ solver: cantera
+
+x20001140:
+ solver: cantera
+ 
+x20001153:
+ solver: cantera
+ 
+x20001152:
+ solver: cantera
+
+x20001154:
+ solver: cantera
+
+x20001156:
+ solver: cantera
+
+x20001176:
+ solver: cantera
+ 
+x20001177:
+ solver: cantera
+
+x20001178:
+ solver: cantera
+ 
+x20001179:
+ solver: cantera
+ 
+x20001180:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+
+x20001181:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+ 
+x20001182:
+ solver: cantera
+ plotx: P
+ ploty: Fls
+ 
+ign_1a:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 
+
+ign_1b:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 
+
+ign_2a:
+ ign_delay_def: p
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 28
+
+ign_2b:
+ ign_delay_def: p
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 28
+
+ign_3a:
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+ign_4a:
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+ign_4b:
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+ign_5a:
+ ign_delay_def: OH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+
+ign_6a:
+ solver: cantera
+ ign_delay_def: CO2
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 44
+
+ign_6b:
+ ign_delay_def: O
+ ign_cond: specific
+ specific_cond: 2.5e+18;molecule
+ mol_wt: 16
+
+ign_6c:
+ ign_delay_def: CO2
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 28
+
+ign_6d:
+ ign_delay_def: O
+ ign_cond: specific
+ specific_cond: 2.5e+18;molecule
+ mol_wt: 16
+
+fls_1a:
+ solver: cantera
+ phi: 1
+fls_1b:
+ solver: cantera
+ phi: 3
+
+fls_2a:
+ solver: cantera
+ phi: 1
+
+fls_2b:
+ solver: cantera
+ phi: 2.25
+
+fls_3a:
+ solver: cantera
+ phi: 1
+
+fls_3b:
+ solver: cantera
+ phi: 1.75
+
+fls_4a:
+ solver: cantera
+ phi: 1.148
+
+fls_4b:
+ solver: cantera
+ phi: 3.895
+
+fls_5a:
+ solver: cantera
+ phi: 1
+
+fls_5b:
+ phi: 3.05
+
+fls_6a:
+ solver: cantera
+fls_6b:
+ solver: cantera
+flf_1a:
+ solver: cantera
+ ExpTempFile: /home/krithika/Desktop/Source_code/TEST/ExpTempProfile/flf_cantera
+ file_header:
+ - distance
+ - T
+ flf_target: H
+ flf_cond: max
+ flow_rate: 0.06
+
+flf_1b:
+ solver: cantera
+ ExpTempFile: /home/krithika/Desktop/Source_code/TEST/ExpTempProfile/flf_cantera
+ file_header:
+ - distance
+ - T
+ flf_target: O
+ flf_cond: max
+ flow_rate: 0.06
+ 
+flw_1a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 1.4
+ anchor_time: 0.38014
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_2a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.7
+ anchor_time: 0.365
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_3a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.05
+ anchor_time: 0.076958
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_4a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.03
+ anchor_time: 0.012881
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_5a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.5
+ anchor_time: 0.012651
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: CO
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_6a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.5
+ anchor_time: 0.36566
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: CO
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_6b: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.5
+ anchor_time: 0.36566
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: CO
+ flw_method: time
+ flw_limits: (75,95)
+ anchor: 50
+ limit_units: percentage
+
+flw_7a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.8
+ anchor_time: 0.38104
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: CO
+ flw_method: slope
+ flw_limits: (40,60)
+ anchor: 50
+ limit_units: percentage
+
+flw_8a: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.4
+ anchor_time: 0.28583
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: slope
+ flw_limits: (85,95)
+ anchor: 50
+ limit_units: percentage
+
+flw_8b: 
+ solver: cantera
+ flw_length: 1.73
+ residenceTime: 0.4
+ anchor_time: 0.28583
+ reactorVolume: 0.014
+ crossSectionalArea: 3.14*0.0508*0.0508
+ total_time: 10
+ time_step: 2000
+ flw_species: H2
+ flw_method: time
+ flw_limits: (40,0.9)
+ anchor: 50
+ limit_units: percentage
+ 
+
+###########
+### RCM ###
+###########
+ 
+x40000001:
+ solver: cantera
+ volumeProfile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/RCM_profiles/x40000001_Vt.csv
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x40000008:
+ solver: cantera
+ volumeProfile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/RCM_profiles/x40000008_Vt.csv
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x40000009:
+ solver: cantera
+ volumeProfile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/RCM_profiles/x40000009_Vt.csv
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x40001031:
+ solver: cantera
+ volumeProfile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/RCM_profiles/x40001031_Vt.csv
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+
+x40001033:
+ solver: cantera
+ volumeProfile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/RCM_profiles/x40001033_Vt.csv
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
