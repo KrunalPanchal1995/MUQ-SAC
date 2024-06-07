@@ -85,7 +85,7 @@ class DesignMatrix(object):
 	
 	
 	def getSamples(self):
-		
+		print("\nStarting to generate design matrix!!\n")
 		if self.design == 'A-facto': 
 			#self.sim = 1 + 2* self.n+self.n*(self.n-1)/2
 			design_matrix = list(2* np.random.random_sample((self.sim*3,self.n)) - 1)
