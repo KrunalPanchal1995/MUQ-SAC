@@ -1,0 +1,134 @@
+!VERSION: AramcoMech 1.3 Syngas
+!AUTHORS: A. Kéromnes, W.K. Metcalfe, K.A. Heufer, N. Donohoe, A.K.Das, C.J. Sung, 
+!AUTHORS: J. Herzler, C. Naumann, P. Griebel, O. Mathieu, M.C. Krejci, E.L. Petersen, 
+!AUTHORS: W.J. Pitz, H.J. Curran
+!WEBSITE: http://c3.nuigalway.ie/
+
+!-----------------------------------------------------------------------------!
+ELEMENTS
+C
+H
+N
+O
+AR
+HE
+END
+!-----------------------------------------------------------------------------!
+SPECIES
+H                   H2                  O                   O2                  
+OH                  OH*                 H2O                 N2                  
+HO2                 H2O2                AR                  CO                  
+CO2                 HE             
+END
+!-------------------------------------------------------------------------------!
+REACTIONS
+
+!REF:2 parameter fit to hong et al.proc. of the comb. inst. 33 (2011) 309–316
+H+O2<=>O+OH                                       1.040E+014     0.000   15286.0
+
+!REF:sutherland et al., 21st symposium, p. 929 (1986)
+O+H2<=>H+OH                                       5.080E+004     2.670    6292.0
+
+!REF:Lam et al. Submitted IJCK
+OH+H2<=>H+H2O                                     4.380E+013     0.000    6990.0
+
+!REF:sutherland et al., 23rd symposium, p. 51 (1990)
+O+H2O<=>OH+OH                                     2.970E+006     2.020   13400.0
+
+!REF:tsang and hampson, j. phys. chem. ref. data, 15:1087 (1986)
+H2+M<=>H+H+M                                      4.577E+019    -1.400  104400.0
+H2/ 2.50/ H2O/ 12.00/ CO/ 1.90/ CO2/ 3.80/ HE/ 0.83/ 
+O+O+M<=>O2+M                                      6.165E+015    -0.500       0.0
+H2/ 2.50/ H2O/ 12.00/ AR/ 0.83/ CO/ 1.90/ CO2/ 3.80/ HE/ 0.83/ 
+O+H+M<=>OH+M                                      4.714E+018    -1.000       0.0
+H2/ 2.50/ H2O/ 12.00/ AR/ 0.75/ CO/ 1.50/ CO2/ 2.00/ HE/ 0.75/ 
+
+!REF: li ijck 36: 566–575, 2004
+!REF:optimised to fit H2 and CH4 flames data
+H+OH+M<=>H2O+M                                    3.500E+022    -2.000       0.0
+
+!REF:efficiencies from GRI 3.0
+H2/ 0.73/ H2O/ 3.65/ AR/ 0.38/
+
+!REF:fernandes pccp 2008
+H+O2(+M)<=>HO2(+M)                                4.650E+012     0.440       0.0
+LOW/                                              1.737E+019    -1.230       0.0/
+TROE/  6.700E-001  1.000E-030  1.000E+030  1.000E+030/
+H2/ 1.30/ CO/ 1.90/ CO2/ 3.80/ HE/ 0.00/ H2O/ 10.00/ AR/ 0.00/ 
+H+O2(+AR)<=>HO2(+AR)                              4.650E+012     0.440       0.0
+
+!REF: bates et al. pccp 3 (2001) 2337-2342
+LOW/                                              6.810E+018    -1.200       0.0/
+TROE/  7.000E-001  1.000E-030  1.000E+030  1.000E+030/
+
+!REF:LPL * 1.5 AK
+H+O2(+HE)<=>HO2(+HE)                              4.650E+012     0.440       0.0
+LOW/                                              9.192E+018    -1.200       0.0/
+TROE/  5.900E-001  1.000E-030  1.000E+030  1.000E+030/
+HO2+H<=>OH+OH                                     7.079E+013     0.000     295.0
+
+!REF:michael sutherland 2000
+H2+O2<=>H+HO2                                     5.176E+005     2.433   53502.0
+
+!REF:baulch et al., j. phys. chem. ref data, 21:411 (1992)
+HO2+O<=>OH+O2                                     3.250E+013     0.000       0.0
+
+!REF:keyser, j. phys. chem. 92:1193 (1988) reduced by 15%
+HO2+OH<=>H2O+O2                                   2.456E+013     0.000    -497.0
+
+!REF:Hippler et al. j.chem.phys 93 1755-1760 (1990)
+HO2+HO2<=>H2O2+O2                                 1.300E+011     0.000   -1630.0
+DUP
+
+!REF:reduced by 13%
+HO2+HO2<=>H2O2+O2                                 3.658E+014     0.000   12000.0
+DUP
+
+!REF:troe, combust. flame, 158:594-601 (2011)
+!REF:rate constant is for n2
+H2O2(+H2O)<=>OH+OH(+H2O)                          2.000E+012     0.900   48749.0
+LOW/                                              1.865E+025    -2.300   48749.0/
+TROE/  5.100E-001  1.000E-030  1.000E+030/
+H2O2(+M)<=>OH+OH(+M)                              2.000E+012     0.900   48749.0
+LOW/                                              2.490E+024    -2.300   48749.0/
+TROE/  4.300E-001  1.000E-030  1.000E+030/
+H2O/ 0.00/ CO2/ 1.60/ N2/ 1.50/ O2/ 1.20/ HE/ 0.65/ H2O2/ 7.70/
+
+!REF:efficiencies for h2 and co taken from li et al., int. j. chem. kinet. 36:566-575 (2004)
+H2/ 3.70/ CO/ 2.80/
+
+!REF:tsang and hampson, j. phys. chem. ref. data, 15:1087 (1986)
+H2O2+H<=>H2O+OH                                   2.410E+013     0.000    3970.0
+
+!REF: ellingson j. phys. chem. (2007) 111, (51), 13554-13566
+H2O2+H<=>H2+HO2                                   2.150E+010     1.000    6000.0
+
+!REF:tsang and hampson, j. phys. chem. ref. data, 15:1087 (1986)
+H2O2+O<=>OH+HO2                                   9.550E+006     2.000    3970.0
+
+!REF: hong et al. j. phys. chem. a 114 (2010) 5718-5727
+H2O2+OH<=>H2O+HO2                                 1.740E+012     0.000     318.0
+DUP
+H2O2+OH<=>H2O+HO2                                 7.590E+013     0.000    7269.0
+DUP
+
+!REF:meuller 99 * 0.76
+CO+O(+M)<=>CO2(+M)                                1.362E+010     0.000    2384.0
+LOW/                                              1.173E+024    -2.790    4191.0/
+H2/ 2.00/ H2O/ 12.00/ CO/ 1.75/ CO2/ 3.60/ AR/ 0.70/ HE/ 0.70/
+
+!REF:86tsa/ ham * 0.44
+CO+O2<=>CO2+O                                     1.119E+012     0.000   47700.0
+
+!REF: joshi and wang ijck (2006), 38, (1), 57-73.
+CO+OH<=>CO2+H                                     7.015E+004     2.053    -355.7
+DUP
+CO+OH<=>CO2+H                                     5.757E+012    -0.664     331.8
+DUP
+
+!REF:you et al. j. phys. chem. a 2007, 111, 4031-4042
+CO+HO2<=>CO2+OH                                   1.570E+005     2.180   17940.0
+
+
+END
+!-------------------------------------------------------------------------------!

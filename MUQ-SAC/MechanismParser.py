@@ -1,4 +1,7 @@
-import yaml
+try:
+    import ruamel_yaml as yaml
+except ImportError:
+    from ruamel import yaml
 import os,re
 
 #rxn = ["AC3H5OOH <=> C2H3CHO + H2O"]
@@ -8,9 +11,11 @@ import os,re
 
 class Parser:
 	def __init__(self,MechFile):
-		self.file_yaml = open(MechFile,"r")
+		self.file_yaml = open(MechFile,"r").read()
 		self.mech = yaml.safe_load(self.file_yaml)
 		self.rxnList = self.rxn_list()
+		#print(self.mech["phases"][0]["species"])
+		#raise AssertionError("Stop")
 	
 	def rxn_list(self):
 		rxnList = []

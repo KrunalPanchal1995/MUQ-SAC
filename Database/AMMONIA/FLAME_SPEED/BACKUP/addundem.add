@@ -1,0 +1,636 @@
+20101037:
+ solver: cantera
+
+20199009:
+ solver: cantera
+
+20100056:
+ solver: cantera
+
+20100074:
+ solver: cantera
+
+20101044:
+ solver: cantera
+
+20199032:
+ solver: cantera
+
+20100037:
+ solver: cantera
+
+20199051:
+ solver: cantera
+
+20199016:
+ solver: cantera
+
+20100029:
+ solver: cantera
+
+20199043:
+ solver: cantera
+
+20199050:
+ solver: cantera
+
+20100039:
+ solver: cantera
+
+20199014:
+ solver: cantera
+
+20100044:
+ solver: cantera
+
+20101038:
+ solver: cantera
+
+20100040:
+ solver: cantera
+
+20100080:
+ solver: cantera
+ type: phi
+
+20100022:
+ solver: cantera
+
+20100030:
+ solver: cantera
+
+20101070:
+ solver: cantera
+
+20101054:
+ solver: cantera
+
+20199041:
+ solver: cantera
+
+20101040:
+ solver: cantera
+
+20101014:
+ solver: cantera
+
+20100082:
+ solver: cantera
+
+20199033:
+ solver: cantera
+
+20199022:
+ solver: cantera
+ type: phi
+
+20101066:
+ solver: cantera
+
+20199006:
+ solver: cantera
+
+20100065:
+ solver: cantera
+
+20101073:
+ solver: cantera
+
+20100032:
+ solver: cantera
+
+20101039:
+ solver: cantera
+
+20199029:
+ solver: cantera
+
+20101031:
+ solver: cantera
+
+20100018:
+ solver: cantera
+
+20101001:
+ solver: cantera
+
+20100071:
+ solver: cantera
+
+20101016:
+ solver: cantera
+
+20199026:
+ solver: cantera
+ type: phi
+
+20100070:
+ solver: cantera
+
+20101062:
+ solver: cantera
+
+20199005:
+ solver: cantera
+
+20100063:
+ solver: cantera
+
+20101050:
+ solver: cantera
+
+20199031:
+ solver: cantera
+
+20100011:
+ solver: cantera
+
+20101051:
+ solver: cantera
+
+20100052:
+ solver: cantera
+
+20100054:
+ solver: cantera
+
+20101006:
+ solver: cantera
+
+20100006:
+ solver: cantera
+
+20199011:
+ solver: cantera
+
+20199042:
+ solver: cantera
+
+20100009:
+ solver: cantera
+
+20100031:
+ solver: cantera
+
+20100053:
+ solver: cantera
+
+20100033:
+ solver: cantera
+
+20100058:
+ solver: cantera
+
+20100020:
+ solver: cantera
+
+20100012:
+ solver: cantera
+
+20199049:
+ solver: cantera
+
+20100062:
+ solver: cantera
+
+20100043:
+ solver: cantera
+
+20199003:
+ solver: cantera
+
+20100046:
+ solver: cantera
+
+20101072:
+ solver: cantera
+
+20101069:
+ solver: cantera
+
+20101009:
+ solver: cantera
+
+20199044:
+ solver: cantera
+
+20199045:
+ solver: cantera
+
+20101077:
+ solver: cantera
+
+20100014:
+ solver: cantera
+
+20101067:
+ solver: cantera
+
+20101010:
+ solver: cantera
+
+20100047:
+ solver: cantera
+
+20100007:
+ solver: cantera
+
+20101078:
+ solver: cantera
+
+20101011:
+ solver: cantera
+
+20100078:
+ solver: cantera
+
+20101018:
+ solver: cantera
+
+20101064:
+ solver: cantera
+
+20100079:
+ solver: cantera
+
+20101007:
+ solver: cantera
+
+20101024:
+ solver: cantera
+
+20100051:
+ solver: cantera
+
+20100021:
+ solver: cantera
+
+20101027:
+ solver: cantera
+
+20100075:
+ solver: cantera
+
+20199048:
+ solver: cantera
+
+20101005:
+ solver: cantera
+
+20199004:
+ solver: cantera
+
+20101003:
+ solver: cantera
+
+20199053:
+ solver: cantera
+
+20199007:
+ solver: cantera
+
+20101035:
+ solver: cantera
+
+20100005:
+ solver: cantera
+
+20101048:
+ solver: cantera
+
+20100081:
+ solver: cantera
+ type: phi
+
+20101049:
+ solver: cantera
+
+20101041:
+ solver: cantera
+
+20199054:
+ solver: cantera
+ type: phi
+
+20101047:
+ solver: cantera
+
+20199015:
+ solver: cantera
+
+20199023:
+ solver: cantera
+ type: phi
+
+20101026:
+ solver: cantera
+
+20101036:
+ solver: cantera
+
+20199030:
+ solver: cantera
+
+20100010:
+ solver: cantera
+
+20101058:
+ solver: cantera
+
+20199025:
+ solver: cantera
+ type: phi
+
+20199028:
+ solver: cantera
+
+20199039:
+ solver: cantera
+
+20100036:
+ solver: cantera
+
+20101068:
+ solver: cantera
+
+20199052:
+ solver: cantera
+
+20100077:
+ solver: cantera
+
+20100061:
+ solver: cantera
+
+20101060:
+ solver: cantera
+
+20100064:
+ solver: cantera
+
+20100041:
+ solver: cantera
+
+20100059:
+ solver: cantera
+
+20101033:
+ solver: cantera
+
+20199013:
+ solver: cantera
+
+20199020:
+ solver: cantera
+
+20100073:
+ solver: cantera
+
+20101057:
+ solver: cantera
+
+20101043:
+ solver: cantera
+
+20199008:
+ solver: cantera
+
+20101075:
+ solver: cantera
+
+20199034:
+ solver: cantera
+
+20100067:
+ solver: cantera
+
+20100057:
+ solver: cantera
+
+20199010:
+ solver: cantera
+
+20199038:
+ solver: cantera
+
+20101023:
+ solver: cantera
+
+20100042:
+ solver: cantera
+
+20199018:
+ solver: cantera
+
+20101017:
+ solver: cantera
+
+20100055:
+ solver: cantera
+
+20101079:
+ solver: cantera
+
+20199040:
+ solver: cantera
+
+20101053:
+ solver: cantera
+
+20101032:
+ solver: cantera
+
+20100035:
+ solver: cantera
+
+20101056:
+ solver: cantera
+
+20101002:
+ solver: cantera
+
+20199002:
+ solver: cantera
+
+20199019:
+ solver: cantera
+
+20199012:
+ solver: cantera
+
+20101030:
+ solver: cantera
+
+20100026:
+ solver: cantera
+
+20100027:
+ solver: cantera
+
+20199021:
+ solver: cantera
+ type: phi
+
+20100023:
+ solver: cantera
+
+20101052:
+ solver: cantera
+
+20101004:
+ solver: cantera
+
+20100060:
+ solver: cantera
+
+20199036:
+ solver: cantera
+
+20101076:
+ solver: cantera
+
+20101061:
+ solver: cantera
+
+20100045:
+ solver: cantera
+
+20100066:
+ solver: cantera
+
+20199047:
+ solver: cantera
+
+20101029:
+ solver: cantera
+
+20101065:
+ solver: cantera
+
+20101020:
+ solver: cantera
+
+20100034:
+ solver: cantera
+
+20101046:
+ solver: cantera
+
+20100068:
+ solver: cantera
+
+20100069:
+ solver: cantera
+
+20199027:
+ solver: cantera
+
+20101034:
+ solver: cantera
+
+20100049:
+ solver: cantera
+
+20101000:
+ solver: cantera
+
+20199017:
+ solver: cantera
+
+20100050:
+ solver: cantera
+
+20101028:
+ solver: cantera
+
+20100028:
+ solver: cantera
+
+20101008:
+ solver: cantera
+
+20101055:
+ solver: cantera
+
+20100076:
+ solver: cantera
+
+20101025:
+ solver: cantera
+
+20100072:
+ solver: cantera
+
+20199024:
+ solver: cantera
+ type: phi
+
+20101045:
+ solver: cantera
+
+20101071:
+ solver: cantera
+
+20100038:
+ solver: cantera
+
+20101015:
+ solver: cantera
+
+20100013:
+ solver: cantera
+
+20101013:
+ solver: cantera
+
+20100019:
+ solver: cantera
+
+20101059:
+ solver: cantera
+
+20101021:
+ solver: cantera
+
+20100024:
+ solver: cantera
+
+20199046:
+ solver: cantera
+
+20101074:
+ solver: cantera
+
+20100025:
+ solver: cantera
+
+20101012:
+ solver: cantera
+
+20101019:
+ solver: cantera
+
+20101063:
+ solver: cantera
+
+20199037:
+ solver: cantera
+
+20101022:
+ solver: cantera
+
+20100048:
+ solver: cantera
+
+20101042:
+ solver: cantera
+
+20100004:
+ solver: cantera
+
+20100008:
+ solver: cantera
+
+20199035:
+ solver: cantera
+

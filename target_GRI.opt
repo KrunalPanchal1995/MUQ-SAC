@@ -1,0 +1,136 @@
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+ 
+ optimization_type: PRS
+ 
+ Algorithm_type: gradient-based
+ 
+ Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+
+ total_reactions: 26
+
+ parallel_threads: 50
+ 
+ targets_count: 50
+
+#####################################
+# 	Stastical Parameters        #
+#           Data                    #
+#####################################
+
+Stats:
+ 
+ Design_of_PRS: A1+B1+C1
+  
+ Order_of_PRS: 2
+ 
+ Sampling_of_PRS: 7
+ 
+ PRS_type: Full
+#################################################
+# 		Chemical Kinetics  Data  	 #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono              ----#
+# -----fuel/s : written in YAML format    ------#
+#################################################
+
+Bin:
+
+ bin: /home/krithika/Desktop/KineticMechanismOptimization/source_code/bin
+
+ solver_bin: /home/krithika/FlameMaster/Bin/bin
+ 
+ samap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+ 
+ jpdap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+ 
+Inputs:
+
+ fileType: chemkin 
+
+ fuelClass: Multi
+
+ fuel/s: {a: H2, b: CO}
+
+ global_reaction: H2+CO+O2==CO2+H2O
+
+#########################
+# Input file Location   #
+#	Data            #
+#########################
+
+Locations:
+ 
+ mechanism: /data2/NOMINAL_SIMULATIONS/SYNGAS/GRI_30/GRI30.yaml
+ 
+ Initial_pre_file: /data2/NOMINAL_SIMULATIONS/SYNGAS/GRI_30/mechanism.pre
+ 
+# uncertainty_data: /home/krithika/Desktop/MUQ-SAC/Database/Test_syngas_data/test_FFCM_H2_CO.xml
+
+ thermo_file: /data2/NOMINAL_SIMULATIONS/SYNGAS/GRI_30/GRI30.therm
+
+ trans_file: /data2/NOMINAL_SIMULATIONS/SYNGAS/GRI_30/GRI30.trans
+
+ targets: /data2/NOMINAL_SIMULATIONS/SYNGAS/SYNGAS_DATASET/BL_FIG_3_PANG_ET_AL_2009.target
+
+ addendum: /data2/NOMINAL_SIMULATIONS/SYNGAS/SYNGAS_DATASET/target_FFCM1.add
+
+################################################
+# 	 Start file Generator 			#
+#______________________________________________#
+#						#			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+StartProfilesData:
+
+ Fls:
+  Flame: UnstretchedPremixed
+
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+  
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+  
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: N2}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+ Flf:
+  Flame: UnstretchedPremixed
+ 
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: AR}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 

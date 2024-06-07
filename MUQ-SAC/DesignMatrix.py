@@ -10,11 +10,11 @@ import copy
 import matplotlib.pyplot as plt
 
 class DesignMatrix(object):
-	def __init__(self,UnsrtData,design,sample_length,ind):
+	def __init__(self,UnsrtData,design,sample_length):
 		self.unsrt = UnsrtData
 		self.sim = sample_length
 		self.design = design
-		self.n = ind
+		#self.n = ind
 		self.allowed_count = 100
 	
 	
@@ -109,9 +109,9 @@ class DesignMatrix(object):
 			#      V: Unshuffled vector (numpy-array)
 			#	 V_s: Shuffled vector (
 			
-			n_a = int(0.1*self.sim)
-			n_b = int(0.45*self.sim)
-			n_c = self.sim-n_a-n_b
+			n_a = int(0.1*self.sim*0.2)
+			n_b = int(0.45*self.sim*0.2)
+			n_c = int(self.sim*0.2-n_a-n_b)
 			
 			
 			a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
@@ -133,11 +133,12 @@ class DesignMatrix(object):
 			V_copy = copy.deepcopy(V_)
 			for rxn in self.unsrt:				
 				column = []
-				for i in range(1000):
+				for i in range(int(self.sim*0.8)):
 					np.random.shuffle(V_copy[rxn])
 					column.extend(np.asarray(V_copy[rxn]))
 				V_s[rxn] = np.asarray(column)	
 			
+			"""
 			V_linear_comb = {}#Doing linear combination to populate the matrix
 			for rxn in self.unsrt:
 				temp = []
@@ -151,6 +152,7 @@ class DesignMatrix(object):
 				
 				V_linear_comb[rxn] = np.asarray(temp)
 				
+			"""
 									
 			delta_n = {}
 			p = {}
@@ -252,7 +254,7 @@ class DesignMatrix(object):
 				outside = []
 				not_selected = []
 				temp_n = []
-				while len(temp)<1500:
+				while len(temp)<1000:
 					random = 2*np.random.rand(3)-1
 					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
 					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
@@ -312,7 +314,7 @@ class DesignMatrix(object):
 			#raise AssertionError("New")	
 			
 					
-			for i in range(self.sim):
+			for i in range(int(self.sim*0.2)):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_[rxn][i])
@@ -321,20 +323,20 @@ class DesignMatrix(object):
 			
 			
 			#RANDOM SHUFFLING
-			for i in range(1000):
+			for i in range(int(self.sim*0.8)):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
 				
-			
+			"""
 			for i in range(1000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_linear_comb[rxn][i])
 				design_matrix.append(row)
-			
-			for i in range(1500):
+			"""
+			for i in range(1000):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])

@@ -1,0 +1,136 @@
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+ 
+ optimization_type: PRS
+ 
+ Algorithm_type: gradient-based
+ 
+ Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+
+ total_reactions: {no. of reaction in mechanism}
+
+ parallel_threads: {number of paralle threads}
+ 
+ targets_count: {number of targets}
+
+#####################################
+# 	Stastical Parameters        #
+#           Data                    #
+#####################################
+
+Stats:
+ 
+ Design_of_PRS: A1+B1+C1
+  
+ Order_of_PRS: 2
+ 
+ Sampling_of_PRS: 7
+ 
+ PRS_type: Full
+#################################################
+# 		Chemical Kinetics  Data  	 #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono              ----#
+# -----fuel/s : written in YAML format    ------#
+#################################################
+
+Bin:
+
+ bin: /home/krithika/Desktop/KineticMechanismOptimization/source_code/bin
+
+ solver_bin: /home/krithika/FlameMaster/Bin/bin
+ 
+ samap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+ 
+ jpdap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+ 
+Inputs:
+
+ fileType: chemkin 
+
+ fuelClass: Multi
+
+ fuel/s: {fuel molecules included in combustion eg: {a: H2, b: CO}}
+
+ global_reaction: {global reaction of fuel eg: H2+CO+O2==CO2+H2O}
+
+#########################
+# Input file Location   #
+#	Data            #
+#########################
+
+Locations:
+ 
+ mechanism: {location of mechanism file eg: /data2/NOMINAL_SIMULATIONS/SYNGAS/GRI_30/GRI30.yaml}
+ 
+ Initial_pre_file: {location of pre file}
+ 
+# uncertainty_data: /home/krithika/Desktop/MUQ-SAC/Database/Test_syngas_data/test_FFCM_H2_CO.xml
+
+ thermo_file: {location of thermo file}
+
+ trans_file: {location of transport file}}
+
+ targets: {location of target file}
+
+ addendum: {location of add file}
+
+################################################
+# 	 Start file Generator 			#
+#______________________________________________#
+#						#			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+StartProfilesData:
+
+ Fls:
+  Flame: UnstretchedPremixed
+
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+  
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+  
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: N2}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+ Flf:
+  Flame: UnstretchedPremixed
+ 
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: AR}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 

@@ -1,0 +1,69 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199012</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>B. Mei, X. Zhang, S. Ma, M. Cui, H. Guo, Z. Cao, Y. Li, Combustion and Flame 210 (2019), 236–246</description>
+        <referenceDOI>10.1016/j.combustflame.2019.08.033</referenceDOI>
+        <location>Main article and Supp. Mat.</location>
+        <table>Supp. Mat. mmc2, NH3-35%O2-65%N2, P = 1 atm</table>
+        <figure>Fig. 6. a) squares</figure>
+        <details>
+            <author>Mei, Bowen and Zhang, Xiaoyuan and Ma, Siyuan and Cui, Mingli and Guo, Hanwen and Cao, Zhihao and Li, Yuyang</author>
+            <journal>Combustion and Flame</journal>
+            <pages>236–246</pages>
+            <title>Experimental and kinetic modeling investigation on the laminar flame propagation of ammonia under oxygen enrichment and elevated pressure conditions</title>
+            <type>Journal Article</type>
+            <volume>210</volume>
+            <year>2019</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: NQ</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>1.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x4"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"  chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="uncertainty"                   id="x6"   label="d_Sl"   sourcetype="reported"    units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x7"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.60</x1><x2>0.218750</x2><x3>0.273438</x3><x4>0.507813</x4><x5>9.30</x5><x6>0.81</x6><x7>0.500</x7></dataPoint>
+        <dataPoint><x1>0.70</x1><x2>0.246231</x2><x3>0.263819</x3><x4>0.489950</x4><x5>14.84</x5><x6>0.88</x6><x7>0.570</x7></dataPoint>
+        <dataPoint><x1>0.80</x1><x2>0.271845</x2><x3>0.254854</x3><x4>0.473301</x4><x5>19.37</x5><x6>0.96</x6><x7>0.674</x7></dataPoint>
+        <dataPoint><x1>0.90</x1><x2>0.295775</x2><x3>0.246479</x3><x4>0.457746</x4><x5>23.50</x5><x6>0.89</x6><x7>0.727</x7></dataPoint>
+        <dataPoint><x1>1.00</x1><x2>0.318182</x2><x3>0.238636</x3><x4>0.443182</x4><x5>26.38</x5><x6>0.96</x6><x7>0.804</x7></dataPoint>
+        <dataPoint><x1>1.10</x1><x2>0.339207</x2><x3>0.231278</x3><x4>0.429515</x4><x5>27.47</x5><x6>0.96</x6><x7>0.826</x7></dataPoint>
+        <dataPoint><x1>1.20</x1><x2>0.358974</x2><x3>0.224359</x3><x4>0.416667</x4><x5>26.20</x5><x6>0.93</x6><x7>0.792</x7></dataPoint>
+        <dataPoint><x1>1.30</x1><x2>0.377593</x2><x3>0.217842</x3><x4>0.404564</x4><x5>22.34</x5><x6>0.88</x6><x7>0.702</x7></dataPoint>
+        <dataPoint><x1>1.40</x1><x2>0.395161</x2><x3>0.211694</x3><x4>0.393145</x4><x5>20.31</x5><x6>0.86</x6><x7>0.657</x7></dataPoint>
+        <dataPoint><x1>1.50</x1><x2>0.411765</x2><x3>0.205882</x3><x4>0.382353</x4><x5>17.28</x5><x6>0.83</x6><x7>0.592</x7></dataPoint>
+    </dataGroup>
+</experiment>

@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10100008</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>J. Chen, X. Jiang, X. Qin, Z. Huang, Fuel 287 (2021), 119563</description>
+        <referenceDOI>10.1016/j.fuel.2020.119563</referenceDOI>
+        <location>Main article, Supp Mat.</location>
+        <table>Main article: Table 1, N30H70 mixture; Supp. Mat.: Table S1, Mixture 4 (30% NH3 / 70% H2), p = 10 atm</table>
+        <figure>Figure 5. d), p = 10 atm (red circles)</figure>
+        <details>
+            <author>Chen, Jundie and Jiang, Xue and Qin, Xiaokang and Huang, Zuohua</author>
+            <journal>Fuel</journal>
+            <pages>119563</pages>
+            <title>Effect of hydrogen blending on the high temperature auto-ignition of ammonia at elevated pressure</title>
+            <type>Journal Article</type>
+            <volume>287</volume>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  /><amount units="percent" >1.605</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" /><amount units="percent" >3.745</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   /><amount units="percent" >3.076</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"    /><amount units="percent" >91.574</amount></component>
+        </property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless" ><value>1.0</value></property>
+        <property name="uncertainty"                   sourcetype="reported"   units="unitless"  reference="ignition delay"  kind="relative"  bound="plusminus" ><value>0.2</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"  reference="ignition delay"  kind="relative"  method="combined from scatter and reported uncertainty" ><value>0.23672</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>9.23</x1><x2>1296.90</x2><x3>82.09</x3></dataPoint>
+        <dataPoint><x1>9.80</x1><x2>1191.90</x2><x3>221.80</x3></dataPoint>
+        <dataPoint><x1>9.92</x1><x2>1177.40</x2><x3>447.88</x3></dataPoint>
+        <dataPoint><x1>9.82</x1><x2>1137.00</x2><x3>747.76</x3></dataPoint>
+        <dataPoint><x1>9.70</x1><x2>1124.50</x2><x3>1177.30</x3></dataPoint>
+        <dataPoint><x1>9.96</x1><x2>1088.30</x2><x3>1956.98</x3></dataPoint>
+        <dataPoint><x1>9.86</x1><x2>1052.20</x2><x3>4745.25</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

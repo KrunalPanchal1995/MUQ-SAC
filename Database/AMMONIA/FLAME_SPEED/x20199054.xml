@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199054</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>N. Wang, S. Huang, Z. Zhang, T. Li, P. Yi, D. Wu, G. Chen, International Journal of Hydrogen Energy 46 (2021), 31879–31893</description>
+        <referenceDOI>10.1016/j.ijhydene.2021.07.063</referenceDOI>
+        <location>Main article</location>
+        <table>Table 2, xH2 = 0%, phi = 1, P0 = 0.1, 0.3, 0.5 MPa</table>
+        <figure>Fig. 10., xH2 = 0% (black squares)</figure>
+        <details>
+            <author>Wang, Ning and Huang, Shuai and Zhang, Zhifei and Li, Tie and Yi, Ping and Wu, Dawei and Chen, Gen</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>62</number>
+            <pages>31879–31893</pages>
+            <title>Laminar burning characteristics of ammonia/hydrogen/air mixtures with laser ignition</title>
+            <type>Journal Article</type>
+            <volume>46</volume>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LS</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"    sourcetype="reported"    units="K"             ><value>360</value></property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"    units="unitless"      ><value>1.0</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia"  /><amount units="mole fraction" >0.218750</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"   /><amount units="mole fraction" >0.164063</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"  chemName="nitrogen" /><amount units="mole fraction" >0.617188</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" ><value>0.500</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="p"     sourcetype="reported"   units="MPa"  />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"    sourcetype="digitized"  units="cm/s" />
+        <property name="uncertainty"               id="x3"   label="d_Sl"  sourcetype="digitized"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>0.1</x1><x2>7.8</x2><x3>0.61</x3></dataPoint>
+        <dataPoint><x1>0.3</x1><x2>5.6</x2><x3>0.38</x3></dataPoint>
+        <dataPoint><x1>0.5</x1><x2>4.5</x2><x3>0.36</x3></dataPoint>
+    </dataGroup>
+    <comment>The composition of air is assumed to be 79% N2 and 21% O2, and the equivalence ratio was assumed to be phi = 0.75 * x_NH3 / x_O2.</comment>
+</experiment>

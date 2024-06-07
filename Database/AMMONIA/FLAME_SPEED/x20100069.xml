@@ -1,0 +1,68 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100069</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>K.P. Shrestha, C. Lhuillier, A.A. Barbosa, P. Brequigny, F. Contino, C. Mounaïm-Rousselle, L. Seidel, F. Mauss, Proceedings of the Combustion Institute 38 (2021), 2163–2174</description>
+        <referenceDOI>10.1016/j.proci.2020.06.197</referenceDOI>
+        <location>Main article and Supp. Mat.</location>
+        <table>Supp. Mat., NH3-H2-air, P = 10 bar</table>
+        <figure>Fig. 4., P = 10 bar</figure>
+        <details>
+            <author>Shrestha, Krishna Prasad and Lhuillier, Charles and Barbosa, Amanda Alves and Brequigny, Pierre and Contino, Francesco and Mounaïm-Rousselle, Christine and Seidel, Lars and Mauss, Fabian</author>
+            <journal>Proceedings of the Combustion Institute</journal>
+            <number>2</number>
+            <pages>2163–2174</pages>
+            <title>An experimental and modeling study of ammonia with enriched oxygen content and ammonia/hydrogen laminar flame speed at elevated pressure and temperature</title>
+            <type>Journal Article</type>
+            <volume>38</volume>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: NQ</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless" ><value>1.1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"      reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" ><value>3.319</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"               id="x1"   label="T"      sourcetype="reported"    units="K"             />
+        <property name="uncertainty"               id="x2"   label="d_T"    sourcetype="reported"    units="K"              reference="temperature"               kind="absolute"  bound="plusminus" />
+        <property name="pressure"                  id="x3"   label="p"      sourcetype="reported"    units="bar"           />
+        <property name="composition"               id="x4"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"               id="x5"   label="x_H2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x6"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"               id="x7"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"  id="x8"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="uncertainty"               id="x9"   label="d_Sl"   sourcetype="calculated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>476</x1><x2>2</x2><x3>9.55</x3><x4>0.234616</x4><x5>0.000000</x5><x6>0.159965</x6><x7>0.605419</x7><x8>7.74</x8><x9>6.64</x9></dataPoint>
+    </dataGroup>
+    <comment>The overall relative uncertainties were calculated from the two uncertainty factors reported in the Supp. Mat. for each data point: Su(overall. %) = sqrt(Su(stat, %)^2 + Su(moy, %)^2). Then, the absolute overall uncertainties were calculated as Su (cm/s) * Su(overall, %) / 100. These uncertainties refer to 95% confidence intervals.</comment>
+    <comment>The reported composition of air was 79.1% N2 and 20.9% O2.</comment>
+    <comment>The nominal temperature and pressure for these measurements are 473 K and 10 bar, respectively.</comment>
+</experiment>

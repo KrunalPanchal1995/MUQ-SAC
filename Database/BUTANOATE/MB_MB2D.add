@@ -8,6 +8,7 @@
 #---                             --------------------------------#######
 #solver: cantera
 #Butanoate
+
 ing_Ethyl_Butanoate:
  solver: cantera
  ign_delay_def: p
@@ -21,3 +22,29 @@ ing_Butanoate:
  ign_cond: onset
  specific_cond: 
  mol_wt: 86
+
+fls_1a:
+ solver: cantera
+ type: phi
+ fuel: MB-C5H10O2
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  935.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_935.csv  
+  958.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_958.csv
+  982.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_982.csv
+ 
+JSR_BUTANOATE_phi_1_JSR_MB:
+ solver: cantera
+ species: MB-C5H10O2
+ mol_wt: 86
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 

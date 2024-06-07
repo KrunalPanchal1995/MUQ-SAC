@@ -1,0 +1,59 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199007</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>Q. Liu, X. Chen, J. Huang, Y. Shen, Y. Zhang, Z. Liu, Journal of Hazardous Materials 363 (2019), 187–196</description>
+        <referenceDOI>10.1016/j.jhazmat.2018.09.073</referenceDOI>
+        <location>Main article</location>
+        <table>Table 1, P = 0.7 atm - inlet mixture composition</table>
+        <figure>Fig. 7., P = 0.7 atm (crosses)</figure>
+        <details>
+            <author>Liu, Qingming and Chen, Xu and Huang, Jinxiang and Shen, Yang and Zhang, Yunming and Liu, Ziwei</author>
+            <journal>Journal of Hazardous Materials</journal>
+            <pages>187–196</pages>
+            <title>The characteristics of flame propagation in ammonia/oxygen mixtures</title>
+            <type>Journal Article</type>
+            <volume>363</volume>
+            <year>2019</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LS</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>0.7</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia" />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"  />
+        </property>
+        <property name="laminar burning velocity"      id="x4"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="evaluated standard deviation"  id="x5"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.50</x1><x2>0.400000</x2><x3>0.600000</x3><x4>77.5</x4><x5>5.480</x5></dataPoint>
+        <dataPoint><x1>1.00</x1><x2>0.571429</x2><x3>0.428571</x3><x4>105.0</x4><x5>7.425</x5></dataPoint>
+        <dataPoint><x1>1.30</x1><x2>0.634146</x2><x3>0.365854</x3><x4>74.5</x4><x5>5.268</x5></dataPoint>
+    </dataGroup>
+    <comment>phi = 0.75 * x_NH3 / x_O2 is assumed.</comment>
+</experiment>

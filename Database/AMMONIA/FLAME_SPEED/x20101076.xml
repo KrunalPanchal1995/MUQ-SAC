@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20101076</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>G. Yin, C. Wang, M. Zhou, Y. Zhou, E. Hu, Z. Huang, Frontiers in Energy (2021)</description>
+        <referenceDOI>10.1007/s11708-021-0791-7</referenceDOI>
+        <location>Main article</location>
+        <table>Table 1, Case 6</table>
+        <figure>Fig. 6. a)</figure>
+        <details>
+            <author>Geyuan Yin and Chaojun Wang and Meng Zhou and Yajie Zhou and Erjiang Hu and Zuohua Huang</author>
+            <journal>Frontiers in Energy</journal>
+            <title>Experimental and kinetic study on laminar flame speeds of ammonia/syngas/air at a high temperature and elevated pressure</title>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>premixed</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" ><value>0.5</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"         id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="composition"               id="x2"   label="x_H2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x3"   label="x_CO"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x4"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"          chemName="ammonia"         />
+        </property>
+        <property name="composition"               id="x5"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x6"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="laminar burning velocity"  id="x7"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="uncertainty"               id="x8"   label="d_Sl"   sourcetype="reported"    units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>1</x1><x2>0.011230</x2><x3>0.011230</x3><x4>0.202139</x4><x5>0.162834</x5><x6>0.612567</x6><x7>8.504</x7><x8>0.054</x8></dataPoint>
+        <dataPoint><x1>1.1</x1><x2>0.012082</x2><x3>0.012082</x3><x4>0.217469</x4><x5>0.159257</x5><x6>0.599111</x6><x7>9.749</x7><x8>0.054</x8></dataPoint>
+        <dataPoint><x1>1.2</x1><x2>0.012897</x2><x3>0.012897</x3><x4>0.232139</x4><x5>0.155834</x5><x6>0.586233</x6><x7>9.240</x7><x8>0.754</x8></dataPoint>
+    </dataGroup>
+    <comment>The numerical Sl-d_Sl data were obtained through personal communication with the corresponding author.</comment>
+    <comment>phi = (0.5 * (x_H2 + x_CO) + 0.75 * x_NH3) / x_O2 was assumed, and air was assumed to be composed of 21% O2 and 79% N2.</comment>
+</experiment>

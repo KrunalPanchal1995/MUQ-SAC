@@ -1,0 +1,61 @@
+<experiment>
+    <fileAuthor>Bence Horvath; ELTE Chemical Kinetics Laboratory</fileAuthor>
+    <fileDOI>10.24388/x10199004</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-02-23</firstPublicationDate>
+    <lastModificationDate>2020-11-16</lastModificationDate>
+    <bibliographyLink>
+        <description>L.J.Drummond; Combustion Science and Technology,1972,Vol.5.,175-182; Fig2, black crosses</description>
+        <referenceDOI>10.1080/00102207208952518</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 2. black crosses</figure>
+        <details>
+            <author>L. J. DRUMMOND</author>
+            <journal>Combustion Science and Technology</journal>
+            <number>1</number>
+            <pages>175-182</pages>
+            <publisher>Taylor &amp; Francis</publisher>
+            <title>High Temperature Oxidation of Ammonia</title>
+            <volume>5</volume>
+            <year>1972</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported" >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia" /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"  /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"   /><amount units="mole fraction" >0.90</amount></component>
+        </property>
+        <property name="pressure"                      sourcetype="reported"  units="atm"           ><value>0.25</value></property>
+        <property name="evaluated standard deviation"  sourcetype="reported"  units="unitless"       reference="ignition delay"  kind="relative"  method="reported uncertainty" ><value>0.2</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>2586.37</x1> <x2>105</x2></dataPoint>
+        <dataPoint><x1>2492.09</x1>  <x2>99</x2></dataPoint>
+        <dataPoint><x1>2405.56</x1> <x2>105</x2></dataPoint>
+        <dataPoint> <x1>2344.3</x1> <x2>206</x2></dataPoint>
+        <dataPoint><x1>2279.02</x1> <x2>274</x2></dataPoint>
+        <dataPoint><x1>2265.76</x1> <x2>453</x2></dataPoint>
+        <dataPoint><x1>2188.84</x1> <x2>466</x2></dataPoint>
+        <dataPoint><x1>2050.77</x1><x2>1260</x2></dataPoint>
+        <dataPoint>   <x1>1995</x1><x2>1290</x2></dataPoint>
+        <dataPoint><x1>1983.49</x1><x2>1380</x2></dataPoint>
+        <dataPoint><x1>1987.37</x1><x2>1490</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

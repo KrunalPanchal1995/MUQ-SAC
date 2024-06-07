@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uncertainty>
+	<reaction rxn = "H+O2&#60;&#61;&#62;O+OH" no = "R1">
+	 <class></class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>file</data_type>
+		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Case_study_tig/unsrt_files/unsrt_files/R1.csv</file>	
+	</reaction>
+</uncertainty>

@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100010</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>J.H. Lee, J.H. Kim, J.H. Park, O.C. Kwon, International Journal of Hydrogen Energy 35 (2010), 1054–1064</description>
+        <referenceDOI>10.1016/j.ijhydene.2009.11.071</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 5. - phi = 1.25</figure>
+        <details>
+            <author>Lee, J.H. and Kim, J.H. and Park, J.H. and Kwon, O.C.</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>3</number>
+            <pages>1054–1064</pages>
+            <title>Studies on properties of laminar premixed hydrogen-added ammonia/air flames for hydrogen production</title>
+            <type>Journal Article</type>
+            <volume>35</volume>
+            <year>2010</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LS</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"  label="phi"  sourcetype="reported"  units="unitless" ><value>1.25</value></property>
+        <property name="temperature"        label="T"    sourcetype="reported"  units="K"        ><value>298</value></property>
+        <property name="uncertainty"        label="d_T"  sourcetype="reported"  units="K"         reference="temperature"  kind="absolute"  bound="plusminus" ><value>3</value></property>
+        <property name="pressure"           label="p"    sourcetype="reported"  units="atm"      ><value>1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"                   id="x1"   label="x_H2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x4"   label="x_N2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="digitized"  units="cm/s"          />
+        <property name="uncertainty"                   id="x6"   label="d_Sl"   sourcetype="reported"   units="unitless"       reference="laminar burning velocity"  kind="relative"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x7"   sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.084000</x1><x2>0.196000</x2><x3>0.151200</x3><x4>0.568800</x4><x5>19.2</x5><x6>0.10</x6><x7>1.358</x7></dataPoint>
+        <dataPoint><x1>0.147887</x1><x2>0.147887</x2><x3>0.147887</x3><x4>0.556338</x4><x5>38.8</x5><x6>0.10</x6><x7>2.744</x7></dataPoint>
+    </dataGroup>
+    <comment>The calculation of the compositions of the initial gas mixtures was based on two assumptions: 1) x_O2 = (0.5 x_H2 + 0.75 x_NH3) / phi; 2) air = 79% N2 + 21% O2.</comment>
+</experiment>

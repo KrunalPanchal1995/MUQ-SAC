@@ -303,12 +303,14 @@ Unburnt Side {{
 	subprocess.call(["chmod","+x",'run_generate'])
 
 
-def create_input_file(case,opt_dict,target):
+def create_input_file(case,opt_dict,target,mech_file=None):
 
 	thermo_file_location = opt_dict["Locations"]["thermo_file"]
 	trans_file_location = opt_dict["Locations"]["trans_file"]
 	startProfile_location = opt_dict["StartProfilesData"]
 	file_specific_command = "-f chemkin"
+	if mech_file == None:
+		mech_file = "mechanism.yaml"
 	
 	global_reaction = opt_dict["Inputs"]["global_reaction"]
 	instring = ''
@@ -326,6 +328,63 @@ def create_input_file(case,opt_dict,target):
 	if target.input_file != None:
 		instring = open(target.input_file,'r').read()
 			
+	elif "JSR" in target.target:
+		instring ="""import pandas as pd
+import time
+import cantera as ct
+
+gas = ct.Solution("{mech}")
+reactor_temperature = {temperature}  # Kelvin
+reactor_pressure = {pressure}  # in atm. This equals 1.06 bars
+inlet_concentrations = {species_conc}
+gas.TPX = reactor_temperature, reactor_pressure, inlet_concentrations
+species = "{species}"
+# Reactor parameters
+residence_time = {residenceTime}  # s
+reactor_volume = 1  # m3
+max_simulation_time = {maxSimTime}
+fuel_air_mixture_tank = ct.Reservoir(gas)
+exhaust = ct.Reservoir(gas)
+
+stirred_reactor = ct.IdealGasReactor(gas, energy="off", volume=reactor_volume)
+
+mass_flow_controller = ct.MassFlowController(
+    upstream=fuel_air_mixture_tank,
+    downstream=stirred_reactor,
+    mdot=stirred_reactor.mass / residence_time,
+)
+
+pressure_regulator = ct.PressureController(
+    upstream=stirred_reactor, downstream=exhaust, master=mass_flow_controller
+)
+
+reactor_network = ct.ReactorNet([stirred_reactor])
+
+time_history = ct.SolutionArray(gas, extra=["t"])
+
+tic = time.time()
+
+t = 0
+counter = 1
+while t < max_simulation_time:
+    t = reactor_network.step()
+
+    # We will store only every 10th value. Remember, we have 1200+ species, so there will be
+    # 1200+ columns for us to work with
+    if counter % 10 == 0:
+        # Extract the state of the reactor
+        time_history.append(stirred_reactor.thermo.state, t=t)
+
+    counter += 1
+
+# Stop the stopwatch
+toc = time.time()
+MF = time_history(species).X[-1][0]
+tau_file = open("output/jsr.out",'w')
+tau_file.write("#T(K)    mole fraction"+"\\n"+"{{}}    {{}}".format(reactor_temperature,MF))
+tau_file.close()""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=str(target.add["species"]),residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
+		extract = """
+		"""
 	elif "Flf" in target.target:
 		if "cantera" in target.add["solver"]:
 			instring = """#!/usr/bin/python
@@ -335,7 +394,7 @@ import cantera as ct
 import time
 import pandas as pd
 
-gas = ct.Solution('mechanism.yaml')
+gas = ct.Solution('{mech}')
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure} #in atm. This equals 1.06 bars
@@ -390,9 +449,195 @@ timeHistory.loc[reactorTemperature] = state
 Flf = str(timeHistory['{species}']).split("\\n")[0].split("    ")[1]
 flf_file = open("output/flf.out",'w')
 flf_file.write("#T(K)    flf(conc.)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,Flf))
-flf_file.close()""".format(temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=target.add["species"],residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
+flf_file.close()""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=target.add["species"],residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
 			extract = """
 		"""
+	elif "RCM" in target.target:
+		if "cantera" in target.add["solver"]: 
+			instring="""import cantera as ct
+import numpy as np
+from pyked import ChemKED
+from urllib.request import urlopen
+import yaml,time
+import pandas as pd
+import matplotlib.pyplot as plt
+def find_nearest(array, value):
+    array = np.asarray(np.abs(np.log(array)))
+    value = np.abs(np.log(value))
+    idx = (np.abs(array - value)).argmin()
+    return idx,array[idx]
+
+def fast_nearest_interp(xi, x, y):
+    # Shift x points to centers
+    spacing = np.diff(x) / 2
+    x = x + np.hstack([spacing, spacing[-1]])
+    # Append the last point in y twice for ease of use
+    y = np.hstack([y, y[-1]])
+    return y[np.searchsorted(x, xi)]
+
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
+	if cond == "max":
+		tau = df[species].idxmax()
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff(conc)
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "dt-max" and species == "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(np.asarray(pList))
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "dt-max" and species != "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "specific":
+		if specified_value.split(";")[0] == None:
+			raise Assertionerror("Input required for specified_value in ignition delay")
+		else:
+			target = float(specified_value.split(";")[0])
+			unit = specified_value.split(";")[1]
+			if unit == "molecule":
+				avogadro = 6.02214E+23
+				target = target/avogadro
+				molecular_wt = gas.atomic_weight(species)
+				target = molecular_wt*target	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
+			
+			elif unit == "molecule/cm3":
+				unit_conversion = 10**(6)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				avogadro = 6.02214E+23
+				target = (target/avogadro)*unit_conversion
+				if exp_conc != "":
+					exp_conc = (exp_conc/avogadro)*unit_conversion
+					conc = conc*exp_conc
+			
+				f = CubicSpline(time,conc, bc_type='natural')
+				time_new = np.arange(min(time),max(time),10**(-8))			
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+				
+			elif unit == "mole/cm3":
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				if exp_conc != "":
+					conc = conc*exp_conc
+				
+				f = CubicSpline(time,conc, bc_type='natural')
+				time_new = np.arange(min(time),max(time),10**(-8))
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+	return tau
+
+class VolumeProfile(object):
+    def __init__(self, keywords):
+        self.time = np.array(keywords["vproTime"])
+        self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+        self.velocity = np.diff(self.volume)/np.diff(self.time)
+        self.velocity = np.append(self.velocity, 0)
+    def __call__(self, t):
+        if t < self.time[-1]:
+            prev_time_point = self.time[self.time <= t][-1]
+            index = np.where(self.time == prev_time_point)[0][0]
+            return self.velocity[index]
+        else:
+            return 0
+
+#rcm_link = 'https://raw.githubusercontent.com/pr-omethe-us/PyKED/master/pyked/tests/testfile_rcm.yaml'
+#with urlopen(rcm_link) as response:
+#    testfile_rcm = yaml.safe_load(response.read())
+
+#ck = ChemKED(dict_input=testfile_rcm,skip_validation=True)
+#dp = ck.datapoints[0]
+
+#T_initial = dp.temperature.to('K').magnitude
+#P_initial = dp.pressure.to('Pa').magnitude
+#X_initial = dp.get_cantera_mole_fraction()
+
+T_initial = {temperature}
+P_initial = {pressure}
+X_initial = {species_conc}
+
+
+gas = ct.Solution('{mech}')
+gas.TPX = T_initial, P_initial, X_initial
+
+reac = ct.IdealGasReactor(gas)
+env = ct.Reservoir(ct.Solution('{mech}'))
+
+
+df = pd.read_csv("{volume_profile}")
+exp_time = df["time(s)"]
+exp_volume = df["volume(cm3)"]
+
+
+stateVariableNames = [reac.component_name(item) for item in range(reac.n_vars)]
+timeHistory = pd.DataFrame(columns=stateVariableNames)
+#exp_time = dp.volume_history.time.magnitude
+#try:
+#	exp_volume = dp.volume_history.volume.magnitude
+#except:
+#	exp_volume = dp.volume_history.quantity.magnitude
+	
+keywords = {{"vproTime": exp_time, "vproVol": exp_volume}}
+ct.Wall(reac, env, velocity=VolumeProfile(keywords));
+
+netw = ct.ReactorNet([reac])
+netw.max_time_step = np.min(np.diff(exp_time))
+
+t = 0
+pressureList = []
+counter = 1;
+while(gas.T < 1800):
+    t = netw.step()
+    if (counter%1 == 0):       	
+        timeHistory.loc[t] = netw.get_state().astype('float64')
+        pressureList.append(gas.P)
+    counter+=1
+
+tic = time.time() 
+#tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
+tok = time.time()
+#Actual defination for RCM using temperature profile
+tempe = timeHistory["temperature"].to_numpy()
+time_ = timeHistory.index.to_numpy()
+index1 = tempe.argmax()
+t1 = time_[index1]
+tempe_split = np.array_split(tempe,3)
+tempe_2 = np.concatenate((tempe_split[0],tempe_split[1]))
+index2 = tempe_2.argmax()
+t2 = time_[index2]
+tau = t1-t2
+print(f"t1:{{time[index1]}},{{tempe[index1]}}\nt2:{{time_[index2]}},{{tempe_2[index2]}}")
+fig = plt.figure()
+plt.plot(time_[index1],tempe[index1],"o")
+plt.plot(time_[index2],tempe_2[index2],"o")
+plt.plot(time_,tempe,"-")
+plt.savefig("Ignition_def.pdf")
+tau_file = open("output/RCM.out",'w')
+tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(T_initial,tau*(10**6)))
+tau_file.close()""".format(mech = mech_file,temperature = target.temperature_i,pressure=target.pressure_i,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],volume_profile=target.add["volume_profile"][float(target.temperature)],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+			extract = """
+		"""
+	
 	elif "Tig" in target.target:
 		#print(target.ignition_type)
 		#print(target.target)
@@ -584,8 +829,8 @@ simulated_volume = []
 end_temp = 2500.
 end_time = 0.2
 
-gas = ct.Solution('mechanism.yaml')
-gas_nr = ct.Solution("mechanism.yaml")
+gas = ct.Solution('{mech}')
+gas_nr = ct.Solution("{mech}")
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
@@ -629,7 +874,7 @@ tau_file.close()
 #T_file = open("output/TP.out",'w')
 #T_file.write("#T(K)    P(bar)"+"\\n"+"{{}}    {{}}".format(Tc,Pc/1e5))
 #T_file.close()
-{saveAll}timeHistory.to_csv("time_history.csv")""".format(volumeProfile = target.add["volumeProfile"],temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+{saveAll}timeHistory.to_csv("time_history.csv")""".format(mech = mech_file,volumeProfile = target.add["volumeProfile"],temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 		elif target.ignition_type == "reflected":
 			#print(target.add["BoundaryLayer"])
 			if "cantera" in target.add["solver"] and target.add["BoundaryLayer"]== True:
@@ -661,7 +906,8 @@ def fast_nearest_interp(xi, x, y):
 def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	time = df.t[1:]
 	if species != "p":
-		conc = df.X[:,gas.species_index(species)]
+		conc = np.asarray(df.X[:,gas.species_index(species)][1:])
+		#conc = np.array_split(conc,2)[0]
 	
 	if cond == "max":
 		tau = time[(conc).argmax()]
@@ -674,16 +920,16 @@ def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",
 		intercept = int(np.diff(slope).argmax())
 		tau = time[intercept]
 	elif cond == "dt-max" and species == "p":
-		print(time,pList)
+		#print(time,pList)
 		time = np.diff(np.asarray(time))
 		conc = np.diff(np.asarray(pList))
 		slope = conc/time
 		index = int(slope.argmax())
-		print(index)
+		#print(index)
 		tau = df.t[1:][index]
 	elif cond == "dt-max" and species != "p":
-		time = np.asarray(df.t)
-		conc = np.asarray(conc)
+		#time = np.asarray(df.t)
+		#conc = np.asarray(conc)
 		dtime = np.diff(time)
 		dconc = np.diff(conc)
 		slope = dconc/dtime
@@ -747,13 +993,13 @@ class ReactorOdeBL:
 				(y[1] * self.gas.cv))
 		dYdt = wdot * self.gas.molecular_weights / y[1]
 			
-		return np.hstack((dTdt,self.gas.density,y[2],dYdt))
+		return np.hstack((self.gas.T,self.gas.density,self.gas.P,dYdt))
 
 
 ###========================================================================================######
 ### Main code starts #####
 ###========================================================================================######
-gas = ct.Solution('mechanism.yaml')
+gas = ct.Solution('{mech}')
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
@@ -792,7 +1038,9 @@ y = [solver.y]
 step_ode = []
 start_ode = time.time()
 
-while solver.successful() and solver.t < estimatedIgnitionDelayTime and (gas.T-reactorTemperature)<200:
+#while solver.successful() and solver.t < estimatedIgnitionDelayTime and gas.T<2500:#(gas.T-reactorTemperature)<200:
+while (gas.T-reactorTemperature)<200:
+	#print(gas.T)
 	solver.integrate(solver.t+dt)
 	P_new = solver.y[2] + dt*(0.01*{dpdt}*solver.y[2]*1000)
 	gamma = gas.cp/gas.cv
@@ -834,8 +1082,16 @@ tau = ignitionDelay(states_ode,gas,pressureList,"{delay_def}","{delay_cond}","{s
 tau_file = open("output/tau.out",'w')
 tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,tau*(10**6)))
 tau_file.close()
+species = "{delay_def}"
+time = states_ode.t[1:]
+if species != "p":
+	conc = states_ode.X[:,gas.species_index(species)][1:]
+fig = plt.figure()
+plt.plot(time,conc,"b-",label="{delay_def} profile")
+plt.legend()
+plt.savefig("profile.pdf")
 {saveAll}timeHistory.to_csv("time_history.csv")
-""".format(temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],dpdt = target.add["dpdt"][target.temperature], delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],dpdt = target.add["dpdt"][target.temperature], delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 				
 			elif "cantera" in target.add["solver"] and target.add["BoundaryLayer"] != True:
 				instring = """#!/usr/bin/python
@@ -862,7 +1118,7 @@ def fast_nearest_interp(xi, x, y):
     y = np.hstack([y, y[-1]])
     return y[np.searchsorted(x, xi)]
 
-gas = ct.Solution('mechanism.yaml')
+gas = ct.Solution('{mech}')
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
@@ -870,7 +1126,7 @@ reactorPressure = {pressure}
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
 reactorNetwork = ct.ReactorNet([r])
-
+reactorNetwork.max_time_step = 0.01
 stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
 #index_a = stateVariableNames.index("{delay_def}")
@@ -952,7 +1208,8 @@ estimatedIgnitionDelayTime = 0.04
 t = 0
 pressureList = []
 counter = 1;
-while(t < estimatedIgnitionDelayTime):
+#while(t < estimatedIgnitionDelayTime):
+while gas.T< 1600:
     t = reactorNetwork.step()
     #print(t)
     if (counter%1 == 0):
@@ -969,7 +1226,7 @@ tau_file = open("output/tau.out",'w')
 tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,tau*(10**6)))
 tau_file.close()
 {saveAll}timeHistory.to_csv("time_history.csv")
-""".format(temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 			
 			elif "FlameMaster" in target.add["solver"] and target.add["BoundaryLayer"] == True:
 				instring = """############
@@ -1074,12 +1331,15 @@ atomic_weight = {molecular_weight}
 def ignitionDelay(df,species,cond="max",specified_value ="None;None"):
 	for i in df:
 	#if "p" in ignitionDelayDefination:
-		if i == "X-"+species or species.upper() in i:
+		a = i.strip(" ")
+		if a == "X-"+species or species.upper() in i:
 			Y = list(df[i])
-		if "t" in i:
+		if a == "t[ms]":
 			X = list(df[i])
 	time = np.asarray(X)
 	profile = np.asarray(Y)
+	t = time
+	P = profile
 	if cond == "max":
 		tau = time[list(profile).index(max(profile))]
 		
@@ -1088,13 +1348,13 @@ def ignitionDelay(df,species,cond="max",specified_value ="None;None"):
 		conc = np.diff(profile)
 		slope = conc/time
 		index = int(np.diff(slope).argmax())
-		tau = time[index]
+		tau = t[index]
 	elif cond == "dt-max":
 		time = np.diff(time)
 		conc = np.diff(profile)
 		slope = conc/time
 		index = int(slope.argmax())
-		tau = time[index]
+		tau = t[index]
 	elif cond == "specific":
 		if specified_value.split(";")[0] == None:
 			raise Assertionerror("Input required for specified_value in ignition delay")
@@ -1266,12 +1526,15 @@ atomic_weight = {molecular_weight}
 def ignitionDelay(df,species,cond="max",specified_value ="None;None"):
 	for i in df:
 	#if "p" in ignitionDelayDefination:
-		if i == "X-"+species or species.upper() in i:
+		a = i.strip(" ")
+		if a == "X-"+species or species.upper() in i:
 			Y = list(df[i])
-		if "t" in i:
+		if a == "t[ms]":
 			X = list(df[i])
 	time = np.asarray(X)
 	profile = np.asarray(Y)
+	t = time
+	P = profile
 	if cond == "max":
 		tau = time[list(profile).index(max(profile))]
 		
@@ -1280,13 +1543,13 @@ def ignitionDelay(df,species,cond="max",specified_value ="None;None"):
 		conc = np.diff(profile)
 		slope = conc/time
 		index = int(np.diff(slope).argmax())
-		tau = time[index]
+		tau = t[index]
 	elif cond == "dt-max":
 		time = np.diff(time)
 		conc = np.diff(profile)
 		slope = conc/time
 		index = int(slope.argmax())
-		tau = time[index]
+		tau = t[index]
 	elif cond == "specific":
 		if specified_value.split(";")[0] == None:
 			raise Assertionerror("Input required for specified_value in ignition delay")
@@ -1359,7 +1622,7 @@ file_d2.close()
 		else:
 			raise AssertionError("Invalid ignition mode specified for ignition delay simulations")
 	elif "Fls" in target.target:
-		if "cantera" in target.add["solver"]:
+		if "cantera" in target.add["solver"] and "phi" not in target.add["type"]:
 			instring = """#!/usr/bin/python
 from __future__ import print_function
 from __future__ import division
@@ -1368,9 +1631,9 @@ import numpy as np
 import pandas as pd
 To 	= {temperature}
 Po  = {pressure}
-gas = ct.Solution('mechanism.yaml')
+gas = ct.Solution('{mech}')
 gas.TPX = To, Po,{species_conc}
-
+#gas.set_equivalence_ratio(1.0, "CH4", {"O2": 1.0, "N2": 3.76})
 width = {width}
 flame = ct.FreeFlame(gas, width=width)
 flame.set_refine_criteria(ratio={ratio}, slope={slope}, curve={curve}, prune = 0.003 )#3,0.015,0.015
@@ -1385,19 +1648,40 @@ Su0 = flame.velocity[0] #m/s
 Su_file = open("output/Su.out",'w')
 Su_file.write("#T(K)    Su(cm/s)"+"\\n"+"{{}}    {{}}".format(To,Su0*(100)))
 Su_file.close()
-""".format(temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,width = target.add["width"],ratio = target.add["ratio"],slope = target.add["slope"],curve = target.add["curve"],loglevel = target.add["loglevel"],auto = target.add["auto"])
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,width = target.add["width"],ratio = target.add["ratio"],slope = target.add["slope"],curve = target.add["curve"],loglevel = target.add["loglevel"],auto = target.add["auto"])
 				
+		elif "cantera" in target.add["solver"] and "phi" in target.add["type"]:
+			instring = """#!/usr/bin/python
+from __future__ import print_function
+from __future__ import division
+import cantera as ct
+import numpy as np
+import pandas as pd
+To 	= {temperature}
+Po  = {pressure}
+gas = ct.Solution('{mech}')
+#gas.TPX = To, Po,{species_conc}
+
+#gas.set_equivalence_ratio({phi}, {fuel}, {{"O2": 1.0, "N2": 3.76}})
+width = {width}
+flame = ct.FreeFlame(gas, width=width)
+flame.set_refine_criteria(ratio={ratio}, slope={slope}, curve={curve}, prune = 0.003 )#3,0.015,0.015
+loglevel = {loglevel}
+refine_grid = True
+flame.soret_enabled = True
+flame.energy_enabled = True
+#flame.max_grid_points = 800
+flame.transport_model = "Multi"
+flame.solve(loglevel=loglevel,refine_grid = True, auto={auto})#1,True
+Su0 = flame.velocity[0] #m/s
+Su_file = open("output/Su.out",'w')
+Su_file.write("#T(K)    Su(cm/s)"+"\\n"+"{{}}    {{}}".format(To,Su0*(100)))
+Su_file.close()
+""".format(mech = mech_file,temperature = target.temperature,phi = target.phi,fuel= target.add["fuel"],pressure=target.pressure,species_conc = target.species_dict,width = target.add["width"],ratio = target.add["ratio"],slope = target.add["slope"],curve = target.add["curve"],loglevel = target.add["loglevel"],auto = target.add["auto"])
+		
 		else:
 			if target.uniqueID not in os.listdir(startProfile_location[target.target]["CopyTo"]):
-				print(os.getcwd())
-				print("No startProfile found for target {}".format(target.uniqueID))
-				#print(opt_dict["StartProfilesData"][target.target]["CopyTo"])
-				print("---------------")
-				print("Generating new startProfile")
-				#print(opt_dict)
-				#print(type(opt_dict))
-				print(opt_dict["StartProfilesData"][target.target]["fuel"]["key"])
-				print(target.fuel_type)
+				opt_dict = copy.deepcopy(opt_dict)
 				opt_dict["StartProfilesData"][target.target]["fuel"]["key"] = str(opt_dict["StartProfilesData"][target.target]["fuel"]["key"])+"-"+str(target.fuel_type)
 				
 				opt_dict["StartProfilesData"][target.target]["fuel"]["To"] = target.fuel_id
@@ -1541,7 +1825,7 @@ width = {width_bsf} # cm
 width = width/100 #m
 loglevel = {loglevel}  # amount of diagnostic output (0 to 5)
 refine_grid = True  # 'True' to enable refinement
-gas = ct.Solution('mechanism.yaml')
+gas = ct.Solution('{mech}')
 gas.TPX = tburner, p, reactants
 os.chdir('output')
 f = ct.BurnerFlame(gas=gas, width=width)
@@ -1579,7 +1863,7 @@ criteria = "{criteria}"
 string = printSolution(df,species,criteria)
 file_dump = open("result.dout","w+")
 file_dump.write(string)
-file_dump.close()""".format(temperature = target.burner_temp,pressure=target.pressure,species_conc = target.species_dict,width_bsf = target.add["flf_grid"],ratio = target.add["ratio"],slope_bsf = target.add["slope_bsf"],curve = target.add["curve"],loglevel = target.add["loglevel"],solve_bsf = target.add["solve_bsf"],transport_model = target.add["transport_model"],group = target.add["group"],description = target.add["description"],data_file=target.add["ExpTempFile"],mdot=target.add["flow_rate"],target = target.add["flf_target"],criteria = target.add["flf_cond"])
+file_dump.close()""".format(mech = mech_file,temperature = target.burner_temp,pressure=target.pressure,species_conc = target.species_dict,width_bsf = target.add["flf_grid"],ratio = target.add["ratio"],slope_bsf = target.add["slope_bsf"],curve = target.add["curve"],loglevel = target.add["loglevel"],solve_bsf = target.add["solve_bsf"],transport_model = target.add["transport_model"],group = target.add["group"],description = target.add["description"],data_file=target.add["ExpTempFile"],mdot=target.add["flow_rate"],target = target.add["flf_target"],criteria = target.add["flf_cond"])
 					
 		else:
 			if target.uniqueID not in os.listdir(startProfile_location[target.target]["CopyTo"]):
@@ -1721,7 +2005,7 @@ length = {flowReactorLength}  # *approximate* PFR length [m]
 area = {crossSectionalArea}  # cross-sectional area [m**2]
 reactorVolume = {reactorVolume}
 ## input file containing the reaction mechanism
-reaction_mechanism = 'mechanism.yaml'
+reaction_mechanism = {mech}
 residenceTime = {residence_time}
 species = "{species_in_investigation}"
 ## Resolution: The PFR will be simulated by 'n_steps' time steps or by a chain
@@ -1978,7 +2262,7 @@ time_.close()
 #plt.xlim(0,residenceTime)
 #plt.legend(loc=0)
 #plt.savefig('compare_exp.png')
-os.chdir("..")""".format(temperature = target.temperature ,pressure=target.pressure,species_conc = target.species_dict ,flowReactorLength = target.add["flw_length"] ,flow_velocity = target.add["flow_velocity"] ,crossSectionalArea = target.add["crossSectionalArea"] ,reactorVolume = target.add["reactorVolume"] ,residence_time = target.add["residenceTime"] ,total_time = target.add["total_time"],time_step = target.add["time_step"],anchor_time = target.add["anchor_time"] ,flow_rate = target.flow_rate ,species_in_investigation = target.add["flw_species"] ,method = target.add["flw_method"] ,limits = target.add["flw_limits"] ,anchor = target.add["anchor"] ,unit = target.add["limit_units"])
+os.chdir("..")""".format(mech = mech_file,temperature = target.temperature ,pressure=target.pressure,species_conc = target.species_dict ,flowReactorLength = target.add["flw_length"] ,flow_velocity = target.add["flow_velocity"] ,crossSectionalArea = target.add["crossSectionalArea"] ,reactorVolume = target.add["reactorVolume"] ,residence_time = target.add["residenceTime"] ,total_time = target.add["total_time"],time_step = target.add["time_step"],anchor_time = target.add["anchor_time"] ,flow_rate = target.flow_rate ,species_in_investigation = target.add["flw_species"] ,method = target.add["flw_method"] ,limits = target.add["flw_limits"] ,anchor = target.add["anchor"] ,unit = target.add["limit_units"])
 				
 			else:
 				instring = """############
@@ -2299,30 +2583,16 @@ time_.close()
 		raise AssertionError("Unknown type of experiment")	
 	
 	if target.add["solver"] == "cantera":
-		#infile = open("cantera_"+str(case)+"_"+str(sample)+".py",'w')
-		#infile.write(instring)
-		#infile.close()
-		
-		#run_file = open("run",'w')
 		s_convert = """#!/bin/bash
 ck2yaml --input=mechanism.mech --thermo=thermo.therm --transport=transport.trans &> out """
-		#s_convert_2 = """"""
 		
 		s_run = """#!/bin/bash
-python3 cantera_.py &> solve"""
-		#run_file.write(s)
-		#run_file.close()
-		#subprocess.call(["chmod","+x",'run'])
+python3.9 cantera_.py &> solve"""
+
 		extract = """
 		"""
 	else:
-		#infile = open("FlameMaster.input",'w')
-		#infile.write(instring)
-		#infile.close()
 		
-		#extract_file = open("extract.py","w+")
-		#extract_file.write(extract)
-		#extract_file.close()
 		s_convert = """#!/bin/bash
 python3.9 /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/v2.1/soln2ck.py &>sol2yaml_out
 {Bin}/ScanMan -i mechanism.mech -t mechanism.therm -m mechanism_tranport.dat {fsc} -3sr -N 0.05 -E -o mechanism.pre &> ScanMan.log
@@ -2330,21 +2600,7 @@ rm -f ScanMan.log
 		""".format(Bin=opt_dict["Bin"]["solver_bin"],thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
 
 			
-#		s_convert = """#!/bin/bash
-#{Bin}/ScanMan -i mechanism.mech -t {thermo_file} -m {trans_file} {fsc} -o mechanism.pre -3sr &> ScanMan.log
-#		""".format(Bin=opt_dict["Bin"]["solver_bin"],thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
-		
 		s_run = """#!/bin/bash
 {Bin}/FlameMan &> Flame.log && python3.9 extract.py &> extract.log
 		""".format(Bin=opt_dict["Bin"]["solver_bin"],thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
-		#run_file = open("run",'w')
-		#s = """#!/bin/bash
-	#{Bin}/ScanMan -i mechanism.mech -t {thermo_file} -m {trans_file} {fsc} -o mechanism.pre -3sr &> ScanMan.log
-	#{Bin}/FlameMan &> Flame.log && python3.9 extract.py &> extract.log
-	#""".format(Bin=opt_dict["Bin"]["solver_bin"],thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
-		
-		#run_file.write(s)
-		#run_file.close()
-		#print(os.getcwd())
-		#subprocess.call(["chmod","+x",'run'])
 	return instring,s_convert,s_run,extract

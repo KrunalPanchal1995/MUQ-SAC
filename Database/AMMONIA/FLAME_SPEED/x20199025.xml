@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199025</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>D. Wang, C. Ji, Z. Wang, S. Wang, T. Zhang, J. Yang, Fuel 279 (2020), 118425</description>
+        <referenceDOI>10.1016/j.fuel.2020.118425</referenceDOI>
+        <location>Main article and Supp. Mat.</location>
+        <table>Supp. Mat. mmc1, Initial temperature worksheet, phi = 1.4, omega = 0.8</table>
+        <figure>Fig. 5., omega = 0.8</figure>
+        <details>
+            <author>Wang, Du and Ji, Changwei and Wang, Zhe and Wang, Shuofeng and Zhang, Tianyue and Yang, Jinxin</author>
+            <journal>Fuel</journal>
+            <pages>118425</pages>
+            <title>Measurement of oxy-ammonia laminar burning velocity at normal and elevated temperatures</title>
+            <type>Journal Article</type>
+            <volume>279</volume>
+            <year>2020</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LC</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"    label="phi"  sourcetype="reported"    units="unitless"      ><value>1.4</value></property>
+        <property name="pressure"             label="p"    sourcetype="reported"    units="MPa"           ><value>0.1</value></property>
+        <property name="initial composition"  sourcetype="calculated" >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia"  /><amount units="mole fraction" >0.598930</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"   /><amount units="mole fraction" >0.320856</amount></component>
+            <component><speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"  chemName="nitrogen" /><amount units="mole fraction" >0.080214</amount></component>
+        </property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"                   id="x1"   label="T"     sourcetype="reported"   units="K"    />
+        <property name="laminar burning velocity"      id="x2"   label="Sl"    sourcetype="reported"   units="cm/s" />
+        <property name="uncertainty"                   id="x3"   label="d_Sl"  sourcetype="reported"   units="cm/s"  reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x4"   sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>303</x1><x2>59.3</x2><x3>4.8</x3><x4>2.422</x4></dataPoint>
+        <dataPoint><x1>333</x1><x2>66.5</x2><x3>3.5</x3><x4>1.783</x4></dataPoint>
+        <dataPoint><x1>363</x1><x2>73.4</x2><x3>3.7</x3><x4>1.890</x4></dataPoint>
+        <dataPoint><x1>393</x1><x2>82.0</x2><x3>4.8</x3><x4>2.408</x4></dataPoint>
+    </dataGroup>
+    <comment>For the first data point (T = 303 K), the values (Sl and d_Sl) were erroneous in the "Initial temperature" worksheet of Supp. Mat. mmc1. The correct values were taken from the "Oxygen fraction" worksheet (omega = 0.8, phi = 1.4).</comment>
+</experiment>

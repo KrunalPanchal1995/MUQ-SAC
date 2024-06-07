@@ -1,0 +1,70 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100005</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>J.H. Lee, S.I. Lee, O.C. Kwon, International Journal of Hydrogen Energy 35 (2010), 11332–11341</description>
+        <referenceDOI>10.1016/j.ijhydene.2010.07.104</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 2 - middle graph, phi = 1.00</figure>
+        <details>
+            <author>Lee, J.H. and Lee, S.I. and Kwon, O.C.</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>20</number>
+            <pages>11332–11341</pages>
+            <title>Effects of ammonia substitution on hydrogen/air flame propagation and emissions</title>
+            <type>Journal Article</type>
+            <volume>35</volume>
+            <year>2010</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LS</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="equivalence ratio"  label="phi"  sourcetype="reported"  units="unitless" ><value>1.00</value></property>
+        <property name="temperature"        label="T"    sourcetype="reported"  units="K"        ><value>298</value></property>
+        <property name="uncertainty"        label="d_T"  sourcetype="reported"  units="K"         reference="temperature"  kind="absolute"  bound="plusminus" ><value>3</value></property>
+        <property name="pressure"           label="p"    sourcetype="reported"  units="atm"      ><value>1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"                   id="x1"   label="x_H2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x4"   label="x_N2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="digitized"  units="cm/s"          />
+        <property name="uncertainty"                   id="x6"   label="d_Sl"   sourcetype="reported"   units="unitless"       reference="laminar burning velocity"  kind="relative"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x7"   sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.295775</x1><x2>0.000000</x2><x3>0.147887</x3><x4>0.556338</x4><x5>195.3</x5><x6>0.10</x6><x7>15.600</x7></dataPoint>
+        <dataPoint><x1>0.276624</x1><x2>0.014163</x2><x3>0.148935</x3><x4>0.560278</x4><x5>166.7</x5><x6>0.10</x6><x7>13.315</x7></dataPoint>
+        <dataPoint><x1>0.256918</x1><x2>0.028738</x2><x3>0.150012</x3><x4>0.564332</x4><x5>159.5</x5><x6>0.10</x6><x7>12.740</x7></dataPoint>
+        <dataPoint><x1>0.239162</x1><x2>0.041870</x2><x3>0.150983</x3><x4>0.567985</x4><x5>135.0</x5><x6>0.10</x6><x7>10.783</x7></dataPoint>
+        <dataPoint><x1>0.187307</x1><x2>0.080221</x2><x3>0.153819</x3><x4>0.578653</x4><x5>81.8</x5><x6>0.10</x6><x7>6.534</x7></dataPoint>
+    </dataGroup>
+    <comment>The calculation of the compositions of the initial gas mixtures was based on two assumptions: 1) x_O2 = (0.5 x_H2 + 0.75 x_NH3) / phi; 2) air = 79% N2 + 21% O2.</comment>
+    <comment>The definition of SFA was obtained from the authors through personal communication: "SFA has been calculated using the following relationship between it and mole fractions: SFA = (XH2* - XH2)/XH2*, where XH2* = XH2 when XNH3 = 0 for the given fuel-equivalence ratio."</comment>
+</experiment>

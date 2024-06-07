@@ -1,0 +1,64 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10199019</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>O. Mathieu, E.L. Petersen, Combustion and Flame 162 (2015), 554–570</description>
+        <referenceDOI>10.1016/j.combustflame.2014.08.022</referenceDOI>
+        <location>Main article</location>
+        <table>Tables 1 and 2: 0.007273 NH3/0.002727 O2/0.99 Ar (phi = 2.0), p5 ~ 1.4 atm</table>
+        <figure>Fig. 3. (a), black crosses</figure>
+        <details>
+            <author>Mathieu, Olivier and Petersen, Eric L.</author>
+            <journal>Combustion and Flame</journal>
+            <number>3</number>
+            <pages>554–570</pages>
+            <title>Experimental and modeling study on the high-temperature oxidation of Ammonia and related NOx chemistry</title>
+            <type>Journal Article</type>
+            <volume>162</volume>
+            <year>2015</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia" /><amount units="mole fraction" >0.007273</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"  /><amount units="mole fraction" >0.002727</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"   /><amount units="mole fraction" >0.99</amount></component>
+        </property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless"      ><value>2.0</value></property>
+        <property name="uncertainty"                   sourcetype="reported"   units="unitless"       reference="ignition delay"  kind="relative"  bound="plusminus" ><value>0.1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="combined from scatter and reported uncertainty" ><value>0.057637</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="us"  />
+        <property name="pressure"        id="x3"   label="p"    sourcetype="reported"  units="atm" />
+
+        <dataPoint><x1>1992</x1><x2>1149</x2><x3>1.49</x3></dataPoint>
+        <dataPoint><x1>2000</x1><x2>1068</x2><x3>1.46</x3></dataPoint>
+        <dataPoint><x1>2073</x1><x2>681</x2><x3>1.49</x3></dataPoint>
+        <dataPoint><x1>2114</x1><x2>487</x2><x3>1.46</x3></dataPoint>
+        <dataPoint><x1>2161</x1><x2>375</x2><x3>1.44</x3></dataPoint>
+        <dataPoint><x1>2230</x1><x2>266</x2><x3>1.37</x3></dataPoint>
+        <dataPoint><x1>2265</x1><x2>211</x2><x3>1.35</x3></dataPoint>
+        <dataPoint><x1>2330</x1><x2>143</x2><x3>1.37</x3></dataPoint>
+        <dataPoint><x1>2361</x1><x2>124</x2><x3>1.37</x3></dataPoint>
+        <dataPoint><x1>2404</x1><x2>100</x2><x3>1.37</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+    <comment>The temperature value for the 4th data point (IDT = 487 us) was wrong in Table 2. The correct temperature value for that point was digitized from Figure 3a (plus signs).</comment>
+</experiment>

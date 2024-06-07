@@ -1,0 +1,240 @@
+10199020:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199006:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199015:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199018:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100003:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199007:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199013:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100001:
+ solver: cantera
+ type: phi
+ ign_delay_def: NH3
+ ign_cond: specific
+ specific_cond: 0.95;unitless
+ mol_wt: 17
+
+10100008:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100004:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199012:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100002:
+ solver: cantera
+ type: phi
+ ign_delay_def: NH3
+ ign_cond: specific
+ specific_cond: 0.95;unitless
+ mol_wt: 17
+
+10100006:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199004:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199001:
+ solver: cantera
+ type: phi
+ ign_delay_def: NH3
+ ign_cond: specific
+ specific_cond: 0.95;unitless
+ mol_wt: 17
+
+10199035:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199010:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199017:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199009:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199016:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199036:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199008:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199003:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199002:
+ solver: cantera
+ type: phi
+ ign_delay_def: NH3
+ ign_cond: specific
+ specific_cond: 0.95;unitless
+ mol_wt: 17
+
+10199011:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199019:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199014:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10199005:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100007:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+
+10100005:
+ solver: cantera
+ type: phi
+ ign_delay_def: OH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 17
+

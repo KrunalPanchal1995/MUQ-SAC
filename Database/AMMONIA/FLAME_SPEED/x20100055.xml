@@ -1,0 +1,72 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100055</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>C. Lhuillier, P. Brequigny, N. Lamoureux, F. Contino, C. Mounaïm-Rousselle, Fuel 263 (2020), 116653</description>
+        <referenceDOI>10.1016/j.fuel.2019.116653</referenceDOI>
+        <location>Main article and Supp. Mat.</location>
+        <table>Supp. Mat., T = 373 K, xH2 = 0.5</table>
+        <figure>Fig. 4. e), T = 373 K, xH2 = 0.5</figure>
+        <details>
+            <author>Lhuillier, Charles and Brequigny, Pierre and Lamoureux, Nathalie and Contino, Francesco and Mounaïm-Rousselle, Christine</author>
+            <journal>Fuel</journal>
+            <pages>116653</pages>
+            <title>Experimental investigation on laminar burning velocities of ammonia/hydrogen/air mixtures at elevated temperatures</title>
+            <type>Journal Article</type>
+            <volume>263</volume>
+            <year>2020</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: NQ</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"  ><value>373</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="Pa" ><value>100000</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="uncertainty"                   id="x2"   label="d_phi"  sourcetype="reported"    units="unitless"       reference="equivalence ratio"         kind="absolute"  bound="plusminus" />
+        <property name="composition"                   id="x3"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x4"   label="x_H2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"                   id="x5"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x6"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x7"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="uncertainty"                   id="x8"   label="d_Sl"   sourcetype="calculated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x9"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.80</x1><x2>0.03</x2><x3>0.105529</x3><x4>0.105529</x4><x5>0.164889</x5><x6>0.624053</x6><x7>49.2</x7><x8>5.0</x8><x9>3.595</x9></dataPoint>
+        <dataPoint><x1>0.90</x1><x2>0.04</x2><x3>0.115668</x3><x4>0.115668</x4><x5>0.160651</x5><x6>0.608013</x6><x7>53.5</x7><x8>4.8</x8><x9>3.545</x9></dataPoint>
+        <dataPoint><x1>1.00</x1><x2>0.04</x2><x3>0.125300</x3><x4>0.125300</x4><x5>0.156625</x5><x6>0.592776</x6><x7>61.3</x7><x8>4.1</x8><x9>3.303</x9></dataPoint>
+        <dataPoint><x1>1.10</x1><x2>0.04</x2><x3>0.134460</x3><x4>0.134460</x4><x5>0.152796</x5><x6>0.578284</x6><x7>67.6</x7><x8>4.3</x8><x9>3.363</x9></dataPoint>
+        <dataPoint><x1>1.20</x1><x2>0.05</x2><x3>0.143183</x3><x4>0.143183</x4><x5>0.149149</x5><x6>0.564484</x6><x7>65.8</x7><x8>4.5</x8><x9>3.451</x9></dataPoint>
+        <dataPoint><x1>1.30</x1><x2>0.05</x2><x3>0.151500</x3><x4>0.151500</x4><x5>0.145673</x5><x6>0.551327</x6><x7>57.5</x7><x8>4.3</x8><x9>3.356</x9></dataPoint>
+        <dataPoint><x1>1.40</x1><x2>0.06</x2><x3>0.159438</x3><x4>0.159438</x4><x5>0.142355</x5><x6>0.538770</x6><x7>50.4</x7><x8>4.9</x8><x9>3.569</x9></dataPoint>
+    </dataGroup>
+    <comment>The experimental uncertainties were calculated based on the uncertainty factors reported in the Supp. Mat. based on eq. (6) in the main article, and the resulting relative overall uncertainties were converted to absolute uncertainties. These uncertainties refer to 95% confidence intervals.</comment>
+    <comment>The reported composition of air was 79.1% N2 and 20.9% O2.</comment>
+</experiment>

@@ -1,0 +1,75 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100082</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>K.N. Osipova, O.P. Korobeinichev, A.G. Shmakov, International Journal of Hydrogen Energy 46 (2021), 39942–39954</description>
+        <referenceDOI>10.1016/j.ijhydene.2021.09.188</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 1., symbols</figure>
+        <details>
+            <author>Osipova, Ksenia N. and Korobeinichev, Oleg P. and Shmakov, Andrey G.</author>
+            <journal>International Journal of Hydrogen Energy</journal>
+            <number>80</number>
+            <pages>39942–39954</pages>
+            <title>Chemical structure and laminar burning velocity of atmospheric pressure premixed ammonia/hydrogen flames</title>
+            <type>Journal Article</type>
+            <volume>46</volume>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame cone method</kind>
+        <mode>modified Bunsen burner</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>368</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_H2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"                   id="x4"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x5"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x6"   label="Sl"     sourcetype="reported"    units="cm/s"          />
+        <property name="uncertainty"                   id="x7"   label="d_Sl"   sourcetype="calculated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x8"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.7</x1><x2>0.166102</x2><x3>0.071186</x3><x4>0.228814</x4><x5>0.533898</x5><x6>46.9</x6><x7>7.0</x7><x8>3.542</x8></dataPoint>
+        <dataPoint><x1>0.8</x1><x2>0.183607</x2><x3>0.078689</x3><x4>0.221311</x4><x5>0.516393</x5><x6>53.2</x6><x7>8.0</x7><x8>4.018</x8></dataPoint>
+        <dataPoint><x1>0.9</x1><x2>0.200000</x2><x3>0.085714</x3><x4>0.214286</x4><x5>0.500000</x5><x6>56.9</x6><x7>8.5</x7><x8>4.297</x8></dataPoint>
+        <dataPoint><x1>1.0</x1><x2>0.215385</x2><x3>0.092308</x3><x4>0.207692</x4><x5>0.484615</x5><x6>59.7</x6><x7>9.0</x7><x8>4.509</x8></dataPoint>
+        <dataPoint><x1>1.1</x1><x2>0.229851</x2><x3>0.098507</x3><x4>0.201493</x4><x5>0.470149</x5><x6>56.5</x6><x7>8.5</x7><x8>4.267</x8></dataPoint>
+        <dataPoint><x1>1.2</x1><x2>0.243478</x2><x3>0.104348</x3><x4>0.195652</x4><x5>0.456522</x5><x6>51.1</x6><x7>7.7</x7><x8>3.859</x8></dataPoint>
+        <dataPoint><x1>1.3</x1><x2>0.256338</x2><x3>0.109859</x3><x4>0.190141</x4><x5>0.443662</x5><x6>44.7</x6><x7>6.7</x7><x8>3.376</x8></dataPoint>
+        <dataPoint><x1>1.4</x1><x2>0.268493</x2><x3>0.115068</x3><x4>0.184932</x4><x5>0.431507</x5><x6>39.1</x6><x7>5.9</x7><x8>2.953</x8></dataPoint>
+        <dataPoint><x1>1.5</x1><x2>0.280000</x2><x3>0.120000</x3><x4>0.180000</x4><x5>0.420000</x5><x6>34.1</x6><x7>5.1</x7><x8>2.575</x8></dataPoint>
+    </dataGroup>
+    <comment>In the paper, the temperature of the burner surface is reported to be 368 K. Through personal communication with the corresponding author, it was clarified that the unburnt gas temperature is also 368 K.</comment>
+    <comment>The numerical phi-Sl data were obtained through personal communication with the corresponding author.</comment>
+    <comment>The absolute uncertainties were calculated from the average reported relative confidence intervals: 10-15% (I considered the upper limit, 15%).</comment>
+    <comment>phi = (0.5 * x_H2 + 0.75 * x_NH3) / x_O2 was assumed.</comment>
+    <comment>According to the authors, stretch effects are insignificant relative to the measurement uncertainties. Also, the burner rim was very thin, therefore, heat loss towards the burner rim was minimized.</comment>
+</experiment>

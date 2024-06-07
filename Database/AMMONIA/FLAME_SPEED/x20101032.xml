@@ -1,0 +1,77 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20101032</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>S. Wang, Z. Wang, A.M. Elbaz, X. Han, Y. He, M. Costa, A.A. Konnov, W.L. Roberts, Combustion and Flame 221 (2020), 270-287</description>
+        <referenceDOI>10.1016/j.combustflame.2020.08.004</referenceDOI>
+        <location>Main Article (figure); Supp. Mat. Table S2 (data source)</location>
+        <figure>Fig. 2., NH3/CO/air, P = 3 atm</figure>
+        <details>
+            <author>Shixing Wang and Zhihua Wang and Ayman M. Elbaz and Xinlu Han and Yong He and Mário Costa and Alexander A. Konnov and William L. Roberts</author>
+            <journal>Combustion and Flame</journal>
+            <pages>270-287</pages>
+            <title>Experimental study and kinetic analysis of the laminar burning velocity of NH3/syngas/air, NH3/CO/air and NH3/H2/air premixed flames at elevated pressures</title>
+            <volume>221</volume>
+            <year>2020</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>heat flux burner</kind>
+        <mode>premixed</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"           label="p"   sourcetype="reported"  units="atm"      ><value>3</value></property>
+        <property name="temperature"        label="T"   sourcetype="reported"  units="K"        ><value>298</value></property>
+        <property name="equivalence ratio"  label="fi"  sourcetype="reported"  units="unitless" ><value>1.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"                   id="x1"   label="X_NH3"  sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"          chemName="ammonia"         />
+        </property>
+        <property name="composition"                   id="x2"   label="X_CO"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"                   id="x3"   label="X_O2"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"                   id="x4"   label="X_N2"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="reported"   units="cm/s"          />
+        <property name="uncertainty"                   id="x6"   label="d_Sl"   sourcetype="reported"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x7"   sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.218750</x1><x2>0.000000</x2><x3>0.164063</x3><x4>0.617188</x4><x5>5.41</x5><x6>0.4790</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.210554</x1><x2>0.011082</x2><x3>0.163456</x3><x4>0.614908</x4><x5>6.05</x5><x6>0.4908</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.202139</x1><x2>0.022460</x2><x3>0.162834</x3><x4>0.612567</x4><x5>6.79</x5><x6>0.5021</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.193496</x1><x2>0.034146</x2><x3>0.162195</x3><x4>0.610163</x4><x5>7.39</x5><x6>0.5074</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.184615</x1><x2>0.046154</x2><x3>0.161538</x3><x4>0.607692</x4><x5>7.98</x5><x6>0.5005</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.175487</x1><x2>0.058496</x2><x3>0.160864</x3><x4>0.605153</x4><x5>8.90</x5><x6>0.5590</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.166102</x1><x2>0.071186</x2><x3>0.160169</x3><x4>0.602542</x4><x5>9.93</x5><x6>0.6003</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.156447</x1><x2>0.084241</x2><x3>0.159456</x3><x4>0.599857</x4><x5>11.09</x5><x6>0.6012</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.146512</x1><x2>0.097674</x2><x3>0.158721</x3><x4>0.597093</x4><x5>12.66</x5><x6>0.7122</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.136283</x1><x2>0.111504</x2><x3>0.157965</x3><x4>0.594248</x4><x5>14.50</x5><x6>0.6714</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.125749</x1><x2>0.125749</x2><x3>0.157186</x3><x4>0.591317</x4><x5>16.66</x5><x6>0.7533</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.114894</x1><x2>0.140426</x2><x3>0.156383</x3><x4>0.588298</x4><x5>19.03</x5><x6>0.7762</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.103704</x1><x2>0.155556</x2><x3>0.155556</x3><x4>0.585185</x4><x5>21.99</x5><x6>0.8473</x6><x7>0.5</x7></dataPoint>
+        <dataPoint><x1>0.092163</x1><x2>0.171160</x2><x3>0.154702</x3><x4>0.581975</x4><x5>24.84</x5><x6>0.9428</x6><x7>0.5161</x7></dataPoint>
+        <dataPoint><x1>0.080255</x1><x2>0.187261</x2><x3>0.153822</x3><x4>0.578662</x4><x5>28.04</x5><x6>1.1040</x6><x7>0.5907</x7></dataPoint>
+        <dataPoint><x1>0.067961</x1><x2>0.203883</x2><x3>0.152913</x3><x4>0.575243</x4><x5>30.72</x5><x6>1.4545</x6><x7>0.757</x7></dataPoint>
+        <dataPoint><x1>0.055263</x1><x2>0.221053</x2><x3>0.151974</x3><x4>0.571711</x4><x5>33.43</x5><x6>1.5110</x6><x7>0.7842</x7></dataPoint>
+        <dataPoint><x1>0.042140</x1><x2>0.238796</x2><x3>0.151003</x3><x4>0.568060</x4><x5>35.82</x5><x6>1.7202</x6><x7>0.8854</x7></dataPoint>
+        <dataPoint><x1>0.028571</x1><x2>0.257143</x2><x3>0.150000</x3><x4>0.564286</x4><x5>35.02</x5><x6>1.4034</x6><x7>0.7325</x7></dataPoint>
+        <dataPoint><x1>0.014533</x1><x2>0.276125</x2><x3>0.148962</x3><x4>0.560381</x4><x5>32.02</x5><x6>1.3298</x6><x7>0.6973</x7></dataPoint>
+        <dataPoint><x1>0.008780</x1><x2>0.283902</x2><x3>0.148537</x3><x4>0.558780</x4><x5>28.46</x5><x6>1.3224</x6><x7>0.6938</x7></dataPoint>
+    </dataGroup>
+</experiment>

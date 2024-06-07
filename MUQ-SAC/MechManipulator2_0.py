@@ -1,6 +1,7 @@
 import os
 import numpy as np
 from copy import deepcopy
+from MechanismParser import Parser
 ###Tasks
 # Take a copy of the mechanism in yaml format and manipulate it
 # After manipulating, convert it back to ck format
@@ -9,8 +10,8 @@ from copy import deepcopy
 
 class Manipulator:
 	def __init__(self,copy_of_mech,unsrt_object,perturbation):
-		
 		self.mechanism = deepcopy(copy_of_mech)
+		#self.mechanism = Parser(mechanism_location).mech
 		self.unsrt = unsrt_object
 		self.perturbation = perturbation
 		#print(perturbation)
@@ -27,7 +28,8 @@ class Manipulator:
 				count+=1
 			perturb[rxn] = np.asarray(temp)		
 		return perturb
-	
+	def del_mech(self):
+		del self.mechanism
 	
 	def getRxnType(self):
 		rxn_type = {}

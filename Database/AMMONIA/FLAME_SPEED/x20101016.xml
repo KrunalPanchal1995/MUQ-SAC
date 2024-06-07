@@ -1,0 +1,69 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20101016</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>B. Mei, S. Ma, Y. Zhang, X. Zhang, W. Li, Y. Li, Combustion and Flame 220 (2020), 368-377</description>
+        <referenceDOI>10.1016/j.combustflame.2020.07.011</referenceDOI>
+        <location>Main Article (figure); Supp. Mat. (data source)</location>
+        <figure>Fig. 4., beta = 10%, P = 1 atm</figure>
+        <details>
+            <author>Bowen Mei and Siyuan Ma and Yan Zhang and Xiaoyuan Zhang and Wei Li and Yuyang Li</author>
+            <journal>Combustion and Flame</journal>
+            <pages>368-377</pages>
+            <title>Exploration on laminar flame propagation of ammonia and syngas mixtures up to 10 atm</title>
+            <volume>220</volume>
+            <year>2020</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>premixed</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>1</value></property>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"   units="unitless"      />
+        <property name="uncertainty"                   id="x2"   label="d_phi"  sourcetype="reported"   units="unitless"       reference="equivalence ratio"         kind="absolute"  bound="plusminus" />
+        <property name="composition"                   id="x3"   label="X_NH3"  sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"          chemName="ammonia"         />
+        </property>
+        <property name="composition"                   id="x4"   label="X_H2"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"                   id="x5"   label="X_CO"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"                   id="x6"   label="X_O2"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"                   id="x7"   label="X_N2"   sourcetype="reported"   units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="laminar burning velocity"      id="x8"   label="Sl"     sourcetype="reported"   units="cm/s"          />
+        <property name="uncertainty"                   id="x9"   label="d_Sl"   sourcetype="reported"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x10"  sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.7</x1><x2>0.01</x2><x3>0.095207</x3><x4>0.009521</x4><x5>0.085687</x5><x6>0.170013</x6><x7>0.639573</x7><x8>14.84</x8><x9>0.88</x9><x10>0.4866</x10></dataPoint>
+        <dataPoint><x1>0.8</x1><x2>0.01</x2><x3>0.105927</x3><x4>0.010593</x4><x5>0.095334</x5><x6>0.165511</x6><x7>0.622636</x7><x8>18.77</x8><x9>0.92</x9><x10>0.5319</x10></dataPoint>
+        <dataPoint><x1>0.9</x1><x2>0.02</x2><x3>0.116093</x3><x4>0.011609</x4><x5>0.104484</x5><x6>0.161241</x6><x7>0.606572</x7><x8>23.06</x8><x9>0.89</x9><x10>0.552</x10></dataPoint>
+        <dataPoint><x1>1.0</x1><x2>0.02</x2><x3>0.125749</x3><x4>0.012575</x4><x5>0.113174</x5><x6>0.157186</x6><x7>0.591317</x7><x8>25.40</x8><x9>0.92</x9><x10>0.5871</x10></dataPoint>
+        <dataPoint><x1>1.1</x1><x2>0.02</x2><x3>0.134930</x3><x4>0.013493</x4><x5>0.121437</x5><x6>0.153329</x6><x7>0.576811</x7><x8>25.98</x8><x9>0.95</x9><x10>0.6007</x10></dataPoint>
+        <dataPoint><x1>1.2</x1><x2>0.02</x2><x3>0.143672</x3><x4>0.014367</x4><x5>0.129304</x5><x6>0.149658</x6><x7>0.562999</x7><x8>25.47</x8><x9>0.93</x9><x10>0.5904</x10></dataPoint>
+        <dataPoint><x1>1.3</x1><x2>0.02</x2><x3>0.152004</x3><x4>0.015200</x4><x5>0.136804</x5><x6>0.146158</x6><x7>0.549833</x7><x8>22.94</x8><x9>1.01</x9><x10>0.6031</x10></dataPoint>
+        <dataPoint><x1>1.4</x1><x2>0.02</x2><x3>0.159956</x3><x4>0.015996</x4><x5>0.143961</x5><x6>0.142818</x6><x7>0.537269</x7><x8>19.67</x8><x9>0.87</x9><x10>0.5171</x10></dataPoint>
+        <dataPoint><x1>1.5</x1><x2>0.02</x2><x3>0.167553</x3><x4>0.016755</x4><x5>0.150798</x5><x6>0.139628</x6><x7>0.525266</x7><x8>14.82</x8><x9>0.85</x9><x10>0.4742</x10></dataPoint>
+    </dataGroup>
+</experiment>

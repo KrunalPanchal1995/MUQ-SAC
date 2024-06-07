@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10199016</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>O. Mathieu, E.L. Petersen, Combustion and Flame 162 (2015), 554–570</description>
+        <referenceDOI>10.1016/j.combustflame.2014.08.022</referenceDOI>
+        <location>Main article</location>
+        <table>Tables 1 and 2: 0.01143 NH3/0.00857 O2/0.98 Ar (phi = 1.0), p5 ~ 1.4 atm</table>
+        <figure>Fig. 5. (a), black crosses</figure>
+        <details>
+            <author>Mathieu, Olivier and Petersen, Eric L.</author>
+            <journal>Combustion and Flame</journal>
+            <number>3</number>
+            <pages>554–570</pages>
+            <title>Experimental and modeling study on the high-temperature oxidation of Ammonia and related NOx chemistry</title>
+            <type>Journal Article</type>
+            <volume>162</volume>
+            <year>2015</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia" /><amount units="mole fraction" >0.01143</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"  /><amount units="mole fraction" >0.00857</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"   /><amount units="mole fraction" >0.98</amount></component>
+        </property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless"      ><value>1.0</value></property>
+        <property name="uncertainty"                   sourcetype="reported"   units="unitless"       reference="ignition delay"  kind="relative"  bound="plusminus" ><value>0.1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="combined from scatter and reported uncertainty" ><value>0.060251</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="reported"  units="us"  />
+        <property name="pressure"        id="x3"   label="p"    sourcetype="reported"  units="atm" />
+
+        <dataPoint><x1>1827</x1><x2>1662</x2><x3>1.52</x3></dataPoint>
+        <dataPoint><x1>1895</x1><x2>1334</x2><x3>1.43</x3></dataPoint>
+        <dataPoint><x1>1927</x1><x2>1078</x2><x3>1.47</x3></dataPoint>
+        <dataPoint><x1>2029</x1><x2>671</x2><x3>1.42</x3></dataPoint>
+        <dataPoint><x1>2076</x1><x2>516</x2><x3>1.41</x3></dataPoint>
+        <dataPoint><x1>2179</x1><x2>330</x2><x3>1.38</x3></dataPoint>
+        <dataPoint><x1>2253</x1><x2>224</x2><x3>1.33</x3></dataPoint>
+        <dataPoint><x1>2290</x1><x2>201</x2><x3>1.25</x3></dataPoint>
+        <dataPoint><x1>2454</x1><x2>90</x2><x3>1.28</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

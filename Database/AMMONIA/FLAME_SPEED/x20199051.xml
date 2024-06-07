@@ -1,0 +1,67 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199051</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>H. Takeishi, J. Hayashi, S. Kono, W. Arita, K. Iino, F. Akamatsu, Transactions of the JSME (in Japanese) 81 (2015), 414­–423</description>
+        <referenceDOI>10.1299/transjsme.14-00423</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 4., omega = 0.30 (empty squares)</figure>
+        <details>
+            <author>Takeishi, Hiroyuki and Hayashi, Jun and Kono, Shota and Arita, Wataru and Iino, Kimio and Akamatsu, Fumiteru</author>
+            <journal>Transactions of the JSME (in Japanese)</journal>
+            <number>824</number>
+            <pages>414­–423</pages>
+            <title>Characteristics of ammonia/N2/O2 laminar flame in oxygen-enriched air condition</title>
+            <type>Journal Article</type>
+            <volume>81</volume>
+            <year>2015</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame cone method</kind>
+        <mode>slot burner</mode>
+        <mode>premixed</mode>
+        <mode>unstretched</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="digitized"   units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x4"   label="x_N2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"  chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="evaluated standard deviation"  id="x6"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.80</x1><x2>0.242424</x2><x3>0.227273</x3><x4>0.530303</x4><x5>22.8</x5><x6>1.431</x6></dataPoint>
+        <dataPoint><x1>0.90</x1><x2>0.264706</x2><x3>0.220588</x3><x4>0.514706</x4><x5>26.1</x5><x6>1.639</x6></dataPoint>
+        <dataPoint><x1>0.95</x1><x2>0.275362</x2><x3>0.217391</x3><x4>0.507246</x4><x5>26.6</x5><x6>1.670</x6></dataPoint>
+        <dataPoint><x1>1.00</x1><x2>0.285714</x2><x3>0.214286</x3><x4>0.500000</x4><x5>26.9</x5><x6>1.689</x6></dataPoint>
+        <dataPoint><x1>1.05</x1><x2>0.295775</x2><x3>0.211268</x3><x4>0.492958</x4><x5>27.3</x5><x6>1.714</x6></dataPoint>
+        <dataPoint><x1>1.10</x1><x2>0.305556</x2><x3>0.208333</x3><x4>0.486111</x4><x5>25.8</x5><x6>1.620</x6></dataPoint>
+        <dataPoint><x1>1.20</x1><x2>0.324324</x2><x3>0.202703</x3><x4>0.472973</x4><x5>25.1</x5><x6>1.576</x6></dataPoint>
+        <dataPoint><x1>1.30</x1><x2>0.342105</x2><x3>0.197368</x3><x4>0.460526</x4><x5>20.8</x5><x6>1.306</x6></dataPoint>
+        <dataPoint><x1>1.40</x1><x2>0.358974</x2><x3>0.192308</x3><x4>0.448718</x4><x5>16.9</x5><x6>1.061</x6></dataPoint>
+    </dataGroup>
+    <comment>The temperature and pressure are not reported in the paper, they are taken from Figure S2 (Supp. Mat. - mmc1) of 10.1016/j.combustflame.2019.08.033 (Mei et al. 2019).</comment>
+    <comment>According to the authors, the form of the flame and the location of the measurement (middle part of the flame) ensure that buoyancy effects, heat loss to the burner, and stretch effects are negligible.</comment>
+</experiment>

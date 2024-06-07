@@ -1,0 +1,3598 @@
+elements
+c h n o ar he
+!to modify
+end
+species
+h                h2               o                o2               oh
+h2o              n2               ho2              h2o2             ar
+co               co2              ch2o             hco              ho2cho
+o2cho            hocho            ocho             hoch2o2h         hoch2o2
+och2o2h          hoch2o           ch3oh            ch2oh            ch3o
+ch3o2h           ch3o2            ch4              ch3              ch2
+ch2(s)           c                ch               c2h6             c2h5
+c2h4             c2h3             c2h2             c2h              ch3cho
+ch3co            ch2cho           ch2co            hcco             hccoh
+ch3co3h          ch3co3           ch3co2           c2h5oh           c2h5o
+pc2h4oh          sc2h4oh          o2c2h4oh         c2h5o2h          c2h5o2
+c2h4o2h          c2h4o1-2         c2h3o1-2         ch3coch3         ch3coch2
+ch3coch2o2       ch3coch2o2h      ch3coch2o        c2h3cho          c2h3co
+c2h5cho          c2h5co           ch3och3          ch3och2          ch3och2o2
+ch2och2o2h       ch3och2o2h       ch3och2o         o2ch2och2o2h     ho2ch2ocho
+och2ocho         hoch2oco         ch3ocho          ch3oco           ch2ocho
+he               c3h8             ic3h7            nc3h7            c3h6
+c3h5-a           c3h5-s           c3h5-t           c3h4-p           c3h4-a
+c3h3             c3h2             c3h5o            c3h6ooh1-2       c3h6ooh1-3
+c3h6ooh2-1       c3h6ooh1-2o2     c3h6ooh1-3o2     c3h6ooh2-1o2     c3h6ooh2-2
+nc3h7o2h         ic3h7o2h         nc3h7o2          ic3h7o2          nc3h7o
+ic3h7o           c3h6o1-2         c3h6o1-3         c3ket12          c3ket13
+c3ket21          c3h51-2,3ooh     c3h52-1,3ooh     c3h6oh           hoc3h6o2
+ch3chco          ac3h5ooh         c2h3ooh          c4h10            c4h8-1
+c4h8-2           pc4h9            sc4h9            c4h71-1          c4h71-2
+c4h71-3          c4h71-4          c4h72-2          c4h6             pc4h9o2h
+sc4h9o2h         pc4h9o2          sc4h9o2          pc4h9o           sc4h9o
+c4h7o            c4h8o1-2         c4h8o1-3         c4h8o1-4         c4h8o2-3
+pc4h8oh          sc4h8oh          c4h8oh-1o2       c4h8oh-2o2       c4h8ooh1-1
+c4h8ooh1-2       c4h8ooh1-3       c4h8ooh1-4       c4h8ooh2-1       c4h8ooh2-2
+c4h8ooh2-3       c4h8ooh2-4       c4h8ooh1-2o2     c4h8ooh1-3o2     c4h8ooh1-4o2
+c4h8ooh2-1o2     c4h8ooh2-3o2     c4h8ooh2-4o2     nc4ket12         nc4ket13
+nc4ket14         nc4ket21         nc4ket23         nc4ket24         c2h5coch3
+c2h5coch2        ch2ch2coch3      ch3chcoch3       c2h3coch3        ch3choococh3
+ch2choohcoch3    nc3h7cho         nc3h7co          c3h6cho-1        c3h6cho-2
+c3h6cho-3        c2h5chco         sc3h5cho         sc3h5co          ch2ch2cho
+ic4h10           ic4h9            tc4h9            ic4h8            ic4h7
+tc4h9o2          ic4h9o2          tc4h8o2h-i       ic4h8o2h-i       ic4h8o2h-t
+ic4h8o           cc4h8o           ic4h9o           tc4h9o           ic4h9o2h
+tc4h9o2h         ic4h7o           ic4h8oh          io2c4h8oh        ic3h7cho
+tc3h6cho         ic3h7co          ic3h6cho         tc4h8ooh-io2     ic4h8ooh-io2
+ic4h8ooh-to2     ic4ketii         ic4ketit         ic4h7oh          ic4h6oh
+ic3h5cho         ic3h5co          tc3h6ocho        ic3h6co          ic4h7ooh
+tc3h6ohcho       tc3h6oh          ic3h5oh          tc3h6o2cho       tc3h6o2hco
+ic3h5o2hcho      ch2cch2oh        tc4h8cho         o2c4h8cho        o2hc4h8co
+c3h5oh           tic4h7q2-i       iic4h7q2-t       iic4h7q2-i       ch2o2h
+nc4h9oh          c4h8oh-1         c4h8oh-2         c4h8oh-3         c4h8oh-4
+c4h6oh1-43       c4h7oh1-1        c4h6oh1-13       c4h5oh-13        c4h7oh2-1
+c4h7oh1-4        c2h3oh           c4h5        
+!
+!added in butoh2m
+butoh2m          c3h6oh-2         ic4h8oh-3        but2m-1          but2m1d
+ac5h9-c          ac5h9o-c         butoh2m-1        butoh2m-2        butoh2m-3
+butoh2m-4        butoh2m-5        buto2m           butal2m          butal2m-1
+butal2m-2        butal2m-3        butal2m-4        butal2m-5        c3h5cho-2
+c2h4cho-2        butoh2m1d        ch3chchoh        butoh2m1d3       butoh2m4d3
+c4h4             nc4h3            ic4h3            h2cc             c4h2
+h2c4o            c5h7-2           ch3cchoh         c4h4oh13-2       c4h612
+ic4h5            butoh2m13d       butoh2m2d        butoh2m3d        c4h712ch2oh
+!                                              
+end
+reactions
+!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+!>>unimolecular decomposition
+butoh2m(+m)<=>sc4h9+ch2oh(+m) 3.250e+025 -2.413 8.7976e+04!sarathy cnf-2012 i-butanol
+low /1.2327e+073 -15.724 9.2616e+04 /
+troe /1.3423e-01 7.7539e+02 4.0069e+07  4.4281e+03 /
+!
+butoh2m<=>c2h5+c3h6oh-2  5.854e+25 -2.642 8.796e+04!curran iso-pentane ic5h12<=>ic3h7+c2h5
+!
+butoh2m<=>ch3+ic4h8oh-3  1.457e+22 -1.798 8.935e+04!curran iso-pentane ic5h12<=>ic4h9+ch3
+!
+butoh2m(+m)<=>ch3+c4h8oh-2(+m) 2.000e+027 -3.110 9.2179e+04!sarathy cnf-2012 i-butanol a/2
+low /2.02315e+066 -14.122 9.0777e+04 /
+troe /1.4416e-01 8.3591e+02 4.8482e+06 4.5473e+03 /
+!
+butoh2m(+m)<=>but2m-1+oh(+m) 1.400e+021 -1.481 9.4894e+04!sarathy cnf-2012 i-butanol
+low /2.0872e+055 -11.191 9.0431e+04 /
+troe /5.4471e-04 1.1254e+03 1.6818e+10 3.6352e+03 /
+!
+butoh2m(+m)<=>but2m1d+h2o(+m)  4.5600e+013 0.000 6.4970e+04!sarathy cnf-2012 i-butanol
+low /6.0967e+101 -23.781 1.0672e+05 /
+troe /2.0182e-01 1.2864e+03 1.2824e+03 6.7921e+04 /
+!
+h+butoh2m-1<=>butoh2m   1.00e+14  0.00  0.00
+h+butoh2m-2<=>butoh2m   1.00e+14  0.00  0.00
+h+butoh2m-3<=>butoh2m   1.00e+14  0.00  0.00
+h+butoh2m-4<=>butoh2m   1.00e+14  0.00  0.00
+h+butoh2m-5<=>butoh2m   1.00e+14  0.00  0.00
+h+buto2m<=>butoh2m      1.00e+14  0.00  0.00
+!>>class 2
+!h-abstraction
+butoh2m+h<=>buto2m+h2     2.410e+06 2.000 6.526e+03!grana
+butoh2m+h<=>butoh2m-1+h2  7.220e+06 2.000 3.951e+03!sec
+butoh2m+h<=>butoh2m-2+h2  2.407E+06 2.000 2.663e+03!ter 
+butoh2m+h<=>butoh2m-3+h2  4.810e+06 2.000 3.951e+03!sec
+butoh2m+h<=>butoh2m-4+h2  7.220e+06 2.000 6.526e+03!primary
+butoh2m+h<=>butoh2m-5+h2  7.220e+06 2.000 6.526e+03!primary
+
+butoh2m+o<=>buto2m+oh     1.460e-03 4.730 1.727e+03!
+butoh2m+o<=>butoh2m-1+oh  7.250e+04 2.470 8.760e+02!
+butoh2m+o<=>butoh2m-2+oh  2.760e+05 2.450 2.830e+03
+butoh2m+o<=>butoh2m-3+oh  5.520e+05 2.450 2.830e+03
+butoh2m+o<=>butoh2m-4+oh  9.810e+05 2.430 4.750e+03
+butoh2m+o<=>butoh2m-5+oh  9.810e+05 2.430 4.750e+03
+
+butoh2m+oh<=>buto2m+h2o     5.880e+02 2.820 -5.850e+02!
+butoh2m+oh<=>butoh2m-1+h2o  4.560e+03 2.810 -3.680e+03!*
+butoh2m+oh<=>butoh2m-2+h2o  0.770e+00 3.700 -4.940e+03!
+butoh2m+oh<=>butoh2m-3+h2o  5.090e+01 3.350 -4351
+butoh2m+oh<=>butoh2m-4+h2o  2.150e+04 2.770 185
+butoh2m+oh<=>butoh2m-5+h2o  2.150e+04 2.770 185
+!x=ho2
+butoh2m+ho2<=>buto2m+h2o2     6.470E-07 5.300 1.053e+04
+butoh2m+ho2<=>butoh2m-1+h2o2  3.500E-05 5.260 8.668E+03
+butoh2m+ho2<=>butoh2m-2+h2o2  3.760E-03 4.520 1.171e+04
+butoh2m+ho2<=>butoh2m-3+h2o2  2.760E-04 4.760 1.185e+04
+butoh2m+ho2<=>butoh2m-4+h2o2  8.800E-02 4.310 1.727e+04
+butoh2m+ho2<=>butoh2m-5+h2o2  8.800E-02 4.310 1.727e+04
+
+butoh2m+ch3<=>buto2m+ch4     1.020e+00 3.570 8.221e+03
+butoh2m+ch3<=>butoh2m-1+ch4  1.993e+01 3.370 7.634e+03
+butoh2m+ch3<=>butoh2m-2+ch4  7.550e-01 3.460 5.481e+03
+butoh2m+ch3<=>butoh2m-3+ch4  1.510e+00 3.460 5.481e+03
+butoh2m+ch3<=>butoh2m-4+ch4  4.530e-01 3.650 7.154e+03
+butoh2m+ch3<=>butoh2m-5+ch4  4.530e-01 3.650 7.154e+03
+
+butoh2m+hco<=>buto2m+ch2o     3.400e+04 2.500 1.350e+04
+butoh2m+hco<=>butoh2m-1+ch2o  1.000e+07 1.900 1.700e+04
+butoh2m+hco<=>butoh2m-2+ch2o  5.450e+06 1.900 1.701e+04
+butoh2m+hco<=>butoh2m-3+ch2o  1.090e+07 1.900 1.701e+04
+butoh2m+hco<=>butoh2m-4+ch2o  1.020e+05 2.500 1.844e+04
+butoh2m+hco<=>butoh2m-5+ch2o  1.020e+05 2.500 1.844e+04
+
+butoh2m+ch2oh<=>buto2m+ch3oh     1.200e+02 2.760 1.080e+04
+butoh2m+ch2oh<=>butoh2m-1+ch3oh  6.000e+01 2.950 1.200e+04
+butoh2m+ch2oh<=>butoh2m-2+ch3oh  3.010e+01 2.950 1.198e+04
+butoh2m+ch2oh<=>butoh2m-3+ch3oh  6.020e+01 2.950 1.198e+04
+butoh2m+ch2oh<=>butoh2m-4+ch3oh  1.010e+02 2.950 1.397e+04
+butoh2m+ch2oh<=>butoh2m-5+ch3oh  1.010e+02 2.950 1.397e+04
+
+butoh2m+ch3o<=>buto2m+ch3oh     2.300e+10 0.000 2.900e+03
+butoh2m+ch3o<=>butoh2m-1+ch3oh  7.500e+10 0.000 4.500e+03
+butoh2m+ch3o<=>butoh2m-2+ch3oh  7.250e+10 0.000 4.571e+03
+butoh2m+ch3o<=>butoh2m-3+ch3oh  1.450e+11 0.000 4.571e+03
+butoh2m+ch3o<=>butoh2m-4+ch3oh  2.170e+11 0.000 6.458e+03
+butoh2m+ch3o<=>butoh2m-5+ch3oh  2.170e+11 0.000 6.458e+03
+
+butoh2m+ch3o2<=>buto2m+ch3o2h     1.500e+12 0.000 1.500e+04
+butoh2m+ch3o2<=>butoh2m-1+ch3o2h  1.500e+12 0.000 1.750e+04
+butoh2m+ch3o2<=>butoh2m-2+ch3o2h  4.820e+03 2.600 1.391e+04
+butoh2m+ch3o2<=>butoh2m-3+ch3o2h  9.640e+03 2.600 1.391e+04
+butoh2m+ch3o2<=>butoh2m-4+ch3o2h  2.380e+04 2.550 1.649e+04
+butoh2m+ch3o2<=>butoh2m-5+ch3o2h  2.380e+04 2.550 1.649e+04
+
+butoh2m+c2h5<=>buto2m+c2h6     1.670e+10 0.00 1.340e+04
+butoh2m+c2h5<=>butoh2m-1+c2h6  2.010e+11 0.00 7.900e+03 
+butoh2m+c2h5<=>butoh2m-2+c2h6  1.010e+11 0.00 7.900e+03 
+butoh2m+c2h5<=>butoh2m-3+c2h6  5.010e+10 0.00 1.040e+04
+butoh2m+c2h5<=>butoh2m-4+c2h6  5.010e+10 0.00 1.340e+04
+butoh2m+c2h5<=>butoh2m-5+c2h6  5.010e+10 0.00 1.340e+04
+
+butoh2m+o2<=>buto2m+ho2     1.000e+13 0.000 5.634e+04
+butoh2m+o2<=>butoh2m-1+ho2  2.000e+13 0.000 4.680e+04
+butoh2m+o2<=>butoh2m-2+ho2  2.000e+13 0.000 4.820e+04
+butoh2m+o2<=>butoh2m-3+ho2  2.000e+13 0.000 4.980e+04
+butoh2m+o2<=>butoh2m-4+ho2  3.000e+13 0.000 5.234e+04
+butoh2m+o2<=>butoh2m-5+ho2  3.000e+13 0.000 5.234e+04
+!
+!class 3
+!beta-scission of fuel radicals
+!
+butal2m+h<=>buto2m  1.000e+12 0.00 5.860e+03!analogy with sarathy's ic3h7cho+h<=>ic4h9o
+sc4h9+ch2o<=>buto2m  5.000e+10 0.00 2.330e+03!analogy with sarathy's ch2o+ic3h7<=>ic4h9o
+!
+butal2m+h<=>butoh2m-1  8.000e+12 0.000 9.500e+03!analogy with sarathy's ic3h7cho+h<=>ic4h8oh-1
+butoh2m1d+h<=>butoh2m-1  6.25e+11 0.51 2.62e+03!analogy with sarathy's ic3h6choh+h<=>ic4h8oh-1
+!ch3+c4h7oh1-1<=>butoh2m-1  0.945e+03 2.67 6.85e+03!a/2 analogy with sarathy's ch3chchoh+ch3<=>ic4h8oh-1
+butoh2m-1<=>ch3+c4h7oh1-1  4.835e+11 0.850 3.080e+04!analogy with curran's ac5h11<=>c4h8-1+ch3
+butoh2m-1<=>c2h5+ch3chchoh  2.907e+13 0.361 2.971e+04!analogy with curran's ac5h11=c3h6+c2h5
+!
+but2m1d+oh<=>butoh2m-2  9.93e+11 0.00 -9.60e+02!analogy with sarathy's ic4h8+oh<=>ic4h8oh-2
+butoh2m1d+h<=>butoh2m-2  2.50e+11 0.51 2.62e+03!analogy with sarathy's ic3h6choh+h<=>ic4h8oh-2
+!butoh2m2d+h<=>butoh2m-2  0.53e+12 0.51 1.23e+03!analogy with sarathy's ic3h5ch2oh+h<=>ic4h8oh-2 a/2
+butoh2m-2=>butoh2m2d+h 6.171e+11 0.487 3.558e+04!analogy with curran's bc5h11<=>bc5h10+h
+butoh2m-2=>c4h712ch2oh+h  1.833e+11 0.732 3.715e+04!a/2 analogy with curran's bc5h11=ac5h10+h
+butoh2m-2<=>ic4h7oh+ch3  5.272e+10 1.192 3.022e+04!analogy with curran's bc5h11=ic4h8+ch3
+!
+butoh2m-3<=>butoh2m2d+h  1.480e+12 0.288 3.378e+04!analogy with curran's cc5h11=bc5h10+h
+butoh2m-3<=>c4h7oh2-1+ch3  2.638e+10 0.935 3.062e+04!a/2 analogy with curran's cc5h11=c4h8-2+ch3
+c4h8-2+ch2oh<=>butoh2m-3  9.45e+02 2.67 6.85e+03!analogy with sarathy's ch2oh+c3h6<=>ic4h8oh-3
+butoh2m-3<=>butoh2m3d+h  6.262e+11 0.557 3.815e+04!analogy with curran's cc5h11=cc5h10+h
+!
+butoh2m-4<=>butoh2m3d+h  3.658e+12 0.218 3.563e+04!analogy with curran's dc5h11=cc5h10+h
+butoh2m-4<=>c2h4+c3h6oh-2  1.237e+14 0.076 2.896e+04!analogy with curran's dc5h11=c2h4+ic3h7
+!
+c4h8-1+ch2oh<=>butoh2m-5  4.725e+02 2.67 6.85e+03!a/2 analogy with sarathy's ch2oh+c3h6<=>ic4h8oh-3
+butoh2m-5<=>c4h712ch2oh+h  0.946e+13 0.194 3.422e+04!a/2 analogy with curran's ac5h11<=>ac5h10+h
+butoh2m-5<=>c2h5+c3h5oh  1.454e+13 0.361 2.971e+04!a/2 analogy with curran's ac5h11<=>c3h6+c2h5
+!
+!class 4
+!isomerization reactions for fuel radicals
+!
+buto2m<=>butoh2m-3  1.08e+10  0.61  27779!estimated by rmg-py group additivity intra_h_migration
+buto2m<=>butoh2m-4  3.10e+12  0.00  9700!mereau pccp-2003
+buto2m<=>butoh2m-5  1.00e+11  0.00  29380!estimated by rmg-py group additivity r4h_sss;o_rad_out;cs_h_out_2h
+butoh2m-1<=>butoh2m-4  8.76e+10  0.51  33594!estimated by rmg-py group additivity intra_h_migration
+butoh2m-4<=>butoh2m-5  3.76e+10  0.66  30948!estimated by rmg-py group additivity intra_h_migration
+!
+!class 5
+!
+!h-abstraction of pentenols
+!analogy with c4h7oh1-1+x<=>c4h6oh1-13+xh
+butoh2m1d+h<=>butoh2m1d3+h2 3.376e+05 2.360 2.070e+02
+butoh2m1d+o<=>butoh2m1d3+oh 9.590e+12 0.000 1.967e+03
+butoh2m1d+oh<=>butoh2m1d3+h2o 2.764e+04 2.640 -1.919e+03
+butoh2m1d+ch3<=>butoh2m1d3+ch4 3.690e+00 3.310 4.002e+03
+butoh2m1d+ho2<=>butoh2m1d3+h2o2 4.820e+03 2.550 1.053e+04
+butoh2m1d+ch3o<=>butoh2m1d3+ch3oh 4.000e+01 2.900 8.609e+03
+butoh2m1d+ch3o2<=>butoh2m1d3+ch3o2h 4.820e+03 2.550 1.053e+04
+!
+!but2m4d3-lumped radical
+!analogy with c4h7oh2-1+x<=>c4h6oh1-32+xh
+butoh2m2d+h<=>butoh2m4d3+h2 1.730e+05 2.500 2.492e+03
+butoh2m2d+o<=>butoh2m4d3+oh 5.240e+11 0.700 5.884e+03
+butoh2m2d+oh<=>butoh2m4d3+h2o 3.120e+06 2.000 -2.980e+02
+butoh2m2d+ch3<=>butoh2m4d3+ch4 3.690e+00 3.310 4.002e+03
+butoh2m2d+ho2<=>butoh2m4d3+h2o2 2.700e+04 2.500 1.234e+04
+butoh2m2d+ch3o2<=>butoh2m4d3+ch3o2h 2.700e+04 2.500 1.234e+04
+!analogy with CC5H10+x<=>CC5H9-B+xh ref: curran's iso-octane
+butoh2m3d+h<=>butoh2m4d3+h2 2.650E+06 2.200 0.000E+00
+butoh2m3d+oh<=>butoh2m4d3+h2o 6.140E+02 3.200 -3.500E+03
+butoh2m3d+ch3<=>butoh2m4d3+ch4 4.613E+00 3.100 2.330E+03
+butoh2m3d+ho2<=>butoh2m4d3+h2o2 1.810E+03 2.500 7.154E+03
+butoh2m3d+ch3o<=>butoh2m4d3+ch3oh 1.000E+01 2.850 5.231E+03
+butoh2m3d+ch3o2<=>butoh2m4d3+ch3o2h 1.810E+03 2.500 7.154E+03
+!analogy with AC5H10+x<=>AC5H9-C+xh ref: curran's iso-octane
+c4h712ch2oh+h<=>butoh2m4d3+h2 3.376E+05 2.360 2.070E+02
+c4h712ch2oh+oh<=>butoh2m4d3+h2o 2.764E+04 2.640 -1.919E+03
+c4h712ch2oh+ch3<=>butoh2m4d3+ch4 3.690E+00 3.310 4.002E+03
+c4h712ch2oh+ho2<=>butoh2m4d3+h2o2 4.820E+03 2.550 1.053E+04
+c4h712ch2oh+ch3o<=>butoh2m4d3+ch3oh 4.000E+01 2.900 8.609E+03
+c4h712ch2oh+ch3o2<=>butoh2m4d3+ch3o2h 4.820E+03 2.550 1.053E+04
+!
+!class 6
+!Enol - Keto tautomerizations
+butoh2m1d<=>butal2m  8.59e+11 0.318 5.59e+04
+butoh2m1d+ho2<=>butal2m+ho2  1.490e+05  1.67   6.810e+03
+butoh2m1d+hocho<=>butal2m+hocho  2.81E-02  3.286  -4509
+!
+!class 7
+!h addition to pentenols
+butoh2m1d+h<=>but2m1d+oh  6.26e+13 0.0 4.50e3!analogy with sarathy's ic3h6choh+h<=>ic4h8+oh
+butoh2m1d+h<=>c4h7oh1-1+ch3  6.26e+13 0.0 4.50e3
+butoh2m1d+h<=>ch3chchoh+c2h5  6.26e+13 0.0 4.50e3
+!
+butoh2m2d+h<=>c4h7oh2-1+ch3  6.26e+13 0.0 4.50e3
+butoh2m2d+h<=>ic4h7oh+ch3  6.26e+13 0.0 4.50e3
+butoh2m2d+h<=>c4h8-2+ch2oh  6.26e+13 0.0 4.50e3
+!
+butoh2m3d+h<=>c2h4+c3h6oh-2  6.26e+13 0.0 4.50e3
+!
+c4h712ch2oh+h<=>c2h5+c3h5oh  6.26e+13 0.0 4.50e3
+c4h712ch2oh+h<=>c4h8-1+ch2oh  6.26e+13 0.0 4.50e3
+!
+!o2 addition to pentenols
+butoh2m1d+o2=>butoh2m1d3+ho2  4.000e+12 0.000 3.719e+04
+butoh2m2d+o2=>butoh2m4d3+ho2  6.000e+12 0.000 3.719e+04
+butoh2m3d+o2=>butoh2m4d3+ho2  6.000e+12 0.000 3.719e+04
+c4h712ch2oh+o2=>butoh2m4d3+ho2  6.000e+12 0.000 3.719e+04
+!
+!class 8
+!Enol radical decomposition
+!
+c4h612+ch2oh<=>butoh2m4d3 2.00E+11   0.00     7500.0    !uscII analogy with aC3H4+CH3 = iC4H7 
+!
+butoh2m1d3<=>butoh2m13d+h 6.262E+11 0.557 3.815E+04!analogy with CC5H11<=>cC5H10+H
+butoh2m13d<=>c5h7-2+oh 5.610e+21 -1.612 1.060e+05!1 analogy with c4h5oh-13<=>c4h5-n+oh
+ch3+c4h4<=>c5h7-2 3.20E+35    -7.76    13300.0!uscIi analogy with C2H2+CH3 = CH3CHCH @1atm
+c3h4-p+c2h3<=>c5h7-2 9.30E+38     -8.76   12000.!uscII analogy with C2H3 + C2H2 = nC4H5 @1atm
+c2h3+ch3cchoh<=>butoh2m13d 1.00E+13   0.00        0.0!2 uscII analogy with CH3CCH2+CH3 = iC4H8 a/2
+c3h4-p+oh<=>ch3cchoh 1.387E+31 -6.087 6.348E+03!analogy with c2h2+oh<=>c2h2oh @1atm
+c4h4oh13-2+ch3<=>butoh2m13d 1.00E+13   0.00        0.0!3 uscII analogy with CH3CCH2+CH3 = iC4H8 a/2
+c4h4+oh<=>c4h4oh13-2 1.387E+31 -6.087 6.348E+03!analogy with c2h2+oh<=>c2h2oh @1atm
+!
+!class 9
+!unimolecular decomposition of pentenols
+!c-c rapture
+!butoh2m1d
+butoh2m1d<=>ch3+c4h6oh1-13  0.960e+66 -14.220 1.281e+05!lumped radical, analogy with sarathy cnf-2012 ic4h8<=>c3h5-t+ch3 a/2
+butoh2m1d<=>c2h5+ch3cchoh  0.960e+66 -14.220 1.281e+05!analogy with sarathy cnf-2012 ic4h8<=>c3h5-t+ch3 a/2
+!
+!butoh2m2d
+butoh2m2d<=>c4h72-2+ch2oh  0.609E+23 -1.926 1.014E+05!analogy with curran's iso-octane BC5H10<=>C4H72-2+CH3 a/2
+butoh2m2d<=>ch3+c4h6oh1-43  0.960e+66 -14.220 1.281e+05!analogy with sarathy cnf-2012 ic4h8<=>c3h5-t+ch3 a/2
+!
+!butoh2m3d
+butoh2m3d<=>c2h3+c3h6oh-2  6.644e+19 -1.132 7.459e+04!analogy with sarathy cnf-2012 c4h7oh1-4<=>c2h3+pc2h4oh
+!
+!c4h712ch2oh
+c4h712ch2oh<=>ch2oh+c4h71-2  1.900E+20 -1.582 7.593E+04!analogy with curran's iso-octane AC5H10<=>IC4H7+CH3
+c4h712ch2oh<=>c2h5+ch2cch2oh  8.922E+24 -2.409 1.005E+05!analogy with curran's iso-octane AC5H10<=>C3H5-T+C2H5
+!
+!class 10
+!
+butoh2m-1+o2<=>butal2m+ho2 5.280E+17 -1.638 839.
+!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+!{1}c3h6oh-2
+c3h6oh-2<=>c3h6+oh 5.093e+15 -0.950 2.626e+04!johnson propanol
+rev/ 4.950e+11 0.000 -9.600e+02 /
+!{2}ic4h8oh-3
+ch2oh+c3h6<=>ic4h8oh-3 9.45e+02 2.67 6.85e+03 !ref henry ch3 addition to c3h6 to produce ic4h9 ;half the value of pre-exponential factor of methyl addition to propene
+ch3+c3h5oh<=>ic4h8oh-3 1.89e+03 2.67 6.85e+03 !ref henry methyl addition to c3h6 to produce ic4h9
+ic4h9o<=>ic4h8oh-3 1.59e-15  7.838  4.655e+03      !5m isomerization
+!{3}but2m-1 i.e.ac5h11 ref:ic8_v3
+but2m-1<=>c3h6+c2h5  2.907e+13 0.361 2.971e+04
+but2m-1<=>c4h8-1+ch3  4.835e+11 0.850 3.080e+04
+but2m-1<=>but2m1d+h  1.892e+13 0.194 3.422e+04
+!{4}but2m1d
+!ref:ic8 v3
+but2m1d<=>ic4h7+ch3  1.900e+20 -1.582 7.593e+04
+rev/ 2.550e+13 -0.320 -1.310e+02 /
+but2m1d<=>c3h5-t+c2h5  8.922e+24 -2.409 1.005e+05
+rev/ 1.000e+13 0.000 0.000e+00 /
+!reaction of but2m1d ref:ic8-v3
+!h abstraction only on allylic site
+but2m1d+oh<=>sc4h9+ch2o 2.000e+10 0.000 4.000e+03
+rev/ 2.000e+13 0.000 2.000e+04 /
+but2m1d+o<=>sc4h9+hco 7.230e+05 2.340 -1.050e+03
+rev/ 2.000e+05 2.340 8.030e+04 /
+but2m1d+o<=>ic3h7+ch3co 7.230e+05 2.340 -1.050e+03
+rev/ 2.000e+05 2.340 8.030e+04 /
+but2m1d+o<=>ic4h9+hco 7.230e+05 2.340 -1.050e+03
+rev/ 2.000e+05 2.340 8.030e+04 /
+but2m1d+h<=>ac5h9-c+h2 3.376e+05 2.360 2.070e+02
+rev/ 4.352e+06 2.100 2.033e+04 /
+but2m1d+oh<=>ac5h9-c+h2o 2.764e+04 2.640 -1.919e+03
+rev/ 1.543e+06 2.380 3.336e+04 /
+but2m1d+ch3<=>ac5h9-c+ch4 3.690e+00 3.310 4.002e+03
+rev/ 1.243e+03 3.050 2.460e+04 /
+but2m1d+ho2<=>ac5h9-c+h2o2 4.820e+03 2.550 1.053e+04
+rev/ 1.597e+06 1.960 1.434e+04 /
+but2m1d+ch3o2<=>ac5h9-c+ch3o2h 4.820e+03 2.550 1.053e+04
+rev/ 3.326e+06 1.790 1.132e+04 /
+but2m1d+ch3o<=>ac5h9-c+ch3oh 4.000e+01 2.900 8.609e+03
+rev/ 2.486e+02 2.670 2.700e+04 /
+!{5}ac5h9-c ref: ic8 v3
+ac5h9-c+ho2<=>ac5h9o-c+oh 9.640e+12 0.000 0.000e+00
+rev/ 2.731e+15 -0.960 1.562e+04 /
+ac5h9-c+ch3o2<=>ac5h9o-c+ch3o 9.640e+12 0.000 0.000e+00
+rev/ 2.668e+17 -1.530 2.038e+04 /
+ac5h9-c+c2h5o2<=>ac5h9o-c+c2h5o 9.640e+12 0.000 0.000e+00
+rev/ 1.746e+14 -0.610 1.822e+04 /
+ac5h9o-c<=>ch3cho+c3h5-t 3.231e+22 -2.630 3.031e+04
+rev/ 1.000e+11 0.000 1.190e+04 /
+!{6}butal2m
+!c-c rapture
+butal2m<=>sc4h9+hco  1.496e+27 -3.205 8.704e+04!analogy with c2h5cho=c2h5+hco
+rev/ 1.810e+13 0.000 0.000e+00 /
+!c-h rapture
+h+butal2m-1<=>butal2m 9.600e+13 0.000 0.000!86tsa/ham  !uscii analogy with h+ch3co(+m)=ch3cho
+h+butal2m-2<=>butal2m 2.000e+14 0.000 0.000e+00!tc3h6cho+h<=>ic3h7cho ref:sarathy-cnf 2012
+h+butal2m-3<=>butal2m 3.610e+13 0.000 0.000e+00!ic5h12<=>cc5h11+h ref:curran iso-octane
+h+butal2m-4<=>butal2m 3.610e+13 0.000 0.000e+00!ic5h12<=>dc5h11+h ref:curran iso-octane
+h+butal2m-5<=>butal2m 1.805e+13 0.000 0.000e+0! a/2 ic5h12<=>ac5h11+h ref:curran iso-octane
+!
+!h-abstraction
+!butal2m-1  analogy with black's nc3h7cho->nc3h7co
+butal2m+o2<=>butal2m-1+ho2  1.20e+05 2.5 37560.0
+butal2m+oh<=>butal2m-1+h2o  2.00e+06 1.8 -1300.0
+butal2m+h<=>butal2m-1+h2  4.14e+09 1.1 2320.0
+butal2m+o<=>butal2m-1+oh  5.94e+12 0.0 1868.0
+butal2m+ho2<=>butal2m-1+h2o2  4.09e+04 2.5 10200.0
+butal2m+ch3<=>butal2m-1+ch4  2.89e-03 4.6 3210.0
+butal2m+ch3o<=>butal2m-1+ch3oh  1.00e+12 0.0 3300.0
+butal2m+ch3o2<=>butal2m-1+ch3o2h  4.09e+04 2.5 10200.0
+!butal2m-2  analogy with sarathy's ic3h7cho->tc3h6cho
+butal2m+ho2<=>butal2m-2+h2o2  8.000e+10 0.000 1.192e+04
+butal2m+oh<=>butal2m-2+h2o  1.684e+12 0.000 -7.810e+02
+butal2m-2+h2<=>butal2m+h  2.160e+05 2.380 1.899e+04!
+butal2m-2+ch2o<=>butal2m+hco  2.520e+08 1.900 1.819e+04!
+butal2m-2+ic4h8<=>butal2m+ic4h7  4.700e+02 3.300 1.984e+04
+butal2m-2+ho2<=>butal2m+o2  3.675e+12 0.000 1.310e+03
+!butal2m-3 analogy with sarathy's ic3h7cho->ic3h6cho
+butal2m+oh<=>butal2m-3+h2o  1.560e+06 2.000 -2.980e+02!a/2
+butal2m+ho2<=>butal2m-3+h2o2  1.370e+04 2.550 1.550e+04!a/2
+butal2m+ch3o2<=>butal2m-3+ch3o2h  2.380e+04 2.550 1.649e+04!a/2
+!butanl2m-4 analogy with curran's iso-pentane
+butal2m+o2<=>butal2m-4+ho2  2.100e+13 0.000 5.280e+04
+butal2m+h<=>butal2m-4+h2  9.400e+04 2.750 6.280e+03
+butal2m+o<=>butal2m-4+oh  1.046e+06 2.424 4.766e+03
+butal2m+oh<=>butal2m-4+h2o  5.240e+09 0.970 1.590e+03
+butal2m+ho2<=>butal2m-4+h2o2  2.040e+01 3.590 1.716e+04
+butal2m+ch3<=>butal2m-4+ch4  4.520e-01 3.650 7.154e+03
+butal2m+ch3o<=>butal2m-4+ch3oh  1.580e+11 0.000 7.000e+03
+butal2m+ch3o2<=>butal2m-4+ch3o2h  2.040e+01 3.590 1.716e+04
+!butanl2m-5 analogy with curran's iso-pentane [a/2]
+butal2m+o2<=>butal2m-5+ho2  2.100e+13 0.000 5.280e+04
+butal2m+h<=>butal2m-5+h2  0.604e+06 2.540 6.756e+03
+butal2m+o<=>butal2m-5+oh  1.350e+07 2.034 5.136e+03
+butal2m+oh<=>butal2m-5+h2o  0.530e+10 0.970 1.590e+03
+butal2m+ho2<=>butal2m-5+h2o2  2.040e+01 3.590 1.716e+04
+butal2m+ch3<=>butal2m-5+ch4  4.534e-01 3.650 7.154e+03
+butal2m+ch3o<=>butal2m-5+ch3oh  1.600e+11 0.000 7.000e+03
+butal2m+ch3o2<=>butal2m-5+ch3o2h  2.040e+01 3.590 1.716e+04
+!
+!beta-scission
+sc4h9+co<=>butal2m-1  1.500e+11 0.00 4.810e+03!analogy with ic3h7+co<=>ic3h7co ref:sarathy-cnf 2012
+!
+butal2m-2<=>ch3+ic3h5cho  5.272e+10 1.192 3.022e+04!ic3h5cho[cc(=c)c=o]; analogy with bc5h11<=>ic4h8+ch ref:curran iso-octane
+!
+c4h8-2+hco<=>butal2m-3  1.000e+11 0.00 7.800e+03!analogy with c3h6+hco<=>ic3h6cho ref:sarathy-cnf 2012
+butal2m-3<=>c3h5cho-2+ch3  5.276e+10 0.935 3.062e+04!analogy with cc5h11<=>c4h8-2+ch3 ref:curran iso-octane
+rev/ 1.890e+03 2.670 6.850e+03 /
+c3h5-a+hco<=>c3h5cho-2 1.810e+13 0.000 0.000e+00!analogy with c2h3+hco<=>c2h3cho ref:sarathy-cnf 2012
+!
+butal2m-4<=>c2h4+c2h4cho-2  1.237e+14 0.076 2.896e+04!analogy with dc5h11<=>c2h4+ic3h7 ref:curran iso-octane
+rev/ 8.800e+03 2.480 6.130e+03 /
+c2h4cho-2<=>c2h3cho+h  0.555e+12 0.48 36770![a/2] analogy with ic3h7<=>h+c3h6 ref:curran ijck-2006
+rev/ 2.120e+11 0.51 1.230e+03 /
+!
+c4h8-1+hco<=>butal2m-5  0.500e+11 0.00 7.800e+03![a/2]analogy with c3h6+hco<=>ic3h6cho ref:sarathy-cnf 2012
+butal2m-5<=>c2h5+c2h3cho  1.454e+13 0.361 2.971e+04![a/2]analogy with ac5h11<=>c3h6+c2h5 ref:curran iso-octane
+rev/ 0.71e+03 2.670 6.850e+03 /
+!isomerization
+butal2m-1<=>butal2m-4  1.651e+10 0.710 30122!estimated by rmg-py group additivity
+butal2m-4<=>butal2m-5  3.755e+10 0.660 30948!estimated by rmg-py group additivity
+!{7}ch3chchoh c-c=c-oh
+ch3chchoh+ho2<=>c2h5cho+ho2    1.490e+05  1.67   6.810e+03
+ch3chchoh+ hocho <=>c2h5cho+ hocho    2.81E-02  3.286  -4509
+rev / 7.04E+04  1.209  556 /
+ch3chchoh<=>c2h5cho 8.59e+11 0.318 5.59e4
+ch3chchoh+h<=>c2h3oh+ch3 6.26e+13 0.0 4.50e3
+ch3chchoh+h<=>c3h6+oh 6.26e+13 0.0 4.50e3
+!{8}c4h4 ref: usc2
+c4h6<=>c4h4+h2 2.50e+15 0.0 94700.0
+c2h3+c2h2<=>c4h4+h 2.00e+18 -1.68 10600.
+c4h4+h<=>nc4h3+h2 6.65e+05    2.53   12240.     !97wan/fre
+c4h4+h<=>ic4h3+h2 3.33e+05    2.53    9240.     !97wan/fre
+c4h4+oh<=>nc4h3+h2o 3.10e+07    2.0     3430.     !97wan/fre
+c4h4+oh<=>ic4h3+h2o 1.55e+07    2.0      430.     !97wan/fre
+c4h4+o<=>c3h3+hco 6.00e+08    1.45    -860.     != c4h6+o
+c3h3+hcco<=>c4h4+co 2.50e+13 0.0 0.0
+c3h3+ch2<=>c4h4+h 5.00e+13 0.0 0.0
+nc4h3+h<=>c4h4 2.00e+47 -10.26 13070.0
+ic4h3+h<=>c4h4 3.40e+43 -9.01 12120.0
+h2cc+c2h2(+m)<=>c4h4(+m) 3.500e+05 2.055 -2400.00
+low /1.400e+60 -12.599 7417.00 /
+troe /0.980 56.0 580.0 4164.0 /
+h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/ c2h2/3.00/ c2h4/3.00/
+c2h2+c2h(+m)=nc4h3 (+m)                   8.300e+10    0.899   -363.00  !92wan
+low/1.240e+31   -4.718   1871.00  /
+troe/1.0 100. 5613. 13387.         /
+h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/ c2h2/2.5/ c2h4/2.5/  
+c4h2+h=nc4h3 1.10e+42  -8.72   15300.0     !  760 torr rrkm wan/fre
+nc4h3=ic4h3 4.10e+43   -9.49  53000.0     !  760 torr rrkm wan/fre
+nc4h3+h=ic4h3+h 2.50e+20   -1.67  10800.0     !  760 torr rrkm wan/fre
+nc4h3+h=c2h2+h2cc 6.30e+25   -3.34  10014.0     !  760 torr rrkm wan/fre
+nc4h3+h=c4h2+h2 3.00e+13 0.00 0.     != 0.5*c2h3+h
+nc4h3+oh=c4h2+h2o 2.00e+12 0.00 0.     != 0.5*c2h3+oh
+c2h2+c2h(+m)=ic4h3(+m)                   8.300e+10    0.899    -363.00 !92wan
+low   /1.240e+31   -4.718    1871.00 /
+troe   /1.0 100. 5613. 13387.        /
+h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/ c2h2/2.5/ c2h4/2.5/ 
+c3h3+ch=ic4h3+h 5.00e+13    0.0        0.0    !estimated
+c4h2+h=ic4h3 1.10e+30  -4.92   10800.0     !  760 torr rrkm wan/fre
+ic4h3+h=c2h2+h2cc 2.80e+23   -2.55   10780.0    !  760 torr rrkm wan/fre
+ic4h3+h=c4h2+h2 6.00e+13    0.00       0.     != c2h3+h
+ic4h3+oh=c4h2+h2o 4.00e+12    0.00       0.     != c2h3+oh
+ic4h3+o2=hcco+ch2co 7.86e+16   -1.80       0.     !89sla/ber
+!
+c2h2(+m)=h2cc(+m)                        8.000e+14   -0.520  50750.00  !99las/wan
+                                      low /   2.450e+15   -0.640  49700.00  /
+      h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/c2h2/2.5/ c2h4/2.5/ 
+h2cc+h=c2h2+h 1.000e+14    0.000       0.00 !estimated
+h2cc+oh=ch2co+h 2.000e+13    0.000       0.00 !estimated
+h2cc+o2=hco+hco 1.000e+13    0.000       0.00 !99las/wan
+h2cc+c2h4=c4h6 1.00e+12     0.0         0.0  !estimated
+c2h3+h=h2cc+h2 6.000e+13    0.000       0.00 !estimated
+c2h4(+m)=h2+h2cc(+m) 8.000e+12    0.440 88770.00   !gri###
+low  /  7.000e+50   -9.310 99860.00   /
+troe / 0.7345  180.0  1035.00  5417.0 /
+h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/ ar/0.7/
+c2h4+ch2(s)=h2cc+ch4 5.000e+13    0.000      0.00  !estimated
+c2h2+c2h=c4h2+h 9.600e+13    0.000      0.00  !91shi/mic, 92kos/fuk, 93far/mor
+c4h2+oh=h2c4o+h 6.60e+12    0.0    -410.      !84per
+h2c4o+h=c2h2+hcco 5.00e+13    0.0    3000.      !92mil/mel
+h2c4o+oh=ch2co+hcco 1.00e+07    2.0    2000.      !92mil/mel
+!{9}c4h612 ref: usc 2
+c4h612<=>ic4h5+h 4.20e+15 0.0 92600.0
+c4h612+h<=>c4h6+h 2.00e+13 0.0 4000.0
+c4h612+h<=>ic4h5+h2 1.70e+05 2.5 2490.0
+c4h612+h<=>c3h4-a+ch3 2.00e+13 0.0 2000.0
+c4h612+h<=>c3h4-p+ch3 2.00e+13 0.0 2000.0
+c4h612+ch3<=>ic4h5+ch4 7.00e+13 0.0 18500.0
+c4h612+o<=>ch2co+c2h4 1.20e+08 1.65 327.0
+c4h612+o<=>ic4h5+oh 1.80e+11 0.70 5880.0
+c4h612+oh<=>ic4h5+h2o 3.10e+06 2.00 -298.0
+c4h612<=>c4h6 3.00e+13 0.0 65000.0
+c3h3+ch3(+m)<=>c4h612(+m)  1.50e+12 0.0 0.0
+low /2.60e+57 -11.94 9770.0/
+troe /0.175 1340.6 60000.0 9769.8/
+h2/2.0/ h2o/6.0/ ch4/2.0/ co/1.5/ co2/2.0/ c2h6/3.0/ ar/0.7/
+!{10}
+
+!^^^^^^^^  end of butoh2m^^^^^^^^^^^^^
+!^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+h+o2<=>o+oh 3.547e+15 -0.406 1.660e+04
+rev/ 1.027e+13 -0.015 -1.330e+02 /
+o+h2<=>h+oh 5.080e+04 2.670 6.292e+03
+rev/ 2.637e+04 2.651 4.880e+03 /
+oh+h2<=>h+h2o 2.160e+08 1.510 3.430e+03
+rev/ 2.290e+09 1.404 1.832e+04 /
+o+h2o<=>oh+oh 2.970e+06 2.020 1.340e+04
+rev/ 1.454e+05 2.107 -2.904e+03 /
+h2+m<=>h+h+m 4.577e+19 -1.400 1.044e+05
+rev/ 1.145e+20 -1.676 8.200e+02 /
+h2/2.5/ h2o/12/ co/1.9/ co2/3.8/ 
+o2+m<=>o+o+m 4.420e+17 -0.634 1.189e+05
+rev/ 6.165e+15 -0.500 0.000e+00 /
+h2/2.5/ h2o/12/ ar/.83/ co/1.9/ co2/3.8/ ch4/2/ c2h6/3/ he/.83/ 
+oh+m<=>o+h+m 9.780e+17 -0.743 1.021e+05
+rev/ 4.714e+18 -1.000 0.000e+00 /
+h2/2.5/ h2o/12/ ar/.75/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.75/ 
+h2o+m<=>h+oh+m 1.907e+23 -1.830 1.185e+05
+rev/ 4.500e+22 -2.000 0.000e+00 /
+h2/.73/ h2o/12/ ar/.38/ ch4/2/ c2h6/3/ he/.38/ 
+h+o2(+m)<=>ho2(+m) 1.475e+12 0.600 0.000e+00
+!rev/ 3.091e+12 0.528 4.887e+04 /
+low / 3.4820e+16 -4.1100e-01 -1.1150e+03 / 
+troe / 5.0000e-01 1.0000e-30 1.0000e+30 1.0000e+10 / !troe fall-off reaction
+h2/1.3/ h2o/14/ ar/.67/ co/1.9/ co2/3.8/ ch4/2/ c2h6/3/ he/.67/ 
+ho2+h<=>h2+o2 1.660e+13 0.000 8.230e+02
+rev/ 3.166e+12 0.348 5.551e+04 /
+ho2+h<=>oh+oh 7.079e+13 0.000 2.950e+02
+rev/ 2.028e+10 0.720 3.684e+04 /
+ho2+o<=>oh+o2 3.250e+13 0.000 0.000e+00
+rev/ 3.217e+12 0.329 5.328e+04 /
+ho2+oh<=>h2o+o2 2.890e+13 0.000 -4.970e+02
+rev/ 5.844e+13 0.242 6.908e+04 /
+h2o2+o2<=>ho2+ho2 1.136e+16 -0.347 4.973e+04
+rev/ 1.030e+14 0.000 1.104e+04 /
+dup
+h2o2+o2<=>ho2+ho2 2.141e+13 -0.347 3.728e+04
+rev/ 1.940e+11 0.000 -1.409e+03 /
+dup
+h2o2(+m)<=>oh+oh(+m) 2.951e+14 0.000 4.843e+04
+!rev/ 3.656e+08 1.140 -2.584e+03 /
+low / 1.2020e+17 0.0000e+00 4.5500e+04 / 
+troe / 5.0000e-01 1.0000e-30 1.0000e+30 1.0000e+10 / !troe fall-off reaction
+h2/2.5/ h2o/12/ ar/.64/ co/1.9/ co2/3.8/ ch4/2/ c2h6/3/ he/.64/ 
+h2o2+h<=>h2o+oh 2.410e+13 0.000 3.970e+03
+rev/ 1.265e+08 1.310 7.141e+04 /
+h2o2+h<=>h2+ho2 2.150e+10 1.000 6.000e+03
+rev/ 3.716e+07 1.695 2.200e+04 /
+h2o2+o<=>oh+ho2 9.550e+06 2.000 3.970e+03
+rev/ 8.568e+03 2.676 1.856e+04 /
+h2o2+oh<=>h2o+ho2 2.000e+12 0.000 4.272e+02
+rev/ 3.665e+10 0.589 3.132e+04 /
+dup
+h2o2+oh<=>h2o+ho2 1.700e+18 0.000 2.941e+04
+rev/ 3.115e+16 0.589 6.030e+04 /
+dup
+co+o(+m)<=>co2(+m) 1.800e+10 0.000 2.384e+03
+!rev/ 9.874e+15 -0.934 1.300e+05 /
+low / 1.3500e+24 -2.7880e+00 4.1910e+03 / !lindemann fall-off reaction
+h2/2/ o2/6/ h2o/6/ ar/.5/ co/1.5/ co2/3.5/ ch4/2/ c2h6/3/ he/.5/ 
+co+o2<=>co2+o 1.050e+12 0.000 4.254e+04
+rev/ 8.035e+15 -0.800 5.123e+04 /
+co+oh<=>co2+h 1.784e+05 1.890 -1.158e+03
+rev/ 4.717e+11 0.699 2.426e+04 /
+co+ho2<=>co2+oh 1.570e+05 2.180 1.794e+04
+rev/ 1.189e+08 1.710 7.991e+04 /
+
+
+hco+m<=>h+co+m 4.750e+11 0.660 1.487e+04
+rev/ 3.582e+10 1.041 -4.573e+02 /
+h2/2/ h2o/12/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ 
+hco+o2<=>co+ho2 7.580e+12 0.000 4.100e+02
+rev/ 1.198e+12 0.309 3.395e+04 /
+hco+h<=>co+h2 7.340e+13 0.000 0.000e+00
+rev/ 2.212e+12 0.656 8.823e+04 /
+hco+o<=>co+oh 3.020e+13 0.000 0.000e+00
+rev/ 4.725e+11 0.638 8.682e+04 /
+hco+o<=>co2+h 3.000e+13 0.000 0.000e+00
+rev/ 1.241e+18 -0.553 1.122e+05 /
+hco+oh<=>co+h2o 1.020e+14 0.000 0.000e+00
+rev/ 3.259e+13 0.551 1.031e+05 /
+hco+ch3<=>ch4+co 2.650e+13 0.000 0.000e+00
+rev/ 7.286e+14 0.211 8.977e+04 /
+hco+ho2<=>ch2o+o2 2.499e+14 -0.061 1.392e+04
+rev/ 8.070e+15 0.000 5.342e+04 /
+hco+ho2<=>co2+h+oh 3.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+o2cho<=>hco+o2 9.959e+15 -1.126 4.100e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+ch2o+o2cho<=>hco+ho2cho 1.990e+12 0.000 1.166e+04
+rev/ 3.908e+14 -0.909 1.181e+04 /
+ho2cho<=>ocho+oh 5.010e+14 0.000 4.015e+04
+rev/ 3.856e+08 1.532 -6.372e+03 /
+ocho+m<=>h+co2+m 5.318e+14 -0.353 1.758e+04
+rev/ 7.500e+13 0.000 2.900e+04 /
+ch2o+co<=>hco+hco 9.186e+13 0.370 7.304e+04
+rev/ 1.800e+13 0.000 0.000e+00 /
+hco+hco<=>h2+co+co 3.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+hco+h(+m)<=>ch2o(+m) 1.090e+12 0.480 -2.600e+02
+!rev/ 7.377e+13 0.469 8.811e+04 /
+low / 1.3500e+24 -2.5700e+00 1.4250e+03 / 
+troe / 7.8240e-01 2.7100e+02 2.7550e+03 6.5700e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+co+h2(+m)<=>ch2o(+m) 4.300e+07 1.500 7.960e+04
+!rev/ 9.656e+10 0.833 7.974e+04 /
+low / 5.0700e+27 -3.4200e+00 8.4348e+04 / 
+troe / 9.3200e-01 1.9700e+02 1.5400e+03 1.0300e+04 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+ch2o+oh<=>hco+h2o 7.820e+07 1.630 -1.055e+03
+rev/ 4.896e+06 1.811 2.903e+04 /
+ch2o+h<=>hco+h2 5.740e+07 1.900 2.740e+03
+rev/ 3.390e+05 2.187 1.793e+04 /
+ch2o+o<=>hco+oh 6.260e+09 1.150 2.260e+03
+rev/ 1.919e+07 1.418 1.604e+04 /
+ch2o+ch3<=>hco+ch4 3.830e+01 3.360 4.312e+03
+rev/ 2.063e+02 3.201 2.104e+04 /
+ch2o+ho2<=>hco+h2o2 7.100e-03 4.517 6.580e+03
+rev/ 2.426e-02 4.108 5.769e+03 /
+hoch2o<=>ch2o+oh 2.056e+21 -2.336 2.573e+04
+rev/ 4.500e+15 -1.100 0.000e+00 /
+hoch2o<=>hocho+h 1.000e+14 0.000 1.490e+04
+rev/ 1.123e+15 -0.295 1.150e+04 /
+hocho<=>co+h2o 2.450e+12 0.000 6.047e+04
+rev/ 2.255e+03 2.093 5.289e+04 /
+hocho<=>co2+h2 2.950e+09 0.000 4.852e+04
+rev/ 6.772e+05 1.008 5.147e+04 /
+hocho<=>hco+oh 3.471e+22 -1.542 1.107e+05
+rev/ 1.000e+14 0.000 0.000e+00 /
+hocho+o2<=>ocho+ho2 4.101e+12 -0.308 5.988e+04
+rev/ 3.500e+10 0.000 -3.275e+03 /
+hocho+oh<=>h2o+co2+h 2.620e+06 2.060 9.160e+02
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+oh<=>h2o+co+oh 1.850e+07 1.510 -9.620e+02
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+h<=>h2+co2+h 4.240e+06 2.100 4.868e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+h<=>h2+co+oh 6.030e+13 -0.350 2.988e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+ch3<=>ch4+co+oh 3.900e-07 5.800 2.200e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+ho2<=>ocho+h2o2 2.549e+12 0.040 3.447e+04
+rev/ 2.400e+12 0.000 1.000e+04 /
+hocho+ho2<=>h2o2+co+oh 1.000e+12 0.000 1.192e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+o<=>co+oh+oh 1.770e+18 -1.900 2.975e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+hocho+hco<=>ch2o+ocho 8.584e+11 0.040 2.675e+04
+rev/ 5.600e+12 0.000 1.360e+04 /
+ch3o(+m)<=>ch2o+h(+m) 6.800e+13 0.000 2.617e+04
+!rev/ 1.049e+12 0.388 3.878e+03 /
+low / 1.8670e+25 -3.0000e+00 2.4307e+04 / 
+troe / 9.0000e-01 2.5000e+03 1.3000e+03 1.0000e+99 / !troe fall-off reaction
+h2/2/ h2o/6/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ 
+ch3o+o2<=>ch2o+ho2 4.380e-19 9.500 -5.501e+03
+rev/ 1.416e-20 9.816 2.108e+04 /
+ch2o+ch3o<=>ch3oh+hco 6.620e+11 0.000 2.294e+03
+rev/ 8.393e+10 0.074 1.771e+04 /
+ch4+ch3o<=>ch3+ch3oh 6.119e+02 2.867 8.248e+03
+rev/ 1.440e+01 3.100 6.935e+03 /
+ch3o+ch3<=>ch2o+ch4 1.200e+13 0.000 0.000e+00
+rev/ 6.749e+13 0.218 8.281e+04 /
+ch3o+h<=>ch2o+h2 2.000e+13 0.000 0.000e+00
+rev/ 1.233e+11 0.664 8.127e+04 /
+ch3o+ho2<=>ch2o+h2o2 3.010e+11 0.000 0.000e+00
+rev/ 1.074e+12 -0.031 6.527e+04 /
+ch2o+h(+m)<=>ch2oh(+m) 5.400e+11 0.454 3.600e+03
+!rev/ 8.653e+12 -0.038 3.241e+04 /
+low / 1.2700e+32 -4.8200e+00 6.5300e+03 / 
+troe / 7.1870e-01 1.0300e+02 1.2910e+03 4.1600e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ 
+ch2oh+o2<=>ch2o+ho2 1.510e+15 -1.000 0.000e+00
+rev/ 1.975e+14 -0.580 2.006e+04 /
+dup
+ch2oh+o2<=>ch2o+ho2 2.410e+14 0.000 5.017e+03
+rev/ 3.152e+13 0.420 2.508e+04 /
+dup
+ch2oh+h<=>ch2o+h2 6.000e+12 0.000 0.000e+00
+rev/ 1.497e+11 0.768 7.475e+04 /
+ch2oh+ho2<=>ch2o+h2o2 1.200e+13 0.000 0.000e+00
+rev/ 1.732e+14 0.073 5.875e+04 /
+ch2oh+hco<=>ch2o+ch2o 1.800e+14 0.000 0.000e+00
+rev/ 7.602e+14 0.481 5.956e+04 /
+ch2oh+ch3o<=>ch2o+ch3oh 2.400e+13 0.000 0.000e+00
+rev/ 1.285e+13 0.555 7.498e+04 /
+ch2oh+ch2o<=>ch3oh+hco 1.878e+04 2.722 4.208e+03
+rev/ 9.630e+03 2.900 1.311e+04 /
+oh+ch2oh<=>h2o+ch2o 2.400e+13 0.000 0.000e+00
+rev/ 6.347e+12 0.662 8.964e+04 /
+o+ch2oh<=>oh+ch2o 4.200e+13 0.000 0.000e+00
+rev/ 5.438e+11 0.749 7.334e+04 /
+ch2o+ch3oh<=>ch2oh+ch2oh 6.498e+12 0.659 6.846e+04
+rev/ 3.000e+12 0.000 0.000e+00 /
+ch2oh+ho2<=>hoch2o+oh 1.000e+13 0.000 0.000e+00
+rev/ 8.169e+13 -0.024 3.347e+04 /
+och2o2h<=>ch2o+ho2 1.278e+18 -1.800 1.046e+04
+rev/ 1.500e+11 0.000 1.190e+04 /
+och2o2h<=>hoch2o2 3.000e+11 0.000 8.600e+03
+rev/ 4.241e+08 0.950 2.620e+04 /
+hoch2o2+ho2<=>hoch2o2h+o2 3.500e+10 0.000 -3.275e+03
+rev/ 1.046e+14 -0.840 3.487e+04 /
+hoch2o2h<=>hoch2o+oh 1.023e+21 -1.920 4.249e+04
+rev/ 1.000e+13 0.000 0.000e+00 /
+ch3oh(+m)<=>ch3+oh(+m) 1.900e+16 0.000 9.173e+04
+!rev/ 1.025e+11 0.779 -7.520e+02 /
+low / 2.9500e+44 -7.3500e+00 9.5460e+04 / 
+troe / 4.1400e-01 2.7900e+02 5.4590e+03 1.0000e+10 / !troe fall-off reaction
+ch3oh(+m)<=>ch2oh+h(+m) 2.690e+16 -0.080 9.894e+04
+!rev/ 7.749e+14 -0.247 1.668e+03 /
+low / 2.3400e+40 -6.3300e+00 1.0310e+05 / 
+troe / 7.7300e-01 6.9300e+02 5.3330e+03 1.0000e+10 / !troe fall-off reaction
+ch3oh+h<=>ch3o+h2 3.600e+12 0.000 6.095e+03
+rev/ 1.677e+11 0.212 5.868e+03 /
+ch3oh+h<=>ch2oh+h2 1.204e+06 2.400 2.583e+03
+rev/ 1.386e+04 2.509 8.871e+03 /
+ch3oh+o<=>ch2oh+oh 3.880e+05 2.500 3.080e+03
+rev/ 2.319e+03 2.590 7.956e+03 /
+ch3oh+oh<=>ch3o+h2o 5.130e+05 2.130 2.450e+03
+rev/ 2.534e+05 2.237 1.712e+04 /
+ch3oh+oh<=>ch2oh+h2o 1.440e+06 2.000 -8.390e+02
+rev/ 1.758e+05 2.003 2.034e+04 /
+ch3oh+o2<=>ch2oh+ho2 2.050e+13 0.000 4.490e+04
+rev/ 1.238e+12 -0.239 -3.501e+03 /
+ch3oh+ho2<=>ch2oh+h2o2 1.080e+04 2.550 1.053e+04
+rev/ 7.195e+04 1.963 8.190e+02 /
+ch3oh+ch3<=>ch2oh+ch4 3.190e+01 3.170 7.172e+03
+rev/ 3.351e+02 2.833 1.500e+04 /
+ch3o+ch3oh<=>ch2oh+ch3oh 3.000e+11 0.000 4.074e+03
+rev/ 7.416e+10 -0.104 1.059e+04 /
+ch3oh+ch2o<=>ch3o+ch3o 7.981e+12 0.452 8.149e+04
+rev/ 6.030e+13 0.000 0.000e+00 /
+ch3+h(+m)<=>ch4(+m) 1.270e+16 -0.600 3.830e+02
+!rev/ 4.631e+18 -0.770 1.055e+05 /
+low / 1.9816e+33 -4.7600e+00 2.4440e+03 / 
+troe / 7.8300e-01 7.4000e+01 2.9400e+03 6.9600e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+ch4+h<=>ch3+h2 6.140e+05 2.500 9.587e+03
+rev/ 6.730e+02 2.946 8.047e+03 /
+ch4+oh<=>ch3+h2o 5.830e+04 2.600 2.190e+03
+rev/ 6.776e+02 2.940 1.554e+04 /
+ch4+o<=>ch3+oh 1.020e+09 1.500 8.600e+03
+rev/ 5.804e+05 1.927 5.648e+03 /
+ch4+ho2<=>ch3+h2o2 1.130e+01 3.740 2.101e+04
+rev/ 7.166e+00 3.491 3.468e+03 /
+ch4+ch2<=>ch3+ch3 2.460e+06 2.000 8.270e+03
+rev/ 1.736e+06 1.868 1.298e+04 /
+ch3+oh<=>ch2o+h2 8.000e+09 0.500 -1.755e+03
+rev/ 1.066e+12 0.322 6.821e+04 /
+ch3+oh<=>ch2(s)+h2o 4.508e+17 -1.340 1.417e+03
+rev/ 1.654e+16 -0.855 1.039e+03 /
+ch3+oh<=>ch3o+h 6.943e+07 1.343 1.120e+04
+rev/ 1.500e+12 0.500 -1.100e+02 /
+ch3+oh<=>ch2oh+h 3.090e+07 1.596 4.506e+03
+rev/ 1.650e+11 0.650 -2.840e+02 /
+ch3+oh<=>ch2+h2o 5.600e+07 1.600 5.420e+03
+rev/ 9.224e+05 2.072 1.406e+04 /
+ch3+ho2<=>ch3o+oh 1.000e+12 0.269 -6.875e+02
+rev/ 6.190e+12 0.147 2.455e+04 /
+ch3+ho2<=>ch4+o2 1.160e+05 2.230 -3.022e+03
+rev/ 2.018e+07 2.132 5.321e+04 /
+ch3+o<=>ch2o+h 5.540e+13 0.050 -1.360e+02
+rev/ 3.830e+15 -0.147 6.841e+04 /
+ch3+o2<=>ch3o+o 7.546e+12 0.000 2.832e+04
+rev/ 4.718e+14 -0.451 2.880e+02 /
+ch3+o2<=>ch2o+oh 2.641e+00 3.283 8.105e+03
+rev/ 5.285e-01 3.477 5.992e+04 /
+ch3+o2(+m)<=>ch3o2(+m) 7.812e+09 0.900 0.000e+00
+!rev/ 5.655e+15 -0.313 3.333e+04 /
+low / 6.8500e+24 -3.0000e+00 0.0000e+00 / 
+troe / 6.0000e-01 1.0000e+03 7.0000e+01 1.7000e+03 / !troe fall-off reaction
+ch3o2+ch2o<=>ch3o2h+hco 1.990e+12 0.000 1.166e+04
+rev/ 1.323e+14 -0.853 9.259e+03 /
+ch4+ch3o2<=>ch3+ch3o2h 1.810e+11 0.000 1.848e+04
+rev/ 2.233e+12 -0.694 -6.550e+02 /
+ch3oh+ch3o2<=>ch2oh+ch3o2h 1.810e+12 0.000 1.371e+04
+rev/ 2.346e+14 -1.031 2.404e+03 /
+ch3o2+ch3<=>ch3o+ch3o 5.080e+12 0.000 -1.411e+03
+rev/ 1.967e+12 0.176 2.807e+04 /
+ch3o2+ho2<=>ch3o2h+o2 2.470e+11 0.000 -1.570e+03
+rev/ 5.302e+14 -0.792 3.552e+04 /
+ch3o2+ch3o2<=>ch2o+ch3oh+o2 3.110e+14 -1.610 -1.051e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3o2+ch3o2<=>o2+ch3o+ch3o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3o2+h<=>ch3o+oh 9.600e+13 0.000 0.000e+00
+rev/ 1.720e+09 1.019 4.078e+04 /
+ch3o2+o<=>ch3o+o2 3.600e+13 0.000 0.000e+00
+rev/ 2.229e+11 0.628 5.752e+04 /
+ch3o2+oh<=>ch3oh+o2 6.000e+13 0.000 0.000e+00
+rev/ 1.536e+13 0.434 5.916e+04 /
+ch3o2h<=>ch3o+oh 6.310e+14 0.000 4.230e+04
+rev/ 2.514e+06 1.883 -2.875e+03 /
+ch2(s)<=>ch2 1.000e+13 0.000 0.000e+00
+rev/ 4.488e+12 -0.013 9.020e+03 /
+ch2(s)+ch4<=>ch3+ch3 1.600e+13 0.000 -5.700e+02
+rev/ 5.067e+12 -0.145 1.316e+04 /
+ch2(s)+o2<=>co+oh+h 7.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2(s)+h2<=>ch3+h 7.000e+13 0.000 0.000e+00
+rev/ 2.022e+16 -0.591 1.527e+04 /
+ch2(s)+h<=>ch2+h 3.000e+13 0.000 0.000e+00
+rev/ 1.346e+13 -0.013 9.020e+03 /
+ch2(s)+h<=>ch+h2 3.000e+13 0.000 0.000e+00
+rev/ 6.948e+13 -0.253 1.248e+04 /
+ch2(s)+o<=>co+h+h 3.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2(s)+oh<=>ch2o+h 3.000e+13 0.000 0.000e+00
+rev/ 1.154e+18 -0.770 8.523e+04 /
+ch2(s)+co2<=>ch2o+co 3.000e+12 0.000 0.000e+00
+rev/ 4.366e+10 0.421 5.981e+04 /
+ch2+h(+m)<=>ch3(+m) 2.500e+16 -0.800 0.000e+00
+!rev/ 6.432e+18 -1.103 1.098e+05 /
+low / 3.2000e+27 -3.1400e+00 1.2300e+03 / 
+troe / 6.8000e-01 7.8000e+01 1.9950e+03 5.5900e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+ch2+o2<=>ch2o+o 2.400e+12 0.000 1.500e+03
+rev/ 5.955e+14 -0.365 6.098e+04 /
+ch2+o2<=>co2+h+h 5.800e+12 0.000 1.500e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2+o2<=>co+oh+h 5.000e+12 0.000 1.500e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2+o<=>co+h+h 5.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2+h<=>ch+h2 1.000e+18 -1.560 0.000e+00
+rev/ 5.160e+18 -1.800 3.460e+03 /
+dup
+ch2+oh<=>ch+h2o 1.130e+07 2.000 3.000e+03
+rev/ 6.183e+08 1.655 2.135e+04 /
+ch+o2<=>hco+o 3.300e+13 0.000 0.000e+00
+rev/ 9.371e+12 0.161 7.121e+04 /
+c+oh<=>co+h 5.000e+13 0.000 0.000e+00
+rev/ 1.356e+15 0.000 1.543e+05 /
+c+o2<=>co+o 5.000e+13 0.000 0.000e+00
+rev/ 1.070e+14 0.000 1.382e+05 /
+ch+h<=>c+h2 5.000e+13 0.000 0.000e+00
+rev/ 2.043e+14 0.000 2.382e+04 /
+ch+o<=>co+h 5.700e+13 0.000 0.000e+00
+rev/ 2.774e+15 0.000 1.760e+05 /
+ch+oh<=>hco+h 3.000e+13 0.000 0.000e+00
+rev/ 5.069e+14 0.000 8.811e+04 /
+ch2+h<=>ch+h2 2.700e+11 0.670 2.570e+04
+rev/ 1.897e+11 0.670 2.873e+04 /
+dup
+ch+h2o<=>h+ch2o 1.713e+13 0.000 -7.550e+02
+rev/ 8.372e+14 0.000 5.752e+04 /
+ch+co2<=>hco+co 1.700e+12 0.000 6.850e+02
+rev/ 2.565e+11 0.000 6.646e+04 /
+ch3+ch3(+m)<=>c2h6(+m) 9.214e+16 -1.170 6.358e+02
+!rev/ 1.904e+25 -2.604 9.168e+04 /
+low / 1.1350e+36 -5.2460e+00 1.7050e+03 / 
+troe / 4.0500e-01 1.1200e+03 6.9600e+01 1.0000e+10 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h5+h(+m)<=>c2h6(+m) 5.210e+17 -0.990 1.580e+03
+!rev/ 2.254e+21 -1.396 1.029e+05 /
+low / 1.9900e+41 -7.0800e+00 6.6850e+03 / 
+troe / 8.4200e-01 1.2500e+02 2.2190e+03 6.8820e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h6+h<=>c2h5+h2 1.150e+08 1.900 7.530e+03
+rev/ 1.062e+04 2.582 9.760e+03 /
+c2h6+o<=>c2h5+oh 3.550e+06 2.400 5.830e+03
+rev/ 1.702e+02 3.063 6.648e+03 /
+c2h6+oh<=>c2h5+h2o 1.480e+07 1.900 9.500e+02
+rev/ 1.450e+04 2.476 1.807e+04 /
+c2h6+o2<=>c2h5+ho2 6.030e+13 0.000 5.187e+04
+rev/ 2.921e+10 0.334 -5.930e+02 /
+c2h6+ch3<=>c2h5+ch4 5.480e-01 4.000 8.280e+03
+rev/ 4.618e-02 4.236 1.205e+04 /
+c2h6+ho2<=>c2h5+h2o2 6.920e+01 3.610 1.692e+04
+rev/ 3.699e+00 3.597 3.151e+03 /
+c2h6+ch3o2<=>c2h5+ch3o2h 1.940e+01 3.640 1.710e+04
+rev/ 2.017e+01 3.182 1.734e+03 /
+c2h6+ch3o<=>c2h5+ch3oh 2.410e+11 0.000 7.090e+03
+rev/ 4.779e+08 0.469 9.547e+03 /
+c2h6+ch<=>c2h5+ch2 1.100e+14 0.000 -2.600e+02
+rev/ 1.969e+09 0.921 -1.490e+03 /
+ch2(s)+c2h6<=>ch3+c2h5 1.200e+14 0.000 0.000e+00
+rev/ 3.203e+12 0.091 1.750e+04 /
+c2h4+h(+m)<=>c2h5(+m) 1.081e+12 0.454 1.822e+03
+!rev/ 1.946e+12 0.334 3.731e+04 /
+low / 1.2000e+42 -7.6200e+00 6.9700e+03 / 
+troe / 9.7500e-01 2.1000e+02 9.8400e+02 4.3740e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+h2+ch3o2<=>h+ch3o2h 1.500e+14 0.000 2.603e+04
+rev/ 1.688e+18 -1.140 8.434e+03 /
+h2+c2h5o2<=>h+c2h5o2h 1.500e+14 0.000 2.603e+04
+rev/ 1.691e+18 -1.140 8.438e+03 /
+c2h5+c2h3<=>c2h4+c2h4 6.859e+11 0.110 -4.300e+03
+rev/ 4.820e+14 0.000 7.153e+04 /
+ch3+c2h5<=>ch4+c2h4 1.180e+04 2.450 -2.921e+03
+rev/ 2.390e+06 2.400 6.669e+04 /
+c2h5+h<=>ch3+ch3 9.690e+13 0.000 2.200e+02
+rev/ 2.029e+09 1.028 1.051e+04 /
+c2h5+h<=>c2h4+h2 2.000e+12 0.000 0.000e+00
+rev/ 4.440e+11 0.396 6.807e+04 /
+c2h5+o<=>ch3cho+h 1.100e+14 0.000 0.000e+00
+rev/ 1.033e+17 -0.500 7.742e+04 /
+c2h5+ho2<=>c2h5o+oh 1.100e+13 0.000 0.000e+00
+rev/ 9.680e+15 -0.723 2.765e+04 /
+ch3o2+c2h5<=>ch3o+c2h5o 8.000e+12 0.000 -1.000e+03
+rev/ 4.404e+14 -0.425 3.089e+04 /
+c2h5o+o2<=>ch3cho+ho2 4.280e+10 0.000 1.097e+03
+rev/ 1.322e+08 0.615 3.413e+04 /
+c2h5o<=>ch3+ch2o 1.321e+20 -2.018 2.075e+04
+rev/ 3.000e+11 0.000 6.336e+03 /
+c2h5o<=>ch3cho+h 5.428e+15 -0.687 2.223e+04
+rev/ 8.000e+12 0.000 6.400e+03 /
+c2h5o2<=>c2h5+o2 1.312e+62 -14.784 4.918e+04
+rev/ 2.876e+56 -13.820 1.462e+04 /
+c2h5o2+ch2o<=>c2h5o2h+hco 1.990e+12 0.000 1.166e+04
+rev/ 1.325e+14 -0.853 9.263e+03 /
+ch4+c2h5o2<=>ch3+c2h5o2h 1.810e+11 0.000 1.848e+04
+rev/ 2.237e+12 -0.694 -6.510e+02 /
+ch3oh+c2h5o2<=>ch2oh+c2h5o2h 1.810e+12 0.000 1.371e+04
+rev/ 2.350e+14 -1.031 2.408e+03 /
+c2h5o2+ho2<=>c2h5o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.763e+13 -0.792 3.382e+04 /
+c2h6+c2h5o2<=>c2h5+c2h5o2h 8.600e+00 3.760 1.720e+04
+rev/ 8.957e+00 3.302 1.838e+03 /
+c2h5o2h<=>c2h5o+oh 6.310e+14 0.000 4.230e+04
+rev/ 5.661e+08 1.033 -1.705e+03 /
+c2h4o2h<=>c2h5+o2 4.374e+47 -12.115 3.102e+04
+rev/ 1.814e+45 -11.500 1.460e+04 /
+c2h5+o2<=>c2h4+ho2 3.780e+14 -1.010 4.749e+03
+rev/ 4.401e+14 -0.962 1.813e+04 /
+dup
+c2h5+o2<=>c2h4+ho2 4.000e-01 3.880 1.362e+04
+rev/ 4.656e-01 3.928 2.700e+04 /
+dup
+c2h5+o2<=>c2h4o1-2+oh 1.626e+11 -0.310 6.150e+03
+rev/ 3.633e+13 -0.626 3.984e+04 /
+c2h5+o2<=>ch3cho+oh 8.265e+02 2.410 5.285e+03
+rev/ 2.247e+03 2.301 6.597e+04 /
+c2h5o2<=>c2h4o2h 2.276e+39 -8.479 4.517e+04
+rev/ 1.203e+36 -8.130 2.702e+04 /
+c2h5o2<=>ch3cho+oh 2.520e+41 -10.200 4.371e+04
+rev/ 1.502e+36 -9.345 6.984e+04 /
+c2h5o2<=>c2h4+ho2 1.815e+38 -8.450 3.789e+04
+rev/ 4.632e+32 -7.438 1.670e+04 /
+c2h5o2<=>c2h4o1-2+oh 4.000e+43 -10.460 4.558e+04
+rev/ 1.959e+40 -9.812 4.471e+04 /
+c2h4o2h<=>c2h4o1-2+oh 8.848e+30 -6.080 2.066e+04
+rev/ 8.199e+30 -5.781 3.793e+04 /
+c2h4o2h<=>c2h4+ho2 3.980e+34 -7.250 2.325e+04
+rev/ 1.922e+32 -6.587 2.021e+04 /
+c2h4o2h<=>ch3cho+oh 1.188e+34 -9.020 2.921e+04
+rev/ 1.339e+32 -8.514 7.348e+04 /
+c2h4o1-2<=>ch3+hco 3.630e+13 0.000 5.720e+04
+rev/ 1.006e+04 1.549 -2.750e+03 /
+c2h4o1-2<=>ch3cho 7.407e+12 0.000 5.380e+04
+rev/ 9.013e+10 0.207 8.080e+04 /
+c2h4o1-2+oh<=>c2h3o1-2+h2o 1.780e+13 0.000 3.610e+03
+rev/ 1.347e+10 0.693 2.474e+04 /
+c2h4o1-2+h<=>c2h3o1-2+h2 8.000e+13 0.000 9.680e+03
+rev/ 5.710e+09 0.799 1.592e+04 /
+c2h4o1-2+ho2<=>c2h3o1-2+h2o2 1.130e+13 0.000 3.043e+04
+rev/ 4.666e+11 0.104 2.067e+04 /
+c2h4o1-2+ch3o2<=>c2h3o1-2+ch3o2h 1.130e+13 0.000 3.043e+04
+rev/ 9.078e+12 -0.341 1.907e+04 /
+c2h4o1-2+c2h5o2<=>c2h3o1-2+c2h5o2h 1.130e+13 0.000 3.043e+04
+rev/ 9.093e+12 -0.341 1.908e+04 /
+c2h4o1-2+ch3<=>c2h3o1-2+ch4 1.070e+12 0.000 1.183e+04
+rev/ 6.967e+10 0.353 1.961e+04 /
+c2h4o1-2+ch3o<=>c2h3o1-2+ch3oh 1.200e+11 0.000 6.750e+03
+rev/ 1.839e+08 0.586 1.322e+04 /
+c2h3o1-2<=>ch3co 8.500e+14 0.000 1.400e+04
+rev/ 1.002e+14 0.041 4.871e+04 /
+c2h3o1-2<=>ch2cho 1.000e+14 0.000 1.400e+04
+rev/ 1.245e+15 -0.375 4.401e+04 /
+ch3cho<=>ch3+hco 7.687e+20 -1.342 8.695e+04
+rev/ 1.750e+13 0.000 0.000e+00 /
+ch3cho+h<=>ch3co+h2 2.370e+13 0.000 3.642e+03
+rev/ 1.639e+10 0.633 1.760e+04 /
+ch3cho+o<=>ch3co+oh 5.940e+12 0.000 1.868e+03
+rev/ 2.133e+09 0.614 1.441e+04 /
+ch3cho+oh<=>ch3co+h2o 3.370e+12 0.000 -6.190e+02
+rev/ 2.472e+10 0.527 2.823e+04 /
+ch3cho+o2<=>ch3co+ho2 3.010e+13 0.000 3.915e+04
+rev/ 1.092e+11 0.285 -1.588e+03 /
+ch3cho+ch3<=>ch3co+ch4 7.080e-04 4.580 1.966e+03
+rev/ 4.468e-04 4.767 1.746e+04 /
+ch3cho+ho2<=>ch3co+h2o2 3.010e+12 0.000 1.192e+04
+rev/ 1.205e+12 -0.062 9.877e+03 /
+ch3o2+ch3cho<=>ch3o2h+ch3co 3.010e+12 0.000 1.192e+04
+rev/ 2.344e+13 -0.507 8.282e+03 /
+ch3cho+ch3co3<=>ch3co+ch3co3h 3.010e+12 0.000 1.192e+04
+rev/ 1.922e+12 -0.010 1.265e+04 /
+ch3cho+oh<=>ch3+hocho 3.000e+15 -1.076 0.000e+00
+rev/ 2.371e+16 -1.277 2.375e+04 /
+ch3cho+oh<=>ch2cho+h2o 1.720e+05 2.400 8.150e+02
+rev/ 1.332e+05 2.511 2.495e+04 /
+ch3co(+m)<=>ch3+co(+m) 3.000e+12 0.000 1.672e+04
+!rev/ 2.976e+06 1.365 4.049e+03 /
+low / 1.2000e+15 0.0000e+00 1.2518e+04 / !lindemann fall-off reaction
+ch3co+h<=>ch2co+h2 2.000e+13 0.000 0.000e+00
+rev/ 1.037e+13 0.201 6.056e+04 /
+ch3co+o<=>ch2co+oh 2.000e+13 0.000 0.000e+00
+rev/ 5.381e+12 0.182 5.914e+04 /
+ch3co+ch3<=>ch2co+ch4 5.000e+13 0.000 0.000e+00
+rev/ 2.364e+16 -0.245 6.210e+04 /
+ch3co3<=>ch3co+o2 6.863e+19 -1.949 3.853e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+ch3co3+ho2<=>ch3co3h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.080e+12 -0.294 3.818e+04 /
+h2o2+ch3co3<=>ho2+ch3co3h 2.410e+12 0.000 9.936e+03
+rev/ 3.845e+12 0.053 1.271e+04 /
+ch4+ch3co3<=>ch3+ch3co3h 1.810e+11 0.000 1.848e+04
+rev/ 1.831e+11 -0.196 3.711e+03 /
+ch2o+ch3co3<=>hco+ch3co3h 1.990e+12 0.000 1.166e+04
+rev/ 1.085e+13 -0.356 1.362e+04 /
+c2h6+ch3co3<=>c2h5+ch3co3h 1.700e+13 0.000 2.046e+04
+rev/ 1.450e+12 0.040 9.460e+03 /
+ch3co3h<=>ch3co2+oh 5.010e+14 0.000 4.015e+04
+rev/ 3.618e+07 1.761 1.338e+03 /
+ch3co2+m<=>ch3+co2+m 4.400e+15 0.000 1.050e+04
+rev/ 4.548e+08 1.378 1.752e+04 /
+ch2cho<=>ch2co+h 4.071e+15 -0.342 5.060e+04
+rev/ 5.000e+13 0.000 1.230e+04 /
+ch2cho+o2<=>ch2o+co+oh 8.950e+13 -0.600 1.012e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2+co(+m)<=>ch2co(+m) 8.100e+11 0.000 0.000e+00
+!rev/ 2.724e+20 -1.743 7.948e+04 /
+low / 2.6900e+33 -5.1100e+00 7.0950e+03 / 
+troe / 5.9070e-01 2.7500e+02 1.2260e+03 5.1850e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+ch2co+h<=>ch3+co 1.100e+13 0.000 3.400e+03
+rev/ 2.400e+12 0.000 4.020e+04 /
+ch2co+h<=>hcco+h2 2.000e+14 0.000 8.000e+03
+rev/ 1.434e+11 0.470 4.520e+03 /
+ch2co+o<=>ch2+co2 1.750e+12 0.000 1.350e+03
+rev/ 2.854e+09 0.809 4.944e+04 /
+ch2co+o<=>hcco+oh 1.000e+13 0.000 8.000e+03
+rev/ 3.723e+09 0.452 3.108e+03 /
+ch2co+oh<=>hcco+h2o 1.000e+13 0.000 2.000e+03
+rev/ 7.604e+10 0.365 1.341e+04 /
+ch2co+oh<=>ch2oh+co 2.000e+12 0.000 -1.010e+03
+rev/ 8.170e+09 0.494 2.453e+04 /
+ch2(s)+ch2co<=>c2h4+co 1.600e+14 0.000 0.000e+00
+rev/ 3.750e+14 0.217 1.034e+05 /
+hcco+oh<=>h2+co+co 1.000e+14 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+h+hcco<=>ch2(s)+co 1.100e+13 0.000 0.000e+00
+rev/ 4.061e+07 1.561 1.854e+04 /
+hcco+o<=>h+co+co 8.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+hcco+o2<=>oh+co+co 4.200e+10 0.000 8.500e+02
+rev/ 0.000e+00 0.000 0.000e+00 /
+hcco+m<=>ch+co+m 6.500e+15 0.000 5.882e+04
+rev/ 1.391e+11 1.033 -1.372e+04 /
+ch+ch2o<=>h+ch2co 9.460e+13 0.000 -5.150e+02
+rev/ 1.623e+15 0.000 6.906e+04 /
+ch+hcco<=>co+c2h2 5.000e+13 0.000 0.000e+00
+rev/ 1.721e+17 0.000 1.646e+05 /
+
+
+c2h3+h(+m)<=>c2h4(+m) 6.080e+12 0.270 2.800e+02
+!rev/ 7.693e+15 0.040 1.116e+05 /
+low / 1.4000e+30 -3.8600e+00 3.3200e+03 / 
+troe / 7.8200e-01 2.0750e+02 2.6630e+03 6.0950e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h4(+m)<=>c2h2+h2(+m) 8.000e+12 0.440 8.877e+04
+!rev/ 6.183e+09 0.923 4.669e+04 /
+low / 7.0000e+50 -9.3100e+00 9.9860e+04 / 
+troe / 7.3450e-01 1.8000e+02 1.0350e+03 5.4170e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h4+h<=>c2h3+h2 5.070e+07 1.930 1.295e+04
+rev/ 1.602e+04 2.436 5.190e+03 /
+c2h4+o<=>ch3+hco 8.564e+06 1.880 1.830e+02
+rev/ 3.297e+02 2.602 2.614e+04 /
+c2h4+o<=>ch2cho+h 4.986e+06 1.880 1.830e+02
+rev/ 1.541e+09 1.201 1.878e+04 /
+c2h4+oh<=>c2h3+h2o 1.800e+06 2.000 2.500e+03
+rev/ 6.029e+03 2.400 9.632e+03 /
+c2h4+ch3<=>c2h3+ch4 6.620e+00 3.700 9.500e+03
+rev/ 1.908e+00 3.760 3.280e+03 /
+c2h4+o2<=>c2h3+ho2 4.000e+13 0.000 5.820e+04
+rev/ 6.626e+10 0.158 -4.249e+03 /
+c2h4+ch3o<=>c2h3+ch3oh 1.200e+11 0.000 6.750e+03
+rev/ 8.138e+08 0.293 -7.830e+02 /
+c2h4+ch3o2<=>c2h3+ch3o2h 2.230e+12 0.000 1.719e+04
+rev/ 7.929e+12 -0.634 -8.167e+03 /
+c2h4+c2h5o2<=>c2h3+c2h5o2h 2.230e+12 0.000 1.719e+04
+rev/ 7.943e+12 -0.634 -8.163e+03 /
+c2h4+ch3co3<=>c2h3+ch3co3h 1.130e+13 0.000 3.043e+04
+rev/ 3.295e+12 -0.136 9.440e+03 /
+c2h4+ch3o2<=>c2h4o1-2+ch3o 2.820e+12 0.000 1.711e+04
+rev/ 3.385e+13 -0.065 4.166e+04 /
+c2h4+c2h5o2<=>c2h4o1-2+c2h5o 2.820e+12 0.000 1.711e+04
+rev/ 7.638e+15 -0.916 4.283e+04 /
+c2h4+ho2<=>c2h4o1-2+oh 2.230e+12 0.000 1.719e+04
+rev/ 4.280e+14 -0.364 3.750e+04 /
+ch+ch4<=>c2h4+h 6.000e+13 0.000 0.000e+00
+rev/ 3.573e+14 0.000 5.548e+04 /
+ch2(s)+ch3<=>c2h4+h 2.000e+13 0.000 0.000e+00
+rev/ 6.128e+19 -1.223 7.305e+04 /
+
+
+c2h3(+m)<=>c2h2+h(+m) 3.860e+08 1.620 3.705e+04
+!rev/ 9.444e+08 1.597 2.728e+03 /
+low / 2.5650e+27 -3.4000e+00 3.5799e+04 / 
+troe / 1.9816e+00 5.3837e+03 4.2932e+00 -7.9500e-02 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h3+o2<=>c2h2+ho2 5.190e+15 -1.200 3.310e+03
+rev/ 2.661e+16 -1.295 1.786e+04 /
+c2h3+o2<=>ch2o+hco 8.500e+28 -5.312 6.500e+03
+rev/ 3.994e+27 -4.883 9.345e+04 /
+c2h3+o2<=>ch2cho+o 5.500e+14 -0.611 5.260e+03
+rev/ 3.000e+18 -1.386 1.630e+04 /
+ch3+c2h3<=>ch4+c2h2 3.920e+11 0.000 0.000e+00
+rev/ 3.497e+14 -0.193 7.078e+04 /
+c2h3+h<=>c2h2+h2 9.640e+13 0.000 0.000e+00
+rev/ 9.427e+13 0.253 6.924e+04 /
+c2h3+oh<=>c2h2+h2o 3.011e+13 0.000 0.000e+00
+rev/ 3.122e+14 0.147 8.413e+04 /
+
+
+c2h+h(+m)<=>c2h2(+m) 1.000e+17 0.000 0.000e+00
+!rev/ 3.157e+20 -0.539 1.329e+05 /
+low / 3.7500e+33 -4.8000e+00 1.9000e+03 / 
+troe / 6.4600e-01 1.3200e+02 1.3150e+03 5.5660e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c2h2+o2<=>hcco+oh 2.000e+08 1.500 3.010e+04
+rev/ 2.039e+06 1.541 3.227e+04 /
+o+c2h2<=>c2h+oh 4.600e+19 -1.400 2.895e+04
+rev/ 3.023e+15 -0.604 -1.782e+03 /
+c2h2+o<=>ch2+co 8.200e+09 1.100 2.370e+03
+rev/ 4.786e+04 2.298 4.883e+04 /
+c2h2+o<=>hcco+h 5.300e+04 2.680 2.360e+03
+rev/ 1.867e+05 2.330 2.126e+04 /
+c2h2+oh<=>c2h+h2o 3.370e+07 2.000 1.400e+04
+rev/ 4.524e+04 2.709 -4.280e+02 /
+c2h2+oh<=>ch2co+h 3.236e+13 0.000 1.200e+04
+rev/ 3.061e+17 -0.802 3.579e+04 /
+c2h2+oh<=>ch3+co 4.830e-04 4.000 -2.000e+03
+rev/ 3.495e-06 4.638 5.212e+04 /
+oh+c2h2<=>h+hccoh 5.040e+05 2.300 1.350e+04
+rev/ 3.852e+09 1.436 4.382e+03 /
+h+hccoh<=>h+ch2co 1.000e+13 0.000 0.000e+00
+rev/ 9.299e+13 -0.290 3.111e+04 /
+
+
+c2h5oh(+m)<=>ch2oh+ch3(+m) 2.000e+23 -1.680 9.640e+04
+!rev/ 8.383e+14 -0.218 7.018e+03 /
+low / 3.1100e+85 -1.8840e+01 1.1310e+05 / 
+troe / 5.0000e-01 5.5000e+02 8.2500e+02 6.1000e+03 / !troe fall-off reaction
+h2/2/ h2o/5/ co/2/ co2/3/ 
+c2h5oh(+m)<=>c2h5+oh(+m) 2.400e+23 -1.620 9.954e+04
+!rev/ 8.998e+15 -0.240 4.653e+03 /
+low / 5.1100e+85 -1.8800e+01 1.1877e+05 / 
+troe / 5.0000e-01 6.5000e+02 8.0000e+02 1.0000e+15 / !troe fall-off reaction
+h2/2/ h2o/5/ co/2/ co2/3/ 
+c2h5oh(+m)<=>c2h4+h2o(+m) 1.320e+05 2.520 6.066e+04
+!rev/ 1.165e-02 4.190 4.874e+04 /
+low / 3.0900e+55 -1.0920e+01 6.2644e+04 / 
+troe / 8.9700e-01 1.0000e+10 1.0000e+00 5.0000e+09 / !troe fall-off reaction
+h2o/5/ 
+c2h5oh(+m)<=>ch3cho+h2(+m) 7.240e+11 0.095 9.101e+04
+!rev/ 4.912e+07 0.994 7.496e+04 /
+low / 4.4600e+87 -1.9420e+01 1.1558e+05 / 
+troe / 9.0000e-01 9.0000e+02 1.1000e+03 3.5000e+03 / !troe fall-off reaction
+h2o/5/ 
+
+
+c2h5oh+o2<=>pc2h4oh+ho2 2.000e+13 0.000 5.280e+04
+rev/ 2.192e+10 0.278 4.430e+02 /
+c2h5oh+o2<=>sc2h4oh+ho2 1.500e+13 0.000 5.015e+04
+rev/ 1.946e+11 0.089 4.879e+03 /
+c2h5oh+oh<=>pc2h4oh+h2o 1.810e+11 0.400 7.170e+02
+rev/ 4.012e+08 0.920 1.794e+04 /
+c2h5oh+oh<=>sc2h4oh+h2o 5.560e+10 0.500 -3.800e+02
+rev/ 1.458e+09 0.831 2.393e+04 /
+c2h5oh+oh<=>c2h5o+h2o 1.500e+10 0.800 2.534e+03
+rev/ 7.320e+09 0.906 1.721e+04 /
+c2h5oh+h<=>pc2h4oh+h2 1.880e+03 3.200 7.150e+03
+rev/ 3.930e-01 3.826 9.484e+03 /
+c2h5oh+h<=>sc2h4oh+h2 1.790e+05 2.530 3.420e+03
+rev/ 4.429e+02 2.967 1.284e+04 /
+c2h5oh+h<=>c2h5o+h2 5.360e+04 2.530 4.405e+03
+rev/ 2.467e+03 2.742 4.188e+03 /
+c2h5oh+ho2<=>pc2h4oh+h2o2 2.379e+04 2.550 1.649e+04
+rev/ 2.877e+03 2.481 2.827e+03 /
+c2h5oh+ho2<=>sc2h4oh+h2o2 6.000e+12 0.000 1.600e+04
+rev/ 8.589e+12 -0.258 9.419e+03 /
+c2h5oh+ho2<=>c2h5o+h2o2 2.500e+12 0.000 2.400e+04
+rev/ 6.658e+13 -0.483 7.782e+03 /
+c2h5oh+ch3o2<=>pc2h4oh+ch3o2h 1.230e+04 2.550 1.575e+04
+rev/ 2.894e+04 2.036 4.880e+02 /
+c2h5oh+ch3o2<=>sc2h4oh+ch3o2h 8.200e+03 2.550 1.075e+04
+rev/ 2.284e+05 1.847 2.574e+03 /
+c2h5oh+ch3o2<=>c2h5o+ch3o2h 2.500e+12 0.000 2.400e+04
+rev/ 1.295e+15 -0.927 6.187e+03 /
+c2h5oh+o<=>pc2h4oh+oh 9.690e+02 3.230 4.658e+03
+rev/ 1.052e-01 3.837 5.580e+03 /
+c2h5oh+o<=>sc2h4oh+oh 1.450e+05 2.470 8.760e+02
+rev/ 1.862e+02 2.888 8.884e+03 /
+c2h5oh+o<=>c2h5o+oh 1.460e-03 4.730 1.727e+03
+rev/ 3.488e-05 4.924 9.800e+01 /
+c2h5oh+ch3<=>pc2h4oh+ch4 3.300e+02 3.300 1.229e+04
+rev/ 6.294e+01 3.480 1.616e+04 /
+c2h5oh+ch3<=>sc2h4oh+ch4 1.993e+01 3.370 7.634e+03
+rev/ 4.498e+01 3.361 1.859e+04 /
+c2h5oh+ch3<=>c2h5o+ch4 2.035e+00 3.570 7.721e+03
+rev/ 8.545e+01 3.336 9.044e+03 /
+c2h5oh+c2h5<=>pc2h4oh+c2h6 5.000e+10 0.000 1.340e+04
+rev/ 6.995e+10 0.000 2.699e+04 /
+c2h5oh+c2h5<=>sc2h4oh+c2h6 5.000e+10 0.000 1.040e+04
+rev/ 6.995e+10 0.000 2.399e+00 /
+
+pc2h4oh<=>c2h4+oh 1.047e+25 -3.990 3.039e+04
+rev/ 4.170e+20 -2.840 1.240e+03 /
+sc2h4oh+m<=>ch3cho+h+m 1.000e+14 0.000 2.500e+04
+rev/ 2.742e+12 0.462 -4.700e+02 /
+o2c2h4oh<=>pc2h4oh+o2 3.900e+16 -1.000 3.000e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+o2c2h4oh<=>oh+ch2o+ch2o 3.125e+09 0.000 1.890e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc2h4oh+o2<=>ch3cho+ho2 3.810e+06 2.000 1.641e+03
+rev/ 2.190e+05 2.390 2.504e+04 /
+
+ch3coch3(+m)<=>ch3co+ch3(+m) 7.108e+21 -1.570 8.468e+04
+!rev/ 1.000e+13 0.000 3.000e+00 /
+low / 7.0130e+89 -2.0380e+01 1.0715e+05 / 
+troe / 8.6300e-01 1.0000e+10 4.1640e+02 3.2900e+09 / !troe fall-off reaction
+ch3coch3+oh<=>ch3coch2+h2o 1.250e+05 2.483 4.450e+02
+rev/ 8.620e+04 2.322 2.471e+04 /
+ch3coch3+h<=>ch3coch2+h2 9.800e+05 2.430 5.160e+03
+rev/ 6.374e+04 2.375 1.453e+04 /
+ch3coch3+o<=>ch3coch2+oh 5.130e+11 0.211 4.890e+03
+rev/ 1.732e+10 0.137 1.285e+04 /
+ch3coch3+ch3<=>ch3coch2+ch4 3.960e+11 0.000 9.784e+03
+rev/ 2.350e+13 -0.501 2.069e+04 /
+ch3coch3+ch3o<=>ch3coch2+ch3oh 4.340e+11 0.000 6.460e+03
+rev/ 6.060e+11 -0.268 1.606e+04 /
+ch3coch3+o2<=>ch3coch2+ho2 6.030e+13 0.000 4.850e+04
+rev/ 2.057e+13 -0.403 3.181e+03 /
+ch3coch3+ho2<=>ch3coch2+h2o2 1.700e+13 0.000 2.046e+04
+rev/ 6.397e+14 -0.750 1.383e+04 /
+ch3coch3+ch3o2<=>ch3coch2+ch3o2h 1.700e+13 0.000 2.046e+04
+rev/ 1.245e+16 -1.195 1.223e+04 /
+ch3coch2<=>ch2co+ch3 1.000e+14 0.000 3.100e+04
+rev/ 1.000e+11 0.000 6.000e+03 /
+ch3coch2o2<=>ch3coch2+o2 2.021e+15 -0.956 2.446e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+ch3coch3+ch3coch2o2<=>ch3coch2+ch3coch2o2h 1.000e+11 0.000 5.000e+03
+rev/ 1.995e+10 0.000 1.000e+04 /
+ch2o+ch3coch2o2<=>hco+ch3coch2o2h 1.288e+11 0.000 9.000e+03
+rev/ 2.512e+10 0.000 1.010e+04 /
+ho2+ch3coch2o2<=>ch3coch2o2h+o2 1.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3coch2o2h<=>ch3coch2o+oh 1.000e+16 0.000 4.300e+04
+rev/ 4.242e+08 1.740 -4.342e+03 /
+ch3coch2o<=>ch3co+ch2o 3.732e+20 -2.176 1.726e+04
+rev/ 1.000e+11 0.000 1.190e+04 /
+c2h3cho<=>c2h3+hco 2.003e+24 -2.135 1.034e+05
+rev/ 1.810e+13 0.000 0.000e+00 /
+c2h3cho+h<=>c2h3co+h2 1.340e+13 0.000 3.300e+03
+rev/ 3.311e+10 0.613 2.268e+04 /
+c2h3cho+o<=>c2h3co+oh 5.940e+12 0.000 1.868e+03
+rev/ 7.618e+09 0.594 1.984e+04 /
+c2h3cho+oh<=>c2h3co+h2o 9.240e+06 1.500 -9.620e+02
+rev/ 2.420e+05 2.007 3.331e+04 /
+c2h3cho+o2<=>c2h3co+ho2 1.005e+13 0.000 4.070e+04
+rev/ 1.302e+11 0.265 5.391e+03 /
+c2h3cho+ho2<=>c2h3co+h2o2 3.010e+12 0.000 1.192e+04
+rev/ 4.303e+12 -0.082 1.530e+04 /
+c2h3cho+ch3<=>c2h3co+ch4 2.608e+06 1.780 5.911e+03
+rev/ 5.878e+06 1.947 2.683e+04 /
+c2h3cho+c2h3<=>c2h3co+c2h4 1.740e+12 0.000 8.440e+03
+rev/ 1.000e+13 0.000 2.800e+04 /
+c2h3cho+ch3o<=>c2h3co+ch3oh 1.000e+12 0.000 3.300e+03
+rev/ 5.304e+10 0.401 2.291e+04 /
+c2h3cho+ch3o2<=>c2h3co+ch3o2h 3.010e+12 0.000 1.192e+04
+rev/ 8.371e+13 -0.527 1.371e+04 /
+c2h3co<=>c2h3+co 1.370e+21 -2.179 3.941e+04
+rev/ 1.510e+11 0.000 4.810e+03 /
+c2h5cho<=>c2h5+hco 1.496e+27 -3.205 8.704e+04
+rev/ 1.810e+13 0.000 0.000e+00 /
+c2h5cho+h<=>c2h5co+h2 4.000e+13 0.000 4.200e+03
+rev/ 2.377e+10 0.654 1.813e+04 /
+c2h5cho+o<=>c2h5co+oh 5.000e+12 0.000 1.790e+03
+rev/ 1.542e+09 0.636 1.431e+04 /
+c2h5cho+oh<=>c2h5co+h2o 2.690e+10 0.760 -3.400e+02
+rev/ 1.695e+08 1.308 2.848e+04 /
+c2h5cho+ch3<=>c2h5co+ch4 2.608e+06 1.780 5.911e+03
+rev/ 1.414e+06 1.988 2.138e+04 /
+c2h5cho+ho2<=>c2h5co+h2o2 2.800e+12 0.000 1.360e+04
+rev/ 9.626e+11 -0.041 1.153e+04 /
+c2h5cho+ch3o<=>c2h5co+ch3oh 1.000e+12 0.000 3.300e+03
+rev/ 1.276e+10 0.442 1.746e+04 /
+c2h5cho+ch3o2<=>c2h5co+ch3o2h 3.010e+12 0.000 1.192e+04
+rev/ 2.013e+13 -0.485 8.260e+03 /
+c2h5cho+c2h5<=>c2h5co+c2h6 1.000e+12 0.000 8.000e+03
+rev/ 6.432e+12 -0.028 1.970e+04 /
+c2h5cho+c2h5o<=>c2h5co+c2h5oh 6.026e+11 0.000 3.300e+03
+rev/ 3.020e+11 0.000 1.816e+04 /
+c2h5cho+c2h5o2<=>c2h5co+c2h5o2h 3.010e+12 0.000 1.192e+04
+rev/ 2.017e+13 -0.486 8.264e+03 /
+c2h5cho+o2<=>c2h5co+ho2 1.005e+13 0.000 4.070e+04
+rev/ 3.131e+10 0.306 -5.800e+01 /
+c2h5cho+ch3co3<=>c2h5co+ch3co3h 3.010e+12 0.000 1.192e+04
+rev/ 1.651e+12 0.012 1.263e+04 /
+c2h5cho+c2h3<=>c2h5co+c2h4 1.700e+12 0.000 8.440e+03
+rev/ 3.198e+12 0.148 3.013e+04 /
+c2h5co<=>c2h5+co 2.460e+23 -3.208 1.755e+04
+rev/ 1.510e+11 0.000 4.810e+03 /
+ch3och3(+m)<=>ch3+ch3o(+m) 7.250e+21 -0.940 8.025e+04
+!rev/ 2.239e+13 0.617 -2.877e+03 /
+low / 3.5000e+60 -1.1560e+01 1.0100e+05 / 
+troe / 1.8300e-01 1.3000e+00 1.3000e+04 6.7100e+09 / !troe fall-off reaction
+ch3och3+oh<=>ch3och2+h2o 6.324e+06 2.000 -6.517e+02
+rev/ 7.853e+04 2.236 2.121e+04 /
+ch3och3+h<=>ch3och2+h2 7.721e+06 2.090 3.384e+03
+rev/ 9.042e+03 2.432 1.036e+04 /
+ch3och3+o<=>ch3och2+oh 7.750e+08 1.360 2.250e+03
+rev/ 4.712e+05 1.683 7.810e+03 /
+ch3och3+ho2<=>ch3och2+h2o2 1.680e+13 0.000 1.769e+04
+rev/ 1.138e+13 -0.353 8.657e+03 /
+ch3och3+ch3o2<=>ch3och2+ch3o2h 1.680e+13 0.000 1.769e+04
+rev/ 2.215e+14 -0.798 7.062e+03 /
+ch3och3+ch3<=>ch3och2+ch4 1.445e-06 5.730 5.700e+03
+rev/ 1.544e-06 5.626 1.421e+04 /
+ch3och3+o2<=>ch3och2+ho2 4.100e+13 0.000 4.491e+04
+rev/ 2.518e+11 -0.006 -2.806e+03 /
+ch3och3+ch3o<=>ch3och2+ch3oh 6.020e+11 0.000 4.074e+03
+rev/ 7.383e+10 -0.270 1.026e+04 /
+ch3och3+ch3och2o2<=>ch3och2+ch3och2o2h 5.000e+12 0.000 1.769e+04
+rev/ 6.428e+13 -0.794 7.258e+03 /
+ch3och3+o2cho<=>ch3och2+ho2cho 4.425e+04 2.600 1.391e+04
+rev/ 1.723e+06 1.746 5.832e+03 /
+ch3och3+ocho<=>ch3och2+hocho 1.000e+13 0.000 1.769e+04
+rev/ 7.195e+12 -0.314 3.313e+04 /
+ch3och2<=>ch2o+ch3 1.600e+13 0.000 2.550e+04
+rev/ 2.601e+05 1.879 1.667e+04 /
+ch3och2+ch3o<=>ch3och3+ch2o 2.410e+13 0.000 0.000e+00
+rev/ 1.250e+14 0.320 7.854e+04 /
+ch3och2+ch2o<=>ch3och3+hco 5.490e+03 2.800 5.862e+03
+rev/ 2.768e+04 2.745 1.408e+04 /
+ch3och2+ch3cho<=>ch3och3+ch3co 1.260e+12 0.000 8.499e+03
+rev/ 7.746e+11 0.280 1.698e+04 /
+ch3och2o2<=>ch3och2+o2 4.439e+19 -1.594 3.624e+04
+rev/ 2.000e+12 0.000 0.000e+00 /
+ch3och2o2+ch2o<=>ch3och2o2h+hco 1.000e+12 0.000 1.166e+04
+rev/ 6.482e+13 -0.849 9.455e+03 /
+ch3och2o2+ch3cho<=>ch3och2o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ch3och2o2+ch3och2o2<=>o2+ch3och2o+ch3och2o 2.210e+23 -4.500 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3och2o2h<=>ch3och2o+oh 2.106e+22 -2.124 4.383e+04
+rev/ 2.000e+13 0.000 0.000e+00 /
+ch3och2o<=>ch3o+ch2o 4.384e+19 -2.014 2.519e+04
+rev/ 1.000e+11 0.000 1.190e+04 /
+ch3och2o+o2<=>ch3ocho+ho2 5.000e+10 0.000 5.000e+02
+rev/ 1.086e+10 -0.020 4.648e+04 /
+ch3och2o<=>ch3ocho+h 6.060e+12 0.056 8.218e+03
+rev/ 1.000e+13 0.000 7.838e+03 /
+ch3och2o2<=>ch2och2o2h 6.000e+10 0.000 2.158e+04
+rev/ 1.248e+12 -0.765 1.112e+04 /
+ch2och2o2h<=>oh+ch2o+ch2o 1.500e+13 0.000 2.076e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+o2ch2och2o2h<=>ch2och2o2h+o2 1.924e+19 -1.622 3.627e+04
+rev/ 7.000e+11 0.000 0.000e+00 /
+o2ch2och2o2h<=>ho2ch2ocho+oh 4.000e+10 0.000 1.858e+04
+rev/ 5.041e+03 1.416 5.964e+04 /
+ho2ch2ocho<=>och2ocho+oh 2.000e+16 0.000 4.050e+04
+rev/ 1.183e+08 1.934 -3.952e+03 /
+och2ocho<=>ch2o+ocho 2.898e+19 -2.201 3.185e+04
+rev/ 1.250e+11 0.000 1.190e+04 /
+och2ocho<=>hoch2oco 1.000e+11 0.000 1.400e+04
+rev/ 1.568e+09 0.487 2.067e+04 /
+hoch2oco<=>hoch2o+co 2.238e+19 -2.021 1.969e+04
+rev/ 1.500e+11 0.000 4.800e+03 /
+hoch2oco<=>ch2oh+co2 2.413e+17 -1.574 2.212e+04
+rev/ 1.500e+11 0.000 3.572e+04 /
+ch3ocho<=>ch2ocho+h 8.241e+19 -1.150 1.025e+05
+rev/ 1.000e+14 0.000 0.000e+00 /
+ch3ocho<=>ch3oco+h 1.325e+19 -1.000 1.001e+05
+rev/ 1.000e+14 0.000 0.000e+00 /
+ch3ocho(+m)<=>ch3oh+co(+m) 1.000e+14 0.000 6.250e+04
+!rev/ 1.321e+03 2.525 4.968e+04 /
+low / 6.1430e+60 -1.2070e+01 7.5400e+04 / 
+troe / 7.8000e-01 8.2800e+09 4.3890e+02 6.7000e+08 / !troe fall-off reaction
+ch3ocho<=>ch3o+hco 5.374e+16 -0.010 9.709e+04
+rev/ 3.000e+13 0.000 0.000e+00 /
+ch3ocho<=>ch3+ocho 3.214e+17 -0.530 7.997e+04
+rev/ 1.000e+13 0.000 0.000e+00 /
+ch3ocho+o2<=>ch3oco+ho2 1.000e+13 0.000 4.970e+04
+rev/ 2.979e+10 0.329 9.998e-01 /
+ch3ocho+o2<=>ch2ocho+ho2 2.050e+13 0.000 5.200e+04
+rev/ 2.143e+10 0.356 3.310e+02 /
+ch3ocho+oh<=>ch3oco+h2o 1.580e+07 1.800 9.340e+02
+rev/ 9.519e+04 2.371 2.082e+04 /
+ch3ocho+oh<=>ch2ocho+h2o 5.270e+09 0.970 1.586e+03
+rev/ 1.114e+07 1.568 1.950e+04 /
+ch3ocho+ho2<=>ch3oco+h2o2 4.820e+03 2.600 1.391e+04
+rev/ 1.585e+03 2.581 2.899e+03 /
+ch3ocho+ho2<=>ch2ocho+h2o2 2.380e+04 2.550 1.649e+04
+rev/ 2.746e+03 2.558 3.513e+03 /
+ch3ocho+o<=>ch3oco+oh 2.755e+05 2.450 2.830e+03
+rev/ 8.126e+01 3.108 6.408e+03 /
+ch3ocho+o<=>ch2ocho+oh 9.800e+05 2.430 4.750e+03
+rev/ 1.014e+02 3.115 6.358e+03 /
+ch3ocho+h<=>ch3oco+h2 6.500e+05 2.400 4.471e+03
+rev/ 3.693e+02 3.076 9.461e+03 /
+ch3ocho+h<=>ch2ocho+h2 6.650e+05 2.540 6.756e+03
+rev/ 1.326e+02 3.243 9.776e+03 /
+ch3ocho+ch3<=>ch3oco+ch4 7.550e-01 3.460 5.481e+03
+rev/ 3.914e-01 3.691 1.201e+04 /
+ch3ocho+ch3<=>ch2ocho+ch4 4.520e-01 3.650 7.154e+03
+rev/ 8.222e-02 3.908 1.171e+04 /
+ch3ocho+ch3o<=>ch3oco+ch3oh 5.480e+11 0.000 5.000e+03
+rev/ 6.685e+09 0.464 1.022e+04 /
+ch3ocho+ch3o<=>ch2ocho+ch3oh 2.170e+11 0.000 6.458e+03
+rev/ 9.289e+08 0.491 9.705e+03 /
+ch3ocho+ch3o2<=>ch3oco+ch3o2h 4.820e+03 2.600 1.391e+04
+rev/ 3.083e+04 2.137 1.304e+03 /
+ch3ocho+ch3o2<=>ch2ocho+ch3o2h 2.380e+04 2.550 1.649e+04
+rev/ 5.342e+04 2.114 1.918e+03 /
+ch3ocho+hco<=>ch3oco+ch2o 5.400e+06 1.900 1.701e+04
+rev/ 5.196e+05 2.290 6.806e+03 /
+ch3ocho+hco<=>ch2ocho+ch2o 1.025e+05 2.500 1.843e+04
+rev/ 3.461e+03 2.917 6.261e+03 /
+ch2ocho<=>ch3oco 2.620e+11 -0.030 3.818e+04
+rev/ 1.629e+12 -0.180 4.067e+04 /
+ch3oco<=>ch3+co2 3.590e+14 -0.172 1.601e+04
+rev/ 4.760e+07 1.540 3.470e+04 /
+ch3oco<=>ch3o+co 1.431e+15 -0.041 2.377e+04
+rev/ 1.550e+06 2.020 5.730e+03 /
+ch2ocho<=>ch2o+hco 4.661e+12 0.120 2.744e+04
+rev/ 1.500e+11 0.000 1.190e+04 /
+c3h8(+m)<=>ch3+c2h5(+m) 1.290e+37 -5.840 9.738e+04
+!rev/ 1.179e+27 -3.993 7.323e+03 /
+low / 5.6400e+74 -1.5740e+01 9.8714e+04 / 
+troe / 3.1000e-01 5.0000e+01 3.0000e+03 9.0000e+03 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ he/.7/ 
+c3h8<=>nc3h7+h 3.750e+17 -0.357 1.012e+05
+rev/ 1.000e+14 0.000 0.000e+00 /
+c3h8<=>ic3h7+h 2.377e+18 -0.671 9.868e+04
+rev/ 1.000e+14 0.000 0.000e+00 /
+c3h8+o2<=>ic3h7+ho2 2.000e+13 0.000 4.964e+04
+rev/ 1.764e+09 0.599 -1.690e+02 /
+c3h8+o2<=>nc3h7+ho2 6.000e+13 0.000 5.229e+04
+rev/ 3.354e+10 0.285 -5.900e+01 /
+h+c3h8<=>h2+ic3h7 1.300e+06 2.400 4.471e+03
+rev/ 2.186e+01 3.347 9.351e+03 /
+h+c3h8<=>h2+nc3h7 1.330e+06 2.540 6.756e+03
+rev/ 1.418e+02 3.173 9.096e+03 /
+c3h8+o<=>ic3h7+oh 5.490e+05 2.500 3.140e+03
+rev/ 4.793e+00 3.428 6.608e+03 /
+c3h8+o<=>nc3h7+oh 3.710e+06 2.400 5.505e+03
+rev/ 2.053e+02 3.014 6.433e+03 /
+c3h8+oh<=>nc3h7+h2o 1.054e+10 0.970 1.586e+03
+rev/ 1.191e+07 1.497 1.882e+04 /
+c3h8+oh<=>ic3h7+h2o 4.670e+07 1.610 -3.500e+01
+rev/ 8.327e+03 2.451 1.974e+04 /
+c3h8+ho2<=>ic3h7+h2o2 5.880e+04 2.500 1.486e+04
+rev/ 5.721e+02 2.752 3.742e+03 /
+c3h8+ho2<=>nc3h7+h2o2 8.100e+04 2.500 1.669e+04
+rev/ 4.995e+03 2.438 3.030e+03 /
+ch3+c3h8<=>ch4+ic3h7 6.400e+04 2.170 7.520e+03
+rev/ 9.819e+02 2.671 1.394e+04 /
+ch3+c3h8<=>ch4+nc3h7 9.040e-01 3.650 7.154e+03
+rev/ 8.791e-02 3.837 1.103e+04 /
+ic3h7+c3h8<=>nc3h7+c3h8 3.000e+10 0.000 1.290e+04
+rev/ 3.000e+10 0.000 1.290e+04 /
+c2h3+c3h8<=>c2h4+ic3h7 1.000e+11 0.000 1.040e+04
+rev/ 1.310e+11 0.000 1.780e+04 /
+c2h3+c3h8<=>c2h4+nc3h7 1.000e+11 0.000 1.040e+04
+rev/ 1.310e+11 0.000 1.780e+04 /
+c2h5+c3h8<=>c2h6+ic3h7 1.000e+11 0.000 1.040e+04
+rev/ 3.630e+10 0.000 9.934e+03 /
+c2h5+c3h8<=>c2h6+nc3h7 1.000e+11 0.000 1.040e+04
+rev/ 3.630e+10 0.000 9.934e+03 /
+c3h8+c3h5-a<=>nc3h7+c3h6 7.940e+11 0.000 2.050e+04
+rev/ 5.372e+16 -1.330 1.340e+04 /
+c3h8+c3h5-a<=>ic3h7+c3h6 7.940e+11 0.000 1.620e+04
+rev/ 5.372e+16 -1.330 9.095e+03 /
+c3h8+ch3o<=>nc3h7+ch3oh 3.000e+11 0.000 7.000e+03
+rev/ 1.220e+10 0.000 9.182e+03 /
+c3h8+ch3o<=>ic3h7+ch3oh 3.000e+11 0.000 7.000e+03
+rev/ 1.220e+10 0.000 9.182e+03 /
+ch3o2+c3h8<=>ch3o2h+nc3h7 1.386e+00 3.970 1.828e+04
+rev/ 1.663e+00 3.463 3.024e+03 /
+ch3o2+c3h8<=>ch3o2h+ic3h7 1.019e+01 3.580 1.481e+04
+rev/ 1.928e+00 3.387 2.090e+03 /
+c2h5o2+c3h8<=>c2h5o2h+nc3h7 1.386e+00 3.970 1.828e+04
+rev/ 1.666e+00 3.463 3.028e+03 /
+c2h5o2+c3h8<=>c2h5o2h+ic3h7 1.019e+01 3.580 1.481e+04
+rev/ 1.931e+00 3.387 2.094e+03 /
+nc3h7o2+c3h8<=>nc3h7o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 2.086e+13 -0.510 5.000e+03 /
+nc3h7o2+c3h8<=>nc3h7o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 3.871e+11 -0.196 4.080e+03 /
+ic3h7o2+c3h8<=>ic3h7o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 2.093e+13 -0.511 5.000e+03 /
+ic3h7o2+c3h8<=>ic3h7o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 3.885e+11 -0.197 4.080e+03 /
+c3h8+ch3co3<=>ic3h7+ch3co3h 2.000e+12 0.000 1.700e+04
+rev/ 3.104e+10 0.305 8.650e+03 /
+c3h8+ch3co3<=>nc3h7+ch3co3h 1.700e+13 0.000 2.046e+04
+rev/ 1.673e+12 -0.009 9.570e+03 /
+c3h8+o2cho<=>nc3h7+ho2cho 5.520e+04 2.550 1.648e+04
+rev/ 1.187e-08 5.540 -1.920e+03 /
+c3h8+o2cho<=>ic3h7+ho2cho 1.475e+04 2.600 1.391e+04
+rev/ 7.838e-06 4.650 -3.000e+01 /
+ic3h7<=>h+c3h6 6.919e+13 -0.025 3.769e+04
+rev/ 2.640e+13 0.000 2.160e+03 /
+ic3h7+h<=>c2h5+ch3 2.000e+13 0.000 0.000e+00
+rev/ 4.344e+07 1.176 8.620e+03 /
+ic3h7+o2<=>c3h6+ho2 4.500e-19 0.000 5.020e+03
+rev/ 2.000e-19 0.000 1.750e+04 /
+ic3h7+oh<=>c3h6+h2o 2.410e+13 0.000 0.000e+00
+rev/ 2.985e+12 0.570 8.382e+04 /
+ic3h7+o<=>ch3coch3+h 4.818e+13 0.000 0.000e+00
+rev/ 1.293e+16 -0.190 7.938e+04 /
+ic3h7+o<=>ch3cho+ch3 4.818e+13 0.000 0.000e+00
+rev/ 1.279e+11 0.800 8.648e+04 /
+nc3h7<=>ch3+c2h4 9.970e+40 -8.600 4.143e+04
+rev/ 1.898e+34 -6.990 1.710e+04 /
+nc3h7<=>h+c3h6 8.780e+39 -8.100 4.658e+04
+rev/ 2.070e+37 -7.390 1.202e+04 /
+nc3h7+o2<=>c3h6+ho2 3.000e-19 0.000 3.000e+03
+rev/ 2.000e-19 0.000 1.750e+04 /
+c2h5cho+nc3h7<=>c2h5co+c3h8 1.700e+12 0.000 8.440e+03
+rev/ 1.900e+14 0.000 1.879e+04 /
+c2h5cho+ic3h7<=>c2h5co+c3h8 1.700e+12 0.000 8.440e+03
+rev/ 1.900e+14 0.000 1.879e+04 /
+c2h5cho+c3h5-a<=>c2h5co+c3h6 1.700e+12 0.000 8.440e+03
+rev/ 1.000e+13 0.000 2.800e+04 /
+c2h3+ch3(+m)<=>c3h6(+m) 2.500e+13 0.000 0.000e+00
+!rev/ 1.000e+22 -1.501 1.027e+05 /
+low / 4.2700e+58 -1.1940e+01 9.7698e+03 / 
+troe / 1.7500e-01 1.3406e+03 6.0000e+04 1.0140e+04 / !troe fall-off reaction
+h2/2/ h2o/6/ ar/.7/ co/1.5/ co2/2/ ch4/2/ c2h6/3/ c2h4/3/ c2h2/3/ he/.7/ 
+c3h6<=>c3h5-a+h 2.010e+61 -13.260 1.185e+05
+rev/ 2.041e+61 -13.520 3.061e+04 /
+c3h6<=>c3h5-s+h 7.710e+69 -16.090 1.400e+05
+rev/ 2.551e+67 -15.867 2.869e+04 /
+c3h6<=>c3h5-t+h 5.620e+71 -16.580 1.393e+05
+rev/ 4.260e+68 -16.164 3.008e+04 /
+c3h6+o<=>c2h5+hco 1.580e+07 1.760 -1.216e+03
+rev/ 9.188e+01 2.725 2.311e+04 /
+c3h6+o<=>ch2co+ch3+h 2.500e+07 1.760 7.600e+01
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6+o<=>ch3chco+h+h 2.500e+07 1.760 7.600e+01
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6+o<=>c3h5-a+oh 5.240e+11 0.700 5.884e+03
+rev/ 1.104e+11 0.697 2.015e+04 /
+c3h6+o<=>c3h5-s+oh 1.200e+11 0.700 8.959e+03
+rev/ 8.239e+07 1.180 -2.070e+02 /
+c3h6+o<=>c3h5-t+oh 6.030e+10 0.700 7.632e+03
+rev/ 9.483e+06 1.373 5.760e+02 /
+c3h6+oh<=>c3h5-a+h2o 3.120e+06 2.000 -2.980e+02
+rev/ 1.343e+07 1.909 3.027e+04 /
+c3h6+oh<=>c3h5-s+h2o 2.110e+06 2.000 2.778e+03
+rev/ 2.959e+04 2.393 9.916e+03 /
+c3h6+oh<=>c3h5-t+h2o 1.110e+06 2.000 1.451e+03
+rev/ 3.565e+03 2.586 1.070e+04 /
+c3h6+ho2<=>c3h5-a+h2o2 2.700e+04 2.500 1.234e+04
+rev/ 6.341e+06 1.820 1.201e+04 /
+c3h6+ho2<=>c3h5-s+h2o2 1.800e+04 2.500 2.762e+04
+rev/ 1.377e+04 2.304 3.864e+03 /
+c3h6+ho2<=>c3h5-t+h2o2 9.000e+03 2.500 2.359e+04
+rev/ 1.577e+03 2.497 1.941e+03 /
+c3h6+h<=>c3h5-a+h2 1.730e+05 2.500 2.492e+03
+rev/ 7.023e+04 2.515 1.817e+04 /
+c3h6+h<=>c3h5-s+h2 8.040e+05 2.500 1.228e+04
+rev/ 1.063e+03 2.999 4.526e+03 /
+c3h6+h<=>c3h5-t+h2 4.050e+05 2.500 9.794e+03
+rev/ 1.227e+02 3.192 4.150e+03 /
+c3h6+h<=>c2h4+ch3 2.300e+13 0.000 2.547e+03
+rev/ 7.272e+07 1.271 1.120e+04 /
+c3h6+o2<=>c3h5-a+ho2 4.000e+12 0.000 3.990e+04
+rev/ 8.514e+12 -0.333 8.870e+02 /
+c3h6+o2<=>c3h5-s+ho2 2.000e+12 0.000 6.290e+04
+rev/ 1.387e+10 0.151 4.590e+02 /
+c3h6+o2<=>c3h5-t+ho2 1.400e+12 0.000 6.070e+04
+rev/ 2.224e+09 0.344 3.690e+02 /
+c3h6+ch3<=>c3h5-a+ch4 2.210e+00 3.500 5.675e+03
+rev/ 8.184e+02 3.070 2.289e+04 /
+c3h6+ch3<=>c3h5-s+ch4 1.348e+00 3.500 1.285e+04
+rev/ 1.626e+00 3.553 6.635e+03 /
+c3h6+ch3<=>c3h5-t+ch4 8.400e-01 3.500 1.166e+04
+rev/ 2.322e-01 3.746 7.552e+03 /
+c3h6+c2h5<=>c3h5-a+c2h6 1.000e+11 0.000 9.800e+03
+rev/ 5.369e+05 1.330 1.644e+04 /
+c3h6+ch3co3<=>c3h5-a+ch3co3h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6+ch3o2<=>c3h5-a+ch3o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6+ho2<=>c3h6o1-2+oh 1.290e+12 0.000 1.490e+04
+rev/ 1.000e-10 0.000 0.000e+00 /
+c3h6+c2h5o2<=>c3h5-a+c2h5o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6+nc3h7o2<=>c3h5-a+nc3h7o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6+ic3h7o2<=>c3h5-a+ic3h7o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6oh<=>c3h6+oh 4.343e+15 -0.805 2.790e+04
+rev/ 9.930e+11 0.000 -9.600e+02 /
+hoc3h6o2<=>c3h6oh+o2 2.873e+19 -1.897 3.429e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+hoc3h6o2<=>ch3cho+ch2o+oh 1.250e+10 0.000 1.890e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h5-a<=>c2h2+ch3 2.397e+48 -9.900 8.208e+04
+rev/ 2.610e+46 -9.820 3.695e+04 /
+c3h5-a<=>c3h4-a+h 4.194e+13 0.216 6.193e+04
+rev/ 2.400e+11 0.690 3.007e+03 /
+c3h5-a+ho2<=>c3h5o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 1.605e+12 0.060 1.166e+04 /
+c3h5-a+ch3o2<=>c3h5o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 1.990e+15 -0.740 1.702e+04 /
+c3h5-a+h<=>c3h4-a+h2 1.232e+03 3.035 2.582e+03
+rev/ 2.818e+00 3.784 4.722e+04 /
+c3h5-a+ch3<=>c3h4-a+ch4 1.000e+11 0.000 0.000e+00
+rev/ 4.921e+12 0.050 4.778e+04 /
+c3h5-a+c2h5<=>c2h6+c3h4-a 4.000e+11 0.000 0.000e+00
+rev/ 1.802e+12 0.050 4.033e+04 /
+c3h5-a+c2h5<=>c2h4+c3h6 4.000e+11 0.000 0.000e+00
+rev/ 6.937e+16 -1.330 5.280e+04 /
+c3h5-a+c2h3<=>c2h4+c3h4-a 1.000e+12 0.000 0.000e+00
+rev/ 1.624e+13 0.050 4.819e+04 /
+c3h4-a+c3h6<=>c3h5-a+c3h5-a 4.749e+08 0.734 2.870e+04
+rev/ 8.430e+10 0.000 -2.620e+02 /
+c3h5-a+o2<=>c3h4-a+ho2 2.180e+21 -2.850 3.076e+04
+rev/ 2.614e+19 -2.449 2.071e+04 /
+c3h5-a+o2<=>ch2cho+ch2o 7.140e+15 -1.210 2.105e+04
+rev/ 4.944e+16 -1.400 8.862e+04 /
+c3h5-a+o2<=>c2h3cho+oh 2.470e+13 -0.440 2.302e+04
+rev/ 1.989e+13 -0.609 7.514e+04 /
+c3h5-a+o2<=>c2h2+ch2o+oh 9.720e+29 -5.710 2.145e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h5-s<=>c2h2+ch3 9.598e+39 -8.170 4.203e+04
+rev/ 1.610e+40 -8.580 2.033e+04 /
+c3h5-s<=>c3h4-p+h 4.187e+15 -0.790 3.748e+04
+rev/ 5.800e+12 0.000 3.100e+03 /
+c3h5-s+o2<=>ch3cho+hco 4.335e+12 0.000 0.000e+00
+rev/ 1.611e+17 -1.270 9.653e+04 /
+c3h5-s+h<=>c3h4-a+h2 3.333e+12 0.000 0.000e+00
+rev/ 7.977e+12 0.110 6.886e+04 /
+c3h5-s+ch3<=>c3h4-a+ch4 1.000e+11 0.000 0.000e+00
+rev/ 6.253e+12 0.110 6.934e+04 /
+c3h5-t<=>c2h2+ch3 2.163e+40 -8.310 4.511e+04
+rev/ 1.610e+40 -8.580 2.033e+04 /
+c3h5-t<=>c3h4-a+h 3.508e+14 -0.440 4.089e+04
+rev/ 8.500e+12 0.000 2.000e+03 /
+c3h5-t<=>c3h4-p+h 1.075e+15 -0.600 3.849e+04
+rev/ 6.500e+12 0.000 2.000e+03 /
+c3h5-t+o2<=>c3h4-a+ho2 1.890e+30 -5.590 1.554e+04
+rev/ 3.037e+31 -5.865 2.681e+04 /
+c3h5-t+o2<=>ch3coch2+o 3.810e+17 -1.360 5.580e+03
+rev/ 2.000e+11 0.000 1.750e+04 /
+c3h5-t+o2<=>ch2o+ch3co 3.710e+25 -3.960 7.043e+03
+rev/ 1.872e+27 -4.430 1.012e+05 /
+c3h5-t+h<=>c3h4-p+h2 3.333e+12 0.000 0.000e+00
+rev/ 2.138e+16 -0.880 7.105e+04 /
+c3h5-t+ch3<=>c3h4-p+ch4 1.000e+11 0.000 0.000e+00
+rev/ 1.676e+16 -0.880 7.153e+04 /
+c3h4-a+m<=>c3h3+h+m 1.143e+17 0.000 7.000e+04
+rev/ 1.798e+15 -0.380 1.061e+04 /
+c3h4-a<=>c3h4-p 1.202e+15 0.000 9.240e+04
+rev/ 3.222e+18 -0.990 9.659e+04 /
+c3h4-a+o2<=>c3h3+ho2 4.000e+13 0.000 3.916e+04
+rev/ 3.170e+11 -0.086 3.110e+02 /
+c3h4-a+ho2<=>ch2co+ch2+oh 4.000e+12 0.000 1.900e+04
+rev/ 1.000e+00 0.000 0.000e+00 /
+c3h4-a+oh<=>ch2co+ch3 3.120e+12 0.000 -3.970e+02
+rev/ 1.806e+17 -1.380 3.607e+04 /
+c3h4-a+oh<=>c3h3+h2o 1.000e+07 2.000 1.000e+03
+rev/ 1.602e+05 2.157 3.173e+04 /
+c3h4-a+o<=>c2h4+co 7.800e+12 0.000 1.600e+03
+rev/ 3.269e+08 1.252 1.219e+05 /
+c3h4-a+o<=>c2h2+ch2o 3.000e-03 4.610 -4.243e+03
+rev/ 2.320e+02 3.230 8.119e+04 /
+c3h4-a+h<=>c3h3+h2 2.000e+07 2.000 5.000e+03
+rev/ 3.022e+04 2.262 2.084e+04 /
+c3h4-a+ch3<=>c3h3+ch4 3.670e-02 4.010 6.830e+03
+rev/ 5.060e-02 3.826 2.421e+04 /
+c3h4-a+c3h5-a<=>c3h3+c3h6 2.000e+11 0.000 7.700e+03
+rev/ 2.644e+19 -2.710 4.214e+04 /
+c3h4-a+c2h<=>c3h3+c2h2 1.000e+13 0.000 0.000e+00
+rev/ 1.420e+16 -1.380 5.382e+04 /
+c3h4-p+m<=>c3h3+h+m 1.143e+17 0.000 7.000e+04
+rev/ 6.708e+11 0.610 6.420e+03 /
+c3h4-p<=>c2h+ch3 4.200e+16 0.000 1.000e+05
+rev/ 1.018e+12 0.610 -1.600e+03 /
+c3h4-p+o2<=>hcco+oh+ch2 1.000e+07 1.500 3.010e+04
+rev/ 1.000e+00 0.000 0.000e+00 /
+c3h4-p+o2<=>c3h3+ho2 2.000e+13 0.000 4.160e+04
+rev/ 6.371e+11 -0.208 1.021e+03 /
+c3h4-p+ho2<=>c2h4+co+oh 3.000e+12 0.000 1.900e+04
+rev/ 1.000e+00 0.000 0.000e+00 /
+c3h4-p+oh<=>c3h3+h2o 1.000e+07 2.000 1.000e+03
+rev/ 6.441e+05 2.034 3.000e+04 /
+c3h4-p+oh<=>ch2co+ch3 5.000e-04 4.500 -1.000e+03
+rev/ 1.079e-02 4.110 3.128e+04 /
+c3h4-p+o<=>c2h3+hco 3.200e+12 0.000 2.010e+03
+rev/ 2.548e+12 -0.390 3.235e+04 /
+c3h4-p+o<=>hcco+ch3 9.600e+08 1.000 0.000e+00
+rev/ 1.430e+04 1.793 2.699e+04 /
+c3h4-p+o<=>hcco+ch2+h 3.200e-19 0.000 2.010e+03
+rev/ 1.000e-30 0.000 0.000e+00 /
+c3h4-p+o<=>c3h3+oh 7.650e+08 1.500 8.600e+03
+rev/ 2.177e+08 1.310 2.247e+04 /
+c3h4-p+h<=>c3h3+h2 2.000e+07 2.000 5.000e+03
+rev/ 1.215e+05 2.140 1.911e+04 /
+c3h4-p+ch3<=>c3h3+ch4 1.500e+00 3.500 5.600e+03
+rev/ 8.313e+00 3.195 2.125e+04 /
+c3h4-p+c2h<=>c3h3+c2h2 1.000e+12 0.000 0.000e+00
+rev/ 5.297e+11 -0.390 4.963e+04 /
+c3h4-p+c2h3<=>c3h3+c2h4 1.000e+12 0.000 7.700e+03
+rev/ 9.541e+11 -0.390 5.245e+04 /
+c3h4-p+c3h5-a<=>c3h3+c3h6 1.000e+12 0.000 7.700e+03
+rev/ 4.931e+16 -1.730 3.795e+04 /
+c3h3+o<=>ch2o+c2h 1.000e+13 0.000 0.000e+00
+rev/ 5.446e+14 0.000 3.161e+04 /
+c3h3+oh<=>c3h2+h2o 1.000e+13 0.000 0.000e+00
+rev/ 1.343e+15 0.000 1.568e+04 /
+c3h3+o2<=>ch2co+hco 3.010e+10 0.000 2.870e+03
+rev/ 4.881e+11 0.000 5.947e+04 /
+c3h3+ch3<=>c2h5+c2h 4.299e+15 -0.790 4.563e+04
+rev/ 1.810e+13 0.000 0.000e+00 /
+c3h2+o2<=>hco+hcco 5.000e+13 0.000 0.000e+00
+rev/ 2.326e+14 -0.214 7.719e+04 /
+c3h4-a+ho2<=>c2h4+co+oh 1.000e+12 0.000 1.400e+04
+rev/ 1.000e+00 0.000 0.000e+00 /
+c3h4-a+ho2<=>c3h3+h2o2 3.000e+13 0.000 1.400e+04
+rev/ 1.551e+16 -1.380 4.400e+04 /
+c2h2+ch3<=>c3h4-p+h 4.229e+08 1.143 1.209e+04
+rev/ 1.000e+14 0.000 4.000e+03 /
+c2h2+ch3<=>c3h4-a+h 6.740e+19 -2.080 3.159e+04
+rev/ 6.407e+25 -3.345 2.177e+04 /
+c3h3+h<=>c3h2+h2 5.000e+13 0.000 0.000e+00
+rev/ 5.999e+07 1.365 4.110e+03 /
+c3h2+oh<=>c2h2+hco 5.000e+13 0.000 0.000e+00
+rev/ 2.282e+16 -0.254 7.502e+04 /
+c3h2+o2<=>hcco+co+h 5.000e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3chco+oh<=>c2h5+co2 1.730e+12 0.000 -1.010e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3chco+oh<=>sc2h4oh+co 2.000e+12 0.000 -1.010e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3chco+h<=>c2h5+co 4.400e+12 0.000 1.459e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch3chco+o<=>ch3cho+co 3.200e+12 0.000 -4.370e+02
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc3h7+ho2<=>nc3h7o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 6.220e+15 -0.692 2.531e+04 /
+ic3h7+ho2<=>ic3h7o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 1.051e+16 -0.557 2.732e+04 /
+ch3o2+nc3h7<=>ch3o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 3.890e+14 -0.394 2.955e+04 /
+ch3o2+ic3h7<=>ch3o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 6.573e+14 -0.258 3.156e+04 /
+nc3h7o2<=>nc3h7+o2 2.400e+20 -1.616 3.596e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+ic3h7o2<=>ic3h7+o2 3.132e+22 -2.167 3.816e+04
+rev/ 7.540e+12 0.000 0.000e+00 /
+nc3h7o2+ch2o<=>nc3h7o2h+hco 5.600e+12 0.000 1.360e+04
+rev/ 8.000e+11 0.000 1.000e+04 /
+nc3h7o2+ch3cho<=>nc3h7o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ic3h7o2+ch2o<=>ic3h7o2h+hco 5.600e+12 0.000 1.360e+04
+rev/ 8.000e+11 0.000 1.000e+04 /
+ic3h7o2+ch3cho<=>ic3h7o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+nc3h7o2+ho2<=>nc3h7o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.841e+13 -0.795 3.361e+04 /
+ic3h7o2+ho2<=>ic3h7o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.855e+13 -0.796 3.361e+04 /
+c2h4+nc3h7o2<=>c2h3+nc3h7o2h 1.130e+13 0.000 3.043e+04
+rev/ 3.000e+12 0.000 1.150e+04 /
+c2h4+ic3h7o2<=>c2h3+ic3h7o2h 1.130e+13 0.000 3.043e+04
+rev/ 3.000e+12 0.000 1.150e+04 /
+ch3oh+nc3h7o2<=>ch2oh+nc3h7o2h 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+ch3oh+ic3h7o2<=>ch2oh+ic3h7o2h 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+c2h3cho+nc3h7o2<=>c2h3co+nc3h7o2h 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+c2h3cho+ic3h7o2<=>c2h3co+ic3h7o2h 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ch4+nc3h7o2<=>ch3+nc3h7o2h 1.120e+13 0.000 2.464e+04
+rev/ 7.430e+11 0.000 5.500e+03 /
+ch4+ic3h7o2<=>ch3+ic3h7o2h 1.120e+13 0.000 2.464e+04
+rev/ 7.430e+11 0.000 5.500e+03 /
+nc3h7o2+ch3o2<=>nc3h7o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2+ch3o2<=>ic3h7o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+h2+nc3h7o2<=>h+nc3h7o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+h2+ic3h7o2<=>h+ic3h7o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+ic3h7o2+c2h6<=>ic3h7o2h+c2h5 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+nc3h7o2+c2h6<=>nc3h7o2h+c2h5 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic3h7o2+c2h5cho<=>ic3h7o2h+c2h5co 2.000e+11 0.000 9.500e+03
+rev/ 5.000e+09 0.000 1.000e+04 /
+nc3h7o2+c2h5cho<=>nc3h7o2h+c2h5co 2.000e+11 0.000 9.500e+03
+rev/ 5.000e+09 0.000 1.000e+04 /
+ic3h7o2+ch3co3<=>ic3h7o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc3h7o2+ch3co3<=>nc3h7o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2+c2h5o2<=>ic3h7o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc3h7o2+c2h5o2<=>nc3h7o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2+ic3h7o2<=>o2+ic3h7o+ic3h7o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc3h7o2+nc3h7o2<=>o2+nc3h7o+nc3h7o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2+nc3h7o2<=>ic3h7o+nc3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2+ch3<=>ic3h7o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 1.145e+11 0.695 2.672e+04 /
+ic3h7o2+c2h5<=>ic3h7o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 1.628e+13 0.094 2.913e+04 /
+ic3h7o2+ic3h7<=>ic3h7o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 2.778e+13 0.261 2.980e+04 /
+ic3h7o2+nc3h7<=>ic3h7o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.644e+13 0.125 2.780e+04 /
+ic3h7o2+c3h5-a<=>ic3h7o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 4.242e+09 0.877 1.414e+04 /
+nc3h7o2+ch3<=>nc3h7o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 5.303e+12 0.009 2.692e+04 /
+nc3h7o2+c2h5<=>nc3h7o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 7.540e+14 -0.592 2.933e+04 /
+nc3h7o2+ic3h7<=>nc3h7o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.286e+15 -0.425 3.000e+04 /
+nc3h7o2+nc3h7<=>nc3h7o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 7.612e+14 -0.561 2.800e+04 /
+nc3h7o2+c3h5-a<=>nc3h7o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 1.964e+11 0.191 1.434e+04 /
+nc3h7o2h<=>nc3h7o+oh 1.500e+16 0.000 4.250e+04
+rev/ 1.143e+08 1.719 -4.034e+03 /
+ic3h7o2h<=>ic3h7o+oh 9.450e+15 0.000 4.260e+04
+rev/ 1.550e+06 2.406 -4.132e+03 /
+nc3h7o<=>c2h5+ch2o 2.716e+21 -2.449 1.570e+04
+rev/ 1.000e+11 0.000 3.496e+03 /
+nc3h7o<=>c2h5cho+h 8.899e+10 0.746 1.980e+04
+rev/ 4.000e+12 0.000 6.260e+03 /
+ic3h7o<=>ch3+ch3cho 5.328e+19 -1.696 1.714e+04
+rev/ 1.000e+11 0.000 9.256e+03 /
+ic3h7o<=>ch3coch3+h 8.663e+14 -0.483 2.008e+04
+rev/ 2.000e+12 0.000 7.270e+03 /
+ic3h7o+o2<=>ch3coch3+ho2 9.090e+09 0.000 3.900e+02
+rev/ 1.000e+11 0.000 3.200e+04 /
+nc3h7o2<=>c3h6ooh1-2 6.000e+11 0.000 2.685e+04
+rev/ 1.117e+08 0.583 1.172e+04 /
+nc3h7o2<=>c3h6ooh1-3 1.125e+11 0.000 2.440e+04
+rev/ 2.716e+11 -0.507 8.936e+03 /
+ic3h7o2<=>c3h6ooh2-1 1.800e+12 0.000 2.940e+04
+rev/ 1.122e+10 0.119 1.181e+04 /
+ic3h7o2<=>c3h6ooh2-2 1.230e+35 -6.960 4.888e+04
+rev/ 2.384e+34 -7.060 4.494e+04 /
+c3h6ooh1-2<=>c3h6o1-2+oh 6.000e+11 0.000 2.200e+04
+rev/ 1.150e+11 0.490 3.837e+04 /
+c3h6ooh1-3<=>c3h6o1-3+oh 7.500e+10 0.000 1.525e+04
+rev/ 1.186e+06 1.765 2.871e+04 /
+c3h6ooh2-1<=>c3h6o1-2+oh 6.000e+11 0.000 2.200e+04
+rev/ 2.780e+08 1.191 3.609e+04 /
+c3h6ooh1-2<=>c3h6+ho2 7.834e+15 -1.300 1.595e+04
+rev/ 1.000e+11 0.000 1.100e+04 /
+c3h6ooh2-1<=>c3h6+ho2 3.239e+18 -2.000 1.897e+04
+rev/ 1.000e+11 0.000 1.175e+04 /
+c3h6ooh1-3<=>oh+ch2o+c2h4 3.035e+15 -0.790 2.740e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6ooh2-1<=>c2h3ooh+ch3 6.540e+27 -5.140 3.832e+04
+rev/ 4.460e+22 -4.240 1.063e+04 /
+c3h6ooh1-2<=>c2h4+ch2o+oh 1.310e+33 -7.010 4.812e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6ooh2-2<=>ch3coch3+oh 9.000e+14 0.000 1.500e+03
+rev/ 1.021e+14 0.310 3.675e+04 /
+c3h6ooh1-2o2<=>c3h6ooh1-2+o2 2.391e+25 -2.945 4.010e+04
+rev/ 5.000e+12 0.000 0.000e+00 /
+c3h6ooh1-3o2<=>c3h6ooh1-3+o2 2.853e+20 -1.626 3.569e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+c3h6ooh2-1o2<=>c3h6ooh2-1+o2 5.227e+22 -2.244 3.782e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+c3h6ooh1-2o2<=>c3ket12+oh 6.000e+11 0.000 2.640e+04
+rev/ 9.249e+04 1.329 4.892e+04 /
+c3h6ooh1-3o2<=>c3ket13+oh 7.500e+10 0.000 2.140e+04
+rev/ 4.101e+03 1.496 4.474e+04 /
+c3h6ooh2-1o2<=>c3ket21+oh 3.000e+11 0.000 2.385e+04
+rev/ 1.397e+03 1.834 4.975e+04 /
+c3h6ooh2-1o2<=>c3h51-2,3ooh 1.125e+11 0.000 2.440e+04
+rev/ 2.391e+11 -0.499 8.920e+03 /
+c3h6ooh1-2o2<=>c3h51-2,3ooh 9.000e+11 0.000 2.940e+04
+rev/ 1.913e+12 -0.499 1.392e+04 /
+c3h51-2,3ooh<=>ac3h5ooh+ho2 2.560e+13 -0.490 1.777e+04
+rev/ 3.180e+15 -1.160 1.204e+04 /
+c3h52-1,3ooh<=>c3h6ooh1-3o2 1.255e+12 -0.360 1.394e+04
+rev/ 6.000e+11 0.000 2.685e+04 /
+c3h52-1,3ooh<=>ac3h5ooh+ho2 1.150e+14 -0.630 1.725e+04
+rev/ 1.564e+11 0.120 1.020e+04 /
+c3ket12<=>ch3cho+hco+oh 9.450e+15 0.000 4.300e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3ket13<=>ch2o+ch2cho+oh 1.000e+16 0.000 4.300e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3ket21<=>ch2o+ch3co+oh 1.000e+16 0.000 4.300e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ac3h5ooh<=>c3h5o+oh 3.880e+19 -1.460 4.537e+04
+rev/ 2.000e+13 0.000 0.000e+00 /
+c3h5o<=>c2h3cho+h 1.000e+14 0.000 2.910e+04
+rev/ 1.676e+14 -0.156 1.969e+04 /
+c3h5o<=>c2h3+ch2o 1.464e+20 -1.968 3.509e+04
+rev/ 1.500e+11 0.000 1.060e+04 /
+c3h5o+o2<=>c2h3cho+ho2 1.000e+12 0.000 6.000e+03
+rev/ 1.288e+11 0.000 3.200e+04 /
+c2h3ooh<=>ch2cho+oh 8.400e+14 0.000 4.300e+04
+rev/ 1.000e+11 0.000 0.000e+00 /
+c3h6o1-2<=>c2h4+ch2o 6.000e+14 0.000 6.000e+04
+rev/ 2.970e+11 1.000 3.108e+04 /
+c3h6o1-2+oh<=>ch2o+c2h3+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-2+h<=>ch2o+c2h3+h2 2.630e+07 2.000 5.000e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-2+o<=>ch2o+c2h3+oh 8.430e+13 0.000 5.200e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-2+ho2<=>ch2o+c2h3+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-2+ch3o2<=>ch2o+c2h3+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-2+ch3<=>ch2o+c2h3+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3<=>c2h4+ch2o 6.000e+14 0.000 6.000e+04
+rev/ 2.970e+11 0.000 3.108e+04 /
+c3h6o1-3+oh<=>ch2o+c2h3+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3+o<=>ch2o+c2h3+oh 8.430e+13 0.000 5.200e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3+h<=>ch2o+c2h3+h2 2.630e+07 2.000 5.000e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3+ch3o2<=>ch2o+c2h3+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3+ho2<=>ch2o+c2h3+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c3h6o1-3+ch3<=>ch2o+c2h3+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic3h7o2<=>c3h6+ho2 1.196e+43 -9.430 4.153e+04
+rev/ 2.302e+33 -7.310 1.671e+04 /
+nc3h7o2<=>c3h6+ho2 4.308e+36 -7.500 3.951e+04
+rev/ 1.023e+28 -5.617 1.944e+04 /
+c4h10(+m)<=>c2h5+c2h5(+m) 2.720e+15 0.000 7.561e+04
+!rev/ 4.954e+03 2.253 -1.347e+04 /
+low / 4.7200e+18 0.0000e+00 4.9576e+04 / 
+troe / 7.2000e-01 1.5000e+03 1.0000e-10 1.0000e+10 / !troe fall-off reaction
+c4h10(+m)<=>nc3h7+ch3(+m) 4.280e+14 0.000 6.990e+04
+!rev/ 4.763e+04 1.791 -2.005e+04 /
+low / 5.3400e+17 0.0000e+00 4.2959e+04 / 
+troe / 7.2000e-01 1.5000e+03 1.0000e-10 1.0000e+10 / !troe fall-off reaction
+c4h10<=>pc4h9+h 1.344e+17 -0.356 1.012e+05
+rev/ 3.610e+13 0.000 0.000e+00 /
+c4h10<=>sc4h9+h 1.975e+18 -0.694 9.872e+04
+rev/ 3.610e+13 0.000 0.000e+00 /
+c4h10+o2<=>pc4h9+ho2 6.000e+13 0.000 5.234e+04
+rev/ 3.377e+10 0.284 -1.900e+01 /
+c4h10+o2<=>sc4h9+ho2 4.000e+13 0.000 4.980e+04
+rev/ 1.532e+09 0.622 -4.900e+01 /
+c4h10+c3h5-a<=>pc4h9+c3h6 7.940e+11 0.000 2.050e+04
+rev/ 1.000e+12 0.000 2.000e+04 /
+c4h10+c3h5-a<=>sc4h9+c3h6 3.160e+11 0.000 1.640e+04
+rev/ 1.000e+12 0.000 2.000e+04 /
+c4h10+c2h5<=>pc4h9+c2h6 1.580e+11 0.000 1.230e+04
+rev/ 3.560e+10 0.000 1.292e+04 /
+c4h10+c2h5<=>sc4h9+c2h6 1.000e+11 0.000 1.040e+04
+rev/ 7.120e+10 0.000 9.917e+03 /
+c4h10+c2h3<=>pc4h9+c2h4 1.000e+12 0.000 1.800e+04
+rev/ 2.570e+12 0.000 2.538e+04 /
+c4h10+c2h3<=>sc4h9+c2h4 8.000e+11 0.000 1.680e+04
+rev/ 2.050e+12 0.000 2.418e+04 /
+c4h10+ch3<=>pc4h9+ch4 9.040e-01 3.650 7.154e+03
+rev/ 8.853e-02 3.836 1.102e+04 /
+c4h10+ch3<=>sc4h9+ch4 3.020e+00 3.460 5.481e+03
+rev/ 2.013e-02 3.984 1.186e+04 /
+c4h10+h<=>pc4h9+h2 1.880e+05 2.750 6.280e+03
+rev/ 2.018e+01 3.382 8.610e+03 /
+c4h10+h<=>sc4h9+h2 2.600e+06 2.400 4.471e+03
+rev/ 1.900e+01 3.370 9.311e+03 /
+c4h10+oh<=>pc4h9+h2o 1.054e+10 0.970 1.586e+03
+rev/ 1.200e+07 1.496 1.881e+04 /
+c4h10+oh<=>sc4h9+h2o 9.340e+07 1.610 -3.500e+01
+rev/ 7.235e+03 2.474 1.970e+04 /
+c4h10+o<=>pc4h9+oh 1.130e+14 0.000 7.850e+03
+rev/ 1.480e+13 0.000 1.224e+04 /
+c4h10+o<=>sc4h9+oh 5.620e+13 0.000 5.200e+03
+rev/ 7.350e+12 0.000 9.590e+03 /
+c4h10+ho2<=>pc4h9+h2o2 4.080e+01 3.590 1.716e+04
+rev/ 2.534e+00 3.527 3.490e+03 /
+c4h10+ho2<=>sc4h9+h2o2 1.264e+02 3.370 1.372e+04
+rev/ 5.343e-01 3.645 2.558e+03 /
+c4h10+ch3o<=>pc4h9+ch3oh 3.000e+11 0.000 7.000e+03
+rev/ 1.220e+10 0.000 5.000e+04 /
+c4h10+ch3o<=>sc4h9+ch3oh 6.000e+11 0.000 7.000e+03
+rev/ 2.441e+10 0.000 5.000e+04 /
+c4h10+c2h5o<=>pc4h9+c2h5oh 3.000e+11 0.000 7.000e+03
+rev/ 1.000e+10 0.000 9.000e+03 /
+c4h10+c2h5o<=>sc4h9+c2h5oh 6.000e+11 0.000 7.000e+03
+rev/ 1.000e+10 0.000 9.000e+03 /
+c4h10+pc4h9<=>sc4h9+c4h10 1.000e+11 0.000 1.040e+04
+rev/ 1.500e+11 0.000 1.230e+04 /
+c4h10+ch3co3<=>pc4h9+ch3co3h 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+c4h10+ch3co3<=>sc4h9+ch3co3h 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+c4h10+o2cho<=>pc4h9+ho2cho 1.680e+13 0.000 2.044e+04
+rev/ 3.680e+00 2.990 2.505e+03 /
+c4h10+o2cho<=>sc4h9+ho2cho 1.120e+13 0.000 1.769e+04
+rev/ 7.595e+03 2.060 4.266e+03 /
+ch3o2+c4h10<=>ch3o2h+pc4h9 1.386e+00 3.970 1.828e+04
+rev/ 1.675e+00 3.462 3.016e+03 /
+ch3o2+c4h10<=>ch3o2h+sc4h9 2.037e+01 3.580 1.481e+04
+rev/ 1.675e+00 3.410 2.050e+03 /
+c2h5o2+c4h10<=>c2h5o2h+pc4h9 4.080e+01 3.590 1.716e+04
+rev/ 4.938e+01 3.082 1.899e+03 /
+c2h5o2+c4h10<=>c2h5o2h+sc4h9 1.264e+02 3.370 1.372e+04
+rev/ 1.041e+01 3.200 9.670e+02 /
+nc3h7o2+c4h10<=>nc3h7o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+nc3h7o2+c4h10<=>nc3h7o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic3h7o2+c4h10<=>ic3h7o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic3h7o2+c4h10<=>ic3h7o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9o2+c3h8<=>pc4h9o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9o2+c3h8<=>pc4h9o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9o2+c4h10<=>pc4h9o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9o2+c4h10<=>pc4h9o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+sc4h9o2+c3h8<=>sc4h9o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+sc4h9o2+c3h8<=>sc4h9o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+sc4h9o2+c4h10<=>sc4h9o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+sc4h9o2+c4h10<=>sc4h9o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9<=>sc4h9 3.800e+10 0.670 3.660e+04
+rev/ 2.586e+09 1.008 3.911e+04 /
+pc4h9<=>c2h5+c2h4 3.504e+12 0.463 2.947e+04
+rev/ 1.320e+04 2.480 6.130e+03 /
+sc4h9<=>c3h6+ch3 4.803e+10 1.044 3.035e+04
+rev/ 1.760e+04 2.480 6.130e+03 /
+pc4h9<=>c4h8-1+h 2.622e+12 0.253 3.570e+04
+rev/ 2.500e+11 0.510 2.620e+03 /
+sc4h9<=>c4h8-2+h 2.844e+11 0.337 3.552e+04
+rev/ 2.500e+11 0.510 2.620e+03 /
+sc4h9<=>c4h8-1+h 3.027e+11 0.591 3.682e+04
+rev/ 4.240e+11 0.510 1.230e+03 /
+pc4h9+o2<=>c4h8-1+ho2 8.370e-01 3.590 1.196e+04
+rev/ 1.672e-01 3.775 2.775e+04 /
+sc4h9+o2<=>c4h8-1+ho2 5.350e-01 3.710 9.322e+03
+rev/ 1.571e+00 3.557 2.260e+04 /
+sc4h9+o2<=>c4h8-2+ho2 1.070e+00 3.710 9.322e+03
+rev/ 1.971e+00 3.811 2.529e+04 /
+c4h8-1<=>c3h5-a+ch3 5.081e+19 -1.256 7.651e+04
+rev/ 1.350e+13 0.000 0.000e+00 /
+c4h8-1<=>c2h3+c2h5 2.882e+23 -1.990 1.016e+05
+rev/ 9.000e+12 0.000 0.000e+00 /
+c4h8-1<=>h+c4h71-3 3.724e+14 -0.111 8.520e+04
+rev/ 5.000e+13 0.000 0.000e+00 /
+c4h8-1+o2<=>c4h71-3+ho2 2.000e+13 0.000 3.719e+04
+rev/ 4.653e+12 0.070 -1.680e+02 /
+c4h8-1+o<=>c4h71-3+oh 1.750e+11 0.700 5.884e+03
+rev/ 4.875e+09 1.068 2.284e+04 /
+c4h8-2+o<=>c4h71-3+oh 2.190e+11 0.810 7.550e+03
+rev/ 9.722e+09 0.924 2.181e+04 /
+c4h8-1+h<=>c4h71-3+h2 1.730e+05 2.500 2.492e+03
+rev/ 9.284e+03 2.887 2.086e+04 /
+c4h8-1+h<=>c4h71-4+h2 6.651e+05 2.540 6.756e+03
+rev/ 3.045e+04 2.540 1.103e+04 /
+c4h8-1+oh<=>c4h71-1+h2o 9.000e+05 2.000 2.500e+03
+rev/ 1.133e+04 2.401 9.815e+03 /
+c4h8-1+oh<=>c4h71-2+h2o 2.220e+06 2.000 1.451e+03
+rev/ 6.304e+05 2.050 1.291e+04 /
+c4h8-1+oh<=>c4h71-3+h2o 3.120e+06 2.000 -2.980e+02
+rev/ 1.775e+06 2.281 3.296e+04 /
+c4h8-1+oh<=>c4h71-4+h2o 5.270e+09 0.970 1.586e+03
+rev/ 1.044e+09 0.970 2.101e+04 /
+c4h8-1+ch3<=>c4h71-3+ch4 2.210e+00 3.500 5.675e+03
+rev/ 1.082e+02 3.441 2.558e+04 /
+c4h8-1+ch3<=>c4h71-4+ch4 4.520e-01 3.650 7.154e+03
+rev/ 5.405e-01 3.650 1.191e+04 /
+c4h8-1+ho2<=>c4h71-3+h2o2 2.700e+04 0.700 5.884e+03
+rev/ 8.383e+05 0.392 8.246e+03 /
+c4h8-1+ho2<=>c4h71-4+h2o2 2.380e+03 2.550 1.649e+04
+rev/ 2.800e+03 2.220 4.460e+03 /
+c4h8-1+ch3o2<=>c4h71-3+ch3o2h 2.700e+04 0.700 5.884e+03
+rev/ 1.631e+07 -0.053 6.651e+03 /
+c4h8-1+ch3o2<=>c4h71-4+ch3o2h 2.380e+03 2.550 1.649e+04
+rev/ 5.831e+03 2.040 1.440e+03 /
+c4h8-1+ch3o<=>c4h71-3+ch3oh 4.000e+01 2.900 8.609e+03
+rev/ 2.470e+02 2.670 2.700e+04 /
+c4h8-1+ch3o<=>c4h71-4+ch3oh 2.170e+11 0.000 6.458e+03
+rev/ 4.789e+09 0.020 9.002e+03 /
+c4h8-1+ch3co3<=>c4h71-3+ch3co3h 1.000e+11 0.000 8.000e+03
+rev/ 2.000e+10 0.000 1.000e+04 /
+c4h8-1+c3h5-a<=>c4h71-3+c3h6 7.900e+10 0.000 1.240e+04
+rev/ 1.000e+11 0.000 1.750e+04 /
+c4h8-1+c4h6<=>c4h71-3+c4h71-3 2.350e+12 0.000 4.672e+04
+rev/ 1.600e+12 0.000 0.000e+00 /
+c4h8-1+c2h5o2<=>c4h71-3+c2h5o2h 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+c4h8-1+nc3h7o2<=>c4h71-3+nc3h7o2h 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+c4h8-1+ic3h7o2<=>c4h71-3+ic3h7o2h 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+c4h8-1+pc4h9o2<=>c4h71-3+pc4h9o2h 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+c4h8-1+sc4h9o2<=>c4h71-3+sc4h9o2h 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+c4h8-1+ch3o2<=>c4h8o1-2+ch3o 1.000e+12 0.000 1.434e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8-2<=>h+c4h71-3 2.337e+14 0.143 8.789e+04
+rev/ 5.000e+13 0.000 0.000e+00 /
+c4h8-2+o2<=>c4h71-3+ho2 4.000e+13 0.000 3.939e+04
+rev/ 1.350e+13 -0.180 -9.240e+02 /
+c4h8-2+h<=>c4h71-3+h2 4.440e+04 2.810 4.414e+03
+rev/ 3.797e+03 2.943 2.008e+04 /
+c4h8-2+oh<=>c4h71-3+h2o 5.100e+08 1.400 1.250e+03
+rev/ 4.624e+08 1.427 3.181e+04 /
+c4h8-2+ch3<=>c4h71-3+ch4 7.140e+00 3.570 7.642e+03
+rev/ 5.571e+02 3.257 2.485e+04 /
+c4h8-2+ho2<=>c4h71-3+h2o2 5.940e+04 2.570 1.614e+04
+rev/ 2.939e+06 2.008 1.581e+04 /
+c4h8-2+ch3o2<=>c4h71-3+ch3o2h 5.940e+04 2.570 1.614e+04
+rev/ 5.718e+07 1.563 1.421e+04 /
+c4h8-2+ch3o<=>c4h71-3+ch3oh 1.800e+01 2.950 1.199e+04
+rev/ 1.612e+02 2.470 2.742e+04 /
+c4h8-2+c2h5o2<=>c4h71-3+c2h5o2h 3.200e+12 0.000 1.490e+04
+rev/ 1.585e+11 0.000 1.470e+04 /
+c4h8-2+nc3h7o2<=>c4h71-3+nc3h7o2h 3.200e+12 0.000 1.490e+04
+rev/ 1.585e+11 0.000 1.470e+04 /
+c4h8-2+ic3h7o2<=>c4h71-3+ic3h7o2h 3.200e+12 0.000 1.490e+04
+rev/ 1.585e+11 0.000 1.470e+04 /
+c4h8-2+pc4h9o2<=>c4h71-3+pc4h9o2h 3.200e+12 0.000 1.490e+04
+rev/ 1.585e+11 0.000 1.470e+04 /
+c4h8-2+sc4h9o2<=>c4h71-3+sc4h9o2h 3.200e+12 0.000 1.490e+04
+rev/ 1.585e+11 0.000 1.470e+04 /
+c4h8-1+ho2<=>c4h8o1-2+oh 1.000e+12 0.000 1.434e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8-2+ho2<=>c4h8o2-3+oh 5.620e+11 0.000 1.231e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8-2+ch3o2<=>c4h8o2-3+ch3o 5.620e+11 0.000 1.231e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h8oh<=>c4h8-1+oh 1.079e+16 -0.699 2.809e+04
+rev/ 4.750e+12 0.000 -7.820e+02 /
+sc4h8oh<=>c4h8-2+oh 3.379e+17 -1.253 2.992e+04
+rev/ 4.750e+12 0.000 -7.820e+02 /
+c4h8oh-1o2<=>pc4h8oh+o2 6.753e+20 -1.944 3.552e+04  
+rev/ 2.000e+12 0.000 0.000e+00 /
+c4h8oh-2o2<=>sc4h8oh+o2 7.686e+20 -1.968 3.551e+04
+rev/ 2.000e+12 0.000 0.000e+00 /
+c4h8oh-1o2<=>c2h5cho+ch2o+oh 1.000e+16 0.000 2.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8oh-2o2<=>oh+ch3cho+ch3cho 1.000e+16 0.000 2.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h71-1<=>c2h2+c2h5 1.066e+15 -0.560 3.032e+04
+rev/ 2.000e+11 0.000 7.800e+03 /
+c4h71-2<=>c3h4-a+ch3 9.589e+14 -0.710 3.126e+04
+rev/ 2.000e+11 0.000 7.800e+03 /
+c4h71-4<=>c2h4+c2h3 8.766e+12 -0.220 3.629e+04
+rev/ 2.000e+11 0.000 7.800e+03 /
+c4h72-2<=>c3h4-p+ch3 6.326e+10 0.520 3.002e+04
+rev/ 1.000e+11 0.000 7.800e+03 /
+c4h71-3<=>c4h6+h 1.200e+14 0.000 4.930e+04
+rev/ 4.000e+13 0.000 1.300e+03 /
+c4h71-3+c2h5<=>c4h8-1+c2h4 2.590e+12 0.000 -1.310e+02
+rev/ 1.149e+13 0.060 4.944e+04 /
+c4h71-3+ch3o<=>c4h8-1+ch2o 2.410e+13 0.000 0.000e+00
+rev/ 2.482e+12 0.280 6.633e+04 /
+c4h71-3+o<=>c2h3cho+ch3 6.030e+13 0.000 0.000e+00
+rev/ 3.385e+15 -0.780 8.163e+04 /
+c4h71-3+ho2<=>c4h7o+oh 9.640e+12 0.000 0.000e+00
+rev/ 7.290e+15 -1.090 1.553e+04 /
+c4h71-3+ch3o2<=>c4h7o+ch3o 9.640e+12 0.000 0.000e+00
+rev/ 7.120e+17 -1.670 2.029e+04 /
+c3h5-a+c4h71-3<=>c3h6+c4h6 6.310e+12 0.000 0.000e+00
+rev/ 1.000e+10 0.000 5.000e+04 /
+c4h71-3+o2<=>c4h6+ho2 1.000e+09 0.000 0.000e+00
+rev/ 1.000e+11 0.000 1.700e+04 /
+h+c4h71-3<=>c4h6+h2 3.160e+13 0.000 0.000e+00
+rev/ 1.066e+13 0.000 5.681e+04 /
+c2h5+c4h71-3<=>c4h6+c2h6 3.980e+12 0.000 0.000e+00
+rev/ 3.211e+12 0.000 4.984e+04 /
+c2h3+c4h71-3<=>c2h4+c4h6 3.980e+12 0.000 0.000e+00
+rev/ 1.157e+13 0.000 5.771e+04 /
+c4h71-3+c2h5o2<=>c4h7o+c2h5o 3.800e+12 0.000 -1.200e+03
+rev/ 2.000e+10 0.000 0.000e+00 /
+ic3h7o2+c4h71-3<=>ic3h7o+c4h7o 3.800e+12 0.000 -1.200e+03
+rev/ 2.000e+10 0.000 0.000e+00 /
+nc3h7o2+c4h71-3<=>nc3h7o+c4h7o 3.800e+12 0.000 -1.200e+03
+rev/ 2.000e+10 0.000 0.000e+00 /
+c4h7o<=>ch3cho+c2h3 7.940e+14 0.000 1.900e+04
+rev/ 1.000e+10 0.000 2.000e+04 /
+c4h7o<=>c2h3cho+ch3 7.940e+14 0.000 1.900e+04
+rev/ 1.000e+10 0.000 2.000e+04 /
+c4h6<=>c2h3+c2h3 4.027e+19 -1.000 9.815e+04
+rev/ 1.260e+13 0.000 0.000e+00 /
+c4h6+oh<=>c2h5+ch2co 1.000e+12 0.000 0.000e+00
+rev/ 3.730e+12 0.000 3.002e+04 /
+c4h6+oh<=>ch2o+c3h5-a 1.000e+12 0.000 0.000e+00
+rev/ 3.501e+06 0.000 7.106e+04 /
+c4h6+oh<=>c2h3+ch3cho 1.000e+12 0.000 0.000e+00
+rev/ 5.437e+11 0.000 1.855e+04 /
+c4h6+o<=>c2h4+ch2co 1.000e+12 0.000 0.000e+00
+rev/ 6.377e+11 0.000 9.434e+04 /
+c4h6+o<=>ch2o+c3h4-a 1.000e+12 0.000 0.000e+00
+rev/ 1.075e+12 0.000 7.905e+04 /
+c2h3+c2h4<=>c4h6+h 5.000e+11 0.000 7.300e+03
+rev/ 1.000e+13 0.000 4.700e+03 /
+c4h8o1-2+oh<=>ch2o+c3h5-a+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-2+h<=>ch2o+c3h5-a+h2 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-2+o<=>ch2o+c3h5-a+oh 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-2+ho2<=>ch2o+c3h5-a+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-2+ch3o2<=>ch2o+c3h5-a+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-2+ch3<=>ch2o+c3h5-a+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+oh<=>ch2o+c3h5-a+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+h<=>ch2o+c3h5-a+h2 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+o<=>ch2o+c3h5-a+oh 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+ho2<=>ch2o+c3h5-a+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+ch3o2<=>ch2o+c3h5-a+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-3+ch3<=>ch2o+c3h5-a+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+oh<=>ch2o+c3h5-a+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+h<=>ch2o+c3h5-a+h2 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+o<=>ch2o+c3h5-a+oh 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+ho2<=>ch2o+c3h5-a+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+ch3o2<=>ch2o+c3h5-a+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o1-4+ch3<=>ch2o+c3h5-a+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+oh<=>ch2o+c3h5-a+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+h<=>ch2o+c3h5-a+h2 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+o<=>ch2o+c3h5-a+oh 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+ho2<=>ch2o+c3h5-a+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+ch3o2<=>ch2o+c3h5-a+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8o2-3+ch3<=>ch2o+c3h5-a+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2<=>pc4h9+o2 2.849e+20 -1.642 3.593e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+sc4h9o2<=>sc4h9+o2 4.329e+22 -2.216 3.816e+04
+rev/ 7.540e+12 0.000 0.000e+00 /
+sc4h9o2+ch2o<=>sc4h9o2h+hco 5.600e+12 0.000 1.360e+04
+rev/ 8.000e+11 0.000 1.000e+04 /
+sc4h9o2+ch3cho<=>sc4h9o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+sc4h9o2+ho2<=>sc4h9o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.861e+13 -0.796 3.362e+04 /
+ic3h7o2+pc4h9<=>ic3h7o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.281e+13 0.075 2.748e+04 /
+ic3h7o2+sc4h9<=>ic3h7o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 3.942e+15 -0.417 2.919e+04 /
+nc3h7o2+pc4h9<=>nc3h7o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.056e+15 -0.611 2.768e+04 /
+nc3h7o2+sc4h9<=>nc3h7o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.825e+17 -1.103 2.939e+04 /
+sc4h9o2+sc4h9o2<=>o2+sc4h9o+sc4h9o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+nc3h7o2<=>sc4h9o+nc3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+ic3h7o2<=>sc4h9o+ic3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+c2h5o2<=>sc4h9o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+ch3o2<=>sc4h9o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+ch3co3<=>sc4h9o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+ho2<=>pc4h9o+oh+o2 1.400e-14 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc4h9o2+ho2<=>sc4h9o+oh+o2 1.400e-14 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+h2+pc4h9o2<=>h+pc4h9o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+h2+sc4h9o2<=>h+sc4h9o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+c2h6+pc4h9o2<=>c2h5+pc4h9o2h 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+c2h6+sc4h9o2<=>c2h5+sc4h9o2h 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+pc4h9o2+c2h5cho<=>pc4h9o2h+c2h5co 2.000e+11 0.000 9.500e+03
+rev/ 5.000e+09 0.000 1.000e+04 /
+sc4h9o2+c2h5cho<=>sc4h9o2h+c2h5co 2.000e+11 0.000 9.500e+03
+rev/ 5.000e+09 0.000 1.000e+04 /
+sc4h9o2+ch3<=>sc4h9o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 1.176e+13 0.067 2.611e+04 /
+sc4h9o2+c2h5<=>sc4h9o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 1.672e+15 -0.534 2.852e+04 /
+sc4h9o2+ic3h7<=>sc4h9o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 2.852e+15 -0.367 2.919e+04 /
+sc4h9o2+nc3h7<=>sc4h9o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.688e+15 -0.503 2.719e+04 /
+sc4h9o2+pc4h9<=>sc4h9o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.342e+15 -0.553 2.687e+04 /
+sc4h9o2+sc4h9<=>sc4h9o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 4.048e+17 -1.045 2.858e+04 /
+sc4h9o2+c3h5-a<=>sc4h9o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 4.356e+11 0.249 1.353e+04 /
+pc4h9o2+ch2o<=>pc4h9o2h+hco 5.600e+12 0.000 1.360e+04
+rev/ 8.000e+11 0.000 1.000e+04 /
+pc4h9o2+ch3cho<=>pc4h9o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+pc4h9o2+ho2<=>pc4h9o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 4.357e+13 -0.813 3.363e+04 /
+c3h6+pc4h9o2<=>c3h5-a+pc4h9o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c3h6+sc4h9o2<=>c3h5-a+sc4h9o2h 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+c2h4+pc4h9o2<=>c2h3+pc4h9o2h 1.130e+13 0.000 3.043e+04
+rev/ 3.000e+12 0.000 1.150e+04 /
+c2h4+sc4h9o2<=>c2h3+sc4h9o2h 1.130e+13 0.000 3.043e+04
+rev/ 3.000e+12 0.000 1.150e+04 /
+ch3oh+pc4h9o2<=>ch2oh+pc4h9o2h 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+ch3oh+sc4h9o2<=>ch2oh+sc4h9o2h 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+c2h3cho+pc4h9o2<=>c2h3co+pc4h9o2h 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+c2h3cho+sc4h9o2<=>c2h3co+sc4h9o2h 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ch4+pc4h9o2<=>ch3+pc4h9o2h 1.120e+13 0.000 2.464e+04
+rev/ 7.430e+11 0.000 5.500e+03 /
+ch4+sc4h9o2<=>ch3+sc4h9o2h 1.120e+13 0.000 2.464e+04
+rev/ 7.430e+11 0.000 5.500e+03 /
+c4h71-3+pc4h9o2<=>c4h7o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.186e+14 -0.763 1.610e+04 /
+c4h71-3+sc4h9o2<=>c4h7o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.251e+14 -0.680 1.558e+04 /
+h2o2+pc4h9o2<=>ho2+pc4h9o2h 2.400e+12 0.000 1.000e+04
+rev/ 2.400e+12 0.000 1.000e+04 /
+h2o2+sc4h9o2<=>ho2+sc4h9o2h 2.400e+12 0.000 1.000e+04
+rev/ 2.400e+12 0.000 1.000e+04 /
+pc4h9o2+pc4h9o2<=>o2+pc4h9o+pc4h9o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+sc4h9o2<=>pc4h9o+sc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+nc3h7o2<=>pc4h9o+nc3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+ic3h7o2<=>pc4h9o+ic3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+c2h5o2<=>pc4h9o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+ch3o2<=>pc4h9o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+ch3co3<=>pc4h9o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+pc4h9o2+ch3<=>pc4h9o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 6.199e+12 -0.015 2.663e+04 /
+pc4h9o2+c2h5<=>pc4h9o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 8.813e+14 -0.617 2.904e+04 /
+pc4h9o2+ic3h7<=>pc4h9o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.503e+15 -0.450 2.971e+04 /
+pc4h9o2+nc3h7<=>pc4h9o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 8.898e+14 -0.586 2.771e+04 /
+pc4h9o2+pc4h9<=>pc4h9o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.235e+15 -0.636 2.739e+04 /
+pc4h9o2+sc4h9<=>pc4h9o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.134e+17 -1.128 2.910e+04 /
+pc4h9o2+c3h5-a<=>pc4h9o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 2.296e+11 0.167 1.405e+04 /
+pc4h9+ho2<=>pc4h9o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 8.630e+15 -0.743 2.500e+04 /
+sc4h9+ho2<=>sc4h9o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 1.491e+18 -1.234 2.671e+04 /
+ch3o2+pc4h9<=>ch3o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 5.398e+14 -0.444 2.924e+04 /
+ch3o2+sc4h9<=>ch3o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 9.329e+16 -0.936 3.095e+04 /
+pc4h9o2h<=>pc4h9o+oh 1.500e+16 0.000 4.250e+04
+rev/ 1.178e+08 1.712 -4.342e+03 /
+sc4h9o2h<=>sc4h9o+oh 9.450e+15 0.000 4.160e+04
+rev/ 1.589e+08 1.778 -5.752e+03 /
+pc4h9o<=>nc3h7+ch2o 1.558e+21 -2.444 1.523e+04
+rev/ 5.000e+10 0.000 3.457e+03 /
+sc4h9o<=>ch3+c2h5cho 4.381e+16 -0.893 1.520e+04
+rev/ 5.000e+10 0.000 9.043e+03 /
+sc4h9o<=>c2h5+ch3cho 5.489e+22 -2.757 1.265e+04
+rev/ 3.330e+10 0.000 6.397e+03 /
+pc4h9o2<=>c4h8ooh1-2 2.000e+11 0.000 3.185e+04
+rev/ 5.597e+08 0.339 1.697e+04 /
+pc4h9o2<=>c4h8ooh1-3 2.500e+10 0.000 2.085e+04
+rev/ 3.231e+09 -0.136 7.871e+03 /
+pc4h9o2<=>c4h8ooh1-4 4.688e+09 0.000 2.235e+04
+rev/ 1.269e+10 -0.523 6.900e+03 /
+sc4h9o2<=>c4h8ooh2-1 3.000e+11 0.000 3.450e+04
+rev/ 7.442e+11 -0.511 1.904e+04 /
+sc4h9o2<=>c4h8ooh2-3 2.000e+11 0.000 3.185e+04
+rev/ 3.994e+10 -0.196 1.893e+04 /
+sc4h9o2<=>c4h8ooh2-4 3.750e+10 0.000 2.440e+04
+rev/ 9.302e+10 -0.511 8.944e+03 /
+pc4h9o2<=>c4h8-1+ho2 4.308e+36 -7.500 3.951e+04
+rev/ 1.366e+28 -5.673 1.937e+04 /
+sc4h9o2<=>c4h8-1+ho2 5.980e+42 -9.430 4.153e+04
+rev/ 3.058e+33 -7.367 1.665e+04 /
+sc4h9o2<=>c4h8-2+ho2 4.308e+36 -7.500 3.951e+04
+rev/ 1.382e+27 -5.183 1.732e+04 /
+c4h8ooh1-2<=>c4h8-1+ho2 8.828e+16 -1.488 1.626e+04
+rev/ 1.000e+11 0.000 1.100e+04 /
+c4h8ooh2-1<=>c4h8-1+ho2 4.851e+20 -2.574 2.118e+04
+rev/ 1.000e+11 0.000 1.175e+04 /
+c4h8ooh2-3<=>c4h8-2+ho2 6.224e+19 -2.513 2.102e+04
+rev/ 1.000e+11 0.000 1.175e+04 /
+c4h8ooh1-2<=>c4h8o1-2+oh 1.380e+12 0.000 1.590e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh1-3<=>c4h8o1-3+oh 2.040e+11 0.000 1.950e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh1-4<=>c4h8o1-4+oh 5.130e+10 0.000 1.480e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh2-1<=>c4h8o1-2+oh 3.980e+12 0.000 1.700e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh2-3<=>c4h8o2-3+oh 1.380e+12 0.000 1.590e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh2-4<=>c4h8o1-3+oh 4.470e+11 0.000 2.190e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh1-1<=>nc3h7cho+oh 9.000e+14 0.000 1.500e+03
+rev/ 1.733e+08 1.890 3.347e+04 /
+c4h8ooh2-2<=>c2h5coch3+oh 9.000e+14 0.000 1.500e+03
+rev/ 1.990e+10 1.340 3.551e+04 /
+c4h8ooh1-3<=>oh+ch2o+c3h6 6.635e+13 -0.160 2.990e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh2-4<=>oh+ch3cho+c2h4 1.945e+18 -1.630 2.679e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c4h8ooh1-2o2<=>c4h8ooh1-2+o2 2.586e+24 -2.709 3.986e+04
+rev/ 7.540e+12 0.000 0.000e+00 /
+c4h8ooh1-3o2<=>c4h8ooh1-3+o2 5.601e+22 -2.234 3.796e+04
+rev/ 7.540e+12 0.000 0.000e+00 /
+c4h8ooh1-4o2<=>c4h8ooh1-4+o2 2.569e+20 -1.611 3.568e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+c4h8ooh2-1o2<=>c4h8ooh2-1+o2 2.821e+20 -1.622 3.570e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+c4h8ooh2-3o2<=>c4h8ooh2-3+o2 4.516e+22 -2.218 3.788e+04
+rev/ 7.540e+12 0.000 0.000e+00 /
+c4h8ooh2-4o2<=>c4h8ooh2-4+o2 2.821e+20 -1.622 3.570e+04
+rev/ 4.520e+12 0.000 0.000e+00 /
+c4h8ooh1-2o2<=>nc4ket12+oh 2.000e+11 0.000 3.150e+04
+rev/ 3.199e+04 1.323 5.403e+04 /
+c4h8ooh1-3o2<=>nc4ket13+oh 2.500e+10 0.000 2.140e+04
+rev/ 1.435e+03 1.486 4.474e+04 /
+c4h8ooh1-4o2<=>nc4ket14+oh 3.125e+09 0.000 1.935e+04
+rev/ 1.726e+02 1.494 4.269e+04 /
+c4h8ooh2-1o2<=>nc4ket21+oh 1.000e+11 0.000 2.885e+04
+rev/ 3.626e+02 1.835 5.505e+04 /
+c4h8ooh2-3o2<=>nc4ket23+oh 1.000e+11 0.000 2.885e+04
+rev/ 1.739e+03 1.731 5.413e+04 /
+c4h8ooh2-4o2<=>nc4ket24+oh 1.250e+10 0.000 1.785e+04
+rev/ 1.021e+02 1.843 4.392e+04 /
+nc4ket12<=>c2h5cho+hco+oh 1.050e+16 0.000 4.160e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc4ket13<=>ch3cho+ch2cho+oh 1.050e+16 0.000 4.160e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc4ket14<=>ch2ch2cho+ch2o+oh 1.500e+16 0.000 4.200e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc4ket21<=>ch2o+c2h5co+oh 1.500e+16 0.000 4.200e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc4ket23<=>ch3cho+ch3co+oh 1.050e+16 0.000 4.160e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+nc4ket24<=>ch2o+ch3coch2+oh 1.500e+16 0.000 4.200e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h5coch3+oh<=>ch2ch2coch3+h2o 7.550e+09 0.970 1.586e+03
+rev/ 1.527e+09 0.960 2.102e+04 /
+c2h5coch3+oh<=>ch3chcoch3+h2o 8.450e+11 0.000 -2.280e+02
+rev/ 1.586e+13 -0.230 2.862e+04 /
+c2h5coch3+oh<=>c2h5coch2+h2o 5.100e+11 0.000 1.192e+03
+rev/ 6.628e+13 -0.700 2.767e+04 /
+c2h5coch3+ho2<=>ch2ch2coch3+h2o2 2.380e+04 2.550 1.649e+04
+rev/ 2.857e+04 2.220 4.459e+03 /
+c2h5coch3+ho2<=>ch3chcoch3+h2o2 2.000e+11 0.000 8.698e+03
+rev/ 2.229e+13 -0.550 6.080e+03 /
+c2h5coch3+ho2<=>c2h5coch2+h2o2 2.380e+04 2.550 1.469e+04
+rev/ 1.836e+07 1.520 9.702e+03 /
+c2h5coch3+o<=>ch2ch2coch3+oh 2.250e+13 0.000 7.700e+03
+rev/ 4.616e+11 -0.010 9.882e+03 /
+c2h5coch3+o<=>ch3chcoch3+oh 3.070e+13 0.000 3.400e+03
+rev/ 5.847e+13 -0.230 1.500e+04 /
+c2h5coch3+o<=>c2h5coch2+oh 5.000e+12 0.000 5.962e+03
+rev/ 6.592e+13 -0.700 1.519e+04 /
+c2h5coch3+h<=>ch2ch2coch3+h2 9.160e+06 2.000 7.700e+03
+rev/ 4.279e+05 1.990 1.198e+04 /
+c2h5coch3+h<=>ch3chcoch3+h2 4.460e+06 2.000 3.200e+03
+rev/ 1.934e+07 1.770 1.689e+04 /
+c2h5coch3+h<=>c2h5coch2+h2 9.300e+12 0.000 6.357e+03
+rev/ 2.792e+14 -0.700 1.768e+04 /
+c2h5coch3+o2<=>ch2ch2coch3+ho2 2.050e+13 0.000 5.131e+04
+rev/ 1.740e+10 0.320 -1.895e+03 /
+c2h5coch3+o2<=>ch3chcoch3+ho2 1.550e+13 0.000 4.197e+04
+rev/ 1.221e+12 0.100 -1.822e+03 /
+c2h5coch3+o2<=>c2h5coch2+ho2 2.050e+13 0.000 4.915e+04
+rev/ 1.118e+13 -0.370 2.988e+03 /
+c2h5coch3+ch3<=>ch2ch2coch3+ch4 3.190e+01 3.170 7.172e+03
+rev/ 3.893e+01 3.160 1.193e+04 /
+c2h5coch3+ch3<=>ch3chcoch3+ch4 1.740e+00 3.460 3.680e+03
+rev/ 1.971e+02 3.230 1.785e+04 /
+c2h5coch3+ch3<=>c2h5coch2+ch4 1.620e+11 0.000 9.630e+03
+rev/ 1.270e+14 -0.700 2.143e+04 /
+c2h5coch3+ch3o<=>ch2ch2coch3+ch3oh 2.170e+11 0.000 6.460e+03
+rev/ 4.887e+09 0.020 9.007e+03 /
+c2h5coch3+ch3o<=>ch3chcoch3+ch3oh 1.450e+11 0.000 2.771e+03
+rev/ 3.031e+11 -0.200 1.473e+04 /
+c2h5coch3+ch3o<=>c2h5coch2+ch3oh 2.170e+11 0.000 4.660e+03
+rev/ 3.140e+12 -0.680 1.425e+04 /
+c2h5coch3+ch3o2<=>ch2ch2coch3+ch3o2h 3.010e+12 0.000 1.938e+04
+rev/ 7.525e+12 -0.510 4.329e+03 /
+c2h5coch3+ch3o2<=>ch3chcoch3+ch3o2h 2.000e+12 0.000 1.525e+04
+rev/ 4.641e+14 -0.730 9.612e+03 /
+c2h5coch3+ch3o2<=>c2h5coch2+ch3o2h 3.010e+12 0.000 1.758e+04
+rev/ 4.836e+15 -1.200 9.572e+03 /
+c2h5coch3+c2h3<=>ch2ch2coch3+c2h4 5.000e+11 0.000 1.040e+04
+rev/ 3.436e+08 0.820 1.403e+04 /
+c2h5coch3+c2h3<=>ch3chcoch3+c2h4 3.000e+11 0.000 3.400e+03
+rev/ 1.914e+10 0.600 1.644e+04 /
+c2h5coch3+c2h3<=>c2h5coch2+c2h4 6.150e+10 0.000 4.278e+03
+rev/ 2.716e+10 0.130 1.495e+04 /
+c2h5coch3+c2h5<=>ch2ch2coch3+c2h6 5.000e+10 0.000 1.340e+04
+rev/ 9.549e+12 -0.570 1.399e+04 /
+c2h5coch3+c2h5<=>ch3chcoch3+c2h6 3.000e+10 0.000 8.600e+03
+rev/ 5.319e+14 -0.790 1.860e+04 /
+c2h5coch3+c2h5<=>c2h5coch2+c2h6 5.000e+10 0.000 1.160e+04
+rev/ 6.136e+15 -1.260 1.923e+04 /
+ch3choococh3<=>ch3chcoch3+o2 1.372e+17 -1.690 2.846e+04
+rev/ 1.000e+11 0.000 0.000e+00 /
+ch3choococh3<=>ch2choohcoch3 8.900e+12 0.000 2.970e+04
+rev/ 4.703e+13 -0.520 1.696e+04 /
+ch2choohcoch3<=>c2h3coch3+ho2 2.026e+19 -2.350 1.413e+04
+rev/ 7.000e+10 0.000 7.800e+03 /
+ch2ch2cho<=>c2h4+hco 3.127e+13 -0.520 2.459e+04
+rev/ 1.500e+11 0.000 8.300e+03 /
+ch2ch2coch3<=>c2h4+ch3co 1.000e+14 0.000 1.800e+04
+rev/ 1.000e+11 0.000 0.000e+00 /
+c2h5coch2<=>ch2co+c2h5 1.000e+14 0.000 3.500e+04
+rev/ 1.000e+11 0.000 0.000e+00 /
+ch3chcoch3<=>c2h3coch3+h 3.417e+16 -0.820 4.177e+04
+rev/ 5.000e+12 0.000 1.200e+03 /
+ch3chcoch3<=>ch3chco+ch3 1.406e+15 -0.440 3.834e+04
+rev/ 1.230e+11 0.000 7.800e+03 /
+nc3h7cho+o2<=>nc3h7co+ho2 1.200e+05 2.500 3.756e+04
+rev/ 1.000e+07 0.500 4.000e+03 /
+nc3h7cho+oh<=>nc3h7co+h2o 2.000e+06 1.800 -1.300e+03
+rev/ 1.553e+04 2.320 2.805e+04 /
+nc3h7cho+h<=>nc3h7co+h2 4.140e+09 1.120 2.320e+03
+rev/ 3.030e+06 1.746 1.678e+04 /
+nc3h7cho+o<=>nc3h7co+oh 5.940e+12 0.000 1.868e+03
+rev/ 2.258e+09 0.607 1.492e+04 /
+nc3h7cho+ho2<=>nc3h7co+h2o2 4.090e+04 2.500 1.020e+04
+rev/ 1.733e+04 2.431 8.662e+03 /
+nc3h7cho+ch3<=>nc3h7co+ch4 2.890e-03 4.620 3.210e+03
+rev/ 1.930e-03 4.800 1.921e+04 /
+nc3h7cho+ch3o<=>nc3h7co+ch3oh 1.000e+12 0.000 3.300e+03
+rev/ 1.572e+10 0.413 1.799e+04 /
+nc3h7cho+ch3o2<=>nc3h7co+ch3o2h 4.090e+04 2.500 1.020e+04
+rev/ 3.371e+05 1.986 7.067e+03 /
+nc3h7cho+oh<=>c3h6cho-1+h2o 5.280e+09 0.970 1.586e+03
+rev/ 1.230e+07 1.494 1.882e+04 /
+nc3h7cho+oh<=>c3h6cho-2+h2o 4.680e+07 1.610 -3.500e+01
+rev/ 9.102e+03 2.444 1.974e+04 /
+nc3h7cho+oh<=>c3h6cho-3+h2o 5.520e+02 3.120 -1.176e+03
+rev/ 1.428e+02 3.400 2.551e+04 /
+nc3h7cho+ho2<=>c3h6cho-1+h2o2 2.379e+04 2.550 1.649e+04
+rev/ 3.025e+03 2.485 2.834e+03 /
+nc3h7cho+ho2<=>c3h6cho-2+h2o2 9.640e+03 2.600 1.391e+04
+rev/ 1.023e+02 2.845 2.791e+03 /
+nc3h7cho+ho2<=>c3h6cho-3+h2o2 3.440e+12 0.050 1.788e+04
+rev/ 4.855e+13 -0.259 1.366e+04 /
+nc3h7cho+ch3o2<=>c3h6cho-1+ch3o2h 2.379e+04 2.550 1.649e+04
+rev/ 5.885e+04 2.040 1.239e+03 /
+nc3h7cho+ch3o2<=>c3h6cho-2+ch3o2h 9.640e+03 2.600 1.391e+04
+rev/ 1.990e+03 2.400 1.196e+03 /
+nc3h7cho+ch3o2<=>c3h6cho-3+ch3o2h 3.440e+12 0.050 1.788e+04
+rev/ 9.445e+14 -0.704 1.207e+04 /
+nc3h7co<=>nc3h7+co 1.000e+11 0.000 9.600e+03
+rev/ 2.193e+03 1.763 -1.100e+03 /
+c3h6cho-1<=>c2h4+ch2cho 7.400e+11 0.000 2.197e+04
+rev/ 2.110e+11 0.000 7.350e+03 /
+c3h6cho-3<=>c2h5chco+h 8.431e+15 -0.600 4.040e+04
+rev/ 5.000e+12 0.000 1.200e+03 /
+c3h6cho-3<=>c2h3cho+ch3 3.174e+14 -0.390 2.990e+04
+rev/ 1.230e+11 0.000 7.800e+03 /
+c3h6cho-2<=>sc3h5cho+h 4.947e+12 -0.150 3.130e+04
+rev/ 5.000e+12 0.000 2.900e+03 /
+c3h6cho-2<=>c3h6+hco 8.249e+12 -0.180 2.190e+04
+rev/ 1.000e+11 0.000 6.000e+03 /
+c2h5chco+oh<=>nc3h7+co2 3.730e+12 0.000 -1.010e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h5chco+h<=>nc3h7+co 4.400e+12 0.000 1.459e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h5chco+o<=>c3h6+co2 3.200e+12 0.000 -4.370e+02
+rev/ 0.000e+00 0.000 0.000e+00 /
+sc3h5cho+oh<=>sc3h5co+h2o 2.690e+10 0.760 -3.400e+02
+rev/ 4.831e+10 0.770 3.709e+04 /
+sc3h5co<=>c3h5-s+co 8.600e+15 0.000 2.300e+04
+rev/ 1.000e+11 0.000 6.000e+03 /
+sc3h5cho+ho2<=>sc3h5co+h2o2 1.000e+12 0.000 1.192e+04
+rev/ 1.066e+13 -0.320 1.789e+04 /
+sc3h5cho+ch3<=>sc3h5co+ch4 3.980e+12 0.000 8.700e+03
+rev/ 4.313e+13 0.010 3.146e+04 /
+sc3h5cho+o<=>sc3h5co+oh 7.180e+12 0.000 1.389e+03
+rev/ 1.308e+12 0.010 2.157e+04 /
+sc3h5cho+o2<=>sc3h5co+ho2 4.000e+13 0.000 3.760e+04
+rev/ 3.014e+11 0.340 2.394e+03 /
+sc3h5cho+h<=>sc3h5co+h2 2.600e+12 0.000 2.600e+03
+rev/ 1.079e+12 0.010 2.488e+04 /
+c2h3coch3+oh<=>ch3cho+ch3co 1.000e+11 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h3coch3+oh<=>ch2co+c2h3+h2o 5.100e+11 0.000 1.192e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h3coch3+ho2<=>ch2cho+ch3co+oh 6.030e+09 0.000 7.949e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h3coch3+ho2<=>ch2co+c2h3+h2o2 8.500e+12 0.000 2.046e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h3coch3+ch3o2<=>ch2cho+ch3co+ch3o 3.970e+11 0.000 1.705e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h3coch3+ch3o2<=>ch2co+c2h3+ch3o2h 3.010e+12 0.000 1.758e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h10+m<=>ch3+ic3h7+m 4.830e+16 0.000 7.990e+04
+rev/ 5.747e+04 2.230 -9.643e+03 /
+ic4h10<=>tc4h9+h 2.510e+98 -23.810 1.453e+05
+rev/ 1.131e+93 -22.873 4.839e+04 /
+ic4h10<=>ic4h9+h 9.850e+95 -23.110 1.476e+05
+rev/ 2.248e+92 -22.752 4.636e+04 /
+ic4h10+h<=>tc4h9+h2 6.020e+05 2.400 2.583e+03
+rev/ 1.084e+00 3.613 9.213e+03 /
+ic4h10+h<=>ic4h9+h2 1.810e+06 2.540 6.756e+03
+rev/ 1.651e+02 3.174 9.096e+03 /
+ic4h10+ch3<=>tc4h9+ch4 9.040e-01 3.460 4.598e+03
+rev/ 1.485e-03 4.227 1.277e+04 /
+ic4h10+ch3<=>ic4h9+ch4 1.360e+00 3.650 7.154e+03
+rev/ 1.132e-01 3.838 1.103e+04 /
+ic4h10+oh<=>tc4h9+h2o 2.925e+04 2.531 -1.659e+03
+rev/ 5.584e-01 3.638 1.986e+04 /
+ic4h10+oh<=>ic4h9+h2o 6.654e+04 2.665 -1.689e+02
+rev/ 6.437e+01 3.193 1.706e+04 /
+ic4h10+c2h5<=>ic4h9+c2h6 1.510e+12 0.000 1.040e+04
+rev/ 3.200e+11 0.000 1.230e+04 /
+ic4h10+c2h5<=>tc4h9+c2h6 1.000e+11 0.000 7.900e+03
+rev/ 3.000e+11 0.000 2.100e+04 /
+ic4h10+ho2<=>ic4h9+h2o2 6.120e+01 3.590 1.716e+04
+rev/ 3.231e+00 3.529 3.500e+03 /
+ic4h10+ho2<=>tc4h9+h2o2 4.332e+02 3.010 1.209e+04
+rev/ 4.513e-01 3.528 2.723e+03 /
+ic4h10+o<=>tc4h9+oh 1.968e+05 2.402 1.150e+03
+rev/ 1.839e-01 3.596 6.368e+03 /
+ic4h10+o<=>ic4h9+oh 4.046e+07 2.034 5.136e+03
+rev/ 1.916e+03 2.649 6.064e+03 /
+ic4h10+ch3o<=>ic4h9+ch3oh 4.800e+11 0.000 7.000e+03
+rev/ 9.402e+08 0.421 9.567e+03 /
+ic4h10+ch3o<=>tc4h9+ch3oh 1.900e+10 0.000 2.800e+03
+rev/ 7.344e+05 1.000 9.657e+03 /
+ic4h10+o2<=>ic4h9+ho2 9.000e+13 0.000 5.229e+04
+rev/ 4.306e+10 0.286 -5.900e+01 /
+ic4h10+o2<=>tc4h9+ho2 1.000e+13 0.000 4.820e+04
+rev/ 9.442e+07 0.865 1.410e+02 /
+ic4h10+ch3o2<=>ic4h9+ch3o2h 2.079e+00 3.970 1.828e+04
+rev/ 2.135e+00 3.464 3.026e+03 /
+ic4h10+c2h5o2<=>ic4h9+c2h5o2h 2.550e+13 0.000 2.046e+04
+rev/ 2.623e+13 -0.506 5.208e+03 /
+ic4h10+ch3co3<=>ic4h9+ch3co3h 2.550e+13 0.000 2.046e+04
+rev/ 2.147e+12 -0.009 9.570e+03 /
+ic4h10+nc3h7o2<=>ic4h9+nc3h7o2h 2.550e+13 0.000 2.046e+04
+rev/ 2.678e+13 -0.509 5.000e+03 /
+ic4h10+ic3h7o2<=>ic4h9+ic3h7o2h 2.550e+13 0.000 2.046e+04
+rev/ 2.688e+13 -0.510 5.000e+03 /
+ic4h10+ic4h9o2<=>ic4h9+ic4h9o2h 2.550e+13 0.000 2.046e+04
+rev/ 2.679e+13 -0.509 5.010e+03 /
+ic4h10+tc4h9o2<=>ic4h9+tc4h9o2h 2.550e+13 0.000 2.046e+04
+rev/ 2.684e+13 -0.510 5.010e+03 /
+ic4h10+o2cho<=>ic4h9+ho2cho 2.520e+13 0.000 2.044e+04
+rev/ 1.006e+00 3.060 2.375e+03 /
+ic4h10+o2cho<=>tc4h9+ho2cho 2.800e+12 0.000 1.601e+04
+rev/ 1.893e+01 2.720 4.678e+03 /
+ic4h10+sc4h9o2<=>ic4h9+sc4h9o2h 2.250e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h10+sc4h9o2<=>tc4h9+sc4h9o2h 2.800e+12 0.000 1.600e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h10+pc4h9o2<=>ic4h9+pc4h9o2h 2.250e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h10+pc4h9o2<=>tc4h9+pc4h9o2h 2.800e+12 0.000 1.600e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h10+ch3o2<=>tc4h9+ch3o2h 1.366e+02 3.120 1.319e+04
+rev/ 2.769e+00 3.193 2.228e+03 /
+ic4h10+c2h5o2<=>tc4h9+c2h5o2h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+ch3co3<=>tc4h9+ch3co3h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+nc3h7o2<=>tc4h9+nc3h7o2h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+ic3h7o2<=>tc4h9+ic3h7o2h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+ic4h9o2<=>tc4h9+ic4h9o2h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+tc4h9o2<=>tc4h9+tc4h9o2h 2.800e+12 0.000 1.600e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+ic4h10+ic4h9<=>tc4h9+ic4h10 2.500e+10 0.000 7.900e+03
+rev/ 2.250e+11 0.000 1.230e+04 /
+ic4h9+ho2<=>ic4h9o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 3.712e+15 -0.658 2.654e+04 /
+tc4h9+ho2<=>tc4h9o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 4.083e+18 -1.329 2.865e+04 /
+ch3o2+ic4h9<=>ch3o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.322e+14 -0.359 3.078e+04 /
+ch3o2+tc4h9<=>ch3o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.554e+17 -1.030 3.289e+04 /
+ic4h9<=>ic4h8+h 3.371e+13 0.124 3.366e+04
+rev/ 6.250e+11 0.510 2.620e+03 /
+ic4h9<=>c3h6+ch3 9.504e+11 0.773 3.070e+04
+rev/ 1.890e+03 2.670 6.850e+03 /
+tc4h9<=>h+ic4h8 1.128e+12 0.703 3.656e+04
+rev/ 1.060e+12 0.510 1.230e+03 /
+tc4h9+o2<=>ic4h8+ho2 8.370e-01 3.590 1.196e+04
+rev/ 1.648e+00 3.325 2.550e+04 /
+ic4h9+o2<=>ic4h8+ho2 1.070e+00 3.710 9.322e+03
+rev/ 4.158e-02 4.024 2.715e+04 /
+nc3h7o2+ic4h9<=>nc3h7o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 4.543e+14 -0.526 2.922e+04 /
+nc3h7o2+tc4h9<=>nc3h7o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 4.997e+17 -1.197 3.133e+04 /
+nc3h7o2+ic4h7<=>nc3h7o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 4.183e+11 0.182 1.350e+04 /
+sc4h9o2+ic4h9<=>sc4h9o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.007e+15 -0.468 2.841e+04 /
+sc4h9o2+tc4h9<=>sc4h9o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.108e+18 -1.139 3.052e+04 /
+pc4h9o2+ic4h9<=>pc4h9o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 5.310e+14 -0.551 2.893e+04 /
+pc4h9o2+tc4h9<=>pc4h9o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 5.841e+17 -1.222 3.104e+04 /
+pc4h9o2+ic4h7<=>pc4h9o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 4.890e+11 0.157 1.321e+04 /
+sc4h9o2+ic4h7<=>sc4h9o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 9.277e+11 0.240 1.269e+04 /
+ic4h9o2<=>ic4h9+o2 6.640e+19 -1.575 3.608e+04
+rev/ 2.260e+12 0.000 0.000e+00 /
+tc4h9o2<=>tc4h9+o2 3.331e+24 -2.472 3.787e+04
+rev/ 1.410e+13 0.000 0.000e+00 /
+ic4h9o2+c4h10<=>ic4h9o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+tc4h9o2+c4h10<=>tc4h9o2h+sc4h9 1.120e+13 0.000 1.770e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h9o2+c4h10<=>ic4h9o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+tc4h9o2+c4h10<=>tc4h9o2h+pc4h9 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic3h7o2+ic4h9<=>ic3h7o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 9.811e+12 0.160 2.902e+04 /
+ic3h7o2+tc4h9<=>ic3h7o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.079e+16 -0.511 3.113e+04 /
+ic3h7o2+ic4h7<=>ic3h7o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 9.035e+09 0.868 1.330e+04 /
+ic4h9o2+c3h6<=>ic4h9o2h+c3h5-a 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+tc4h9o2+c3h6<=>tc4h9o2h+c3h5-a 3.240e+11 0.000 1.490e+04
+rev/ 2.000e+10 0.000 1.500e+04 /
+ic4h9o2+ic4h8<=>ic4h9o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+tc4h9o2+ic4h8<=>tc4h9o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+pc4h9o2+ic4h8<=>pc4h9o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+sc4h9o2+ic4h8<=>sc4h9o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+ic3h7o2+ic4h8<=>ic3h7o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+nc3h7o2+ic4h8<=>nc3h7o2h+ic4h7 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+ic4h9o2+c4h8-1<=>ic4h9o2h+c4h71-3 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+tc4h9o2+c4h8-1<=>tc4h9o2h+c4h71-3 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+ic4h9o2+c4h8-2<=>ic4h9o2h+c4h71-3 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+tc4h9o2+c4h8-2<=>tc4h9o2h+c4h71-3 1.400e+12 0.000 1.490e+04
+rev/ 3.160e+11 0.000 1.300e+04 /
+cc4h8o+oh<=>ch2o+c3h5-a+h2o 5.000e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+cc4h8o+h<=>ch2o+c3h5-a+h2 3.510e+07 2.000 5.000e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+cc4h8o+o<=>ch2o+c3h5-a+oh 1.124e+14 0.000 5.200e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+cc4h8o+ho2<=>ch2o+c3h5-a+h2o2 1.000e+13 0.000 1.500e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+cc4h8o+ch3o2<=>ch2o+c3h5-a+ch3o2h 1.000e+13 0.000 1.900e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+cc4h8o+ch3<=>ch2o+c3h5-a+ch4 2.000e+11 0.000 1.000e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+c2h4+tc4h9o2<=>c2h3+tc4h9o2h 7.000e+11 0.000 1.711e+04
+rev/ 1.000e+11 0.000 1.000e+04 /
+tc4h9o2+ch4<=>tc4h9o2h+ch3 1.130e+13 0.000 2.046e+04
+rev/ 7.500e+08 0.000 1.280e+03 /
+h2+tc4h9o2<=>h+tc4h9o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+tc4h9o2+c2h6<=>tc4h9o2h+c2h5 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+tc4h9o2+c3h8<=>tc4h9o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+tc4h9o2+c3h8<=>tc4h9o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+tc4h9o2+ch3oh<=>tc4h9o2h+ch2oh 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+tc4h9o2+c2h5oh<=>tc4h9o2h+pc2h4oh 6.300e+12 0.000 1.936e+04
+rev/ 3.061e+12 0.000 2.210e+04 /
+tc4h9o2+c2h5oh<=>tc4h9o2h+sc2h4oh 4.200e+12 0.000 1.500e+04
+rev/ 2.040e+12 0.000 1.774e+04 /
+ic4h9o2+ch3cho<=>ic4h9o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+tc4h9o2+ch3cho<=>tc4h9o2h+ch3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ic4h9o2+c2h3cho<=>ic4h9o2h+c2h3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+tc4h9o2+c2h3cho<=>tc4h9o2h+c2h3co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ic4h9o2+c2h5cho<=>ic4h9o2h+c2h5co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+tc4h9o2+c2h5cho<=>tc4h9o2h+c2h5co 2.800e+12 0.000 1.360e+04
+rev/ 1.000e+12 0.000 1.000e+04 /
+ic4h9o2+ho2<=>ic4h9o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.843e+13 -0.795 3.362e+04 /
+tc4h9o2+ho2<=>tc4h9o2h+o2 1.750e+10 0.000 -3.275e+03
+rev/ 3.850e+13 -0.795 3.362e+04 /
+ic4h9o2+h2o2<=>ic4h9o2h+ho2 2.400e+12 0.000 1.000e+04
+rev/ 2.400e+12 0.000 1.000e+04 /
+tc4h9o2+h2o2<=>tc4h9o2h+ho2 2.400e+12 0.000 1.000e+04
+rev/ 2.400e+12 0.000 1.000e+04 /
+ic4h9o2+ch2o<=>ic4h9o2h+hco 1.300e+11 0.000 9.000e+03
+rev/ 2.500e+10 0.000 1.010e+04 /
+tc4h9o2+ch2o<=>tc4h9o2h+hco 1.300e+11 0.000 9.000e+03
+rev/ 2.500e+10 0.000 1.010e+04 /
+ic4h9o2+ch3o2<=>ic4h9o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+ch3o2<=>tc4h9o+ch3o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+c2h5o2<=>ic4h9o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+c2h5o2<=>tc4h9o+c2h5o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+ch3co3<=>ic4h9o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+ch3co3<=>tc4h9o+ch3co2+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+ic4h9o2<=>o2+ic4h9o+ic4h9o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+tc4h9o2<=>ic4h9o+tc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+tc4h9o2<=>o2+tc4h9o+tc4h9o 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+pc4h9o2<=>ic4h9o+pc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+pc4h9o2<=>tc4h9o+pc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+sc4h9o2<=>ic4h9o+sc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+sc4h9o2<=>tc4h9o+sc4h9o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+nc3h7o2<=>ic4h9o+nc3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+nc3h7o2<=>tc4h9o+nc3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+ic3h7o2<=>ic4h9o+ic3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+ic3h7o2<=>tc4h9o+ic3h7o+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+ho2<=>ic4h9o+oh+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h9o2+ho2<=>tc4h9o+oh+o2 1.400e+16 -1.610 1.860e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2+ch3<=>ic4h9o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 5.720e+12 0.003 2.802e+04 /
+ic4h9o2+c2h5<=>ic4h9o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 8.133e+14 -0.599 3.043e+04 /
+ic4h9o2+ic3h7<=>ic4h9o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.387e+15 -0.432 3.110e+04 /
+ic4h9o2+nc3h7<=>ic4h9o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 8.212e+14 -0.568 2.910e+04 /
+ic4h9o2+pc4h9<=>ic4h9o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.139e+15 -0.618 2.878e+04 /
+ic4h9o2+sc4h9<=>ic4h9o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.969e+17 -1.110 3.049e+04 /
+ic4h9o2+ic4h9<=>ic4h9o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 4.900e+14 -0.533 3.032e+04 /
+ic4h9o2+tc4h9<=>ic4h9o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 5.390e+17 -1.204 3.243e+04 /
+ic4h9o2+c3h5-a<=>ic4h9o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 2.119e+11 0.184 1.544e+04 /
+ic4h9o2+c4h71-3<=>ic4h9o+c4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.095e+14 -0.745 1.749e+04 /
+ic4h9o2+ic4h7<=>ic4h9o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 4.512e+11 0.175 1.460e+04 /
+tc4h9o2+ch3<=>tc4h9o+ch3o 7.000e+12 0.000 -1.000e+03
+rev/ 7.824e+11 0.229 2.834e+04 /
+tc4h9o2+c2h5<=>tc4h9o+c2h5o 7.000e+12 0.000 -1.000e+03
+rev/ 1.112e+14 -0.372 3.075e+04 /
+tc4h9o2+ic3h7<=>tc4h9o+ic3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.898e+14 -0.206 3.142e+04 /
+tc4h9o2+nc3h7<=>tc4h9o+nc3h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.123e+14 -0.341 2.942e+04 /
+tc4h9o2+pc4h9<=>tc4h9o+pc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 1.558e+14 -0.392 2.910e+04 /
+tc4h9o2+sc4h9<=>tc4h9o+sc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 2.693e+16 -0.883 3.081e+04 /
+tc4h9o2+ic4h9<=>tc4h9o+ic4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 6.703e+13 -0.307 3.064e+04 /
+tc4h9o2+tc4h9<=>tc4h9o+tc4h9o 7.000e+12 0.000 -1.000e+03
+rev/ 7.373e+16 -0.978 3.275e+04 /
+tc4h9o2+c3h5-a<=>tc4h9o+c3h5o 7.000e+12 0.000 -1.000e+03
+rev/ 2.898e+10 0.411 1.576e+04 /
+tc4h9o2+c4h71-3<=>tc4h9o+c4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 1.497e+13 -0.519 1.781e+04 /
+tc4h9o2+ic4h7<=>tc4h9o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 6.172e+10 0.401 1.492e+04 /
+ic4h9o2+c2h4<=>ic4h9o2h+c2h3 2.000e+11 0.000 6.000e+03
+rev/ 2.000e+10 0.000 8.000e+03 /
+ic4h9o2+ch4<=>ic4h9o2h+ch3 1.130e+13 0.000 2.046e+04
+rev/ 7.500e+08 0.000 1.280e+03 /
+h2+ic4h9o2<=>h+ic4h9o2h 3.010e+13 0.000 2.603e+04
+rev/ 4.800e+13 0.000 7.950e+03 /
+ic4h9o2+c2h6<=>ic4h9o2h+c2h5 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h9o2+c3h8<=>ic4h9o2h+ic3h7 2.000e+12 0.000 1.700e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h9o2+c3h8<=>ic4h9o2h+nc3h7 1.700e+13 0.000 2.046e+04
+rev/ 5.000e+11 0.000 6.500e+03 /
+ic4h9o2+ch3oh<=>ic4h9o2h+ch2oh 6.300e+12 0.000 1.936e+04
+rev/ 1.000e+09 0.000 1.000e+04 /
+ic4h9o2+c2h5oh<=>ic4h9o2h+pc2h4oh 6.300e+12 0.000 1.936e+04
+rev/ 3.061e+12 0.000 2.210e+04 /
+ic4h9o2+c2h5oh<=>ic4h9o2h+sc2h4oh 4.200e+12 0.000 1.500e+04
+rev/ 2.040e+12 0.000 1.774e+04 /
+ic4h9o2h<=>ic4h9o+oh 1.500e+16 0.000 4.250e+04
+rev/ 1.233e+08 1.712 -2.942e+03 /
+tc4h9o2h<=>tc4h9o+oh 5.950e+15 0.000 4.254e+04
+rev/ 6.677e+06 1.939 -2.582e+03 /
+ic4h9o+ho2<=>ic3h7cho+h2o2 1.000e+12 0.000 0.000e+00
+rev/ 1.380e+13 -0.250 7.213e+04 /
+ic4h9o+oh<=>ic3h7cho+h2o 1.810e+13 0.000 0.000e+00
+rev/ 4.209e+13 0.080 1.036e+05 /
+ic4h9o+ch3<=>ic3h7cho+ch4 2.400e+13 0.000 0.000e+00
+rev/ 3.368e+14 0.080 8.892e+04 /
+ic4h9o+o<=>ic3h7cho+oh 6.000e+12 0.000 0.000e+00
+rev/ 1.415e+12 0.080 8.635e+04 /
+ic4h9o+h<=>ic3h7cho+h2 1.990e+13 0.000 0.000e+00
+rev/ 1.069e+13 0.080 8.844e+04 /
+ic4h9o<=>ic3h7cho+h 4.000e+14 0.000 2.150e+04
+rev/ 1.139e+10 1.080 2.500e+03 /
+ic4h9o<=>ch2o+ic3h7 2.000e+14 0.000 1.750e+04
+rev/ 1.877e+02 2.796 4.591e+03 /
+tc4h9o<=>ch3coch3+ch3 9.558e+22 -2.548 1.865e+04
+rev/ 1.500e+11 0.000 1.190e+04 /
+ic4h9o+o2<=>ic3h7cho+ho2 1.930e+11 0.000 1.660e+03
+rev/ 7.026e+08 0.564 3.320e+04 /
+tc4h9o+o2<=>ic4h8o+ho2 8.100e+11 0.000 4.700e+03
+rev/ 1.000e+11 0.000 3.200e+04 /
+ic4h8o<=>ic3h7cho 4.180e+13 0.000 5.272e+04
+rev/ 1.392e+10 0.550 7.205e+04 /
+ic4h8o+oh<=>ic3h6cho+h2o 1.250e+12 0.000 0.000e+00
+rev/ 9.609e+05 1.069 3.656e+04 /
+ic4h8o+h<=>ic3h6cho+h2 1.250e+12 0.000 0.000e+00
+rev/ 9.063e+04 1.175 2.167e+04 /
+ic4h8o+ho2<=>ic3h6cho+h2o2 2.500e+12 0.000 1.500e+04
+rev/ 1.049e+08 0.480 2.066e+04 /
+ic4h8o+ch3o2<=>ic3h6cho+ch3o2h 2.500e+12 0.000 1.900e+04
+rev/ 2.040e+09 0.036 2.307e+04 /
+ic4h8o+ch3<=>ic3h6cho+ch4 5.000e+10 0.000 1.000e+04
+rev/ 3.307e+06 0.729 3.321e+04 /
+ic4h8o+o<=>ic3h6cho+oh 1.250e+12 0.000 0.000e+00
+rev/ 4.704e+04 1.156 2.025e+04 /
+ic3h7cho<=>tc3h6cho+h 2.304e+18 -0.910 9.200e+04
+rev/ 2.000e+14 0.000 0.000e+00 /
+ic3h7cho<=>ic3h7+hco 1.129e+17 -0.030 7.976e+04
+rev/ 1.810e+13 0.000 0.000e+00 /
+ic3h7cho+ho2<=>ic3h7co+h2o2 3.000e+12 0.000 1.192e+04
+rev/ 7.987e+11 -0.062 1.036e+04 /
+ic3h7cho+ho2<=>tc3h6cho+h2o2 8.000e+10 0.000 1.192e+04
+rev/ 3.366e+12 -0.420 1.105e+04 /
+ic3h7cho+ch3<=>ic3h7co+ch4 3.980e+12 0.000 8.700e+03
+rev/ 2.325e+13 -0.060 2.563e+04 /
+ic3h7cho+o<=>ic3h7co+oh 7.180e+12 0.000 1.389e+03
+rev/ 7.052e+11 -0.060 1.574e+04 /
+ic3h7cho+o2<=>ic3h7co+ho2 4.000e+13 0.000 3.760e+04
+rev/ 1.625e+11 0.270 -3.432e+03 /
+ic3h7cho+oh<=>ic3h7co+h2o 2.690e+10 0.760 -3.400e+02
+rev/ 1.164e+10 0.750 3.120e+04 /
+ic3h7cho+oh<=>tc3h6cho+h2o 1.684e+12 0.000 -7.810e+02
+rev/ 1.194e+13 -0.090 2.981e+04 /
+ic3h7cho+h<=>ic3h7co+h2 2.600e+12 0.000 2.600e+03
+rev/ 1.196e+09 0.633 1.704e+04 /
+ic3h7cho+oh<=>ic3h6cho+h2o 3.120e+06 2.000 -2.980e+02
+rev/ 6.388e+05 1.990 1.913e+04 /
+ic3h7cho+ho2<=>ic3h6cho+h2o2 2.740e+04 2.550 1.550e+04
+rev/ 3.330e+04 2.210 3.468e+03 /
+ic3h7cho+ch3o2<=>ic3h6cho+ch3o2h 4.760e+04 2.550 1.649e+04
+rev/ 2.377e+05 2.040 3.742e+03 /
+ic3h7co<=>ic3h7+co 2.869e+20 -2.194 1.497e+04
+rev/ 1.500e+11 0.000 4.810e+03 /
+ic3h6cho<=>c3h6+hco 1.031e+15 -0.620 2.317e+04
+rev/ 1.000e+11 0.000 7.800e+03 /
+ic3h6cho<=>c2h3cho+ch3 2.425e+13 -0.270 2.247e+04
+rev/ 1.000e+11 0.000 7.800e+03 /
+ic4h8oh<=>ic4h8+oh 9.232e+14 -0.562 2.805e+04
+rev/ 9.930e+11 0.000 -9.600e+02 /
+io2c4h8oh<=>ic4h8oh+o2 1.917e+21 -2.347 3.579e+04
+rev/ 1.200e+11 0.000 -1.100e+03 /
+io2c4h8oh<=>ch3coch3+ch2o+oh 1.250e+10 0.000 1.890e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h9o2<=>ic4h8o2h-i 7.500e+10 0.000 2.440e+04
+rev/ 1.815e+11 -0.507 8.946e+03 /
+tc4h9o2<=>tc4h8o2h-i 9.000e+11 0.000 3.450e+04
+rev/ 2.027e+09 0.123 1.694e+04 /
+ic4h9o2<=>ic4h8o2h-t 1.000e+11 0.000 2.920e+04
+rev/ 5.085e+06 0.780 1.588e+04 /
+ic4h9o2<=>ic4h8+ho2 2.265e+35 -7.220 3.949e+04
+rev/ 2.996e+26 -5.331 2.124e+04 /
+tc4h9o2<=>ic4h8+ho2 7.612e+42 -9.410 4.149e+04
+rev/ 6.344e+31 -7.203 1.716e+04 /
+ic4h8ooh-io2<=>ic4h8o2h-i+o2 1.440e+20 -1.627 3.569e+04
+rev/ 2.260e+12 0.000 0.000e+00 /
+tc4h8ooh-io2<=>tc4h8o2h-i+o2 5.167e+22 -2.257 3.780e+04
+rev/ 2.260e+12 0.000 0.000e+00 /
+ic4h8ooh-to2<=>ic4h8o2h-t+o2 2.266e+27 -3.233 3.964e+04
+rev/ 1.410e+13 0.000 0.000e+00 /
+ic4h8ooh-io2<=>ic4ketii+oh 5.000e+10 0.000 2.140e+04
+rev/ 1.986e+03 1.455 4.442e+04 /
+ic4h8ooh-to2<=>ic4ketit+oh 4.000e+11 0.000 3.150e+04
+rev/ 1.910e+05 1.240 5.383e+04 /
+tc4h8ooh-io2<=>tic4h7q2-i 7.500e+10 0.000 2.440e+04
+rev/ 6.360e+08 0.091 1.172e+04 /
+tic4h7q2-i<=>ic4h7ooh+ho2 1.940e+20 -2.190 2.259e+04
+rev/ 1.000e+11 0.000 1.060e+04 /
+ic4h8ooh-io2<=>iic4h7q2-i 3.750e+10 0.000 2.440e+04
+rev/ 8.986e+08 -0.088 1.190e+04 /
+ic4h8ooh-io2<=>iic4h7q2-t 1.000e+11 0.000 2.920e+04
+rev/ 9.448e+07 0.406 2.120e+04 /
+ic4h8ooh-to2<=>tic4h7q2-i 6.000e+11 0.000 3.450e+04
+rev/ 5.088e+09 0.091 2.182e+04 /
+iic4h7q2-i<=>ac3h5ooh+ch2o2h 7.631e+19 -1.740 3.831e+04
+rev/ 8.500e+10 0.000 1.060e+04 /
+iic4h7q2-t<=>ic4h7ooh+ho2 4.076e+17 -1.560 1.839e+04
+rev/ 1.000e+11 0.000 7.800e+03 /
+ch2o2h<=>ch2o+oh 9.000e+14 0.000 1.500e+03
+rev/ 1.869e+11 1.100 3.684e+04 /
+ic4ketii<=>ch2o+c2h5co+oh 1.500e+16 0.000 4.200e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4ketit<=>ch3coch3+hco+oh 9.500e+15 0.000 4.254e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h8o2h-i<=>ic4h8+ho2 1.073e+20 -2.085 1.939e+04
+rev/ 3.970e+11 0.000 1.262e+04 /
+ic4h8o2h-t<=>ic4h8+ho2 1.526e+16 -1.109 1.756e+04
+rev/ 3.970e+11 0.000 1.262e+04 /
+ic4h8o2h-i<=>cc4h8o+oh 4.470e+11 0.000 2.190e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8o2h-t<=>ic4h8o+oh 3.090e+12 0.000 1.340e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc4h8o2h-i<=>ic4h8o+oh 3.980e+12 0.000 1.700e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8o2h-i<=>oh+ch2o+c3h6 8.451e+15 -0.680 2.917e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8<=>c3h5-t+ch3 1.920e+66 -14.220 1.281e+05
+rev/ 1.561e+56 -12.293 2.610e+04 /
+ic4h8<=>ic4h7+h 3.070e+55 -11.490 1.143e+05
+rev/ 1.428e+55 -11.738 2.640e+04 /
+ic4h8+h<=>c3h6+ch3 5.680e+33 -5.720 2.000e+04
+rev/ 6.093e+26 -4.209 2.720e+04 /
+ic4h8+h<=>ic4h7+h2 3.400e+05 2.500 2.492e+03
+rev/ 6.320e+04 2.528 1.816e+04 /
+ic4h8+o<=>ch2co+ch3+ch3 3.330e+07 1.760 7.600e+01
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8+o<=>ic3h6co+h+h 1.660e+07 1.760 7.600e+01
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8+o<=>ic4h7+oh 1.206e+11 0.700 7.633e+03
+rev/ 1.164e+10 0.709 2.189e+04 /
+ic4h8+ch3<=>ic4h7+ch4 4.420e+00 3.500 5.675e+03
+rev/ 7.495e+02 3.082 2.289e+04 /
+ic4h8+ho2<=>ic4h7+h2o2 1.928e+04 2.600 1.391e+04
+rev/ 2.073e+06 1.933 1.358e+04 /
+ic4h8+o2cho<=>ic4h7+ho2cho 1.928e+04 2.600 1.391e+04
+rev/ 6.514e-07 4.900 -3.468e+03 /
+ic4h8+o2<=>ic4h7+ho2 6.000e+12 0.000 3.990e+04
+rev/ 5.848e+12 -0.320 8.830e+02 /
+ic4h8+c3h5-a<=>ic4h7+c3h6 7.940e+11 0.000 2.050e+04
+rev/ 4.400e+20 -1.330 6.061e+04 /
+ic4h8+c3h5-s<=>ic4h7+c3h6 7.940e+11 0.000 2.050e+04
+rev/ 5.592e+20 -1.270 8.217e+04 /
+ic4h8+c3h5-t<=>ic4h7+c3h6 7.940e+11 0.000 2.050e+04
+rev/ 5.592e+20 -1.270 8.017e+04 /
+ic4h8+oh<=>ic4h7+h2o 5.200e+06 2.000 -2.980e+02
+rev/ 1.025e+07 1.922 3.027e+04 /
+ic4h8+o<=>ic3h7+hco 1.580e+07 1.760 -1.216e+03
+rev/ 4.538e+00 3.060 2.169e+04 /
+ic4h8+ch3o2<=>ic4h7+ch3o2h 1.928e+04 2.600 1.391e+04
+rev/ 4.034e+07 1.488 1.199e+04 /
+ic4h8+ho2<=>ic4h8o+oh 1.290e+12 0.000 1.334e+04
+rev/ 1.000e+12 0.000 7.500e+03 /
+ic4h7+o2<=>ic3h5cho+oh 2.470e+13 -0.450 2.302e+04
+rev/ 3.372e+13 -0.577 7.301e+04 /
+ic4h7+o2<=>ch3coch2+ch2o 7.140e+15 -1.210 2.105e+04
+rev/ 1.700e+12 -0.407 8.825e+04 /
+ic4h7+o2<=>c3h4-a+ch2o+oh 7.290e+29 -5.710 2.145e+04
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h7+o<=>ic3h5cho+h 6.030e+13 0.000 0.000e+00
+rev/ 2.844e+16 -0.519 6.673e+04 /
+ic4h7<=>c3h4-a+ch3 1.230e+47 -9.740 7.426e+04
+rev/ 1.649e+38 -7.768 2.254e+04 /
+ch3o2+ic4h7<=>ch3o+ic4h7o 7.000e+12 0.000 -1.000e+03
+rev/ 2.138e+11 0.349 1.506e+04 /
+ic4h7+ho2<=>ic4h7o+oh 7.000e+12 0.000 -1.000e+03
+rev/ 3.418e+12 0.050 1.082e+04 /
+ic4h7o<=>c3h5-t+ch2o 2.925e+21 -2.391 3.559e+04
+rev/ 1.000e+11 0.000 1.260e+04 /
+ic4h7o<=>ic4h6oh 1.391e+11 0.000 1.560e+04
+rev/ 4.233e+11 -0.164 3.167e+04 /
+ic4h7o<=>ic3h5cho+h 5.000e+13 0.000 2.910e+04
+rev/ 6.670e+13 -0.105 1.841e+04 /
+ic4h6oh+h2<=>ic4h7oh+h 2.160e+04 2.380 1.899e+04
+rev/ 5.614e+02 2.980 1.399e+03 /
+ic4h6oh+ho2<=>ic4h7oh+o2 5.570e+13 -0.315 8.620e+02
+rev/ 6.000e+13 0.000 3.990e+04 /
+ic4h6oh+ch2o<=>ic4h7oh+hco 6.300e+08 1.900 1.819e+04
+rev/ 2.101e+07 2.153 1.773e+04 /
+ic4h6oh+ic4h8<=>ic4h7oh+ic4h7 4.700e+02 3.300 1.984e+04
+rev/ 2.814e-01 3.900 6.521e+03 /
+ic4h7oh<=>ic4h6oh+h 4.902e+16 -0.400 8.985e+04
+rev/ 1.000e+14 0.000 0.000e+00 /
+ic4h7oh+ho2<=>ic4h6oh+h2o2 7.644e+03 2.712 1.393e+04
+rev/ 7.830e+05 2.050 1.358e+04 /
+ic4h6oh<=>c3h4-a+ch2oh 7.244e+19 -1.859 5.705e+04
+rev/ 1.000e+11 0.000 9.200e+03 /
+ic4h7o+o2<=>ic3h5cho+ho2 3.000e+10 0.000 1.649e+03
+rev/ 6.312e+10 -0.140 3.898e+04 /
+ic4h7o+ho2<=>ic3h5cho+h2o2 3.000e+11 0.000 0.000e+00
+rev/ 8.930e+14 -0.800 7.850e+04 /
+ic4h7o+ch3<=>ic3h5cho+ch4 2.400e+13 0.000 0.000e+00
+rev/ 7.261e+16 -0.470 9.529e+04 /
+ic4h7o+o<=>ic3h5cho+oh 6.000e+12 0.000 0.000e+00
+rev/ 3.052e+14 -0.470 9.272e+04 /
+ic4h7o+oh<=>ic3h5cho+h2o 1.810e+13 0.000 0.000e+00
+rev/ 9.076e+15 -0.470 1.100e+05 /
+ic4h7o+h<=>ic3h5cho+h2 1.990e+13 0.000 0.000e+00
+rev/ 2.305e+15 -0.470 9.481e+04 /
+ic3h5cho+oh<=>ic3h5co+h2o 2.690e+10 0.760 -3.400e+02
+rev/ 4.400e+10 0.780 3.608e+04 /
+ic3h5cho+ho2<=>ic3h5co+h2o2 1.000e+12 0.000 1.192e+04
+rev/ 9.709e+12 -0.310 1.688e+04 /
+ic3h5cho+ch3<=>ic3h5co+ch4 3.980e+12 0.000 8.700e+03
+rev/ 3.928e+13 0.020 3.045e+04 /
+ic3h5cho+o<=>ic3h5co+oh 7.180e+12 0.000 1.389e+03
+rev/ 1.191e+12 0.020 2.056e+04 /
+ic3h5cho+o2<=>ic3h5co+ho2 2.000e+13 0.000 4.070e+04
+rev/ 1.824e+11 0.311 5.337e+03 /
+ic3h5cho+h<=>ic3h5co+h2 2.600e+12 0.000 2.600e+03
+rev/ 9.822e+11 0.020 2.387e+04 /
+ic3h5co<=>c3h5-t+co 1.278e+20 -1.890 3.446e+04
+rev/ 1.510e+11 0.000 4.809e+03 /
+tc3h6cho+ho2<=>tc3h6ocho+oh 9.640e+12 0.000 0.000e+00
+rev/ 2.018e+17 -1.200 2.101e+04 /
+tc3h6ocho<=>ch3coch3+hco 3.980e+13 0.000 9.700e+03
+rev/ 2.173e+08 0.800 1.424e+04 /
+tc3h6cho<=>ic3h5cho+h 1.325e+14 0.010 3.934e+04
+rev/ 1.300e+13 0.000 1.200e+03 /
+tc3h6cho<=>ic3h6co+h 4.086e+14 -0.072 4.241e+04
+rev/ 1.300e+13 0.000 4.800e+03 /
+tc3h6cho+h2<=>ic3h7cho+h 2.160e+05 2.380 1.899e+04
+rev/ 1.319e+05 2.470 3.550e+03 /
+ic4h7ooh<=>ic4h7o+oh 6.400e+15 0.000 4.555e+04
+rev/ 1.000e+11 0.000 0.000e+00 /
+ic4h7oh<=>ic4h7o+h 5.969e+16 -0.560 1.059e+05
+rev/ 4.000e+13 0.000 0.000e+00 /
+ic4h8oh<=>ic4h7oh+h 1.708e+12 0.277 3.885e+04
+rev/ 1.000e+13 0.000 1.200e+03 /
+ic4h7o+h2<=>ic4h7oh+h 9.050e+06 2.000 1.783e+04
+rev/ 7.160e+05 2.440 1.631e+04 /
+ic4h7oh<=>ic4h7+oh 7.310e+16 -0.410 7.970e+04
+rev/ 3.000e+13 0.000 0.000e+00 /
+ic4h7o+ch2o<=>ic4h7oh+hco 1.150e+11 0.000 1.280e+03
+rev/ 3.020e+11 0.000 1.816e+04 /
+tc3h6cho+ch2o<=>ic3h7cho+hco 2.520e+08 1.900 1.819e+04
+rev/ 1.229e+07 1.990 1.742e+04 /
+tc3h6cho+ic4h8<=>ic3h7cho+ic4h7 4.700e+02 3.300 1.984e+04
+rev/ 6.613e+00 3.390 8.672e+03 /
+ic3h6co+oh<=>ic3h7+co2 1.730e+12 0.000 -1.010e+03
+rev/ 2.577e+14 -0.430 5.548e+04 /
+tc3h6ohcho<=>tc3h6cho+oh 9.990e+20 -1.460 8.748e+04
+rev/ 5.000e+13 0.000 0.000e+00 /
+tc3h6ohcho<=>tc3h6oh+hco 5.164e+23 -1.900 7.685e+04
+rev/ 1.810e+13 0.000 0.000e+00 /
+tc3h6oh<=>ch3coch3+h 8.981e+11 0.271 3.299e+04
+rev/ 8.000e+12 0.000 9.500e+03 /
+tc3h6oh<=>ic3h5oh+h 4.211e+10 1.005 4.090e+04
+rev/ 6.250e+11 0.510 4.020e+03 /
+ic3h5oh<=>c3h5-t+oh 7.369e+19 -0.940 1.091e+05
+rev/ 5.000e+13 0.000 0.000e+00 /
+tc3h6o2cho<=>tc3h6cho+o2 2.458e+25 -4.065 2.708e+04
+rev/ 1.990e+17 -2.100 0.000e+00 /
+tc3h6o2cho<=>ic3h5o2hcho 6.000e+11 0.000 2.988e+04
+rev/ 3.014e+12 -0.516 1.711e+04 /
+tc3h6o2cho<=>tc3h6o2hco 1.000e+11 0.000 2.575e+04
+rev/ 1.628e+12 -0.516 2.510e+04 /
+ic3h5o2hcho<=>ic3h5cho+ho2 8.944e+20 -2.440 1.503e+04
+rev/ 2.230e+11 0.000 1.060e+04 /
+tc3h6o2hco<=>ch3coch3+co+oh 4.244e+18 -1.430 4.800e+03
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc3h6oh+o2<=>ch3coch3+ho2 2.230e+13 0.000 0.000e+00
+rev/ 6.529e+17 -1.190 2.561e+04 /
+ic3h6co+oh<=>tc3h6oh+co 2.000e+12 0.000 -1.010e+03
+rev/ 1.009e+09 0.900 3.154e+04 /
+tc3h6cho+o2<=>ic3h5cho+ho2 2.725e-19 0.000 7.240e+03
+rev/ 1.390e+11 -0.200 1.731e+04 /
+tc3h6cho+o2<=>ch3coch3+co+oh 3.620e-20 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+tc3h6cho+ho2<=>ic3h7cho+o2 3.675e+12 0.000 1.310e+03
+rev/ 1.236e+14 -0.240 4.335e+04 /
+tc3h6cho+ch3<=>ic3h5cho+ch4 3.010e+12 -0.320 -1.310e+02
+rev/ 2.207e+15 -0.850 6.790e+04 /
+tc4h8cho<=>ic3h5cho+ch3 1.000e+13 0.000 2.629e+04
+rev/ 2.230e+11 0.000 1.060e+04 /
+tc4h8cho<=>ic4h8+hco 8.520e+12 0.000 2.009e+04
+rev/ 1.000e+11 0.000 6.000e+03 /
+o2c4h8cho<=>tc4h8cho+o2 1.519e+19 -1.440 3.451e+04
+rev/ 2.000e+12 0.000 0.000e+00 /
+o2c4h8cho<=>o2hc4h8co 2.160e+11 0.000 1.536e+04
+rev/ 1.173e+13 -0.680 1.488e+04 /
+o2hc4h8co<=>ic4h8o2h-t+co 3.299e+22 -2.720 1.176e+04
+rev/ 1.500e+11 0.000 4.809e+03 /
+ic4h7o+ic4h8<=>ic4h7oh+ic4h7 2.700e+11 0.000 4.000e+03
+rev/ 1.000e+10 0.000 9.000e+03 /
+ic4h6oh+ho2<=>ch2cch2oh+ch2o+oh 1.446e+13 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ic4h8+ch2cch2oh<=>ic4h7+c3h5oh 7.940e+11 0.000 2.050e+04
+rev/ 2.750e+11 -0.050 2.847e+04 /
+c3h5oh+ho2<=>ch2cch2oh+h2o2 1.761e+09 0.280 2.259e+04
+rev/ 3.010e+09 0.000 2.583e+03 /
+c3h5oh+oh<=>ch2cch2oh+h2o 5.060e+12 0.000 5.960e+03
+rev/ 1.457e+12 0.050 1.741e+04 /
+c3h5oh+h<=>ch2cch2oh+h2 3.900e+05 2.500 5.821e+03
+rev/ 2.594e+04 2.550 2.121e+03 /
+c3h5oh+o2<=>ch2cch2oh+ho2 4.000e+13 0.000 6.069e+04
+rev/ 4.833e+10 0.380 -4.920e+02 /
+c3h5oh+ch3<=>ch2cch2oh+ch4 2.400e+11 0.000 8.030e+03
+rev/ 4.170e+11 0.050 4.810e+03 /
+ic4h7oh<=>ch2cch2oh+ch3 1.247e+20 -0.980 9.857e+04
+rev/ 3.000e+13 0.000 0.000e+00 /
+c3h5oh<=>ch2cch2oh+h 2.835e+19 -1.050 1.111e+05
+rev/ 1.000e+14 0.000 0.000e+00 /
+ch2cch2oh+o2<=>ch2oh+co+ch2o 4.335e+12 0.000 0.000e+00
+rev/ 0.000e+00 0.000 0.000e+00 /
+ch2cch2oh<=>c2h2+ch2oh 2.163e+40 -8.310 4.511e+04
+rev/ 1.610e+40 -8.580 2.033e+04 /
+ch2cch2oh<=>c3h4-a+oh 6.697e+16 -1.110 4.258e+04
+rev/ 8.500e+12 0.000 2.000e+03 /
+
+!******************************n-butanol submodel**************************************
+nc4h9oh(+m)<=>ch3+c3h6oh(+m) 3.790e+24 -2.230 8.807e+04
+!rev/ 1.582e+13 0.106 9.200e+02 /
+low / 1.7820e+60 -1.2280e+01 8.3980e+04 / 
+troe / 2.3520e-01 7.2400e+02 5.0000e+09 5.0000e+09 / !troe fall-off reaction
+nc4h9oh(+m)<=>c2h5+pc2h4oh(+m) 5.530e+24 -2.230 8.901e+04
+!rev/ 2.002e+13 0.004 5.140e+02 /
+low / 6.6320e+59 -1.2130e+01 8.4720e+04 / 
+troe / 2.4380e-01 7.4406e+02 5.0000e+09 5.0000e+09 / !troe fall-off reaction
+nc4h9oh(+m)<=>nc3h7+ch2oh(+m) 3.020e+23 -1.880 8.571e+04
+!rev/ 2.557e+13 -0.024 -2.102e+03 /
+low / 1.4160e+59 -1.1930e+01 8.3980e+04 / 
+troe / 7.6460e-01 8.3440e+09 7.2480e+02 8.2140e+09 / !troe fall-off reaction
+nc4h9oh(+m)<=>oh+pc4h9(+m) 6.330e+20 -1.370 9.493e+04
+!rev/ 2.422e+13 -0.003 6.280e+02 /
+low / 6.9020e+51 -1.0210e+01 8.9200e+04 / 
+troe / 7.0300e-01 9.8820e+09 6.3468e+02 1.7860e+09 / !troe fall-off reaction
+nc4h9oh(+m)<=>h+pc4h9o(+m) 6.040e+14 0.100 1.038e+05
+!rev/ 9.943e+13 0.004 -1.050e+03 /
+low / 2.4080e+39 -7.0300e+00 9.5960e+04 / 
+troe / 3.8650e-01 5.6491e+02 4.4380e+09 6.7100e+09 / !troe fall-off reaction
+nc4h9oh(+m)<=>c4h8-1+h2o(+m) 3.520e+13 0.000 6.723e+04
+!rev/ 5.441e+05 1.794 5.830e+04 /
+low / 1.6900e+75 -1.7040e+01 6.4750e+04 / 
+troe / 8.0000e-02 1.0000e+00 9.9240e+09 9.9240e+09 / !troe fall-off reaction
+h+c4h8oh-1<=>nc4h9oh 1.00e+14  0.0  0.000 ! similar to nc4h9oh(+m)<=>h+pc4h9o(+m)
+h+c4h8oh-2<=>nc4h9oh 1.00e+14  0.0  0.000
+h+c4h8oh-3<=>nc4h9oh 1.00e+14  0.0  0.000
+h+c4h8oh-4<=>nc4h9oh 1.00e+14  0.0  0.000
+nc4h9oh<=>nc3h7cho+h2 5.00e+13 0.0 6.950e+4 ! grana(2010)
+
+!nc4h9oh+h<=>c4h8oh-4+h2 6.660e+05 2.540 6.756e+03
+!rev/ 1.443e+02 3.170 9.086e+03 /
+!nc4h9oh+h<=>c4h8oh-3+h2 1.300e+06 2.400 4.471e+03
+!rev/ 1.272e+01 3.426 9.271e+03 /
+!nc4h9oh+h<=>c4h8oh-2+h2 1.080e+05 2.690 4.440e+03
+!rev/ 1.057e+00 3.716 9.240e+03 /
+!nc4h9oh+h<=>c4h8oh-1+h2 1.790e+05 2.530 3.420e+03
+!rev/ 4.018e+02 2.978 1.166e+04 /
+!nc4h9oh+h<=>pc4h9o+h2 5.360e+04 2.530 4.405e+03
+!rev/ 3.525e+03 2.710 3.115e+03 /
+!replaced recommended by grana model(2010)
+nc4h9oh+h<=>c4h8oh-4+h2	7.22e+06 2 6525.57
+nc4h9oh+h<=>c4h8oh-3+h2	4.81e+06 2 3950.57
+nc4h9oh+h<=>c4h8oh-2+h2	1.60e+06 2 3950.57 !/3
+nc4h9oh+h<=>c4h8oh-1+h2	7.22e+06 2 3950.57
+nc4h9oh+h<=>pc4h9o+h2	2.41e+06 2 6525.57
+
+!nc4h9oh+oh<=>c4h8oh-4+h2o 5.280e+09 0.970 1.586e+03
+!rev/ 1.214e+07 1.494 1.881e+04 /
+!nc4h9oh+oh<=>c4h8oh-3+h2o 4.680e+07 1.610 -3.500e+01
+!rev/ 4.859e+03 2.530 1.966e+04 /
+!nc4h9oh+oh<=>c4h8oh-2+h2o 1.400e+08 1.430 4.060e+02
+!rev/ 1.454e+04 2.350 2.010e+04 /
+!nc4h9oh+oh<=>c4h8oh-1+h2o 5.560e+10 0.500 -3.800e+02
+!rev/ 1.323e+09 0.842 2.275e+04 /
+!nc4h9oh+oh<=>pc4h9o+h2o 1.500e+10 0.800 2.534e+03
+!rev/ 1.046e+10 0.874 1.614e+04 /
+!reaplaced recommended by zhou et al. (2011)
+nc4h9oh+oh<=>c4h8oh-4+h2o 2.150e+04 2.770 1.850e+02
+nc4h9oh+oh<=>c4h8oh-3+h2o 5.090e+01 3.350 -4.351e+03
+nc4h9oh+oh<=>c4h8oh-2+h2o 8.290e-01 3.740 -4.067e+03
+nc4h9oh+oh<=>c4h8oh-1+h2o 4.560e+03 2.810 -3.680e+03
+nc4h9oh+oh<=>pc4h9o+h2o 5.88e+02 2.820 -5.830e+02
+
+!nc4h9oh+ho2<=>c4h8oh-4+h2o2 2.380e+04 2.550 1.649e+04
+!rev/ 2.985e+03 2.485 2.823e+03 /
+!nc4h9oh+ho2<=>c4h8oh-3+h2o2 9.640e+03 2.600 1.391e+04
+!rev/ 5.462e+01 2.931 2.709e+03 /
+!nc4h9oh+ho2<=>c4h8oh-2+h2o2 1.580e+03 2.810 1.405e+04
+!rev/ 8.952e+00 3.141 2.851e+03 /
+!nc4h9oh+ho2<=>c4h8oh-1+h2o2 6.000e+12 0.000 1.600e+04
+!rev/ 7.793e+12 -0.247 8.239e+03 /
+!nc4h9oh+ho2<=>pc4h9o+h2o2 2.500e+12 0.000 2.400e+04
+!rev/ 9.517e+13 -0.515 6.709e+03 /
+! recommend by zhou et al.(2012)
+nc4h9oh+ho2<=>c4h8oh-4+h2o2 8.800e-02 4.310 1.727e+04  
+nc4h9oh+ho2<=>c4h8oh-3+h2o2 2.760e-04  4.760 1.185e+04 
+nc4h9oh+ho2<=>c4h8oh-2+h2o2 7.510e-03 4.520 1.471e+04  
+nc4h9oh+ho2<=>c4h8oh-1+h2o2 3.50e-05 5.260 8.268e+03  
+nc4h9oh+ho2<=>pc4h9o+h2o2 6.470e-07 5.300 1.053e+04
+
+nc4h9oh+o<=>c4h8oh-4+oh 9.810e+05 2.430 4.750e+03
+rev/ 1.104e+02 3.041 5.668e+03 /
+nc4h9oh+o<=>c4h8oh-3+oh 5.520e+05 2.450 2.830e+03
+rev/ 2.806e+00 3.457 6.218e+03 /
+nc4h9oh+o<=>c4h8oh-2+oh 1.440e+05 2.610 3.029e+03
+rev/ 7.320e-01 3.617 6.417e+03 /
+nc4h9oh+o<=>c4h8oh-1+oh 1.450e+05 2.470 8.760e+02
+rev/ 1.690e+02 2.899 7.704e+03 /
+nc4h9oh+o<=>pc4h9o+oh 1.460e-03 4.730 1.727e+03
+rev/ 4.987e-05 4.891 -9.750e+02 /
+nc4h9oh+ch3<=>c4h8oh-4+ch4 4.530e-01 3.650 7.154e+03
+rev/ 8.960e-02 3.834 1.102e+04 /
+nc4h9oh+ch3<=>c4h8oh-3+ch4 1.510e+00 3.460 5.481e+03
+rev/ 1.349e-02 4.040 1.182e+04 /
+nc4h9oh+ch3<=>c4h8oh-2+ch4 8.020e+00 3.230 6.461e+03
+rev/ 7.165e-02 3.810 1.280e+04 /
+nc4h9oh+ch3<=>c4h8oh-1+ch4 1.993e+01 3.370 7.634e+03
+rev/ 4.082e+01 3.372 1.741e+04 /
+nc4h9oh+ch3<=>pc4h9o+ch4 1.020e+00 3.570 8.221e+03
+rev/ 6.123e+01 3.304 8.471e+03 /
+nc4h9oh+hco<=>c4h8oh-4+ch2o 1.020e+05 2.500 1.844e+04
+rev/ 3.745e+03 2.843 5.582e+03 /
+nc4h9oh+hco<=>c4h8oh-3+ch2o 1.090e+07 1.900 1.701e+04
+rev/ 1.808e+04 2.639 6.621e+03 /
+nc4h9oh+hco<=>c4h8oh-2+ch2o 5.160e+05 2.250 1.676e+04
+rev/ 8.557e+02 2.989 6.365e+03 /
+nc4h9oh+hco<=>c4h8oh-1+ch2o 1.000e+07 1.900 1.700e+04
+rev/ 3.801e+06 2.061 1.005e+04 /
+nc4h9oh+hco<=>pc4h9o+ch2o 3.400e+04 2.500 1.350e+04
+rev/ 3.788e+05 2.393 -2.980e+03 /
+nc4h9oh+ch2oh<=>c4h8oh-4+ch3oh 1.010e+02 2.950 1.397e+04
+rev/ 1.902e+00 3.471 1.001e+04 /
+nc4h9oh+ch2oh<=>c4h8oh-3+ch3oh 6.020e+01 2.950 1.198e+04
+rev/ 5.120e-02 3.867 1.050e+04 /
+nc4h9oh+ch2oh<=>c4h8oh-2+ch3oh 1.530e+01 3.110 1.221e+04
+rev/ 1.301e-02 4.027 1.072e+04 /
+nc4h9oh+ch2oh<=>c4h8oh-1+ch3oh 6.000e+01 2.950 1.200e+04
+rev/ 1.170e+01 3.289 1.395e+04 /
+nc4h9oh+ch2oh<=>pc4h9o+ch3oh 1.200e+02 2.760 1.080e+04
+rev/ 6.857e+02 2.831 3.222e+03 /
+nc4h9oh+ch3o<=>c4h8oh-4+ch3oh 2.170e+11 0.000 6.458e+03
+rev/ 1.010e+09 0.417 9.015e+03 /
+nc4h9oh+ch3o<=>c4h8oh-3+ch3oh 1.450e+11 0.000 4.571e+03
+rev/ 3.048e+07 0.813 9.598e+03 /
+nc4h9oh+ch3o<=>c4h8oh-2+ch3oh 3.020e+10 0.180 4.703e+03
+rev/ 6.349e+06 0.993 9.730e+03 /
+nc4h9oh+ch3o<=>c4h8oh-1+ch3oh 1.500e+11 0.000 4.500e+03
+rev/ 7.229e+09 0.235 1.297e+04 /
+nc4h9oh+ch3o<=>pc4h9o+ch3oh 2.300e+10 0.000 2.900e+03
+rev/ 3.249e+10 -0.033 1.837e+03 /
+nc4h9oh+ch3o2<=>c4h8oh-4+ch3o2h 2.380e+04 2.550 1.649e+04
+rev/ 5.808e+04 2.040 1.228e+03 /
+nc4h9oh+ch3o2<=>c4h8oh-3+ch3o2h 9.640e+03 2.600 1.391e+04
+rev/ 1.063e+03 2.486 1.114e+03 /
+nc4h9oh+ch3o2<=>c4h8oh-2+ch3o2h 1.580e+03 2.810 1.405e+04
+rev/ 1.742e+02 2.696 1.256e+03 /
+nc4h9oh+ch3o2<=>c4h8oh-1+ch3o2h 3.000e+12 0.000 1.750e+04
+rev/ 7.580e+13 -0.692 8.144e+03 /
+nc4h9oh+ch3o2<=>pc4h9o+ch3o2h 1.500e+12 0.000 1.500e+04
+rev/ 1.111e+15 -0.960 -3.886e+03 /
+nc4h9oh+c2h5<=>c4h8oh-4+c2h6 4.620e-01 3.650 9.142e+03
+rev/ 1.084e+00 3.598 9.242e+03 /
+nc4h9oh+c2h5<=>c4h8oh-3+c2h6 1.210e+00 3.460 7.471e+03
+rev/ 1.283e-01 3.804 1.004e+04 /
+nc4h9oh+c2h5<=>c4h8oh-2+c2h6 7.660e+00 3.110 1.221e+04
+rev/ 8.120e-01 3.454 1.478e+04 /
+nc4h9oh+c2h5<=>c4h8oh-1+c2h6 5.000e+10 0.000 1.040e+04
+rev/ 1.215e+12 -0.234 1.641e+04 /
+nc4h9oh+c2h5<=>pc4h9o+c2h6 1.000e+11 0.000 9.200e+03
+rev/ 7.123e+13 -0.502 5.680e+03 /
+
+!reactions nc4h9oh+c2h3 recommended by sarathy model are added.
+nc4h9oh+c2h3  =>c2h4+c4h8oh-1    2.0e+11  0.000   9600.0  
+nc4h9oh+c2h3  =>c2h4+pc4h9o      1.0e+11  0.000   7900.0  
+nc4h9oh+c2h3  =>c2h4+c4h8oh-4    3.0e-01  4.000   8200.0  
+nc4h9oh+c2h3  =>c2h4+c4h8oh-3    2.0e+11  0.000   9600.0  
+nc4h9oh+c2h3  =>c2h4+c4h8oh-2    2.0e+11  0.000   9600.0  
+!added based on veloo(2010), westbrook model
+nc4h9oh+o2   =  ho2+c4h8oh-1     4.000e+13  0.00  47500.
+nc4h9oh+o2   =  ho2+c4h8oh-2     4.000e+13  0.00  47500.
+nc4h9oh+o2   =  ho2+c4h8oh-3     4.000e+13  0.00  47500.
+nc4h9oh+o2   =  ho2+c4h8oh-4     4.000e+13  0.00  47500.
+nc4h9oh+o2   =  ho2+pc4h9o       4.000e+13  0.00  47500.
+! added, similar with nc4h9oh+ch3o2
+nc4h9oh+c2h5o2<=>c4h8oh-4+c2h5o2h 2.380e+04 2.550 1.649e+04
+rev/ 5.808e+04 2.040 1.228e+03 /
+nc4h9oh+c2h5o2<=>c4h8oh-3+c2h5o2h 9.640e+03 2.600 1.391e+04
+rev/ 1.063e+03 2.486 1.114e+03 /
+nc4h9oh+c2h5o2<=>c4h8oh-2+c2h5o2h 1.580e+03 2.810 1.405e+04
+rev/ 1.742e+02 2.696 1.256e+03 /
+nc4h9oh+c2h5o2<=>c4h8oh-1+c2h5o2h 3.000e+12 0.000 1.750e+04
+rev/ 7.580e+13 -0.692 8.144e+03 /
+nc4h9oh+c2h5o2<=>pc4h9o+c2h5o2h 1.500e+12 0.000 1.500e+04
+rev/ 1.111e+15 -0.960 -3.886e+03 /
+
+!c4h8oh-1<=>c4h8oh-3 3.800e+10 0.670 3.660e+04
+!rev/ 1.658e+08 1.248 3.316e+04 /
+!c4h8oh-1<=>c4h8oh-4 3.800e+10 0.670 3.430e+04
+!rev/ 3.670e+09 0.852 2.839e+04 /
+!c4h8oh-4<=>c4h8oh-2 8.412e+11 0.274 3.363e+04
+!rev/ 3.800e+10 0.670 3.610e+04 /
+! 1-4 and 1-5 h transfer reactions replaced by reactiion from vrancks 2011 
+pc4h9o<=>c4h8oh-4   1.32e-01  3.632  2.689e+03
+pc4h9o<=>c4h8oh-3   5.32e-10  6.204  6.710e+03
+c4h8oh-4<=>c4h8oh-1 3.30e-19  8.638  5.268e+03
+
+c4h8oh-4<=>c2h4+pc2h4oh 2.374e+12 0.480 2.889e+04
+rev/ 8.800e+03 2.480 6.130e+03 /
+c4h8oh-4<=>c4h7oh1-4+h 2.65e+12 0.250 3.571e+04   ! added(curran 2006, pc4h9=h+c4h8)
+c4h8oh-3<=>c3h6+ch2oh 4.231e+10 1.035 2.817e+04
+rev/ 8.800e+03 2.480 6.130e+03 /
+c4h8oh-3<=>c4h7oh1-4+h 6.039e+11 0.458 3.656e+04
+rev/ 4.240e+11 0.510 1.230e+03 /
+c4h8oh-3<=>c4h7oh2-1+h 1.432e+12 0.225 3.634e+04
+rev/ 2.500e+11 0.510 2.620e+03 /
+c4h8oh-2<=>c3h5oh+ch3 7.558e+10 0.941 3.138e+04!c3h5oh c=c-c-oh
+rev/ 1.760e+04 2.480 6.130e+03 /
+c4h8oh-2<=>c4h8-1+oh 6.670e+15 -0.874 2.766e+04 
+rev/ 9.930e+11 0.000 -9.600e+02 /
+c4h8oh-2<=>c4h7oh2-1+h 1.432e+12 0.225 3.634e+04
+rev/ 2.500e+11 0.510 2.620e+03 /
+c4h8oh-2<=>c4h7oh1-1+h 2.99e+11 0.59 3.682e+04 ! added(curran 2006, sc4h9=c4h8-1+h) 
+c4h8oh-1<=>c2h3oh+c2h5 1.516e+12 0.602 2.912e+04
+rev/ 8.800e+03 2.480 6.130e+03 /
+c4h8oh-1<=>nc3h7cho+h 3.066e+14 -0.454 3.470e+04
+rev/ 8.000e+12 0.000 9.500e+03 /
+c4h8oh-1<=>c4h7oh1-1+h 4.065e+11 0.400 3.543e+04
+rev/ 2.500e+11 0.510 2.620e+03 /
+pc4h9o<=>nc3h7cho+h 8.89e+10  0.75  21060.0  ! added(curran 2006, nc3h7o=c2h5cho+h)
+
+! added c4h8oh+o2 reactions
+c4h8oh-1+o2<=>nc3h7cho+ho2 5.280e+17 -1.638  8.390e+02 !da silva 2006 ch3choh+o2<=>ch3cho+ho2
+c4h8oh-1+o2<=>c4h7oh1-1+ho2 7.62e+02 2.45e+00 -296     !da silva 2006 ch3choh+o2<=>ch2choh+ho2
+c4h8oh-2+o2<=>c4h7oh1-1+ho2 7.62e+02 2.45e+00 -296
+c4h8oh-2+o2<=>c4h7oh2-1+ho2 7.62e+02 2.45e+00 -296
+c4h8oh-3+o2<=>c4h7oh1-4+ho2 7.62e+02 2.45e+00 -296
+c4h8oh-3+o2<=>c4h7oh2-1+ho2 7.62e+02 2.45e+00 -296
+c4h8oh-4+o2<=>c4h7oh1-4+ho2 7.62e+02 2.45e+00 -296
+
+! added keto-enol isomerization 
+c2h3oh<=>ch3cho 3.8e+07 1.53 5.099e+04     ! akih-kumgeh 2011 combustion and flame
+c4h7oh1-1<=>nc3h7cho 3.8e+07 1.53 5.099e+04
+c2h3oh+ho2<=>ch3cho+ho2 1.490e+05 1.67 6.810e+03     ! da silva 2009 chemical physics letters 
+c4h7oh1-1+ho2<=>nc3h7cho+ho2 1.490e+05 1.67 6.810e+03
+c2h3oh+hocho<=>ch3cho+hocho   2.81e-02  3.286  -4509 ! da silva 2010 angewandte
+c4h7oh1-1+hocho<=>nc3h7cho+hocho   2.81e-02  3.286  -4509
+
+c4h7oh1-4<=>c4h71-4+oh 2.367e+20 -1.189 9.434e+04
+rev/ 2.410e+13 0.000 0.000e+00 /
+c4h7oh1-4<=>c3h5-a+ch2oh 6.644e+19 -1.132 7.459e+04
+rev/ 2.000e+13 0.000 0.000e+00 /
+c4h7oh1-4+o2<=>c4h6oh1-43+ho2 6.000e+12 0.000 3.719e+04
+rev/ 3.103e+12 -0.137 -2.530e+02 /
+c4h7oh1-4+h<=>c4h6oh1-43+h2 3.376e+05 2.360 2.070e+02
+rev/ 3.328e+04 2.571 1.745e+04 /
+c4h7oh1-4+o<=>c4h6oh1-43+oh 9.590e+12 0.000 1.967e+03
+rev/ 4.909e+11 0.192 1.780e+04 /
+c4h7oh1-4+oh<=>c4h6oh1-43+h2o 2.764e+04 2.640 -1.919e+03
+rev/ 2.890e+04 2.745 3.022e+04 /
+c4h7oh1-4+ch3<=>c4h6oh1-43+ch4 3.690e+00 3.310 4.002e+03
+rev/ 3.320e+02 3.075 2.279e+04 /
+c4h7oh1-4+ho2<=>c4h6oh1-43+h2o2 4.820e+03 2.550 1.053e+04
+rev/ 2.750e+05 2.066 1.177e+04 /
+c4h7oh1-4+ch3o2<=>c4h6oh1-43+ch3o2h 4.820e+03 2.550 1.053e+04
+rev/ 5.350e+06 1.621 1.018e+04 /
+c4h7oh1-4+ch3o<=>c4h6oh1-43+ch3oh 4.000e+01 2.900 8.609e+03
+rev/ 8.469e+01 2.898 2.608e+04 /
+c4h6oh1-43<=>c4h6+oh 7.035e+16 -1.012 3.607e+04
+rev/ 9.930e+11 0.000 -9.600e+02 /
+c4h7oh2-1<=>c4h71-4+oh 5.887e+19 -0.956 9.595e+04
+rev/ 2.410e+13 0.000 0.000e+00 /
+c4h7oh2-1<=>c3h5-t+ch2oh 2.214e+22 -1.576 9.752e+04
+rev/ 2.000e+13 0.000 0.000e+00 /
+c4h7oh2-1+o2<=>c4h6oh1-43+ho2 4.000e+12 0.000 3.990e+04
+rev/ 8.316e+12 -0.370 8.470e+02 /
+c4h7oh2-1+h<=>c4h6oh1-43+h2 1.730e+05 2.500 2.492e+03
+rev/ 6.855e+04 2.478 1.813e+04 /
+c4h7oh2-1+o<=>c4h6oh1-43+oh 5.240e+11 0.700 5.884e+03
+rev/ 1.078e+11 0.659 2.011e+04 /
+c4h7oh2-1+oh<=>c4h6oh1-43+h2o 3.120e+06 2.000 -2.980e+02
+rev/ 1.312e+07 1.872 3.023e+04 /
+c4h7oh2-1+ch3<=>c4h6oh1-43+ch4 3.690e+00 3.310 4.002e+03
+rev/ 1.335e+03 2.842 2.118e+04 /
+c4h7oh2-1+ho2<=>c4h6oh1-43+h2o2 2.700e+04 2.500 1.234e+04
+rev/ 6.193e+06 1.783 1.197e+04 /
+c4h7oh2-1+ch3o2<=>c4h6oh1-43+ch3o2h 2.700e+04 2.500 1.234e+04
+rev/ 1.205e+08 1.338 1.038e+04 /
+c4h7oh1-1<=>ch2cch2oh+ch3 1.904e+25 -2.421 1.051e+05
+rev/ 2.410e+13 0.000 0.000e+00 /
+c4h7oh1-1+o2=>c4h6oh1-13+ho2 4.000e+12 0.000 3.719e+04
+!rev/ 1.174e+12 0.041 -9.730e+02 /
+c4h7oh1-1+h<=>c4h6oh1-13+h2 3.376e+05 2.360 2.070e+02
+rev/ 1.889e+04 2.749 1.673e+04 /
+c4h7oh1-1+o<=>c4h6oh1-13+oh 9.590e+12 0.000 1.967e+03
+rev/ 2.787e+11 0.370 1.708e+04 /
+c4h7oh1-1+oh<=>c4h6oh1-13+h2o 2.764e+04 2.640 -1.919e+03
+rev/ 1.641e+04 2.923 2.950e+04 /
+c4h7oh1-1+ch3<=>c4h6oh1-13+ch4 3.690e+00 3.310 4.002e+03
+rev/ 1.885e+02 3.253 2.207e+04 /
+c4h7oh1-1+ho2<=>c4h6oh1-13+h2o2 4.820e+03 2.550 1.053e+04
+rev/ 1.561e+05 2.243 1.105e+04 /
+c4h7oh1-1+ch3o2<=>c4h6oh1-13+ch3o2h 4.820e+03 2.550 1.053e+04
+rev/ 3.037e+06 1.799 9.460e+03 /
+c4h7oh1-1+ch3o<=>c4h6oh1-13+ch3oh 4.000e+01 2.900 8.609e+03
+rev/ 4.808e+01 3.076 2.536e+04 /
+c4h6oh1-13<=>c4h5oh-13+h 7.722e+12 0.488 4.394e+04
+rev/ 4.240e+11 0.510 1.230e+03 /
+c4h5oh-13<=>c4h5+oh 5.610e+21 -1.612 1.060e+05
+rev/ 1.000e+13 0.000 0.000e+00 /
+c4h5oh-13<=>c2h3+ch2cho 2.816e+24 -2.381 9.013e+04
+rev/ 1.000e+13 0.000 0.000e+00 /
+c4h5<=>c2h3+c2h2 3.980e+11 0.700 4.226e+04
+rev/ 8.764e+09 0.780 4.450e+03 /
+
+c2h3oh<=>c2h3+oh 6.899e+21 -1.564 1.107e+05
+rev/ 2.410e+13 0.000 0.000e+00 /
+c2h3oh<=>ch2cho+h 3.643e+15 -0.397 9.539e+04
+rev/ 2.400e+13 0.000 1.251e+04 /
+c2h3oh+o2<=>ch2cho+ho2 5.310e+11 0.210 3.983e+04
+rev/ 7.328e+09 0.535 5.816e+03 /
+c2h3oh+h<=>ch2cho+h2 9.810e+02 3.370 3.537e+03
+rev/ 2.580e+00 4.043 2.421e+04 /
+c2h3oh+o<=>ch2cho+oh 1.875e+06 1.900 -8.600e+02
+rev/ 2.561e+03 2.554 1.841e+04 /
+c2h3oh+oh<=>ch2cho+h2o 3.330e+09 1.100 5.405e+02
+rev/ 9.291e+07 1.667 3.611e+04 /
+c2h3oh+ch3<=>ch2cho+ch4 2.030e-08 5.900 1.052e+03
+rev/ 4.874e-08 6.127 2.327e+04 /
+c2h3oh+ho2<=>ch2cho+h2o2 3.400e+03 2.500 8.922e+03
+rev/ 5.177e+03 2.478 1.360e+04 /
+c2h3oh+ch3o2<=>ch2cho+ch3o2h 3.400e+03 2.500 8.922e+03
+rev/ 1.007e+05 2.033 1.200e+04 /
+end

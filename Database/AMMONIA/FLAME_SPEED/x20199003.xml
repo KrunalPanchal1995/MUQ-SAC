@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199003</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>A. Hayakawa, T. Goto, R. Mimoto, Y. Arakawa, T. Kudo, H. Kobayashi, Fuel 159 (2015), 98–106</description>
+        <referenceDOI>10.1016/j.fuel.2015.06.070</referenceDOI>
+        <location>Main article</location>
+        <figure>Main article, Fig. 8, green triangle (0.3 MPa)</figure>
+        <details>
+            <author>Hayakawa, Akihiro and Goto, Takashi and Mimoto, Rentaro and Arakawa, Yoshiyuki and Kudo, Taku and Kobayashi, Hideaki</author>
+            <journal>Fuel</journal>
+            <pages>98–106</pages>
+            <title>Laminar burning velocity and Markstein length of ammonia/air premixed flames at various pressures</title>
+            <type>Journal Article</type>
+            <volume>159</volume>
+            <year>2015</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>unstretched</mode>
+        <mode>extrapolation method to zero stretch: LS</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="MPa" ><value>0.3</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"   units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia"  />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"   />
+        </property>
+        <property name="composition"                   id="x4"   label="x_N2"   sourcetype="estimated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"  chemName="nitrogen" />
+        </property>
+        <property name="laminar burning velocity"      id="x5"   label="Sl"     sourcetype="digitized"  units="cm/s"          />
+        <property name="uncertainty"                   id="x6"   label="d_Sl"   sourcetype="digitized"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+        <property name="evaluated standard deviation"  id="x7"   sourcetype="estimated"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.9</x1><x2>0.201278</x2><x3>0.167732</x3><x4>0.630990</x4><x5>2.9</x5><x6>0.19</x6><x7>0.500</x7></dataPoint>
+        <dataPoint><x1>1.0</x1><x2>0.218750</x2><x3>0.164063</x3><x4>0.617188</x4><x5>4.7</x5><x6>0.08</x6><x7>0.500</x7></dataPoint>
+        <dataPoint><x1>1.1</x1><x2>0.235474</x2><x3>0.160550</x3><x4>0.603976</x4><x5>6.4</x5><x6>0.30</x6><x7>0.538</x7></dataPoint>
+        <dataPoint><x1>1.2</x1><x2>0.251497</x2><x3>0.157186</x3><x4>0.591317</x4><x5>5.1</x5><x6>0.14</x6><x7>0.500</x7></dataPoint>
+    </dataGroup>
+    <comment>Air is assumed to be composed of 79% N2 and 21% O2, and phi = 0.75 * x_NH3 / x_O2 is assumed.</comment>
+</experiment>

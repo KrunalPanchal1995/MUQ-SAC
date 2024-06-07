@@ -1,0 +1,1301 @@
+ScanMan preprocessor program
+
+version                  4.2.1
+executed command         '/home/krithika/FlameMaster/Bin/bin/../../Bin/bin/ScanMan -i GRI_CO.mech -t GRI_CO.thermo -m GRI_CO.trans -o GRI_CO.pre -f chemkin -3sr'
+operating system         Linux, version 5.11.0-43-generic
+target architechture     x86_64
+c++ compiler             GNU, version 9.3.0
+c   compiler             GNU, version 9.3.0
+
+Mechanism has 14 species
+Thermodynamic data found for 14/14 species
+Check thermodynamic data...
+Species composition checks passed
+Set/check molar masses
+Check thermodynamic data
+Thermodynamic data check passed
+Check stoichiometry...
+Stoichiometry check passed
+Set/check collision diameter (sigma) and potential well depth (epsilon)
+Compute coefficients for vicosity
+Compute 'binary', constant factors for the reduced temperature, the reduced dipole moment, and the diffusion coefficients
+Check for irreversible species consumption or production ("dead-ends" in the kinetic model)
+#warning: activation energy of reaction 11b is -80.712491
+#warning: activation energy of reaction 17b is -36.736672
+#warning: activation energy of reaction 46b is -29.977847
+#warning: activation energy of reaction 47b is -29.977847
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "35f" (id=34) (no. 68):
+	Order of Reaction is 2
+	OH + HO2 -> O2 + H2O
+
+	A = 1.45e+13
+	n = 0
+	E = -1.053
+
+# and
+
+Reaction "36f" (id=35) (no. 70):
+	Order of Reaction is 2
+	OH + HO2 -> O2 + H2O
+
+	A = 5e+15
+	n = 0
+	E = 36.492
+
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "35b" (id=82) (no. 69):
+	Order of Reaction is 2
+	H2O + O2 -> HO2 + OH
+
+	A = 2.6091e+13
+	n = 0.257238
+	E = 292.218
+
+# and
+
+Reaction "36b" (id=83) (no. 71):
+	Order of Reaction is 2
+	H2O + O2 -> HO2 + OH
+
+	A = 8.99689e+15
+	n = 0.257238
+	E = 329.762
+
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "37f" (id=36) (no. 72):
+	Order of Reaction is 2
+	OH + H2O2 -> HO2 + H2O
+
+	A = 2e+12
+	n = 0
+	E = 0.899
+
+# and
+
+Reaction "38f" (id=37) (no. 74):
+	Order of Reaction is 2
+	OH + H2O2 -> HO2 + H2O
+
+	A = 1.7e+18
+	n = 0
+	E = 61.928
+
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "37b" (id=84) (no. 73):
+	Order of Reaction is 2
+	H2O + HO2 -> H2O2 + OH
+
+	A = 7.52148e+10
+	n = 0.502125
+	E = 132.583
+
+# and
+
+Reaction "38b" (id=85) (no. 75):
+	Order of Reaction is 2
+	H2O + HO2 -> H2O2 + OH
+
+	A = 6.39326e+16
+	n = 0.502125
+	E = 193.612
+
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "42f" (id=41) (no. 82):
+	Order of Reaction is 2
+	2 HO2 -> O2 + H2O2
+
+	A = 1.3e+11
+	n = 0
+	E = -3.432
+
+# and
+
+Reaction "43f" (id=42) (no. 84):
+	Order of Reaction is 2
+	2 HO2 -> O2 + H2O2
+
+	A = 4.2e+14
+	n = 0
+	E = 25.268
+
+# warning: error message printed to stdout
+
+# warning: doubly defined reaction
+
+Reaction "42b" (id=89) (no. 83):
+	Order of Reaction is 2
+	H2O2 + O2 -> 2 HO2
+
+	A = 6.22004e+12
+	n = -0.244887
+	E = 158.155
+
+# and
+
+Reaction "43b" (id=90) (no. 85):
+	Order of Reaction is 2
+	H2O2 + O2 -> 2 HO2
+
+	A = 2.00955e+16
+	n = -0.244887
+	E = 186.855
+
+H2
+H
+O
+O2
+OH
+H2O
+HO2
+H2O2
+CO
+CO2
+HCO
+CH2O
+N2
+AR
+
+The List 'Species' has 14 Items.
+Used species are:
+H2 is species no. 0
+	Composition: 2 H	0 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 3.337279e+00  	-4.940247e-05 	4.994568e-07  	-1.795664e-10 	2.002554e-14  	-9.501589e+02 	-3.205023e+00 	2.344331e+00  	7.980521e-03  	-1.947815e-05 	2.015721e-08  	-7.376118e-12 	-9.179352e+02 	6.830102e-01  
+	M = 2.016000e+00  	k/eps = 2.631579e-02  	sigma = 2.920000e+00  	muCoeff = 4.445053e-07  
+	factors for diffusion coefficient are: 
+2.199672e-03  	3.719773e-03  	1.750942e-03  	1.344517e-03  	1.745126e-03  	1.832470e-03  	1.343299e-03  	1.342153e-03  	1.272419e-03  	1.214651e-03  	1.294469e-03  	1.293057e-03  	1.283711e-03  	1.391873e-03  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.015761e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+2.631579e-02  	1.347176e-02  	1.813691e-02  	1.565331e-02  	1.813691e-02  	6.780448e-03  	1.565331e-02  	1.565331e-02  	1.637848e-02  	1.038516e-02  	7.269316e-03  	7.269316e-03  	1.642628e-02  	1.388487e-02  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.104384e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+H is species no. 1
+	Composition: 1 H	0 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.500000e+00  	-2.308430e-11 	1.615619e-14  	-4.735152e-18 	4.981974e-22  	2.547366e+04  	-4.466829e-01 	2.500000e+00  	7.053328e-13  	-1.995920e-15 	2.300816e-18  	-9.277323e-22 	2.547366e+04  	-4.466829e-01 
+	M = 1.008000e+00  	k/eps = 6.896552e-03  	sigma = 2.050000e+00  	muCoeff = 6.377052e-07  
+	factors for diffusion coefficient are: 
+3.719773e-03  	6.311475e-03  	3.357127e-03  	2.511483e-03  	3.351226e-03  	3.557672e-03  	2.510312e-03  	2.509210e-03  	2.350234e-03  	2.245434e-03  	2.399056e-03  	2.397704e-03  	2.374317e-03  	2.624401e-03  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.347176e-02  	6.896552e-03  	9.284767e-03  	8.013345e-03  	9.284767e-03  	3.471092e-03  	8.013345e-03  	8.013345e-03  	8.384584e-03  	5.316442e-03  	3.721357e-03  	3.721357e-03  	8.409049e-03  	7.108037e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+O is species no. 2
+	Composition: 0 H	1 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.569421e+00  	-8.597411e-05 	4.194846e-08  	-1.001778e-11 	1.228337e-15  	2.921758e+04  	4.784339e+00  	3.168267e+00  	-3.279319e-03 	6.643064e-06  	-6.128066e-09 	2.112660e-12  	2.912226e+04  	2.051933e+00  
+	M = 1.600000e+01  	k/eps = 1.250000e-02  	sigma = 2.750000e+00  	muCoeff = 1.411861e-06  
+	factors for diffusion coefficient are: 
+1.750942e-03  	3.357127e-03  	8.803259e-04  	5.984062e-04  	8.671844e-04  	9.022925e-04  	5.953527e-04  	5.924658e-04  	5.762528e-04  	5.183556e-04  	5.834917e-04  	5.800003e-04  	5.814731e-04  	6.028253e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.813691e-02  	9.284767e-03  	1.250000e-02  	1.078830e-02  	1.250000e-02  	4.673101e-03  	1.078830e-02  	1.078830e-02  	1.128809e-02  	7.157479e-03  	5.010030e-03  	5.010030e-03  	1.132103e-02  	9.569488e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+O2 is species no. 3
+	Composition: 0 H	2 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 3.282538e+00  	1.483088e-03  	-7.579667e-07 	2.094706e-10  	-2.167178e-14 	-1.088458e+03 	5.453231e+00  	3.782456e+00  	-2.996734e-03 	9.847302e-06  	-9.681295e-09 	3.243728e-12  	-1.063944e+03 	3.657676e+00  
+	M = 3.200000e+01  	k/eps = 9.310987e-03  	sigma = 3.458000e+00  	muCoeff = 1.262765e-06  
+	factors for diffusion coefficient are: 
+1.344517e-03  	2.511483e-03  	5.984062e-04  	3.936805e-04  	5.864653e-04  	6.035163e-04  	3.906634e-04  	3.878036e-04  	3.857441e-04  	3.355860e-04  	3.886891e-04  	3.852523e-04  	3.888740e-04  	3.878082e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.011481e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.565331e-02  	8.013345e-03  	1.078830e-02  	9.310987e-03  	1.078830e-02  	4.033184e-03  	9.310987e-03  	9.310987e-03  	9.742342e-03  	6.177360e-03  	4.323975e-03  	4.323975e-03  	9.770769e-03  	8.259077e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.337976e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+OH is species no. 4
+	Composition: 1 H	1 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 3.092888e+00  	5.484297e-04  	1.265052e-07  	-8.794616e-11 	1.174124e-14  	3.858657e+03  	4.476696e+00  	3.992015e+00  	-2.401318e-03 	4.617938e-06  	-3.881133e-09 	1.364115e-12  	3.615081e+03  	-1.039255e-01 
+	M = 1.700800e+01  	k/eps = 1.250000e-02  	sigma = 2.750000e+00  	muCoeff = 1.455656e-06  
+	factors for diffusion coefficient are: 
+1.745126e-03  	3.351226e-03  	8.671844e-04  	5.864653e-04  	8.538407e-04  	8.880184e-04  	5.833493e-04  	5.804027e-04  	5.652803e-04  	5.069654e-04  	5.722378e-04  	5.686773e-04  	5.703997e-04  	5.899324e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.813691e-02  	9.284767e-03  	1.250000e-02  	1.078830e-02  	1.250000e-02  	4.673101e-03  	1.078830e-02  	1.078830e-02  	1.128809e-02  	7.157479e-03  	5.010030e-03  	5.010030e-03  	1.132103e-02  	9.569488e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+H2O is species no. 5
+	Composition: 2 H	1 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 3.033992e+00  	2.176918e-03  	-1.640725e-07 	-9.704199e-11 	1.682010e-14  	-3.000430e+04 	4.966770e+00  	4.198641e+00  	-2.036434e-03 	6.520402e-06  	-5.487971e-09 	1.771978e-12  	-3.029373e+04 	-8.490322e-01 
+	M = 1.801600e+01  	k/eps = 1.747030e-03  	sigma = 2.605000e+00  	muCoeff = 1.669595e-06  
+	factors for diffusion coefficient are: 
+1.832470e-03  	3.557672e-03  	9.022925e-04  	6.035163e-04  	8.880184e-04  	9.245368e-04  	6.001878e-04  	5.970396e-04  	5.814001e-04  	5.195050e-04  	5.886732e-04  	5.848760e-04  	5.867879e-04  	6.068409e-04  		DCoeff_DP values are: 
+1.015761e+00  	1.000000e+00  	1.000000e+00  	1.011481e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.012438e+00  	1.009807e+00  	1.000000e+00  	1.000000e+00  	1.011542e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+6.780448e-03  	3.471092e-03  	4.673101e-03  	4.033184e-03  	4.673101e-03  	1.747030e-03  	4.033184e-03  	4.033184e-03  	4.220031e-03  	2.675810e-03  	1.872990e-03  	1.872990e-03  	4.232345e-03  	3.577535e-03  	
+	k_over_epsjk_DP values are: 
+9.104384e-01  	1.000000e+00  	1.000000e+00  	9.337976e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.285149e-01  	9.431277e-01  	1.000000e+00  	1.000000e+00  	9.334616e-01  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	1.216987e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+HO2 is species no. 6
+	Composition: 1 H	2 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 4.017211e+00  	2.239820e-03  	-6.336581e-07 	1.142464e-10  	-1.079085e-14 	1.118567e+02  	3.785102e+00  	4.301798e+00  	-4.749121e-03 	2.115829e-05  	-2.427639e-08 	9.292251e-12  	2.948080e+02  	3.716662e+00  
+	M = 3.300800e+01  	k/eps = 9.310987e-03  	sigma = 3.458000e+00  	muCoeff = 1.282499e-06  
+	factors for diffusion coefficient are: 
+1.343299e-03  	2.510312e-03  	5.953527e-04  	3.906634e-04  	5.833493e-04  	6.001878e-04  	3.876228e-04  	3.847404e-04  	3.829851e-04  	3.326059e-04  	3.858563e-04  	3.823941e-04  	3.860921e-04  	3.845064e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.565331e-02  	8.013345e-03  	1.078830e-02  	9.310987e-03  	1.078830e-02  	4.033184e-03  	9.310987e-03  	9.310987e-03  	9.742342e-03  	6.177360e-03  	4.323975e-03  	4.323975e-03  	9.770769e-03  	8.259077e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+H2O2 is species no. 7
+	Composition: 2 H	2 O	0 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 4.165003e+00  	4.908317e-03  	-1.901392e-06 	3.711860e-10  	-2.879083e-14 	-1.786179e+04 	2.916157e+00  	4.276113e+00  	-5.428224e-04 	1.673357e-05  	-2.157708e-08 	8.624544e-12  	-1.770258e+04 	3.435051e+00  
+	M = 3.401600e+01  	k/eps = 9.310987e-03  	sigma = 3.458000e+00  	muCoeff = 1.301934e-06  
+	factors for diffusion coefficient are: 
+1.342153e-03  	2.509210e-03  	5.924658e-04  	3.878036e-04  	5.804027e-04  	5.970396e-04  	3.847404e-04  	3.818363e-04  	3.803713e-04  	3.297779e-04  	3.831723e-04  	3.796856e-04  	3.834566e-04  	3.813741e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.565331e-02  	8.013345e-03  	1.078830e-02  	9.310987e-03  	1.078830e-02  	4.033184e-03  	9.310987e-03  	9.310987e-03  	9.742342e-03  	6.177360e-03  	4.323975e-03  	4.323975e-03  	9.770769e-03  	8.259077e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+CO is species no. 8
+	Composition: 0 H	1 O	1 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.715186e+00  	2.062527e-03  	-9.988258e-07 	2.300530e-10  	-2.036477e-14 	-1.415187e+04 	7.818688e+00  	3.579533e+00  	-6.103537e-04 	1.016814e-06  	9.070059e-10  	-9.044245e-13 	-1.434409e+04 	3.508409e+00  
+	M = 2.801000e+01  	k/eps = 1.019368e-02  	sigma = 3.650000e+00  	muCoeff = 1.060396e-06  
+	factors for diffusion coefficient are: 
+1.272419e-03  	2.350234e-03  	5.762528e-04  	3.857441e-04  	5.652803e-04  	5.814001e-04  	3.829851e-04  	3.803713e-04  	3.776822e-04  	3.312990e-04  	3.806190e-04  	3.774680e-04  	3.806670e-04  	3.809949e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.012438e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.637848e-02  	8.384584e-03  	1.128809e-02  	9.742342e-03  	1.128809e-02  	4.220031e-03  	9.742342e-03  	9.742342e-03  	1.019368e-02  	6.463542e-03  	4.524294e-03  	4.524294e-03  	1.022342e-02  	8.641700e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.285149e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+CO2 is species no. 9
+	Composition: 0 H	2 O	1 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 3.857460e+00  	4.414370e-03  	-2.214814e-06 	5.234902e-10  	-4.720842e-14 	-4.875917e+04 	2.271638e+00  	2.356774e+00  	8.984597e-03  	-7.123563e-06 	2.459190e-09  	-1.436995e-13 	-4.837197e+04 	9.901052e+00  
+	M = 4.401000e+01  	k/eps = 4.098361e-03  	sigma = 3.763000e+00  	muCoeff = 1.250560e-06  
+	factors for diffusion coefficient are: 
+1.214651e-03  	2.245434e-03  	5.183556e-04  	3.355860e-04  	5.069654e-04  	5.195050e-04  	3.326059e-04  	3.297779e-04  	3.312990e-04  	2.834815e-04  	3.331348e-04  	3.297477e-04  	3.338700e-04  	3.271612e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.009807e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.038516e-02  	5.316442e-03  	7.157479e-03  	6.177360e-03  	7.157479e-03  	2.675810e-03  	6.177360e-03  	6.177360e-03  	6.463542e-03  	4.098361e-03  	2.868735e-03  	2.868735e-03  	6.482402e-03  	5.479473e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.431277e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+HCO is species no. 10
+	Composition: 1 H	1 O	1 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.772174e+00  	4.956955e-03  	-2.484456e-06 	5.891618e-10  	-5.335087e-14 	4.011918e+03  	9.798345e+00  	4.221186e+00  	-3.243925e-03 	1.377994e-05  	-1.331441e-08 	4.337689e-12  	3.839565e+03  	3.394372e+00  
+	M = 2.901800e+01  	k/eps = 2.008032e-03  	sigma = 3.590000e+00  	muCoeff = 1.115687e-06  
+	factors for diffusion coefficient are: 
+1.294469e-03  	2.399056e-03  	5.834917e-04  	3.886891e-04  	5.722378e-04  	5.886732e-04  	3.858563e-04  	3.831723e-04  	3.806190e-04  	3.331348e-04  	3.835714e-04  	3.803386e-04  	3.836518e-04  	3.836524e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+7.269316e-03  	3.721357e-03  	5.010030e-03  	4.323975e-03  	5.010030e-03  	1.872990e-03  	4.323975e-03  	4.323975e-03  	4.524294e-03  	2.868735e-03  	2.008032e-03  	2.008032e-03  	4.537496e-03  	3.835474e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+CH2O is species no. 11
+	Composition: 2 H	1 O	1 C	0 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 1.760690e+00  	9.200001e-03  	-4.422588e-06 	1.006412e-09  	-8.838556e-14 	-1.399583e+04 	1.365632e+01  	4.793723e+00  	-9.908334e-03 	3.732200e-05  	-3.792853e-08 	1.317727e-11  	-1.430896e+04 	6.028129e-01  
+	M = 3.002600e+01  	k/eps = 2.008032e-03  	sigma = 3.590000e+00  	muCoeff = 1.134899e-06  
+	factors for diffusion coefficient are: 
+1.293057e-03  	2.397704e-03  	5.800003e-04  	3.852523e-04  	5.686773e-04  	5.848760e-04  	3.823941e-04  	3.796856e-04  	3.774680e-04  	3.297477e-04  	3.803386e-04  	3.770780e-04  	3.804751e-04  	3.799039e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+7.269316e-03  	3.721357e-03  	5.010030e-03  	4.323975e-03  	5.010030e-03  	1.872990e-03  	4.323975e-03  	4.323975e-03  	4.524294e-03  	2.868735e-03  	2.008032e-03  	2.008032e-03  	4.537496e-03  	3.835474e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+N2 is species no. 12
+	Composition: 0 H	0 O	0 C	2 N	0 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.926640e+00  	1.487977e-03  	-5.684760e-07 	1.009704e-10  	-6.753351e-15 	-9.227977e+02 	5.980528e+00  	3.298677e+00  	1.408240e-03  	-3.963222e-06 	5.641515e-09  	-2.444854e-12 	-1.020900e+03 	3.950372e+00  
+	M = 2.802000e+01  	k/eps = 1.025326e-02  	sigma = 3.621000e+00  	muCoeff = 1.077642e-06  
+	factors for diffusion coefficient are: 
+1.283711e-03  	2.374317e-03  	5.814731e-04  	3.888740e-04  	5.703997e-04  	5.867879e-04  	3.860921e-04  	3.834566e-04  	3.806670e-04  	3.338700e-04  	3.836518e-04  	3.804751e-04  	3.836876e-04  	3.841403e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.011542e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.642628e-02  	8.409049e-03  	1.132103e-02  	9.770769e-03  	1.132103e-02  	4.232345e-03  	9.770769e-03  	9.770769e-03  	1.022342e-02  	6.482402e-03  	4.537496e-03  	4.537496e-03  	1.025326e-02  	8.666915e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	9.334616e-01  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+AR is species no. 13
+	Composition: 0 H	0 O	0 C	0 N	1 AR
+	Coefficients of the nasa polynomials ( hot[7], cold[7] ): 2.500000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	-7.453750e+02 	4.366000e+00  	2.500000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	-7.453750e+02 	4.366000e+00  
+	M = 3.994800e+01  	k/eps = 7.326007e-03  	sigma = 3.330000e+00  	muCoeff = 1.521446e-06  
+	factors for diffusion coefficient are: 
+1.391873e-03  	2.624401e-03  	6.028253e-04  	3.878082e-04  	5.899324e-04  	6.068409e-04  	3.845064e-04  	3.813741e-04  	3.809949e-04  	3.271612e-04  	3.836524e-04  	3.799039e-04  	3.841403e-04  	3.799556e-04  		DCoeff_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for k_over_epsjk are: 
+1.388487e-02  	7.108037e-03  	9.569488e-03  	8.259077e-03  	9.569488e-03  	3.577535e-03  	8.259077e-03  	8.259077e-03  	8.641700e-03  	5.479473e-03  	3.835474e-03  	3.835474e-03  	8.666915e-03  	7.326007e-03  	
+	k_over_epsjk_DP values are: 
+1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	1.000000e+00  	
+	factors for redDipoleMomentjk are: 
+0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	0.000000e+00  	
+
+
+The List 'Used Third Bodies' has 10 Items.
+Used Third Bodies are M1, M2, M3, M4, M5, M6, M7, M8, M9, M10.
+
+
+The List 'Third Body Coefficients' has 10 Items.
+The different third body efficiencies are:
+Nr.0: [M1] = 2.4[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 15.4[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.75[CO] + 3.6[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.83[AR] 
+
+Nr.1: [M2] = 2[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 6[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.5[CO] + 2[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.7[AR] 
+
+Nr.2: [M3] = 2[H2] + 1[H] + 1[O] + 6[O2] 
+				+ 1[OH] + 6[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.5[CO] + 3.5[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.5[AR] 
+
+Nr.3: [M4] = 1[H2] + 1[H] + 1[O] + 1[OH] 
+				+ 1[HO2] + 1[H2O2] + 0.75[CO] + 1.5[CO2] 
+				+ 1[HCO] + 1[CH2O] 
+
+Nr.4: [M5] = + 1[H] + 1[O] + 1[O2] + 1[OH] 
+				+ 1[HO2] + 1[H2O2] + 1[CO] + 1[HCO] 
+				+ 1[CH2O] + 1[N2] + 0.63[AR] 
+
+Nr.5: [M6] = 0.73[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 3.65[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1[CO] + 1[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.38[AR] 
+
+Nr.6: [M7] = 2[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 6[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.5[CO] + 2[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.7[AR] 
+
+Nr.7: [M8] = 2[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 6[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.5[CO] + 2[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.7[AR] 
+
+Nr.8: [M9] = 2[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 6[H2O] + 1[HO2] + 1[H2O2] 
+				+ 1.5[CO] + 2[CO2] + 1[HCO] + 1[CH2O] 
+				+ 1[N2] + 0.7[AR] 
+
+Nr.9: [M10] = 2[H2] + 1[H] + 1[O] + 1[O2] 
+				+ 1[OH] + 1[HO2] + 1[H2O2] + 1.5[CO] 
+				+ 2[CO2] + 1[HCO] + 1[CH2O] + 1[N2] 
+				+ 1[AR] 
+
+
+The List 'Reactions' has 96 Items.
+Reaction "1f" (id=0) (no. 0):
+	Order of Reaction is 3
+	2 O + M1 -> O2 + M1
+
+	A = 1.2e+17
+	n = -1
+	E = 0.000
+
+Reaction "1b" (id=48) (no. 1):
+	Order of Reaction is 2
+	O2 + M1 -> 2 O + M1
+
+	A = 8.41264e+18
+	n = -1.12163
+	E = 497.830
+
+Reaction "2f" (id=1) (no. 2):
+	Order of Reaction is 3
+	O + H + M2 -> OH + M2
+
+	A = 5e+17
+	n = -1
+	E = 0.000
+
+Reaction "2b" (id=49) (no. 3):
+	Order of Reaction is 2
+	OH + M2 -> H + O + M2
+
+	A = 6.95041e+16
+	n = -0.684828
+	E = 425.210
+
+Reaction "3f" (id=2) (no. 4):
+	Order of Reaction is 2
+	O + H2 -> H + OH
+
+	A = 38700
+	n = 2.7
+	E = 13.182
+
+Reaction "3b" (id=50) (no. 5):
+	Order of Reaction is 2
+	OH + H -> H2 + O
+
+	A = 23016.4
+	n = 2.66494
+	E = 5.294
+
+Reaction "4f" (id=3) (no. 6):
+	Order of Reaction is 2
+	O + HO2 -> OH + O2
+
+	A = 2e+13
+	n = 0
+	E = 0.000
+
+Reaction "4b" (id=51) (no. 7):
+	Order of Reaction is 2
+	O2 + OH -> HO2 + O
+
+	A = 1.93002e+12
+	n = 0.32701
+	E = 220.539
+
+Reaction "5f" (id=4) (no. 8):
+	Order of Reaction is 2
+	O + H2O2 -> OH + HO2
+
+	A = 9.63e+06
+	n = 2
+	E = 8.423
+
+Reaction "5b" (id=52) (no. 9):
+	Order of Reaction is 2
+	HO2 + OH -> H2O2 + O
+
+	A = 19422.6
+	n = 2.5719
+	E = 67.375
+
+Reaction "6f" (id=5) (no. 10):
+	Order of Reaction is 3
+	O + CO + M3 -> CO2 + M3
+
+	A = 6.02e+14
+	n = 0
+	E = 6.317
+
+	A_inf = 1.8e+10
+	n_inf = 0
+	E_inf = 5.022
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0	fcTa = 0
+	fcb = 0	fcTb = 0
+	fcc = 1	fcTc = 0
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "6b" (id=53) (no. 11):
+	Order of Reaction is 2
+	CO2 + M3 -> CO + O + M3
+
+	A = 4.61823e+20
+	n = -0.963346
+	E = 541.029
+
+	A_inf = 1.38086e+16
+	n_inf = -0.963346
+	E_inf = 539.734
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0	fcTa = 0
+	fcb = 0	fcTb = 0
+	fcc = 1	fcTc = 0
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "7f" (id=6) (no. 12):
+	Order of Reaction is 2
+	O + HCO -> OH + CO
+
+	A = 3e+13
+	n = 0
+	E = 0.000
+
+Reaction "7b" (id=54) (no. 13):
+	Order of Reaction is 2
+	CO + OH -> HCO + O
+
+	A = 7.87375e+11
+	n = 0.547884
+	E = 359.435
+
+Reaction "8f" (id=7) (no. 14):
+	Order of Reaction is 2
+	O + HCO -> H + CO2
+
+	A = 3e+13
+	n = 0
+	E = 0.000
+
+Reaction "8b" (id=55) (no. 15):
+	Order of Reaction is 2
+	CO2 + H -> HCO + O
+
+	A = 4.3453e+18
+	n = -0.730634
+	E = 468.937
+
+Reaction "9f" (id=8) (no. 16):
+	Order of Reaction is 2
+	O + CH2O -> OH + HCO
+
+	A = 3.9e+13
+	n = 0
+	E = 7.454
+
+Reaction "9b" (id=56) (no. 17):
+	Order of Reaction is 2
+	HCO + OH -> CH2O + O
+
+	A = 3.86275e+10
+	n = 0.41439
+	E = 63.053
+
+Reaction "10f" (id=9) (no. 18):
+	Order of Reaction is 2
+	O2 + CO -> O + CO2
+
+	A = 2.5e+12
+	n = 0
+	E = 100.652
+
+Reaction "10b" (id=57) (no. 19):
+	Order of Reaction is 2
+	CO2 + O -> CO + O2
+
+	A = 2.73569e+16
+	n = -0.84172
+	E = 137.534
+
+Reaction "11f" (id=10) (no. 20):
+	Order of Reaction is 2
+	O2 + CH2O -> HO2 + HCO
+
+	A = 1e+14
+	n = 0
+	E = 84.227
+
+Reaction "11b" (id=58) (no. 21):
+	Order of Reaction is 2
+	HCO + HO2 -> CH2O + O2
+
+	A = 1.02636e+12
+	n = 0.0873801
+	E = -80.712
+
+Reaction "12f" (id=11) (no. 22):
+	Order of Reaction is 3
+	H + O2 + M4 -> HO2 + M4
+
+	A = 2.8e+18
+	n = -0.86
+	E = 0.000
+
+Reaction "12b" (id=59) (no. 23):
+	Order of Reaction is 2
+	HO2 + M4 -> O2 + H + M4
+
+	A = 4.03337e+18
+	n = -0.871839
+	E = 204.671
+
+Reaction "13f" (id=12) (no. 24):
+	Order of Reaction is 3
+	H + 2 O2 -> HO2 + O2
+
+	A = 2.08e+19
+	n = -1.24
+	E = 0.000
+
+Reaction "13b" (id=60) (no. 25):
+	Order of Reaction is 2
+	O2 + HO2 -> 2 O2 + H
+
+	A = 2.99622e+19
+	n = -1.25184
+	E = 204.671
+
+Reaction "14f" (id=13) (no. 26):
+	Order of Reaction is 3
+	H + O2 + H2O -> HO2 + H2O
+
+	A = 1.126e+19
+	n = -0.76
+	E = 0.000
+
+Reaction "14b" (id=61) (no. 27):
+	Order of Reaction is 2
+	H2O + HO2 -> H2O + O2 + H
+
+	A = 1.62199e+19
+	n = -0.771839
+	E = 204.671
+
+Reaction "15f" (id=14) (no. 28):
+	Order of Reaction is 3
+	H + O2 + N2 -> HO2 + N2
+
+	A = 2.6e+19
+	n = -1.24
+	E = 0.000
+
+Reaction "15b" (id=62) (no. 29):
+	Order of Reaction is 2
+	N2 + HO2 -> N2 + O2 + H
+
+	A = 3.74527e+19
+	n = -1.25184
+	E = 204.671
+
+Reaction "16f" (id=15) (no. 30):
+	Order of Reaction is 3
+	H + O2 + AR -> HO2 + AR
+
+	A = 7e+17
+	n = -0.8
+	E = 0.000
+
+Reaction "16b" (id=63) (no. 31):
+	Order of Reaction is 2
+	AR + HO2 -> AR + O2 + H
+
+	A = 1.00834e+18
+	n = -0.811839
+	E = 204.671
+
+Reaction "17f" (id=16) (no. 32):
+	Order of Reaction is 2
+	H + O2 -> O + OH
+
+	A = 2.65e+16
+	n = -0.6707
+	E = 35.883
+
+Reaction "17b" (id=64) (no. 33):
+	Order of Reaction is 2
+	OH + O -> O2 + H
+
+	A = 5.25455e+13
+	n = -0.233902
+	E = -36.737
+
+Reaction "18f" (id=17) (no. 34):
+	Order of Reaction is 3
+	2 H + M5 -> H2 + M5
+
+	A = 1e+18
+	n = -1
+	E = 0.000
+
+Reaction "18b" (id=65) (no. 35):
+	Order of Reaction is 2
+	H2 + M5 -> 2 H + M5
+
+	A = 2.33729e+17
+	n = -0.649765
+	E = 433.098
+
+Reaction "19f" (id=18) (no. 36):
+	Order of Reaction is 3
+	2 H + H2 -> 2 H2
+
+	A = 9e+16
+	n = -0.6
+	E = 0.000
+
+Reaction "19b" (id=66) (no. 37):
+	Order of Reaction is 2
+	2 H2 -> H2 + 2 H
+
+	A = 2.10356e+16
+	n = -0.249765
+	E = 433.098
+
+Reaction "20f" (id=19) (no. 38):
+	Order of Reaction is 3
+	2 H + H2O -> H2 + H2O
+
+	A = 6e+19
+	n = -1.25
+	E = 0.000
+
+Reaction "20b" (id=67) (no. 39):
+	Order of Reaction is 2
+	H2O + H2 -> H2O + 2 H
+
+	A = 1.40238e+19
+	n = -0.899765
+	E = 433.098
+
+Reaction "21f" (id=20) (no. 40):
+	Order of Reaction is 3
+	2 H + CO2 -> H2 + CO2
+
+	A = 5.5e+20
+	n = -2
+	E = 0.000
+
+Reaction "21b" (id=68) (no. 41):
+	Order of Reaction is 2
+	CO2 + H2 -> CO2 + 2 H
+
+	A = 1.28551e+20
+	n = -1.64977
+	E = 433.098
+
+Reaction "22f" (id=21) (no. 42):
+	Order of Reaction is 3
+	H + OH + M6 -> H2O + M6
+
+	A = 2.2e+22
+	n = -2
+	E = 0.000
+
+Reaction "22b" (id=69) (no. 43):
+	Order of Reaction is 2
+	H2O + M6 -> OH + H + M6
+
+	A = 5.70237e+22
+	n = -1.7546
+	E = 497.941
+
+Reaction "23f" (id=22) (no. 44):
+	Order of Reaction is 2
+	H + HO2 -> O + H2O
+
+	A = 3.97e+12
+	n = 0
+	E = 1.413
+
+Reaction "23b" (id=70) (no. 45):
+	Order of Reaction is 2
+	H2O + O -> HO2 + H
+
+	A = 1.41645e+10
+	n = 0.694036
+	E = 222.064
+
+Reaction "24f" (id=23) (no. 46):
+	Order of Reaction is 2
+	H + HO2 -> O2 + H2
+
+	A = 4.48e+13
+	n = 0
+	E = 2.249
+
+Reaction "24b" (id=71) (no. 47):
+	Order of Reaction is 2
+	H2 + O2 -> HO2 + H
+
+	A = 7.26911e+12
+	n = 0.362073
+	E = 230.676
+
+Reaction "25f" (id=24) (no. 48):
+	Order of Reaction is 2
+	H + HO2 -> 2 OH
+
+	A = 8.4e+13
+	n = 0
+	E = 1.337
+
+Reaction "25b" (id=72) (no. 49):
+	Order of Reaction is 2
+	2 OH -> HO2 + H
+
+	A = 1.60731e+10
+	n = 0.763808
+	E = 149.257
+
+Reaction "26f" (id=25) (no. 50):
+	Order of Reaction is 2
+	H + H2O2 -> HO2 + H2
+
+	A = 1.21e+07
+	n = 2
+	E = 10.950
+
+Reaction "26b" (id=73) (no. 51):
+	Order of Reaction is 2
+	H2 + HO2 -> H2O2 + H
+
+	A = 41033.6
+	n = 2.60696
+	E = 77.790
+
+Reaction "27f" (id=26) (no. 52):
+	Order of Reaction is 2
+	H + H2O2 -> OH + H2O
+
+	A = 1e+13
+	n = 0
+	E = 7.580
+
+Reaction "27b" (id=74) (no. 53):
+	Order of Reaction is 2
+	H2O + OH -> H2O2 + H
+
+	A = 7.19604e+07
+	n = 1.26593
+	E = 287.184
+
+Reaction "28f" (id=27) (no. 54):
+	Order of Reaction is 3
+	H + HCO + M7 -> CH2O + M7
+
+	A = 2.47e+24
+	n = -2.57
+	E = 0.895
+
+	A_inf = 1.09e+12
+	n_inf = 0.48
+	E_inf = -0.547
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.2176	fcTa = 271
+	fcb = 0.7824	fcTb = 2755
+	fcc = 1	fcTc = 6570
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "28b" (id=75) (no. 55):
+	Order of Reaction is 2
+	CH2O + M7 -> HCO + H + M7
+
+	A = 3.46661e+26
+	n = -2.66922
+	E = 370.506
+
+	A_inf = 1.5298e+14
+	n_inf = 0.380781
+	E_inf = 369.063
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.2176	fcTa = 271
+	fcb = 0.7824	fcTb = 2755
+	fcc = 1	fcTc = 6570
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "29f" (id=28) (no. 56):
+	Order of Reaction is 2
+	H + HCO -> H2 + CO
+
+	A = 7.34e+13
+	n = 0
+	E = 0.000
+
+Reaction "29b" (id=76) (no. 57):
+	Order of Reaction is 2
+	CO + H2 -> HCO + H
+
+	A = 3.23913e+12
+	n = 0.582947
+	E = 367.323
+
+Reaction "30f" (id=29) (no. 58):
+	Order of Reaction is 2
+	H + CH2O -> HCO + H2
+
+	A = 5.74e+07
+	n = 1.9
+	E = 5.774
+
+Reaction "30b" (id=77) (no. 59):
+	Order of Reaction is 2
+	H2 + HCO -> CH2O + H
+
+	A = 95591
+	n = 2.34945
+	E = 69.261
+
+Reaction "31f" (id=30) (no. 60):
+	Order of Reaction is 3
+	H2 + CO + M8 -> CH2O + M8
+
+	A = 5.07e+27
+	n = -3.42
+	E = 177.615
+
+	A_inf = 4.3e+07
+	n_inf = 1.5
+	E_inf = 167.613
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.068	fcTa = 197
+	fcb = 0.932	fcTb = 1540
+	fcc = 1	fcTc = 10300
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "31b" (id=78) (no. 61):
+	Order of Reaction is 2
+	CH2O + M8 -> CO + H2 + M8
+
+	A = 1.61244e+31
+	n = -4.10217
+	E = 179.902
+
+	A_inf = 1.36755e+11
+	n_inf = 0.817835
+	E_inf = 169.900
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.068	fcTa = 197
+	fcb = 0.932	fcTb = 1540
+	fcc = 1	fcTc = 10300
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "32f" (id=31) (no. 62):
+	Order of Reaction is 2
+	OH + H2 -> H + H2O
+
+	A = 2.16e+08
+	n = 1.51
+	E = 7.223
+
+Reaction "32b" (id=79) (no. 63):
+	Order of Reaction is 2
+	H2O + H -> H2 + OH
+
+	A = 2.39537e+09
+	n = 1.40516
+	E = 72.066
+
+Reaction "33f" (id=32) (no. 64):
+	Order of Reaction is 3
+	2 OH + M9 -> H2O2 + M9
+
+	A = 2.3e+18
+	n = -0.9
+	E = -3.580
+
+	A_inf = 7.4e+13
+	n_inf = -0.37
+	E_inf = 0.000
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.2654	fcTa = 94
+	fcb = 0.7346	fcTb = 1756
+	fcc = 1	fcTc = 5182
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "33b" (id=80) (no. 65):
+	Order of Reaction is 2
+	H2O2 + M9 -> 2 OH + M9
+
+	A = 8.28451e+23
+	n = -1.92053
+	E = 214.758
+
+	A_inf = 2.66545e+19
+	n_inf = -1.39053
+	E_inf = 218.338
+	this reaction uses the broadeningfactor no. -1
+
+	fca = 0.2654	fcTa = 94
+	fcb = 0.7346	fcTb = 1756
+	fcc = 1	fcTc = 5182
+
+	fSRIa = 0	fSRIb = 0
+	fSRIc = 0	fSRId = 0
+	fSRIe = 0
+
+Reaction "34f" (id=33) (no. 66):
+	Order of Reaction is 2
+	2 OH -> O + H2O
+
+	A = 35700
+	n = 2.4
+	E = -4.443
+
+Reaction "34b" (id=81) (no. 67):
+	Order of Reaction is 2
+	H2O + O -> 2 OH
+
+	A = 665672
+	n = 2.33023
+	E = 68.289
+
+Reaction "35f" (id=34) (no. 68):
+	Order of Reaction is 2
+	OH + HO2 -> O2 + H2O
+
+	A = 1.45e+13
+	n = 0
+	E = -1.053
+
+Reaction "35b" (id=82) (no. 69):
+	Order of Reaction is 2
+	H2O + O2 -> HO2 + OH
+
+	A = 2.6091e+13
+	n = 0.257238
+	E = 292.218
+
+Reaction "36f" (id=35) (no. 70):
+	Order of Reaction is 2
+	OH + HO2 -> O2 + H2O
+
+	A = 5e+15
+	n = 0
+	E = 36.492
+
+Reaction "36b" (id=83) (no. 71):
+	Order of Reaction is 2
+	H2O + O2 -> HO2 + OH
+
+	A = 8.99689e+15
+	n = 0.257238
+	E = 329.762
+
+Reaction "37f" (id=36) (no. 72):
+	Order of Reaction is 2
+	OH + H2O2 -> HO2 + H2O
+
+	A = 2e+12
+	n = 0
+	E = 0.899
+
+Reaction "37b" (id=84) (no. 73):
+	Order of Reaction is 2
+	H2O + HO2 -> H2O2 + OH
+
+	A = 7.52148e+10
+	n = 0.502125
+	E = 132.583
+
+Reaction "38f" (id=37) (no. 74):
+	Order of Reaction is 2
+	OH + H2O2 -> HO2 + H2O
+
+	A = 1.7e+18
+	n = 0
+	E = 61.928
+
+Reaction "38b" (id=85) (no. 75):
+	Order of Reaction is 2
+	H2O + HO2 -> H2O2 + OH
+
+	A = 6.39326e+16
+	n = 0.502125
+	E = 193.612
+
+Reaction "39f" (id=38) (no. 76):
+	Order of Reaction is 2
+	OH + CO -> H + CO2
+
+	A = 4.76e+07
+	n = 1.228
+	E = 0.147
+
+Reaction "39b" (id=86) (no. 77):
+	Order of Reaction is 2
+	CO2 + H -> CO + OH
+
+	A = 2.62691e+14
+	n = -0.0505181
+	E = 109.649
+
+Reaction "40f" (id=39) (no. 78):
+	Order of Reaction is 2
+	OH + HCO -> H2O + CO
+
+	A = 5e+13
+	n = 0
+	E = 0.000
+
+Reaction "40b" (id=87) (no. 79):
+	Order of Reaction is 2
+	CO + H2O -> HCO + OH
+
+	A = 2.44693e+13
+	n = 0.478112
+	E = 432.167
+
+Reaction "41f" (id=40) (no. 80):
+	Order of Reaction is 2
+	OH + CH2O -> HCO + H2O
+
+	A = 3.43e+09
+	n = 1.18
+	E = -0.941
+
+Reaction "41b" (id=88) (no. 81):
+	Order of Reaction is 2
+	H2O + HCO -> CH2O + OH
+
+	A = 6.33459e+07
+	n = 1.52462
+	E = 127.389
+
+Reaction "42f" (id=41) (no. 82):
+	Order of Reaction is 2
+	2 HO2 -> O2 + H2O2
+
+	A = 1.3e+11
+	n = 0
+	E = -3.432
+
+Reaction "42b" (id=89) (no. 83):
+	Order of Reaction is 2
+	H2O2 + O2 -> 2 HO2
+
+	A = 6.22004e+12
+	n = -0.244887
+	E = 158.155
+
+Reaction "43f" (id=42) (no. 84):
+	Order of Reaction is 2
+	2 HO2 -> O2 + H2O2
+
+	A = 4.2e+14
+	n = 0
+	E = 25.268
+
+Reaction "43b" (id=90) (no. 85):
+	Order of Reaction is 2
+	H2O2 + O2 -> 2 HO2
+
+	A = 2.00955e+16
+	n = -0.244887
+	E = 186.855
+
+Reaction "44f" (id=43) (no. 86):
+	Order of Reaction is 2
+	HO2 + CO -> OH + CO2
+
+	A = 1.5e+14
+	n = 0
+	E = 49.694
+
+Reaction "44b" (id=91) (no. 87):
+	Order of Reaction is 2
+	CO2 + OH -> CO + HO2
+
+	A = 1.58398e+17
+	n = -0.51471
+	E = 307.115
+
+Reaction "45f" (id=44) (no. 88):
+	Order of Reaction is 2
+	HO2 + CH2O -> HCO + H2O2
+
+	A = 5.6e+06
+	n = 2
+	E = 25.268
+
+Reaction "45b" (id=92) (no. 89):
+	Order of Reaction is 2
+	H2O2 + HCO -> CH2O + HO2
+
+	A = 2.75004e+06
+	n = 1.84249
+	E = 21.915
+
+Reaction "46f" (id=45) (no. 90):
+	Order of Reaction is 2
+	HCO + H2O -> H + CO + H2O
+
+	A = 1.5e+18
+	n = -1
+	E = 35.797
+
+Reaction "46b" (id=93) (no. 91):
+	Order of Reaction is 3
+	H2O + CO + H -> H2O + HCO
+
+	A = 2.83211e+17
+	n = -0.767288
+	E = -29.978
+
+Reaction "47f" (id=46) (no. 92):
+	Order of Reaction is 2
+	HCO + M10 -> H + CO + M10
+
+	A = 1.87e+17
+	n = -1
+	E = 35.797
+
+Reaction "47b" (id=94) (no. 93):
+	Order of Reaction is 3
+	CO + H + M10 -> HCO + M10
+
+	A = 3.5307e+16
+	n = -0.767288
+	E = -29.978
+
+Reaction "48f" (id=47) (no. 94):
+	Order of Reaction is 2
+	HCO + O2 -> HO2 + CO
+
+	A = 1.345e+13
+	n = 0
+	E = 0.842
+
+Reaction "48b" (id=95) (no. 95):
+	Order of Reaction is 2
+	CO + HO2 -> O2 + HCO
+
+	A = 3.65807e+12
+	n = 0.220873
+	E = 139.739
+
+done

@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Andras Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20199008</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>Q. Liu, X. Chen, J. Huang, Y. Shen, Y. Zhang, Z. Liu, Journal of Hazardous Materials 363 (2019), 187-196</description>
+        <referenceDOI>10.1016/j.jhazmat.2018.09.073</referenceDOI>
+        <location>Main article</location>
+        <table>Table 1, P = 1.0 atm - inlet mixture composition</table>
+        <figure>Fig. 7., P = 1.0 atm (circles)</figure>
+        <details>
+            <author>Liu, Qingming and Chen, Xu and Huang, Jinxiang and Shen, Yang and Zhang, Yunming and Liu, Ziwei</author>
+            <journal>Journal of Hazardous Materials</journal>
+            <pages>187-196</pages>
+            <title>The characteristics of flame propagation in ammonia/oxygen mixtures</title>
+            <type>Journal Article</type>
+            <volume>363</volume>
+            <year>2019</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>outwardly propagating spherical flame</kind>
+        <mode>constant volume combustion chamber</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"  label="T"  sourcetype="reported"  units="K"   ><value>298</value></property>
+        <property name="pressure"     label="p"  sourcetype="reported"  units="atm" ><value>1.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="equivalence ratio"             id="x1"   label="phi"    sourcetype="reported"    units="unitless"      />
+        <property name="composition"                   id="x2"   label="x_NH3"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"    chemName="ammonia" />
+        </property>
+        <property name="composition"                   id="x3"   label="x_O2"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"  chemName="oxygen"  />
+        </property>
+        <property name="laminar burning velocity"      id="x4"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="evaluated standard deviation"  id="x5"   sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" />
+
+        <dataPoint><x1>0.20</x1><x2>0.210526</x2><x3>0.789474</x3><x4>11.6</x4><x5>1.486</x5></dataPoint>
+        <dataPoint><x1>0.40</x1><x2>0.347826</x2><x3>0.652174</x3><x4>55.4</x4><x5>7.097</x5></dataPoint>
+        <dataPoint><x1>0.50</x1><x2>0.400000</x2><x3>0.600000</x3><x4>77.2</x4><x5>9.890</x5></dataPoint>
+        <dataPoint><x1>0.75</x1><x2>0.500000</x2><x3>0.500000</x3><x4>100.9</x4><x5>12.926</x5></dataPoint>
+        <dataPoint><x1>1.00</x1><x2>0.571429</x2><x3>0.428571</x3><x4>104.4</x4><x5>13.374</x5></dataPoint>
+        <dataPoint><x1>1.30</x1><x2>0.634146</x2><x3>0.365854</x3><x4>74.5</x4><x5>9.544</x5></dataPoint>
+        <dataPoint><x1>1.45</x1><x2>0.659091</x2><x3>0.340909</x3><x4>46.4</x4><x5>5.944</x5></dataPoint>
+        <dataPoint><x1>1.60</x1><x2>0.680851</x2><x3>0.319149</x3><x4>35.5</x4><x5>4.548</x5></dataPoint>
+        <dataPoint><x1>1.80</x1><x2>0.705882</x2><x3>0.294118</x3><x4>31.2</x4><x5>3.997</x5></dataPoint>
+        <dataPoint><x1>2.00</x1><x2>0.727273</x2><x3>0.272727</x3><x4>20.3</x4><x5>2.601</x5></dataPoint>
+    </dataGroup>
+    <comment>phi = 0.75 * x_NH3 / x_O2 is assumed.</comment>
+    <comment>In Table 1 of the paper, some of the equivalence ratios are not correct. The correct values were taken from Fig. 7. (circles).</comment>
+</experiment>

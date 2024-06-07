@@ -1,0 +1,65 @@
+<experiment>
+    <fileAuthor>András Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10100004</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-03-13</firstPublicationDate>
+    <lastModificationDate>2023-03-13</lastModificationDate>
+    <bibliographyLink>
+        <description>J. Chen, X. Jiang, X. Qin, Z. Huang, Fuel 287 (2021), 119563</description>
+        <referenceDOI>10.1016/j.fuel.2020.119563</referenceDOI>
+        <location>Main article, Supp Mat.</location>
+        <table>Main article: Table 1, N95H5 mixture; Supp. Mat.: Table S1, Mixture 2 (95% NH3 / 5% H2), p = 10 atm</table>
+        <figure>Figure 5. b), p = 10 atm (red circles)</figure>
+        <details>
+            <author>Chen, Jundie and Jiang, Xue and Qin, Xiaokang and Huang, Zuohua</author>
+            <journal>Fuel</journal>
+            <pages>119563</pages>
+            <title>Effect of hydrogen blending on the high temperature auto-ignition of ammonia at elevated pressure</title>
+            <type>Journal Article</type>
+            <volume>287</volume>
+            <year>2021</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  /><amount units="percent" >4.211</amount></component>
+            <component><speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" /><amount units="percent" >0.222</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   /><amount units="percent" >3.269</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"    /><amount units="percent" >92.298</amount></component>
+        </property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless" ><value>1.0</value></property>
+        <property name="uncertainty"                   sourcetype="reported"   units="unitless"  reference="ignition delay"  kind="relative"  bound="plusminus" ><value>0.2</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"  reference="ignition delay"  kind="relative"  method="combined from scatter and reported uncertainty" ><value>0.241688</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"        id="x1"   label="p"    sourcetype="reported"  units="atm" />
+        <property name="temperature"     id="x2"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>10.57</x1><x2>1956.90</x2><x3>70.24</x3></dataPoint>
+        <dataPoint><x1>10.35</x1><x2>1810.20</x2><x3>114.88</x3></dataPoint>
+        <dataPoint><x1>11.36</x1><x2>1741.00</x2><x3>139.50</x3></dataPoint>
+        <dataPoint><x1>10.09</x1><x2>1675.21</x2><x3>343.56</x3></dataPoint>
+        <dataPoint><x1>9.83</x1><x2>1653.20</x2><x3>349.71</x3></dataPoint>
+        <dataPoint><x1>9.25</x1><x2>1608.90</x2><x3>410.12</x3></dataPoint>
+        <dataPoint><x1>9.74</x1><x2>1522.90</x2><x3>870.00</x3></dataPoint>
+        <dataPoint><x1>9.33</x1><x2>1465.70</x2><x3>962.13</x3></dataPoint>
+        <dataPoint><x1>10.07</x1><x2>1448.40</x2><x3>1011.35</x3></dataPoint>
+        <dataPoint><x1>9.69</x1><x2>1444.20</x2><x3>1149.10</x3></dataPoint>
+        <dataPoint><x1>9.98</x1><x2>1394.90</x2><x3>2688.86</x3></dataPoint>
+        <dataPoint><x1>10.07</x1><x2>1403.40</x2><x3>2608.76</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OH*" type="baseline min intercept from d/dt"/>
+</experiment>

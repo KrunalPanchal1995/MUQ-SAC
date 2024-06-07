@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Marton Kovacs, ELTE Chemical Kinetics Laboratory</fileAuthor>
+    <fileDOI>10.24388/x10199001</fileDOI>
+    <fileVersion>
+        <major>1</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2020-02-23</firstPublicationDate>
+    <lastModificationDate>2020-11-16</lastModificationDate>
+    <bibliographyLink>
+        <description>N. Fujii et al., Proc. Comb. Inst. 18 (1981) 873-883, Fig 2. solid triangles</description>
+        <referenceDOI>10.1016/S0082-0784(81)80091-4</referenceDOI>
+        <location>Main article</location>
+        <figure>Fig. 2. solid triangles</figure>
+        <details>
+            <author>N. Fujii and H. Miyama and M. Koshi and T. Asaba</author>
+            <journal>Symposium (International) on Combustion</journal>
+            <number>1</number>
+            <pages>873 - 883</pages>
+            <title>Kinetics of ammonia oxidation in shock waves</title>
+            <volume>18</volume>
+            <year>1981</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+        <mode>reflected shock</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      sourcetype="reported"   units="atm"           ><value>5.95</value></property>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia" /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"  /><amount units="mole fraction" >0.05</amount></component>
+            <component><speciesLink preferredKey="Ar"   CAS="7440-37-1"  InChI="1S/Ar"        SMILES="[Ar]"  chemName="argon"   /><amount units="mole fraction" >0.90</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.14</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="digitized"  units="K"  />
+        <property name="ignition delay"  id="x2"   label="tau"  sourcetype="digitized"  units="us" />
+
+        <dataPoint><x1>1484.4</x1><x2>1767.0</x2></dataPoint>
+        <dataPoint><x1>1515.5</x1> <x2>892.7</x2></dataPoint>
+        <dataPoint><x1>1572.8</x1> <x2>553.1</x2></dataPoint>
+        <dataPoint><x1>1587.6</x1> <x2>449.5</x2></dataPoint>
+        <dataPoint><x1>1625.3</x1> <x2>339.6</x2></dataPoint>
+        <dataPoint><x1>1708.6</x1> <x2>205.1</x2></dataPoint>
+        <dataPoint><x1>1735.6</x1> <x2>192.8</x2></dataPoint>
+        <dataPoint><x1>1764.4</x1> <x2>145.4</x2></dataPoint>
+        <dataPoint><x1>1804.2</x1> <x2>100.1</x2></dataPoint>
+        <dataPoint><x1>1848.5</x1>  <x2>93.6</x2></dataPoint>
+        <dataPoint><x1>1978.4</x1>  <x2>37.3</x2></dataPoint>
+        <dataPoint><x1>2053.6</x1>  <x2>30.9</x2></dataPoint>
+        <dataPoint><x1>2098.4</x1>  <x2>20.1</x2></dataPoint>
+    </dataGroup>
+    <ignitionType target="NH3" type="relative concentration" amount="0.95" units="unitless"/>
+</experiment>

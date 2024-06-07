@@ -14,9 +14,6 @@ from scipy.linalg import block_diag
 from scipy import optimize as spopt
 import json
 import multiprocessing
-import subprocess
-import time
-import sys
 import concurrent.futures
 import asyncio
 
@@ -101,6 +98,7 @@ inputs = optInputs["Inputs"]
 locations = optInputs["Locations"]
 startProfile_location = optInputs[startProfile]
 stats_ = optInputs["Stats"]
+
 unsrt_location = locations[unsrt]
 mech_file_location = locations[mech]
 thermo_file_location = locations[thermoF]
@@ -119,11 +117,14 @@ design_type = stats_[design]
 parallel_threads = dataCounts[countThreads]
 targets_count = int(dataCounts["targets_count"])
 rps_order = stats_[order]
+
+#######################READ TARGET FILE ###################
 print("Parallel threads are {}".format(parallel_threads))
 targetLines = open(locations[targets],'r').readlines()
 addendum = yaml.safe_load(open(locations[add],'r').read())
 
 print(design_type)
+
 ####################################################
 ##  Unloading the target data	  		          ##
 ## TARGET CLASS CONTAINING EACH TARGET AS A	CASE  ##
@@ -150,8 +151,8 @@ target_file.close()
 
 
 ############################################
-##  Uncertainty Quantification  		  ##
-##  									  ##
+##  Uncertainty Quantification            ##
+##  					   ##
 ############################################
 
 UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
@@ -221,8 +222,14 @@ Output:
 
 """
 
+
+def getTotalUnknowns(N):
+	n_ = 1 + 2*N + (N*(N-1))/2
+	return int(n_)
+	
+
 if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,3000,len(manipulationDict["activeParameters"])).getSamples()
+	design_matrix = DM.DesignMatrix(unsrt_data,design_type,7*getTotalUnknowns(len(manipulationDict["activeParameters"]))).getSamples()
 else:
 	design_matrix_file = open("DesignMatrix.csv").readlines()
 	design_matrix = []

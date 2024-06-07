@@ -1,0 +1,77 @@
+<experiment>
+    <fileAuthor>Andras Gy. Szanthoffer, Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20100018</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>4</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2023-08-03</firstPublicationDate>
+    <lastModificationDate>2023-08-03</lastModificationDate>
+    <bibliographyLink>
+        <description>X. Han, Z. Wang, M. Costa, Z. Sun, Y. He, K. Cen, Combustion and Flame 206 (2019), 214–226</description>
+        <referenceDOI>10.1016/j.combustflame.2019.05.003</referenceDOI>
+        <location>Main Article (figure) and Supp. Mat. (data source)</location>
+        <figure>Fig. 5.</figure>
+        <details>
+            <author>Han, Xinlu and Wang, Zhihua and Costa, Mário and Sun, Zhiwei and He, Yong and Cen, Kefa</author>
+            <journal>Combustion and Flame</journal>
+            <pages>214–226</pages>
+            <title>Experimental and kinetic modeling study of laminar burning velocities of NH3/air, NH3/H2/air, NH3/CO/air and NH3/CH4/air premixed flames</title>
+            <type>Journal Article</type>
+            <volume>206</volume>
+            <year>2019</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>heat flux burner</kind>
+        <mode>premixed</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="p"    sourcetype="reported"   units="atm"      ><value>1</value></property>
+        <property name="temperature"                   label="T"    sourcetype="reported"   units="K"        ><value>298</value></property>
+        <property name="equivalence ratio"             label="phi"  sourcetype="reported"   units="unitless" ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"      reference="laminar burning velocity"  kind="absolute"  method="combined from scatter and reported uncertainty" ><value>0.500</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="composition"               id="x1"   label="X_NH3"  sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="NH3"  CAS="7664-41-7"  InChI="1S/H3N/h1H3"  SMILES="N"     chemName="ammonia"  />
+        </property>
+        <property name="composition"               id="x2"   label="X_H2"   sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="H2"   CAS="1333-74-0"  InChI="1S/H2/h1H"    SMILES="[HH]"  chemName="hydrogen" />
+        </property>
+        <property name="composition"               id="x3"   label="X_N2"   sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"   chemName="nitrogen" />
+        </property>
+        <property name="composition"               id="x4"   label="X_O2"   sourcetype="reported"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"   chemName="oxygen"   />
+        </property>
+        <property name="laminar burning velocity"  id="x5"   label="Sl"     sourcetype="reported"  units="cm/s"          />
+        <property name="uncertainty"               id="x6"   label="d_Sl"   sourcetype="reported"  units="cm/s"           reference="laminar burning velocity"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>0.218750</x1><x2>0.000000</x2><x3>0.617188</x3><x4>0.164063</x4><x5>6.1</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.214679</x1><x2>0.005505</x2><x3>0.616055</x3><x4>0.163762</x4><x5>6.5</x5><x6>0.8</x6></dataPoint>
+        <dataPoint><x1>0.210554</x1><x2>0.011082</x2><x3>0.614908</x3><x4>0.163457</x4><x5>7.3</x5><x6>0.7</x6></dataPoint>
+        <dataPoint><x1>0.206375</x1><x2>0.016733</x2><x3>0.613745</x3><x4>0.163147</x4><x5>8.1</x5><x6>0.7</x6></dataPoint>
+        <dataPoint><x1>0.202139</x1><x2>0.022460</x2><x3>0.612567</x3><x4>0.162834</x4><x5>8.9</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.197847</x1><x2>0.028264</x2><x3>0.611373</x3><x4>0.162517</x4><x5>9.8</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.193496</x1><x2>0.034146</x2><x3>0.610163</x3><x4>0.162195</x4><x5>10.7</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.189086</x1><x2>0.040109</x2><x3>0.608936</x3><x4>0.161869</x4><x5>11.7</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.184615</x1><x2>0.046154</x2><x3>0.607692</x3><x4>0.161539</x4><x5>12.8</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.180083</x1><x2>0.052282</x2><x3>0.606432</x3><x4>0.161203</x4><x5>14.1</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.175488</x1><x2>0.058496</x2><x3>0.605153</x3><x4>0.160864</x4><x5>15.5</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.170828</x1><x2>0.064797</x2><x3>0.603857</x3><x4>0.160519</x4><x5>17.1</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.166102</x1><x2>0.071186</x2><x3>0.602542</x3><x4>0.160170</x4><x5>18.9</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.161309</x1><x2>0.077667</x2><x3>0.601209</x3><x4>0.159815</x4><x5>20.9</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.156447</x1><x2>0.084241</x2><x3>0.599857</x3><x4>0.159456</x4><x5>23.0</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.151515</x1><x2>0.090909</x2><x3>0.598485</x3><x4>0.159091</x4><x5>25.2</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.146512</x1><x2>0.097674</x2><x3>0.597093</x3><x4>0.158721</x4><x5>27.8</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.141435</x1><x2>0.104539</x2><x3>0.595681</x3><x4>0.158346</x4><x5>30.7</x5><x6>0.6</x6></dataPoint>
+        <dataPoint><x1>0.136283</x1><x2>0.111504</x2><x3>0.594248</x3><x4>0.157965</x4><x5>33.9</x5><x6>0.6</x6></dataPoint>
+    </dataGroup>
+    <comment>The reported data are from Supp. Mat.</comment>
+</experiment>
