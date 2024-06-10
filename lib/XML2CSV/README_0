@@ -1,0 +1,14 @@
+#1: New pressure units found
+	- pressure "kPa", "Torr", "KPa" and "mPa" was found
+	- solved
+#2: Error reported was that the target values are not printed properly
+	- upon inspection the target values does match the input file
+	- solved
+#3: The pressure unit is "atm", yet it is taken as "bar"
+	- solved
+#4: New exp found error:
+	- New exp such as "counterflow", "flat flame" and "cylindrical" were cound
+	- solved
+#5: Error related to fuel data
+	- Fuel H2 was not printed as showen in the input file
+	- Solved

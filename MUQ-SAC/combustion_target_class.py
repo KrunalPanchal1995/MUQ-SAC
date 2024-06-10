@@ -329,6 +329,8 @@ class combustion_target():
 			self.add["slope_bsf"] = 0.05
 		if "phi" not in self.add:
 			self.add["phi"] = "N/A"
+		if "type" not in self.add:
+			self.add["type"] = "N/A"
 		if "flw_length" not in self.add:
 			self.add["flw_length"] = 1 #m 
 		if "flow_velocity" not in self.add:
@@ -365,6 +367,7 @@ class combustion_target():
 			self.add["flf_cond"] = "max" #m**3	
 		if "T_amb" not in self.add:
 			self.add["T_ambient"] = 298
+		
 		else:
 			self.add["T_amb"] = "AmbientTemp is {}".format(self.add["T_ambient"])
 		if "isIsotherm" not in self.add:

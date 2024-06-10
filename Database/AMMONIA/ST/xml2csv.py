@@ -654,7 +654,7 @@ for file_ in files:
 					exp_std_dvnt_unit = unsrt[exp]["units"]
 				else:
 				
-					exp_sigma = unsrt[exp]["value"]
+					exp_sigma = np.asarray(unsrt[exp]["value"])
 					exp_sigma_type = unsrt[exp]["type"]
 					exp_std_dvnt_unit = unsrt[exp]["units"]
 					if unsrt[exp]["units"] == "ppm":

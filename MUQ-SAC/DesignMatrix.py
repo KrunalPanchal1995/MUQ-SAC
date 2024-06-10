@@ -115,8 +115,11 @@ class DesignMatrix(object):
 			
 			
 			a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
+			print("\nA-type curves generated")
 			b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
+			print("\nB-type curves generated")
 			c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
+			print("\nC-type curves generated")
 			V_ = {}
 			for rxn in self.unsrt:
 				temp = []

@@ -1,0 +1,19 @@
+#1] New molecule for ignition delay added
+	- CH3OH
+	- H2O
+	- O
+	- O2
+	- C2 (p, onset)
+	- CH3
+	- soot (CH)
+	- C2H5OH
+#2] Unsrt for ignition delay was missing 
+	- added the "ignition delay" format for unsrt
+#3] dpdt was not accounted in the add file
+	- added the "BoundaryLayer" part in add file
+#4] Added new experiments for ifnition delay measurnments
+	- ignition delay measurement
+#5] New pressure unit added
+	- torr
+#6] Issues with the dataset "x10003037"
+	- Not solved as of yet. Either there is a problem in paper or reference. VTIM method is used with a doubtful volume profile
