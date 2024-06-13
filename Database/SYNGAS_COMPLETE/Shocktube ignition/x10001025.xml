@@ -1,0 +1,70 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001025</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>C. Naumann; J. Herzler; P. Griebel; H. Curran; A. Keromnes; I. Mantzaras H2-IGCC project: Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured; 2011.</description>
+        <location>Main Article</location>
+        <table>Table 3.1, H2 / CO / O2 / Ar, Phi = 1.0, dilution 1:5, H2 /CO = 50/50, 4 bar series.</table>
+        <details>
+            <author>Naumann, Clemens and Herzler, J{\"{u}}rgen and Griebel, Peter and Curran, Henry J and K{\'{e}}romn{\`{e}}s, Alan and Mantzaras, Ioannis</author>
+            <booktitle>7$^{\text{th}}$ Framework Programme FP7-ENERGY-2008-TREN-1 ENERGY-2008-6-CLEAN COAL TECHNOLOGIES, Deliverable 1.1.3</booktitle>
+            <institution>H$_{2}$-IGCC project</institution>
+            <number>Deliverable 1.1.3</number>
+            <title>Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured</title>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.0174</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.0174</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.0347</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.9306</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="statistical scatter" ><value>0.16</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="bar" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint> <x1>942</x1><x2>3.79</x2><x3>5731</x3></dataPoint>
+        <dataPoint> <x1>963</x1><x2>3.89</x2><x3>4933</x3></dataPoint>
+        <dataPoint> <x1>981</x1><x2>3.93</x2><x3>3412</x3></dataPoint>
+        <dataPoint> <x1>995</x1><x2>4.07</x2><x3>2438</x3></dataPoint>
+        <dataPoint><x1>1003</x1><x2>3.71</x2><x3>1221</x3></dataPoint>
+        <dataPoint><x1>1005</x1><x2>4.03</x2><x3>2095</x3></dataPoint>
+        <dataPoint><x1>1009</x1><x2>3.91</x2><x3>1068</x3></dataPoint>
+        <dataPoint><x1>1022</x1><x2>3.98</x2> <x3>998</x3></dataPoint>
+        <dataPoint><x1>1044</x1><x2>3.90</x2> <x3>366</x3></dataPoint>
+        <dataPoint><x1>1052</x1><x2>3.84</x2> <x3>371</x3></dataPoint>
+        <dataPoint><x1>1068</x1><x2>4.16</x2> <x3>285</x3></dataPoint>
+        <dataPoint><x1>1071</x1><x2>3.96</x2> <x3>280</x3></dataPoint>
+        <dataPoint><x1>1080</x1><x2>3.81</x2> <x3>246</x3></dataPoint>
+        <dataPoint><x1>1107</x1><x2>3.88</x2> <x3>177</x3></dataPoint>
+        <dataPoint><x1>1109</x1><x2>3.99</x2> <x3>166</x3></dataPoint>
+        <dataPoint><x1>1132</x1><x2>3.90</x2> <x3>141</x3></dataPoint>
+        <dataPoint><x1>1142</x1><x2>5.07</x2> <x3>108</x3></dataPoint>
+        <dataPoint><x1>1145</x1><x2>3.86</x2> <x3>128</x3></dataPoint>
+        <dataPoint><x1>1210</x1><x2>3.97</x2>  <x3>82</x3></dataPoint>
+        <dataPoint><x1>1227</x1><x2>3.93</x2>  <x3>73</x3></dataPoint>
+        <dataPoint><x1>1282</x1><x2>3.96</x2>  <x3>55</x3></dataPoint>
+        <dataPoint><x1>1301</x1><x2>4.03</x2>  <x3>51</x3></dataPoint>
+        <dataPoint><x1>1364</x1><x2>4.04</x2>  <x3>38</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="max"/>
+</experiment>

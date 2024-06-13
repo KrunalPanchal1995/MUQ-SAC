@@ -1,0 +1,59 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001205_x</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>M. Goswami, R.J.M. Bastiaans, A.A. Konnov, L.P.H. de Goey, Int. J. Hydrogen Energy, 2014, 39, 1485-1498.</description>
+        <referenceDOI>10.1016/j.ijhydene.2013.10.164</referenceDOI>
+        <location>Supplementary Material</location>
+        <table>Table 1, 7th data series.</table>
+        <details>
+            <author>Goswami, M and Bastiaans, R J M and Konnov, A A and de Goey, L P H</author>
+            <journal>Int J Hydrogen Energy</journal>
+            <pages>1485--1498</pages>
+            <title>Laminar burning velocity of lean H$_{2}$--CO mixtures at elevated pressure using the heat flux method</title>
+            <volume>39</volume>
+            <year>2014</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+        <mode>HFM</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"    units="K"             ><value>298</value></property>
+        <property name="initial composition"           sourcetype="calculated" >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.091071</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.016071</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.107143</amount></component>
+            <component><speciesLink preferredKey="He"  CAS="7440-59-7"  InChI="1S/He"       SMILES="[He]"       chemName="helium"          /><amount units="mole fraction" >0.785714</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"   units="cm/s"           reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="pressure"                  id="x1"   label="P"   sourcetype="reported"  units="atm"  />
+        <property name="laminar burning velocity"  id="x2"   label="Sl"  sourcetype="reported"  units="cm/s" />
+        <property name="uncertainty"               id="x3"   sourcetype="reported"  units="cm/s"  reference="Sl"  kind="absolute"  bound="plusminus" />
+
+        <dataPoint><x1>1.0</x1><x2>58.2</x2><x3>3.0</x3></dataPoint>
+        <dataPoint><x1>2.0</x1><x2>38.1</x2><x3>2.8</x3></dataPoint>
+        <dataPoint><x1>3.0</x1><x2>32.0</x2><x3>2.5</x3></dataPoint>
+        <dataPoint><x1>4.0</x1><x2>24.2</x2><x3>1.9</x3></dataPoint>
+        <dataPoint><x1>5.0</x1><x2>19.7</x2><x3>1.6</x3></dataPoint>
+        <dataPoint><x1>6.0</x1><x2>16.0</x2><x3>1.6</x3></dataPoint>
+        <dataPoint><x1>7.0</x1><x2>12.5</x2><x3>1.5</x3></dataPoint>
+        <dataPoint><x1>8.0</x1><x2>10.5</x2><x3>1.3</x3></dataPoint>
+    </dataGroup>
+</experiment>

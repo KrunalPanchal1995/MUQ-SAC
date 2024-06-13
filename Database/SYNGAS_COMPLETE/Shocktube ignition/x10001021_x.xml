@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x10001021_x</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>C. Naumann; J. Herzler; P. Griebel; H. Curran; A. Keromnes; I. Mantzaras H2-IGCC project: Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured; 2011.</description>
+        <location>Main Article</location>
+        <table>Table 3.1, H2 / CO / O2 / Ar, Phi = 1.0, dilution 1:5, H2 /CO = 5/95, 16 bar series.</table>
+        <details>
+            <author>Naumann, Clemens and Herzler, J{\"{u}}rgen and Griebel, Peter and Curran, Henry J and K{\'{e}}romn{\`{e}}s, Alan and Mantzaras, Ioannis</author>
+            <booktitle>7$^{\text{th}}$ Framework Programme FP7-ENERGY-2008-TREN-1 ENERGY-2008-6-CLEAN COAL TECHNOLOGIES, Deliverable 1.1.3</booktitle>
+            <institution>H$_{2}$-IGCC project</institution>
+            <number>Deliverable 1.1.3</number>
+            <title>Results of ignition delay times for hydrogen-rich and syngas fuel mixtures measured</title>
+            <year>2011</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>ignition delay measurement</experimentType>
+    <apparatus>
+        <kind>shock tube</kind>
+    </apparatus>
+    <commonProperties>
+        <property name="initial composition"           sourcetype="reported"  >
+            <component><speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        /><amount units="mole fraction" >0.0030</amount></component>
+            <component><speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" /><amount units="mole fraction" >0.0562</amount></component>
+            <component><speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          /><amount units="mole fraction" >0.0296</amount></component>
+            <component><speciesLink preferredKey="Ar"  CAS="7440-37-1"  InChI="1S/Ar"       SMILES="[Ar]"       chemName="argon"           /><amount units="mole fraction" >0.9112</amount></component>
+        </property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="unitless"       reference="ignition delay"  kind="relative"  method="generic uncertainty" ><value>0.1</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="temperature"     id="x1"   label="T"    sourcetype="reported"  units="K"   />
+        <property name="pressure"        id="x2"   label="P"    sourcetype="reported"  units="bar" />
+        <property name="ignition delay"  id="x3"   label="tau"  sourcetype="reported"  units="us"  />
+
+        <dataPoint><x1>1040</x1><x2>13.40</x2><x3>5027</x3></dataPoint>
+        <dataPoint><x1>1043</x1><x2>14.97</x2><x3>5783</x3></dataPoint>
+        <dataPoint><x1>1044</x1><x2>14.25</x2><x3>5250</x3></dataPoint>
+        <dataPoint><x1>1056</x1><x2>14.70</x2><x3>4618</x3></dataPoint>
+        <dataPoint><x1>1092</x1><x2>14.61</x2><x3>3129</x3></dataPoint>
+        <dataPoint><x1>1117</x1><x2>14.21</x2><x3>1923</x3></dataPoint>
+        <dataPoint><x1>1148</x1><x2>14.16</x2> <x3>786</x3></dataPoint>
+        <dataPoint><x1>1195</x1><x2>14.61</x2> <x3>318</x3></dataPoint>
+        <dataPoint><x1>1202</x1><x2>14.03</x2> <x3>237</x3></dataPoint>
+        <dataPoint><x1>1212</x1><x2>14.44</x2> <x3>229</x3></dataPoint>
+        <dataPoint><x1>1250</x1><x2>14.02</x2> <x3>146</x3></dataPoint>
+        <dataPoint><x1>1324</x1><x2>15.29</x2>  <x3>78</x3></dataPoint>
+        <dataPoint><x1>1354</x1><x2>16.04</x2>  <x3>64</x3></dataPoint>
+        <dataPoint><x1>1359</x1><x2>15.85</x2>  <x3>58</x3></dataPoint>
+        <dataPoint><x1>1438</x1><x2>14.02</x2>  <x3>36</x3></dataPoint>
+    </dataGroup>
+    <ignitionType target="OHEX;" type="max"/>
+    <comment>In Version 1.0 file, there was a wrong data points in which the ignition delay is 7860 us, yet the actual value is 786, it has been modified in Version 2.0</comment>
+</experiment>

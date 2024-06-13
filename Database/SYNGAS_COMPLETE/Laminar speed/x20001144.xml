@@ -1,0 +1,62 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001144</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>T. G. Scholte; P. B. Vaags, Combustion and Flame 1959, 3, (0), 511-524, data in: M. A. Cherian; P. Rhodes; R. J. Simpson; G. Dixon-Lewis, Proceedings of the Combustion Institute 1981, 18, 385-396, Data from Cherian et al.</description>
+        <referenceDOI>10.1016/S0082-0784(81)80043-4</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 3, CO/(CO+H2) = 0.759.</figure>
+        <details>
+            <author>Cherian, M A and Rhodes, P and Simpson, R J and Dixon-Lewis, G</author>
+            <journal>Symp (Int) Combust</journal>
+            <pages>385--396</pages>
+            <title>Kinetic Modelling of the Oxidation of Carbon Monoxide in Flames</title>
+            <volume>18</volume>
+            <year>1981</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>4.86</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x4"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x5"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+
+        <dataPoint><x1>8.660000e+001</x1><x2>2.657000e-001</x2><x3>8.440000e-002</x3><x4>1.366000e-001</x4><x5>5.134000e-001</x5></dataPoint>
+        <dataPoint><x1>1.020000e+002</x1><x2>3.036000e-001</x2><x3>9.640000e-002</x3><x4>1.261000e-001</x4><x5>4.739000e-001</x5></dataPoint>
+        <dataPoint><x1>1.071000e+002</x1><x2>3.416000e-001</x2><x3>1.085000e-001</x3><x4>1.155000e-001</x4><x5>4.345000e-001</x5></dataPoint>
+        <dataPoint><x1>1.154000e+002</x1><x2>3.795000e-001</x2><x3>1.205000e-001</x3><x4>1.050000e-001</x4><x5>3.950000e-001</x5></dataPoint>
+        <dataPoint><x1>1.114000e+002</x1><x2>4.175000e-001</x2><x3>1.326000e-001</x3><x4>9.450000e-002</x4><x5>3.555000e-001</x5></dataPoint>
+        <dataPoint><x1>9.130000e+001</x1><x2>4.554000e-001</x2><x3>1.446000e-001</x3><x4>8.400000e-002</x4><x5>3.160000e-001</x5></dataPoint>
+        <dataPoint><x1>6.270000e+001</x1><x2>4.934000e-001</x2><x3>1.567000e-001</x3><x4>7.350000e-002</x4><x5>2.765000e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

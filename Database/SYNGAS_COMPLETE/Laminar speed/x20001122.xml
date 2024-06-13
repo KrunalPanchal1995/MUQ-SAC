@@ -1,0 +1,66 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001122</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>B. Lewis; G. von Elbe, Combustion, Flames and Explosions of Gases. 2nd ed.; Academic Press: New York and London, 1961.</description>
+        <location>Main Article</location>
+        <figure>Fig. 191, CO/O2/N2/H2O, f = 0.21.</figure>
+        <details>
+            <address>Oldenbourg, Berlin</address>
+            <author>Jahn, Georg</author>
+            <school>Berlin</school>
+            <title>Der Z{\"{u}}ndvorgang in Gasgemischen</title>
+            <type>Dissertation</type>
+            <year>1934</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"     sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[CO]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"   CAS="630-08-0"   InChI="1S/CO/c1-2"   SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[O2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"   CAS="7782-44-7"  InChI="1S/O2/c1-2"   SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x4"   label="[N2]"   sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"   CAS="7727-37-9"  InChI="1S/N2/c1-2"   SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+        <property name="composition"               id="x5"   label="[H2O]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2O"  CAS="7732-18-5"  InChI="1S/H2O/h1H2"  SMILES="O"          chemName="water"           />
+        </property>
+
+        <dataPoint><x1>2.716000e+001</x1><x2>3.535900e-001</x2><x3>1.347300e-001</x3><x4>5.068400e-001</x4><x5>4.840000e-003</x5></dataPoint>
+        <dataPoint><x1>2.872000e+001</x1><x2>3.794000e-001</x2><x3>1.292400e-001</x3><x4>4.861700e-001</x4><x5>5.190000e-003</x5></dataPoint>
+        <dataPoint><x1>3.070000e+001</x1><x2>4.370000e-001</x2><x3>1.169700e-001</x3><x4>4.400400e-001</x4><x5>5.980000e-003</x5></dataPoint>
+        <dataPoint><x1>3.247000e+001</x1><x2>4.677800e-001</x2><x3>1.104200e-001</x3><x4>4.154000e-001</x4><x5>6.400000e-003</x5></dataPoint>
+        <dataPoint><x1>3.267000e+001</x1><x2>4.777100e-001</x2><x3>1.083100e-001</x3><x4>4.074400e-001</x4><x5>6.540000e-003</x5></dataPoint>
+        <dataPoint><x1>3.267000e+001</x1><x2>4.896300e-001</x2><x3>1.057700e-001</x3><x4>3.979000e-001</x4><x5>6.700000e-003</x5></dataPoint>
+        <dataPoint><x1>3.267000e+001</x1><x2>5.055300e-001</x2><x3>1.023900e-001</x3><x4>3.851700e-001</x4><x5>6.920000e-003</x5></dataPoint>
+        <dataPoint><x1>3.267000e+001</x1><x2>5.174500e-001</x2><x3>9.985000e-002</x3><x4>3.756200e-001</x4><x5>7.080000e-003</x5></dataPoint>
+        <dataPoint><x1>3.173000e+001</x1><x2>5.214300e-001</x2><x3>9.900000e-002</x3><x4>3.724300e-001</x4><x5>7.140000e-003</x5></dataPoint>
+        <dataPoint><x1>3.204000e+001</x1><x2>5.363300e-001</x2><x3>9.583000e-002</x3><x4>3.605000e-001</x4><x5>7.340000e-003</x5></dataPoint>
+        <dataPoint><x1>2.713000e+001</x1><x2>6.059300e-001</x2><x3>8.101000e-002</x3><x4>3.047700e-001</x4><x5>8.290000e-003</x5></dataPoint>
+        <dataPoint><x1>2.640000e+001</x1><x2>6.188500e-001</x2><x3>7.826000e-002</x3><x4>2.944200e-001</x4><x5>8.470000e-003</x5></dataPoint>
+    </dataGroup>
+</experiment>

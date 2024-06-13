@@ -1662,7 +1662,7 @@ Po  = {pressure}
 gas = ct.Solution('{mech}')
 #gas.TPX = To, Po,{species_conc}
 
-#gas.set_equivalence_ratio({phi}, {fuel}, {{"O2": 1.0, "N2": 3.76}})
+gas.set_equivalence_ratio({phi}, {fuel}, {{"O2": 1.0, "N2": 3.76}})
 width = {width}
 flame = ct.FreeFlame(gas, width=width)
 flame.set_refine_criteria(ratio={ratio}, slope={slope}, curve={curve}, prune = 0.003 )#3,0.015,0.015

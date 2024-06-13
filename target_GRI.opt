@@ -22,7 +22,7 @@ Counts:
 
  parallel_threads: 50
  
- targets_count: 50
+ targets_count:3006
 
 #####################################
 # 	Stastical Parameters        #

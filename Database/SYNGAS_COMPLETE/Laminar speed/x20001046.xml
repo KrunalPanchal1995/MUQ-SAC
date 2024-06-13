@@ -1,0 +1,63 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001046</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>C. Prathap; A. Ray; M. R. Ravi, Combustion and Flame 2008, 155, 145-160.</description>
+        <referenceDOI>10.1016/j.combustflame.2008.04.005</referenceDOI>
+        <location>Main Article</location>
+        <table>Table 4.</table>
+        <details>
+            <author>Prathap, C and Ray, A and Ravi, M R</author>
+            <journal>Combust Flame</journal>
+            <pages>145--160</pages>
+            <title>Investigation of nitrogen dilution effects on the laminar burning velocity and flame stability of syngas fuel at atmospheric condition</title>
+            <volume>155</volume>
+            <year>2008</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>cylindrical</mode>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="bar"  ><value>1</value></property>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>302</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="generic uncertainty" ><value>2.0</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="reported"    units="cm/s"          />
+        <property name="composition"               id="x2"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x3"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x4"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x5"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+
+        <dataPoint><x1>19.0</x1><x2>7.730000e-002</x2><x3>7.730000e-002</x3><x4>1.289000e-001</x4><x5>7.165000e-001</x5></dataPoint>
+        <dataPoint><x1>31.7</x1><x2>9.130000e-002</x2><x3>9.130000e-002</x3><x4>1.142000e-001</x4><x5>7.032000e-001</x5></dataPoint>
+        <dataPoint><x1>43.8</x1><x2>1.025000e-001</x2><x3>1.025000e-001</x3><x4>1.025000e-001</x4><x5>6.926000e-001</x5></dataPoint>
+        <dataPoint><x1>51.9</x1><x2>1.115000e-001</x2><x3>1.115000e-001</x3><x4>9.290000e-002</x4><x5>6.840000e-001</x5></dataPoint>
+        <dataPoint><x1>53.8</x1><x2>1.190000e-001</x2><x3>1.190000e-001</x3><x4>8.500000e-002</x4><x5>6.769000e-001</x5></dataPoint>
+        <dataPoint><x1>51.2</x1><x2>1.254000e-001</x2><x3>1.254000e-001</x3><x4>7.840000e-002</x4><x5>6.708000e-001</x5></dataPoint>
+        <dataPoint><x1>43.1</x1><x2>1.308000e-001</x2><x3>1.308000e-001</x3><x4>7.270000e-002</x4><x5>6.657000e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

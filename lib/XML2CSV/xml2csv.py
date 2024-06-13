@@ -15,11 +15,36 @@ import numpy as np
 import os
 fuel_type = "Multi"
 
+stoichiometry = {}
+stoichiometry["H2"] = 0.5
+stoichiometry["CO"] = 0.5
+stoichiometry["O2"] = 0.0
+stoichiometry["N2"] = 0.0
+stoichiometry["h2"] = 0.5
+stoichiometry["co"] = 0.5
+stoichiometry["o2"] = 0.0
+stoichiometry["n2"] = 0.0
+stoichiometry["HE"] = 0.0
+stoichiometry["AR"] = 0.0
+stoichiometry["He"] = 0.0
+stoichiometry["Ar"] = 0.0
+stoichiometry["NH3"] = 1.0
+stoichiometry["H2O"] = 0.0
+stoichiometry["CO2"] = 0.0
+stoichiometry["C2H5OH"] = 3.0
+stoichiometry["CH4"] = 2.0
+stoichiometry["CH3OH"] = 1.5
+stoichiometry["NC7H16"] = 11
+stoichiometry["MB-C5H10O2"] = 6.5
+
+fuel_list = ["H2","CO","CH4"]
+input_fuel = {'a':'H2','b':'CO','c':'CH4'}
+molwt = {"H2":2,"CO":28,"CO2":44}
 #fuel_list = ["H2","CO","CH3OH"]
 #input_fuel = {'a':'H2','b':'CO',"c":"CH3OH"}
 #C2H5OH
-fuel_list = ["H2","CO","CH4","C2H5OH"]
-input_fuel = {'a':'H2','b':'CO',"c":"CH4","d":"C2H5OH"}
+#fuel_list = ["H2","CO","CH4","C2H5OH"]
+#input_fuel = {'a':'H2','b':'CO',"c":"CH4","d":"C2H5OH"}
 #fuel_list = ["H2","CO","NH3"]
 #input_fuel = {'a':'H2','b':'CO',"c":"NH3"}
 
@@ -33,13 +58,14 @@ add = ""
 for file_ in files:
 	Target = None
 	Target_kind = None
+	Fls_type = None
 	Target_mode = None
 	bibliography = None
 	commonProp = None
 	dataGroup = None
 	add_mod = []
 	print(file_)
-	dataset = file_.strip(".xml")
+	dataset = file_.split(".")[0]
 	add+=f"{dataset}:\n"
 	
 	tree = ET.parse(file_)
@@ -74,13 +100,23 @@ for file_ in files:
 		
 	
 	count = 0
+	count_p = 0
 	for group in dataGroup:
 		for child in group:
+			#if child.tag == "property":
+				#print(child.attrib["name"])
 			if child.tag == "property" and child.attrib["name"] == "composition":
 				count +=1
-	if count == 0:
-		add += " solver: cantera\n type: phi\n"
-	else: 
+			elif child.tag == "property" and child.attrib["name"] == "pressure":
+				count_p +=1
+	if count == 0 and count_p == 0:
+		Fls_type = "phi"
+		add += f" solver: cantera\n type: phi\n Fuel: {input_fuel}\n"
+	elif count == 0 and count_p == 1: 
+		Fls_type = "pressure"
+		add += " solver: cantera\n type: pressure\n"
+	else:
+		Fls_type = "composition"
 		add += " solver: cantera\n"
 	#raise AssertionError("Stop")
 	#Target_kind = root.find(".//kind").text
@@ -295,6 +331,25 @@ for file_ in files:
 		                temp["value"] = float(zero.text)*100
 		        properties["pressure rise"] = temp
 		
+		    if child.attrib["name"] == "volume":
+		        temp = {}
+		        temp["label"] = child.attrib["label"]
+		        temp["unit"] = child.attrib["units"]
+		        temp["sourcetype"] = child.attrib["sourcetype"]
+		        for zero in child:
+		            if zero.tag == "value":
+		                temp["value"] = float(zero.text)
+		        properties["volume"] = temp
+
+		    if child.attrib["name"] == "residence time":
+		        temp = {}
+		        temp["label"] = child.attrib["label"]
+		        temp["unit"] = child.attrib["units"]
+		        temp["sourcetype"] = child.attrib["sourcetype"]
+		        for zero in child:
+		            if zero.tag == "value":
+		                temp["value"] = float(zero.text)
+		        properties["residence time"] = temp
 
 	for group in dataGroup:
 		Dict = {}
@@ -363,23 +418,25 @@ for file_ in files:
 	# In[30]:
 	
 	if "volume" in properties:
-		volume = float(properties["colume"]["value"])
-		volume_unit = properties["flow rate"]["unit"]
+		volume = float(properties["volume"]["value"])
+		volume_unit = properties["volume"]["unit"]
 	else:
 		volume = ""
 		volume_unit = ""
+	#print(properties)
 	if "residence time" in properties:
-		res_unit = properties["flow rate"]["unit"]
+		res_unit = properties["residence time"]["unit"]
 		if res_unit == "ms":
-			res_time = 0.001*float(properties["colume"]["value"])
+			res_time = 0.001*float(properties["residence time"]["value"])
 			res_unit = "s"
 		elif res_unit == "us":
-			res_time = 0.000001*float(properties["colume"]["value"])
+			res_time = 0.000001*float(properties["residence time"]["value"])
 			res_unit = "s" 
 	else:	
 		res_time = ""
 		res_unit = ""
-	
+	add +=f" residenceTime: {res_time}\n maxSimulationTime: {res_time*5}\n volume: {volume}\n"
+	#print(res_time,volume)
 	# Extracting pressure
 	
 	if "pressure" in properties:
@@ -494,6 +551,7 @@ for file_ in files:
 		bathgasDict = {}
 		if fuel_type == "Multi":
 			input_fuel_x = {}
+			actual_fuel = []
 		if "initial composition" in properties:
 			a_ = "initial composition"
 		else:	
@@ -504,7 +562,8 @@ for file_ in files:
 					#input_fuel_x = {}
 					for fuel in input_fuel:
 						temp = input_fuel[fuel]
-						if temp == i: 
+						if temp == i:
+							actual_fuel.append(temp)
 							input_fuel_x[str(fuel)] = float(properties[a_][i]["value"])
 				else:
 
@@ -513,7 +572,22 @@ for file_ in files:
 				input_oxidizer_x = float(properties[a_][i]["value"])
 			else:
 				input_bath_gas[i] = float(properties[a_][i]["value"])
-		#print(properties)
+		
+		st_fuel_x = 0
+		st_ox_x = 0
+		
+		for fuel in actual_fuel:
+			st_fuel_x+=1.0
+			st_ox_x+=stoichiometry[fuel]
+		F_A_st = st_fuel_x/st_ox_x
+		
+		actual_fuel_x = 0
+		
+		for key in input_fuel_x:
+			actual_fuel_x+=input_fuel_x[key]			
+		F_A_ct = actual_fuel_x/input_oxidizer_x
+		phi = round((F_A_ct/F_A_st),2)
+				
 		bath_gas = {}
 		bath_gas_x = {}
 		list_a = []
@@ -530,8 +604,11 @@ for file_ in files:
 		bathgas_conc = np.repeat(bath_gas_x,ndpt)
 		ox = np.repeat(input_oxidizer,ndpt)
 		ox_x = np.repeat(input_oxidizer_x,ndpt)
-		
+		phi = np.repeat(phi,ndpt)
+		#print(phi)
+		#raise AssertionError("STop!")
 	else:
+		actual_fuel = []
 		input_fuel_x = {}
 		List_fuel=[]
 		List_fuel_x= []
@@ -552,6 +629,7 @@ for file_ in files:
 							#fuel_unit = datagroupDict["dg1"]["Variables"][var]["units"]
 							for point in datagroupDict["dg1"]["DataPoints"]:
 								fuel_conc.append(float(datagroupDict["dg1"]["DataPoints"][point][var]))
+							actual_fuel.append(fuel)
 							input_fuel_x[fuel] = fuel_conc
 							continue
 				elif datagroupDict["dg1"]["Variables"][var]["specification"]["preferredKey"] == "O2":
@@ -569,7 +647,33 @@ for file_ in files:
 					for point in datagroupDict["dg1"]["DataPoints"]:
 						temp_list.append(float(datagroupDict["dg1"]["DataPoints"][point][var]))
 					bathgasDict[component] = temp_list
+		
 		#print(input_fuel_x)
+		st_fuel_x = 0
+		st_ox_x = 0
+		
+		for fuel in actual_fuel:
+			st_fuel_x+=1.0
+			st_ox_x+=stoichiometry[fuel]
+		F_A_st = st_fuel_x/st_ox_x
+		#print(F_A_st)
+		phi = []
+		for i in range(ndpt):
+			actual_fuel_x = 0
+			actual_ox_x = 0
+			for fuel in actual_fuel:
+				for key in input_fuel_x:
+					if fuel == key:
+						actual_fuel_x+=input_fuel_x[key][i]
+			actual_ox_x = ox_x[i]			
+			F_A_ct = actual_fuel_x/actual_ox_x
+			#print(actual_fuel_x,actual_ox_x)
+			#print(F_A_ct)
+			phi.append(round((F_A_ct/F_A_st),2))
+		#raise AssertionError("STop")
+		
+		
+		phi = np.asarray(phi)
 		List_fuel = None
 		List_fuel_x = []
 		bath_gas = {}
@@ -601,7 +705,11 @@ for file_ in files:
 			
 		#print(ox_x)
 	#Extracting temperature
-
+	#print(input_fuel_x)
+	#print(ox_x)
+	
+	#print(phi)
+	#raise AssertionError("Stop")
 	for ind,i in enumerate(List_fuel):
 		for j in i:
 			if j not in List_fuel_x[ind]:
@@ -638,6 +746,7 @@ for file_ in files:
 		        dpdt_unit = datagroupDict["dg1"]["Variables"][var]["units"] 
 		        for point in datagroupDict["dg1"]["DataPoints"]:
 		            dpdt.append(float(datagroupDict["dg1"]["DataPoints"][point][var]))
+		#print(dpdt)
 		if len(dpdt) == 0:
 			add += ""
 		else:
@@ -645,7 +754,7 @@ for file_ in files:
 			add += f" BoundaryLayer: True\n dpdt:\n"
 			for i,T in enumerate(temperature):
 				add+=f"  {float(T)} : {dpdt[i]}\n"
-	
+	#print(dpdt)
 	add += "\n"
 
 	#Extracting experimental targets
@@ -664,9 +773,9 @@ for file_ in files:
 		reactorType = ""
 		ignitionMode = "reflected"
 		flameType = ""
-	elif Target_kind == "stirred reactor" or Target_kind == "flow reactor":
+	elif Target_kind == "stirred reactor" or Target_kind == "flow reactor" or Target_kind == "jet stirred reactor measurement":
 		exp = "composition"
-		exp_tag = "Flw"
+		exp_tag = "JSR"
 		Simulation_type = "Isobar Homo Reactor"
 		MeasurnmentType = "CONC"
 		reactorType = "FlowReactor"
@@ -696,12 +805,13 @@ for file_ in files:
 		volume_profile = datagroupDict["dg2"]
 		print(volume_profile)
 	else:
+		print(Target_kind)
 		raise AssertionError("New exp found !!! {}".format(file_))
 	#print(exp)
 	specific_cond = {}
 	exp_composition = {}
 	for var in datagroupDict['dg1']['Variables']:
-		if exp_tag == "Flw":
+		if exp_tag == "JSR":
 			if "residence time" in datagroupDict['dg1']['Variables'][var]['name']:
 				specific_cond["residence time"] = []
 				x_unit = datagroupDict['dg1']['Variables'][var]['units']
@@ -713,7 +823,7 @@ for file_ in files:
 				elif x_unit == "us":
 					fact = 0.000001
 				else:
-					raise AssertionError("New units found for time in FLW {}".format(file_))
+					raise AssertionError("New units found for time in JSR {}".format(file_))
 					
 				for point in datagroupDict["dg1"]["DataPoints"]:
 					specific_cond["residence time"].append(fact*float(datagroupDict["dg1"]["DataPoints"][point][var]))
@@ -729,6 +839,7 @@ for file_ in files:
 				exp_ = exp+"_"+species
 				if exp_ in unsrt:
 					exp_sigma = float(unsrt[exp_]["value"])
+					#print(exp_sigma)
 					exp_sigma_type = unsrt[exp_]["type"]
 					exp_std_dvnt_unit = unsrt[exp_]["units"]
 				
@@ -759,7 +870,7 @@ for file_ in files:
 				elif x_unit == "us":
 					fact = 0.000001
 				else:
-					raise AssertionError("New units found for time in FLW {}".format(file_))
+					raise AssertionError("New units found for time in JSR {}".format(file_))
 				for point in datagroupDict["dg1"]["DataPoints"]:
 					specific_cond["time"].append(fact*float(datagroupDict["dg1"]["DataPoints"][point][var]))
 			
@@ -800,12 +911,13 @@ for file_ in files:
 				exp_std_dnvt = exp_sigma
 				
 			elif exp_sigma_type == "absolute":
-				if len(exp_sigma) == ndpt:
+				#print(type(exp_sigma))
+				if isinstance(exp_sigma, (list, tuple, np.ndarray)):
 					exp_std_dnvt = exp_sigma
 				else:
 					exp_std_dnvt = np.repeat(exp_sigma,ndpt)
 
-	if exp_tag == "Flw":
+	if exp_tag == "JSR":
 		if "time" not in specific_cond:
 			specific_cond["time"] = np.repeat("",ndpt)
 		if "temperature" not in specific_cond:
@@ -832,17 +944,17 @@ for file_ in files:
 	string = ""
 	#print(List_fuel_x,bathgas)
 	#dataUnits = [fuel_unit,t_unit,p_unit,exp_unit,flow_unit]
-	if exp_tag == "Flw":
+	if exp_tag == "JSR":
 		for each in exp_composition:
-			
+			add +=f"{file_.split('.')[0]}_{each}:\n solver: cantera\n species: {each}\n mol_wt: {molwt[each]}\n residenceTime: {res_time}# in sec\n maxSimulationTime: {res_time*5}# in sec\n volume: {volume}#in cm3\n\n"
 			for i in range(ndpt):
 				
-				string+="{}\t|{}_{}\t| target -- {}\t| simulation -- {}\t| measurnment_type -- {}\t|Ignition_mode -- {}\t| Flame_type -- {}\t| Reactor_type -- {}\t| Fuel_type -- {}\t| Fuel -- x->{} = {}\t| Oxidizer -- x->{} = {}\t| Bath_gas -- x->{}={}\t|T -- {}\t| P -- {}\t| flow_rate -- {}\t|Phi -- {}\t| volume -- {}\t|volume_unit -- {}\t| residence_time -- {}\t|observed_quantity -- {}\t| specific_details -- {}\t| observation_type -- {}\t|observed -- {}\t| obs_unit --{} \t| deviation -- {}\t|data_weight -- {}\t|units -- {}\n".format(count+int(i+1),file_.split(".")[0],each,exp_tag,Simulation_type,MeasurnmentType,ignitionMode,flameType,reactorType,fuel_type,List_fuel[i],List_fuel_x[i],ox[i],ox_x[i],bathgas[i],bathgas_conc[i],temperature[i],pressure[i],flowRate[i],"N/A",volume,volume_unit,res_time,each,{"time":specific_cond["time"][i],"residence time":specific_cond["residence time"][i],"temperature":specific_cond["temperature"][i]},"profile",exp_composition[each]["observation"][i],exp_composition[each]["std_unit"],exp_composition[each]["std"][i],ndpt,Input_units)
+				string+="{}\t|{}_{}\t| target -- {}\t| simulation -- {}\t| measurnment_type -- {}\t|Ignition_mode -- {}\t| Flame_type -- {}\t| Reactor_type -- {}\t| Fuel_type -- {}\t| Fuel -- x->{} = {}\t| Oxidizer -- x->{} = {}\t| Bath_gas -- x->{}={}\t|T -- {}\t| P -- {}\t| flow_rate -- {}\t|Phi -- {}\t| volume -- {}\t|volume_unit -- {}\t| residence_time -- {}\t|observed_quantity -- {}\t| specific_details -- {}\t| observation_type -- {}\t|observed -- {}\t| obs_unit --{} \t| deviation -- {}\t|data_weight -- {}\t|units -- {}\n".format(count+int(i+1),file_.split(".")[0],each,exp_tag,Simulation_type,MeasurnmentType,ignitionMode,flameType,reactorType,fuel_type,List_fuel[i],List_fuel_x[i],ox[i],ox_x[i],bathgas[i],bathgas_conc[i],temperature[i],pressure[i],flowRate[i],phi[i],volume,volume_unit,res_time,each,{"time":specific_cond["time"][i],"residence time":specific_cond["residence time"][i],"temperature":specific_cond["temperature"][i]},"profile",exp_composition[each]["observation"][i],exp_composition[each]["std_unit"],exp_composition[each]["std"][i],ndpt,Input_units)
 	
 	else:
 		for i in range(ndpt):
 			
-			string+="{}\t|{}\t| target -- {}\t| simulation -- {}\t| measurnment_type -- {}\t|Ignition_mode -- {}\t| Flame_type -- {}\t| Reactor_type -- {}\t| Fuel_type -- {}\t| Fuel -- x->{} = {}\t| Oxidizer -- x->{} = {}\t| Bath_gas -- x->{}={}\t|T -- {}\t| P -- {}\t| flow_rate -- {}\t|Phi -- {}\t| observed -- {}\t| obs_unit --{} \t| deviation -- {}\t|data_weight -- {}\t|units -- {}\n".format(count+int(i+1),file_.split(".")[0],exp_tag,Simulation_type,MeasurnmentType,ignitionMode,flameType,reactorType,fuel_type,List_fuel[i],List_fuel_x[i],ox[i],ox_x[i],bathgas[i],bathgas_conc[i],temperature[i],pressure[i],flowRate[i],"N/A",exp_target[i],exp_std_dvnt_unit,exp_std_dnvt[i],ndpt,Input_units)
+			string+="{}\t|{}\t| target -- {}\t| simulation -- {}\t| measurnment_type -- {}\t|Ignition_mode -- {}\t| Flame_type -- {}\t| Reactor_type -- {}\t| Fuel_type -- {}\t| Fuel -- x->{} = {}\t| Oxidizer -- x->{} = {}\t| Bath_gas -- x->{}={}\t|T -- {}\t| P -- {}\t| flow_rate -- {}\t|Phi -- {}\t| observed -- {}\t| obs_unit --{} \t| deviation -- {}\t|data_weight -- {}\t|units -- {}\n".format(count+int(i+1),file_.split(".")[0],exp_tag,Simulation_type,MeasurnmentType,ignitionMode,flameType,reactorType,fuel_type,List_fuel[i],List_fuel_x[i],ox[i],ox_x[i],bathgas[i],bathgas_conc[i],temperature[i],pressure[i],flowRate[i],phi[i],exp_target[i],exp_std_dvnt_unit,exp_std_dnvt[i],ndpt,Input_units)
 
 	count = count+ndpt
 	#print(string)

@@ -1,0 +1,9 @@
+Input:
+	- List of reaction (index)
+	- Mechanism file
+	- Temperature dependent sensitivity files
+	
+Function:
+	- Automatically finds the type of reactions
+	- Creates unsrt xml files required for input
+	- Created temperature dependent sensitivity plot for rections selected

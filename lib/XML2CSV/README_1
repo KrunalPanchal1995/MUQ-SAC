@@ -17,3 +17,10 @@
 	- torr
 #6] Issues with the dataset "x10003037"
 	- Not solved as of yet. Either there is a problem in paper or reference. VTIM method is used with a doubtful volume profile
+#7] Issue with the residence time and volume not been read
+	- there was typo in the code which is now removed
+#8] Add file for JSR simulations is now created succesfully
+
+#9] File names were not captured properly
+	- proper syntax is now implemented
+

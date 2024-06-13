@@ -29,6 +29,7 @@ class combustion_target():
 		self.molecularWt["He"] = 0
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
+		
 		self.molecularWt["NC7H16"] = 100.21
 		self.molecularWt["MB-C5H10O2"] = 86
 		self.stoichiometry = {}
@@ -46,6 +47,7 @@ class combustion_target():
 		self.stoichiometry["Ar"] = 0.0
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
+		self.stoichiometry["CH4"] = 2.0
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["MB-C5H10O2"] = 6.5
 		self.data = data
@@ -71,6 +73,7 @@ class combustion_target():
 			self.add["solver"] = "FlameMaster"
 		
 		self.uniqueID = str(self.dataSet_id)+"_"+str(parameters[0].strip("\t"))
+		
 		#print(self.uniqueID)
 		#By default  
 #		default = {}
@@ -83,6 +86,8 @@ class combustion_target():
 #		default["cantera"] = cantera_def
 #		default["FlameMaster"] = FlameMan_def
 		self.species_dict = {}
+		self.fuel_dict = {}
+		self.BG_dict = {}
 		self.ignition_type = "reflected"
 		self.flame = "laminar"
 		self.reactor = "JSR" 
@@ -154,18 +159,19 @@ class combustion_target():
 					self.fuel_is = ""
 					for i in self.fuel_id:
 						self.species_dict[str(self.fuel_id[i])] = float(self.fuel_x[i])
+						self.fuel_dict[str(self.fuel_id[i])] = float(self.fuel_x[i])
 						self.fuel_is+="fuel is "+str(self.fuel_id[i])+"\n"
 				else:
 					self.fuel_id = content.split("->")[1].split("=")[0]
 					self.fuel_x = float(content.split("->")[1].split("=")[1])
 					self.species_dict[str(self.fuel_id)] = float(self.fuel_x)
-					
+					self.fuel_dict[str(self.fuel_id)] = float(self.fuel_x)
 			
 			if "Oxidizer" in key:
 				self.oxidizer = content.split("->")[1].split("=")[0].strip(" ")
 				self.oxidizer_x = float(content.split("->")[1].split("=")[1])# to convert to percentage
 				self.species_dict[str(self.oxidizer)] = float(self.oxidizer_x)
-				actual_oxidizer = self.species_dict[self.oxidizer]*self.molecularWt[self.oxidizer]
+				actual_oxidizer = float(self.oxidizer_x)
 			
 			
 			if "Bath_gas" in key:
@@ -175,6 +181,7 @@ class combustion_target():
 	
 				for i in self.bath_gas:
 					self.species_dict[str(self.bath_gas[i])] = float(self.bath_gas_x[i])
+					self.BG_dict[str(self.bath_gas[i])] = float(self.bath_gas_x[i])
 						
 			if "BG1" in key:
 				if content.split("=")[1].strip() != '':
@@ -246,6 +253,7 @@ class combustion_target():
 				self.observed = float(content);
 				
 			if "deviation" in key:
+				#print(self.uniqueID,content)
 				self.std_dvtn = float(content);
 			
 			if "dataSet" in key:
@@ -441,23 +449,26 @@ class combustion_target():
 		actual_fuel = []
 		st_fuel = []
 		st_ox = []
-		for i in self.species_dict:
-			actual_fuel.append(self.molecularWt[i]*self.species_dict[i])
-			if self.species_dict[i] != 0:
-				st_fuel.append(self.molecularWt[i])
-				st_ox.append(self.stoichiometry[i]*self.molecularWt['O2'])
-		#print(actual_fuel)
-		#print(actual_oxidizer)
-		Fast = 0
-		Fact = 0
+		for i in self.fuel_dict:
+			actual_fuel.append(self.fuel_dict[i])
+			st_fuel.append(1.0)
+			st_ox.append(self.stoichiometry[i])
+		
+		totalfuel_st = 0
+		totalfuel = 0
+		total_ox = 0
 		for i,ele in enumerate(st_fuel):
 			if st_ox[i] !=0:
-				Fast += st_fuel[i]/st_ox[i]	
-				Fact += actual_fuel[i]/actual_oxidizer	
-		#print(Fast)
-		#print(Fact)
-		
+				totalfuel_st += st_fuel[i]
+				total_ox += st_ox[i]	
+				totalfuel += actual_fuel[i]
+		Fact = totalfuel/actual_oxidizer
+		Fast = totalfuel_st/total_ox
+			
 		self.phi = float(Fact/Fast)
+		
+		#print(self.phi)
+		#raise AssertionError("Stop")
 		#if "Fls" in self.target:
 			#print("Target {} has phi of {}\n".format(self.uniqueID,self.phi))
 		#self.equivalence_ratio = (F/A)act/(F/A)st

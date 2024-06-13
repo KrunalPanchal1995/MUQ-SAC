@@ -1,0 +1,90 @@
+x00001003_x:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001003_x_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001003_x_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001003_x_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001001_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001002_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+

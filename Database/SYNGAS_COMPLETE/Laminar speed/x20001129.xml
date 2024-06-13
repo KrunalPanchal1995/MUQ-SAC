@@ -1,0 +1,60 @@
+<experiment>
+    <fileAuthor>Chemical Kinetics Laboratory, Institute of Chemistry, ELTE, Budapest, Hungary</fileAuthor>
+    <fileDOI>10.24388/x20001129</fileDOI>
+    <fileVersion>
+        <major>2</major>
+        <minor>0</minor>
+    </fileVersion>
+    <ReSpecThVersion>
+        <major>2</major>
+        <minor>3</minor>
+    </ReSpecThVersion>
+    <firstPublicationDate>2014-06-24</firstPublicationDate>
+    <lastModificationDate>2020-11-18</lastModificationDate>
+    <bibliographyLink>
+        <description>D. Singh; T. Nishiie; S. Tanvir; L. Qiao, Fuel 2012, 94, (0), 448-456.</description>
+        <referenceDOI>10.1016/j.fuel.2011.11.058</referenceDOI>
+        <location>Main Article</location>
+        <figure>Fig. 2, 75% H2, 25% CO.</figure>
+        <details>
+            <author>Singh, Deepti and Nishiie, Takayuki and Tanvir, Saad and Qiao, Li</author>
+            <journal>Fuel</journal>
+            <pages>448--456</pages>
+            <title>An experimental and kinetic study of syngas/air combustion at elevated temperatures and the effect of water addition</title>
+            <volume>94</volume>
+            <year>2012</year>
+        </details>
+    </bibliographyLink>
+    <experimentType>laminar burning velocity measurement</experimentType>
+    <apparatus>
+        <kind>flame</kind>
+        <mode>premixed</mode>
+        <mode>laminar</mode>
+    </apparatus>
+    <commonProperties>
+        <property name="temperature"                   label="T"  sourcetype="reported"   units="K"    ><value>298</value></property>
+        <property name="pressure"                      label="P"  sourcetype="reported"   units="atm"  ><value>1</value></property>
+        <property name="evaluated standard deviation"  sourcetype="estimated"  units="cm/s"  reference="laminar burning velocity"  kind="absolute"  method="statistical scatter" ><value>13.11</value></property>
+    </commonProperties>
+    <dataGroup id="dg1">
+        <property name="laminar burning velocity"  id="x1"   label="Sl"    sourcetype="digitized"   units="cm/s"          />
+        <property name="composition"               id="x2"   label="[H2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="H2"  CAS="1333-74-0"  InChI="1S/H2/h1H"   SMILES="[HH]"       chemName="hydrogen"        />
+        </property>
+        <property name="composition"               id="x3"   label="[CO]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="CO"  CAS="630-08-0"   InChI="1S/CO/c1-2"  SMILES="[C-]#[O+]"  chemName="carbon monoxide" />
+        </property>
+        <property name="composition"               id="x4"   label="[O2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="O2"  CAS="7782-44-7"  InChI="1S/O2/c1-2"  SMILES="O=O"        chemName="oxygen"          />
+        </property>
+        <property name="composition"               id="x5"   label="[N2]"  sourcetype="calculated"  units="mole fraction" >
+            <speciesLink preferredKey="N2"  CAS="7727-37-9"  InChI="1S/N2/c1-2"  SMILES="N#N"        chemName="nitrogen"        />
+        </property>
+
+        <dataPoint><x1>7.477000e+001</x1><x2>1.510067e-001</x2><x3>5.033557e-002</x3><x4>1.677852e-001</x4><x5>6.308725e-001</x5></dataPoint>
+        <dataPoint><x1>1.125400e+002</x1><x2>1.886792e-001</x2><x3>6.289308e-002</x3><x4>1.572327e-001</x4><x5>5.911950e-001</x5></dataPoint>
+        <dataPoint><x1>1.616300e+002</x1><x2>2.218935e-001</x2><x3>7.396450e-002</x3><x4>1.479290e-001</x4><x5>5.562130e-001</x5></dataPoint>
+        <dataPoint><x1>2.348900e+002</x1><x2>3.424658e-001</x2><x3>1.141553e-001</x3><x4>1.141553e-001</x4><x5>4.292237e-001</x5></dataPoint>
+        <dataPoint><x1>1.827800e+002</x1><x2>4.182156e-001</x2><x3>1.394052e-001</x3><x4>9.293680e-002</x4><x5>3.494424e-001</x5></dataPoint>
+    </dataGroup>
+</experiment>

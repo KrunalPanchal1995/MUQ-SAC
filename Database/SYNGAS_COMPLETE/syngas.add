@@ -1,0 +1,2278 @@
+x10001029:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001030:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001050:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 7999811482000000.0;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001082:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1051.0 : 4.22
+  1068.0 : 4.22
+  1104.0 : 4.22
+  1108.0 : 4.22
+  1127.0 : 4.22
+  1151.0 : 4.22
+  1186.0 : 4.22
+  1189.0 : 4.22
+  1239.0 : 4.22
+
+x10001026:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001036:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001066:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001043:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001080:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  916.0 : 4.22
+  920.0 : 4.22
+  959.0 : 4.22
+  968.0 : 4.22
+  1005.0 : 4.22
+  1037.0 : 4.22
+  1064.0 : 4.22
+  1100.0 : 4.22
+  1118.0 : 4.22
+  1200.0 : 4.22
+
+x10001028:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001078:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1012.0 : 4.22
+  1028.0 : 4.22
+  1048.0 : 4.22
+  1055.0 : 4.22
+  1087.0 : 4.22
+  1100.0 : 4.22
+  1114.0 : 4.22
+  1154.0 : 4.22
+  1167.0 : 4.22
+  1203.0 : 4.22
+
+x10001081:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1016.0 : 4.22
+  1027.0 : 4.22
+  1036.0 : 4.22
+  1056.0 : 4.22
+  1082.0 : 4.22
+  1102.0 : 4.22
+  1121.0 : 4.22
+  1165.0 : 4.22
+  1206.0 : 4.22
+  1258.0 : 4.22
+
+x10001024_x:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001073:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001053:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001085:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1088.0 : 4.22
+  1117.0 : 4.22
+  1139.0 : 4.22
+  1184.0 : 4.22
+  1208.0 : 4.22
+  1222.0 : 4.22
+  1244.0 : 4.22
+
+x10001039:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001021_x:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001064:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001059:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001027_x:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001023:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001056:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001022:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001076:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1024.0 : 4.22
+  1035.0 : 4.22
+  1039.0 : 4.22
+  1097.0 : 4.22
+  1127.0 : 4.22
+  1141.0 : 4.22
+  1153.0 : 4.22
+  1156.0 : 4.22
+  1183.0 : 4.22
+
+x10001060:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001061:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001057:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001079:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1049.0 : 4.22
+  1065.0 : 4.22
+  1102.0 : 4.22
+  1134.0 : 4.22
+  1190.0 : 4.22
+  1234.0 : 4.22
+
+x10001084:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1023.0 : 4.22
+  1049.0 : 4.22
+  1078.0 : 4.22
+  1096.0 : 4.22
+  1128.0 : 4.22
+  1158.0 : 4.22
+  1162.0 : 4.22
+  1172.0 : 4.22
+  1220.0 : 4.22
+  1257.0 : 4.22
+  1308.0 : 4.22
+
+x10001069:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001037:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001055:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001049:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 2.3999434446e+16;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001058:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001042:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001063:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001077:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  896.0 : 4.22
+  903.0 : 4.22
+  908.0 : 4.22
+  923.0 : 4.22
+  954.0 : 4.22
+  1011.0 : 4.22
+  1026.0 : 4.22
+  1061.0 : 4.22
+  1101.0 : 4.22
+  1151.0 : 4.22
+  1201.0 : 4.22
+
+x10001083:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  925.0 : 4.22
+  928.0 : 4.22
+  956.0 : 4.22
+  958.0 : 4.22
+  961.0 : 4.22
+  997.0 : 4.22
+  1041.0 : 4.22
+  1042.0 : 4.22
+  1089.0 : 4.22
+  1117.0 : 4.22
+  1141.0 : 4.22
+  1150.0 : 4.22
+
+x10001068:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001038:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001044:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001071:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001075:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1005.0 : 4.22
+  1021.0 : 4.22
+  1046.0 : 4.22
+  1062.0 : 4.22
+  1089.0 : 4.22
+  1102.0 : 4.22
+  1117.0 : 4.22
+  1165.0 : 4.22
+  1174.0 : 4.22
+  1179.0 : 4.22
+  1264.0 : 4.22
+
+x10001001:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001051:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 2.9999291552e+16;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001032:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001040:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001072:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001033:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001041:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001052:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 9999765858000000.0;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001074:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  902.0 : 4.22
+  911.0 : 4.22
+  933.0 : 4.22
+  945.0 : 4.22
+  964.0 : 4.22
+  979.0 : 4.22
+  985.0 : 4.22
+  1025.0 : 4.22
+  1035.0 : 4.22
+  1050.0 : 4.22
+  1108.0 : 4.22
+  1109.0 : 4.22
+  1141.0 : 4.22
+  1161.0 : 4.22
+
+x10001065:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001025:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001062:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001070:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001035:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001067:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001034:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001031:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001054:
+ solver: cantera
+ type: phi
+ Fuel: {'a': 'H2', 'b': 'CO'}
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x00001003_x:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001003_x_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001003_x_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001003_x_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001001_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001001_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002:
+ solver: cantera
+ residenceTime: 0.12
+ maxSimulationTime: 0.6
+ volume: 30.0
+
+x00001002_H2:
+ solver: cantera
+ species: H2
+ mol_wt: 2
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x00001002_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.12# in sec
+ maxSimulationTime: 0.6# in sec
+ volume: 30.0#in cm3
+
+x20001013:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001119:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001144:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001171:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001150:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001170:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001087_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001115:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001057:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001118:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001201:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001049:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001173:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001081:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001014:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001034:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001106:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001187:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001169:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001162:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001004:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001008:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001036:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001091:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001215:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001207:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001151:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001042:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001054:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001023:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001219:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001174:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001188:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001153:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001007:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001052:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001165:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001002:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001032:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001176:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001043:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001079:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001101:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001103:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001132:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001128:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001159_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001200:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001155:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001099:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001145:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001089:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001006:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001072:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001109:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001130:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001180:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001221:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001026:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001060:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001131:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001044:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001105:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001157:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001051:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001190:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001136:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001009:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001084:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001161:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001039:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001179:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001183:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001029:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001127:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001112:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001040:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001046:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001100:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001206:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001204:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001085:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001160_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001003:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001211:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001138:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001061:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001080:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001066:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001088:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001063:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001108:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001186:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001075:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001167:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001185:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001139:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001016:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001117:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001069:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001164:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001129:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001005:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001104:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001027:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001212:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001097:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001082:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001193:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001073_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001175:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001135:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001050:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001102:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001030:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001094:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001093:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001041:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001140:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001208:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001147:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001122:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001134:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001025:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001078:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001028:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001120:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001018:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001126:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001111:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001071:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001031:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001092:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001177:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001133:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001065:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001045:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001058:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001168:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001195:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001152:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001210:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001114:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001124:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001189:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001083:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001154:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001222:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001192:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001035:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001038:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001209:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001015:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001196:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001213:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001107:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001070:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001059:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001076:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001113:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001067:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001095:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001172:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001062:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001205_x:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001125:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001216:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001148:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001184:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001024:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001191:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001199:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001203:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001001:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001110:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001086_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001116:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001077:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001074:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001194:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001158:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001156:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001182:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001123:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001146:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001055:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001121:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001090_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001096:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001197:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001033:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001181:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001166:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001142:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001068:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001137:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001053:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001010:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001037:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001098:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001178:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001056:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001220:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001064:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001163_x:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001017:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001022:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001202:
+ solver: cantera
+ type: pressure
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001214:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001149:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001143:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001218:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001198:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x20001217:
+ solver: cantera
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+

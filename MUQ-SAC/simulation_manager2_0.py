@@ -52,7 +52,18 @@ def run_map_2(params,total):
 		yamlfile.close()
 	return (params[0],total)
 
-
+def run_map_opt(params,total):
+	location = str(params[2])
+	sim1 = open(location+"/cantera_.py",'w').write(params[0])
+	sim2= open(location+"/FlameMaster.input",'w').write(params[0])
+	extract = open(location+"/extract.py",'w').write(params[3])
+	runScript = open(location+"/run","w").write(params[1])
+	subprocess.call(["chmod","+x",location+"/run"])
+	del location#,yaml_string
+	del sim1, sim2,extract,runScript
+	#del params[1]
+	return (params[2],total)
+	
 def run_map(params,total):
 	location = str(params[2])
 	
@@ -210,7 +221,16 @@ class Worker():
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
+	
+	def do_job_create_opt(self,params):
+		for param in params:
+			self.pool.apply_async(run_map_opt, 
+			     args=(param,len(params)),callback=self.callback_run,error_callback=self.custom_error_callback)
 		
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()	
+	
 	def do_job_map_create(self,params):
 		for param in params:
 			self.pool.apply_async(run_map, 
@@ -353,7 +373,7 @@ class SM(object):
 		#memo = {}
 		#print(len(self.design_matrix))
 		for i in tqdm(range(len(self.design_matrix)),desc="Zipping all files"):
-			if self.pert_mech_file[i] == "":
+			if self.pert_mech_file == "":
 				self.beta_ = self.design_matrix[i]
 				mani = manipulator(self.prior_mech,self.unsrt,self.beta_)
 			else:
@@ -361,7 +381,7 @@ class SM(object):
 			#print(self.beta_)
 			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:
 				shutil.rmtree(str(i))
-				if self.pert_mech_file[i] == "":
+				if self.pert_mech_file == "":
 					yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
 					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
 				else:
@@ -372,7 +392,7 @@ class SM(object):
 				run_list[str(i)] = start+"/"+str(i)
 				self.dir_list.append(start+"/"+str(i)+"/run")
 			elif os.path.isdir(os.getcwd()+"/"+str(i)) != True:
-				if self.pert_mech_file[i] == "":
+				if self.pert_mech_file == "":
 					yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
 					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
 				else:
@@ -385,7 +405,7 @@ class SM(object):
 				
 			else:
 				
-				if self.pert_mech_file[i] == "":
+				if self.pert_mech_file == "":
 					yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
 					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
 				else:
@@ -655,7 +675,7 @@ class SM(object):
 				tic = time.time()
 				
 				V = Worker(allowed_count)
-				V.do_job_map_create(params)
+				V.do_job_create_opt(params)
 				del V
 				
 				

@@ -1,0 +1,762 @@
+x10001029:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001030:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001050:
+ solver: cantera
+ type: pressure
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 7999811482000000.0;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001082:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1051.0 : 4.22
+  1068.0 : 4.22
+  1104.0 : 4.22
+  1108.0 : 4.22
+  1127.0 : 4.22
+  1151.0 : 4.22
+  1186.0 : 4.22
+  1189.0 : 4.22
+  1239.0 : 4.22
+
+x10001026:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001036:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001066:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001043:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001080:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  916.0 : 4.22
+  920.0 : 4.22
+  959.0 : 4.22
+  968.0 : 4.22
+  968.0 : 4.22
+  1005.0 : 4.22
+  1037.0 : 4.22
+  1064.0 : 4.22
+  1100.0 : 4.22
+  1118.0 : 4.22
+  1200.0 : 4.22
+
+x10001028:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001078:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1012.0 : 4.22
+  1012.0 : 4.22
+  1028.0 : 4.22
+  1048.0 : 4.22
+  1055.0 : 4.22
+  1087.0 : 4.22
+  1100.0 : 4.22
+  1114.0 : 4.22
+  1154.0 : 4.22
+  1167.0 : 4.22
+  1203.0 : 4.22
+
+x10001081:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1016.0 : 4.22
+  1027.0 : 4.22
+  1036.0 : 4.22
+  1056.0 : 4.22
+  1082.0 : 4.22
+  1102.0 : 4.22
+  1121.0 : 4.22
+  1165.0 : 4.22
+  1206.0 : 4.22
+  1258.0 : 4.22
+
+x10001024_x:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001073:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001053:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001085:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1088.0 : 4.22
+  1117.0 : 4.22
+  1139.0 : 4.22
+  1184.0 : 4.22
+  1208.0 : 4.22
+  1222.0 : 4.22
+  1244.0 : 4.22
+
+x10001039:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001021_x:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001064:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001027_x:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001023:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001056:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001022:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001076:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1024.0 : 4.22
+  1035.0 : 4.22
+  1039.0 : 4.22
+  1097.0 : 4.22
+  1127.0 : 4.22
+  1141.0 : 4.22
+  1153.0 : 4.22
+  1156.0 : 4.22
+  1183.0 : 4.22
+
+x10001061:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001057:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001079:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1049.0 : 4.22
+  1065.0 : 4.22
+  1102.0 : 4.22
+  1134.0 : 4.22
+  1190.0 : 4.22
+  1234.0 : 4.22
+
+x10001084:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1023.0 : 4.22
+  1049.0 : 4.22
+  1078.0 : 4.22
+  1096.0 : 4.22
+  1128.0 : 4.22
+  1158.0 : 4.22
+  1162.0 : 4.22
+  1172.0 : 4.22
+  1220.0 : 4.22
+  1257.0 : 4.22
+  1308.0 : 4.22
+
+x10001037:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001055:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001049:
+ solver: cantera
+ type: pressure
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 2.3999434446e+16;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001042:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001063:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001077:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  896.0 : 4.22
+  903.0 : 4.22
+  908.0 : 4.22
+  923.0 : 4.22
+  954.0 : 4.22
+  1011.0 : 4.22
+  1026.0 : 4.22
+  1061.0 : 4.22
+  1101.0 : 4.22
+  1151.0 : 4.22
+  1201.0 : 4.22
+
+x10001083:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  925.0 : 4.22
+  928.0 : 4.22
+  956.0 : 4.22
+  958.0 : 4.22
+  961.0 : 4.22
+  997.0 : 4.22
+  1041.0 : 4.22
+  1042.0 : 4.22
+  1089.0 : 4.22
+  1117.0 : 4.22
+  1141.0 : 4.22
+  1150.0 : 4.22
+
+x10001038:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001044:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001071:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001075:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  1005.0 : 4.22
+  1021.0 : 4.22
+  1046.0 : 4.22
+  1062.0 : 4.22
+  1089.0 : 4.22
+  1102.0 : 4.22
+  1117.0 : 4.22
+  1165.0 : 4.22
+  1174.0 : 4.22
+  1179.0 : 4.22
+  1264.0 : 4.22
+
+x10001001:
+ solver: cantera
+ type: pressure
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001051:
+ solver: cantera
+ type: pressure
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 2.9999291552e+16;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001032:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001040:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001072:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001033:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001041:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001052:
+ solver: cantera
+ type: pressure
+ ign_delay_def: CO
+ ign_cond: specific
+ specific_cond: 9999765858000000.0;molecule/cm3
+ mol_wt: 28
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001074:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+ BoundaryLayer: True
+ dpdt:
+  902.0 : 4.22
+  911.0 : 4.22
+  933.0 : 4.22
+  945.0 : 4.22
+  964.0 : 4.22
+  979.0 : 4.22
+  985.0 : 4.22
+  1025.0 : 4.22
+  1035.0 : 4.22
+  1050.0 : 4.22
+  1108.0 : 4.22
+  1109.0 : 4.22
+  1141.0 : 4.22
+  1161.0 : 4.22
+
+x10001065:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001025:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001062:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001035:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001067:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001034:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001031:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+
+x10001054:
+ solver: cantera
+ type: pressure
+ ign_delay_def: OH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 17
+ residenceTime: 
+ maxSimulationTime: 
+ volume: 
+

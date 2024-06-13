@@ -296,7 +296,17 @@ for case in case_dir:
 		g = open('../Data/Simulations/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim)
 		os.chdir(nominalDir)
 #for d_set in dataset:
-
+def listToString(s):
+ 
+    # initialize an empty string
+    str1 = ""
+ 
+    # traverse in the string
+    for ele in s:
+        str1 += f"{ele},"
+ 
+    # return string
+    return str1
 
 dataset = []
 for t in target_list:
@@ -304,11 +314,27 @@ for t in target_list:
 dataset = set(dataset)
 
 for d_set in dataset:
-	string = "#DS_ID,T,Obs(us),Nominal\n"
+	string_1 = "DS_ID,T,Obs(us),Nominal\n"
+	string_2 = "DS_ID,T,P,Phi,Fuel,Ox,BathGas,Obs(us),Nominal\n"
+	flag = None
 	for case,target in enumerate(target_list):
-		if target.dataSet_id == d_set:	
-			string += f"{target.uniqueID},{target.temperature},{target.observed},{temp_sim_opt[str(target.index)][0]}\n"
-	g = open("../"+d_set+".csv","+w").write(string)
+		if target.target == "Tig" or target.target == "JSR":
+			print(target.target)
+			folder = target.target
+			if target.dataSet_id == d_set:
+				flag =True
+				string_1 += f"{target.uniqueID},{target.temperature},{target.observed},{temp_sim_opt[str(target.index)][0]}\n"
+		elif target.target == "Fls":
+			if target.dataSet_id == d_set:
+				#print(target.fuel_dict,target.BG_dict)
+				#raise AssertionError("Stop!")
+				flag =False	
+				string_2 += f"{target.uniqueID},{target.temperature},{target.pressure},{target.phi},{target.fuel_dict},{target.oxidizer_x},{target.BG_dict},{target.observed},{temp_sim_opt[str(target.index)][0]}\n"
+		#else
+	if flag == True:
+		g = open(f"../Plot/Dataset/{folder}/"+d_set+".csv","+w").write(string_1)
+	else:
+		g = open("../Plot/Dataset/Fls/"+d_set+".csv","+w").write(string_2)
 #raise AssertionError("Stop!!")
 
 
