@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/krithika/Desktop/MUQ-SAC/lib/YAML_WRITER/yamlwriter.cpp
+pybind11/pybind11.h
+-
+pybind11/stl.h
+-
+yaml-cpp/yaml.h
+-
+fstream
+-
+string
+-
+

@@ -1120,7 +1120,7 @@ class reaction(UncertaintyExtractor):
 		if self.type == "pressure_dependent" and self.pressure_limit.strip() != "":
 			if self.pressure_limit == "High":
 				self.rxn_Details = DATA["reactions"][self.index]
-				print()
+				#print()
 				self.rxn_dict = self.rxn_Details["high-P-rate-constant"]
 				self.nominal = [np.log(self.rxn_dict["A"]),self.rxn_dict["b"],self.rxn_dict["Ea"]/1.987]
 			else:
@@ -1564,7 +1564,7 @@ class PLOG(UncertaintyExtractor):
 		
 		self.tag = Element.tag
 		self.rxn = str(Element.attrib["rxn"])
-		#print(self.rxn)
+		print(self.rxn)
 		self.rIndex = str(Element.attrib["no"])
 		
 		if self.rxn in RXN_LIST:

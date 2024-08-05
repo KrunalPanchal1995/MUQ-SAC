@@ -16,7 +16,8 @@ import json
 import multiprocessing
 import concurrent.futures
 import asyncio
-
+import pickle
+import partial_PRS_system as P_PRS
 #import yaml
 #import ruamel.yaml as yaml
 try:
@@ -25,6 +26,10 @@ except ImportError:
     from ruamel import yaml
 import pandas as pd
 
+sys.path.append('/parallel_yaml_writer.so')
+import parallel_yaml_writer
+#print(dir(parallel_yaml_writer))
+#raise AssertionError("Stop!")
 ####################################
 ##  Importing the sampling file   ##
 ##                                ##
@@ -64,7 +69,7 @@ pre_file = "Initial_pre_file"
 count = "Counts"
 countTar = "targets_count"
 home_dir = os.getcwd()
-fuel = "fuel/s"
+fuel = "fuel"
 fuelClass = "fuelClass"
 bin_solve = "solver_bin"
 bin_opt = "bin"
@@ -117,7 +122,7 @@ design_type = stats_[design]
 parallel_threads = dataCounts[countThreads]
 targets_count = int(dataCounts["targets_count"])
 rps_order = stats_[order]
-
+PRS_type = stats_["PRS_type"]
 #######################READ TARGET FILE ###################
 print("Parallel threads are {}".format(parallel_threads))
 targetLines = open(locations[targets],'r').readlines()
@@ -126,8 +131,8 @@ addendum = yaml.safe_load(open(locations[add],'r').read())
 print(design_type)
 
 ####################################################
-##  Unloading the target data	  		          ##
-## TARGET CLASS CONTAINING EACH TARGET AS A	CASE  ##
+##  Unloading the target data	  	           ##
+## TARGET CLASS CONTAINING EACH TARGET AS A CASE  ##
 ####################################################
 
 
@@ -149,35 +154,45 @@ target_file = open("target_data.txt","w")
 target_file.write(string_target)
 target_file.close()
 
-
 ############################################
 ##  Uncertainty Quantification            ##
 ##  					   ##
 ############################################
 
-UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
+if "unsrt.pkl" not in os.listdir():
+	UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
+	############################################
+	##   Get unsrt data from UncertDataSet    ##
+	############################################
 
-############################################
-##   Get unsrt data from UncertDataSet    ##
-############################################
+	unsrt_data = UncertDataSet.extract_uncertainty();
+	# Save the object to a file
+	with open('unsrt.pkl', 'wb') as file_:
+		pickle.dump(unsrt_data, file_)
+	#unsrt_data,rxnUnsrt_data,plogUnsrt_data,plog_interpolated_data,focUnsrt_data,tbdUnsrt_data,thermoUnsrt_data,transportUnsrt_data, reaction_index,plog_boundary_index,plog_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index = UncertDataSet.extract_uncertainty();
+	print("Uncertainty analysis finished")
 
-unsrt_data = UncertDataSet.extract_uncertainty();
-#unsrt_data,rxnUnsrt_data,plogUnsrt_data,plog_interpolated_data,focUnsrt_data,tbdUnsrt_data,thermoUnsrt_data,transportUnsrt_data, reaction_index,plog_boundary_index,plog_index,fallOffCurve_index, thirdBody_index, thermo_index, transport_index = UncertDataSet.extract_uncertainty();
-print("Uncertainty analysis finished")
+else:
+	# Load the object from the file
+	with open('unsrt.pkl', 'rb') as file_:
+		unsrt_data = pickle.load(file_)
+	print("Uncertainty analysis already finished")
 
 ###########################################################
 #### Printing the reactions and their index in the file ###
 ###########################################################
 
 string_Rxn = ""
+str_rxn = ""
 for i in unsrt_data:
 	string_Rxn += f"{i}\t{unsrt_data[i].index}\n"
+	str_rxn += f"{i}\n"
 file_rxn = open("RXN.csv","w").write(string_Rxn)
-
+file_rxn_list = open("rxn_list.csv","w").write(str_rxn)
 
 ######################################################################
 ##  CREATING A DICTIONARY CONTAINING ALL THE DATA FROM UNSRT CLASS  ##
-## 																    ##
+##																    ##
 ######################################################################
 manipulationDict = {}
 selection = []
@@ -187,56 +202,197 @@ activeParameters = []
 nominal_list = []
 rxn_list = []
 rIndex = []
+rxn_list_a_fact = []
 for rxn in unsrt_data:
 	#print(i)
 	rxn_list.append(rxn)
+	rxn_list_a_fact.append(unsrt_data[rxn].rxn)
 	selection.extend(unsrt_data[rxn].selection)
 	Cholesky_list.append(unsrt_data[rxn].cholskyDeCorrelateMat)
 	zeta_list.append(unsrt_data[rxn].perturb_factor)
 	activeParameters.extend(unsrt_data[rxn].activeParameters)
 	nominal_list.append(unsrt_data[rxn].nominal)
 	rIndex.append(unsrt_data[rxn].rIndex)
-	
+rxn_list_a_fact = set(rxn_list_a_fact)
+rxn_a_fact = ""
+for rxn in rxn_list_a_fact:
+	rxn_a_fact+=f"{rxn}\n"
+file_rxn_a_fact = open("rxn_list_a_fact.csv","w").write(rxn_a_fact)	
 manipulationDict["selection"] = deepcopy(selection)#.deepcopy()
 manipulationDict["Cholesky"] = deepcopy(Cholesky_list)#.deepcopy()
 manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
 manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
 manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
-
+print("\nFollowing list is the choosen reactions\n")
 print(manipulationDict["activeParameters"])
 
+if PRS_type == "Partial":
+	####################################################
+	## Sensitivity Analysis of the selected reactions ##
+	####################################################
+	print("\nPartial Polynomial Response Surface is choosen as a Solution Mapping Technique\n\n\tStarting the Sensitivity Analysis: \n\t\tKindly be Patient\n")
+	#if "A-facto" in design_type:
+	#if "SA" not in os.listdir():
+	# Arguments to pass to script2.py
+	args = [sys.argv[1], 'rxn_list_a_fact.csv','&>SA.out']
+
+	# Doing A factor sensitivity Analysis
+	result = subprocess.run(['python3.9', binLoc["SA_tool"]] + args, capture_output=True, text=True)
+
+	# Printing the output of script2.py
+	#print("\nOutput of sens.py:\n")
+	#print(result.stdout)
+	print("\nSensitivity Analysis for A-factor is Done!!")
+	# Printing the errors of script2.py, if any
+	#if result.stderr:
+	#	print("Errors:")
+	#	print(result.stderr)
+			
+	#	raise AssertionError("Sensitivity Analysis Done!!")
+	with open('sens_parameters.pkl', 'rb') as file_:
+		sensitivity_analysis = pickle.load(file_)
+	
+	#else:
+	#if "SA_3P" not in os.listdir():
+
+	args = [sys.argv[1], 'rxn_list.csv','&>SA_3p.out']
+
+	result = subprocess.run(['python3.9', binLoc["SA_tool_3p"]] + args, capture_output=True, text=True)
+
+	# Printing the output of script2.py
+	#print("\nOutput of sens.py:\n")
+	#print(result.stdout)
+	print("\nSensitivity Analysis for 3-param is Done!!")
+	# Printing the errors of script2.py, if any
+	#if result.stderr:
+	#	print("Errors:")
+	#	print(result.stderr)
+	
+	raise AssertionError("Sensitivity Analysis Done!!")
+	with open('sens_3p_parameters.pkl', 'rb') as file_:
+		sensitivity_analysis_3p = pickle.load(file_)
+	
+	partialPRS_Object = []
+	selected_params_dict = {}
+	design_matrix_dict = {}
+	yaml_loc_dict = {}
+	no_of_sim = {}
+	for case in case_dir:
+		PPRS_system = P_PRS.PartialPRS(sensitivity_analysis_3p[str(case)],unsrt_data,optInputs,target_list,case,activeParameters,design_type)
+		yaml_loc,design_matrix,selected_params = PPRS_system.partial_DesignMatrix()
+		partialPRS_Object.append(PPRS_system)
+		no_of_sim[case] = int(PPRS_system.no_of_sim)
+		yaml_loc_dict[case] = yaml_loc
+		design_matrix_dict[case] = design_matrix
+		selected_params_dict[case] = selected_params
 ##################################################################
 ##  Use the unsrt data to sample the Arrhenius curves           ##
 ##  MUQ-SAC: Method of Uncertainty Quantification and           ##
 ##	Sampling of Arrhenius Curves                                ##
 ##################################################################
-
-"""
-Function Inputs:
-	Unsrt Data:
-Output:
-	Desired Number of Samples - n_s for
-		- Class A curves
-		- Class B curves
-		- Class C curves
-
-"""
-
-
-def getTotalUnknowns(N):
-	n_ = 1 + 2*N + (N*(N-1))/2
-	return int(n_)
+	print("\n\nSensitivity Analysis is already finished!!\n")
+	SSM = simulator.SM(target_list,optInputs,unsrt_data,design_matrix_dict)
 	
-
-if "DesignMatrix.csv" not in os.listdir():
-	design_matrix = DM.DesignMatrix(unsrt_data,design_type,7*getTotalUnknowns(len(manipulationDict["activeParameters"]))).getSamples()
 else:
-	design_matrix_file = open("DesignMatrix.csv").readlines()
-	design_matrix = []
-	for row in design_matrix_file:
-		design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
-#raise AssertionError("Design Matrix created!!")
+	"""
+	Function Inputs:
+		Unsrt Data:
+	Output:
+		Desired Number of Samples - n_s for
+			- Class A curves
+			- Class B curves
+			- Class C curves
 
+	"""
+		
+	def getTotalUnknowns(N):
+		n_ = 1 + 2*N + (N*(N-1))/2
+		return int(n_)
+		
+	def getSim(n,design):
+		n_ = getTotalUnknowns(n)
+		if design == "A-facto":
+			sim = 4*n_
+		else:
+			sim = 7*n_	
+		return sim
+	no_of_sim = {}
+	if "DesignMatrix.csv" not in os.listdir():
+		print(f"\nNo. of Simulations required: {getSim(len(manipulationDict['activeParameters']),design)}\n")
+		no_of_sim_ = getSim(len(manipulationDict["activeParameters"]),design_type)
+		design_matrix = DM.DesignMatrix(unsrt_data,design_type,getSim(len(manipulationDict["activeParameters"]),design_type),len(manipulationDict["activeParameters"])).getSamples()
+		no_of_sim_ = len(design_matrix)
+	else:
+		no_of_sim_ = getSim(len(manipulationDict["activeParameters"]),design_type)
+		design_matrix_file = open("DesignMatrix.csv").readlines()
+		design_matrix = []
+		no_of_sim_ = len(design_matrix_file)
+		for row in design_matrix_file:
+			design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
+	#raise AssertionError("Design Matrix created!!")
+	design_matrix_dict = {}
+	for case in target_list:
+		design_matrix_dict[case] = design_matrix
+		no_of_sim[case] = no_of_sim_
+	
+	SSM = simulator.SM(target_list,optInputs,unsrt_data,design_matrix)
+
+	if "Perturbed_Mech" not in os.listdir():
+		os.mkdir("Perturbed_Mech")
+		print("\nPerturbing the Mechanism files\n")
+		#if "YAML_PERTUBED_FILES.pkl" not in os.listdir():
+			
+		#	yaml_list = SSM.getYAML_List()
+		
+			#with open('YAML_PERTUBED_FILES.pkl', 'wb') as file_:
+			#	pickle.dump(yaml_list, file_)
+		#else:
+			#yaml_list = SSM.getYAML_List()
+			#with open('YAML_PERTUBED_FILES.pkl', 'rb') as file_:
+			
+			#	yaml_list = pickle.load(file_)
+
+		chunk_size = 500
+		params_yaml = [design_matrix[i:i+chunk_size] for i in range(0, len(design_matrix), chunk_size)]
+		count = 0
+		yaml_loc = []
+		for params in params_yaml:
+			
+			yaml_list = SSM.getYAML_List(params)
+			#yaml_loc = []
+			location_mech = []
+			index_list = []
+			for i,dict_ in enumerate(yaml_list):
+				index_list.append(str(count+i))
+				location_mech.append(os.getcwd()+"/Perturbed_Mech")
+				yaml_loc.append(os.getcwd()+"/Perturbed_Mech/mechanism_"+str(count+i)+".yaml")
+			count+=len(yaml_list)
+			#gen_flag = False
+			#SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+			SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+			print(f"\nGenerated {count} files!!\n")
+		print("\nGenerated the YAML files required for simulations!!\n")
+	else:
+		print("\nYAML files already generated!!")
+		yaml_loc = []
+		location_mech = []
+		index_list = []
+		for i,sample in enumerate(design_matrix):
+			index_list.append(i)
+			location_mech.append(os.getcwd()+"/Perturbed_Mech")
+			yaml_loc.append(os.getcwd()+"/Perturbed_Mech/mechanism_"+str(i)+".yaml")
+	
+	selected_params = []
+	for params in activeParameters:
+		selected_params.append(1)
+	
+	selected_params_dict = {}
+	design_matrix_dict = {}
+	yaml_loc_dict = {}
+	for case in target_list:
+		yaml_loc_dict[case] = yaml_loc
+		design_matrix_dict[case] = design_matrix
+		selected_params_dict[case] = selected_params
 ##############################################################
 ##     Doing simulations using the design matrix            ## 
 ##     The goal is to test the design matrix                ##
@@ -244,8 +400,8 @@ else:
 
 if "Opt" not in os.listdir():
 	os.mkdir("Opt")
-	optDir = os.getcwd()
 	os.chdir("Opt")
+	optDir = os.getcwd()
 	os.mkdir("Data")
 	os.chdir("Data")
 	os.mkdir("Simulations")
@@ -256,7 +412,7 @@ else:
 	optDir = os.getcwd()
 
 if os.path.isfile("progress") == False:
-	FlameMaster_Execution_location = simulator.SM(target_list,optInputs,unsrt_data,design_matrix).make_dir_in_parallel()
+	FlameMaster_Execution_location = SSM.make_dir_in_parallel(yaml_loc_dict)
 	#raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations")
 else:
 	print("Progress file detected")
@@ -283,6 +439,7 @@ for case in case_dir:
 		#raise AssertionError("Generating ETA list for all cases")	
 	else:
 		os.chdir(optDir)
+		#print(os.getcwd())
 		os.chdir("case-"+str(case))	
 		data_sheet,failed_sim, ETA = data_management.generate_target_value_tables(FlameMaster_Execution_location, target_list, case, fuel)
 		#print(data_sheet)
@@ -302,18 +459,19 @@ for case in case_dir:
 ResponseSurfaces = {}
 selected_PRS = {}
 for case_index,case in enumerate(temp_sim_opt):
-	yData = np.asarray(temp_sim_opt[case]).flatten()
-	xData = np.asarray(design_matrix)
+	yData = np.asarray(temp_sim_opt[case]).flatten()[0:no_of_sim[case_index]]
+	xData = np.asarray(design_matrix_dict[case_index])[0:no_of_sim[case_index]]
 	#print(np.shape(xData))
 	#print(np.shape(yData))
 	#raise AssertionError("Stop!!")
+	
 	xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
 									random_state=104, 
                                 	test_size=0.1, 
                                    	shuffle=True)
 	#print(np.shape(xTest))
 	#print(np.shape(yTrain))
-	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index)
+	Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index,prs_type=PRS_type,selected_params=selected_params_dict[case_index])
 	Response.create_response_surface()
 	Response.test(xTest,yTest)
 	Response.plot(case_index)

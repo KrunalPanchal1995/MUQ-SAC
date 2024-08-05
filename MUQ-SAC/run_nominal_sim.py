@@ -283,7 +283,7 @@ for case in case_dir:
 	os.chdir("Data/Simulations")
 	if "sim_data_case-"+str(case)+".lst" in os.listdir():
 		ETA = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
-		temp_sim_opt[str(case)] = np.exp(ETA)/10
+		temp_sim_opt[str(case)] = ETA
 		os.chdir(nominalDir)
 	
 	else:
@@ -291,7 +291,7 @@ for case in case_dir:
 		#print(os.getcwd())
 		os.chdir("case-"+str(case))	
 		data_sheet,failed_sim, ETA = data_management.generate_target_value_tables(FlameMaster_Execution_location, target_list, case, fuel)
-		temp_sim_opt[str(case)] = np.exp(ETA)/10
+		temp_sim_opt[str(case)] = ETA
 		f = open('../Data/Simulations/sim_data_case-'+str(case)+'.lst','w').write(data_sheet)
 		g = open('../Data/Simulations/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim)
 		os.chdir(nominalDir)
@@ -314,14 +314,18 @@ for t in target_list:
 dataset = set(dataset)
 
 for d_set in dataset:
+	print(d_set)
 	string_1 = "DS_ID,T,Obs(us),Nominal\n"
 	string_2 = "DS_ID,T,P,Phi,Fuel,Ox,BathGas,Obs(us),Nominal\n"
 	flag = None
 	for case,target in enumerate(target_list):
 		if target.target == "Tig" or target.target == "JSR":
-			print(target.target)
-			folder = target.target
+			#print(d_set)
+			#print(target.target)
 			if target.dataSet_id == d_set:
+				folder = target.target
+				#print(d_set)
+				#print(temp_sim_opt[str(target.index)])
 				flag =True
 				string_1 += f"{target.uniqueID},{target.temperature},{target.observed},{temp_sim_opt[str(target.index)][0]}\n"
 		elif target.target == "Fls":

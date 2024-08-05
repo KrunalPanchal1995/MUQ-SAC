@@ -123,6 +123,9 @@ class Worker():
 		sys.stdout.flush()	
 	def callback_run_(self, result):
 		self.progress.append(result[0])
+		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+		sys.stdout.flush()
+		
 	def callback_run(self, result):
 		self.progress.append(result[0])
 		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
@@ -169,7 +172,7 @@ class Worker():
 	def do_job_map(self, locations):
 		for args in locations:
 			self.pool.apply_async(run_generate_dir, 
-			     args=(args,len(locations)),callback=self.callback_run)
+			     args=(args,len(locations)),callback=self.callback_run_)
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
@@ -178,7 +181,7 @@ class Worker():
 		print(f'Error: {error}', flush=True)
 	def do_job_map_create_2(self,params):
 		for param in params:
-			self.pool.apply_async(run_map_2,args=(param,len(params)),callback=self.callback_run,error_callback=self.custom_error_callback)
+			self.pool.apply_async(run_map_2,args=(param,len(params)),callback=self.callback_run_,error_callback=self.custom_error_callback)
 		#self.pool.map_async(run_map_2,params,error_callback=self.custom_error_callback)
 		self.pool.close()
 		self.pool.join()
@@ -203,7 +206,7 @@ class Worker():
 	def do_job_map_create(self,params):
 		for param in params:
 			self.pool.apply_async(run_map, 
-			     args=(param,len(params)),callback=self.callback_run,error_callback=self.custom_error_callback)
+			     args=(param,len(params)),callback=self.callback_run_,error_callback=self.custom_error_callback)
 		
 		self.pool.close()
 		self.pool.join()
@@ -400,7 +403,7 @@ class SM(object):
 				##       				                     ##
 				##############################################################
 				params_yaml = list(zip(locations,yaml_list))
-				chunk_size = 500
+				chunk_size = 100
 				chunks = [params_yaml[i:i+chunk_size] for i in range(0, len(params_yaml), chunk_size)]
 				
 				tic = time.time()
@@ -436,7 +439,7 @@ class SM(object):
 				print("\n\t\tTime for performing simulations : {h:.3f} hours,  {m:.2f} minutes, {s:.2f} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
 				simulation_locations = open(SADir+"/locations",'+a')
 				for loc in locations:
-					simulation_locations.write(loc+"\n")
+					simulation_locations.write(loc+"/run\n")
 				simulation_locations.close()
 			
 				os.chdir('..')

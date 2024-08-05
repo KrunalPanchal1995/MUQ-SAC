@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/data2/STUDY_OF_PARALLEL_COMPUTING/BUILD_PARALLEL_YAML_WRITER/parallel_yaml_writer.cpp
+parallel_yaml_writer.h
+/data2/STUDY_OF_PARALLEL_COMPUTING/BUILD_PARALLEL_YAML_WRITER/parallel_yaml_writer.h
+
+/data2/STUDY_OF_PARALLEL_COMPUTING/BUILD_PARALLEL_YAML_WRITER/parallel_yaml_writer.h
+pybind11/pybind11.h
+-
+pybind11/stl.h
+-
+yaml-cpp/yaml.h
+-
+string
+-
+vector
+-
+map
+-
+chrono
+-
+iostream
+-
+fstream
+-
+thread
+-
+atomic
+-
+mutex
+-
+

@@ -25,8 +25,8 @@ def reaction_index(selected_reactions,reactions):
 	reaction_dict = {}
 	for rxn in selected_reactions:
 		for index,reaction in enumerate(reactions):
-			if rxn == reaction["equation"]:
-				reaction_dict[index] = rxn
+			if rxn.split(":")[0] == reaction["equation"]:
+				reaction_dict[index+1] = rxn.split(":")[0]
 				#break
 	
 	return reaction_dict
@@ -42,7 +42,7 @@ def getRxnDetails(mechanism,rxn_list):
 		for index,data in enumerate(rxn_data):
 			if rxn == data["equation"]:
 				temp.append(data)
-				index_.append(index)
+				index_.append(index+1)
 		new_rxn_data["temp"] = temp
 		new_rxn_data["index"] = index_
 		rxn_dict[rxn] = new_rxn_data
@@ -92,16 +92,16 @@ def getRxnType(mechanism,rxn_list):
 			if rxn in data["equation"]:
 				if "type" in data:
 					if data["type"] == "three-body":
-						rxn_type[index] = "ThirdBody"
+						rxn_type[index+1] = "ThirdBody"
 						#print("Rxn is three-body")
 					elif data["type"] == "falloff":
-						rxn_type[index] = "Falloff"
+						rxn_type[index+1] = "Falloff"
 						#print("Rxn is fall-off")
 					elif data["type"] == "Chebyshev":
-						rxn_type[index] = "Chebyshev"
+						rxn_type[index+1] = "Chebyshev"
 						
 					elif data["type"] == "pressure-dependent-Arrhenius":# and "duplicate" not in data:
-						rxn_type[index] = "PLOG"
+						rxn_type[index+1] = "PLOG"
 						#print("Rxn is Plog")
 					#elif data["type"] == "pressure-dependent-Arrhenius" and "duplicate" in data:
 						#rxn_type[data["equation"]] = "PLOG-Duplicate"
@@ -113,6 +113,6 @@ def getRxnType(mechanism,rxn_list):
 					#print("Rxn is duplicate")
 				
 				else:
-					rxn_type[index] = "Elementary"
+					rxn_type[index+1] = "Elementary"
 					#print("Rxn is elementary")
 	return rxn_type

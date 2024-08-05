@@ -29,6 +29,17 @@ x10001050:
  ign_delay_def: CO
  ign_cond: specific
  specific_cond: 7999811482000000.0;molecule/cm3
+ exp_conc: 
+  2050: 4.42E+18
+  2140: 4.52E+18
+  2250: 4.60E+18
+  2355: 4.69E+18
+  2560: 4.84E+18
+  2620: 4.87E+18
+  2675: 4.95E+18
+  2765: 4.96E+18
+  2810: 4.99E+18
+ exp_conc_unit: molecule/cm3
  mol_wt: 28
  residenceTime: 
  maxSimulationTime: 
@@ -488,7 +499,18 @@ x10001049:
  Fuel: {'a': 'H2', 'b': 'CO'}
  ign_delay_def: CO
  ign_cond: specific
- specific_cond: 2.3999434446e+16;molecule/cm3
+ specific_cond: 2.4E+16;molecule/cm3
+ exp_conc: 
+  2050: 4.42E+18
+  2140: 4.52E+18
+  2250: 4.60E+18
+  2355: 4.69E+18
+  2560: 4.84E+18
+  2620: 4.87E+18
+  2675: 4.95E+18
+  2765: 4.96E+18
+  2810: 4.99E+18
+ exp_conc_unit: molecule/cm3
  mol_wt: 28
  residenceTime: 
  maxSimulationTime: 
@@ -656,15 +678,25 @@ x10001075:
 
 x10001001:
  solver: cantera
- type: phi
- Fuel: {'a': 'H2', 'b': 'CO'}
  ign_delay_def: p
  ign_cond: dt-max
  specific_cond: 
- mol_wt: 17
- residenceTime: 
- maxSimulationTime: 
- volume: 
+ BoundaryLayer: True
+ dpdt:
+  943. : 2.0
+  947. : 2.0
+  962. : 2.0
+  987. : 2.0
+  990. : 2.0
+  1001. : 2.0
+  1013. : 2.0
+  1019. : 2.0
+  1024. : 2.0
+  1033. : 2.0
+  1053. : 2.0
+  1059. : 2.0
+  1148. : 2.0 
+ mol_wt:
 
 x10001051:
  solver: cantera
@@ -672,7 +704,21 @@ x10001051:
  Fuel: {'a': 'H2', 'b': 'CO'}
  ign_delay_def: CO
  ign_cond: specific
- specific_cond: 2.9999291552e+16;molecule/cm3
+ specific_cond: 3.0E+16;molecule/cm3
+ exp_conc: 
+  2070: 4.95E+18
+  2160: 5.07E+18
+  2215: 5.11E+18
+  2325: 5.21E+18
+  2375: 5.24E+18
+  2475: 5.34E+18
+  2565: 5.38E+18
+  2625: 5.45E+18
+  2700: 5.49E+18
+  2740: 5.55E+18
+  2820: 5.55E+18
+  2870: 5.63E+18
+ exp_conc_unit: molecule/cm3
  mol_wt: 28
  residenceTime: 
  maxSimulationTime: 
@@ -744,7 +790,21 @@ x10001052:
  Fuel: {'a': 'H2', 'b': 'CO'}
  ign_delay_def: CO
  ign_cond: specific
- specific_cond: 9999765858000000.0;molecule/cm3
+ specific_cond: 1.0E+16;molecule/cm3
+ exp_conc: 
+  2070: 4.95E+18
+  2160: 5.07E+18
+  2215: 5.11E+18
+  2325: 5.21E+18
+  2375: 5.24E+18
+  2475: 5.34E+18
+  2565: 5.38E+18
+  2625: 5.45E+18
+  2700: 5.49E+18
+  2740: 5.55E+18
+  2820: 5.55E+18
+  2870: 5.63E+18
+ exp_conc_unit: molecule/cm3
  mol_wt: 28
  residenceTime: 
  maxSimulationTime: 

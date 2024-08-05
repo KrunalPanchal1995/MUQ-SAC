@@ -98,6 +98,8 @@ def generate_SA_target_value_tables(locations, t_list, case, fuel):
 	data =''
 	failed_sim = ""
 	ETA = []
+	eta = []
+	folderName = []
 	for i in data_loc:
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")
@@ -108,33 +110,37 @@ def generate_SA_target_value_tables(locations, t_list, case, fuel):
 		#print(data_loc.index(i))
 		#print(i)
 		
-		eta,file_path = extract_output(t_list[case],fuel,i+"/output/",data_loc.index(i))
-		eta = np.exp(eta)/10
+		eta_,ETA_,file_path = extract_output(t_list[case],fuel,i[:-4]+"/output/",data_loc.index(i))
+		#print(eta,file_path)
+		#print(file_path,eta)
+		#eta = np.exp(eta)/10
 		if "N/A" in str(eta):
 			#print(eta)
 			#print(file_path)
 			file_loc.write(file_path+"\n")
-			folderName = pathList[start+1]
+			folderName.append(pathList[start+1])
+			fN = pathList[start+1]
 			#print(folderName)
 			#print(eta)
-			failed_sim += "{}\t{}\n".format(folderName , eta)
+			failed_sim += "{}\t{}\n".format(fN , ETA_)
 			file_loc.close()
 			
 		else:	
 			#print(eta)
 			#print(file_path)
 			file_loc.write(file_path+"\n")
-			folderName = pathList[start+1]
+			folderName.append(pathList[start+1])
+			fN = pathList[start+1]
 			#print(folderName)
 			#print(eta)
-			data += "{}\t{}\n".format(folderName , eta)
+			data += "{}\t{}\n".format(fN , ETA_)
 			file_loc.close()
-			ETA.append(eta)
-	return data,failed_sim,folderName,ETA
+			ETA.append(ETA_)
+			eta.append(eta_)
+	return data,failed_sim,folderName,ETA,eta
+	
+	
 def generate_target_value_tables(locations, t_list, case, fuel):
-	#print(locations)
-	#print(os.getcwd())
-	#raise AssertionError("Generating PRS from the data available")
 	list_fuel = []
 	if "dict" in str(type(fuel)):
 		for i in fuel:
@@ -145,12 +151,14 @@ def generate_target_value_tables(locations, t_list, case, fuel):
 	data_loc = []
 	for location in locations:
 		#print(location)
-		list_loc = location.split("/")
+		list_loc = location.strip("\n").split("/")
+		#print(list_loc)
 		for i in list_loc:
 			if i == "case-"+str(case).strip():
 				data_loc.append(location.strip("\n"))
-
-	
+		#print(data_loc)
+		#raise AssertionError("Stop!!")
+	#print(data_loc)
 	data =''
 	failed_sim = ""
 	ETA = []
@@ -158,13 +166,10 @@ def generate_target_value_tables(locations, t_list, case, fuel):
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")
 		start = pathList.index("case-{}".format(case))
-		#print(start)
-		#print(i[:-4]+"output/")
-		#print(t_list[case])
-		#print(data_loc.index(i))
-		#print(i)
-		
-		eta,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i))
+
+		eta,ETA_,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i))
+		#eta = np.exp(eta)/10
+		#print(eta,file_path)
 		if "N/A" in str(eta):
 			#print(eta)
 			#print(file_path)
@@ -184,7 +189,7 @@ def generate_target_value_tables(locations, t_list, case, fuel):
 			#print(eta)
 			data += "{}\t{}\n".format(folderName , eta)
 			file_loc.close()
-			ETA.append(eta)
+			ETA.append(ETA_)
 	return data,failed_sim,ETA
 
 def extract_direct_simulation_values(case,loc,target_list,fuel):
@@ -215,10 +220,47 @@ def extract_output(case,fuel,path,index):
 	
 	eta = string = None
 	#print(case.target)
-
-	if case.target.strip() == "Tig":
+	if case.target.strip() == "RCM":
 		if "cantera" in case.add["solver"]:
-			#print(os.listdir())
+			if "RCM.out" in os.listdir(path):
+				out_file = open(path+"RCM.out",'r').readlines()
+				string = path +"RCM.out"
+				#print(out_file)
+				line = out_file[1].split()
+				#print(len(line))
+				#print(line)
+				if len(line) == 2:
+					eta = np.log(float(line[1])*10)	#us/micro seconds
+					ETA = float(line[1])
+				else:
+					eta = np.log(100*10000)
+					ETA = 100
+				
+			else:
+				eta = "N/A"
+				string = path
+	elif case.target.strip() == "JSR":
+		if "cantera" in case.add["solver"]:
+			if "jsr.out" in os.listdir(path):
+				out_file = open(path+"jsr.out",'r').readlines()
+				string = path +"jsr.out"
+				#print(out_file)
+				line = out_file[1].split()
+				#print(len(line))
+				#print(line)
+				if len(line) == 2:
+					eta = np.exp(np.exp(float(line[1])))
+					ETA = float(line[1]) 	#us/micro seconds
+				else:
+					eta = 100
+					ETA = 100
+				
+			else:
+				eta = "N/A"
+				string = path
+	
+	elif case.target.strip() == "Tig":
+		if "cantera" in case.add["solver"]:
 			if "tau.out" in os.listdir(path):
 				out_file = open(path+"tau.out",'r').readlines()
 				string = path +"tau.out"
@@ -227,29 +269,30 @@ def extract_output(case,fuel,path,index):
 				#print(len(line))
 				#print(line)
 				if len(line) == 2:
-					eta = np.log(float(line[1])*10)	#us/micro seconds
+					eta = np.log(float(line[1])*10)
+					ETA = float(line[1])	#us/micro seconds
 				else:
 					eta = np.log(100*10000)
+					ETA = 100*10000
 				
 			else:
 				eta = "N/A"
 				string = path
 		else:
-			#print("Tig is the target")
+			#print("Tig is the target and FlameMaster is the solver")
+			
 			out_file = open(path+"tau.out",'r').readlines()
 			string = path +"tau.out"
-			#out_file = open(path + fuel+"_IgniDelTimes.dout",'r').readlines()
-			#string = path + fuel+"_IgniDelTimes.dout"
-			
 			line = out_file[0].split("	")
-			
 			#print(line)
 			if len(line) == 3:
 				#eta = np.log(float(line[2])*1000)
-				print(line)
-				eta = np.log(float(line[1])*1000*10)#us /micro seconds
+				#print(float(line[1]))
+				eta = np.log(float(line[1])*1000*10)
+				ETA = float(line[1])*1000#us /micro seconds
 			else:
 				eta = np.log(100*10000)
+				ETA = 100*10000
 			#return eta,string
 	elif case.target.strip() == "Fls":
 		if "cantera" in case.add["solver"]:
@@ -258,9 +301,11 @@ def extract_output(case,fuel,path,index):
 			line = out_file[1].split()
 			#print(line)
 			if len(line) == 2:
-				eta = np.log(float(line[1]))	#cm/seconds
+				eta = np.log(float(line[1]))
+				ETA = float(line[1])	#cm/seconds
 			else:
 				eta = np.log(200)
+				ETA = 200
 		else:
 			#start = os.getcwd()
 			#print(path)
@@ -365,9 +410,11 @@ def extract_output(case,fuel,path,index):
 			line = out_file[1].split("    ")
 			#print(line)
 			if len(line) == 2:
-				eta = float(line[1])	#%mole
+				eta = float(line[1])
+				ETA = eta	#%mole
 			else:
 				eta = 100
+				ETA = eta
 		else:
 			#print("Tig is the target")
 			out_file = open(path+"result.dout",'r').readlines()
@@ -376,9 +423,11 @@ def extract_output(case,fuel,path,index):
 			#print(line)
 			if len(line) == 2:
 				#eta = np.log(float(line[2])*1000)
-				eta = float(line[1])*100 #%mole
+				eta = float(line[1])*100
+				ETA = eta #%mole
 			else:
 				eta = 100
+				ETA = eta
 	
 	elif case.target.strip() == "Flw":
 		if "cantera" in case.add["solver"]:
@@ -423,24 +472,8 @@ def extract_output(case,fuel,path,index):
 					eta = float(line[1]) #ms
 				else:
 					eta = 100
-#			start = os.getcwd()
-#			os.chdir(path)
-#			output_file = [i for i in os.listdir() if i.startswith("X1_")]
-#			print(output_file)
-#			outfile = open(path+"/"+output_file[0],"r").readlines()
-#			string = path+output_file[0]
-#			header_line = outfile[1]
-#			header = header_line.split()
-#			if "X-"+case.species in header:
-#				ind = header.index('X-'+case.species)
-#			else:
-#				print("Invalid species name: {} in input".format(case.species))
-#			eta = float(outfile[-1].split()[ind])*100
-			#os.chdir(start)
-		
-	#print(eta)
-	#print(string)
-	return eta,string			
+#			
+	return eta,ETA,string			
 				
 
 #Generate an optimized mechanism based on the optimized vector. 

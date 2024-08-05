@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared  -o yamlwriter.cpython-39-x86_64-linux-gnu.so CMakeFiles/yamlwriter.dir/yamlwriter.cpp.o  -flto /usr/local/lib/libyaml-cpp.a 

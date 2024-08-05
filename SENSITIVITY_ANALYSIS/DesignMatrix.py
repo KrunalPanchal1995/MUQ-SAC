@@ -1,22 +1,67 @@
-
-#import Uncertainty # get the uncertainty extractor
+import os
+import Uncertainty # get the uncertainty extractor
 import numpy as np
 import math
 import multiprocessing
+import multiprocessing as mp
+from multiprocessing import shared_memory
 import subprocess
 import time
 import sys
 import copy
 import matplotlib.pyplot as plt
-
+from tqdm import tqdm
+import pickle
+import tempfile
+sys.path.append('/shuffle.so')
+import shuffle
+#print(dir(shuffle))
 class DesignMatrix(object):
-	def __init__(self,UnsrtData,design,sample_length):
+	def __init__(self,UnsrtData,design,ind,sample_length=None):
 		self.unsrt = UnsrtData
 		self.sim = sample_length
 		self.design = design
 		#self.n = ind
+		self.rxn_len = ind
+		self.n = ind
 		self.allowed_count = 100
-		self.rxn_len = sample_length
+	
+	def main(self,V_, num_threads, unsrt, sim):
+		shuffle.shuffle_arrays(V_, num_threads, unsrt, sim)
+		return V_
+	def create_memory_mapped_files(self,data_dict):
+		mmap_dict = {}
+		temp_dir = tempfile.mkdtemp()
+		for key, value in data_dict.items():
+			filename = os.path.join(temp_dir, f"{key}.dat")
+			mmap = np.memmap(filename, dtype=value.dtype, mode='w+', shape=value.shape)
+			mmap[:] = value[:]
+			mmap_dict[key] = filename
+		return mmap_dict, temp_dir
+	def create_shared_memory_dict(self,data_dict):
+		shm_dict = {}
+		for key, value in data_dict.items():
+			shm = shared_memory.SharedMemory(create=True, size=value.nbytes)
+			np_array = np.ndarray(value.shape, dtype=value.dtype, buffer=shm.buf)
+			np_array[:] = value[:]
+			shm_dict[key] = (shm, np_array)
+		return shm_dict
+
+	def cleanup_shared_memory(shm_dict):
+		for shm, _ in shm_dict.values():
+			shm.close()
+			shm.unlink()
+		
+	def shuffle_values(self,rxn, filename, shape, dtype, num_shuffles):
+		values = np.memmap(filename, dtype=dtype, mode='r+', shape=shape)
+
+		column = []
+		for _ in range(num_shuffles):
+			np.random.shuffle(values)
+			column.append(values.copy())
+
+		column = np.concatenate(column)
+		return rxn, column
 	
 	def getClassA_Curves(self,n_a):
 		"""
@@ -91,18 +136,13 @@ class DesignMatrix(object):
 		design_matrix = []
 		design_matrix.append(list(np.zeros(self.rxn_len)))
 		return	design_matrix
+	
 	def getSamples(self):
-		
+		print("\nStarting to generate design matrix!!\n")
 		if self.design == 'A-facto': 
 			#self.sim = 1 + 2* self.n+self.n*(self.n-1)/2
-			design_matrix = list(2* np.random.random_sample((self.sim*3,self.n)) - 1)
+			design_matrix = list(2* np.random.random_sample((self.sim,self.n)) - 1)
 			design_matrix.extend(list(np.eye(self.n)))
-			s =""
-			for row in design_matrix:
-				for element in row:
-					s+=f"{element},"
-				s+="\n"
-			ff = open('DesignMatrix.csv','w').write(s)
 			return np.asarray(design_matrix)
 		elif self.design == "A1+B1+C1":
 			tic = time.time()
@@ -120,12 +160,41 @@ class DesignMatrix(object):
 			n_b = int(0.45*self.sim*0.2)
 			n_c = int(self.sim*0.2-n_a-n_b)
 			
+			if "SA_a_type_samples.pkl" not in os.listdir():
+				a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
+				with open('SA_a_type_samples.pkl', 'wb') as file_:
+					pickle.dump(a_curves_dict, file_)
+				print("\nA-type curves generated")
+			else:
+				# Load the object from the file
+				with open('SA_a_type_samples.pkl', 'rb') as file_:
+					a_curves_dict = pickle.load(file_)
+				print("\nA-type curves generated")
 			
-			a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
-			b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
-			c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
+			if "SA_b_type_samples.pkl" not in os.listdir():	
+				b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
+				with open('SA_b_type_samples.pkl', 'wb') as file_:
+					pickle.dump(b_curves_dict, file_)
+				print("\nB-type curves generated")
+			else:
+				# Load the object from the file
+				with open('SA_b_type_samples.pkl', 'rb') as file_:
+					b_curves_dict = pickle.load(file_)
+				print("\nB-type curves generated")
+			
+			if "SA_c_type_samples.pkl" not in os.listdir():
+				c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
+				with open('SA_c_type_samples.pkl', 'wb') as file_:
+					pickle.dump(c_curves_dict, file_)
+				print("\nC-type curves generated")
+			else:
+				# Load the object from the file
+				with open('SA_c_type_samples.pkl', 'rb') as file_:
+					c_curves_dict = pickle.load(file_)
+				print("\nC-type curves generated")
+				
 			V_ = {}
-			for rxn in self.unsrt:
+			for rxn in tqdm(self.unsrt,desc="Populating V_"):
 				temp = []
 				for sample_a in a_curves_dict[rxn]: 
 					temp.append(sample_a)
@@ -137,13 +206,90 @@ class DesignMatrix(object):
 			
 			V_s = {}#Doing random shuffling
 			#Deepcopy the unshuffled samples first
+			#print(n_a,n_b,n_c)
+			#print(len(n_a),len(n_b),len(n_c))
 			V_copy = copy.deepcopy(V_)
-			for rxn in self.unsrt:				
+			#for rxn in V_:
+			#	print(len(V_[rxn]))
+			#	print(len(V_[rxn][0]))
+			#	raise AssertionError("Ho stop!")
+			#shm_dict = self.create_shared_memory_dict(V_copy)
+			#num_shuffles = int(self.sim * 0.8)
+			#reaction_list = []
+			#for rxn in self.unsrt:
+			#	reaction_list.append(rxn)
+			#V_s = self.main(V_copy,100,reaction_list,self.sim)
+			
+			#for rxn in V_s:
+			#	print(len(V_s[rxn]))
+			#	print(len(V_s[rxn][0]))
+			#	raise AssertionError("Ho stop!")
+			#raise AssertionError("Shuffling done!!")
+			
+			#mmap_dict, temp_dir = self.create_memory_mapped_files(V_)
+			#for rxn in tqdm(self.unsrt,desc="Doing random shuffling"):				
+			#	column = []
+			#	for i in range(int(self.sim*0.8)):
+			#		np.random.shuffle(V_copy[rxn])
+			#		column.extend(np.asarray(V_copy[rxn]))
+			#	V_s[rxn] = np.asarray(column)	
+			
+			
+			for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
 				column = []
-				for i in range(int(self.sim*0.8)):
-					np.random.shuffle(V_copy[rxn])
-					column.extend(np.asarray(V_copy[rxn]))
-				V_s[rxn] = np.asarray(column)	
+				# Number of shuffles
+				num_shuffles = int(self.sim * 0.8)
+				# Get the values to shuffle
+				values = V_copy[rxn]
+
+				# Repeat the shuffle process
+				for i in range(4):
+					np.random.shuffle(values)
+					column.append(values.copy())
+
+				# Flatten the list of arrays
+				column = np.concatenate(column)
+				V_s[rxn] = column
+			
+			
+			#for rxn in V_s:
+			#	print(len(V_s[rxn]))
+			
+			#	print(len(V_s[rxn][0]))
+			#	raise AssertionError("Ho stop!")
+			#num_shuffles = int(self.sim * 0.8)
+			# Initialize the result dictionary
+			#V_s = {}
+
+			# Create a pool of workers
+			#pool = mp.Pool(mp.cpu_count()-int(0.1*mp.cpu_count()))#Leaving 10% of CPU power
+			#results = []
+
+			# Use apply_async to distribute the work
+			#for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
+			#	filename = mmap_dict[rxn]
+				#shm, np_array = shm_dict[rxn]
+			#	result = pool.apply_async(self.shuffle_values, args=(rxn, filename, V_[rxn].shape, V_[rxn].dtype, num_shuffles))
+			#	results.append(result)
+
+			# Close the pool and wait for the work to finish
+			#pool.close()
+			#pool.join()
+
+			# Collect the results
+			#for result in results:
+			#	rxn, column = result.get()
+			#	V_s[rxn] = column
+			
+			
+			# Cleanup shared memory
+			#self.cleanup_shared_memory(shm_dict)
+			
+			# Cleanup memory-mapped files
+			#for filename in mmap_dict.values():
+			#	os.remove(filename)
+			#os.rmdir(temp_dir)
+			
 			
 			"""
 			V_linear_comb = {}#Doing linear combination to populate the matrix
@@ -172,7 +318,7 @@ class DesignMatrix(object):
 			theta = {}
 			Temp ={}
 			zeta = {}
-			for rxn in self.unsrt:
+			for rxn in tqdm(self.unsrt,desc="Populating unshuffled portion of DM"):
 				ch[rxn] = self.unsrt[rxn].cholskyDeCorrelateMat
 				nominal[rxn] = self.unsrt[rxn].nominal
 				p_max[rxn] = self.unsrt[rxn].P_max
@@ -235,7 +381,7 @@ class DesignMatrix(object):
 			_delta_n = {}
 			dict_delta_n = {}
 			percentage = {}
-			for rxn in self.unsrt:
+			for rxn in tqdm(self.unsrt,desc="Generating fSAC samples"):
 				T =np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
 				Theta = np.array([T/T,np.log(T),-1/(T)])
 				P = nominal[rxn]
@@ -261,7 +407,7 @@ class DesignMatrix(object):
 				outside = []
 				not_selected = []
 				temp_n = []
-				while len(temp)<1000:
+				while len(temp)<100:
 					random = 2*np.random.rand(3)-1
 					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
 					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
@@ -336,14 +482,8 @@ class DesignMatrix(object):
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
 				
-			"""
-			for i in range(1000):
-				row = []
-				for rxn in self.unsrt:
-					row.extend(V_linear_comb[rxn][i])
-				design_matrix.append(row)
-			"""
-			for i in range(1000):
+			
+			for i in range(100):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])
@@ -351,12 +491,12 @@ class DesignMatrix(object):
 				design_matrix.append(row)
 			tok = time.time()
 			print("Time taken to construct Design Matrix: {}".format(tok - tic))
-			s =""
-			for row in design_matrix:
-				for element in row:
-					s+=f"{element},"
-				s+="\n"
-			ff = open('DesignMatrix.csv','w').write(s)	
+			#s =""
+			#for row in design_matrix:
+			#	for element in row:
+			#		s+=f"{element},"
+			#	s+="\n"
+			#ff = open('DesignMatrix.csv','w').write(s)	
 			
 			return np.asarray(design_matrix)
 	

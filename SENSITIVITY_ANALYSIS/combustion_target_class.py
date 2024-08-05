@@ -29,6 +29,7 @@ class combustion_target():
 		self.molecularWt["He"] = 0
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
+		self.molecularWt["CH4"] = 16
 		self.molecularWt["NC7H16"] = 100.21
 		self.molecularWt["MB-C5H10O2"] = 86
 		self.stoichiometry = {}
@@ -46,6 +47,7 @@ class combustion_target():
 		self.stoichiometry["Ar"] = 0.0
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
+		self.stoichiometry["CH4"] = 2.0
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["MB-C5H10O2"] = 6.5
 		self.data = data

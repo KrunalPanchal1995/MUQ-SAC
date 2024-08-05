@@ -507,7 +507,7 @@ class OptimizationTool(object):
 		
 		note = open("guess_values.txt","+a").write(f"{self.count},{x}\n")
 		get_target_value = open("response_values.txt","+a").write(f"\t{target_value},{response_value}\n")
-		
+		get_opt = open("Objective.txt","+a").write(f"{obj}\n")
 		return obj
 	
 		

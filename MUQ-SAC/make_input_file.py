@@ -325,10 +325,12 @@ def create_input_file(case,opt_dict,target,mech_file=None):
 	# creating an input dictionary, lateron the dictionary will be part of target object
 	
 	#print(target.target)
+	#print(target.uniqueID)
 	if target.input_file != None:
 		instring = open(target.input_file,'r').read()
 			
 	elif "JSR" in target.target:
+		#print(target.add)
 		instring ="""import pandas as pd
 import time
 import cantera as ct
@@ -849,7 +851,7 @@ stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
 
 #t0 = time.time()
-estimatedIgnitionDelayTime = 0.02
+estimatedIgnitionDelayTime = 0.2
 t = 0
 pressureList = []
 volumeList = []
@@ -903,38 +905,37 @@ def fast_nearest_interp(xi, x, y):
     # Append the last point in y twice for ease of use
     y = np.hstack([y, y[-1]])
     return y[np.searchsorted(x, xi)]
-def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
-	time = df.t[1:]
-	if species != "p":
-		conc = np.asarray(df.X[:,gas.species_index(species)][1:])
-		#conc = np.array_split(conc,2)[0]
-	
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		tau = time[(conc).argmax()]
-	elif cond == "onset":
-		time = np.asarray(time)
-		conc = np.asarray(conc)
-		dtime = np.diff(time)
+		tau = df[species].idxmax()
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
 		dconc = np.diff(conc)
 		slope = dconc/dtime
 		intercept = int(np.diff(slope).argmax())
-		tau = time[intercept]
+		tau = df.index.to_numpy()[intercept]
 	elif cond == "dt-max" and species == "p":
-		#print(time,pList)
-		time = np.diff(np.asarray(time))
+		time = np.diff(df.index.to_numpy())
 		conc = np.diff(np.asarray(pList))
 		slope = conc/time
 		index = int(slope.argmax())
-		#print(index)
-		tau = df.t[1:][index]
+		tau = df.index.to_numpy()[index]
 	elif cond == "dt-max" and species != "p":
-		#time = np.asarray(df.t)
-		#conc = np.asarray(conc)
-		dtime = np.diff(time)
-		dconc = np.diff(conc)
-		slope = dconc/dtime
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
 		index = int(slope.argmax())
-		tau = time[index]
+		tau = df.index.to_numpy()[index]
 	elif cond == "specific":
 		if specified_value.split(";")[0] == None:
 			raise Assertionerror("Input required for specified_value in ignition delay")
@@ -946,13 +947,13 @@ def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",
 				target = target/avogadro
 				molecular_wt = gas.atomic_weight(species)
 				target = molecular_wt*target	
-				index,value = find_nearest(conc,target)
-				tau = time[index[0]]	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
 			
 			elif unit == "molecule/cm3":
 				unit_conversion = 10**(6)
-				time = np.asarray(time)
-				conc = np.asarray(conc)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
 				avogadro = 6.02214E+23
 				target = (target/avogadro)*unit_conversion
 				if exp_conc != "":
@@ -965,8 +966,8 @@ def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",
 				tau = fast_nearest_interp(target,conc_new,time_new)
 				
 			elif unit == "mole/cm3":
-				time = np.asarray(time)
-				conc = np.asarray(conc)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
 				if exp_conc != "":
 					conc = conc*exp_conc
 				
@@ -976,25 +977,44 @@ def ignitionDelay(df,gas,pList, species,cond="max",specified_value ="None;None",
 				tau = fast_nearest_interp(target,conc_new,time_new)
 	return tau
 
-class ReactorOdeBL:
-	def __init__(self, gas):
-		# Parameters of the ODE system and auxiliary data are stored in the
-		# ReactorOde object.
-		self.gas = gas
 
-	def __call__(self, t, y):
-		# State vector is [T, Y_1, Y_2, ... Y_K]
-		self.gas.set_unnormalized_mass_fractions(y[3:])
-		self.gas.TD = y[0], y[1]
-		#self.gas.TP = 
-		#pressure = self.gas.P
-		wdot = self.gas.net_production_rates
-		dTdt = - (np.dot(self.gas.partial_molar_enthalpies, wdot) /
-				(y[1] * self.gas.cv))
-		dYdt = wdot * self.gas.molecular_weights / y[1]
-			
-		return np.hstack((self.gas.T,self.gas.density,self.gas.P,dYdt))
+def getTimeProfile(t1,t2):
+	time =np.arange(t1,t2,2e-6)
+	return time
 
+	
+def getPressureProfile(gas,time,dpdt):
+	p = gas.P
+	p_new = p
+	PressureProfile = []
+	dt = 2e-6
+	for t in time:
+		PressureProfile.append(p_new + dt*(0.01*dpdt*p_new*1000))
+		p_new = p_new + dt*(0.01*dpdt*p_new*1000)
+	return np.asarray(PressureProfile)
+
+def getVolumeProfile_From_PressureProfile(gas,PressureProfile ):
+	rho_o,Po = gas.DP
+	gamma = gas.cp/gas.cv
+	VolumeProfile = []
+	for P_t in PressureProfile:
+		VolumeProfile.append((1/rho_o)*(P_t/Po)**(-1/gamma))
+	return np.asarray(VolumeProfile)
+	
+class VolumeProfile(object):
+    def __init__(self, keywords):
+        self.time = np.array(keywords["vproTime"])
+        self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+        self.velocity = np.diff(self.volume)/np.diff(self.time)
+        self.velocity = np.append(self.velocity, 0)
+    def __call__(self, t):
+        if t < self.time[-1]:
+            prev_time_point = self.time[self.time <= t][-1]
+            index = np.where(self.time == prev_time_point)[0][0]
+            return self.velocity[index]
+        else:
+            return 0
+            
 
 ###========================================================================================######
 ### Main code starts #####
@@ -1004,88 +1024,93 @@ gas = ct.Solution('{mech}')
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
 
+criteria = 1800
+
+if (reactorTemperature >= criteria):
+	criteria = reactorTemperature + 300
+elif (reactorTemperature - criteria)<=200:
+	criteria = reactorTemperature + 300
+
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
+env = ct.Reservoir(ct.Solution('{mech}'))
+
+dpdt = {dpdt}#%/ms
+estimatedIgnitionDelayTime = 0.2
+flag = False
+time = getTimeProfile(0,estimatedIgnitionDelayTime)
+pressure_profile = getPressureProfile(gas,time,dpdt)
+volume_profile = getVolumeProfile_From_PressureProfile(gas,pressure_profile)
+string = "time(s),volume(cm3)\\n"
+for i, t in enumerate(time):
+	string+=f"{{t}},{{volume_profile[i]}}\\n"
+g = open(f"VTIM_P_{{int(reactorPressure/100000)}}_T_{{int(reactorTemperature)}}.csv","w").write(string)
+
+keywords = {{"vproTime": time, "vproVol": volume_profile}}
+ct.Wall(r, env, velocity=VolumeProfile(keywords));
+
 reactorNetwork = ct.ReactorNet([r])
 
+reactorNetwork.max_time_step = np.min(np.diff(time))
 
-estimatedIgnitionDelayTime = 0.02
+stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
+timeHistory = pd.DataFrame(columns=stateVariableNames)
+
+
 ####============================#####
 ### Solver specific information #####
 ###    Do not change            #####
 ####============================#####
 
-states_ode = ct.SolutionArray(gas, 1, extra={{'t': [0.0]}})
-y0 = np.hstack((gas.T,gas.density,gas.P,gas.Y))
-ode = ReactorOdeBL(gas)
-solver = scipy.integrate.ode(ode)
-solver.set_integrator('LSODA',method="bdf",with_jacobian=True)
-solver.set_initial_value(y0, 0.0)
-start_ode = time.time()
+t = 0
 pressureList = []
-step_ode = []
-P_new = reactorPressure
-P_old = reactorPressure
-dt = 1e-15
-r_o = 0.5
-sig = 1.6
-eta_max = 2e-1
-eta_min = 0.1*eta_max
-dt_min = 1e-6
-dt_max = 1e-5
-d_old = gas.density
-y = [solver.y]
-step_ode = []
-start_ode = time.time()
+counter = 1;
+slope_arg_max = []
+count = 0
+gas_T = []
+gas_T.append(gas.T)
+time_profile = []
+time_profile.append(0)
+while t<estimatedIgnitionDelayTime:
+    t = reactorNetwork.step()
+    #print(t,gas.T)
+    time_profile.append(t)
+    gas_T.append(gas.T)
+    time_diff = np.diff(np.asarray(time_profile))
+    conc = np.diff(np.asarray(gas_T))
+    if len(conc) == 1:
+        slope = conc/time_diff
+        index = slope[0]
+    else:
+    	slope = conc/time_diff
+    	index = int(slope.argmax())
+    slope_arg_max.append(index)
+    count+=1
+    if max(slope_arg_max) == slope_arg_max[-1] and count==1:
+    	continue
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
+    	continue
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
+    	break
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
+    	break
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
+    	estimatedIgnitionDelayTime = t + 1e-4
+    	flag = True
+    if (counter%1 == 0):       	
+        timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+        pressureList.append(gas.P)
+    counter+=1
 
-#while solver.successful() and solver.t < estimatedIgnitionDelayTime and gas.T<2500:#(gas.T-reactorTemperature)<200:
-while (gas.T-reactorTemperature)<200:
-	#print(gas.T)
-	solver.integrate(solver.t+dt)
-	P_new = solver.y[2] + dt*(0.01*{dpdt}*solver.y[2]*1000)
-	gamma = gas.cp/gas.cv
-	T_new = solver.y[0]*pow(P_new/solver.y[2],(gamma-1)/gamma)
-	d_new = d_old*(pow(P_new/solver.y[2],(1/gamma)))
-	gas.TD = T_new, d_new
-	d_old = d_new
-	y.append(solver.y)
-	v_current = np.asarray(y[-1])
-	v_previous = np.asarray(y[-2])
-	eta_n = numpy.linalg.norm(v_current-v_previous)/(numpy.linalg.norm(v_previous)+1e-16)
-	step_ode.append(solver.t)
-	if eta_n > eta_max:
-		dt = r_o*dt
-		if dt > dt_max:
-			dt = dt_max
-		elif dt <dt_min:
-			dt = dt_min
-		else:
-			dt = dt
-	elif eta_n < eta_min:
-		dt = sig*dt
-		if dt > dt_max:
-			dt = dt_max
-		elif dt <dt_min:
-			dt = dt_min
-		else:
-			dt = dt 
-	else:
-		dt = dt
-	#print(gas.P,solver.t)
-	solver.set_initial_value(np.hstack((T_new,gas.density,P_new,solver.y[3:])), solver.t)
-	states_ode.append(gas.state, t=solver.t)
-	pressureList.append(gas.P)
-stop_ode = time.time()
-
-tau = ignitionDelay(states_ode,gas,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
+tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
 # Toc
 tau_file = open("output/tau.out",'w')
 tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,tau*(10**6)))
 tau_file.close()
 species = "{delay_def}"
-time = states_ode.t[1:]
+time = timeHistory.index.to_numpy()
 if species != "p":
-	conc = states_ode.X[:,gas.species_index(species)][1:]
+	conc = (timeHistory[species]).to_numpy()
 fig = plt.figure()
 plt.plot(time,conc,"b-",label="{delay_def} profile")
 plt.legend()
@@ -1122,6 +1147,13 @@ gas = ct.Solution('{mech}')
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
+
+criteria = 1800
+
+if (reactorTemperature >= criteria):
+	criteria = reactorTemperature + 300
+elif (reactorTemperature - criteria)<=200:
+	criteria = reactorTemperature + 300
 
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
@@ -1204,14 +1236,43 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 	return tau
 
 t0 = time.time()
-estimatedIgnitionDelayTime = 0.04
+estimatedIgnitionDelayTime = 0.2
+flag = False
 t = 0
 pressureList = []
 counter = 1;
-#while(t < estimatedIgnitionDelayTime):
-while gas.T< 1600:
+slope_arg_max = []
+count = 0
+gas_T = []
+gas_T.append(gas.T)
+time_profile = []
+time_profile.append(0)
+while t<estimatedIgnitionDelayTime:
     t = reactorNetwork.step()
-    #print(t)
+    #print(t,gas.T)
+    time_profile.append(t)
+    gas_T.append(gas.T)
+    time_diff = np.diff(np.asarray(time_profile))
+    conc = np.diff(np.asarray(gas_T))
+    if len(conc) == 1:
+        slope = conc/time_diff
+        index = slope[0]
+    else:
+    	slope = conc/time_diff
+    	index = int(slope.argmax())
+    slope_arg_max.append(index)
+    count+=1
+    if max(slope_arg_max) == slope_arg_max[-1] and count==1:
+    	continue
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
+    	continue
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
+    	break
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
+    	break
+    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
+    	estimatedIgnitionDelayTime = t + 1e-4
+    	flag = True
     if (counter%1 == 0):
         #if reactorNetwork.get_state().astype('float64')[index_a] <0:
          #   raise AssertionError("Numerical error!!")        	

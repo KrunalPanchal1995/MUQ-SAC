@@ -69,7 +69,8 @@ class Manipulator:
 	
 	def ElementaryPerturbation(self,index,beta,mechanism):
 		#index = rxn_object["index"][0]	
-		perturbation_factor = beta		
+		perturbation_factor = beta
+		#print(perturbation_factor)	
 		"""
 		The new perturbed reaction replaces the prior Arrhenius parameters 
 		"""
@@ -77,6 +78,7 @@ class Manipulator:
 		#print("\n\t\tBefore")
 		#print(f"\n{mechanism['reactions'][index]}")
 		#print(mechanism["reactions"][index]["rate-constant"])
+		#print(index)
 		reaction_details = mechanism["reactions"][index]["rate-constant"]
 		pre_exponential_factor = np.log(float(reaction_details["A"]))
 		reaction_details["A"] = float(np.exp(pre_exponential_factor+perturbation_factor))
@@ -101,10 +103,11 @@ class Manipulator:
 		reaction_details = mechanism["reactions"][index]["rate-constants"]
 		#print(reaction_details)
 		new_rxn_details = []
+		#print(mechanism["reactions"][index])
 		for rxn in reaction_details:
 			temp = {}
 			temp["P"] = rxn["P"]
-			temp["A"] = float(rxn["A"]*perturbation_factor)
+			temp["A"] = float(float(rxn["A"])*perturbation_factor)
 			temp["b"] = rxn["b"]
 			temp["Ea"] = rxn["Ea"]
 			new_rxn_details.append(temp)
@@ -120,12 +123,12 @@ class Manipulator:
 		rxn_object_a["temp"] = []
 		rxn_object_a["index"] = []
 		rxn_object_a["temp"].append(rxn_object["temp"][0])
-		rxn_object_a["index"].append(rxn_object["index"][0])
+		rxn_object_a["index"].append(int(rxn_object["index"][0])-1)
 		rxn_object_b = {}
 		rxn_object_b["temp"] = []
 		rxn_object_b["index"] = []
 		rxn_object_b["temp"].append(rxn_object["temp"][1])
-		rxn_object_b["index"].append(rxn_object["index"][1])
+		rxn_object_b["index"].append(int(rxn_object["index"][1])-1)
 
 		new_mechanism = self.PlogPerturbation(rxn_object_a,beta,mechanism)
 		new_mechanism = self.PlogPerturbation(rxn_object_b,beta,new_mechanism)
@@ -136,12 +139,12 @@ class Manipulator:
 		rxn_object_a["temp"] = []
 		rxn_object_a["index"] = []
 		rxn_object_a["temp"].append(rxn_object["temp"][0])
-		rxn_object_a["index"].append(rxn_object["index"][0])
+		rxn_object_a["index"].append(int(rxn_object["index"][0])-1)
 		rxn_object_b = {}
 		rxn_object_b["temp"] = []
 		rxn_object_b["index"] = []
 		rxn_object_b["temp"].append(rxn_object["temp"][1])
-		rxn_object_b["index"].append(rxn_object["index"][1])
+		rxn_object_b["index"].append(int(rxn_object["index"][1])-1)
 		
 		new_mechanism = self.ElementaryPerturbation(rxn_object_a,beta,mechanism)
 		new_mechanism = self.ElementaryPerturbation(rxn_object_a,beta,new_mechanism)
@@ -189,6 +192,7 @@ class Manipulator:
 		for i,index in enumerate(rxn_dict):
 			#print(self.perturbation)
 			rxn = rxn_dict[index]
+			index_ = index-1
 			beta = np.asarray(self.perturbation[i])
 			if float(abs(beta)) > 0.0:
 				perturb = f"{rxn}\t{beta}"
@@ -196,11 +200,11 @@ class Manipulator:
 				data = rxn_data[rxn]
 				
 				if type_of_rxn == "Elementary":
-					new_mechanism = self.ElementaryPerturbation(index,beta,mechanism)
+					new_mechanism = self.ElementaryPerturbation(index_,beta,mechanism)
 					mechanism = new_mechanism
 					
 				if type_of_rxn == "PLOG":
-					new_mechanism = self.PlogPerturbation(index,beta,mechanism)
+					new_mechanism = self.PlogPerturbation(index_,beta,mechanism)
 					mechanism = new_mechanism
 					
 				if type_of_rxn == "PLOG-Duplicate":
@@ -212,11 +216,11 @@ class Manipulator:
 					mechanism = new_mechanism
 					
 				if type_of_rxn == "Falloff":
-					new_mechanism = self.TroePerturbation(index,beta,mechanism)
+					new_mechanism = self.TroePerturbation(index_,beta,mechanism)
 					mechanism = new_mechanism
 					
 				if type_of_rxn == "ThirdBody":
-					new_mechanism = self.ElementaryPerturbation(index,beta,mechanism)
+					new_mechanism = self.ElementaryPerturbation(index_,beta,mechanism)
 					mechanism = new_mechanism
 			else:
 				perturb = f"{rxn}\t0.0"			

@@ -466,7 +466,8 @@ class combustion_target():
 		Fast = totalfuel_st/total_ox
 			
 		self.phi = float(Fact/Fast)
-		
+		if self.units["observed"] == "ms" and self.target == "Tig":
+			self.observed = self.observed*1000
 		#print(self.phi)
 		#raise AssertionError("Stop")
 		#if "Fls" in self.target:

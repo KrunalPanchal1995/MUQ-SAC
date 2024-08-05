@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared  -o parallel_yaml_writer.cpython-39-x86_64-linux-gnu.so CMakeFiles/parallel_yaml_writer.dir/parallel_yaml_writer.cpp.o  -flto /usr/local/lib/libyaml-cpp.a -lpthread 

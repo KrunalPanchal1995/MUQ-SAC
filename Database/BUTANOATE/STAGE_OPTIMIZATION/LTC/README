@@ -1,0 +1,105 @@
+R: 3978 was removed
+R: 3982 was removed
+R: 3986 was removed
+R: 3988 was removed
+<reaction rxn = 'MB2OOH4J&#032;&#61;&#62;&#032;MB2OO' no = '3978'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	<reaction rxn = 'MB3OOHMJ&#032;&#61;&#62;&#032;MB3OO' no = '3982'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	<reaction rxn = 'MB4OOH2J&#032;&#61;&#62;&#032;MB4OO' no = '3986'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	<reaction rxn = 'MBMOOH3J&#032;&#61;&#62;&#032;MBMOO' no = '3988'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	
+	
+	 
+R: 3983 was improved
+R: 3985 was improved
+	<reaction rxn = 'MB4OO&#032;&#60;&#61;&#62;&#032;MB4OOH3J' no = '3983'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	<reaction rxn = 'MB4OO&#032;&#60;&#61;&#62;&#032;MB4OOH2J' no = '3985'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "forward">
+			<multiple> False </multiple>
+			<branches>N/A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>all</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>

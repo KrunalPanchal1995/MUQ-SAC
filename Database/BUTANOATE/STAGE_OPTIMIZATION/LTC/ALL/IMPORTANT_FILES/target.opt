@@ -1,0 +1,154 @@
+#count (H2):785
+#count (H2CO):36
+#targets_count(Tig_all): 1334
+#targets_count: 152
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+ 
+ optimization_type: PRS
+ 
+ Algorithm_type: gradient-based
+ 
+ Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+
+ total_reactions: 25
+
+ parallel_threads: 120
+ 
+ targets_count: 30
+#################################################
+# 		Chemical Kinetics  Data  	 #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono              ----#
+# -----fuel/s : written in YAML format    ------#
+#################################################
+
+Bin:
+
+ bin: /home/krithika/Desktop/KineticMechanismOptimization/source_code/bin
+
+ solver_bin: /home/krithika/FlameMaster/Bin/bin
+ 
+ yaml_writer: /home/krithika/Desktop/MUQ-SAC/lib/YAML_WRITER/yamlwriter.so
+ 
+ samap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+ 
+ jpdap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+ 
+Inputs:
+
+ fileType: chemkin 
+
+ fuelClass: Multi
+
+ fuel/s: {a: MB-C5H10O2}
+
+ global_reaction: MB-C5H10O2+6.5O2==5CO2+5H2O
+
+#########################
+# Input file Location   #
+#	Data            #
+#########################
+
+Locations:
+ 
+ mechanism: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/STAGE_OPTIMIZATION/HTC/MB_OPT_HTC_A_FACT.yaml
+ 
+ Initial_pre_file: /home/krithika/FlameMaster/Data/H2.allstar3.pre
+ 
+ uncertainty_data: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/STAGE_OPTIMIZATION/LTC/MB_LTC_A_fact.xml
+ 
+ thermo_file: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/MB+MB2D_therm.dat
+
+ trans_file: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/Mb+MB2d_trans.dat
+ 
+# targets: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/MB_MB2D.target
+ 
+ targets: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/STAGE_OPTIMIZATION/LTC/MB_LTC.target
+ 
+ addendum: /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/MB_MB2D.add
+
+################################################
+# 	 Start file Generator 			#
+#______________________________________________#
+#						#			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+StartProfilesData:
+
+ Fls:
+  Flame: UnstretchedPremixed
+
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+  
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+  
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: N2}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+ Flf:
+  Flame: UnstretchedPremixed
+ 
+  StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+
+  CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: AR}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 
+#####################################
+# 	Stastical Parameters        #
+#           Data                    #
+#####################################
+
+Stats:
+ 
+#Design_of_PRS: Monte-Carlo-All
+
+#Design_of_PRS: Monte-Carlo
+
+#Design_of_PRS: LHS-maximin
+
+#Design_of_PRS: B1
+ 
+# Design_of_PRS: A1+B1+C1
+  
+ Design_of_PRS: A-facto
+ 
+ Order_of_PRS: 2
+ 
+ Sampling_of_PRS: 4
+ 
+ PRS_type: Full

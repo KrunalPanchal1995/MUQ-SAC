@@ -20,11 +20,13 @@ class Manipulator:
 	def getRxnPerturbationDict(self):
 		perturb = {}
 		count = 0
+		#print(len(self.perturbation))
 		for rxn in self.rxn_list:
 			len_active_parameters = len(self.unsrt[rxn].activeParameters)
 			temp = []			
 			for i in range(len_active_parameters):
 				temp.append(self.perturbation[count])
+				#print(count)
 				count+=1
 			perturb[rxn] = np.asarray(temp)		
 		return perturb

@@ -175,7 +175,7 @@
 		<data_type>file</data_type>
 		<file>/home/krithika/Desktop/KineticMechanismOptimization/source_code/Case_study_data/Syngas/unsrt/R1.csv</file>	
 	</reaction>
-	<reaction rxn = "H2&#032;+&#032;M&#032;&#60;&#61;&#62;&#032;2&#032;H&#032;+&#032;M" no = "R5b">
+	<reaction rxn = "H2&#032;+&#032;M&#032;&#60;&#61;&#62;&#032;2&#032;H&#032;+&#032;M" no = "R6">
 	 <class>ThirdBody</class>
 		<type>pressure_independent</type>
 		<sub_type name = "forward">

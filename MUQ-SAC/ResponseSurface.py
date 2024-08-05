@@ -21,7 +21,11 @@ from sklearn.linear_model import QuantileRegressor
 from sklearn.gaussian_process.kernels import DotProduct, WhiteKernel
 
 class ResponseSurface(object):
-	def __init__(self,xdata,ydata,case,case_index,responseOrder=2):
+	def __init__(self,xdata,ydata,case,case_index,responseOrder=2,selected_params = None,prs_type = "Full"):
+		if prs_type == "Full":
+			self.selected_params = np.repeat(1,len(xdata[0]))
+		else:
+			self.selected_params = selected_params
 		self.X = xdata
 		self.Y = ydata
 		self.case = case
@@ -42,13 +46,13 @@ class ResponseSurface(object):
 		self.y_Test_Predict = []
 		self.y_Test_simulation = yTest
 		for sample in xTest:
-			self.y_Test_Predict.append(self.evaluate(sample))
+			self.y_Test_Predict.append(self.evaluate_prs(sample))
 		
 		self.error_testing = []
 		self.error_testing_relative = []
 		for index,sample in enumerate(self.y_Test_simulation):
 			self.error_testing.append(float(np.asarray(self.y_Test_Predict)[index])-sample)
-			self.error_testing_relative.append((self.y_Test_Predict[index]-sample)/(sample)*100)
+			self.error_testing_relative.append(((self.y_Test_Predict[index]-sample)/(sample))*100)
 		
 		self.ytestMaxError = max(self.error_testing_relative)
 		self.yTestMeanError = statistics.mean(self.error_testing_relative)
@@ -158,7 +162,7 @@ class ResponseSurface(object):
 		for i in range(len(self.resFramWrk)):
 			self.error.append(abs(self.Y[i]-self.resFramWrk[i]))
 			self.RMS_error.append(abs(self.Y[i]-self.resFramWrk[i])**2)
-			self.relative_error.append(abs(self.Y[i]-self.resFramWrk[i])/(self.Y[i]))
+			self.relative_error.append((abs(self.Y[i]-self.resFramWrk[i])/(self.Y[i]))*100)
 			TraError.append(1-np.exp(-(self.Y[i]-self.resFramWrk[i])))
 			simVSresp +='{},{},{},{}\n'.format(self.Y[i],self.resFramWrk[i],(self.Y[i]-self.resFramWrk[i])/self.Y[i],1-np.exp(-(self.Y[i]-self.resFramWrk[i])))	
 		fileResponse.write(simVSresp)		
@@ -236,7 +240,7 @@ class ResponseSurface(object):
 		
 		self.resFramWrk = []
 		for i in self.X:
-		    self.resFramWrk.append(self.evaluate(i))
+		    self.resFramWrk.append(self.evaluate_prs(i))
 		
 		#print(self.resFramWrk)
 		fileResponse = open(os.getcwd()+'/Data/ResponseSurface/FlaMan_Response_comparison_.csv','w')
@@ -249,7 +253,7 @@ class ResponseSurface(object):
 		for i in range(len(self.resFramWrk)):
 			self.error.append(abs(self.Y[i]-self.resFramWrk[i]))
 			self.RMS_error.append(abs(self.Y[i]-self.resFramWrk[i])**2)
-			self.relative_error.append(abs(self.Y[i]-self.resFramWrk[i])/(self.Y[i]))
+			self.relative_error.append((abs(self.Y[i]-self.resFramWrk[i])/(self.Y[i]))*100)
 			TraError.append(1-np.exp(-(self.Y[i]-self.resFramWrk[i])))
 			simVSresp +='{},{},{},{}\n'.format(self.Y[i],self.resFramWrk[i],(self.Y[i]-self.resFramWrk[i])/self.Y[i],1-np.exp(-(self.Y[i]-self.resFramWrk[i])))	
 		fileResponse.write(simVSresp)		
@@ -310,11 +314,10 @@ class ResponseSurface(object):
 			BTrsMatrix.append(row_)
 		return BTrsMatrix
 	
-	def evaluate(self,x):
+	def evaluate_prs(self,x):
 		BZeta = x
 		coeff = self.coeff
 		tow = self.order
-		row = BZeta
 		val = coeff[0]
 		count = 1
 		if tow > 0:		
@@ -330,35 +333,32 @@ class ResponseSurface(object):
 						val+=coeff[count]*j*k
 						count +=1
 			tow = tow - 1
-
+			
+		return val
+	
+	def evaluate(self,x):
+		x_= []
+		for index,i_x in enumerate(x):
+			if self.selected_params[index] == 1:
+				x_.append(i_x)
+			
+		BZeta = x_
+		coeff = self.coeff
+		tow = self.order
+		val = coeff[0]
+		count = 1
 		if tow > 0:		
-			for i,j in enumerate(BZeta):
-				for k in BZeta[BZeta.index(j):]: 
-					for m in row[row.index(k):]:
-						if count < len(coeff):					
-							val+=coeff[count]*j*k*m
-							count +=1
-			tow = tow - 1					
-
-		if tow > 0:
-			for i,j in enumerate(BZeta):
-				for k,l in enumerate(BZeta[i:]): 
-					for m,n in enumerate(BZeta[k:]):					
-						for o in BZeta[m:]:
-							if count < len(coeff):
-								val+=coeff[count]*j*l*n*o
-								count +=1
+			for i in BZeta:				
+				val+=coeff[count]*i
+				count +=1
 			tow = tow - 1
 
 		if tow > 0:
-			for i,j in enumerate(BZeta):
-				for k,l in enumerate(BZeta[i:]): 
-					for m,n in enumerate(BZeta[k:]):					
-						for o,p in enumerate(BZeta[m:]):
-							for q in BZeta[o:]:
-								if count<len(coeff):
-									val+=coeff[count]*q*p*n*l*j
-									count +=1
+			for i,j in enumerate(BZeta): 
+				for k in BZeta[i:]:
+					if count < len(coeff):					
+						val+=coeff[count]*j*k
+						count +=1
 			tow = tow - 1
 			
 		return val

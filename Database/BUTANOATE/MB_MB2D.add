@@ -16,6 +16,48 @@ ing_Ethyl_Butanoate:
  specific_cond: 
  mol_wt: 99
 
+ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ign_BUTANOATE_phi_1_IGN_PHI_1_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
 ing_Butanoate:
  solver: cantera
  ign_delay_def: p
@@ -47,4 +89,46 @@ JSR_BUTANOATE_phi_1_JSR_MB:
  residenceTime: 0.07 #s
  maxSimulationTime: 0.3
  volume: 1 #cm3
+
+MB_JSR__PHI_1_13_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
  
+MB_JSR__PHI_1_13_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_C2H2:
+ solver: cantera
+ species: C2H2
+ mol_wt: 26
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_C2H4:
+ solver: cantera
+ species: C2H4
+ mol_wt: 28
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_CH2O:
+ solver: cantera
+ species: CH2O
+ mol_wt: 30
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+ 
+
