@@ -2,6 +2,7 @@ try:
     import ruamel_yaml as yaml
 except ImportError:
     from ruamel import yaml
+import yaml
 import os,re
 
 #rxn = ["AC3H5OOH <=> C2H3CHO + H2O"]

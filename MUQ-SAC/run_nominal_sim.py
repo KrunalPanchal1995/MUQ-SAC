@@ -24,7 +24,7 @@ try:
 except ImportError:
     from ruamel import yaml
 import pandas as pd
-
+import yaml
 ####################################
 ##  Importing the sampling file   ##
 ##                                ##

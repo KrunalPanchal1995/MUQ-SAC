@@ -25,7 +25,7 @@ try:
 except ImportError:
     from ruamel import yaml
 import pandas as pd
-
+import yaml
 sys.path.append('/parallel_yaml_writer.so')
 import parallel_yaml_writer
 #print(dir(parallel_yaml_writer))
@@ -61,6 +61,7 @@ import Uncertainty as uncertainty
 from mpire import WorkerPool
 import DesignMatrix as DM
 import ResponseSurface as PRS
+
 ### KEY WORDS #######
 optType = "optimization_type"
 targets = "targets"
@@ -203,8 +204,14 @@ nominal_list = []
 rxn_list = []
 rIndex = []
 rxn_list_a_fact = []
+
 for rxn in unsrt_data:
 	#print(i)
+	data = {}
+	data["temperatures"] = unsrt_data[rxn].temperatures
+	data["uncertainties"] = unsrt_data[rxn].uncertainties
+	data["Arrhenius"] = unsrt_data[rxn].nominal
+	print(rxn,data)
 	rxn_list.append(rxn)
 	rxn_list_a_fact.append(unsrt_data[rxn].rxn)
 	selection.extend(unsrt_data[rxn].selection)
@@ -232,53 +239,66 @@ if PRS_type == "Partial":
 	####################################################
 	print("\nPartial Polynomial Response Surface is choosen as a Solution Mapping Technique\n\n\tStarting the Sensitivity Analysis: \n\t\tKindly be Patient\n")
 	#if "A-facto" in design_type:
-	#if "SA" not in os.listdir():
-	# Arguments to pass to script2.py
-	args = [sys.argv[1], 'rxn_list_a_fact.csv','&>SA.out']
+	if "sens_parameters.pkl" not in os.listdir():
+		# Arguments to pass to script2.py
+		args = [sys.argv[1], 'rxn_list_a_fact.csv','&>SA.out']
 
-	# Doing A factor sensitivity Analysis
-	result = subprocess.run(['python3.9', binLoc["SA_tool"]] + args, capture_output=True, text=True)
-
-	# Printing the output of script2.py
-	#print("\nOutput of sens.py:\n")
-	#print(result.stdout)
-	print("\nSensitivity Analysis for A-factor is Done!!")
-	# Printing the errors of script2.py, if any
-	#if result.stderr:
-	#	print("Errors:")
-	#	print(result.stderr)
-			
-	#	raise AssertionError("Sensitivity Analysis Done!!")
-	with open('sens_parameters.pkl', 'rb') as file_:
-		sensitivity_analysis = pickle.load(file_)
+		# Doing A factor sensitivity Analysis
+		result = subprocess.run(['python3.9', binLoc["SA_tool"]] + args, capture_output=True, text=True)
+		f = open("SA_tool.out","+a")
+		f.write(result.stdout+"\n")
+		
+		# Printing the output of script2.py
+		#print("\nOutput of sens.py:\n")
+		#print(result.stdout)
+		print("\nSensitivity Analysis for A-factor is Done!!")
+		# Printing the errors of script2.py, if any
+		if result.stderr:
+		#	print("Errors:")
+		#	print(result.stderr)
+			f.write("Errors:\n"+result.stderr)	
+		#	raise AssertionError("Sensitivity Analysis Done!!")
+		with open('sens_parameters.pkl', 'rb') as file_:
+			sensitivity_analysis = pickle.load(file_)
+	else:
+		print("\n\tBrute-force Sensitivity analysis is alsready over!!\n")
+		with open('sens_parameters.pkl', 'rb') as file_:
+			sensitivity_analysis = pickle.load(file_)
 	
 	#else:
-	#if "SA_3P" not in os.listdir():
+	if design_type !="A-facto":
+		if "sens_3p_parameters.pkl" not in os.listdir() :
 
-	args = [sys.argv[1], 'rxn_list.csv','&>SA_3p.out']
+			args = [sys.argv[1], 'rxn_list.csv','&>SA_3p.out']
 
-	result = subprocess.run(['python3.9', binLoc["SA_tool_3p"]] + args, capture_output=True, text=True)
-
-	# Printing the output of script2.py
-	#print("\nOutput of sens.py:\n")
-	#print(result.stdout)
-	print("\nSensitivity Analysis for 3-param is Done!!")
-	# Printing the errors of script2.py, if any
-	#if result.stderr:
-	#	print("Errors:")
-	#	print(result.stderr)
-	
-	raise AssertionError("Sensitivity Analysis Done!!")
-	with open('sens_3p_parameters.pkl', 'rb') as file_:
-		sensitivity_analysis_3p = pickle.load(file_)
-	
+			result = subprocess.run(['python3.9', binLoc["SA_tool_3p"]] + args, capture_output=True, text=True)
+			f = open("SA_tool_3p.out","+a")
+			f.write(result.stdout+"\n")
+			# Printing the output of script2.py
+			#print("\nOutput of sens.py:\n")
+			#print(result.stdout)
+			#print("\nSensitivity Analysis for 3-param is Done!!")
+			# Printing the errors of script2.py, if any
+			if result.stderr:
+			#	print("Errors:")
+			#	print(result.stderr)
+				f.write("Errors:\n"+result.stderr)	
+			#raise AssertionError("Sensitivity Analysis Done!!")
+			with open('sens_3p_parameters.pkl', 'rb') as file_:
+				sensitivity_analysis_3p = pickle.load(file_)
+		else:
+			print("\n\t3-Parameter Sensitivity analysis is alsready over!!\n")
+			with open('sens_3p_parameters.pkl', 'rb') as file_:
+				sensitivity_analysis_3p = pickle.load(file_)
+	#raise AssertionError("Stop")
 	partialPRS_Object = []
 	selected_params_dict = {}
 	design_matrix_dict = {}
 	yaml_loc_dict = {}
 	no_of_sim = {}
 	for case in case_dir:
-		PPRS_system = P_PRS.PartialPRS(sensitivity_analysis_3p[str(case)],unsrt_data,optInputs,target_list,case,activeParameters,design_type)
+		PPRS_system = P_PRS.PartialPRS(sensitivity_analysis[str(case)],unsrt_data,optInputs,target_list,case,activeParameters,design_type)
+		#PPRS_system = P_PRS.PartialPRS(sensitivity_analysis_3p[str(case)],unsrt_data,optInputs,target_list,case,activeParameters,design_type)
 		yaml_loc,design_matrix,selected_params = PPRS_system.partial_DesignMatrix()
 		partialPRS_Object.append(PPRS_system)
 		no_of_sim[case] = int(PPRS_system.no_of_sim)
@@ -331,7 +351,7 @@ else:
 			design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
 	#raise AssertionError("Design Matrix created!!")
 	design_matrix_dict = {}
-	for case in target_list:
+	for case in case_dir:
 		design_matrix_dict[case] = design_matrix
 		no_of_sim[case] = no_of_sim_
 	
@@ -389,7 +409,7 @@ else:
 	selected_params_dict = {}
 	design_matrix_dict = {}
 	yaml_loc_dict = {}
-	for case in target_list:
+	for case in case_dir:
 		yaml_loc_dict[case] = yaml_loc
 		design_matrix_dict[case] = design_matrix
 		selected_params_dict[case] = selected_params

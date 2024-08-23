@@ -24,7 +24,7 @@ try:
 except ImportError:
     from ruamel import yaml
 import pandas as pd
-
+import yaml
 sys.path.append('/parallel_yaml_writer.so')
 import parallel_yaml_writer
 
@@ -212,6 +212,15 @@ else:
 		unsrt_data = pickle.load(file_)
 	print("Uncertainty analysis already finished")
 
+########################################################################
+## Analysis for temperature-exponent (n) and activation energies (Ea) ##
+##                                                                    ##
+########################################################################
+#Finding sigma_n and sigma_Ea from uncertainty analysis
+#sigma_n = []
+#sigma_Ea = []
+#for rxn in unsrt_data:
+	
 
 ######################################################################
 ##  CREATING A DICTIONARY CONTAINING ALL THE DATA FROM UNSRT CLASS  ##
@@ -222,24 +231,47 @@ selection = []
 Cholesky_list = []
 zeta_list = []
 activeParameters = []
-nominal_list = []
+P_nominal_list = []
+P_multiply_A = []
+P_multiply_n = []
+P_multiply_Ea = []
 rxn_list = []
 rIndex = []
+sigma_n = []
+sigma_Ea = []
 for rxn in unsrt_data:
 	#print(i)
+	#print(rxn)
 	rxn_list.append(rxn)
 	selection.extend(unsrt_data[rxn].selection)
 	Cholesky_list.append(unsrt_data[rxn].cholskyDeCorrelateMat)
+	covariance_mat = np.dot(unsrt_data[rxn].L,unsrt_data[rxn].L.T)
+	sigma_vector = np.diag(covariance_mat)
+	cov = unsrt_data[rxn].L
+	zeta = np.asarray(unsrt_data[rxn].perturb_factor)
+	
+	Po = np.asarray(unsrt_data[rxn].nominal)
+	zeta_A = np.array([abs(zeta[0]),0.0,0.0])
+	zeta_n = np.array([0.0,abs(zeta[1]),0.0])
+	zeta_Ea = np.array([0.0,0.0,abs(zeta[2])])
+	P_multiply_A.append(list(Po + np.asarray(cov.dot(zeta_A)).flatten()))
+	P_multiply_n.append(list(Po + np.asarray(cov.dot(zeta_n)).flatten()))
+	P_multiply_Ea.append(list(Po + np.asarray(cov.dot(zeta_Ea)).flatten()))
+	
+	#print(sigma_vector)
+	sigma_n.append(sigma_vector[1])
+	sigma_Ea.append(sigma_vector[2])
 	zeta_list.append(unsrt_data[rxn].perturb_factor)
 	activeParameters.extend(unsrt_data[rxn].activeParameters)
-	nominal_list.append(unsrt_data[rxn].nominal)
+	P_nominal_list.append(unsrt_data[rxn].nominal)
 	rIndex.append(unsrt_data[rxn].rIndex)
-	
+#print(zeta_list)
+#raise AssertionError("Stop")
 manipulationDict["selection"] = deepcopy(selection)#.deepcopy()
 manipulationDict["Cholesky"] = deepcopy(Cholesky_list)#.deepcopy()
 manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
 manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
-manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
+manipulationDict["nominal"] = deepcopy(P_nominal_list)#.deepcopy()
 print("\nFollowing list is the choosen reactions\n")
 print(manipulationDict["activeParameters"])
 
@@ -271,7 +303,6 @@ def getSim(n,design):
 	else:
 		sim = 7*n_	
 	return sim
-
 
 
 #########################################
@@ -314,9 +345,134 @@ else:
 	for row in design_matrix_file:
 		design_matrix_x2.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
 
+if "DesignMatrix_A.csv" not in os.listdir():
+	flag = "A"
+	design_matrix_A = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	s =""
+	for row in design_matrix_A:
+		for element in row:
+			s+=f"{element},"
+		s+="\n"
+	ff = open('DesignMatrix_A.csv','w').write(s)
+else:
+	design_matrix_file = open("DesignMatrix_A.csv").readlines()
+	design_matrix_A = []
+	for row in design_matrix_file:
+		design_matrix_A.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
+		
+if "DesignMatrix_n.csv" not in os.listdir():
+	flag = "n"
+	design_matrix_n = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	s =""
+	for row in design_matrix_n:
+		for element in row:
+			s+=f"{element},"
+		s+="\n"
+	ff = open('DesignMatrix_n.csv','w').write(s)
+else:
+	design_matrix_file = open("DesignMatrix_n.csv").readlines()
+	design_matrix_n = []
+	for row in design_matrix_file:
+		design_matrix_n.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
+
+if "DesignMatrix_Ea.csv" not in os.listdir():
+	flag = "Ea"
+	design_matrix_Ea = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	s =""
+	for row in design_matrix_Ea:
+		for element in row:
+			s+=f"{element},"
+		s+="\n"
+	ff = open('DesignMatrix_Ea.csv','w').write(s)
+else:
+	design_matrix_file = open("DesignMatrix_Ea.csv").readlines()
+	design_matrix_Ea = []
+	for row in design_matrix_file:
+		design_matrix_Ea.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
+		
 yaml_loc_nominal = []
 yaml_loc_nominal.append(MECH)
 SSM = simulator.SM(target_list,optInputs,unsrt_data,design_matrix_x2)
+if "Perturbed_Mech_SA_3P_BruteForce" not in os.listdir():
+	os.mkdir("Perturbed_Mech_SA_3P_BruteForce")
+	os.mkdir("Perturbed_Mech_SA_3P_BruteForce/A_factor")
+	os.mkdir("Perturbed_Mech_SA_3P_BruteForce/n")
+	os.mkdir("Perturbed_Mech_SA_3P_BruteForce/Ea")
+	print("\nPerturbing the Mechanism files for 3-Parameter brute force sensitivity analysis\n")
+	chunk_size = 500
+	params_yaml_A = [design_matrix_A[i:i+chunk_size] for i in range(0, len(design_matrix_A), chunk_size)]
+	params_yaml_n = [design_matrix_n[i:i+chunk_size] for i in range(0, len(design_matrix_n), chunk_size)]
+	params_yaml_Ea = [design_matrix_Ea[i:i+chunk_size] for i in range(0, len(design_matrix_Ea), chunk_size)]
+	count = 0
+	yaml_loc_A = []
+	yaml_loc_n = []
+	yaml_loc_Ea = []
+	for params in params_yaml_A:
+		yaml_list = SSM.getYAML_List(params,"A")
+		#yaml_loc = []
+		location_mech = []
+		index_list = []
+		for i,dict_ in enumerate(yaml_list):
+			index_list.append(str(count+i))
+			location_mech.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/A_factor")
+			yaml_loc_A.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/A_factor/mechanism_"+str(count+i)+".yaml")
+		count+=len(yaml_list)
+		#gen_flag = False
+		#SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		print(f"\n\tGenerated {count} files!!\n")
+	for params in params_yaml_n:
+		yaml_list = SSM.getYAML_List(params,"n")
+		#yaml_loc = []
+		location_mech = []
+		index_list = []
+		for i,dict_ in enumerate(yaml_list):
+			index_list.append(str(count+i))
+			location_mech.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/n")
+			yaml_loc_n.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/n/mechanism_"+str(count+i)+".yaml")
+		count+=len(yaml_list)
+		#gen_flag = False
+		#SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		print(f"\n\tGenerated {count} files!!\n")
+	for params in params_yaml_Ea:
+		yaml_list = SSM.getYAML_List(params,"Ea")
+		#yaml_loc = []
+		location_mech = []
+		index_list = []
+		for i,dict_ in enumerate(yaml_list):
+			index_list.append(str(count+i))
+			location_mech.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/Ea")
+			yaml_loc_Ea.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/Ea/mechanism_"+str(count+i)+".yaml")
+		count+=len(yaml_list)
+		#gen_flag = False
+		#SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		SSM.getPerturbedMechLocation(yaml_list,location_mech,index_list)
+		print(f"\n\tGenerated {count} files!!\n")
+	print("\n\tGenerated the YAML files required for simulations!!\n")
+else:
+	print("\nYAML files for 3-Parameter Bruteforce analysis is already generated!!")
+	yaml_loc_A = []
+	yaml_loc_n = []
+	yaml_loc_Ea = []
+	location_mech_A = []
+	location_mech_n = []
+	location_mech_Ea = []
+	index_list_A = []
+	index_list_n = []
+	index_list_Ea = []
+	for i,sample in enumerate(design_matrix_A):
+		index_list_A.append(i)
+		location_mech_A.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/A_factor")
+		yaml_loc_A.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/A_factor/mechanism_"+str(i)+".yaml")
+	for i,sample in enumerate(design_matrix_n):
+		index_list_n.append(i)
+		location_mech_n.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/n")
+		yaml_loc_n.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/n/mechanism_"+str(i)+".yaml")
+	for i,sample in enumerate(design_matrix_Ea):
+		index_list_Ea.append(i)
+		location_mech_Ea.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/Ea")
+		yaml_loc_Ea.append(os.getcwd()+"/Perturbed_Mech_SA_3P_BruteForce/Ea/mechanism_"+str(i)+".yaml")
 
 if "Perturbed_Mech_SA_3P" not in os.listdir():
 	os.mkdir("Perturbed_Mech_SA_3P")
@@ -372,6 +528,9 @@ print("\t\t#########################################\n\t\t###    Creating Simula
 if "SA_3P" not in os.listdir():
 	os.mkdir("SA_3P")
 	os.chdir("SA_3P")
+	os.mkdir("multiply_A")
+	os.mkdir("multiply_n")
+	os.mkdir("multiply_Ea")
 	os.mkdir("multiply")# we multiply reactions by 2 in this folder
 	os.mkdir("divide")# we divide the reactions by 2 in this folder
 	os.mkdir("nominal")
@@ -380,20 +539,87 @@ if "SA_3P" not in os.listdir():
 	os.mkdir("Simulations")
 	os.chdir("Simulations")
 	os.mkdir("Multiply")
+	os.mkdir("Multiply_A")
+	os.mkdir("Multiply_n")
+	os.mkdir("Multiply_Ea")
 	os.mkdir("Divide")
 	os.mkdir("Nominal")
 	os.chdir("..")
 	os.mkdir("ResponseSurface")
 	os.chdir("..")
-	os.chdir("multiply")
+	os.chdir("multiply_A")
 	SADir = os.getcwd()
 else:
 	os.chdir("SA_3P")
-	os.chdir("multiply")
+	os.chdir("multiply_A")
 	SADir = os.getcwd()
 
+################################################################################
+#### Multiplying the A-factor of reactions within the uncertainty limits     ###
+################################################################################
+print("\n\t\t#####################################################\n\t\t#### Multiplying the A-factor of all reactions for 3-Params UQ   ###\n\t\t#####################################################")
+
+
+if os.path.isfile("progress") == False:
+	FlameMaster_Execution_location_A = simulator.SM(target_list,optInputs,rxn_dict,design_matrix_A).make_dir_in_parallel(yaml_loc_A)
+	
+else:
+	print("\t\tProgress file detected")
+	progress = open(SADir+"/progress",'r').readlines()
+	FlameMaster_Execution_location_A = []
+	with open(SADir+"/locations") as infile:
+		for line in infile:
+			FlameMaster_Execution_location_A.append(line)
+
+os.chdir("..")
+os.chdir("multiply_n")
+SADir = os.getcwd()
+
+####################################################################################
+#### Multiplying the "n" parameter of reactions within the uncertainty limits    ###
+####################################################################################
+print("\n\t\t#####################################################\n\t\t#### Multiplying the n of all reactions for 3-Params UQ   ###\n\t\t#####################################################")
+
+
+if os.path.isfile("progress") == False:
+	FlameMaster_Execution_location_n = simulator.SM(target_list,optInputs,rxn_dict,design_matrix_n).make_dir_in_parallel(yaml_loc_n)
+	
+else:
+	print("\t\tProgress file detected")
+	progress = open(SADir+"/progress",'r').readlines()
+	FlameMaster_Execution_location_n = []
+	with open(SADir+"/locations") as infile:
+		for line in infile:
+			FlameMaster_Execution_location_n.append(line)
+
+os.chdir("..")
+os.chdir("multiply_Ea")
+SADir = os.getcwd()
+
+#######################################################################################
+#### Multiplying the "Ea" paramteter of reactions within the uncertainty limits     ###
+#######################################################################################
+print("\n\t\t#####################################################\n\t\t#### Multiplying the Ea of all reactions for 3-Params UQ   ###\n\t\t#####################################################")
+
+
+if os.path.isfile("progress") == False:
+	FlameMaster_Execution_location_Ea = simulator.SM(target_list,optInputs,rxn_dict,design_matrix_Ea).make_dir_in_parallel(yaml_loc_Ea)
+	
+else:
+	print("\t\tProgress file detected")
+	progress = open(SADir+"/progress",'r').readlines()
+	FlameMaster_Execution_location_Ea = []
+	with open(SADir+"/locations") as infile:
+		for line in infile:
+			FlameMaster_Execution_location_Ea.append(line)
+
+os.chdir("..")
+os.chdir("multiply")
+SADir = os.getcwd()
+
+
 #####################################################
-#### Multiplying the reactions by a factor of 2   ###
+#### Multiplying the reactions                    ###
 #####################################################
 print("\n\t\t#####################################################\n\t\t#### Multiplying the reactions for 3-Params UQ   ###\n\t\t#####################################################")
 
@@ -464,6 +690,95 @@ for case in case_dir:
 		#f.close()
 		os.chdir(SAdir)
 
+####################################
+##### From Multiply_A Folder #######
+####################################
+temp_sim_opt_A = {}
+for case in case_dir:	
+	os.chdir("Data/Simulations/Multiply_A")
+	if "sim_data_case-"+str(case)+".lst" in os.listdir():
+		ETA_A = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		folderName_A = [float(i.split("\t")[0]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		temp_sim_opt_A[str(case)] = {}
+		temp_sim_opt_A[str(case)]["ETA"] = ETA_A
+		temp_sim_opt_A[str(case)]["index"] = folderName_A
+		os.chdir(SAdir)
+		#print(ETA)
+		#raise AssertionError("Generating ETA list for all cases")	
+	else:
+		os.chdir(SAdir)
+		os.chdir("multiply_A/case-"+str(case))	
+		data_sheet_A,failed_sim_A,index_A, ETA_A,eta_A = data_management.generate_SA_target_value_tables(FlameMaster_Execution_location_A, target_list, case, fuel)
+		#print(data_sheet)
+		#raise AssertionError("!STOP")
+		temp_sim_opt_A[str(case)] = {}
+		temp_sim_opt_A[str(case)]["ETA"] = eta_A
+		temp_sim_opt_A[str(case)]["index"] = index_A
+		f = open('../../Data/Simulations/Multiply_A/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_A)
+		g = open('../../Data/Simulations/Multiply_A/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_A)
+		#f.write(data_sheet)
+		#f.close()
+		os.chdir(SAdir)
+
+####################################
+##### From Multiply_n Folder #######
+####################################
+temp_sim_opt_n = {}
+for case in case_dir:	
+	os.chdir("Data/Simulations/Multiply_n")
+	if "sim_data_case-"+str(case)+".lst" in os.listdir():
+		ETA_n = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		folderName_n = [float(i.split("\t")[0]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		temp_sim_opt_n[str(case)] = {}
+		temp_sim_opt_n[str(case)]["ETA"] = ETA_n
+		temp_sim_opt_n[str(case)]["index"] = folderName_n
+		os.chdir(SAdir)
+		#print(ETA)
+		#raise AssertionError("Generating ETA list for all cases")	
+	else:
+		os.chdir(SAdir)
+		os.chdir("multiply_n/case-"+str(case))	
+		data_sheet_n,failed_sim_n,index_n, ETA_n,eta_n = data_management.generate_SA_target_value_tables(FlameMaster_Execution_location_n, target_list, case, fuel)
+		#print(data_sheet)
+		#raise AssertionError("!STOP")
+		temp_sim_opt_n[str(case)] = {}
+		temp_sim_opt_n[str(case)]["ETA"] = eta_n
+		temp_sim_opt_n[str(case)]["index"] = index_n
+		f = open('../../Data/Simulations/Multiply_n/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_n)
+		g = open('../../Data/Simulations/Multiply_n/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_n)
+		#f.write(data_sheet)
+		#f.close()
+		os.chdir(SAdir)
+
+#####################################
+##### From Multiply_Ea Folder #######
+#####################################
+temp_sim_opt_Ea = {}
+for case in case_dir:	
+	os.chdir("Data/Simulations/Multiply_Ea")
+	if "sim_data_case-"+str(case)+".lst" in os.listdir():
+		ETA_Ea = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		folderName_Ea = [float(i.split("\t")[0]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		temp_sim_opt_Ea[str(case)] = {}
+		temp_sim_opt_Ea[str(case)]["ETA"] = ETA_Ea
+		temp_sim_opt_Ea[str(case)]["index"] = folderName_Ea
+		os.chdir(SAdir)
+		#print(ETA)
+		#raise AssertionError("Generating ETA list for all cases")	
+	else:
+		os.chdir(SAdir)
+		os.chdir("multiply_Ea/case-"+str(case))	
+		data_sheet_Ea,failed_sim_Ea,index_Ea, ETA_Ea,eta_Ea = data_management.generate_SA_target_value_tables(FlameMaster_Execution_location_Ea, target_list, case, fuel)
+		#print(data_sheet)
+		#raise AssertionError("!STOP")
+		temp_sim_opt_Ea[str(case)] = {}
+		temp_sim_opt_Ea[str(case)]["ETA"] = eta_Ea
+		temp_sim_opt_Ea[str(case)]["index"] = index_Ea
+		f = open('../../Data/Simulations/Multiply_Ea/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_Ea)
+		g = open('../../Data/Simulations/Multiply_Ea/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_Ea)
+		#f.write(data_sheet)
+		#f.close()
+		os.chdir(SAdir)
 
 ##################################
 ##### From Multiply Folder #######
@@ -472,7 +787,7 @@ temp_sim_opt_x2 = {}
 for case in case_dir:	
 	os.chdir("Data/Simulations/Multiply")
 	if "sim_data_case-"+str(case)+".lst" in os.listdir():
-		ETA_x2 = [float(i.split("\t")[1]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		ETA_x2 = [np.log(float(i.split("\t")[1])*10) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
 		folderName_x2 = [float(i.split("\t")[0]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
 		temp_sim_opt_x2[str(case)] = {}
 		temp_sim_opt_x2[str(case)]["ETA"] = ETA_x2
@@ -503,7 +818,10 @@ for case in case_dir:
 
 ResponseSurfaces = {}
 selected_PRS = {}
-
+if "SensitivityCoeffs_PRS" not in os.listdir("Data/"):
+	os.mkdir("Data/SensitivityCoeffs_PRS")
+if "SensitivityCoeffs" not in os.listdir("Data/"):
+	os.mkdir("Data/SensitivityCoeffs")
 for case_index,case in enumerate(temp_sim_opt_x2):
 	T = int(target_list[case_index].temperature)
 	yData = np.asarray(temp_sim_opt_x2[case]["ETA"]).flatten()
@@ -608,14 +926,188 @@ for case_index,case in enumerate(temp_sim_opt_x2):
 	for ind,rxn in enumerate(sort_rlist):
 		string_FM +=f"\t{sort_alist[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
 
-	g = open(f"Data/FM_sensitivity_T_{T}_case_{case_index}.txt","w").write(string_FM)
+	g = open(f"Data/SensitivityCoeffs_PRS/FM_sensitivity_T_{T}_case_{case_index}.txt","w").write(string_FM)
+
+selected_BRUTE_FORCE_PARAMETERS = {}
+for case_index,case in enumerate(temp_sim_opt_A):
+	if design_type == "A-facto":
+		rxn_Sa = {}
+		rxn_Sa_1 = {}
+		count = 0
+		T = target_list[case_index].temperature
+		k_perturbed = float(np.exp(P_multiply_A[case_index][0]))
+		k_o = float(np.exp(P_nominal_list[case_index][0]))
+		index = temp_sim_opt_A[str(case)]["index"]
+		multiply_A = np.asarray(temp_sim_opt_A[str(case)]["ETA"])
+		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
+		SA_coeff =(k_o/(k_perturbed-k_o))*(multiply_A - nominal)/nominal
+		#print((k_o/(k_perturbed-k_o)),(multiply_A - nominal)/nominal)
+		#SA_coeff_without_k_perturbed = (multiply_A - nominal)/nominal
+		for ind,rxn in enumerate(rxn_list):
+			temp = SA_coeff[count]
+			count+=1
+			rxn_Sa[rxn] = temp
+		
+		#for ind,rxn in enumerate(rxn_list):
+		#	temp = SA_coeff_without_k_perturbed[count]
+		#	count+=1
+		#	rxn_Sa_1[rxn] = temp
+		
+		
+		SA_dict = dict(sorted(rxn_Sa.items(), key=lambda item: abs(item[1]),reverse = True))
+		#SA_dict_1 = dict(sorted(rxn_Sa_1.items(), key=lambda item: abs(item[1]),reverse = True))
+		selected_BRUTE_FORCE_PARAMETERS[str(case_index)] = rxn_Sa
+		#sort_rlist = []
+		#sort_alist_1 = []
+		#ticks = []
+		#for ind,rxn in enumerate(SA_dict):
+		#	sort_rlist.append(rxn)
+		#	sort_alist_1.append(SA_dict_1[rxn])
+		#	ticks.append(ind)
+		
+		
+		sort_rlist = []
+		sort_alist = []
+		ticks = []
+		for ind,rxn in enumerate(SA_dict):
+			sort_rlist.append(rxn)
+			sort_alist.append(SA_dict[rxn])
+			ticks.append(ind)
+			
+		
+		fig = plt.figure()
+		y_pos = range(0,len(sort_alist))
+		#print(y_pos)
+		plt.barh(y_pos,sorted(sort_alist,key =abs), alpha=0.51)
+		plt.yticks(y_pos, sort_rlist)
+		plt.xlabel(r'normalized sensitivities $S_i = \frac{\partial ln(S_{u}^{o})}{\partial x_i}}$')
+		#plt.title('Sensitivity Analysis using Response surface method')
+		plt.savefig('../Plots_SA/sensitivity_A_'+str(case_index)+'.png',bbox_inches="tight")
+		plt.close()
+			
+	else:
+		
+		rxn_Sa = {}
+		rxn_Sa_1 = {}
+		count = 0
+		
+		#Sensitivity analysis for A parameter
+		T = float(target_list[case_index].temperature)
+		k_perturbed = float(np.exp(P_multiply_A[case_index][0]))
+		k_o = float(np.exp(P_nominal_list[case_index][0]))
+		index = temp_sim_opt_A[str(case)]["index"]
+		multiply_A = np.asarray(temp_sim_opt_A[str(case)]["ETA"])
+		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
+		SA_coeff_A =(k_o/(k_perturbed-k_o))*((multiply_A - nominal)/nominal)
+		SA_coeff_without_k_perturbed = (multiply_A - nominal)/nominal
+		#Sensitivity analysis for n parameter
+		T = target_list[case_index].temperature
+		k_perturbed = T**float(P_multiply_n[case_index][1])
+		k_o = T**float(P_nominal_list[case_index][1])
+		index = temp_sim_opt_n[str(case)]["index"]
+		multiply_n = np.asarray(temp_sim_opt_n[str(case)]["ETA"])
+		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
+		SA_coeff_n =(k_o/(k_perturbed-k_o))*((multiply_n - nominal)/nominal)
+		
+		#Sensitivity analysis for Ea parameter
+		T = target_list[case_index].temperature
+		k_perturbed = np.exp(-float(P_multiply_Ea[case_index][0])/T)
+		k_o = np.exp(-float(P_nominal_list[case_index][0])/T)
+		index = temp_sim_opt_Ea[str(case)]["index"]
+		multiply_Ea = np.asarray(temp_sim_opt_Ea[str(case)]["ETA"])
+		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
+		SA_coeff_Ea =(k_o/(k_perturbed-k_o))*(multiply_Ea - nominal)/nominal
+		
+
+		
+		for ind,rxn in enumerate(rxn_list):
+			temp = []
+			temp_1 = []
+			temp.append(SA_coeff_A[count])
+			temp_1.append(SA_coeff_without_k_perturbed[count])
+			temp.append(SA_coeff_n[count])
+			temp.append(SA_coeff_Ea[count])
+			count+=1
+			rxn_Sa[rxn] = temp
+			rxn_Sa_1[rxn] = temp_1
+			
+		SA_dict = dict(sorted(rxn_Sa.items(), key=lambda item: abs(item[1][0]),reverse = True))
+		SA_dict_1 = dict(sorted(rxn_Sa_1.items(), key=lambda item: abs(item[1][0]),reverse = True))
+		selected_BRUTE_FORCE_PARAMETERS[str(case_index)] = rxn_Sa
+		sort_rlist = []
+		sort_alist = []
+		sort_alist_1 = []
+		sort_nlist = []
+		sort_ealist = []
+		ticks = []
+		for ind,rxn in enumerate(SA_dict):
+			sort_rlist.append(rxn)
+			sort_alist_1.append(SA_dict_1[rxn][0])
+			sort_alist.append(SA_dict[rxn][0])
+			sort_nlist.append(SA_dict[rxn][1])
+			sort_ealist.append(SA_dict[rxn][2])
+			ticks.append(ind)
+			
+		
+		fig = plt.figure()
+		y_pos = range(0,len(sort_alist))
+		#print(y_pos)
+		plt.barh(y_pos,sorted(sort_alist,key =abs), alpha=0.51)
+		plt.yticks(y_pos, sort_rlist)
+		plt.xlabel(r'normalized sensitivities $S_i = \frac{\partial ln(S_{u}^{o})}{\partial x_i}}$')
+		#plt.title('Sensitivity Analysis using Response surface method')
+		plt.savefig('../Plots_SA/sensitivity_A_'+str(case_index)+'.png',bbox_inches="tight")
+		plt.close()
+		"""
+		Plotting the sensitivity in same fig
+		"""
+		
+		#print(sort_rlist)
+		fake_data = pd.DataFrame({"index": list(sort_rlist), 0: sort_alist , 1: sort_nlist, 2: np.asarray(sort_ealist)*10})
+		fake_data.set_index("index",drop=False)
+		fig, (ax1, ax2, ax3) = plt.subplots(1, 3, sharex=True, sharey=True, figsize=(8, 8), frameon=False)
+		
+		fake_data[0].plot.barh(ax=ax1)
+		fake_data[1].plot.barh(ax=ax2)
+		fake_data[2].plot.barh(ax=ax3)
+		
+		ax1.set_yticks(ticks,sort_rlist)
+		ax1.set_xlabel(r'$\partial ln(\eta) / \partial \zeta_{\alpha}$')
+		ax2.set_xlabel(r'$\partial ln(\eta) / \partial \zeta_{n}$')
+		ax3.set_xlabel(r'$\partial ln(\eta) / \partial \zeta_{\epsilon} (\times 10^{-1})$')
+		fig.savefig('../Plots_SA/sensitivity_'+str(case_index)+'.png',bbox_inches="tight")
+		plt.close()
+	
+	string_FM = "Sensitivity Analysis (using Cantera) Tig:\n"
+	string_FM_1 = "Sensitivity Analysis (using Cantera) Tig:\n"
+	for ind,rxn in enumerate(sort_rlist):
+		string_FM +=f"\t{sort_alist[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
+		string_FM_1 +=f"\t{sort_alist_1[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
+		
+	string_FM_n = "Sensitivity Analysis (using Cantera) Tig:\n"
+	for ind,rxn in enumerate(sort_rlist):
+		string_FM_n +=f"\t{sort_nlist[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
+	
+	string_FM_Ea = "Sensitivity Analysis (using Cantera) Tig:\n"
+	for ind,rxn in enumerate(sort_rlist):
+		string_FM_Ea +=f"\t{sort_ealist[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
+
+	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}.txt","w").write(string_FM)
+	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_1.txt","w").write(string_FM_1)
+	g_n = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_n.txt","w").write(string_FM_n)
+	g_ea = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_ea.txt","w").write(string_FM_Ea)
+
 	
 os.chdir("..")
+if "sens_3p_parameters_using_PRS.pkl" not in os.listdir():
+	with open('sens_3p_parameters_using_PRS.pkl', 'wb') as file_:
+			pickle.dump(selected_PRS, file_)
 if "sens_3p_parameters.pkl" not in os.listdir():
 	with open('sens_3p_parameters.pkl', 'wb') as file_:
-			pickle.dump(selected_PRS, file_)
+			pickle.dump(selected_BRUTE_FORCE_PARAMETERS, file_)
 
 raise AssertionError("HOHOHO, 3-Param unsrt analysis done!!")
+
 for case in case_dir:
 	#print(case)
 	T = target_list[case].temperature

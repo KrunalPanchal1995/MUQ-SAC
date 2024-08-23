@@ -2,7 +2,7 @@ try:
     import ruamel_yaml as yaml
 except ImportError:
     from ruamel import yaml
-
+import yaml
 import numpy as np
 import sys,os
 import reaction_selection as rs
@@ -62,7 +62,7 @@ with open(MECH,'r') as file_:
 mechanism = yaml.safe_load(yaml_mech)
 species = mechanism['phases'][0]["species"]
 species_data = mechanism["species"]
-reactions = mechanism["reactions"]
+reactions = mechanism["reactions"] #can choose thermo data here instead of reactions
 if len(rxn_list) == 0:
 	if carbon_number != 0:
 		# get the species list greater than or equal to the predetermined carbon number

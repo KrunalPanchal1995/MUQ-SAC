@@ -23,7 +23,8 @@ class DesignMatrix(object):
 		self.design = design
 		#self.n = ind
 		self.n = ind
-		self.allowed_count = 100
+		allowed_count = int(0.70*multiprocessing.cpu_count())
+		self.allowed_count = allowed_count
 	
 	def main(self,V_, num_threads, unsrt, sim):
 		shuffle.shuffle_arrays(V_, num_threads, unsrt, sim)
@@ -69,12 +70,12 @@ class DesignMatrix(object):
 		ClassACurve_dict = {}
 		Generator_dict = {}
 		for rxn in self.unsrt:
-			generator = np.random.random_sample((n_a,1))
+			generator = np.random.random_sample((n_a,1)) #n_a: number of A-type curves required 
 			data = self.unsrt[rxn].data
-			zeta_A = self.unsrt[rxn].zeta.x
+			zeta_max = self.unsrt[rxn].zeta.x
 			ClassA_curves = []
 			for gen in generator:
-				ClassA_curves.append(gen[0]*zeta_A)
+				ClassA_curves.append(gen[0]*zeta_max)#getting new A-type curves
 			ClassACurve_dict[rxn] = ClassA_curves
 			Generator_dict[rxn] = generator	
 		return ClassACurve_dict,Generator_dict
@@ -131,6 +132,9 @@ class DesignMatrix(object):
 		design_matrix = []
 		design_matrix.extend(list(float(factor)*np.eye(self.rxn_len)))
 		return np.asarray(design_matrix)
+	
+		
+	
 	def getNominal_samples(self):
 		design_matrix = []
 		design_matrix.append(list(np.zeros(self.rxn_len)))
@@ -182,33 +186,34 @@ class DesignMatrix(object):
 					os.mkdir(case_index)
 				os.chdir("..")
 			
-			if f"partial/{case_index}/a_type_samples.pkl" not in os.listdir():
+			if "a_type_samples.pkl" not in os.listdir(f"partial/{case_index}"):
+				#print(os.getcwd())
 				a_curves_dict, generator_a = self.getClassA_Curves(n_a)# Returns 100 class-A Arrhenius samples
 				with open(f'partial/{case_index}/a_type_samples.pkl', 'wb') as file_:
 					pickle.dump(a_curves_dict, file_)
-				print("\nA-type curves generated")
+				#print("\nA-type curves generated")
 			else:
 				# Load the object from the file
 				with open(f'partial/{case_index}/a_type_samples.pkl', 'rb') as file_:
 					a_curves_dict = pickle.load(file_)
 				print("\nA-type curves generated")
 			
-			if f"partial/{case_index}/b_type_samples.pkl" not in os.listdir():	
+			if "b_type_samples.pkl" not in os.listdir(f"partial/{case_index}"):	
 				b_curves_dict, generator_b = self.getClassB_Curves(n_b)# Returns 450 class-B Arrhenius samples
 				with open(f'partial/{case_index}/b_type_samples.pkl', 'wb') as file_:
 					pickle.dump(b_curves_dict, file_)
-				print("\nB-type curves generated")
+				#print("\nB-type curves generated")
 			else:
 				# Load the object from the file
 				with open(f'partial/{case_index}/b_type_samples.pkl', 'rb') as file_:
 					b_curves_dict = pickle.load(file_)
-				print("\nB-type curves generated")
+				#print("\nB-type curves generated")
 			
-			if f"partial/{case_index}/c_type_samples.pkl" not in os.listdir():
+			if "c_type_samples.pkl" not in os.listdir(f"partial/{case_index}"):	
 				c_curves_dict, generator_c = self.getClassC_Curves(n_c)# Returns 450 class-C Arrhenius samples	
 				with open(f'partial/{case_index}/c_type_samples.pkl', 'wb') as file_:
 					pickle.dump(c_curves_dict, file_)
-				print("\nC-type curves generated")
+				#print("\nC-type curves generated")
 			else:
 				# Load the object from the file
 				with open(f'partial/{case_index}/c_type_samples.pkl', 'rb') as file_:
@@ -242,6 +247,7 @@ class DesignMatrix(object):
 
 				# Flatten the list of arrays
 				column = np.concatenate(column)
+				num_shuffles = len(column)
 				V_s[rxn] = column
 									
 			delta_n = {}
@@ -341,7 +347,8 @@ class DesignMatrix(object):
 				design_matrix.append(row)
 			
 			#RANDOM SHUFFLING
-			for i in range(int(self.sim*0.8)):
+			#print(int(self.sim*0.8))
+			for i in range(num_shuffles):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V_s[rxn][i])
@@ -369,6 +376,7 @@ class DesignMatrix(object):
 						s+="0.0,"
 				p_design_matrix.append(row_)
 				s+="\n"
+				p_s+="\n"
 			ff = open(f'partial/{case_index}/DesignMatrix.csv','w').write(s)	
 			ff = open(f'partial/{case_index}/pDesignMatrix.csv','w').write(p_s)
 			return np.asarray(design_matrix),np.asarray(p_design_matrix)

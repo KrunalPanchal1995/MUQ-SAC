@@ -1158,6 +1158,7 @@ class reaction(UncertaintyExtractor):
 		data["uncertainties"] = self.uncertainties
 		data["Arrhenius"] = self.nominal
 		
+		#uncertainty extractor
 		super().__init__(data)
 		self.zeta_Matrix,self.P,self.P_max,self.P_min,self.cov = self.getUncorreationMatrix(self.rIndex)
 		self.solution = self.zeta

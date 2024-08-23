@@ -24,7 +24,8 @@ class DesignMatrix(object):
 		#self.n = ind
 		self.rxn_len = ind
 		self.n = ind
-		self.allowed_count = 100
+		allowed_count = int(0.70*multiprocessing.cpu_count())
+		self.allowed_count = allowed_count
 	
 	def main(self,V_, num_threads, unsrt, sim):
 		shuffle.shuffle_arrays(V_, num_threads, unsrt, sim)
@@ -131,6 +132,35 @@ class DesignMatrix(object):
 	def getSA_samples(self,factor):
 		design_matrix = []
 		design_matrix.extend(list(float(factor)*np.eye(self.rxn_len)))
+		return np.asarray(design_matrix)
+	def getSA3P_samples(self,zeta_vector,flag):
+		new_zeta = []
+		if flag == "A":
+			for i in zeta_vector:
+				new_zeta.append([abs(i[0]),0.0,0.0])
+		elif flag == "n":
+			for i in zeta_vector:
+				new_zeta.append([0.0,abs(i[1]),0.0])
+		elif flag == "Ea":
+			for i in zeta_vector:
+				new_zeta.append([0.0,0.0,abs(i[2])])
+		else:
+			raise AssertionError("Please give a correct flag for DesignMatrix SA3P samples!!")
+		
+		# Number of vectors
+		num_vectors = len(new_zeta)
+
+		# Size of each vector (assume all vectors are the same size)
+		vector_size = len(new_zeta[0])
+
+		# Create an empty matrix of the appropriate size (3x9 in this case)
+		design_matrix = np.zeros((num_vectors, num_vectors * vector_size))
+
+		# Place each vector on the diagonal
+		for i in range(num_vectors):
+		    # Insert the vector into the appropriate diagonal position
+		    design_matrix[i, i*vector_size:(i+1)*vector_size] = new_zeta[i]
+			
 		return np.asarray(design_matrix)
 	def getNominal_samples(self):
 		design_matrix = []

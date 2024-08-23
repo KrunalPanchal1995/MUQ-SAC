@@ -282,7 +282,7 @@ class Worker():
 
 
 class SM(object):
-	def __init__(self,target_list,target_data,unsrt_data,design_matrix):
+	def __init__(self,target_list,target_data,unsrt_data,design_matrix,tag="Full"):
 		# Need to find the active parameters, perturbation of those parameters in parallel
 		"""
 		
@@ -303,8 +303,15 @@ class SM(object):
 		#if self.prs_type == "Full":
 		#	self.design_matrix = design_matrix
 		#else:
-		self.design_matrix_dict = design_matrix
+		
 		self.case_dir = range(0,len(target_list))
+		
+		if tag == "Full":
+			self.design_matrix_dict = {}
+			for case in self.case_dir:
+				self.design_matrix_dict[case] = design_matrix
+		else:
+			self.design_matrix_dict = design_matrix
 		self.file_type = target_data["Inputs"]["fileType"]
 		self.order = target_data["Stats"]["Order_of_PRS"]
 		self.parallel_threads = target_data["Counts"]["parallel_threads"]

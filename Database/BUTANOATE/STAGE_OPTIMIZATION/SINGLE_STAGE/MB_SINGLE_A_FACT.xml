@@ -449,9 +449,25 @@
 	<reaction rxn = 'CH3O2&#032;+&#032;MB2J&#032;&#61;&#62;&#032;CH3O&#032;+&#032;MB2O' no = '3140'>
 	 <class>Elementary</class>
 		<type>pressure_independent</type>
-		<sub_type name = "forward">
-			<multiple> False </multiple>
-			<branches>N/A</branches>
+		<sub_type name = "duplicate">
+			<multiple>True</multiple>
+			<branches>A</branches>
+			<pressure_limit>N/A</pressure_limit>
+			<common_temp>N/A</common_temp>
+			<temp_limit>N/A</temp_limit>
+		</sub_type>
+		<perturbation_type>factor</perturbation_type>
+		<data_type>constant;end_points</data_type>
+		<unsrt>1.3862943611198906,1.3862943611198906</unsrt>
+		<temp>300,2500</temp>
+		<file></file>	
+	</reaction>
+	<reaction rxn = 'CH3O2&#032;+&#032;MB2J&#032;&#61;&#62;&#032;CH3O&#032;+&#032;MB2O' no = '3141'>
+	 <class>Elementary</class>
+		<type>pressure_independent</type>
+		<sub_type name = "duplicate">
+			<multiple>True</multiple>
+			<branches>B</branches>
 			<pressure_limit>N/A</pressure_limit>
 			<common_temp>N/A</common_temp>
 			<temp_limit>N/A</temp_limit>

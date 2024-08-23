@@ -53,7 +53,7 @@ class Manipulator:
 		
 		"""
 		
-		
+		#print(f"\t{rxn}\t{beta}\n\t{self.unsrt[rxn].L}\n\t{p}\n")
 		index = self.unsrt[rxn].index# To search the reaction from Yaml dictionary
 		cov = self.unsrt[rxn].cholskyDeCorrelateMat #The L matrix storing the uncertainty data
 		zeta = self.unsrt[rxn].solution
@@ -62,7 +62,7 @@ class Manipulator:
 		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
 		convertor = np.asarray(self.unsrt[rxn].selection)
 		p = p0+convertor*unsrt_perturbation
-		
+		#print(f"\t{rxn}\t{beta}\n\t{convertor}\n\t{self.unsrt[rxn].L}\n\t{p0}\n\t{p}\n")
 		"""
 		The new perturbed reaction replaces the prior Arrhenius parameters 
 		"""
@@ -227,6 +227,7 @@ class Manipulator:
 				index = self.unsrt[rxn].index
 				new_mechanism = self.BranchingReactions(rxn,beta,mechanism)
 				mechanism = new_mechanism
+			#raise AssertionError("Stop!")
 		return mechanism,perturb
 	
 	
