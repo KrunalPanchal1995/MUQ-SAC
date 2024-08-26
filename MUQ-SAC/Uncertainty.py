@@ -863,9 +863,9 @@ class UncertaintyExtractor(object):
 			con3 = {'type': 'eq', 'fun': self.const_3_typeB2_Zeta}
 			con4 = {'type': 'eq', 'fun': self.cons_derivative_b2}
 			self.const_zeta = [con1,con2,con3,con4]
-			bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(200,3500))
+			bnds = ((float("-10000"),float("10000")),(float("-10000"),float("10000")),(float("-10000"),float("10000")),(200,3500))
 			#zeta = minimize(self.obj_func_zeta_b2,self.guess_z2,method="SLSQP",constraints=self.const_zeta,bounds=bnds)
-			zeta = shgo(self.obj_func_zeta_b2,bnds,constraints=self.const_zeta)
+			zeta = shgo(self.obj_func_zeta_b2,bnds,sampling_method='sobol',constraints=self.const_zeta)
 			#zeta = minimize(self.obj_func_zeta_b2,self.guess_z2,method="trust-constr",constraints=self.const_zeta,bounds=bnds)#,options={'xtol': 1e-05, 'gtol': 1e-05, 'barrier_tol': 1e-05})
 			#print(f"{zeta.success}\t{self.kright_fact}\t{self.kleft_fact}\n")
 			#if zeta.success == False:

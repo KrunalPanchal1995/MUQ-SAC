@@ -543,6 +543,7 @@ def run_sampling_b(sample,data,generator,length):
 	A.getCovariance(flag=False)
 	A.getUnCorrelated(flag = False)
 	zeta = A.getB2Zeta(flag=True)
+	
 	del A
 	return (sample,generator,zeta,length)
 	
