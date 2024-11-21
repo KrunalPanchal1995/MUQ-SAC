@@ -1,5 +1,10 @@
-# MUQ-SAC: Methof of Uncertainty Quantification and Sampling of ARRHENIUS CURVES
+# MUQ-SAC: Method of Uncertainty Quantification and Sampling of ARRHENIUS CURVES
 The suit of code is part of project undertaken for kinetic mechanism optimization framework development. The code includes the temperature-dependent Modified Uncertainty Quantification (MUQ) method and Sampling of Arrhenius Curves (SAC) technique.
+
+
+Step 0
+ -  Compile the shared object files (*.so) for your system
+
 
 Step 1
 
