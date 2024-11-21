@@ -189,6 +189,7 @@ class Manipulator:
 			- Reaction index is identified
 			- Duplicate reactions is treated as elementary reactions
 		"""
+		perturb = ""
 		for i,index in enumerate(rxn_dict):
 			#print(self.perturbation)
 			rxn = rxn_dict[index]
@@ -222,7 +223,6 @@ class Manipulator:
 				if type_of_rxn == "ThirdBody":
 					new_mechanism = self.ElementaryPerturbation(index_,beta,mechanism)
 					mechanism = new_mechanism
-			else:
-				perturb = f"{rxn}\t0.0"			
+			
 		return mechanism,perturb
 			

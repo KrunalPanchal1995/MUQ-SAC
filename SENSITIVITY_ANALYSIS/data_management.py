@@ -238,6 +238,7 @@ def extract_output(case,fuel,path,index):
 				
 			else:
 				eta = "N/A"
+				ETA = eta
 				string = path
 	elif case.target.strip() == "JSR":
 		if "cantera" in case.add["solver"]:
@@ -257,6 +258,7 @@ def extract_output(case,fuel,path,index):
 				
 			else:
 				eta = "N/A"
+				ETA = eta
 				string = path
 	
 	elif case.target.strip() == "Tig":
@@ -277,6 +279,26 @@ def extract_output(case,fuel,path,index):
 				
 			else:
 				eta = "N/A"
+				ETA = eta
+				string = path
+		elif "CHEMKIN_PRO" in case.add["solver"]:
+			if "tau.out" in os.listdir(path):
+				out_file = open(path+"tau.out",'r').readlines()
+				string = path +"tau.out"
+				#print(out_file)
+				line = out_file[1].split()
+				#print(len(line))
+				#print(line)
+				if len(line) == 2:
+					eta = np.log(float(line[1])*10)
+					ETA = float(line[1])	#us/micro seconds
+				else:
+					eta = np.log(100*10000)
+					ETA = 100*10000
+				
+			else:
+				eta = "N/A"
+				ETA = eta
 				string = path
 		else:
 			#print("Tig is the target and FlameMaster is the solver")

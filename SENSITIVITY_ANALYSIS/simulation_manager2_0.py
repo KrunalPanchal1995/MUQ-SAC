@@ -391,7 +391,8 @@ class SM(object):
 			mani = manipulator(self.prior_mech,self.unsrt,beta_)
 			yaml,sim = mani.doPerturbation()
 			yaml_list.append(yaml)		
-			
+		for rxn in self.unsrt:
+			self.unsrt[rxn].selection = np.array([1.0,1.0,1.0])	
 		return yaml_list
 	
 	def getPerturbedMechLocation(self,yaml_list,location_mech,index_list):

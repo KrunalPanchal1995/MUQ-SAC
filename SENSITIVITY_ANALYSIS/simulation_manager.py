@@ -10,6 +10,8 @@ import multiprocessing
 import subprocess
 import time
 import concurrent.futures
+sys.path.append('/parallel_yaml_writer.so')
+import parallel_yaml_writer
 #try:
 #    import ruamel_yaml as yaml
 #except ImportError:
@@ -36,10 +38,11 @@ def run_generate_dir(location,total):
 
 def run_map_2(params,total):
 	location = str(params[0])
-	yaml_string = yaml.dump(params[1],default_flow_style=False)
-	with open(location+"/mechanism.yaml","w") as yamlfile:
-		yamlfile.write(yaml_string)
-		yamlfile.close()
+	parallel_yaml_writer.dump_to_yaml(location,"mechanism.yaml",params[1])
+	#yaml_string = yaml.dump(params[1],default_flow_style=False)
+	#with open(location+"/mechanism.yaml","w") as yamlfile:
+	#	yamlfile.write(yaml_string)
+	#	yamlfile.close()
 	return (params[0],total)
 
 

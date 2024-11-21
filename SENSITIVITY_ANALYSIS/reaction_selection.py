@@ -89,7 +89,8 @@ def getRxnType(mechanism,rxn_list):
 	rxn_data = mechanism["reactions"]
 	for rxn in rxn_list:
 		for index,data in enumerate(rxn_data):
-			if rxn in data["equation"]:
+			if rxn == data["equation"]:
+				print(rxn,data["equation"])
 				if "type" in data:
 					if data["type"] == "three-body":
 						rxn_type[index+1] = "ThirdBody"
@@ -116,3 +117,6 @@ def getRxnType(mechanism,rxn_list):
 					rxn_type[index+1] = "Elementary"
 					#print("Rxn is elementary")
 	return rxn_type
+def getMAX_B_TYPE_ZETA(unsrt):
+	
+	return zeta_b2

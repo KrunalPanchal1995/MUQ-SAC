@@ -14,9 +14,18 @@ import data_management
 import pickle
 #########################################
 ###    Reading the input file        ####
-#########################################
-print(len(sys.argv))
+###    -----------------------       ####
+############################################
+###Input file format:	                  ###
+###-------------------	     	          ###
+###Arg[0]: Code name (in this case       ###
+###it will be 'sens.py'                  ###
+###     Arg[1]: Input file (target.opt)  ### 
+############################################
+#print(len(sys.argv))
+
 if len(sys.argv) > 2:
+
 	input_file = open(sys.argv[1],'r')
 	optInputs = yaml.safe_load(input_file)
 	rxn_list =[i.strip("\n") for i in open(sys.argv[2],"r").readlines()]
@@ -98,6 +107,10 @@ rxn_dict = {}
 rxn_dict["reaction"] = reaction_dict
 rxn_dict["type"] = rxn_type
 rxn_dict["data"] = rs.getRxnDetails(mechanism,selected_reactions)
+
+with open('RXN_DICT.pkl', 'wb') as file_:
+	pickle.dump(rxn_dict, file_)
+
 string_reaction = ""
 for index in reaction_dict:
 	string_reaction+=f"{index}\t{reaction_dict[index]}\n"
@@ -314,6 +327,7 @@ for case in case_dir:
 	index = temp_sim_opt_x2[str(case)]["index"]
 	multiply = np.asarray(temp_sim_opt_x2[str(case)]["ETA"])
 	nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
+	#print(multiply)
 	case_FM = (multiply - nominal)/nominal
 	#print(reaction_dict,index)
 	sens_FM = {}

@@ -1,0 +1,32 @@
+ck2yaml --input=MB_MB2D_LALIT_2024.inp --thermo=MB+MB2D_therm_2024.dat --transport=Mb+MB2d_trans_2024.dat --output=MB_MB2D_2024.yaml --permissive -d --quiet
+/data/TEMP_SOURCE_CODE/CONFERENCE_PAPER_2/MB_MB2D_2024.yaml
+/data/TEMP_SOURCE_CODE/BUTANOATE/MB_DATABASE/SA_MB.target
+CHANGES_MADE_TO FILE
+
+!H+O2(+M)=HO2(+M)    4.66E12 0.44 0.0E0
+!    HE / +0.5700 /
+!	N2/1.0/
+!    AR/0.65/
+!    O2/1.0/
+!    H2/2.0/
+!    CH4/2.0/
+!    CO2/3.25/
+!    H2O/17.6/
+!    CO/4.0/
+!    LOWMX/1.225E19 -1.2E0 0.0E0/
+!    TROEMX/5.0E-1 1.0E0 1.0E10 1.0E30/
+!    LOWSP/N2 4.5E20 -1.73E0 0.0E0/
+!   TROESP/N2 5.0E-1 1.0E0 1.0E10 1.0E30/
+
+transport properties
+
+MB2DO
+k_B = 1.380649×10−23 joules per kelvin
+Avogadro number = 6.023 e+23 molecule per mol
+k_B = 8.315648927 J/mol K
+Shape Index	=	2.00 
+Epsilon	=	4075.95 J/mol | 4075.95/k_B K| 490.1542 K
+Sigma	        =	6.17 angstroms
+Dipole Moment	=	0.00 C∗m
+Polarizability	=	0.00 angstroms3
+Rotational Relaxation Collision Number	=	0.00

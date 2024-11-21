@@ -1,0 +1,107 @@
+IGN_BUTADIENE_PHI_0.5_P_10:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_0.5_P_20:
+ solver: cantera
+ BoundaryLayer: True
+ ign_delay_def: p
+ ign_cond: dt-max
+ dpdt: 10.0
+ dt: 2e-4
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_0.5_P_40:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_1_P_10:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_1_P_20:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_1_P_40:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_2_P_10:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_2_P_20:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02
+ 
+IGN_BUTADIENE_PHI_2_P_40:
+ solver: cantera
+ BoundaryLayer: True
+ dpdt: 10.0
+ dt: 2e-4
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 17
+ saveAll: True
+ estimateTIG: 0.02

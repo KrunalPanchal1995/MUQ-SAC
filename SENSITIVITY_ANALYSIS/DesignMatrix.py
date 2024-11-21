@@ -99,15 +99,17 @@ class DesignMatrix(object):
 			Generator_dict[rxn] = generator_b	
 		return ClassBCurve_dict,Generator_dict
 	
-	def getClassC_Curves(self,n_c):
+	def getClassC_Curves(self,n_c,generator=np.array([])):
 		"""
 			This defination generates n_c numbers of class-C type curves 
 		"""
 		
 		ClassC_Curve_dict = {}
 		Generator_dict = {}
+		
 		for rxn in self.unsrt:
-			generator = np.random.random_sample((n_c,2))
+			if len(generator) == 0:
+				generator = np.random.random_sample((n_c,2))
 			data = self.unsrt[rxn].data
 			data["generators_c"] = generator
 			callWorkForce = Worker(self.allowed_count)	
@@ -134,24 +136,24 @@ class DesignMatrix(object):
 		design_matrix.extend(list(float(factor)*np.eye(self.rxn_len)))
 		return np.asarray(design_matrix)
 	def getSA3P_samples(self,zeta_vector,flag):
-		new_zeta = []
-		if flag == "A":
-			for i in zeta_vector:
-				new_zeta.append([abs(i[0]),0.0,0.0])
-		elif flag == "n":
-			for i in zeta_vector:
-				new_zeta.append([0.0,abs(i[1]),0.0])
-		elif flag == "Ea":
-			for i in zeta_vector:
-				new_zeta.append([0.0,0.0,abs(i[2])])
-		else:
-			raise AssertionError("Please give a correct flag for DesignMatrix SA3P samples!!")
+		#new_zeta = []
+		#if flag == "A":
+		#	for i in zeta_vector:
+		#		new_zeta.append([abs(i[0]),0.0,0.0])
+		#elif flag == "n":
+		#	for i in zeta_vector:
+		#		new_zeta.append([0.0,abs(i[1]),0.0])
+		#elif flag == "Ea":
+		#	for i in zeta_vector:
+		#		new_zeta.append([0.0,0.0,abs(i[2])])
+		#else:
+		#	raise AssertionError("Please give a correct flag for DesignMatrix SA3P samples!!")
 		
 		# Number of vectors
-		num_vectors = len(new_zeta)
+		num_vectors = len(zeta_vector)
 
 		# Size of each vector (assume all vectors are the same size)
-		vector_size = len(new_zeta[0])
+		vector_size = len(zeta_vector[0])
 
 		# Create an empty matrix of the appropriate size (3x9 in this case)
 		design_matrix = np.zeros((num_vectors, num_vectors * vector_size))
@@ -159,9 +161,37 @@ class DesignMatrix(object):
 		# Place each vector on the diagonal
 		for i in range(num_vectors):
 		    # Insert the vector into the appropriate diagonal position
-		    design_matrix[i, i*vector_size:(i+1)*vector_size] = new_zeta[i]
+		    design_matrix[i, i*vector_size:(i+1)*vector_size] = zeta_vector[i]
 			
 		return np.asarray(design_matrix)
+	
+	def getB_TYPE_fSAC(self,n_fSAC,tag="DICT"):
+		if tag == "DICT":
+			N_fSAC = n_fSAC
+			nominal,ch,zeta,Temp = get_VARIABLES_FOR_fSAC(self.unsrt)
+			V = get_B_TYPE_from_fSAC(nominal,ch,zeta,Temp,self.unsrt,N_fSAC)
+			return V
+		elif tag == "MAX_N":
+			n_max = {}
+			t_start = time.time()
+			N_fSAC = n_fSAC
+			nominal,ch,zeta,Temp = get_VARIABLES_FOR_fSAC(self.unsrt)
+			V = get_B_TYPE_from_fSAC(nominal,ch,zeta,Temp,self.unsrt,N_fSAC)
+			for rxn in self.unsrt:
+				temp = V[rxn]
+				temp_n = []
+				L = ch[rxn]
+				for sample in temp:
+					z_b = L @ sample
+					n_ = float(z_b[1])
+					temp_n.append(n_)
+				index = temp_n.index(max(temp_n))
+				n_max[rxn] = temp[index]
+			t_end = time.time()
+			print(f"Time taken to find the B-type zeta from fSAC method = {t_start}-{t_end}")
+			return n_max
+		else:
+			raise AssertionError("In DesignMatrix.py, please give proper tag for 'getB_TYPE_fSAC'")
 	def getNominal_samples(self):
 		design_matrix = []
 		design_matrix.append(list(np.zeros(self.rxn_len)))
@@ -235,36 +265,7 @@ class DesignMatrix(object):
 				V_[rxn] = np.asarray(temp)
 			
 			V_s = {}#Doing random shuffling
-			#Deepcopy the unshuffled samples first
-			#print(n_a,n_b,n_c)
-			#print(len(n_a),len(n_b),len(n_c))
 			V_copy = copy.deepcopy(V_)
-			#for rxn in V_:
-			#	print(len(V_[rxn]))
-			#	print(len(V_[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#shm_dict = self.create_shared_memory_dict(V_copy)
-			#num_shuffles = int(self.sim * 0.8)
-			#reaction_list = []
-			#for rxn in self.unsrt:
-			#	reaction_list.append(rxn)
-			#V_s = self.main(V_copy,100,reaction_list,self.sim)
-			
-			#for rxn in V_s:
-			#	print(len(V_s[rxn]))
-			#	print(len(V_s[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#raise AssertionError("Shuffling done!!")
-			
-			#mmap_dict, temp_dir = self.create_memory_mapped_files(V_)
-			#for rxn in tqdm(self.unsrt,desc="Doing random shuffling"):				
-			#	column = []
-			#	for i in range(int(self.sim*0.8)):
-			#		np.random.shuffle(V_copy[rxn])
-			#		column.extend(np.asarray(V_copy[rxn]))
-			#	V_s[rxn] = np.asarray(column)	
-			
-			
 			for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
 				column = []
 				# Number of shuffles
@@ -280,223 +281,22 @@ class DesignMatrix(object):
 				# Flatten the list of arrays
 				column = np.concatenate(column)
 				V_s[rxn] = column
-			
-			
-			#for rxn in V_s:
-			#	print(len(V_s[rxn]))
-			
-			#	print(len(V_s[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#num_shuffles = int(self.sim * 0.8)
-			# Initialize the result dictionary
-			#V_s = {}
-
-			# Create a pool of workers
-			#pool = mp.Pool(mp.cpu_count()-int(0.1*mp.cpu_count()))#Leaving 10% of CPU power
-			#results = []
-
-			# Use apply_async to distribute the work
-			#for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
-			#	filename = mmap_dict[rxn]
-				#shm, np_array = shm_dict[rxn]
-			#	result = pool.apply_async(self.shuffle_values, args=(rxn, filename, V_[rxn].shape, V_[rxn].dtype, num_shuffles))
-			#	results.append(result)
-
-			# Close the pool and wait for the work to finish
-			#pool.close()
-			#pool.join()
-
-			# Collect the results
-			#for result in results:
-			#	rxn, column = result.get()
-			#	V_s[rxn] = column
-			
-			
-			# Cleanup shared memory
-			#self.cleanup_shared_memory(shm_dict)
-			
-			# Cleanup memory-mapped files
-			#for filename in mmap_dict.values():
-			#	os.remove(filename)
-			#os.rmdir(temp_dir)
-			
-			
-			"""
-			V_linear_comb = {}#Doing linear combination to populate the matrix
-			for rxn in self.unsrt:
-				temp = []
-				for i in range(1000):
-					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
-					x,y,z = self.generatePointOnSphere()
-					####
-					temp.append(x*zeta_a+y*zeta_b+z*zeta_c)
-				
-				V_linear_comb[rxn] = np.asarray(temp)
-				
-			"""
-									
-			delta_n = {}
-			p = {}
+		
 			V_opt = {}
-			V = {}#Populating V for unshuffled portion of the design matrix
-			ch = {}
-			nominal = {}
-			p_max = {}
-			p_min = {}
-			theta = {}
-			Temp ={}
-			zeta = {}
-			for rxn in tqdm(self.unsrt,desc="Populating unshuffled portion of DM"):
-				ch[rxn] = self.unsrt[rxn].cholskyDeCorrelateMat
-				nominal[rxn] = self.unsrt[rxn].nominal
-				p_max[rxn] = self.unsrt[rxn].P_max
-				p_min[rxn] = self.unsrt[rxn].P_min
-				theta[rxn] = self.unsrt[rxn].Theta
-				Temp[rxn] = self.unsrt[rxn].temperatures
-				zeta[rxn] = self.unsrt[rxn].zeta.x
-				#temp = []
-				#for sample_a in a_curves_dict[rxn]: 
-					#print(np.shape(sample_a))
-				#	temp.append(sample_a)
-					
-				#for sample_b in b_curves_dict[rxn]: 
-				#	temp.append(sample_b)
-				#for sample_c in c_curves_dict[rxn]: 
-				#	temp.append(sample_c)
-				#V[rxn] = np.asarray(temp)
-			"""
-			for rxn in self.unsrt:
-				temp = []
-				#temp_ = []
-				temp_n = []
-				nom = nominal[rxn]
-				cholesky = ch[rxn]
-				for sample_c in c_curves_dict[rxn]: 
-					k = nom + np.asarray(cholesky.dot(sample_c)).flatten()
-					temp_n.append(abs(nom[1]-k[1]))
-					temp.append(sample_c)
-				delta_n[rxn] = max(temp_n)
-				V_opt[rxn] = np.asarray(temp)
-			
-			print(delta_n)
-			raise AssertionError("delta_n part is ongoing")
-			"""
-			
-			"""
-			for rxn in self.unsrt:
-				T = (Temp[rxn][0] + Temp[rxn][-1])/2	
-				Theta = np.array([T/T,np.log(T),-1/(T)])
-				kappa_max_mid = Theta.T.dot(p_max[rxn])
-				kappa_min_mid = Theta.T.dot(p_min[rxn])
-				kappa_nominal = Theta.T.dot(nominal[rxn])
-				delta = abs(kappa_max_mid - kappa_nominal)
-				kappa_list = []
-				for i in V[rxn]:
-					p = nominal[rxn] + ch[rxn].dot(i)
-					delta_mid = abs(Theta.T.dot(p) - kappa_nominal)
-					if delta_mid<(6/7)*delta:
-						kappa_list.append(i)
-					
-				percentage[rxn] = (len(kappa_list)/len(V[rxn]))*100
-			"""
-			
 			#SAC_3
-			
+			#f-SAC algorithm
+				#1] Get P_right, P_mid and P_left
+				#2] get Kappa_right, Kappa_mid and Kappa_left
+				#3] Solve for B-type zeta
+				#4] Check if zeta_b is inside the domain
+				#5] Check if n_ is < 2.
+				#6] Do it for n_b number of times
 			#plot the zetas
 			#print(percentage)
 			#Solving for a line passing from 3 points
-			d_n = {}
-			_delta_n = {}
-			dict_delta_n = {}
-			percentage = {}
-			for rxn in tqdm(self.unsrt,desc="Generating fSAC samples"):
-				T =np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
-				Theta = np.array([T/T,np.log(T),-1/(T)])
-				P = nominal[rxn]
-				cov = ch[rxn]
-				zet = zeta[rxn]
-				Tp = Temp[rxn]
-				#Tp = np.linspace(300,2500,50)
-				Theta_p = np.array([Tp/Tp,np.log(Tp),-1/(Tp)])
-				P_max = P + np.asarray(np.dot(cov,zet)).flatten();
-				P_min = P - np.asarray(np.dot(cov,zet)).flatten();
+			N_fSAC = 100
+			V = self.getB_TYPE_fSAC(N_fSAC,tag="DICT")
 				
-				d_n[rxn] = abs(P[1]-P_max[1])
-				kmax = Theta_p.T.dot(P_max)
-				kmin = Theta_p.T.dot(P_min)
-				ka_o = Theta_p.T.dot(P)
-				M = Theta.T.dot(cov)
-				#fig = plt.figure()
-				#plt.plot(1/Tp,kmax)
-				#plt.plot(1/Tp,kmin)
-				#plt.plot(1/Tp,ka_o)
-				f = abs(kmax-ka_o)
-				temp = []
-				outside = []
-				not_selected = []
-				temp_n = []
-				while len(temp)<100:
-					random = 2*np.random.rand(3)-1
-					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
-					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
-					P_left = P + random[2]*np.asarray(np.dot(cov,zet)).flatten()
-					Theta_left = np.array([T[0]/T[0],np.log(T[0]),-1/(T[0])])
-					Theta_mid = np.array([T[1]/T[1],np.log(T[1]),-1/(T[1])])
-					Theta_right = np.array([T[2]/T[2],np.log(T[2]),-1/(T[2])])
-					kappa_left = Theta_left.T.dot(P_left)
-					kappa_mid = Theta_mid.T.dot(P_mid)
-					kappa_right = Theta_right.T.dot(P_right)
-					kappa_o1 = Theta_left.T.dot(P)
-					kappa_o2= Theta_mid.T.dot(P)
-					kappa_o3 = Theta_right.T.dot(P)
-					kappa = np.array([kappa_left,kappa_mid,kappa_right])
-					kappa_o = np.array([kappa_o1,kappa_o2,kappa_o3])
-					y = kappa - kappa_o
-					zeta_ = np.linalg.solve(M,y)
-					func = np.asarray([(i.T.dot(cov.dot(zeta_))) for i in Theta_p.T])
-					P_found = P + np.asarray(np.dot(cov,zeta_)).flatten()
-					n_ = abs(P[1]-P_found[1])
-					temp_n.append(n_)
-					kappa_found = Theta_p.T.dot(P_found)
-					f_found = abs(kappa_found-ka_o)
-					if max(f)<max(f_found):
-						outside.append(zeta_)
-					if n_ > 2:	
-						#plt.plot(1/Tp,kappa_found,"r-",linewidth=0.25)
-						#temp.append(zeta_)#for unconstrained zeta
-						not_selected.append(zeta_)
-						_delta_n[n_] = zeta_
-						
-					else:
-						temp.append(zeta_)
-						_delta_n[n_] = zeta_
-					#print(zeta_)
-				percentage[rxn] = (len(not_selected)/len(temp))*100
-				delta_n[rxn] = max(temp_n)
-				
-				dict_delta_n[rxn] = _delta_n[max(temp_n)]
-				V[rxn] = temp
-				
-				#print(len(temp))
-				
-				#plt.show()
-			#print(percentage)
-			#print(percentage)	
-			#print("------------------------------------\nNominal!!\n\n")
-			#print(nominal)
-			#print("------------------------------------\nCovariance!!\n\n")
-			#print(ch)
-			#print("------------------------------------\nZeta!!\n\n")
-			#print(zeta)
-			#print(Temp)
-			#print(d_n)
-			#print(delta_n)
-			#print(dict_delta_n)
-			#raise AssertionError("New")	
-			
-					
 			for i in range(int(self.sim*0.2)):
 				row = []
 				for rxn in self.unsrt:
@@ -513,20 +313,14 @@ class DesignMatrix(object):
 				design_matrix.append(row)
 				
 			
-			for i in range(100):
+			for i in range(N_fSAC):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])
 					
 				design_matrix.append(row)
 			tok = time.time()
-			print("Time taken to construct Design Matrix: {}".format(tok - tic))
-			#s =""
-			#for row in design_matrix:
-			#	for element in row:
-			#		s+=f"{element},"
-			#	s+="\n"
-			#ff = open('DesignMatrix.csv','w').write(s)	
+			print("Time taken to construct Design Matrix: {}".format(tok - tic))	
 			
 			return np.asarray(design_matrix)
 	
@@ -557,7 +351,100 @@ def run_sampling_c(sample,data,generator,length):
 	zeta = A.getC2Zeta(flag=True)
 	del A
 	return (sample,generator,zeta,length)
-	
+def get_zeta_b(P,Theta_p,kappa_o,kappa,cov,M):
+	y = kappa - kappa_o
+	zeta_b = np.linalg.solve(M,y)
+	P_found = P + np.asarray(np.dot(cov,zeta_b)).flatten()
+	n_b = abs(P[1]-P_found[1])
+	kappa_found = Theta_p.T.dot(P_found)
+	return zeta_b,n_b,P_found,kappa_found
+def getP_for_fSAC(P,cov,zeta):
+	random = 2*np.random.rand(3)-1
+	P_r = P + random[0]*np.asarray(np.dot(cov,zeta)).flatten()
+	P_m = P + random[1]*(7/8)*np.asarray(np.dot(cov,zeta)).flatten()
+	P_l = P + random[2]*np.asarray(np.dot(cov,zeta)).flatten()
+	return P_r,P_m,P_l	
+
+def get_VARIABLES_FOR_fSAC(unsrt):
+	ch = {}
+	nominal = {}
+	p_max = {}
+	p_min = {}
+	theta = {}
+	Temp ={}
+	zeta = {}
+	for rxn in tqdm(unsrt,desc="Populating unshuffled portion of DM"):
+		ch[rxn] = unsrt[rxn].cholskyDeCorrelateMat
+		nominal[rxn] = unsrt[rxn].nominal
+		p_max[rxn] = unsrt[rxn].P_max
+		p_min[rxn] = unsrt[rxn].P_min
+		theta[rxn] = unsrt[rxn].Theta
+		Temp[rxn] = unsrt[rxn].temperatures
+		zeta[rxn] = unsrt[rxn].zeta.x
+	return nominal,ch,zeta,Temp
+
+def get_B_TYPE_from_fSAC(nominal,ch,zeta,Temp,unsrt,N_fSAC):
+	V = {}
+	d_n = {}
+	delta_n = {}
+	_delta_n = {}
+	dict_delta_n = {}
+	percentage = {}
+	for rxn in tqdm(unsrt,desc="Generating fSAC samples"):
+		T = np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])
+		Theta = np.array([T/T,np.log(T),-1/(T)])
+		P = nominal[rxn]
+		cov = ch[rxn]
+		zet = zeta[rxn]
+		P_max = P + np.asarray(np.dot(cov,zet)).flatten();
+		Tp = Temp[rxn]
+		M = Theta.T.dot(cov)
+		
+		Theta_p = np.array([Tp/Tp,np.log(Tp),-1/(Tp)])
+		kmax = Theta_p.T.dot(P_max)
+		ka_o = Theta_p.T.dot(P)
+		f = abs(kmax-ka_o)
+		temp = []
+		outside = []
+		not_selected = []
+		temp_n = []
+		
+		while len(temp)<N_fSAC:
+			P_right,P_mid,P_left = getP_for_fSAC(P,cov,zet)
+			kappa_left,kappa_mid,kappa_right = getKappa_for_fSAC(P_left,P_mid,P_right,T)
+			kappa_o1,kappa_o2,kappa_o3 = getKappa_for_fSAC(P,P,P,T)
+			kappa = np.array([kappa_left,kappa_mid,kappa_right])
+			kappa_o = np.array([kappa_o1,kappa_o2,kappa_o3])
+			zeta_b,n_,P_found,kappa_found = get_zeta_b(P,Theta_p,kappa_o,kappa,cov,M)
+			temp_n.append(n_)
+			f_found = abs(kappa_found-ka_o)
+			if max(f)<max(f_found):
+				outside.append(zeta_b)
+			if n_ > 0.3:	
+				#plt.plot(1/Tp,kappa_found,"r-",linewidth=0.25)
+				#temp.append(zeta_)#for unconstrained zeta
+				not_selected.append(zeta_b)
+				_delta_n[n_] = zeta_b
+				
+			else:
+				temp.append(zeta_b)
+				_delta_n[n_] = zeta_b
+			#print(zeta_)
+		percentage[rxn] = (len(not_selected)/len(temp))*100
+		delta_n[rxn] = max(temp_n)
+		
+		dict_delta_n[rxn] = _delta_n[max(temp_n)]
+		V[rxn] = temp
+	return V
+def getKappa_for_fSAC(P_l,P_m,P_r,T):
+	Theta_left = np.array([T[0]/T[0],np.log(T[0]),-1/(T[0])])
+	Theta_mid = np.array([T[1]/T[1],np.log(T[1]),-1/(T[1])])
+	Theta_right = np.array([T[2]/T[2],np.log(T[2]),-1/(T[2])])
+	K_l = Theta_left.T.dot(P_l)
+	K_m = Theta_mid.T.dot(P_m)
+	K_r = Theta_right.T.dot(P_r)
+	return K_l,K_m,K_r
+
 class Worker():
 	def __init__(self, workers):
 		self.pool = multiprocessing.Pool(processes=workers)

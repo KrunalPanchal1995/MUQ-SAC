@@ -852,7 +852,7 @@ stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
 
 #t0 = time.time()
-estimatedIgnitionDelayTime = 0.2
+estimatedIgnitionDelayTime = 1.0
 t = 0
 pressureList = []
 volumeList = []
@@ -1037,7 +1037,7 @@ r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
 env = ct.Reservoir(ct.Solution('{mech}'))
 
 dpdt = {dpdt}#%/ms
-estimatedIgnitionDelayTime = 0.2
+estimatedIgnitionDelayTime = 1.0
 flag = False
 time = getTimeProfile(0,estimatedIgnitionDelayTime)
 pressure_profile = getPressureProfile(gas,time,dpdt)
@@ -1118,7 +1118,107 @@ plt.legend()
 plt.savefig("profile.pdf")
 {saveAll}timeHistory.to_csv("time_history.csv")
 """.format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],dpdt = target.add["dpdt"][target.temperature], delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
-				
+			
+			elif "CHEMKIN_PRO" in target.add["solver"] and target.add["BoundaryLayer"] != True:
+				instring = """#!/usr/bin/env python
+# encoding: utf-8
+
+import os
+import csv
+import numpy as np
+from chemkin import ChemkinJob, getIgnitionDelay, getIgnitionDelayOH
+import pandas as pd
+from scipy.interpolate import CubicSpline
+
+def convert_and_transpose_ckcsv(input_filepath, output_filepath):
+    with open(input_filepath, 'r') as ckcsv_file:
+        reader = csv.reader(ckcsv_file)
+
+        # Skip the first row (metadata) and read the actual data
+        rows = list(reader)
+        data_rows = rows[1:-2]  # Skip metadata row
+        
+        # Extract variables, units, and time series data
+        variables = [row[0] for row in data_rows]     # First column as variable names
+        units = [row[1] for row in data_rows]         # Second column as units
+        data_values = [row[2:] for row in data_rows]  # Time series data from the third column onward
+        headers = [f"{{row[0]}} {{row[1]}}" for row in data_rows]
+        #print(data_values[-1])    
+        # Transpose the data values so each variable has its data in columns
+        transposed_data = list(zip(*data_values))
+        with open(output_filepath, 'w', newline='') as csv_file:
+            writer = csv.writer(csv_file)
+
+            # Write headers (variable names)
+            writer.writerow(headers)
+
+            # Write units row
+            #writer.writerow(units)
+
+            # Write transposed data rows
+            writer.writerows(transposed_data)
+
+    print(f"Conversion and transposition complete. Data saved to {{output_filepath}}")
+
+#mechanism in yaml format: {mech}
+
+# Parameters
+reactorTemperature = {temperature}  # Replace with your desired temperature in Kelvin
+reactorPressure = {pressure}  # Replace with your desired pressure in atm
+spec = {species_conc}
+conc_X = list(spec.items()) # Example species concentrations, adjust as needed
+
+# Set up the Chemkin simulation
+currentDir = os.path.dirname(__file__).strip("\\n")
+chemFile = os.path.join(currentDir, 'mechanism.inp')  # Update with the mechanism file path
+tempDir = os.path.join(currentDir, 'output')
+
+
+# Initialize Chemkin job
+job = ChemkinJob(
+    name=conc_X[0][0],
+    chemFile=chemFile,
+    tempDir=tempDir,
+)
+
+job.preprocess()
+
+# Write Chemkin input for a single simulation
+input_file = job.writeInputHomogeneousBatch(
+    problemType='constrainVandSolveE',  # Problem type in Chemkin
+    reactants=conc_X,
+    temperature=reactorTemperature,
+    pressure=reactorPressure,
+    endTime=1  # Simulation end time in seconds
+)
+
+# Run the Chemkin simulation
+job.run(input_file, model='CKReactorGenericClosed', pro=True)
+job.postprocess(sens=False, rop=False, all=True, transpose=False)
+
+#tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
+
+# Calculate ignition delay
+try:
+    tau = getIgnitionDelayOH(job.ckcsvFile)
+except ValueError:
+    print("Value Error")
+    tau = None
+
+# Output the results
+if tau:
+    print(f"Ignition delay at {{reactorTemperature}} K and {{reactorPressure}} atm: {{tau*1e3}} ms")
+    with open("output/tau.out", 'w') as tau_file:
+        tau_file.write(f"#T(K)    tau(us)\\n{{reactorTemperature}}    {{tau * 1e6}}\\n")
+
+# Save all output data if needed
+saveAll = True  # Set to True if you want to save all time-history data
+if saveAll:
+    convert_and_transpose_ckcsv(job.ckcsvFile, "time_history.csv")
+    #output_data.to_csv("time_history.csv", index=False)
+del job
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+	
 			elif "cantera" in target.add["solver"] and target.add["BoundaryLayer"] != True:
 				instring = """#!/usr/bin/python
 from __future__ import division
@@ -1237,7 +1337,7 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 	return tau
 
 t0 = time.time()
-estimatedIgnitionDelayTime = 0.2
+estimatedIgnitionDelayTime = 1.0
 flag = False
 t = 0
 pressureList = []
@@ -2653,6 +2753,15 @@ python3.9 cantera_.py &> solve"""
 
 		extract = """
 		"""
+	elif target.add["solver"] == "CHEMKIN_PRO":
+		s_convert = """#!/bin/bash
+ck2yaml --input=mechanism.mech --thermo=thermo.therm --transport=transport.trans &> out """
+		s_run = """#!/bin/bash
+export NUMEXPR_MAX_THREADS=1
+python3.9 {MUQSAC}/soln2ck_2.py --mechanism=mechanism.inp --thermo=thermo.dat {mech} &> soln2ck.out
+python3.9 cantera_.py &> solve
+		""".format(MUQSAC = opt_dict["Bin"]["bin"] ,Bin=opt_dict["Bin"]["solver_bin"],mech = mech_file,thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
+	
 	else:
 		
 		s_convert = """#!/bin/bash

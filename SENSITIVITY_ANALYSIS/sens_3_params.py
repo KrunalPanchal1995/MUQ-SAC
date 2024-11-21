@@ -102,7 +102,8 @@ targets_count = int(dataCounts["targets_count"])
 stats_ = optInputs["Stats"]
 design_type = stats_[design]
 fuel = optInputs["Inputs"][fuel]
-
+if "sensitive_parameters" not in stats_:
+	stats_["sensitive_parameters"] = "Arrhenius"
 #########################################
 ###    Reading the mechanism file    ####
 #########################################
@@ -232,6 +233,8 @@ Cholesky_list = []
 zeta_list = []
 activeParameters = []
 P_nominal_list = []
+P_upper = []
+P_lower = []
 P_multiply_A = []
 P_multiply_n = []
 P_multiply_Ea = []
@@ -239,9 +242,28 @@ rxn_list = []
 rIndex = []
 sigma_n = []
 sigma_Ea = []
+zeta_list_A = []
+zeta_list_B = []
+zeta_list_C = []
 for rxn in unsrt_data:
-	#print(i)
-	#print(rxn)
+	activeParameters.extend(unsrt_data[rxn].activeParameters)
+ap = len(activeParameters)
+zeta_b_max = DM.DesignMatrix(unsrt_data,design_type,ap,1).getB_TYPE_fSAC(1000,tag="MAX_N")
+zeta_c_max,gen = DM.DesignMatrix(unsrt_data,design_type,ap,1).getClassC_Curves(1,generator=np.array([[1,-1]]))
+
+
+if "zeta" in stats_["sensitive_parameters"]:
+	z_a = np.asarray([1,0,0])
+	z_n = np.asarray([0,1,0])
+	z_e = np.asarray([0,0,1])
+	p_a = p_n = p_e = np.asarray([1,1,1])
+else:
+	z_a = z_n = z_e = np.asarray([1,1,1])
+	p_a = np.asarray([1,0,0])
+	p_n = np.asarray([0,1,0])
+	p_e = np.asarray([0,0,1])
+	
+for rxn in unsrt_data:
 	rxn_list.append(rxn)
 	selection.extend(unsrt_data[rxn].selection)
 	Cholesky_list.append(unsrt_data[rxn].cholskyDeCorrelateMat)
@@ -249,20 +271,24 @@ for rxn in unsrt_data:
 	sigma_vector = np.diag(covariance_mat)
 	cov = unsrt_data[rxn].L
 	zeta = np.asarray(unsrt_data[rxn].perturb_factor)
-	
 	Po = np.asarray(unsrt_data[rxn].nominal)
-	zeta_A = np.array([abs(zeta[0]),0.0,0.0])
-	zeta_n = np.array([0.0,abs(zeta[1]),0.0])
-	zeta_Ea = np.array([0.0,0.0,abs(zeta[2])])
-	P_multiply_A.append(list(Po + np.asarray(cov.dot(zeta_A)).flatten()))
-	P_multiply_n.append(list(Po + np.asarray(cov.dot(zeta_n)).flatten()))
-	P_multiply_Ea.append(list(Po + np.asarray(cov.dot(zeta_Ea)).flatten()))
-	
-	#print(sigma_vector)
+	zeta_A = z_a*zeta
+	zeta_B = z_n*zeta_b_max[rxn]
+	zeta_C = z_e*zeta_c_max[rxn][0]
+	zeta_list_A.append(zeta_A)
+	zeta_list_B.append(zeta_B)
+	zeta_list_C.append(zeta_C)
+	P_upper.append(np.asarray(Po + np.array([1,1,1])*np.asarray(cov.dot(zeta)).flatten()))
+	P_lower.append(np.asarray(Po - np.array([1,1,1])*np.asarray(cov.dot(zeta)).flatten()))
+	P_multiply_A.append(np.asarray(Po + p_a*np.asarray(cov.dot(zeta_A)).flatten()))
+	P_multiply_n.append(np.asarray(Po + p_n*np.asarray(cov.dot(zeta_B)).flatten()))
+	P_multiply_Ea.append(np.asarray(Po + p_e*np.asarray(cov.dot(zeta_C)).flatten()))
+
 	sigma_n.append(sigma_vector[1])
 	sigma_Ea.append(sigma_vector[2])
 	zeta_list.append(unsrt_data[rxn].perturb_factor)
-	activeParameters.extend(unsrt_data[rxn].activeParameters)
+	
+	#activeParameters.extend(unsrt_data[rxn].activeParameters)
 	P_nominal_list.append(unsrt_data[rxn].nominal)
 	rIndex.append(unsrt_data[rxn].rIndex)
 #print(zeta_list)
@@ -275,6 +301,41 @@ manipulationDict["nominal"] = deepcopy(P_nominal_list)#.deepcopy()
 print("\nFollowing list is the choosen reactions\n")
 print(manipulationDict["activeParameters"])
 
+
+############################################
+### Plotting all the samples taken for    ##
+### Sensitivity analysis                  ##
+############################################
+global T, theta
+T = np.linspace(300,2500,100)
+theta = np.array([T/T,np.log(T),-1/T])
+
+def getUnsrtLimit(Po,P_u,P_l):
+	K_o = np.asarray([ i.dot(Po) for i in theta.T ]).flatten()
+	K_u = np.asarray([ i.dot(P_u) for i in theta.T ]).flatten()
+	K_l = np.asarray([ i.dot(P_l) for i in theta.T ]).flatten()
+	return K_o,K_u,K_l
+	
+def getKappa(P):
+	K = np.asarray([ i.dot(P) for i in theta.T ]).flatten()
+	return np.exp(K)
+
+
+for index,rxn in enumerate(unsrt_data):
+	Kappa_o, Kappa_U, Kappa_L = getUnsrtLimit(P_nominal_list[index],P_upper[index],P_lower[index])
+	Kappa_A = getKappa(P_multiply_A[index])
+	Kappa_n = getKappa(P_multiply_n[index])
+	Kappa_Ea = getKappa(P_multiply_Ea[index])
+	fig = plt.figure()
+	plt.plot(1/T,Kappa_o,'b-',label="Nominal Curve")
+	plt.plot(1/T,Kappa_U,'k--',label="Unsrt Limits")
+	plt.plot(1/T,Kappa_L,'k--')
+	plt.plot(1/T,Kappa_A,'r-',label="A-factor perturbation")
+	plt.plot(1/T,Kappa_n,'g-',label="n perturbation")
+	plt.plot(1/T,Kappa_Ea,'y-',label="Ea perturbation")
+	plt.legend()
+	plt.savefig(f"Plots/{rxn}.pdf",bbox_inches='tight')
+	plt.close()
 ##################################################################
 ##  Use the unsrt data to sample the Arrhenius curves           ##
 ##  MUQ-SAC: Method of Uncertainty Quantification and           ##
@@ -347,7 +408,7 @@ else:
 
 if "DesignMatrix_A.csv" not in os.listdir():
 	flag = "A"
-	design_matrix_A = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	design_matrix_A = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list_A,flag)
 	s =""
 	for row in design_matrix_A:
 		for element in row:
@@ -362,7 +423,7 @@ else:
 		
 if "DesignMatrix_n.csv" not in os.listdir():
 	flag = "n"
-	design_matrix_n = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	design_matrix_n = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list_B,flag)
 	s =""
 	for row in design_matrix_n:
 		for element in row:
@@ -377,7 +438,7 @@ else:
 
 if "DesignMatrix_Ea.csv" not in os.listdir():
 	flag = "Ea"
-	design_matrix_Ea = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list,flag)
+	design_matrix_Ea = DM.DesignMatrix(unsrt_data,design_type,ap).getSA3P_samples(zeta_list_C,flag)
 	s =""
 	for row in design_matrix_Ea:
 		for element in row:
@@ -682,7 +743,7 @@ for case in case_dir:
 		#print(data_sheet)
 		#raise AssertionError("!STOP")
 		temp_sim_opt_x0[str(case)] = {}
-		temp_sim_opt_x0[str(case)]["ETA"] = eta_x0
+		temp_sim_opt_x0[str(case)]["ETA"] = ETA_x0
 		temp_sim_opt_x0[str(case)]["index"] = index_x0
 		f = open('../../Data/Simulations/Nominal/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_x0)
 		g = open('../../Data/Simulations/Nominal/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_x0)
@@ -712,7 +773,7 @@ for case in case_dir:
 		#print(data_sheet)
 		#raise AssertionError("!STOP")
 		temp_sim_opt_A[str(case)] = {}
-		temp_sim_opt_A[str(case)]["ETA"] = eta_A
+		temp_sim_opt_A[str(case)]["ETA"] = ETA_A
 		temp_sim_opt_A[str(case)]["index"] = index_A
 		f = open('../../Data/Simulations/Multiply_A/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_A)
 		g = open('../../Data/Simulations/Multiply_A/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_A)
@@ -742,7 +803,7 @@ for case in case_dir:
 		#print(data_sheet)
 		#raise AssertionError("!STOP")
 		temp_sim_opt_n[str(case)] = {}
-		temp_sim_opt_n[str(case)]["ETA"] = eta_n
+		temp_sim_opt_n[str(case)]["ETA"] = ETA_n
 		temp_sim_opt_n[str(case)]["index"] = index_n
 		f = open('../../Data/Simulations/Multiply_n/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_n)
 		g = open('../../Data/Simulations/Multiply_n/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_n)
@@ -772,7 +833,7 @@ for case in case_dir:
 		#print(data_sheet)
 		#raise AssertionError("!STOP")
 		temp_sim_opt_Ea[str(case)] = {}
-		temp_sim_opt_Ea[str(case)]["ETA"] = eta_Ea
+		temp_sim_opt_Ea[str(case)]["ETA"] = ETA_Ea
 		temp_sim_opt_Ea[str(case)]["index"] = index_Ea
 		f = open('../../Data/Simulations/Multiply_Ea/sim_data_case-'+str(case)+'.lst','w').write(data_sheet_Ea)
 		g = open('../../Data/Simulations/Multiply_Ea/failed_sim_data_case-'+str(case)+'.lst','w').write(failed_sim_Ea)
@@ -787,7 +848,7 @@ temp_sim_opt_x2 = {}
 for case in case_dir:	
 	os.chdir("Data/Simulations/Multiply")
 	if "sim_data_case-"+str(case)+".lst" in os.listdir():
-		ETA_x2 = [np.log(float(i.split("\t")[1])*10) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
+		ETA_x2 = [ np.log(float(i.split("\t")[1])*10) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
 		folderName_x2 = [float(i.split("\t")[0]) for i in open("sim_data_case-"+str(case)+".lst").readlines()]
 		temp_sim_opt_x2[str(case)] = {}
 		temp_sim_opt_x2[str(case)]["ETA"] = ETA_x2
@@ -928,6 +989,7 @@ for case_index,case in enumerate(temp_sim_opt_x2):
 
 	g = open(f"Data/SensitivityCoeffs_PRS/FM_sensitivity_T_{T}_case_{case_index}.txt","w").write(string_FM)
 
+
 selected_BRUTE_FORCE_PARAMETERS = {}
 for case_index,case in enumerate(temp_sim_opt_A):
 	if design_type == "A-facto":
@@ -935,14 +997,16 @@ for case_index,case in enumerate(temp_sim_opt_A):
 		rxn_Sa_1 = {}
 		count = 0
 		T = target_list[case_index].temperature
-		k_perturbed = float(np.exp(P_multiply_A[case_index][0]))
-		k_o = float(np.exp(P_nominal_list[case_index][0]))
-		index = temp_sim_opt_A[str(case)]["index"]
 		multiply_A = np.asarray(temp_sim_opt_A[str(case)]["ETA"])
 		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
-		SA_coeff =(k_o/(k_perturbed-k_o))*(multiply_A - nominal)/nominal
-		#print((k_o/(k_perturbed-k_o)),(multiply_A - nominal)/nominal)
-		#SA_coeff_without_k_perturbed = (multiply_A - nominal)/nominal
+		index = temp_sim_opt_A[str(case)]["index"]
+		SA_coeff = []
+		for rxn_index,rxn in enumerate(unsrt_data):
+			k_perturbed.append(float(np.exp(P_multiply_A[rxn_index][0])))
+			k_o = float(np.exp(P_nominal_list[rxn_index][0]))
+			SA_coeff.append((k_o/(k_perturbed-k_o))*(multiply_A[rxn_index] - nominal)/nominal)
+			#print((k_o/(k_perturbed-k_o)),(multiply_A - nominal)/nominal)
+			SA_coeff_without_k_perturbed = (multiply_A[rxn_index] - nominal)/nominal
 		for ind,rxn in enumerate(rxn_list):
 			temp = SA_coeff[count]
 			count+=1
@@ -990,33 +1054,50 @@ for case_index,case in enumerate(temp_sim_opt_A):
 		rxn_Sa = {}
 		rxn_Sa_1 = {}
 		count = 0
-		
-		#Sensitivity analysis for A parameter
-		T = float(target_list[case_index].temperature)
-		k_perturbed = float(np.exp(P_multiply_A[case_index][0]))
-		k_o = float(np.exp(P_nominal_list[case_index][0]))
 		index = temp_sim_opt_A[str(case)]["index"]
 		multiply_A = np.asarray(temp_sim_opt_A[str(case)]["ETA"])
 		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
-		SA_coeff_A =(k_o/(k_perturbed-k_o))*((multiply_A - nominal)/nominal)
-		SA_coeff_without_k_perturbed = (multiply_A - nominal)/nominal
-		#Sensitivity analysis for n parameter
-		T = target_list[case_index].temperature
-		k_perturbed = T**float(P_multiply_n[case_index][1])
-		k_o = T**float(P_nominal_list[case_index][1])
-		index = temp_sim_opt_n[str(case)]["index"]
-		multiply_n = np.asarray(temp_sim_opt_n[str(case)]["ETA"])
-		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
-		SA_coeff_n =(k_o/(k_perturbed-k_o))*((multiply_n - nominal)/nominal)
 		
-		#Sensitivity analysis for Ea parameter
-		T = target_list[case_index].temperature
-		k_perturbed = np.exp(-float(P_multiply_Ea[case_index][0])/T)
-		k_o = np.exp(-float(P_nominal_list[case_index][0])/T)
-		index = temp_sim_opt_Ea[str(case)]["index"]
+		index_n = temp_sim_opt_n[str(case)]["index"]
+		multiply_n = np.asarray(temp_sim_opt_n[str(case)]["ETA"])
+		
+		index_ea = temp_sim_opt_Ea[str(case)]["index"]
 		multiply_Ea = np.asarray(temp_sim_opt_Ea[str(case)]["ETA"])
-		nominal = np.asarray(temp_sim_opt_x0[str(case)]["ETA"])
-		SA_coeff_Ea =(k_o/(k_perturbed-k_o))*(multiply_Ea - nominal)/nominal
+		#Sensitivity analysis for A parameter
+		T_ = float(target_list[case_index].temperature)
+		SA_coeff_A = []
+		SA_coeff_n = []
+		SA_coeff_Ea = []
+		SA_coeff_without_k_perturbed = []
+		for rxn_index, rxn in enumerate(unsrt_data):
+			k_perturbed = getKappa(P_multiply_A[rxn_index])
+			k_o = getKappa(P_nominal_list[rxn_index])
+			normalized_A = np.asarray((k_o/(k_perturbed-k_o))).flatten()
+			fact_A = np.asarray((multiply_A[rxn_index] - nominal)/nominal).flatten()
+			#SA_coeff_A.append((k_o/(k_perturbed-k_o))*((multiply_A[rxn_index] - nominal)/nominal))
+			SA_coeff_A.append(np.asarray(max(list(normalized_A))*fact_A)[0])
+			SA_coeff_without_k_perturbed.append(np.asarray((multiply_A[rxn_index] - nominal)/nominal).flatten()[0])
+			
+			#Sensitivity analysis for n parameter
+			#T = target_list[case_index].temperature
+			k_perturbed = getKappa(P_multiply_n[rxn_index])
+			k_o = getKappa(P_nominal_list[rxn_index])
+			#print(len(k_o),len(k_perturbed),len(multiply_n))
+			#print(multiply_n)
+			fact_n = np.asarray(((multiply_n[rxn_index] - nominal)/nominal)).flatten()
+			normalized_n = np.asarray((k_o/(k_perturbed-k_o))).flatten()
+			max_morm_n = max(list(normalized_n))
+			#SA_coeff_n.append((k_o/(k_perturbed-k_o))*((multiply_n[rxn_index] - nominal)/nominal))
+			SA_coeff_n.append(max_morm_n*fact_n[0])
+			#Sensitivity analysis for Ea parameter
+			#T = target_list[case_index].temperature
+			k_perturbed = getKappa(P_multiply_Ea[rxn_index])
+			k_o = getKappa(P_nominal_list[rxn_index])
+			fact_ea = np.asarray(((multiply_Ea[rxn_index] - nominal)/nominal)).flatten()
+			normalized_ea = np.asarray((k_o/(k_perturbed-k_o))).flatten()
+			max_morm_ea = max(list(normalized_ea))
+			#SA_coeff_Ea.append((k_o/(k_perturbed-k_o))*(multiply_Ea[rxn_index] - nominal)/nominal)
+			SA_coeff_Ea.append(max_morm_ea*fact_ea[0])
 		
 
 		
@@ -1033,6 +1114,7 @@ for case_index,case in enumerate(temp_sim_opt_A):
 			
 		SA_dict = dict(sorted(rxn_Sa.items(), key=lambda item: abs(item[1][0]),reverse = True))
 		SA_dict_1 = dict(sorted(rxn_Sa_1.items(), key=lambda item: abs(item[1][0]),reverse = True))
+		#print(SA_dict)
 		selected_BRUTE_FORCE_PARAMETERS[str(case_index)] = rxn_Sa
 		sort_rlist = []
 		sort_alist = []
@@ -1049,10 +1131,13 @@ for case_index,case in enumerate(temp_sim_opt_A):
 			ticks.append(ind)
 			
 		
+		#print(sort_alist)
 		fig = plt.figure()
+		#y_pos = [i for i in range(0,len(sort_alist))]
 		y_pos = range(0,len(sort_alist))
 		#print(y_pos)
 		plt.barh(y_pos,sorted(sort_alist,key =abs), alpha=0.51)
+		#plt.barh(y_pos,sort_alist, alpha=0.51)
 		plt.yticks(y_pos, sort_rlist)
 		plt.xlabel(r'normalized sensitivities $S_i = \frac{\partial ln(S_{u}^{o})}{\partial x_i}}$')
 		#plt.title('Sensitivity Analysis using Response surface method')
@@ -1092,10 +1177,10 @@ for case_index,case in enumerate(temp_sim_opt_A):
 	for ind,rxn in enumerate(sort_rlist):
 		string_FM_Ea +=f"\t{sort_ealist[ind]:.8f}\t{index_dict[rxn.split(':')[0]]}\t{rxn}\n"
 
-	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}.txt","w").write(string_FM)
-	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_1.txt","w").write(string_FM_1)
-	g_n = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_n.txt","w").write(string_FM_n)
-	g_ea = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T}_case_{case_index}_ea.txt","w").write(string_FM_Ea)
+	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T_}_case_{case_index}.txt","w").write(string_FM)
+	g = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T_}_case_{case_index}_1.txt","w").write(string_FM_1)
+	g_n = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T_}_case_{case_index}_n.txt","w").write(string_FM_n)
+	g_ea = open(f"Data/SensitivityCoeffs/FM_sensitivity_T_{T_}_case_{case_index}_ea.txt","w").write(string_FM_Ea)
 
 	
 os.chdir("..")

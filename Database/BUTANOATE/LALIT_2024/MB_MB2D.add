@@ -1,0 +1,134 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: cantera
+#Butanoate
+
+ing_Ethyl_Butanoate:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+
+ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ign_BUTANOATE_phi_1_IGN_PHI_1_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_1:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_4:
+ solver: cantera
+ ign_delay_def: CHV
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_Butanoate:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 86
+
+fls_1a:
+ solver: cantera
+ type: phi
+ fuel: MB-C5H10O2
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  935.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_935.csv  
+  958.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_958.csv
+  982.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_982.csv
+ 
+JSR_BUTANOATE_phi_1_JSR_MB:
+ solver: cantera
+ species: MB-C5H10O2
+ mol_wt: 86
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+
+MB_JSR__PHI_1_13_CO2:
+ solver: cantera
+ species: CO2
+ mol_wt: 44
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_CO:
+ solver: cantera
+ species: CO
+ mol_wt: 28
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_C2H2:
+ solver: cantera
+ species: C2H2
+ mol_wt: 26
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_C2H4:
+ solver: cantera
+ species: C2H4
+ mol_wt: 28
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+MB_JSR__PHI_1_13_CH2O:
+ solver: cantera
+ species: CH2O
+ mol_wt: 30
+ residenceTime: 0.07 #s
+ maxSimulationTime: 0.3
+ volume: 1 #cm3
+ 
+ 
+
