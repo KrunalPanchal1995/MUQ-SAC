@@ -156,7 +156,7 @@ class DesignMatrix(object):
 			if "DesignMatrix.pkl" not in os.listdir(f"DM_FOR_PARTIAL_PRS/{case_index}"):
 				#self.sim = 1 + 2* self.n+self.n*(self.n-1)/2
 				design_matrix = list(2* np.random.random_sample((self.sim,self.n)) - 1)
-				design_matrix.extend(list(np.eye(self.n)))
+				#design_matrix.extend(list(np.eye(self.n)))
 				with open(f'DM_FOR_PARTIAL_PRS/{case_index}/DesignMatrix.pkl', 'wb') as file_:
 					pickle.dump(design_matrix, file_)
 			else: 

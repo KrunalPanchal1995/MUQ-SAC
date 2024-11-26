@@ -1051,7 +1051,9 @@ class reaction(UncertaintyExtractor):
 		#self.samap_executable = binary_files["samap_executable"]
 		#self.jpdap_executable = binary_files["jpdap_executable"]
 		self.rxn = self.classification = self.type = self.sub_type = self.exp_data_type = self.temperatures = self.uncertainties = self.branching  = self.branches = self.pressure_limit = self.common_temp = self.temp_limit = None
-		
+		self.selected = False
+		self.linked_rIndex = None
+
 		DATA = Parser(mechPath).mech
 		RXN_LIST = Parser(mechPath).rxnList
 		self.tag = Element.tag
@@ -1075,9 +1077,13 @@ class reaction(UncertaintyExtractor):
 				self.perturbation_factor = float(item.text)
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
 				for subitem in item:
 					if subitem.tag == "multiple":
-						self.multiple = subitem.text
+						self.multiple = subitem.text.strip()
 					if subitem.tag == "branching":
 						self.branching = subitem.text
 					if subitem.tag == "branches":
@@ -1429,7 +1435,8 @@ class PLOG_Interconnectedness(UncertaintyExtractor):
 		Creates the class for the PLOG reactions
 		
 		"""
-		
+		self.selected = False
+		self.linked_rIndex = None
 		parent = plog_object_list[0]
 		parent2 = plog_object_list[1]
 		self.rxn = parent.rxn
@@ -1445,7 +1452,6 @@ class PLOG_Interconnectedness(UncertaintyExtractor):
 		self.rxn_Details = parent.rxn_Details
 		#self.perturbation_factor = parent.perturbation_factor
 		self.perturbation_type = parent.perturbation_type
-		
 		self.type = parent.type
 		self.sub_type = parent.sub_type
 		self.exp_data_type = "Interpolation"
@@ -1562,10 +1568,12 @@ class PLOG(UncertaintyExtractor):
 		#super().__init__(Element,mechPath,binary_files)
 		DATA = Parser(mechPath).mech
 		RXN_LIST = Parser(mechPath).rxnList
+		self.selected = False
+		self.linked_rIndex = None
 		
 		self.tag = Element.tag
 		self.rxn = str(Element.attrib["rxn"])
-		print(self.rxn)
+		#print(self.rxn)
 		self.rIndex = str(Element.attrib["no"])
 		
 		if self.rxn in RXN_LIST:
@@ -1588,6 +1596,11 @@ class PLOG(UncertaintyExtractor):
 				self.perturbation_factor = float(item.text)
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
+				
 				for subitem in item:
 					if subitem.tag == "multiple":
 						self.branching = subitem.text
@@ -1761,7 +1774,8 @@ class fallOffCurve:
 		self.rxn = Element.attrib["rxn"]
 		self.tag = Element.tag	
 		self.foc_dict = IFR.MechParsing(mechPath).getFocData(self.rxn)[0]
-		
+		self.selected = False
+		self.linked_rIndex = None
 		
 		#print(self.rxn_dict)
 		for item in Element:
@@ -1771,6 +1785,10 @@ class fallOffCurve:
 				self.type = item.text
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
 				for subitem in item:
 					if subitem.tag == "multiple":
 						self.branching = subitem.text
@@ -1931,7 +1949,8 @@ class thermodynamic:
 		self.zeta = {}
 		self.species = Element.attrib["species"]
 		self.nominal = {}
-		
+		self.selected = False
+		self.linked_rIndex = None
 		
 		for item in Element:
 			#print(item.tag)
@@ -1943,7 +1962,10 @@ class thermodynamic:
 				continue
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
-				
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
 				for subitem in item:
 					if "multiple" in subitem.tag:
 						self.branching = str(subitem.text)
@@ -2307,7 +2329,8 @@ class transport:
 		self.cholskyDeCorrelateMat = {}
 		self.zeta = {} 
 		self.species = Element.attrib["species"]
-		
+		self.selected = False
+		self.linked_rIndex = None
 		self.trans_dict = IFR.TransportParsing(transport_loc).getTransportData(self.species)
 		
 		for item in Element:
@@ -2320,7 +2343,10 @@ class transport:
 				continue
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
-				
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
 				for subitem in item:
 					if "multiple" in subitem.tag:
 						self.branching = str(subitem.text)
@@ -2489,7 +2515,8 @@ class collision:
 		self.uncertainties = {}
 		self.nominal = {}
 		self.rxn = Element.attrib["rxn"]
-		
+		self.selected = False
+		self.linked_rIndex = None
 		
 		for item in Element:
 			#print(item.tag)
@@ -2502,6 +2529,10 @@ class collision:
 			if item.tag == "sub_type":
 				self.sub_type = item.attrib["name"]
 				
+				try:
+					self.linked_rIndex = item.attrib["link"]
+				except KeyError:
+					self.linked_rIndex = None
 				for subitem in item:
 					if "multiple" in subitem.tag:
 						self.branching = str(subitem.text)

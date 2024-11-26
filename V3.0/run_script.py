@@ -93,8 +93,8 @@ global A_fact_samples
 
 A_fact_samples = stats_["Sampling_of_PRS"]
 if "sensitive_parameters" not in stats_:
-	stats_["sensitive_parameters"] = "Arrhenius"
-	optInputs["Stats"]["sensitive_parameters"] = "Arrhenius"
+	stats_["sensitive_parameters"] = "zeta"
+	optInputs["Stats"]["sensitive_parameters"] = "zeta"
 if "Arrhenius_Selection_Type" not in stats_:
 	stats_["Arrhenius_Selection_Type"] = "all"
 	optInputs["Stats"]["Arrhenius_Selection_Type"] = "all"
@@ -170,7 +170,9 @@ else:
 	with open('unsrt.pkl', 'rb') as file_:
 		unsrt_data = pickle.load(file_)
 	print("Uncertainty analysis already finished")
-
+#for rxn in unsrt_data:
+#	print(unsrt_data[rxn].linked_rIndex)
+#raise AssertionError("Pull over")
 ###########################################################
 #### Printing the reactions and their index in the file ###
 ###########################################################
@@ -253,9 +255,6 @@ if PRS_type == "Partial":
 			f = open("SA_tool.out","+a")
 			f.write(result.stdout+"\n")
 			
-			# Printing the output of script2.py
-			#print("\nOutput of sens.py:\n")
-			#print(result.stdout)
 			print("\nSensitivity Analysis for A-factor is Done!!")
 			# Printing the errors of script2.py, if any
 			if result.stderr:
@@ -279,14 +278,7 @@ if PRS_type == "Partial":
 			result = subprocess.run(['python3.9', binLoc["SA_tool_3p"]] + args, capture_output=True, text=True)
 			f = open("SA_tool_3p.out","+a")
 			f.write(result.stdout+"\n")
-			# Printing the output of script2.py
-			#print("\nOutput of sens.py:\n")
-			#print(result.stdout)
-			#print("\nSensitivity Analysis for 3-param is Done!!")
-			# Printing the errors of script2.py, if any
 			if result.stderr:
-				#print("Errors:")
-				#print(result.stderr)
 				f.write("Errors:\n"+result.stderr)	
 			#raise AssertionError("Sensitivity Analysis Done!!")
 			with open('sens_3p_parameters.pkl', 'rb') as file_:

@@ -10,7 +10,7 @@ class PartialPRS(object):
 		self.target_list = target_list
 		self.optInputs = optInputs
 		self.cut_off = float(optInputs["Stats"]["cut_off_percentage"])
-		self.sens_param = str(optInputs["Stats"]["sensitive_parameters"])
+		self.sens_param = str(optInputs["Stats"]["sensitive_parameters"]) #Updated in run script
 		if "Arrhenius_Selection_Type" in optInputs["Stats"]:
 			self.Arrhenius_Selection = optInputs["Stats"]["Arrhenius_Selection_Type"]
 		else:
@@ -26,20 +26,27 @@ class PartialPRS(object):
 		sens_SA_list = []
 		sens_SA_dict = {}
 		count = 0
+		self.linked_list = {}
+		self.check_list = []
+		self.active_params = []
+		for rxn in unsrt_data:
+			self.linked_list[unsrt_data[rxn].activeParameters[0]] = unsrt_data[rxn].linked_rIndex
+			self.active_params.append(unsrt_data[rxn].activeParameters[0])
+		#print(self.linked_list)
 		if self.design == "A-facto":
-			for rxn in sensitivity_dict:
-				for rxn_ in unsrt_data:
-					if rxn == rxn_.split(":")[0]:
+			for rxn in unsrt_data:
+				for rxn_ in sensitivity_dict:
+					if rxn_ == rxn.split(":")[0]:
 						#print(rxn_.split(":")[0])
 						#print(rxn_,sensitivity_dict[rxn])
-						sens_SA_list.append(rxn_)
-						sens_SA_dict[unsrt_data[rxn_].activeParameters[0]] = float(sensitivity_dict[rxn])
-						self.s_A.append(float(sensitivity_dict[rxn]))
+						sens_SA_list.append(rxn)
+						sens_SA_dict[unsrt_data[rxn].activeParameters[0]] = float(sensitivity_dict[rxn_])
+						self.s_A.append(float(sensitivity_dict[rxn_]))
 						count+=1
 			
 			
 			#print(len(self.s_A))
-			self.active_params = active_parameters
+
 			self.partial_active = {}
 			self.partial_active_list = []
 			self.selected = []
@@ -47,23 +54,32 @@ class PartialPRS(object):
 			self.abs_coeff = []
 			count = 0
 			#getting the coeff according to the order of activeParameters list (unsrt_data)
+
 			for ac in self.active_params:
+				#print(ac.split(":")[0].split("_A")[0])
 				for index,sc in enumerate(sens_SA_dict):
-					if ac == sc:
+					if ac == sc: #For PLOG reactions
+						#print(ac,sc)
+						self.populateCheckList(sens_SA_dict[sc],ac)
+			
+			#print(self.check_list)
+			for ap in self.active_params:
+				for index,sc in enumerate(sens_SA_dict):
+					if ap == sc:
+						#print(ap,sc,sens_SA_dict[sc],self.getSelectedLinkedRxn(sens_SA_dict[sc],ap))
 						self.coeff.append(sens_SA_dict[sc])
-						self.abs_coeff.append(abs(sens_SA_dict[sc]))
+						self.abs_coeff.extend(self.getSelectedLinkedRxn(sens_SA_dict[sc],ap))
 			
-			coeff_sum = sum(self.abs_coeff)
-			self.normalized_coeff = np.asarray(self.abs_coeff)*100/coeff_sum
+			#print(self.abs_coeff)
 			#print(len(self.s_A),len(self.active_params))
-			
+			self.check_list = []
 			self.selected_rxn_string = ""
 			#print(sens_SA_list)
 			#print(self.active_params)
 			#print(sens_SA_dict)
 			#print(self.coeff)
 			for ind,active_params in enumerate(self.active_params):
-				if abs(self.coeff[ind])>=self.cut_off/100:
+				if abs(self.abs_coeff[ind])>=self.cut_off/100:
 					#print(active_params,self.coeff[ind])
 					self.partial_active[active_params] = 1
 					self.partial_active_list.append(active_params)
@@ -96,6 +112,7 @@ class PartialPRS(object):
 				self.selected_rxn_string = ""
 				for ind,active_params in enumerate(self.active_params):
 					if self.abs_coeff[ind]>self.cut_off/100:
+						#print(active_params,self.abs_coeff[ind])
 						self.partial_active[active_params] = 1
 						self.partial_active_list.append(active_params)
 						self.selected.append(1)
@@ -119,6 +136,26 @@ class PartialPRS(object):
 			return [max(s_list),max(s_list),max(s_list)]
 		else:
 			return s_list
+	def populateCheckList(self,sa,activeParams):
+		cf = self.cut_off/100
+		#print(sa,activeParams)
+		if abs(sa)>cf:
+			#print(activeParams)
+			self.check_list.append(activeParams)
+	def getSelectedLinkedRxn(self,sa,activeParams):
+		cf = self.cut_off/100
+		if abs(sa)>cf:
+			s_list = [1.0]
+			#return s_list
+		elif abs(sa)<cf and str(self.linked_list[activeParams])+"_A" in self.check_list:
+			#print(str(self.linked_list[activeParams])+"_A")
+			s_list = [1.0]
+			#print(s_list)
+			#return s_list
+		else:
+			s_list = [0.0]
+		return s_list
+	
 	def getSelectionList(self,sa,sn,se,case):
 		cf = self.cut_off/100
 		if sa>cf and sn<cf and se<cf:
@@ -170,7 +207,7 @@ class PartialPRS(object):
 		else:
 			for rxn in self.unsrt:
 				self.active_params.extend(list(self.unsrt[rxn].activeParameters))
-			print(len(self.active_params))
+			#print(len(self.active_params))
 			design_matrix_file = open(f"DM_FOR_PARTIAL_PRS/{self.case_index}/DesignMatrix.csv").readlines()
 			selection_matrix_file = open(f"DM_FOR_PARTIAL_PRS/{self.case_index}/SelectionMatrix.csv").readlines()
 			p_design_matrix_file = open(f"DM_FOR_PARTIAL_PRS/{self.case_index}/pDesignMatrix.csv").readlines()
@@ -184,7 +221,7 @@ class PartialPRS(object):
 					self.selected.append(1)
 				else:
 					self.selected.append(0)
-			print(len(self.selected))
+			#print(len(self.selected))
 			#raise AssertionError("Stop!")
 			design_matrix = []
 			for row in design_matrix_file:
@@ -222,8 +259,10 @@ class PartialPRS(object):
 			count = 0
 			yaml_loc = []
 			for index,params in enumerate(params_yaml):
-				
-				yaml_list = SSM.getYAML_List(params,selection=params_selection_yaml[index])
+				if self.design == "A-facto":
+					yaml_list = SSM.getYAML_List(params)#,selection=params_selection_yaml[index])
+				else:
+					yaml_list = SSM.getYAML_List(params,selection=params_selection_yaml[index])
 				#yaml_loc = []
 				location_mech = []
 				index_list = []

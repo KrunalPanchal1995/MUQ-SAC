@@ -409,22 +409,7 @@ class SM(object):
 		W = Worker(self.allowed_count,self.build_path)
 		W.do_job_map_create_3(params)
 		del W
-		#chunk_size = 500
-		#params_yaml = [params[i:i+chunk_size] for i in range(0, len(params), chunk_size)]
-		#location_chunck = [location_mech[i:i+chunk_size] for i in range(0, len(location_mech), chunk_size)]
-		#yaml_chunck = [yaml_list[i:i+chunk_size] for i in range(0, len(yaml_list), chunk_size)]
-		#index_chunck = [index_list[i:i+chunk_size] for i in range(0, len(index_list), chunk_size)]
-		#tic = time.time()
-		#for i,args in tqdm(enumerate(params_yaml),desc="Starting to dump the perturbed Mech"):
-		#		W = Worker(self.allowed_count,self.build_path)
-		#		W.do_job_map_create_3(args)
-		#		del W
-			
-			#W = Worker(allowed_count,self.build_path)
-			#W.do_job_map_create_2(params_yaml)
-			#del W	
-			#parallel_yaml_writer.process_yaml_files(args,location_chunck[i],"mechanism",index_chunck[i],self.allowed_count)
-		#tok = time.time()	
+
 		
 	
 	def getDirectoryList(self,case,ind,yaml_loc_dict):
@@ -463,7 +448,7 @@ class SM(object):
 		#	design_matrix = self.design_matrix[case]
 		#else:
 		design_matrix = self.design_matrix_dict[case]
-		print(len(design_matrix))	
+		#print(len(design_matrix))	
 		for i in tqdm(range(len(design_matrix)),desc="Zipping all files"):
 			
 			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:

@@ -523,7 +523,13 @@ class OptimizationTool(object):
 		
 		if Input_data["Stats"]["Design_of_PRS"] == "A-facto":
 		
-			opt_output = minimize(self._obj_func,self.init_guess,bounds=bounds,method=algorithm)
+			opt_output = minimize(self._obj_func,
+					    self.init_guess,
+					    bounds=bounds,
+					    method='L-BFGS-B',  # Replace 'algorithm' with specific method if known
+					    options={"maxiter": 500000}  # Replace 'maxfev' with 'maxiter'
+					)
+			#opt_output = minimize(self._obj_func,self.init_guess,bounds=bounds,method=algorithm,options={"maxiter":500000})
 			print(opt_output)
 			optimal_parameters = np.asarray(opt_output.x)
 			optimal_parameters_zeta = np.asarray(opt_output.x)
