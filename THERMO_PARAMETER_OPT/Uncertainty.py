@@ -78,27 +78,29 @@ class ThermoUncertaintyExtractor(object):
 		#cs = CubicSpline(self.temperatures,self.uncertainties)
 		#self.temperatures = np.arange(self.temperatures[0],self.temperatures[-1],25)
 		#self.uncertainties = cs(self.temperatures)
-		self.NominalParams = data["HeatCapacity"]
+		self.NominalParams = data["HeatCapacity"][0:5]
 		self.M = 3.0/np.log(10.0)
 		Tscale = 5000
 		t = self.temperatures["Hcp"]  # t is assumed to be a NumPy array
-
+		self.uncertainties = data["uncertainties"]["Hcp"]
+		#print(data)
+		self.temperatures = data["temperatures"]["Hcp"]
 		# Verify the type of t
 		if not isinstance(t, np.ndarray):
-		    raise TypeError(f"'t' must be a NumPy array, got {type(t)}")
+			raise TypeError(f"'t' must be a NumPy array, got {type(t)}")
 
 #		 Ensure t contains numeric values
 		if not np.issubdtype(t.dtype, np.number):
-    			raise ValueError("'t' must contain numeric values.")
+			raise ValueError("'t' must contain numeric values.")
 
 		# Compute Theta
 		self.Theta = np.array([
-		    1,
-		    t / Tscale,
-		    (t / Tscale)**2,
-		    (t / Tscale)**3,
-		    (t / Tscale)**4
-		])
+			(t/t),
+			t / Tscale,
+			(t / Tscale)**2,
+			(t / Tscale)**3,
+			(t / Tscale)**4
+			])
 
 		#self.guess = np.array([-10.0,-10.0,0.5,200.0,10.0,5.0,1,1])
 		self.guess = np.zeros(15)
@@ -111,10 +113,11 @@ class ThermoUncertaintyExtractor(object):
 		self.T_low_fact = None
 		self.T_high_fact = None
 		self.T_mid_fact = None
-		self.guess_z = np.zeros(5)
+		self.guess_z = np.ones(5)
 		
 	def doUnsrtAnalysis(self):
-		T = self.temperatures[self.branches.split(",")[0]]
+		#T = self.temperatures[self.branches.split(",")[0]]
+		T = self.temperatures
 		guess = 0.001*np.ones(17)
 		self.solution = minimize(self.uncertPriorObjective,guess,method="Nelder-Mead",options={'maxiter': 100000, 'maxfev': 100000, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 1E-05, 'fatol': 1E-05, 'adaptive': True})
 		Tscale = 5000
@@ -155,6 +158,9 @@ class ThermoUncertaintyExtractor(object):
 		self.zeta_cp = self.zeta.x[0:5]
 		self.zeta_h = self.zeta.x[5]
 		self.zeta_s = self.zeta.x[6]
+	
+		self.getUnCorrelated()
+		
 	def uncertPriorObjective (self,guess):
 		Tscale = 5000
 		R = 8.314
@@ -196,7 +202,7 @@ class ThermoUncertaintyExtractor(object):
 			thetaCP = np.array([T/T,T,T**2,T**3,T**4])
 			unsrt = 9*((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L43*T**3+L53*T**4)**2+(L22*T+L32*T**2+L42*T**3+L52*T**4)**2+(L11+L21*T+L31*T**2+L41*T**3+L51*T**4)**2)
 
-		T = self.temperatures[self.branches.split(",")[0]]/Tscale
+		T = self.temperatures/Tscale
 
 
 		unsrt = 9*((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L43*T**3+L53*T**4)**2+(L22*T+L32*T**2+L42*T**3+L52*T**4)**2+(L11+L21*T+L31*T**2+L41*T**3+L51*T**4)**2)
@@ -218,7 +224,7 @@ class ThermoUncertaintyExtractor(object):
 		obj = np.dot(residual_cp.T,residual_cp)+np.dot(residual_h.T,residual_h)+np.dot(residual_s.T,residual_s)
 		return obj
 	def obj_zeta(self,guess):
-		T = self.temperatures[self.branches.split(",")[0]]
+		T = self.temperatures
 		#T = np.linspace(1000,5000,100)
 		Tscale =5000
 		z = np.ones(7)
@@ -269,7 +275,10 @@ class ThermoUncertaintyExtractor(object):
 		return obj
 			
 	def getCovariance(self,flag = False):
+		#print("Entered Covarance")
+		#print(flag)
 		if flag == True:
+			#print("Ho")
 			constraints = {'type': 'ineq', 'fun': self.const_func }
 			self.const = [constraints]
 			START_MUQ = time.time()
@@ -277,22 +286,19 @@ class ThermoUncertaintyExtractor(object):
 			STOP_MUQ = time.time()
 			#print(f"\nMUQ-SAC method takes {STOP_MUQ-START_MUQ}\n")
 		else:
+			#print("searching for L")
 			START_MUQ = time.time()
 			self.solution = minimize(self.obj_func,self.guess,method="SLSQP")
 			STOP_MUQ = time.time()
 			#print(f"\nMUQ-SAC method takes {STOP_MUQ-START_MUQ}\n")
 			
-		#print(self.solution.x)
-		self.L = np.array([[self.solution.x[0],0,0,0,0],
+		self.Lcp = np.array([[self.solution.x[0],0,0,0,0],
 			[self.solution.x[1],self.solution.x[2],0,0,0],
 			[self.solution.x[3],self.solution.x[4],self.solution.x[5],0,0],
 			[self.solution.x[6],self.solution.x[7],self.solution.x[8],self.solution.x[9],0],
 			[self.solution.x[10],self.solution.x[11],self.solution.x[12],self.solution.x[13],self.solution.x[14]]]);#cholesky lower triangular matric
 		cov1 = self.Lcp
 		cov2 = np.dot(self.Lcp,self.Lcp.T)
-		#print(cov2)
-		#print(np.exp(self.ArrheniusParams[0]),self.ArrheniusParams[1],self.ArrheniusParams[2])
-		#print(self.temperatures[0],self.temperatures[-1])
 		D,Q = np.linalg.eigh(cov2)
 		self.A = Q.dot(sp.linalg.sqrtm(np.diag(D)))
 		self.cov = self.Lcp
@@ -305,23 +311,29 @@ class ThermoUncertaintyExtractor(object):
 			con3 = {'type': 'eq', 'fun': self.const_3_typeB2_Zeta}
 			#con4 = {'type': 'eq', 'fun': self.cons_derivative_b2}
 			self.const_zeta = [con1,con3]
-			bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")))
+			#bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")))
 			
-			#zeta = minimize(self.obj_func_zeta_b2,self.guess_z2,method="SLSQP",constraints=self.const_zeta,bounds=bnds)
-			zeta = minimize(self.obj_func_zeta_b2,bnds,sampling_method='sobol',constraints= self.const_zeta)
-			#zeta = minimize(self.obj_func_zeta_b2,self.guess_z2,method="trust-constr",constraints=self.const_zeta,bounds=bnds)#,options={'xtol': 1e-05, 'gtol': 1e-05, 'barrier_tol': 1e-05})
-			#print(f"{zeta.success}\t{self.kright_fact}\t{self.kleft_fact}\n")
-			#if zeta.success == False:
-			#	print(zeta)
-			#raise AssertionError("stop")
+			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method='SLSQP', options={'maxiter': 10000},constraints=self.const_zeta)#,bounds=bnds)#, options={'eps': 1})
+			#zeta = minimize(self.obj_func_zeta_thermo,bnds,method="trust-constr",constraints= self.const_zeta)
+			
 		else:
 			con5 = {'type': 'ineq', 'fun': self.cons_T}
 			self.const_zeta = [con5]
-			bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(200,3500))
-			zeta = minimize(self.obj_func_zeta_b2,self.guess_z2,method="SLSQP",constraints=self.const_zeta,bounds=bnds)
-		return [zeta.x[0:-1][0],zeta.x[0:-1][1],zeta.x[0:-1][2]]
+			#bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")))
+			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method="SLSQP",constraints=self.const_zeta)#,bounds=bnds)
+		#print(zeta)
+		return zeta.x
 		
-	
+	def obj_func_zeta_thermo(self,guess):
+		M = self.M
+		T = self.temperatures
+		cov = self.Lcp
+		Theta = self.Theta
+		#Theta = np.array([T/T,np.log(T),-1/(T)])
+		f = (self.uncertainties-self.getZetaUnsrtFunc(cov,guess))
+		obj = np.dot(f,f)
+		return obj
+		
 	def populateValues(self,a1,a2):
 		self.kleft_fact = a1
 		self.kright_fact = a2
@@ -329,153 +341,61 @@ class ThermoUncertaintyExtractor(object):
 		#print(f"In populate{a1},{a2}\n")
 	
 	def const_1_typeB2_Zeta(self,z):
+		M = self.M
+		P = self.NominalParams
+		T = self.temperatures[0]
+		Tscale = 5000
+		cov = self.Lcp
+		eta = self.zeta.x
+		Theta = np.array([T/T,T/Tscale, (T/Tscale)**2,(T/Tscale)**3,(T/Tscale)**4]).astype(float)
 		if self.kleft_fact <0:
-			M = self.M
-			P = self.NominalParams
-			T = self.temperatures[0]
-			cov = self.Lcp
-			eta = self.zeta.x[0:5]
 			P_left = P - abs(self.kleft_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
-			Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
+			
 			k_left = Theta.dot(P_left)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		
 		elif self.kleft_fact>0:
-			M = self.M
-			P = self.NominalParams
-			T = self.temperatures[0]
-			cov = self.Lcp
 			P_left = P + abs(self.kleft_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
-			Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
 			k_left = Theta.dot(P_left)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		else:
-			M = self.M
-			P = self.NominalParams
-			#T = self.temperatures
-			T = self.temperatures[0]
-			cov = self.Lcp
-			P_right = P 
-			Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-			k_left = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			P_left = P 
+			k_left = Theta.dot(P_left)
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		return k_left - f
 	
 	
-	def const_2_typeB2_Zeta(self,z):
-		if self.kleft_fact >0 and self.kright_fact>0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.Lcp
-		    P = self.NominalParams
-		    eta = self.zeta.x[0:5]
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,eta)).flatten()
-		    Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
-		elif self.kleft_fact <0 and self.kright_fact<0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.Lcp
-		    P = self.NominalParams
-		    Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,eta)).flatten()
-		    Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-		    k_max = Theta.dot(Pmax)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_max - f
-		elif self.kleft_fact <0 and self.kright_fact>0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.Lcp
-		    P = self.NominalParams
-		    Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,eta)).flatten()
-		    Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-		    k_max = Theta.dot(Pmax)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_max - f
-		    """
-		    M = self.M
-		    T = self.temperatures[1:-1]
-		    cov = self.L
-		    Theta = np.array([T/T,np.log(T),-1/(T)])
-		    QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
-		    f = (self.uncertainties[1:-1]-QtLZ)
-		    obj = np.amin(f)
-		    """
-		elif self.kleft_fact >0 and self.kright_fact<0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.Lcp
-		    P = self.NominalParams
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,eta)).flatten()
-		    Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
-		    """
-		    M = self.M
-		    T = self.temperatures[1:-1]
-		    cov = self.L
-		    Theta = np.array([T/T,np.log(T),-1/(T)])
-		    QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
-		    f = (self.uncertainties[1:-1]-QtLZ)
-		    obj = np.amin(f)
-		    """
-		else:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.Lcp
-		    P = self.NominalParams
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,eta)).flatten()
-		    Theta = np.array([T/T,T, T**2,T**3,T**4]).astype(float)
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
-		return obj
 	
 	def const_3_typeB2_Zeta(self,z):
+		M = self.M
+		P = self.NominalParams
+		T = self.temperatures[-1]
+		Tscale = 5000
+		cov = self.Lcp
+		eta = self.zeta.x
+		#print(eta)
+		Theta = np.array([T/T,T/Tscale, (T/Tscale)**2,(T/Tscale)**3,(T/Tscale)**4]).astype(float)
+		#print(T)
 		if self.kright_fact <0:
-			M = self.M
-			P = self.NominalParams
-			T = self.temperatures[-1]
-			cov = self.Lcp
-			eta = self.zeta.x[0:5]
-			P_right = P - abs(self.kright_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
-			Theta = np.array([1,T , T**2, T**3, T**4])
+			P_right = P - abs(self.kright_fact)*np.asarray(np.dot(cov,eta)).flatten()
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		elif self.kright_fact >0:
-			M = self.M
-			P = self.NominalParams
-			T = self.temperatures[-1]
-			cov = self.Lcp
-			P_right = P + abs(self.kright_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
-			Theta = np.array([1,T , T**2, T**3, T**4])
+			P_right = P + abs(self.kright_fact)*np.asarray(np.dot(cov,eta)).flatten()
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		else:
-			M = self.M
-			P = self.NominalParams
-			#T = self.temperatures
-			T = self.temperatures[0]
-			cov = self.Lcp
 			P_right = P 
-			Theta = np.array([1,T , T**2, T**3, T**4])
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			QtLZ = (Theta.T.dot(cov.dot(z)))
 			f = Theta.dot(P)+QtLZ
 		return k_right - f
+	
 	def getZetaUnsrtFunc(self,L,z):
 		func = [(i.T.dot(L.dot(z))) for i in self.Theta.T]
 		return np.asarray(func)
@@ -483,17 +403,15 @@ class ThermoUncertaintyExtractor(object):
 	def getUncertFunc(self,L):
 		func = [self.M*np.linalg.norm(np.dot(L.T,i)) for i in self.Theta.T]
 		return np.asarray(func)
-	
-	
-	def getZetaUnsrtFunc(self,L,z):
-		func = [(i.T.dot(L.dot(z))) for i in self.Theta.T]
-		return np.asarray(func)
-	
+
 	
 	def obj_func(self,guess):
+		#print(z)
 		z = guess
+		#print(z)
 		cov = np.array([[z[0],0,0,0,0],[z[1],z[2],0,0,0],[z[3],z[4],z[5],0,0],[z[6],z[7],z[8],z[9],0], [z[10],z[11],z[12],z[13],z[14]]]);#cholesky lower triangular matric		
 		f = (self.uncertainties - self.getUncertFunc(cov))/(self.uncertainties/self.M)
+		#print(f)
 		obj = np.dot(f,f)
 		return obj		
 		
@@ -524,14 +442,6 @@ class ThermoUncertaintyExtractor(object):
 		f = (Theta.dot(P)-QtLZ)
 		return cp_max - f
 	
-	def obj_func_zeta(self,guess):
-		M = self.M
-		T = self.temperatures
-		cov = self.Lcp
-		Theta = np.array([T/T,np.log(T),-1/(T)])
-		f = (self.uncertainties-self.getZetaUnsrtFunc(cov,guess))
-		obj = np.dot(f,f)
-		return obj	
 	
 	def getZeta_typeB(self,kappa):
 		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
@@ -557,7 +467,7 @@ class ThermoUncertaintyExtractor(object):
 			for i,T in enumerate(self.temperatures):
 				if T<self.temperatures[-1]-300 and T> self.temperatures[0]+300:
 					self.const_T = T
-					zeta = minimize(self.obj_func_zeta,self.guess_z,method="SLSQP",constraints=self.const_zeta)
+					zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method="SLSQP",constraints=self.const_zeta)
 					#zeta = minimize(self.obj_curved_zeta,self.guess_z,method="Nelder-Mead")
 					zeta_list.append(zeta.x)
 					alpha.append(zeta.x[0])
@@ -589,14 +499,16 @@ class ThermoUncertaintyExtractor(object):
 			con3 = {'type': 'eq', 'fun': self.const_nmax}
 			con4 = {'type': 'eq', 'fun': self.const_nmin}
 			self.const_zeta = [con3,con4]
-			zeta = minimize(self.obj_func_zeta,self.guess_z,constraints=self.const_zeta)
+			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,constraints=self.const_zeta)
 		else:
-			zeta = minimize(self.obj_func_zeta,self.guess_z,method="Nelder-Mead")
+			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method="SLSQP")#method="Nelder-Mead")
 
 		self.zeta = zeta
-		P = self.ArrheniusParams
+		#print(self.zeta)
+		P = self.NominalParams
 		self.P_max = P + np.asarray(np.dot(self.Lcp,self.zeta.x)).flatten();
 		self.P_min = P - np.asarray(np.dot(self.Lcp,self.zeta.x)).flatten();
+		
 		self.kmax = self.Theta.T.dot(self.P_max)
 		self.kmin = self.Theta.T.dot(self.P_min)
 		self.kappa = self.Theta.T.dot(P)
@@ -614,14 +526,8 @@ class ThermoUncertaintyExtractor(object):
 		self.HCP_max = self.Theta.T.dot(self.P_max)
 		self.HCP_min = self.Theta.T.dot(self.P_min)
 		self.HCP_nominal = self.Theta.T.dot(P)
-		#self.zeta_curved_type_B,index,zeta_lim = self.getConstrainedUnsrtZeta(flag=True)
-		#self.zeta_curved_type_C = self.getConstrainedUnsrtZeta(flag=False)
 		self.kright_fact = -1
 		self.kleft_fact = 1
-		#self.zeta_class = self.getC2Zeta(flag=True)
-		
-		#zeta = np.array([[self.zeta.x[0],self.zeta.x[1],self.zeta.x[2]],[-self.zeta_curved_type_B[0][0],-self.zeta_curved_type_B[0][1],-self.zeta_curved_type_B[0][2]],[self.zeta_curved_type_C.x[0],self.zeta_curved_type_C.x[1],self.zeta_curved_type_C.x[2]]])
-		#self.zeta_matrix = np.matrix(zeta)
 		self.zeta_matrix = [[]]
 		
 		"""
@@ -669,20 +575,20 @@ class ThermoUncertaintyExtractor(object):
 		self.generator = []
 		self.samples = []
 		for i in range(int(sample_points)):
-		    a1 =2*np.random.random_sample(1)-1
-		    a2 = 2*np.random.random_sample(1)-1
-		    #a3 = 2*np.random.random_sample(1)-1
-		    #a3 = [1.0]
-		    #a1 =np.random.uniform(-1,1,1)
-		    #a2 = np.random.uniform(-1,1,1)
-		    #a3 = np.random.uniform(-1,1,1)
-		    
-		    generator.append([a1[0],a2[0]])
-		    self.kleft_fact = a1[0]
-		    self.kright_fact = a2[0]
-		    #self.kmiddle_fact = abs(a1[0])
-		    zeta_hcp = self.getHCPZeta(flag=True)
-		    self.samples.append(zeta_hcp)
+			a1 =2*np.random.random_sample(1)-1
+			a2 = 2*np.random.random_sample(1)-1
+			#a3 = 2*np.random.random_sample(1)-1
+			#a3 = [1.0]
+			#a1 =np.random.uniform(-1,1,1)
+			#a2 = np.random.uniform(-1,1,1)
+			#a3 = np.random.uniform(-1,1,1)
+			
+			generator.append([a1[0],a2[0]])
+			self.kleft_fact = a1[0]
+			self.kright_fact = a2[0]
+			#self.kmiddle_fact = abs(a1[0])
+			zeta_hcp = self.getHCPZeta(flag=True)
+			self.samples.append(zeta_hcp)
 		return self.zeta_HCP  
 	
 ###############################################################################################	
@@ -1009,137 +915,137 @@ class UncertaintyExtractor(object):
 	
 	def cons_derivative_b2(self,z):
 		if self.kright_fact < 0 and self.kleft_fact<0:
-		    T = z[-1]
-		    guess = z[0:-1]
-		    P = self.ArrheniusParams
-		    cov = self.L
-		    P_max = P + np.asarray(np.dot(cov,self.kmiddle_fact*self.zeta.x)).flatten()
-		    theta = np.array([0*(T/T),1/T,1/T**2])
-		    dk_dt = theta.T.dot(P_max)
-		    dko_dt = theta.T.dot(P)
-		    dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
-		    obj = dk_dt - dko_dt - dQtLZ_dt
+			T = z[-1]
+			guess = z[0:-1]
+			P = self.ArrheniusParams
+			cov = self.L
+			P_max = P + np.asarray(np.dot(cov,self.kmiddle_fact*self.zeta.x)).flatten()
+			theta = np.array([0*(T/T),1/T,1/T**2])
+			dk_dt = theta.T.dot(P_max)
+			dko_dt = theta.T.dot(P)
+			dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
+			obj = dk_dt - dko_dt - dQtLZ_dt
 		elif self.kright_fact >0 and self.kleft_fact>0:
-		    T = z[-1]
-		    guess = z[0:-1]
-		    P = self.ArrheniusParams
-		    cov = self.L
-		    P_min = P - np.asarray(np.dot(cov,self.kmiddle_fact*self.zeta.x)).flatten()
-		    theta = np.array([0,1/T,1/T**2])
-		    dk_dt = theta.T.dot(P_min)
-		    dko_dt = theta.T.dot(P)
-		    dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
-		    obj = dk_dt - dko_dt - dQtLZ_dt
-		    
+			T = z[-1]
+			guess = z[0:-1]
+			P = self.ArrheniusParams
+			cov = self.L
+			P_min = P - np.asarray(np.dot(cov,self.kmiddle_fact*self.zeta.x)).flatten()
+			theta = np.array([0,1/T,1/T**2])
+			dk_dt = theta.T.dot(P_min)
+			dko_dt = theta.T.dot(P)
+			dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
+			obj = dk_dt - dko_dt - dQtLZ_dt
+			
 		elif self.kright_fact>0 and self.kleft_fact<0:
-		    T = z[-1]
-		    guess = z[0:-1]
-		    P = self.ArrheniusParams
-		    cov = self.L
-		    P_min = P + self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
-		    theta = np.array([0,1/T,1/T**2])
-		    dk_dt = theta.T.dot(P_min)
-		    dko_dt = theta.T.dot(P)
-		    dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
-		    obj = dk_dt - dko_dt - dQtLZ_dt
+			T = z[-1]
+			guess = z[0:-1]
+			P = self.ArrheniusParams
+			cov = self.L
+			P_min = P + self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
+			theta = np.array([0,1/T,1/T**2])
+			dk_dt = theta.T.dot(P_min)
+			dko_dt = theta.T.dot(P)
+			dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
+			obj = dk_dt - dko_dt - dQtLZ_dt
 		elif self.kright_fact<0 and self.kleft_fact>0:
-		    T = z[-1]
-		    guess = z[0:-1]
-		    P = self.ArrheniusParams
-		    cov = self.L
-		    P_max = P - self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
-		    theta = np.array([0,1/T,1/T**2])
-		    dk_dt = theta.T.dot(P_max)
-		    dko_dt = theta.T.dot(P)
-		    dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
-		    obj = dk_dt - dko_dt - dQtLZ_dt
+			T = z[-1]
+			guess = z[0:-1]
+			P = self.ArrheniusParams
+			cov = self.L
+			P_max = P - self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
+			theta = np.array([0,1/T,1/T**2])
+			dk_dt = theta.T.dot(P_max)
+			dko_dt = theta.T.dot(P)
+			dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
+			obj = dk_dt - dko_dt - dQtLZ_dt
 		else:
-		    T = z[-1]
-		    guess = z[0:-1]
-		    P = self.ArrheniusParams
-		    cov = self.L
-		    P_max = P + self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
-		    theta = np.array([0,1/T,1/T**2])
-		    dk_dt = theta.T.dot(P_max)
-		    dko_dt = theta.T.dot(P)
-		    dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
-		    obj = dk_dt - dko_dt - dQtLZ_dt
+			T = z[-1]
+			guess = z[0:-1]
+			P = self.ArrheniusParams
+			cov = self.L
+			P_max = P + self.kmiddle_fact*np.asarray(np.dot(cov,self.zeta.x)).flatten()
+			theta = np.array([0,1/T,1/T**2])
+			dk_dt = theta.T.dot(P_max)
+			dko_dt = theta.T.dot(P)
+			dQtLZ_dt =(theta.T.dot(cov.dot(z[0:-1])))
+			obj = dk_dt - dko_dt - dQtLZ_dt
 		return obj
-	    
+		
 	def const_2_typeB2_Zeta(self,z):
 		if self.kleft_fact >0 and self.kright_fact>0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.L
-		    P = self.ArrheniusParams
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
-		    Theta = np.array([T/T,np.log(T),-1/(T)]).astype(float)
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
+			M = self.M
+			T = z[-1]
+			cov = self.L
+			P = self.ArrheniusParams
+			Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
+			Theta = np.array([T/T,np.log(T),-1/(T)]).astype(float)
+			k_min = Theta.dot(Pmin)
+			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			f = (Theta.dot(P)+QtLZ)
+			obj = k_min - f
 		elif self.kleft_fact <0 and self.kright_fact<0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.L
-		    P = self.ArrheniusParams
-		    Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
-		    Theta = np.array([1,np.log(T),-1/(T)])
-		    k_max = Theta.dot(Pmax)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_max - f
+			M = self.M
+			T = z[-1]
+			cov = self.L
+			P = self.ArrheniusParams
+			Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
+			Theta = np.array([1,np.log(T),-1/(T)])
+			k_max = Theta.dot(Pmax)
+			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			f = (Theta.dot(P)+QtLZ)
+			obj = k_max - f
 		elif self.kleft_fact <0 and self.kright_fact>0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.L
-		    P = self.ArrheniusParams
-		    Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
-		    Theta = np.array([1,np.log(T),-1/(T)])
-		    k_max = Theta.dot(Pmax)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_max - f
-		    """
-		    M = self.M
-		    T = self.temperatures[1:-1]
-		    cov = self.L
-		    Theta = np.array([T/T,np.log(T),-1/(T)])
-		    QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
-		    f = (self.uncertainties[1:-1]-QtLZ)
-		    obj = np.amin(f)
-		    """
+			M = self.M
+			T = z[-1]
+			cov = self.L
+			P = self.ArrheniusParams
+			Pmax = P + self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
+			Theta = np.array([1,np.log(T),-1/(T)])
+			k_max = Theta.dot(Pmax)
+			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			f = (Theta.dot(P)+QtLZ)
+			obj = k_max - f
+			"""
+			M = self.M
+			T = self.temperatures[1:-1]
+			cov = self.L
+			Theta = np.array([T/T,np.log(T),-1/(T)])
+			QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
+			f = (self.uncertainties[1:-1]-QtLZ)
+			obj = np.amin(f)
+			"""
 		elif self.kleft_fact >0 and self.kright_fact<0:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.L
-		    P = self.ArrheniusParams
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
-		    Theta = np.array([1,np.log(T),-1/(T)])
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
-		    """
-		    M = self.M
-		    T = self.temperatures[1:-1]
-		    cov = self.L
-		    Theta = np.array([T/T,np.log(T),-1/(T)])
-		    QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
-		    f = (self.uncertainties[1:-1]-QtLZ)
-		    obj = np.amin(f)
-		    """
+			M = self.M
+			T = z[-1]
+			cov = self.L
+			P = self.ArrheniusParams
+			Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
+			Theta = np.array([1,np.log(T),-1/(T)])
+			k_min = Theta.dot(Pmin)
+			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			f = (Theta.dot(P)+QtLZ)
+			obj = k_min - f
+			"""
+			M = self.M
+			T = self.temperatures[1:-1]
+			cov = self.L
+			Theta = np.array([T/T,np.log(T),-1/(T)])
+			QtLZ = np.asarray([(i.dot(cov.dot(z[0:-1]))) for i in Theta.T])
+			f = (self.uncertainties[1:-1]-QtLZ)
+			obj = np.amin(f)
+			"""
 		else:
-		    M = self.M
-		    T = z[-1]
-		    cov = self.L
-		    P = self.ArrheniusParams
-		    Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
-		    Theta = np.array([1,np.log(T),-1/(T)])
-		    k_min = Theta.dot(Pmin)
-		    QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
-		    f = (Theta.dot(P)+QtLZ)
-		    obj = k_min - f
+			M = self.M
+			T = z[-1]
+			cov = self.L
+			P = self.ArrheniusParams
+			Pmin = P - self.kmiddle_fact*np.asarray(np.dot(self.cov,self.zeta.x)).flatten()
+			Theta = np.array([1,np.log(T),-1/(T)])
+			k_min = Theta.dot(Pmin)
+			QtLZ = (Theta.T.dot(cov.dot(z[0:-1])))
+			f = (Theta.dot(P)+QtLZ)
+			obj = k_min - f
 		return obj
 
 	def const_1_typeB2_Zeta(self,z):
@@ -1507,9 +1413,9 @@ class UncertaintyExtractor(object):
 		obj = np.dot(f,f)
 		return obj
 	def _obj_delta_n(self,z):
-	    	f = ((self.kappa_d_n-self.kappa_0)-np.array(self.theta_for_kappa.T.dot(self.L.dot(z))).flatten())
-	    	obj = np.dot(f,f)
-	    	return obj
+			f = ((self.kappa_d_n-self.kappa_0)-np.array(self.theta_for_kappa.T.dot(self.L.dot(z))).flatten())
+			obj = np.dot(f,f)
+			return obj
 
 	def constraint_d_n(self,z):
 		return 2 - np.array(self.L.dot(z)).flatten()[1]	
@@ -1596,20 +1502,20 @@ class UncertaintyExtractor(object):
 		self.generator = []
 		self.samples = []
 		for i in range(int(sample_points)):
-		    a1 =2*np.random.random_sample(1)-1
-		    a2 = 2*np.random.random_sample(1)-1
-		    #a3 = 2*np.random.random_sample(1)-1
-		    #a3 = [1.0]
-		    #a1 =np.random.uniform(-1,1,1)
-		    #a2 = np.random.uniform(-1,1,1)
-		    #a3 = np.random.uniform(-1,1,1)
-		    
-		    generator.append([a1[0],a2[0]])
-		    self.kleft_fact = a1[0]
-		    self.kright_fact = a2[0]
-		    self.kmiddle_fact = abs(a1[0])
-		    zeta_B2 = self.getB2Zeta(flag=True)
-		    self.samples.append(zeta_B2)
+			a1 =2*np.random.random_sample(1)-1
+			a2 = 2*np.random.random_sample(1)-1
+			#a3 = 2*np.random.random_sample(1)-1
+			#a3 = [1.0]
+			#a1 =np.random.uniform(-1,1,1)
+			#a2 = np.random.uniform(-1,1,1)
+			#a3 = np.random.uniform(-1,1,1)
+			
+			generator.append([a1[0],a2[0]])
+			self.kleft_fact = a1[0]
+			self.kright_fact = a2[0]
+			self.kmiddle_fact = abs(a1[0])
+			zeta_B2 = self.getB2Zeta(flag=True)
+			self.samples.append(zeta_B2)
 		return self.zeta_B2  
 	
 	def getExtremeCurves_fast(self,sample_points):
@@ -2556,7 +2462,7 @@ class thermodynamic(ThermoUncertaintyExtractor):
 			self.species_Data =  self.extract_nasa_coeffs(thermo_loc)[self.species]
 		except KeyError:
 			raise AssertionError(f"Keyword error: {self.species} not in def extract_nasa_coeffs:")
-		print(self.species_Data)
+		#print(self.species_Data)
 		
 		for item in Element:
 			#print(item.tag)
@@ -2651,24 +2557,14 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		super().__init__(data)
 			
 		self.doUnsrtAnalysis()
-		print(self.cholskyDeCorrelateMat_cp)
-		for i in self.branches.split(","):
-			self.cholskyDeCorrelateMat[str(i)],self.zeta[str(i)] = self.unsrt(str(i))
+		#print(self.cholskyDeCorrelateMat_cp)
+		#for i in self.branches.split(","):
+		#	self.cholskyDeCorrelateMat[str(i)],self.zeta[str(i)] = self.unsrt(str(i))
 		self.nametag = self.species+":"+self.temp_limit	
-			
-		self.corelate_block = block_diag(*(self.cholskyDeCorrelateMat["Hcp"],self.cholskyDeCorrelateMat["h"],self.cholskyDeCorrelateMat["e"]))
+		#print(self.cov,self.zeta.x)	
+		#self.corelate_block = block_diag(*(self.cholskyDeCorrelateMat["Hcp"],self.cholskyDeCorrelateMat["h"],self.cholskyDeCorrelateMat["e"]))
 		
-		self.f = self.getUncertainty(self.temperatures)
-		#data = {}
-		#data["temperatures"] = self.temperatures
-		#data["uncertainties"] = self.uncertainties
-		#data["HeatCapacity"] = self.nominal
 		
-		#super().__init__(data)
-		#self.zeta_Matrix,self.P,self.P_max,self.P_min,self.cov = self.getUncorreationMatrix(self.rIndex)
-		#self.solution = self.zeta
-		#self.cholskyDeCorrelateMat = self.L
-		#print(self.rIndex,self.L.dot(self.L.T))
 		self.activeParameters = [self.rIndex+'_a1',self.rIndex+'_a2',self.rIndex+'_a3',self.rIndex+'_a4',self.rIndex+'_a5']
 		self.perturb_factor = self.zeta.x
 		self.selection = [1.0,1.0,1.0,1.0,1.0]
@@ -2698,263 +2594,7 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		return species_data
 		
 		
-	def getAllData(self):
-		b1 = self.branches.split(",")[0]
-		b2 = self.branches.split(",")[1]
-		if len(self.branches.split(",")) >2:
-			b3 = self.branches.split(",")[3]
-		else:
-			b3 = ""
-		exp_data_type = self.exp_data_type["Hcp"].split(";")[0]
-		exp_format = self.exp_data_type["Hcp"].split(";")[1]
-		Log_string = "{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}\t{}".format(self.classification,self.type,self.sub_type,self.branching,b1,b2,b3,self.pressure_limit,self.common_temp,self.temp_limit,exp_data_type,exp_format,self.nametag)
-		exp_unsrt_string = ""
-		solver_log = "######################\n{}######################\n\t\t{}\n\n".format(self.nametag,self.solution)
-		calc_cholesky = self.corelate_block
-		zeta_string = "{}\t{}\t{}\n".format(self.zeta["Hcp"],self.zeta["h"],self.zeta["e"])
-		#print(self.temperatures)
-		#print(self.uncertainties)
-		for i in range(len(self.temperatures["Hcp"])):
-			exp_unsrt_string += "{}\t{}\t{}\t{}\t{}\t{}\n".format(self.temperatures["Hcp"][i],self.uncertainties["Hcp"][i],self.temperatures["h"][i],self.uncertainties["h"][i],self.temperatures["e"][i],self.uncertainties["e"][i])
-		string_2 = "temp\tHcp\ttemp\th\ttemp\te\t\n"
-		file_unsrt = open("./Data/"+self.nametag+"_usrtData.log","w")
-		file_unsrt.write(string_2+"\n"+exp_unsrt_string)
-		file_unsrt.close()
-		return Log_string,exp_unsrt_string,solver_log,calc_cholesky,zeta_string
 	
-	
-	def getDtList(self):
-		self.Unsrt_dict = {}
-		key = ["Tag","Solution","Class","Type","Sub_type","Branch_boolen","Branches","Pressure_limit","Common_temp","temp_list","Nominal","Exp_input_data_type","priorCovariance","Basis_vector","Uncertainties","Temperatures","unsrt_func","Data_key"]
-		values = [self.tag,self.solution,self.classification,self.type,self.sub_type,self.branching,self.branches,self.pressure_limit,self.common_temp,self.temp_limit,self.thermo_dict,self.exp_data_type,self.cholskyDeCorrelateMat,self.zeta,self.uncertainties,self.temperatures,self.f,"Hcp,h,e"]		
-		
-		for i,element in enumerate(key):
-			self.Unsrt_dict[element] = values[i]
-		return self.Unsrt_dict
-		
-	def doUnsrtAnalysis(self):
-		T = self.temperatures[self.branches.split(",")[0]]
-		guess = 0.001*np.ones(17)
-		self.solution = minimize(self.uncertPriorObjective,guess,method="Nelder-Mead",options={'maxiter': 100000, 'maxfev': 100000, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 1E-05, 'fatol': 1E-05, 'adaptive': True})
-		Tscale = 5000
-		#print(self.solution)
-		L11 = self.solution.x[0]
-		L21 = self.solution.x[1]/Tscale
-		L22 = self.solution.x[2]/Tscale
-		L31 = self.solution.x[3]/Tscale**2
-		L32 = self.solution.x[4]/Tscale**2
-		L33 = self.solution.x[5]/Tscale**2
-		L41 = self.solution.x[6]/Tscale**3
-		L42 = self.solution.x[7]/Tscale**3
-		L43 = self.solution.x[8]/Tscale**3
-		L44 = self.solution.x[9]/Tscale**3
-		L51 = self.solution.x[10]/Tscale**4
-		L52 = self.solution.x[11]/Tscale**4
-		L53 = self.solution.x[12]/Tscale**4
-		L54 = self.solution.x[13]/Tscale**4
-		L55 = self.solution.x[14]/Tscale**4
-		L66 = self.solution.x[15]
-		L77 = self.solution.x[16]
-		self.Lcp = np.array([[L11,L21,L31,L41,L51],[0,L22,L32,L42,L52],[0,0,L33,L43,L53],[0,0,0,L44,L54],[0,0,0,0,L55]])
-		self.LH = np.array([L66])
-		self.LS = np.array([L77])
-	
-		self.cholskyDeCorrelateMat_cp = np.matrix(self.Lcp.T)
-		self.cholskyDeCorrelateMat_H  = np.matrix(self.LH.T)
-		self.cholskyDeCorrelateMat_S  = np.matrix(self.LS.T)
-		
-		
-		theta_cp = np.array([T/T,T,T**2,T**3,T**4])
-		theta_H = np.array([T/T])
-		theta_S = np.array([T/T])
-		
-		#Find zeta values
-		guess_zeta = 0.01*np.array([1,1,1,1,1,1,1])
-		self.zeta = minimize(self.obj_zeta,guess_zeta)
-		self.zeta_cp = self.zeta.x[0:5]
-		self.zeta_h = self.zeta.x[5]
-		self.zeta_s = self.zeta.x[6]
-	
-	def unsrt(self,index):
-		if index == "Hcp":
-			L = self.Lcp
-			z = self.zeta_cp
-		if index == "h":
-			L = self.LH
-			z = self.zeta_h
-		#if index == "e":
-		if index == "e":
-			L = self.LS
-			z = self.zeta_s
-		return L,z
-		
-		
-	def func_4(self,T,L11,L12,L22,L13,L23,L33,L14,L24,L34,L44,L15,L25,L35,L45,L55):
-		unsrt = 9*((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L34*T**3+L35*T**4)**2+(L22*T+L23*T**2+L24*T**3+L25*T**4)**2+(L11+L12*T+L13*T**2+L14*T**3+L15*T**4)**2)
-		return unsrt
-	def func_zeta(self,T,L0,L1,L2,L3,L4):
-		z = np.array([L0,L1,L2,L3,L4])
-		L11 = self.solution[0]
-		L12 = self.solution[1]
-		L22 = self.solution[2]
-		L13 = self.solution[3]
-		L23 = self.solution[4]
-		L33 = self.solution[5]
-		L14 = self.solution[6]
-		L24 = self.solution[7]
-		L34 = self.solution[8]
-		L44 = self.solution[9]
-		L15 = self.solution[10]
-		L25 = self.solution[11]
-		L35 = self.solution[12]
-		L45 = self.solution[13]
-		L55 = self.solution[14]
-		fdiff = ((z[0]*L11)+(z[0]*L12+z[1]*L22)*T+(z[0]*L13+z[1]*L23+z[2]*L33)*T**2+(z[0]*L14+z[1]*L24+z[2]*L34+z[3]*L44)*(T**3)+(L15*z[0]+L25*z[1]+L35*z[2]+L45*z[3]+L55*z[4])*T**4)	
-		return fdiff
-
-	def getUncertainty(self,T): 
-		unsrt = {}
-		Tscale = 5000
-		T = T["Hcp"]
-		L11 = self.solution.x[0]
-		L21 = self.solution.x[1]/Tscale
-		L22 = self.solution.x[2]/Tscale
-		L31 = self.solution.x[3]/Tscale**2
-		L32 = self.solution.x[4]/Tscale**2
-		L33 = self.solution.x[5]/Tscale**2
-		L41 = self.solution.x[6]/Tscale**3
-		L42 = self.solution.x[7]/Tscale**3
-		L43 = self.solution.x[8]/Tscale**3
-		L44 = self.solution.x[9]/Tscale**3
-		L51 = self.solution.x[10]/Tscale**4
-		L52 = self.solution.x[11]/Tscale**4
-		L53 = self.solution.x[12]/Tscale**4
-		L54 = self.solution.x[13]/Tscale**4
-		L55 = self.solution.x[14]/Tscale**4
-		L66 = self.solution.x[15]
-		L77 = self.solution.x[16]
-		# Truncation at 3 sigma
-		unsrt_cp = 3*np.sqrt((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L43*T**3+L53*T**4)**2+(L22*T+L32*T**2+L42*T**3+L52*T**4)**2+(L11+L21*T+L31*T**2+L41*T**3+L51*T**4)**2)
-		unsrt_H = 3*np.sqrt((L66*(T/T))**2)
-		unsrt_S = 3*np.sqrt((L77*(T/T))**2)
-		unsrt["Hcp"] = unsrt_cp
-		unsrt["h"] = unsrt_H
-		unsrt["e"] = unsrt_S
-		return unsrt
-	
-	def uncertPriorObjective (self,guess):
-		Tscale = 5000
-		R = 8.314
-		Z= guess
-		#z = np.array([Z[15],Z[16],Z[17],Z[18],Z[19]])
-		L11 =Z[0]
-		L21 =Z[1]
-		L22 =Z[2]
-		L31 =Z[3]
-		L32 =Z[4]
-		L33 =Z[5]
-		L41 =Z[6]
-		L42 =Z[7]
-		L43 =Z[8]
-		L44 =Z[9]
-		L51 =Z[10]
-		L52 =Z[11]
-		L53 =Z[12]
-		L54 =Z[13]
-		L55 =Z[14]
-		L66=Z[15]
-		L77=Z[16]
-		Lcp = np.array([[L11,L21,L31,L41,L51],[0,L22,L32,L42,L52],[0,0,L33,L43,L53],[0,0,0,L44,L54],[0,0,0,0,L55]])
-		Lh = np.array([L66])
-		Ls = np.array([L77])
-
-		if "h" in self.sub_type:
-			Y_h = self.uncertainties["h"]
-			thetaH = np.array([T/T])
-			sigma_H = 9*(np.dot(Lh,thetaH))**2
-
-		if "e" in self.sub_type:
-			Y_s = self.uncertainties["e"]
-			thetaS = np.array([T/T])
-			sigma_S = 9*(np.dot(Ls,thetaS))**2
-
-		if "Hcp" in self.sub_type:
-			Y_cp = self.uncertainties["Hcp"]
-			thetaCP = np.array([T/T,T,T**2,T**3,T**4])
-			unsrt = 9*((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L43*T**3+L53*T**4)**2+(L22*T+L32*T**2+L42*T**3+L52*T**4)**2+(L11+L21*T+L31*T**2+L41*T**3+L51*T**4)**2)
-
-		T = self.temperatures[self.branches.split(",")[0]]/Tscale
-
-
-		unsrt = 9*((L55*T**4)**2+(L44*T**3+L55*T**4)**2+(L33*T**2+L43*T**3+L53*T**4)**2+(L22*T+L32*T**2+L42*T**3+L52*T**4)**2+(L11+L21*T+L31*T**2+L41*T**3+L51*T**4)**2)
-
-
-		if "Hcp" in self.sub_type:
-			residual_cp = (Y_cp-np.sqrt(unsrt))/(Y_cp/3)
-		else:
-			residual_cp = np.array([0])
-		if "h" in self.sub_type:
-			residual_h =(Y_h-np.sqrt(sigma_H))/(Y_h/3)
-		else:
-			residual_h =  np.array([0])
-		if "e" in self.sub_type:
-			residual_s =(Y_s-np.sqrt(sigma_S))/(Y_s/3)
-		else:
-			residual_s = np.array([0])
-	
-		obj = np.dot(residual_cp.T,residual_cp)+np.dot(residual_h.T,residual_h)+np.dot(residual_s.T,residual_s)
-		return obj
-	
-	def obj_zeta(self,guess):
-		T = self.temperatures[self.branches.split(",")[0]]
-		#T = np.linspace(1000,5000,100)
-		Tscale =5000
-		z = np.ones(7)
-		L11 = self.solution.x[0]
-		L21 = self.solution.x[1]/Tscale
-		L22 = self.solution.x[2]/Tscale
-		L31 = self.solution.x[3]/Tscale**2
-		L32 = self.solution.x[4]/Tscale**2
-		L33 = self.solution.x[5]/Tscale**2
-		L41 = self.solution.x[6]/Tscale**3
-		L42 = self.solution.x[7]/Tscale**3
-		L43 = self.solution.x[8]/Tscale**3
-		L44 = self.solution.x[9]/Tscale**3
-		L51 = self.solution.x[10]/Tscale**4
-		L52 = self.solution.x[11]/Tscale**4
-		L53 = self.solution.x[12]/Tscale**4
-		L54 = self.solution.x[13]/Tscale**4
-		L55 = self.solution.x[14]/Tscale**4
-		L66 = self.solution.x[15]
-		L77 = self.solution.x[16]
-		z[0] = guess[0]
-		z[1] = guess[1]
-		z[2] = guess[2]
-		z[3] = guess[3]
-		z[4] = guess[4]
-		z[5] = guess[5]
-		z[6] = guess[6]
-		
-		zetaFunc_cp = ((z[0]*L11)*(T/T)+(z[0]*L21+z[1]*L22)*T+(z[0]*L31+z[1]*L32+z[2]*L33)*T**2+(z[0]*L41+z[1]*L42+z[2]*L43+z[3]*L44)*(T**3)+(L51*z[0]+L52*z[1]+L53*z[2]+L54*z[3]+L55*z[4])*T**4)
-		zetaFunc_H = (T/T)*z[5]*L66
-		zetaFunc_S = (T/T)*z[6]*L77
-		
-		
-		if "Hcp" in self.sub_type:
-			residual_cp =self.uncertainties["Hcp"]-zetaFunc_cp
-		else:
-			residual_cp = 0
-		if "h" in self.sub_type:
-			residual_H = self.H_uncertainties["h"]-zetaFunc_H
-		else:
-			residual_H = 0
-		if "e" in self.sub_type:
-			residual_S = self.S_uncertainties["e"]-zetaFunc_S
-		else:
-			residual_S = 0	
-		
-		obj = np.dot(residual_cp,residual_cp)+np.dot(residual_H,residual_H)+np.dot(residual_S,residual_S)
-		return obj
 		
 #############################################################
 ###	   Uncertainty analysis for fallOffCurves,	  ######

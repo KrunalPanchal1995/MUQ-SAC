@@ -207,65 +207,31 @@ class DesignMatrix(object):
 		elif self.design == "Tcube":
 			tic = time.time()
 			design_matrix = []
-			#Take the sample_length and divide it into following
-			# 		n_a:n_b:n_c = 10:45:45
-			#               Original samples = 3000
-			#		Random shuffle = 4000
-			#              Linear combination =  5000
-			#      
-			#      V: Unshuffled vector (numpy-array)
-			#	 V_s: Shuffled vector (
 			
-			n_a =  self.sim
+			n_a =  int(self.sim*0.2)
+			print(n_a)
 			if "thermo_samples.pkl" not in os.listdir():
 				curves_dict, generator_a = self.get_thermo_curves(n_a)# Returns 100 class-A Arrhenius samples
-				with open('SA_a_type_samples.pkl', 'wb') as file_:
+				with open('thermo_samples.pkl', 'wb') as file_:
 					pickle.dump(curves_dict, file_)
-				print("\nA-type curves generated")
+				print("\nThermo curves generated")
 			else:
 				# Load the object from the file
 				with open('thermo_samples.pkl', 'rb') as file_:
 					curves_dict = pickle.load(file_)
-				print("\nA-type curves generated")
+				print("\nThermo curves generated")
 			
 			
 			V_ = {}
-			for rxn in tqdm(self.unsrt,desc="Populating V_"):
+			for species in tqdm(self.unsrt,desc="Populating V_"):
 				temp = []
-				for sample_a in curves_dict[rxn]: 
+				for sample_a in curves_dict[species]: 
 					temp.append(sample_a)
-				V_[rxn] = np.asarray(temp)
+				V_[species] = np.asarray(temp)
 			
 			V_s = {}#Doing random shuffling
-			#Deepcopy the unshuffled samples first
-			#print(n_a,n_b,n_c)
-			#print(len(n_a),len(n_b),len(n_c))
+			
 			V_copy = copy.deepcopy(V_)
-			#for rxn in V_:
-			#	print(len(V_[rxn]))
-			#	print(len(V_[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#shm_dict = self.create_shared_memory_dict(V_copy)
-			#num_shuffles = int(self.sim * 0.8)
-			#reaction_list = []
-			#for rxn in self.unsrt:
-			#	reaction_list.append(rxn)
-			#V_s = self.main(V_copy,100,reaction_list,self.sim)
-			
-			#for rxn in V_s:
-			#	print(len(V_s[rxn]))
-			#	print(len(V_s[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#raise AssertionError("Shuffling done!!")
-			
-			#mmap_dict, temp_dir = self.create_memory_mapped_files(V_)
-			#for rxn in tqdm(self.unsrt,desc="Doing random shuffling"):				
-			#	column = []
-			#	for i in range(int(self.sim*0.8)):
-			#		np.random.shuffle(V_copy[rxn])
-			#		column.extend(np.asarray(V_copy[rxn]))
-			#	V_s[rxn] = np.asarray(column)	
-			
 			
 			for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
 				column = []
@@ -283,62 +249,7 @@ class DesignMatrix(object):
 				column = np.concatenate(column)
 				V_s[rxn] = column
 			
-			
-			#for rxn in V_s:
-			#	print(len(V_s[rxn]))
-			
-			#	print(len(V_s[rxn][0]))
-			#	raise AssertionError("Ho stop!")
-			#num_shuffles = int(self.sim * 0.8)
-			# Initialize the result dictionary
-			#V_s = {}
-
-			# Create a pool of workers
-			#pool = mp.Pool(mp.cpu_count()-int(0.1*mp.cpu_count()))#Leaving 10% of CPU power
-			#results = []
-
-			# Use apply_async to distribute the work
-			#for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
-			#	filename = mmap_dict[rxn]
-				#shm, np_array = shm_dict[rxn]
-			#	result = pool.apply_async(self.shuffle_values, args=(rxn, filename, V_[rxn].shape, V_[rxn].dtype, num_shuffles))
-			#	results.append(result)
-
-			# Close the pool and wait for the work to finish
-			#pool.close()
-			#pool.join()
-
-			# Collect the results
-			#for result in results:
-			#	rxn, column = result.get()
-			#	V_s[rxn] = column
-			
-			
-			# Cleanup shared memory
-			#self.cleanup_shared_memory(shm_dict)
-			
-			# Cleanup memory-mapped files
-			#for filename in mmap_dict.values():
-			#	os.remove(filename)
-			#os.rmdir(temp_dir)
-			
-			
-			"""
-			V_linear_comb = {}#Doing linear combination to populate the matrix
-			for rxn in self.unsrt:
-				temp = []
-				for i in range(1000):
-					zeta_a = np.array(a_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_b = np.array(b_curves_dict[rxn][np.random.randint(0,10)])
-					zeta_c = np.array(c_curves_dict[rxn][np.random.randint(0,10)])
-					x,y,z = self.generatePointOnSphere()
-					####
-					temp.append(x*zeta_a+y*zeta_b+z*zeta_c)
-				
-				V_linear_comb[rxn] = np.asarray(temp)
-				
-			"""
-									
+			"""						
 			delta_n = {}
 			p = {}
 			V_opt = {}
@@ -358,57 +269,6 @@ class DesignMatrix(object):
 				theta[rxn] = self.unsrt[rxn].Theta
 				Temp[rxn] = self.unsrt[rxn].temperatures
 				zeta[rxn] = self.unsrt[rxn].zeta.x
-				#temp = []
-				#for sample_a in a_curves_dict[rxn]: 
-					#print(np.shape(sample_a))
-				#	temp.append(sample_a)
-					
-				#for sample_b in b_curves_dict[rxn]: 
-				#	temp.append(sample_b)
-				#for sample_c in c_curves_dict[rxn]: 
-				#	temp.append(sample_c)
-				#V[rxn] = np.asarray(temp)
-			"""
-			for rxn in self.unsrt:
-				temp = []
-				#temp_ = []
-				temp_n = []
-				nom = nominal[rxn]
-				cholesky = ch[rxn]
-				for sample_c in c_curves_dict[rxn]: 
-					k = nom + np.asarray(cholesky.dot(sample_c)).flatten()
-					temp_n.append(abs(nom[1]-k[1]))
-					temp.append(sample_c)
-				delta_n[rxn] = max(temp_n)
-				V_opt[rxn] = np.asarray(temp)
-			
-			print(delta_n)
-			raise AssertionError("delta_n part is ongoing")
-			"""
-			
-			"""
-			for rxn in self.unsrt:
-				T = (Temp[rxn][0] + Temp[rxn][-1])/2	
-				Theta = np.array([T/T,np.log(T),-1/(T)])
-				kappa_max_mid = Theta.T.dot(p_max[rxn])
-				kappa_min_mid = Theta.T.dot(p_min[rxn])
-				kappa_nominal = Theta.T.dot(nominal[rxn])
-				delta = abs(kappa_max_mid - kappa_nominal)
-				kappa_list = []
-				for i in V[rxn]:
-					p = nominal[rxn] + ch[rxn].dot(i)
-					delta_mid = abs(Theta.T.dot(p) - kappa_nominal)
-					if delta_mid<(6/7)*delta:
-						kappa_list.append(i)
-					
-				percentage[rxn] = (len(kappa_list)/len(V[rxn]))*100
-			"""
-			
-			#SAC_3
-			
-			#plot the zetas
-			#print(percentage)
-			#Solving for a line passing from 3 points
 			d_n = {}
 			_delta_n = {}
 			dict_delta_n = {}
@@ -430,10 +290,6 @@ class DesignMatrix(object):
 				kmin = Theta_p.T.dot(P_min)
 				ka_o = Theta_p.T.dot(P)
 				M = Theta.T.dot(cov)
-				#fig = plt.figure()
-				#plt.plot(1/Tp,kmax)
-				#plt.plot(1/Tp,kmin)
-				#plt.plot(1/Tp,ka_o)
 				f = abs(kmax-ka_o)
 				temp = []
 				outside = []
@@ -476,29 +332,12 @@ class DesignMatrix(object):
 						_delta_n[n_] = zeta_
 					#print(zeta_)
 				percentage[rxn] = (len(not_selected)/len(temp))*100
-				delta_n[rxn] = max(temp_n)
-				
+				delta_n[rxn] = max(temp_n)				
 				dict_delta_n[rxn] = _delta_n[max(temp_n)]
 				V[rxn] = temp
 				
-				#print(len(temp))
-				
-				#plt.show()
-			#print(percentage)
-			#print(percentage)	
-			#print("------------------------------------\nNominal!!\n\n")
-			#print(nominal)
-			#print("------------------------------------\nCovariance!!\n\n")
-			#print(ch)
-			#print("------------------------------------\nZeta!!\n\n")
-			#print(zeta)
-			#print(Temp)
-			#print(d_n)
-			#print(delta_n)
-			#print(dict_delta_n)
-			#raise AssertionError("New")	
 			
-					
+			"""		
 			for i in range(int(self.sim*0.2)):
 				row = []
 				for rxn in self.unsrt:
@@ -514,22 +353,87 @@ class DesignMatrix(object):
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
 				
-			
+			"""
 			for i in range(100):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])
 					
 				design_matrix.append(row)
+			"""
 			tok = time.time()
 			print("Time taken to construct Design Matrix: {}".format(tok - tic))
-			#s =""
-			#for row in design_matrix:
-			#	for element in row:
-			#		s+=f"{element},"
-			#	s+="\n"
-			#ff = open('DesignMatrix.csv','w').write(s)	
 			
+			'''
+			Lcp = self.unsrt["AR:Low"].Lcp  # Access the Lcp attribute
+			NominalParam = np.asarray(self.unsrt["AR:Low"].NominalParams).reshape(-1,1) # Convert to array and reshape to 5x1 if needed
+			print(NominalParam)
+			T = np.linspace(298, 1000, 100) 
+			theta = np.array([T / T, T, T**2, T**3, T**4]) # Each row is a theta vector for a temperature
+			nominal_param_theta = [the.T.dot(NominalParam) for the in theta.T] # Calculate NominalParam * Theta
+			print(nominal_param_theta)
+			for i, row in enumerate(design_matrix):
+				#Extract the first 5 elements to form zeta (5x1 vector)
+				zeta = np.asarray(row[:5]).reshape(-1, 1)  # Ensure zeta is a 5x1 vector
+				result = NominalParam + np.asarray(np.dot(Lcp, zeta)).flatten()
+				plt.figure(figsize=(10, 6))
+				plt.plot(T, result, label='Sample Curve', color='blue')
+				plt.plot(T, nominal_param_theta, label='Nominal', color='red')
+				plt.title(f'Zeta Samples for Design Matrix Row {i}')
+				plt.xlabel('Temperature (K)')
+				plt.ylabel('Values')
+				plt.legend()
+				plt.grid(True)
+
+				# Save the plot to the 'sample_plots' directory
+				plt.savefig(f'sample_plots/zeta_samples_row_{i}.png')
+				plt.close()  
+
+				print("Plots have been saved to the 'sample_plots' directory.")
+							
+			
+			Lcp = self.unsrt["AR:Low"].Lcp  # Access the Lcp attribute
+			NominalParam = np.asarray(self.unsrt["AR:Low"].NominalParams).reshape(-1, 1)  # Convert to array and reshape to 5x1 if needed
+
+			# Print NominalParam to check its value
+			print("NominalParam:\n", NominalParam)
+
+			# Define the temperature range
+			T = np.linspace(298, 1000, 100)  # Temperature range from 298 K to 1000 K
+
+			# Calculate theta = [T/T, T, T^2, T^3, T^4] for each temperature
+			theta = np.array([T / T, T, T**2, T**3, T**4]).T  # Transposed to get a 100x5 matrix
+
+			# Calculate NominalParam * Theta for each temperature (resulting in a 100x1 vector)
+			nominal_param_theta = np.dot(theta, NominalParam)
+
+			# Iterate over each row of the design_matrix to create and save individual plots
+			for i, row in enumerate(design_matrix):
+			    # Extract the first 5 elements to form zeta (5x1 vector)
+			    zeta = np.asarray(row[:5]).reshape(-1, 1)  # Ensure zeta is a 5x1 vector
+			    
+			    # Compute the result: NominalValues + Lcp * zeta
+			    result = NominalParam + np.dot(Lcp, zeta)
+			    result = result.flatten()  # Flatten to ensure it's 1D for plotting
+
+			    # Plotting the curves
+			    plt.figure(figsize=(10, 6))
+			    plt.plot(T, result, label='Sample Curve', color='blue')
+			    plt.plot(T, nominal_param_theta, label='Nominal', color='red')
+
+			    # Adding plot details
+			    plt.title(f'Zeta Samples for Design Matrix Row {i}')
+			    plt.xlabel('Temperature (K)')
+			    plt.ylabel('Values')
+			    plt.legend()
+			    plt.grid(True)
+
+			    # Save the plot to the 'sample_plots' directory
+			    plt.savefig(f'sample_plots/zeta_samples_row_{i}.png')
+			    plt.close()  # Close the plot to free up memory
+
+			print("Plots have been saved to the 'sample_plots' directory.")	
+			'''		
 			return np.asarray(design_matrix)
 
 	
@@ -917,11 +821,13 @@ def run_sampling_thermo(sample,data,generator,length):
 	a1 = generator[0]
 	a2 = generator[1]
 	A.populateValues(a1,a2)
+	#print(a1,a2)
 	A.getCovariance(flag=False)
 	A.getUnCorrelated(flag = False)
 	zeta = A.get_thermo_Zeta(flag=True)
 	del A
 	return (sample,generator,zeta,length)
+
 def run_sampling_c(sample,data,generator,length):
 	A = Uncertainty.UncertaintyExtractor(data)
 	a1 = generator[0]

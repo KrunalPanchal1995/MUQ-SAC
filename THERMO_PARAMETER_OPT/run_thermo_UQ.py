@@ -16,7 +16,7 @@ import simulation_manager as simulator # line 225
 import data_management
 import create_parameter_dictionary as create_dict
 import Uncertainty as uncertainty
-
+from sample_curve_plotter  import sample_plot
 
 ### KEY WORDS #######
 optType = "optimization_type"
@@ -190,16 +190,25 @@ else:
 		unsrt_data = pickle.load(file_)
 	print("Uncertainty analysis already finished")
 selected_species = []
-
 #parameter_dict,selected_species,selected_reactions = create_dict.dictionary_creator(analysis_type, mechanism,carbon_number,rxn_list,species_list)
-print(f"Total species selected:  {len(selected_species)}\n")
 for species in unsrt_data:
 	selected_species.append(species)
-	print(species ,dir(unsrt_data[species]) )
+	#print(species ,dir(unsrt_data[species]) )
+
+print(f"Total species selected:  {len(selected_species)}\n")
 
 analysis_type = optInputs['Inputs'].get('AnalysisType', None)
-design_matrix = DM.DesignMatrix(unsrt_data,"Tcube",10,10).get_thermo_curves(10)
-print(design_matrix)
+
+
+design_matrix = DM.DesignMatrix(unsrt_data,"Tcube",10,10).get_thermo_samples()
+#print(design_matrix)
+
+sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
+
+
+
+
+
 raise AssertionError("UQ analysis is Done!!")
 #########################################
 ###    Creating Design Matrix for    ####

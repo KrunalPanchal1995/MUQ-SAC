@@ -164,6 +164,7 @@ def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
 		file_loc = open("./eta_file_location.txt","+a")
 		start = pathList.index("case-{}".format(case))
 
+		#print(i)
 		eta_,ETA_,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i),input_=optInputs,caseID = case)
 		#eta = np.exp(eta)/10
 		#print(eta,file_path)
@@ -309,7 +310,8 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 		
 		elif "CHEMKIN_PRO" in case.add["solver"]:
 			#print("True")
-			#print(path)
+			print(path)
+			print(os.listdir(path))
 			if "tau.out" in os.listdir(path):
 				out_file = open(path+"tau.out",'r').readlines()
 				string = path +"tau.out"
