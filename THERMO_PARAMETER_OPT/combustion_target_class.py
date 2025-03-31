@@ -29,9 +29,11 @@ class combustion_target():
 		self.molecularWt["He"] = 0
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
-		self.molecularWt["CH4"] = 16
+		self.molecularWt["C4H6"] = 57
 		self.molecularWt["NC7H16"] = 100.21
 		self.molecularWt["MB-C5H10O2"] = 86
+		self.molecularWt["T124MBZ"] = 100
+		
 		self.stoichiometry = {}
 		self.stoichiometry["H2"] = 0.5
 		self.stoichiometry["CO"] = 0.5
@@ -48,8 +50,10 @@ class combustion_target():
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
 		self.stoichiometry["CH4"] = 2.0
+		self.stoichiometry["C4H6"] = 5.5
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["MB-C5H10O2"] = 6.5
+		self.stoichiometry["T124MBZ"] = 6.5
 		self.data = data
 		parameters = self.data.split('|')
 		self.dataSet_id = parameters[1].strip("\t")
@@ -59,7 +63,7 @@ class combustion_target():
 		self.case_index = "case-"+str(index)
 		self.units = self.f_unit = self.t_unit = self.temperature_factor = self.p_unit = self.pressure_factor = self.target_unit = self.target_factor = self.flow_unit  = self.flow_rate = self.target_key = self.input_file = self.target = self.simulation = self.temperature = self.fuel = self.oxygen = self.nitrogen = self.argon = self.pressure = self.phi = self.observed = self.d_weight = self.d_set = self.Tend = self.species = self.s_p_name = None
 		self.add = {}	
-		
+		self.simulated = None
 		#raise ValueError("addendum")
 		if self.dataSet_id in addendum:
 			self.add = addendum[self.dataSet_id]
@@ -73,7 +77,8 @@ class combustion_target():
 			self.add["solver"] = "FlameMaster"
 		
 		self.uniqueID = str(self.dataSet_id)+"_"+str(parameters[0].strip("\t"))
-		print(f"\t{self.uniqueID}")
+		
+		#print(self.uniqueID)
 		#By default  
 #		default = {}
 #		cantera_def = {}
@@ -85,6 +90,8 @@ class combustion_target():
 #		default["cantera"] = cantera_def
 #		default["FlameMaster"] = FlameMan_def
 		self.species_dict = {}
+		self.fuel_dict = {}
+		self.BG_dict = {}
 		self.ignition_type = "reflected"
 		self.flame = "laminar"
 		self.reactor = "JSR" 
@@ -156,18 +163,19 @@ class combustion_target():
 					self.fuel_is = ""
 					for i in self.fuel_id:
 						self.species_dict[str(self.fuel_id[i])] = float(self.fuel_x[i])
+						self.fuel_dict[str(self.fuel_id[i])] = float(self.fuel_x[i])
 						self.fuel_is+="fuel is "+str(self.fuel_id[i])+"\n"
 				else:
 					self.fuel_id = content.split("->")[1].split("=")[0]
 					self.fuel_x = float(content.split("->")[1].split("=")[1])
 					self.species_dict[str(self.fuel_id)] = float(self.fuel_x)
-					
+					self.fuel_dict[str(self.fuel_id)] = float(self.fuel_x)
 			
 			if "Oxidizer" in key:
 				self.oxidizer = content.split("->")[1].split("=")[0].strip(" ")
 				self.oxidizer_x = float(content.split("->")[1].split("=")[1])# to convert to percentage
 				self.species_dict[str(self.oxidizer)] = float(self.oxidizer_x)
-				actual_oxidizer = self.species_dict[self.oxidizer]*self.molecularWt[self.oxidizer]
+				actual_oxidizer = float(self.oxidizer_x)
 			
 			
 			if "Bath_gas" in key:
@@ -177,6 +185,7 @@ class combustion_target():
 	
 				for i in self.bath_gas:
 					self.species_dict[str(self.bath_gas[i])] = float(self.bath_gas_x[i])
+					self.BG_dict[str(self.bath_gas[i])] = float(self.bath_gas_x[i])
 						
 			if "BG1" in key:
 				if content.split("=")[1].strip() != '':
@@ -248,6 +257,7 @@ class combustion_target():
 				self.observed = float(content);
 				
 			if "deviation" in key:
+				#print(self.uniqueID,content)
 				self.std_dvtn = float(content);
 			
 			if "dataSet" in key:
@@ -275,7 +285,7 @@ class combustion_target():
 			if self.units["Pi"].strip(" ") == "torr":
 				self.pressure_i = float(self.pressure_i)*133.322# 1 torr = 133.322 Pa
 			if self.units["Pi"].strip(" ") == "atm":
-				self.pressure_i = float(self.pressure_i)*101350
+				self.pressure_i = float(self.pressure_i)*101325
 			if self.units["Pi"].strip("	") == "Pa":
 				self.pressure_i = float(self.pressure_i)
 			
@@ -286,17 +296,19 @@ class combustion_target():
 		if self.units["P"].strip(" ") == "torr":
 			self.pressure = float(self.pressure)*133.322# 1 torr = 133.322 Pa
 		if self.units["P"].strip(" ") == "atm":
-			self.pressure = float(self.pressure)*101350
+			self.pressure = float(self.pressure)*101325
 		if self.units["P"].strip("	") == "Pa":
 			self.pressure = float(self.pressure)
 		if "solver" not in self.add:
 			self.add["solver"] = "FlameMaster"
+		if "dt" not in self.add:
+			self.add["dt"] = 1e-5
 		if "Thermodiffusion" not in self.add:
 			self.add["Thermodiffusion"] = True
 		if "ComputeWithRadiation" not in self.add:
 			self.add["ComputeWithRadiation"] = True
 		if "saveAll" not in self.add:
-			self.add["saveAll"] = "#"
+			self.add["saveAll"] = False
 		if "BoundaryLayer" not in self.add:
 			self.add["BoundaryLayer"] = False
 		if "ign_delay_def" not in self.add:
@@ -321,6 +333,8 @@ class combustion_target():
 			self.add["slope"] = 0.015
 		if "curve" not in self.add:
 			self.add["curve"] = 0.015
+		if "volume_profile_type" not in self.add:
+		    self.add["volume_profile_type"] = "csv_file"
 		if "loglevel" not in self.add:
 			self.add["loglevel"] = 1		
 		if "auto" not in self.add:
@@ -331,6 +345,8 @@ class combustion_target():
 			self.add["slope_bsf"] = 0.05
 		if "phi" not in self.add:
 			self.add["phi"] = "N/A"
+		if "type" not in self.add:
+			self.add["type"] = "N/A"
 		if "flw_length" not in self.add:
 			self.add["flw_length"] = 1 #m 
 		if "flow_velocity" not in self.add:
@@ -341,8 +357,8 @@ class combustion_target():
 			self.add["reactorVolume"] = 0.000314 #m**3,area*l	
 		if "residenceTime" not in self.add:
 			self.add["residenceTime"] = 1
-		if "total_time" not in self.add:
-			self.add["total_time"] = 10 #s
+		if "EndTime" not in self.add:
+			self.add["EndTime"] = 10 #s
 		if "time_step" not in self.add:
 			self.add["time_step"] = 2000 #steps		
 		if "flw_method" not in self.add:
@@ -367,6 +383,10 @@ class combustion_target():
 			self.add["flf_cond"] = "max" #m**3	
 		if "T_amb" not in self.add:
 			self.add["T_ambient"] = 298
+		
+		if "estimateTIG" not in self.add:
+			self.add["estimateTIG"] = 10.0
+		
 		else:
 			self.add["T_amb"] = "AmbientTemp is {}".format(self.add["T_ambient"])
 		if "isIsotherm" not in self.add:
@@ -440,25 +460,29 @@ class combustion_target():
 		actual_fuel = []
 		st_fuel = []
 		st_ox = []
-		for i in self.species_dict:
-			actual_fuel.append(self.molecularWt[i]*self.species_dict[i])
-			if self.species_dict[i] != 0:
-				st_fuel.append(self.molecularWt[i])
-				st_ox.append(self.stoichiometry[i]*self.molecularWt['O2'])
-		#print(actual_fuel)
-		#print(actual_oxidizer)
-		Fast = 0
-		Fact = 0
+		for i in self.fuel_dict:
+			actual_fuel.append(self.fuel_dict[i])
+			st_fuel.append(1.0)
+			st_ox.append(self.stoichiometry[i])
+		
+		totalfuel_st = 0
+		totalfuel = 0
+		total_ox = 0
 		for i,ele in enumerate(st_fuel):
 			if st_ox[i] !=0:
-				Fast += st_fuel[i]/st_ox[i]	
-				Fact += actual_fuel[i]/actual_oxidizer	
-		#print(Fast)
-		#print(Fact)
-		
+				totalfuel_st += st_fuel[i]
+				total_ox += st_ox[i]	
+				totalfuel += actual_fuel[i]
+		Fact = totalfuel/actual_oxidizer
+		Fast = totalfuel_st/total_ox
+			
 		self.phi = float(Fact/Fast)
-		if "Fls" in self.target:
-			print("Target {} has phi of {}\n".format(self.uniqueID,self.phi))
+		if self.units["observed"] == "ms" and self.target == "Tig":
+			self.observed = self.observed*1000
+		#print(self.phi)
+		#raise AssertionError("Stop")
+		#if "Fls" in self.target:
+			#print("Target {} has phi of {}\n".format(self.uniqueID,self.phi))
 		#self.equivalence_ratio = (F/A)act/(F/A)st
 #This function goes through a file previously created by the "generate_target_value_tables" function in data management module 
 #and extract target value information for each case and sort them based on the extend of perturbation.

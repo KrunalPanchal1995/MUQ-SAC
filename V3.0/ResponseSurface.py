@@ -65,24 +65,29 @@ class ResponseSurface(object):
 	def DoStats_Analysis(self):
 		stats_obj = StatisticalAnalysis(self.Y,self.case_index)
 		stats_obj.generate_pdf(os.getcwd()+'/Data/ResponseSurface/stats_report_'+str(self.case_index)+'.pdf')
-	def plot(self,index):
+	
+	def plot(self,index,slice_type="",slice_no=""):
 		if "Plots" not in os.listdir(".."):
 			os.mkdir("../Plots")		
 		fig = plt.figure()
 		ax = fig.add_subplot()
+		for spine in ax.spines.values():
+		    spine.set_edgecolor('black')
+		    spine.set_linewidth(0.7) 
 		plt.xlabel("Response Surface estimation")
 		plt.ylabel("Direct Simulation")
-		plt.plot(np.asarray(self.y_Test_simulation),np.asarray(self.y_Test_Predict),"k.",ms=8,label=f"Testing (max error = {self.ytestMaxError :.3f}%, mean error = {self.yTestMeanError:.3f}%)")
+		plt.plot(np.asarray(self.y_Test_simulation),np.asarray(self.y_Test_Predict),"k.",ms=8,label=f"Testing (max error = {self.ytestMaxError :.3f}%)")
 		#plt.scatter(np.asarray(yData_testing), np.asarray(Sim_value_testing), color="none", edgecolor="black")
-		plt.scatter(np.asarray(self.Y), np.asarray(self.resFramWrk), color="none", edgecolor="green",label=f"Training (max error = {self.MaxError:.3f}%, mean error = {self.MeanError:.3f}%)")
+		plt.scatter(np.asarray(self.Y), np.asarray(self.resFramWrk), color="none", edgecolor="green",label=f"Training (max error = {self.MaxError:.3f}%)")
 	
 		x = np.linspace(0,500,1000)
-		plt.xlim(min(np.asarray(self.Y))*0.98,max(np.asarray(self.Y))*1.02)
-		plt.ylim(min(np.asarray(self.resFramWrk))*0.98,max(np.asarray(self.resFramWrk))*1.02)
-		plt.plot(x,x,"-",label="parity line")
+		plt.xlim(min(np.asarray(self.Y))*0.93,max(np.asarray(self.Y))*1.07)
+		plt.ylim(min(np.asarray(self.Y))*0.93,max(np.asarray(self.Y))*1.07)
+		ax.grid(False)
+		plt.plot(x,x,"-", linewidth = 0.5, label="parity line")
 		plt.legend(loc="upper left")
 		print(os.getcwd(),index)
-		plt.savefig('../Plots/Parity_plot_case_'+str(self.case_index)+'_training.png',bbox_inches="tight")	
+		plt.savefig('../Plots/Parity_plot_case_'+str(self.case_index) + str(slice_type) + str(slice_no) +'_TESTING.pdf',bbox_inches="tight")	
 	
 	def create_gauss_response_surface(self):
 		kernel = DotProduct() + WhiteKernel()

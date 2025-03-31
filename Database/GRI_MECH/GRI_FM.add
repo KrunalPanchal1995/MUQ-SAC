@@ -1,0 +1,131 @@
+GRI_PHI_1_P_1_66_OH:
+ solver: FlameMaster
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile
+ species_name: OH 
+ saveAll: True
+ mol_wt: 30
+ Akima_time_clip: 2
+
+GRI_PHI_1_P_1_66_CO:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species_name: CO
+ Akima_time_clip: 2
+ 
+GRI_PHI_1_P_1_55_CO:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species_name: CO
+ Akima_time_clip: 2
+ 
+GRI_PHI_1_P_1_55_OH:
+ solver: FlameMaster
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species_name: OH
+ Akima_time_clip: 2
+
+GRI_Methane_Phi_1_P_1:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 54
+ species: CO
+ 
+GRI_Methane_Phi_1_P_4:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: CO
+
+GRI_Methane_Phi_2_P_1:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: CO
+ 
+GRI_Methane_Phi_2_P_4:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: CO
+
+GRI_Syn_PHI_0_5_80_20_Ar_0_94_P_1:
+ solver: FlameMaster
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: OH
+ 
+GRI_Syn_PHI_0_5_80_20_Ar_0_79_P_1:
+ solver: FlameMaster
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: OH
+
+GRI_Syn_PHI_0_5_20_80_Ar_0_94_P_1:
+ solver: FlameMaster
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: OH
+ 
+GRI_Syn_PHI_0_5_20_80_Ar_0_79_P_1:
+ solver: FlameMaster
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: False
+ mol_wt: 30
+ species: OH
+ 
+GRI_Methane_Phi_1_P_4_Sp_Prof_CO2:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO2
+ Akima_time_clip: 2 
+ 
+GRI_Methane_Phi_1_P_1_12_Sp_Prof_CO:
+ solver: FlameMaster
+ ign_delay_def: CO
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO
+ Akima_time_clip: 2

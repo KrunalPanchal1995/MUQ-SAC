@@ -1,0 +1,122 @@
+GRI_PHI_1_P_1_66_OH:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ op_species: OH
+ mol_wt: 30
+ 
+GRI_PHI_1_P_1_55_OH:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ op_species: OH
+ mol_wt: 30
+ 
+GRI_PHI_1_P_1_66_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ op_species: CO
+ mol_wt: 30
+
+GRI_PHI_1_P_1_55_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ op_species: CO
+ mol_wt: 30
+
+GRI_Methane_Phi_1_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ saveAll: True
+ mol_wt: 54
+ 
+GRI_Methane_Phi_1_P_4:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition 
+ saveAll: True
+ mol_wt: 30
+
+GRI_Methane_Phi_2_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition 
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_Methane_Phi_2_P_4:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition 
+ saveAll: True
+ mol_wt: 30
+
+GRI_Syn_PHI_0_5_80_20_Ar_0_94_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition 
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_Syn_PHI_0_5_80_20_Ar_0_79_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ op_species: CO2
+ saveAll: True
+ mol_wt: 30
+
+GRI_Syn_PHI_0_5_20_80_Ar_0_94_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ op_species: CO
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_Syn_PHI_0_5_20_80_Ar_0_79_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_Methane_Phi_1_P_4_Sp_Prof_CO2:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_Methane_Phi_1_P_1_12_Sp_Prof_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ 
+
+ 
+
+ 
+

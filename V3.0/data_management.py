@@ -7,24 +7,112 @@ import subprocess as sub
 import threading
 import combustion_target_class
 import make_input_file as MakeFile
-
+from tqdm import tqdm
+import multiprocessing
+import sys
 class RunCmd(threading.Thread):
-    def __init__(self, cmd, timeout):
-        threading.Thread.__init__(self)
-        self.cmd = cmd
-        self.timeout = timeout
+	def __init__(self, cmd, timeout):
+		threading.Thread.__init__(self)
+		self.cmd = cmd
+		self.timeout = timeout
 
-    def run(self):
-        self.p = sub.Popen(self.cmd)
-        self.p.wait()
+	def run(self):
+		self.p = sub.Popen(self.cmd)
+		self.p.wait()
 
-    def Run(self):
-        self.start()
-        self.join(self.timeout)
+	def Run(self):
+		self.start()
+		self.join(self.timeout)
 
-        if self.is_alive():
-            self.p.terminate()      #use self.p.kill() if process needs a kill -9
-            self.join()
+		if self.is_alive():
+			self.p.terminate()	  #use self.p.kill() if process needs a kill -9
+			self.join()
+
+def run_sim(index,case,input_,caseID,path,total):
+	try:
+		start = os.getcwd()
+		os.chdir(path)
+		os.chdir("..")
+		#dir_path = os.getcwd()
+		dir_name = path.split("/")[-3]
+		case_name = path.split("/")[-4]
+		Perturbed_location = "/".join(path.split("/")[:-5])+"/Perturbed_Mech"
+		run_cantera = "/".join(path.split("/")[:-2])+"/cantera_.py"
+		### For custom changes ###
+		#####______________________________________________#########
+		#case.add["estimateTIG"] = 2*float(case.add["estimateTIG"])
+		#print(case.add["estimateTIG"])
+		#####______________________________________________#########
+		
+		instring,a,b,c = MakeFile.create_input_file(caseID,input_,case,mech_file=f'{Perturbed_location}/mechanism_{dir_name}.yaml')
+		#if instring:
+			#print("Re-running the simulations")
+		cantera_file = open(run_cantera,"w").write(instring)
+		#print(os.listdir())
+		try:
+			result = subprocess.call(['./run'])#, check=True, text=True, capture_output=True)
+			#print("Script executed successfully!\n\n.........................\n")
+			#print("Output:", result.stdout)
+		except: #subprocess.CalledProcessError as e:
+			print(f"Error while executing the script: e")
+			#print("Output:", e.stdout)
+			#print("Error Output:", e.stderr)
+			#subprocess.run([f"{d}/run"])
+		os.chdir(start)
+		out_file = open(path+"tau.out",'r').readlines()
+		string = path +"tau.out"
+		#print(out_file)
+		line = out_file[1].split()
+		#print(len(line))
+		#print(line)
+		if len(line) == 2:
+			eta = np.log(float(line[1])*10)
+			ETA = float(line[1])	#us/micro seconds
+		else:
+			eta = np.log(100*10000)
+			ETA = 100*10000
+		
+	except Exception:
+		print(f"\t\nSimulations did not happen in {path} and optInputs file not provided\n\n.........................\n")
+		eta = "N/A"
+		ETA = eta
+		string = path
+	return (index,eta,ETA,string,total)
+
+class Worker():
+	def __init__(self, workers):
+		self.pool = multiprocessing.Pool(processes=workers)
+		self.results = []
+		self.progress = []
+	def update_progress(self, total):
+        	update_progress(self.progress, total)	
+	def callback_run(self, result):
+		self.results.append(result)
+		self.progress.append(result[0])
+		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
+		sys.stdout.flush()
+		#f = open('../progress','+a')
+		#f.write(result[0]+"/run"+"\n")
+		#f.close()
+		
+	def callback_error(self,result):
+		print('error', result)
+  
+	def do_job_async(self,location,case,optInput,caseID):
+		for index,args in enumerate(location):
+			self.pool.apply_async(run_sim, 
+				  args=(index,case,optInput,caseID,args,len(location)), 
+				  callback=self.callback_run,error_callback=self.callback_error)
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()	
+		self.results.sort(key=lambda x: x[0])  # Sort by the second-to-last element (row identifier)
+		
+		# Extract sorted values
+		sorted_eta = [result[1] for result in self.results]
+		sorted_ETA = [result[2] for result in self.results]
+		sorted_string = [result[3] for result in self.results]
+		return sorted_eta,sorted_ETA,sorted_string
 
 #Extract_reactinons pre exponential factor from mechanism file using sorted numbers. dummy function not called in main code. replaced with a regular expression.
 def extract_reaction_coeff(mech):
@@ -98,6 +186,8 @@ def generate_SA_target_value_tables(locations, t_list, case, fuel):
 	data =''
 	failed_sim = ""
 	ETA = []
+	eta = []
+	folderName = []
 	for i in data_loc:
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")
@@ -108,7 +198,7 @@ def generate_SA_target_value_tables(locations, t_list, case, fuel):
 		#print(data_loc.index(i))
 		#print(i)
 		
-		eta,ETA_,file_path = extract_output(t_list[case],fuel,i+"/output/",data_loc.index(i))
+		eta_,ETA_,file_path = extract_output(t_list[case],fuel,i[:-4]+"/output/",data_loc.index(i))
 		#print(eta,file_path)
 		#print(file_path,eta)
 		#eta = np.exp(eta)/10
@@ -116,23 +206,26 @@ def generate_SA_target_value_tables(locations, t_list, case, fuel):
 			#print(eta)
 			#print(file_path)
 			file_loc.write(file_path+"\n")
-			folderName = pathList[start+1]
+			folderName.append(pathList[start+1])
+			fN = pathList[start+1]
 			#print(folderName)
 			#print(eta)
-			failed_sim += "{}\t{}\n".format(folderName , eta)
+			failed_sim += "{}\t{}\n".format(fN , ETA_)
 			file_loc.close()
 			
 		else:	
 			#print(eta)
 			#print(file_path)
 			file_loc.write(file_path+"\n")
-			folderName = pathList[start+1]
+			folderName.append(pathList[start+1])
+			fN = pathList[start+1]
 			#print(folderName)
 			#print(eta)
-			data += "{}\t{}\n".format(folderName , eta)
+			data += "{}\t{}\n".format(fN , ETA_)
 			file_loc.close()
 			ETA.append(ETA_)
-	return data,failed_sim,folderName,ETA
+			eta.append(eta_)
+	return data,failed_sim,folderName,ETA,eta
 	
 	
 def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
@@ -159,6 +252,27 @@ def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
 	failed_sim = ""
 	ETA = []
 	eta = []
+	re_run_sim_dict = {}
+	count = 0
+	for i in data_loc:
+		eta_,_,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i),input_=optInputs,caseID = case)		
+		if "N/A" in str(eta_):
+			re_run_sim_dict[count] = file_path
+			count+=1
+	
+	re_run_loc = []
+	if re_run_sim_dict != {}:
+		for i in re_run_sim_dict:
+			re_run_loc.append(re_run_sim_dict[i])
+	
+	if len(re_run_loc)!=0:
+		print("#############______________________################\n")
+		print(f"\t\tFor Case-{case}:\n\t\t\tTotal of {len(re_run_loc)} simulations out of {len(data_loc)} did not returned expected results\n\t\tRe-running those simulations........\n\n\n")
+		W = Worker(100)
+		sorted_eta,sorted_ETA,sorted_Path = W.do_job_async(re_run_loc,t_list[case],optInputs,case)
+		del W
+		print(f"\t\tSimulations ended successfully\n\n#############______________________################\n")
+	
 	for i in data_loc:
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")
@@ -166,8 +280,6 @@ def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
 
 		#print(i)
 		eta_,ETA_,file_path = extract_output(t_list[case],fuel,i[:-3]+"output/",data_loc.index(i),input_=optInputs,caseID = case)
-		#eta = np.exp(eta)/10
-		#print(eta,file_path)
 		if "N/A" in str(eta_):
 			#print(eta)
 			#print(file_path)
@@ -190,6 +302,7 @@ def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
 			ETA.append(ETA_)
 			eta.append(eta_)
 	return data,failed_sim,eta
+
 
 def extract_direct_simulation_values(case,loc,target_list,fuel):
 	data =''
@@ -214,12 +327,14 @@ def extract_direct_simulation_values(case,loc,target_list,fuel):
 		eta_list.append(float(eta))
 	return eta_list
 
+
 #function extracts output from the given text file based on the called location where it currently is. Called in the previous function.		
 def extract_output(case,fuel,path,index,input_=None,caseID=None):
 	eta = string = ETA = None
 	#print(case.target)
 	if case.target.strip() == "RCM":
 		if "cantera" in case.add["solver"]:
+			string = path +"RCM.out"
 			if "RCM.out" in os.listdir(path):
 				out_file = open(path+"RCM.out",'r').readlines()
 				string = path +"RCM.out"
@@ -236,8 +351,32 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 				
 			else:
 				eta = "N/A"
-				string = path
+				ETA = eta
+		
+		elif "CHEMKIN_PRO" in case.add["solver"]:
+			#print("True")
+			#print(path)
+			#print(os.listdir(path))
+			if "RCM.out" in os.listdir(path):
+				out_file = open(path+"RCM.out",'r').readlines()
+				string = path +"RCM.out"
+				#print(out_file)
+				line = out_file[1].split()
+				#print(len(line))
+				#print(line)
+				if len(line) == 2:
+					eta = np.log(float(line[1])*10)
+					ETA = float(line[1])	#us/micro seconds
+				else:
+					eta = np.log(100*10000)
+					ETA = 100*10000
+			else:
+				eta = "N/A"
+				ETA = eta
+				string = path+"RCM.out"
+				
 	elif case.target.strip() == "JSR":
+		string = path +"jsr.out"
 		if "cantera" in case.add["solver"]:
 			if "jsr.out" in os.listdir(path):
 				out_file = open(path+"jsr.out",'r').readlines()
@@ -256,9 +395,10 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 			else:
 				eta = "N/A"
 				ETA = eta
-				string = path
+				string = path+"jsr.out"
 	
 	elif case.target.strip() == "Tig":
+		string = path +"tau.out"
 		if "cantera" in case.add["solver"]:
 			if "tau.out" in os.listdir(path):
 				out_file = open(path+"tau.out",'r').readlines()
@@ -273,45 +413,18 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 				else:
 					eta = np.log(100*10000)
 					ETA = 100*10000
-				
-			elif "tau.out" not in os.listdir(path):
-				print(f"Simulation failed at {path},\n Doing new simulation by perturbing temperature by a factor of 0.997...")
-				try:
-					file_path = "/".join([i for i in path.split("/")[:-2]])
-					case.temperature = 1.004*case.temperature
-					case.add["EndTime"] = 10*int(case.add["EndTime"])
-					instring,a,b,c = MakeFile.create_input_file(caseID,input_,case)
-					cantera_file = open(file_path+"/cantera_1.py","w").write(instring)
-					argv = ["python3.9",file_path+"/cantera_1.py"]
-					subprocess.run([argv])
-					out_file = open(path+"tau.out",'r').readlines()
-					string = path +"tau.out"
-					#print(out_file)
-					line = out_file[1].split()
-					#print(len(line))
-					#print(line)
-					if len(line) == 2:
-						eta = np.log(float(line[1])*10)
-						ETA = float(line[1])	#us/micro seconds
-					else:
-						eta = np.log(100*10000)
-						ETA = 100*10000
-					
-				except Exception:
-					print(f"\t\nSimulations did not happen in {path} and optInputs file not provided\n\n.........................\n")
-					eta = "N/A"
-					ETA = eta
-					string = path
+			
 			else:
 				eta = "N/A"
 				ETA = eta
-				string = path
+				string = path+"tau.out"
 		
 		
 		elif "CHEMKIN_PRO" in case.add["solver"]:
+			string = path +"tau.out"
 			#print("True")
-			print(path)
-			print(os.listdir(path))
+			#print(path)
+			#print(os.listdir(path))
 			if "tau.out" in os.listdir(path):
 				out_file = open(path+"tau.out",'r').readlines()
 				string = path +"tau.out"
@@ -325,59 +438,10 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 				else:
 					eta = np.log(100*10000)
 					ETA = 100*10000
-			elif "tau.out" not in os.listdir(path):
-				print(f"Simulation failed at {path},\n Doing new simulation by perturbing time by a factor of 10...")
-				try:
-					file_path = "/".join([i for i in path.split("/")[:-2]])
-					case.temperature = 1.004*case.temperature
-					case.add["EndTime"] = 10*int(case.add["EndTime"])
-					instring,a,b,c = MakeFile.create_input_file(caseID,input_,case)
-					if instring:
-						print("created new file")
-					cantera_file = open(file_path+"/cantera_1.py","w").write(instring)
-					argv = [file_path+"/cantera_1.py"]
-					print(file_path)
-					try:
-						#subprocess.call(["chmod","+x",file_path+"/cantera_1.py"])
-						result = subprocess.run(['python3.9'] +argv, capture_output=True, text=True)
-						print(result)
-						print(result.stdout)
-						if result.stderr:
-						#	print("Errors:")
-						#	print(result.stderr)
-							f.write("Errors:\n"+result.stderr)	
-						print("Some Error occoured")
-						#subprocess.call([argv])
-						print("Succesfully solved the case")
-					except Exception:
-						if result.stderr:
-						#	print("Errors:")
-						#	print(result.stderr)
-							f.write("Errors:\n"+result.stderr)	
-						print("Some Error occoured")
-						tau = None
-					out_file = open(path+"tau.out",'r').readlines()
-					string = path +"tau.out"
-					#print(out_file)
-					line = out_file[1].split()
-					#print(len(line))
-					#print(line)
-					if len(line) == 2:
-						eta = np.log(float(line[1])*10)
-						ETA = float(line[1])	#us/micro seconds
-					else:
-						eta = np.log(100*10000)
-						ETA = 100*10000
-					
-				except Exception:
-					print(f"\t\nSimulations did not happen in {path} and optInputs file not provided\n\n.........................\n")
-					eta = "N/A"
-					ETA = eta
-					string = path
 			else:
 				eta = "N/A"
 				ETA = eta
-				string = path
+				string = path+"tau.out"
 		
 		
 		else:
@@ -509,7 +573,7 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 		if "cantera" in case.add["solver"]:
 			out_file = open(path+"flf.out",'r').readlines()
 			string = path +"flf.out"
-			line = out_file[1].split("    ")
+			line = out_file[1].split("	")
 			#print(line)
 			if len(line) == 2:
 				eta = float(line[1])
@@ -575,9 +639,7 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 				else:
 					eta = 100
 #			
-	return eta,ETA,string			
-				
-
+	return eta,ETA,string	
 #Generate an optimized mechanism based on the optimized vector. 
 def generate_optimized_mechanism(mech_file_location, reaction_index, unsrt_data, opt_x):
 	mech_file = open(mech_file_location,'r')

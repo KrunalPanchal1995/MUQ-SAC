@@ -1,0 +1,2 @@
+ScanMan -i GRI_3_0.MECH -t GRI_3_0.THERM -m GRI_3_0.TRAN -o target.pre -3sr &>Scan.out -E -f chemkin
+yaml2ck --mechanism=opt_gri3.0.inp --thermo=opt_thermo --trans=opt_trans Optimized_mech.yaml --no-validate

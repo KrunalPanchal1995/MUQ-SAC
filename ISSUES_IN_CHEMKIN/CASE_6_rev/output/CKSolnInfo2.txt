@@ -1,0 +1,153 @@
+1 1 1 110 1 0 0 0 1 38 0 0 0 291 0 1 47 7 256 256 0 0 0 
+time (s) 2 0 0
+volume (cm3) 1 0 0
+external_surface_area (cm2) 1 0 0
+volumetric_heat_production_rate (erg/cm3-s) 1 0 0
+surface_temperature (K) 1 0 0
+heat_loss_rate (erg/s) 1 0 0
+temperature (K) 1 0 0
+mass (g) 1 0 0
+pressure (dyne/cm2) 1 0 0
+mass_fraction_AR () 1 0 3
+mass_fraction_HE () 1 0 3
+mass_fraction_N2 () 1 0 3
+mass_fraction_H2 () 1 0 3
+mass_fraction_H () 1 0 3
+mass_fraction_O () 1 0 3
+mass_fraction_O2 () 1 0 3
+mass_fraction_OH () 1 0 3
+mass_fraction_H2O () 1 0 3
+mass_fraction_HO2 () 1 0 3
+mass_fraction_H2O2 () 1 0 3
+mass_fraction_CO () 1 0 3
+mass_fraction_CO2 () 1 0 3
+mass_fraction_C () 1 0 3
+mass_fraction_CH () 1 0 3
+mass_fraction_CH2 () 1 0 3
+mass_fraction_CH2(S) () 1 0 3
+mass_fraction_CH3 () 1 0 3
+mass_fraction_CH4 () 1 0 3
+mass_fraction_HCO () 1 0 3
+mass_fraction_CH2O () 1 0 3
+mass_fraction_CH2OH () 1 0 3
+mass_fraction_CH3O () 1 0 3
+mass_fraction_CH3OH () 1 0 3
+mass_fraction_C2H () 1 0 3
+mass_fraction_C2H2 () 1 0 3
+mass_fraction_C2H3 () 1 0 3
+mass_fraction_C2H4 () 1 0 3
+mass_fraction_C2H5 () 1 0 3
+mass_fraction_C2H6 () 1 0 3
+mass_fraction_HCCO () 1 0 3
+mass_fraction_CH2CO () 1 0 3
+mass_fraction_CH2CHO () 1 0 3
+mass_fraction_CH3CHO () 1 0 3
+mass_fraction_CH3CO () 1 0 3
+mass_fraction_H2CC () 1 0 3
+mass_fraction_OH* () 1 0 3
+mass_fraction_CH* () 1 0 3
+residence_time (s) 1 0 0
+equivalence_ratio () 1 0 0
+area (cm2) 1 0 0
+cycle_time (s) 1 0 0
+heat_transfer_coefficient (erg/cm2-K-s) 1 0 0
+ambient_temperature (K) 1 0 0
+surface_material_area_fraction () 1 0 0
+0 0 0 
+0 
+1 0.000000e+00 
+1 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+1 0 0 
+0 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+1 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+1 0 0 
+1 0 0 
+0 0 0 
+0 0 0 
+1 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+1 0 0 
+0 0 0 
+1 0 0 
+(sec)
+(cm)
+(K)
+(eV)
+(bar)
+(cm2)
+(cm3)
+(g)
+(cm3/g)
+(g/cm3)
+(cm/sec)
+(g/sec)
+(cm3/sec)
+(g/cm2-sec)
+(erg)
+(erg/g)
+(erg/g-K)
+(erg/sec)
+(erg/cm-sec)
+(erg/cm2-sec)
+(erg/cm3-sec)
+(erg/sec)
+(g/erg)
+(mole/cm2)
+(cm/sec)
+(mole_fraction)
+(mole/cm3)
+(molecules/cm3)
+(local_normalization)
+(mole/cm3-sec)
+(mole/cm2-sec)
+(mole/cm2-sec)
+0 -9999 -9999 -1.000000e+00 1.000000e+00

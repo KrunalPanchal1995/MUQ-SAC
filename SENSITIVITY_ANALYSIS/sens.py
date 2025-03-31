@@ -12,6 +12,7 @@ from copy import deepcopy
 import combustion_target_class
 import data_management
 import pickle
+import MechanismParser as MP
 #########################################
 ###    Reading the input file        ####
 ###    -----------------------       ####
@@ -68,14 +69,16 @@ carbon_number = optInputs["SA"]["carbon_number"]
 with open(MECH,'r') as file_:
 	yaml_mech = file_.read()
 
-mechanism = yaml.safe_load(yaml_mech)
+mechanism = MP.Parser(MECH).mech
 species = mechanism['phases'][0]["species"]
 species_data = mechanism["species"]
 reactions = mechanism["reactions"] #can choose thermo data here instead of reactions
+
 if len(rxn_list) == 0:
 	if carbon_number != 0:
 		# get the species list greater than or equal to the predetermined carbon number
-		selected_species = rs.species_selection(species,species_data,carbon_number)
+		#selected_species = rs.species_selection(species,species_data,carbon_number)
+		selected_species = rs._species_selection(species,species_data,carbon_number,start=carbon_number,stop=carbon_number-3)
 
 		# get the reaction list containing the selected species
 		selected_reactions = rs.reaction_selection(selected_species,reactions)

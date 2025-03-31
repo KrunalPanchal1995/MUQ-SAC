@@ -1,0 +1,79 @@
+#######################################
+##   Shochtube Ignition Delay        ##
+#######################################
+
+###########
+#  	I/O  ##
+#        ##
+########### #############################################
+# Only provide info if the variable is constant         #
+#------------------------------------------------------ #
+# (i.e if you wish to create a file for each and every  #
+# dataset saperately. You can create a single file wrt  #
+# the type of exp also. The given sample is for dataSet #
+# wrt experiment type.                                  #
+#-------------------------------------------------------#
+# Data can be given in both header and body. By providi-#
+#-ng the structure for body, one can create dataset of  #
+# any type.                                             # 
+#########################################################
+
+DataSet: TIG_
+
+Target: Tig
+
+Fuel_type: Multi
+
+Fuel: {a: NC12H26,b: IC16H34, c: C7H8}
+
+#Fuel_x:
+
+Oxidizer: O2
+
+#Oxidizer_x:
+
+Bath_gas: {bg1: N2}
+
+#Bath_gas_x:
+
+#Pressure:	
+
+#Temperature:	
+
+#Phi:
+
+Simulation_type: Isochor Homo Reactor
+
+Measurnment_type: timeDelay
+
+#Flame_type:	 
+
+Ignition_mode: reflected
+
+#Reactor_type:
+
+#startprofile:  
+
+#flow_rate:	
+
+#flow_unit:	
+
+############
+# Data #####
+############
+
+Unsrt: {type: absolute}
+
+Unit: {conc: mol, P: bar, T: K, observed: us}
+
+Data_structure:
+ - Sr
+ - a
+ - b
+ - C
+ - Ox
+ - bg1
+ - T
+ - P
+ - Tig
+ - sigma

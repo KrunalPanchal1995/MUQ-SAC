@@ -1,0 +1,55 @@
+TIG__RP3_PHI_0.5_P_10:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+
+TIG__RP3_PHI_0.5_P_15:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+
+TIG__RP3_PHI_1.0_P_10:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+
+TIG__RP3_PHI_1.5_P_10:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+ 
+TIG__RP3_PHI_1.0_P_20_D_89_5:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+ 
+TIG__RP3_PHI_1_P_10_D_89_5:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8
+
+TIG__RP3_PHI_1_5_P_20_D_93:
+ solver: cantera
+ ign_delay_def: OH
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 99
+ species: C7H8

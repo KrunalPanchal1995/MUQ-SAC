@@ -230,9 +230,16 @@ def build_thermodynamics_text(
 
     .. versionadded:: 3.0
     """
+    #fmt = dedent(
+    #    """\
+    #    {name:<18}{note:<6}{atoms:<20}G {low_and_high_temp:20} {mid_temp:8}    1
+    #    {coeff_1_5:<75}    2
+    #    {coeff_6_10:<75}    3
+    #    {coeff_11_14:<60}                   4"""
+    #)
     fmt = dedent(
         """\
-        {name:<18}{note:<6}{atoms:<20}G {low_and_high_temp:20} {mid_temp:8}    1
+        {name:<18}      {atoms:<20}G {low_and_high_temp:20} {mid_temp:8}    1
         {coeff_1_5:<75}    2
         {coeff_6_10:<75}    3
         {coeff_11_14:<60}                   4"""

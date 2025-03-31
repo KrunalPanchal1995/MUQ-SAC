@@ -15,6 +15,7 @@ class combustion_target():
 ###Class definition and acquisition of input parameters.	
 	def __init__(self,data,addendum,index):
 		self.molecularWt = {}
+		self.molecularWt = {}
 		self.molecularWt["CO"] = 28
 		self.molecularWt["H2"] = 2
 		self.molecularWt["O2"] = 32
@@ -29,9 +30,13 @@ class combustion_target():
 		self.molecularWt["He"] = 0
 		self.molecularWt["N2"] = 0
 		self.molecularWt["H2O"] = 0
-		self.molecularWt["C4H6"] = 57
+		self.molecularWt["CH4"] = 16
 		self.molecularWt["NC7H16"] = 100.21
 		self.molecularWt["MB-C5H10O2"] = 86
+		self.molecularWt["CH2O"] = 30
+		self.molecularWt["NC12H26"] = 170
+		self.molecularWt["C7H8"] = 92
+		self.molecularWt["IC16H34"] = 226
 		self.stoichiometry = {}
 		self.stoichiometry["H2"] = 0.5
 		self.stoichiometry["CO"] = 0.5
@@ -48,9 +53,12 @@ class combustion_target():
 		self.stoichiometry["H2O"] = 0.0
 		self.stoichiometry["CO2"] = 0.0
 		self.stoichiometry["CH4"] = 2.0
-		self.stoichiometry["C4H6"] = 5.5
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["MB-C5H10O2"] = 6.5
+		self.stoichiometry["CH2O"] = 1
+		self.stoichiometry["NC12H26"] = 25
+		self.stoichiometry["C7H8"] = 11
+		self.stoichiometry["IC16H34"] = 33
 		self.data = data
 		parameters = self.data.split('|')
 		self.dataSet_id = parameters[1].strip("\t")
@@ -282,7 +290,7 @@ class combustion_target():
 			if self.units["Pi"].strip(" ") == "torr":
 				self.pressure_i = float(self.pressure_i)*133.322# 1 torr = 133.322 Pa
 			if self.units["Pi"].strip(" ") == "atm":
-				self.pressure_i = float(self.pressure_i)*101350
+				self.pressure_i = float(self.pressure_i)*101325
 			if self.units["Pi"].strip("	") == "Pa":
 				self.pressure_i = float(self.pressure_i)
 			
@@ -293,7 +301,7 @@ class combustion_target():
 		if self.units["P"].strip(" ") == "torr":
 			self.pressure = float(self.pressure)*133.322# 1 torr = 133.322 Pa
 		if self.units["P"].strip(" ") == "atm":
-			self.pressure = float(self.pressure)*101350
+			self.pressure = float(self.pressure)*101325
 		if self.units["P"].strip("	") == "Pa":
 			self.pressure = float(self.pressure)
 		if "solver" not in self.add:
@@ -328,6 +336,10 @@ class combustion_target():
 			self.add["slope"] = 0.015
 		if "curve" not in self.add:
 			self.add["curve"] = 0.015
+		if "volume_profile_type" not in self.add:
+		    self.add["volume_profile_type"] = "csv_file"
+		if "dt" not in self.add:
+			self.add["dt"] = 1e-5
 		if "loglevel" not in self.add:
 			self.add["loglevel"] = 1		
 		if "auto" not in self.add:
@@ -351,7 +363,7 @@ class combustion_target():
 		if "residenceTime" not in self.add:
 			self.add["residenceTime"] = 1
 		if "EndTime" not in self.add:
-			self.add["EndTime"] = 1 #s
+			self.add["EndTime"] = 0.04 #s
 		if "time_step" not in self.add:
 			self.add["time_step"] = 2000 #steps		
 		if "flw_method" not in self.add:
@@ -374,9 +386,10 @@ class combustion_target():
 			self.add["flf_target"] = "H" #m**3	
 		if "flf_cond" not in self.add:
 			self.add["flf_cond"] = "max" #m**3	
+		if "estimateTIG" not in self.add:
+			self.add["estimateTIG"] = 0.4
 		if "T_amb" not in self.add:
 			self.add["T_ambient"] = 298
-		
 		else:
 			self.add["T_amb"] = "AmbientTemp is {}".format(self.add["T_ambient"])
 		if "isIsotherm" not in self.add:

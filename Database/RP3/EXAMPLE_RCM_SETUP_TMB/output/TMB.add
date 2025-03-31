@@ -1,0 +1,110 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: CHEMKIN_PRO
+#Butanoate
+
+
+RCM__TMB_100_PHI_0_5_P_10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  921.0 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_921.csv
+  950.0 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_950.csv
+  972.0 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_972.csv
+  973.0 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_973.csv
+  1004.0 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1004.csv
+  1039 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1039.csv
+  1040 : /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1040.csv
+
+RCM__TMB_75_PHI_0_5_P_10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  703.0 :
+  726.0 :
+  750.0 :
+  772.0 :
+  947.0 :
+  983 :
+  1018 :
+  951 :
+  983 :
+  811 :
+  837 :
+  866 :
+  899 :
+ 
+RCM__TMB_100_PHI_1_P_10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  1008 :
+  1040 :
+  921 :
+  1004 :
+  918 :
+  1036 :
+  971 :
+  893 :
+  947 :
+ 
+
+RCM__TMB_100_PHI_0_5_P_30:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  949 :
+  974 :
+  828 :
+  856 :
+  878 :
+  907 :
+  710 :
+  750 :
+  779 :
+  677 :
+  697 :
+  721 :
+ 
+
+RCM__TMB_100_PHI_1_P_30:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  697 :
+  720 :
+  747 :
+  769 :
+  790 :
+  815 :
+  838 :
+  868 :
+  897 :
+  925 :
+  949 :

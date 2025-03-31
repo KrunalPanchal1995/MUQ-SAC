@@ -11,6 +11,21 @@ def species_selection(species,species_data,carbon_number):
 	selected_species = set(selected_species)
 	return selected_species
 
+def _species_selection(species,species_data,carbon_number,start=None,stop=None):
+	selected_species = []
+	start_species = start
+	stop_species = stop
+	for kind in species:
+		for data in species_data:
+			if kind in data["name"]:
+				kind_composition = data["composition"]
+				if "C" in kind_composition:
+					if kind_composition["C"] >= stop and kind_composition["C"] <= start:
+						selected_species.append(data["name"])
+			
+	selected_species = set(selected_species)
+	return selected_species
+
 def reaction_selection(selected_species,reactions):
 	selected_reactions = []
 	for species in selected_species:
@@ -90,7 +105,7 @@ def getRxnType(mechanism,rxn_list):
 	for rxn in rxn_list:
 		for index,data in enumerate(rxn_data):
 			if rxn == data["equation"]:
-				print(rxn,data["equation"])
+				#print(rxn,data["equation"])
 				if "type" in data:
 					if data["type"] == "three-body":
 						rxn_type[index+1] = "ThirdBody"

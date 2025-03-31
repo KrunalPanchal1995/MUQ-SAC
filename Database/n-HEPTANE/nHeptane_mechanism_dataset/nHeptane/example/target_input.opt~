@@ -1,0 +1,59 @@
+targets_count	:	51
+mechanism	:	nheptane.mech
+fuel	:	N-C7H16
+global_reaction	:	N-C7H16 + 11O2 == 7CO2 +8H2O
+parallel_threads	:	7
+uncertainty_data	:	errors.unsrt
+bin_file	:	nalkanes.bin	
+targets:
+1, target = Tig, simulation = isochor, T = 1187.113, P = 13.5e5, phi = 0.5, observed = 0.33551 #Ciezki93
+2, target = Tig, simulation = isochor, T = 1056.033, P = 13.5e5, phi = 0.5, observed = 1.56252 #Ciezki93
+3, target = Tig, simulation = isochor, T = 998.751, P = 13.5e5, phi = 0.5, observed = 3.37186 #Ciezki93
+4, target = Tig, simulation = isochor, T = 1276.65, P = 13.5e5, phi = 1.0, observed = 0.13067 #Ciezki93
+5, target = Tig, simulation = isochor, T = 1067.554, P = 13.5e5, phi = 1.0, observed = 0.97472 #Ciezki93
+6, target = Tig, simulation = isochor, T = 907.169, P = 13.5e5, phi = 1.0, observed = 6.26246 #Ciezki93
+7, target = Tig, simulation = isochor, T = 1227.702, P = 13.5e5, phi = 2.0, observed = 0.18491 #Ciezki93
+8, target = Tig, simulation = isochor, T = 1193.838, P = 13.5e5, phi = 2.0, observed = 0.24903 #Ciezki93
+9, target = Tig, simulation = isochor, T = 1117.768, P = 13.5e5, phi = 2.0, observed = 0.57180 #Ciezki93
+10, target = Tig, simulation = isochor, T = 1008.369, P = 13.5e5, phi = 2.0, observed = 1.88087 #Ciezki93
+11, target = Tig, simulation = isochor, T = 914.520, P = 13.5e5, phi = 2.0, observed = 3.85827 #Ciezki93
+12, target = Tig, simulation = isochor, T = 1280.0, P = 13.5e5, phi = 3.0, observed = 0.10192 #Ciezki93
+13, target = Tig, simulation = isochor, T = 1092.92, P = 13.5e5, phi = 3.0, observed = 0.62349 #Ciezki93
+14, target = Tig, simulation = isochor, T = 903.93, P = 13.5e5, phi = 3.0, observed = 1.92362 #Ciezki93
+15, target = Tig, simulation = isochor, T = 1099.916, P = 50e5, phi = 0.4, observed = 0.17128 #Herzler2005
+16, target = Tig, simulation = isochor, T = 1019.513, P = 50e5, phi = 0.4, observed = 0.17128 #Herzler2005
+17, target = Tig, simulation = isochor, T = 944.492, P = 50e5, phi = 0.4, observed = 0.73588 #Herzler2005
+18, target = Tig, simulation = isochor, T = 1396.609, P = 12.158e5, phi = 0.25, observed = 0.04221 #Shen2009
+19, target = Tig, simulation = isochor, T = 1308.729, P = 12.158e5, phi = 0.25, observed = 0.11622 #Shen2009
+20, target = Tig, simulation = isochor, T = 1206.374, P = 12.158e5, phi = 0.25, observed = 0.36236 #Shen2009
+21, target = Tig, simulation = isochor, T = 1077.598, P = 12.158e5, phi = 0.25, observed = 1.17015 #Shen2009
+22, target = Tig, simulation = isochor, T = 1064.226, P = 12.158e5, phi = 0.25, observed = 1.94202 #Shen2009
+23, target = Tig, simulation = isochor, T = 1230.164, P = 45.6e5, phi = 0.25, observed = 0.08285 #Shen2009
+24, target = Tig, simulation = isochor, T = 1098.286, P = 45.6e5, phi = 0.25, observed = 0.37508 #Shen2009
+25, target = Tig, simulation = isochor, T = 948.110, P = 45.6e5, phi = 0.25, observed = 1.49848 #Shen2009
+26, target = Tig, simulation = isochor, T = 1225.024, P = 13.17e5, phi = 0.5, observed = 0.11732 #Shen2009
+27, target = Tig, simulation = isochor, T = 1168.798, P = 13.17e5, phi = 0.5, observed = 0.23564 #Shen2009
+28, target = Tig, simulation = isochor, T = 1101.067, P = 13.17e5, phi = 0.5, observed = 0.66919 #Shen2009
+29, target = Tig, simulation = isochor, T = 1062.485, P = 13.17e5, phi = 0.5, observed = 0.23564 #Shen2009
+1, target = Tig, simulation = isochor, T = 778.382, P = 13.5e5, phi = 0.5, observed = 5.44376 #Ciezki93
+2, target = Tig, simulation = isochor, T = 772.696, P = 13.5e5, phi = 0.5, observed = 5.17707 #Ciezki93
+3, target = Tig, simulation = isochor, T = 748.761, P = 13.5e5, phi = 0.5, observed = 5.64264 #Ciezki93
+4, target = Tig, simulation = isochor, T = 697.408, P = 13.5e5, phi = 0.5, observed = 8.17463 #Ciezki93
+5, target = Tig, simulation = isochor, T = 907.169, P = 13.5e5, phi = 1.0, observed = 6.26246 #Ciezki93
+6, target = Tig, simulation = isochor, T = 746.519, P = 13.5e5, phi = 1.0, observed = 3.10780 #Ciezki93
+7, target = Tig, simulation = isochor, T = 663.508, P = 13.5e5, phi = 1.0, observed = 12.60835 #Ciezki93
+8, target = Tig, simulation = isochor, T = 914.520, P = 13.5e5, phi = 2.0, observed = 3.85827 #Ciezki93
+9, target = Tig, simulation = isochor, T = 894.015, P = 13.5e5, phi = 2.0, observed = 3.80865 #Ciezki93
+10, target = Tig, simulation = isochor, T = 831.552, P = 13.5e5, phi = 2.0, observed = 2.25630 #Ciezki93
+11, target = Tig, simulation = isochor, T = 786.349, P = 13.5e5, phi = 2.0, observed = 1.77933 #Ciezki93
+12, target = Tig, simulation = isochor, T = 694.136, P = 13.5e5, phi = 2.0, observed = 6.86859 #Ciezki93
+13, target = Tig, simulation = isochor, T = 903.93, P = 13.5e5, phi = 3.0, observed = 1.92362 #Ciezki93
+14, target = Tig, simulation = isochor, T = 833.472, P = 13.5e5, phi = 3.0, observed = 1.27415 #Ciezki93
+15, target = Tig, simulation = isochor, T = 699.423, P = 13.5e5, phi = 3.0, observed = 4.44751 #Ciezki93
+16, target = Tig, simulation = isochor, T = 944.492, P = 50e5, phi = 0.4, observed = 0.73588 #Herzler2005
+17, target = Tig, simulation = isochor, T = 824.967, P = 50e5, phi = 0.4, observed = 0.69697 #Herzler2005
+18, target = Tig, simulation = isochor, T = 724.674, P = 50e5, phi = 0.4, observed = 2.1778 #Herzler2005
+19, target = Tig, simulation = isochor, T = 948.110, P = 45.6e5, phi = 0.25, observed = 1.49848 #Shen2009
+20, target = Tig, simulation = isochor, T = 856.428, P = 45.6e5, phi = 0.25, observed = 1.34491 #Shen2009
+21, target = Tig, simulation = isochor, T = 829.517, P = 45.6e5, phi = 0.25, observed = 1.21903 #Shen2009
+22, target = Tig, simulation = isochor, T = 785.836, P = 45.6e5, phi = 0.25, observed = 1.67742 #Shen2009

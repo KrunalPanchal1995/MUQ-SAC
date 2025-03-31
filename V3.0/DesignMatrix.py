@@ -212,7 +212,9 @@ class DesignMatrix(object):
 						
 			n_a = int(0.1*self.sim*0.2)
 			n_b = int(0.45*self.sim*0.2)
-			n_c = int(self.sim*0.2-n_a-n_b)
+			n_c = int(self.sim*0.2)-n_a-n_b
+			unshuffled = int(self.sim*0.2)
+			
 			if "DM_FOR_PARTIAL_PRS" not in os.listdir():
 				os.mkdir("DM_FOR_PARTIAL_PRS")
 				os.chdir("DM_FOR_PARTIAL_PRS")
@@ -327,7 +329,7 @@ class DesignMatrix(object):
 				dict_delta_n = {}
 				percentage = {}
 				for rxn in tqdm(self.unsrt,desc="Generating fSAC samples"):
-					T =np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
+					T = np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
 					Theta = np.array([T/T,np.log(T),-1/(T)])
 					P = nominal[rxn]
 					cov = ch[rxn]
@@ -398,35 +400,32 @@ class DesignMatrix(object):
 					V = pickle.load(file_)
 				print("\nf-SAC Arrhenius curves generated")
 				
-			
-			for i in range(int(self.sim*0.2)):
+			#UNSHUFFLED SAMPLES
+			#print(unshuffled)
+			for i in range(unshuffled):
 				row = []
 				for rxn in self.unsrt:
-					#print(int(self.sim*0.2),len(V_[rxn]))
+					#print((V_[rxn]))
 					row.extend(V_[rxn][i])
-					
 				design_matrix.append(row)
 			
 			#RANDOM SHUFFLING
-			#print(int(self.sim*0.8))
 			for i in range(num_shuffles):
 				row = []
 				for rxn in self.unsrt:
-					#print(num_shuffles,len(V_s[rxn]))
 					row.extend(V_s[rxn][i])
 				design_matrix.append(row)
 				
-			for i in range(int(self.sim*0.2)):
+			for i in range(unshuffled):
 				row = []
 				for rxn in self.unsrt:
 					row.extend(V[rxn][i])
-					
 				design_matrix.append(row)
+				
 			tok = time.time()
 			print("Time taken to construct Design Matrix: {}".format(tok - tic))
+			
 			##Creating the parameter matrix
-			
-			
 			s =""
 			p_s = "" 
 			selected_string = ""

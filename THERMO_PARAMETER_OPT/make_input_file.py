@@ -3,10 +3,9 @@ import os
 import yaml
 from yaml import load, dump
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+	from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
-    from yaml import Loader, Dumper
-
+	from yaml import Loader, Dumper
 
 def create_JPDAP_input(input_dict):
 	instring = f'''* Uncertain Arrhenius parameters [A/An/AE/AnE]
@@ -99,7 +98,7 @@ Boundary:
 	
 	run_file = open("run_profile",'w')
 	s = """#!/bin/bash
-python3.9 %(profile_generator_src)s profile_generator.input &> profile.log
+python3 %(profile_generator_src)s profile_generator.input &> profile.log
 """% {"profile_generator_src":inputs["Bin"]["bin"]+"/profileGenerator.py"}
 #&> Flame.log ; gnome-terminal && tail -f flame.log
 	run_file.write(s)
@@ -293,7 +292,7 @@ Unburnt Side {{
 	infile = open("FlameMaster.input",'w')
 	infile.write(instring)
 	infile.close()
-	
+	#print(target.uniqueID)
 	run_file = open("run_generate",'w')
 	s = """#!/bin/bash
 {Bin}/FlameMan &> Flame.log
@@ -305,7 +304,7 @@ Unburnt Side {{
 
 
 def create_input_file(case,opt_dict,target,mech_file=None):
-
+	#print(target.uniqueID)
 	thermo_file_location = opt_dict["Locations"]["thermo_file"]
 	trans_file_location = opt_dict["Locations"]["trans_file"]
 	startProfile_location = opt_dict["StartProfilesData"]
@@ -331,7 +330,7 @@ def create_input_file(case,opt_dict,target,mech_file=None):
 		instring = open(target.input_file,'r').read()
 			
 	elif "JSR" in target.target:
-
+		#print(target.add)
 		instring ="""import pandas as pd
 import time
 import cantera as ct
@@ -352,13 +351,13 @@ exhaust = ct.Reservoir(gas)
 stirred_reactor = ct.IdealGasReactor(gas, energy="off", volume=reactor_volume)
 
 mass_flow_controller = ct.MassFlowController(
-    upstream=fuel_air_mixture_tank,
-    downstream=stirred_reactor,
-    mdot=stirred_reactor.mass / residence_time,
+	upstream=fuel_air_mixture_tank,
+	downstream=stirred_reactor,
+	mdot=stirred_reactor.mass / residence_time,
 )
 
 pressure_regulator = ct.PressureController(
-    upstream=stirred_reactor, downstream=exhaust, master=mass_flow_controller
+	upstream=stirred_reactor, downstream=exhaust, master=mass_flow_controller
 )
 
 reactor_network = ct.ReactorNet([stirred_reactor])
@@ -370,21 +369,21 @@ tic = time.time()
 t = 0
 counter = 1
 while t < max_simulation_time:
-    t = reactor_network.step()
+	t = reactor_network.step()
 
-    # We will store only every 10th value. Remember, we have 1200+ species, so there will be
-    # 1200+ columns for us to work with
-    if counter % 10 == 0:
-        # Extract the state of the reactor
-        time_history.append(stirred_reactor.thermo.state, t=t)
+	# We will store only every 10th value. Remember, we have 1200+ species, so there will be
+	# 1200+ columns for us to work with
+	if counter % 10 == 0:
+		# Extract the state of the reactor
+		time_history.append(stirred_reactor.thermo.state, t=t)
 
-    counter += 1
+	counter += 1
 
 # Stop the stopwatch
 toc = time.time()
 MF = time_history(species).X[-1][0]
 tau_file = open("output/jsr.out",'w')
-tau_file.write("#T(K)    mole fraction"+"\\n"+"{{}}    {{}}".format(reactor_temperature,MF))
+tau_file.write("#T(K)	mole fraction"+"\\n"+"{{}}	{{}}".format(reactor_temperature,MF))
 tau_file.close()""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=str(target.add["species"]),residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
 		extract = """
 		"""
@@ -419,12 +418,12 @@ exhaust = ct.Reservoir(gas)
 stirredReactor = ct.IdealGasReactor(gas, energy='off', volume=reactorVolume)
 
 massFlowController = ct.MassFlowController(upstream=fuelAirMixtureTank,
-                                           downstream=stirredReactor,
-                                           mdot=stirredReactor.mass/residenceTime)
+										   downstream=stirredReactor,
+										   mdot=stirredReactor.mass/residenceTime)
 
 pressureRegulator = ct.Valve(upstream=stirredReactor,
-                             downstream=exhaust,
-                             K=pressureValveCoefficient)
+							 downstream=exhaust,
+							 K=pressureValveCoefficient)
 
 reactorNetwork = ct.ReactorNet([stirredReactor])
 columnNames = [stirredReactor.component_name(item) for item in range(stirredReactor.n_vars)]
@@ -435,13 +434,13 @@ timeHistory = pd.DataFrame(columns=columnNames)
 tic = time.time()
 t = 0
 while t < maxSimulationTime:
-    t = reactorNetwork.step()
-    
+	t = reactorNetwork.step()
+	
 state = np.hstack([stirredReactor.thermo.P, 
-                   stirredReactor.mass, 
-                   stirredReactor.volume, 
-                   stirredReactor.T, 
-                   stirredReactor.thermo.X])
+				   stirredReactor.mass, 
+				   stirredReactor.volume, 
+				   stirredReactor.T, 
+				   stirredReactor.thermo.X])
 
 toc = time.time()
 
@@ -449,14 +448,14 @@ concentrations = stirredReactor.thermo.X
 
 # Store the result in the dataframe that indexes by temperature
 timeHistory.loc[reactorTemperature] = state
-Flf = str(timeHistory['{species}']).split("\\n")[0].split("    ")[1]
+Flf = str(timeHistory['{species}']).split("\\n")[0].split("	")[1]
 flf_file = open("output/flf.out",'w')
-flf_file.write("#T(K)    flf(conc.)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,Flf))
+flf_file.write("#T(K)	flf(conc.)"+"\\n"+"{{}}	{{}}".format(reactorTemperature,Flf))
 flf_file.close()""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,species=target.add["species"],residenceTime = target.add["residenceTime"],maxSimTime = target.add["maxSimulationTime"])
 			extract = """
 		"""
 	elif "RCM" in target.target:
-		if "cantera" in target.add["solver"]: 
+		if "cantera" in target.add["solver"] and "non_reactive" not in target.add["RCM_type"]: 
 			instring="""import cantera as ct
 import numpy as np
 from pyked import ChemKED
@@ -464,23 +463,42 @@ from urllib.request import urlopen
 import yaml,time
 import pandas as pd
 import matplotlib.pyplot as plt
-def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
+from scipy.signal import find_peaks
 
+
+def find_nearest(array, value):
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
 def fast_nearest_interp(xi, x, y):
-    # Shift x points to centers
-    spacing = np.diff(x) / 2
-    x = x + np.hstack([spacing, spacing[-1]])
-    # Append the last point in y twice for ease of use
-    y = np.hstack([y, y[-1]])
-    return y[np.searchsorted(x, xi)]
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		tau = df[species].idxmax()
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
 	elif cond == "onset" and species != "p":
 		time = df.index.to_numpy()
 		conc = (df[species]).to_numpy()
@@ -531,9 +549,9 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				target = (target/avogadro)*unit_conversion
 				if exp_conc != "":
 					exp_conc = (exp_conc/avogadro)*unit_conversion
-					conc = conc*exp_conc
+					target = target/exp_conc
 			
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))			
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -542,42 +560,37 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				time = df.index.to_numpy()
 				conc = df[species].to_numpy()
 				if exp_conc != "":
-					conc = conc*exp_conc
+					target = target/exp_conc
 				
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
 	return tau
 
 class VolumeProfile(object):
-    def __init__(self, keywords):
-        self.time = np.array(keywords["vproTime"])
-        self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
-        self.velocity = np.diff(self.volume)/np.diff(self.time)
-        self.velocity = np.append(self.velocity, 0)
-    def __call__(self, t):
-        if t < self.time[-1]:
-            prev_time_point = self.time[self.time <= t][-1]
-            index = np.where(self.time == prev_time_point)[0][0]
-            return self.velocity[index]
-        else:
-            return 0
-
-#rcm_link = 'https://raw.githubusercontent.com/pr-omethe-us/PyKED/master/pyked/tests/testfile_rcm.yaml'
-#with urlopen(rcm_link) as response:
-#    testfile_rcm = yaml.safe_load(response.read())
-
-#ck = ChemKED(dict_input=testfile_rcm,skip_validation=True)
-#dp = ck.datapoints[0]
-
-#T_initial = dp.temperature.to('K').magnitude
-#P_initial = dp.pressure.to('Pa').magnitude
-#X_initial = dp.get_cantera_mole_fraction()
+	def __init__(self, keywords):
+		self.time = np.array(keywords["vproTime"])
+		self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+	def __call__(self, t):
+		if t < self.time[-1]:
+			prev_time_point = self.time[self.time <= t][-1]
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
 
 T_initial = {temperature}
 P_initial = {pressure}
 X_initial = {species_conc}
+
+global criteria
+if T_initial> 2000:
+	criteria = T_initial + 5
+else:
+	criteria = T_initial + 50
 
 
 gas = ct.Solution('{mech}')
@@ -585,7 +598,6 @@ gas.TPX = T_initial, P_initial, X_initial
 
 reac = ct.IdealGasReactor(gas)
 env = ct.Reservoir(ct.Solution('{mech}'))
-
 
 df = pd.read_csv("{volume_profile}")
 exp_time = df["time(s)"]
@@ -610,11 +622,11 @@ t = 0
 pressureList = []
 counter = 1;
 while(gas.T < 1800):
-    t = netw.step()
-    if (counter%1 == 0):       	
-        timeHistory.loc[t] = netw.get_state().astype('float64')
-        pressureList.append(gas.P)
-    counter+=1
+	t = netw.step()
+	if (counter%1 == 0):	   	
+		timeHistory.loc[t] = netw.get_state().astype('float64')
+		pressureList.append(gas.P)
+	counter+=1
 
 tic = time.time() 
 #tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
@@ -629,99 +641,220 @@ tempe_2 = np.concatenate((tempe_split[0],tempe_split[1]))
 index2 = tempe_2.argmax()
 t2 = time_[index2]
 tau = t1-t2
-print(f"t1:{{time[index1]}},{{tempe[index1]}}\nt2:{{time_[index2]}},{{tempe_2[index2]}}")
+print(f"t1:{{time_[index1]}},{{tempe[index1]}}\\nt2:{{time_[index2]}},{{tempe_2[index2]}}")
 fig = plt.figure()
 plt.plot(time_[index1],tempe[index1],"o")
 plt.plot(time_[index2],tempe_2[index2],"o")
 plt.plot(time_,tempe,"-")
 plt.savefig("Ignition_def.pdf")
 tau_file = open("output/RCM.out",'w')
-tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(T_initial,tau*(10**6)))
+tau_file.write("#T(K)	tau(us)"+"\\n"+"{{}}	{{}}".format(T_initial,tau*(10**6)))
 tau_file.close()""".format(mech = mech_file,temperature = target.temperature_i,pressure=target.pressure_i,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],volume_profile=target.add["volume_profile"][float(target.temperature)],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 			extract = """
 		"""
-	
-	elif "Tig" in target.target:
-		#print(target.ignition_type)
-		#print(target.target)
-		if target.ig_mode == "RCM" and target.simulation == "VTIM":
-			if "cantera" in target.add["solver"]: 
-				instring="""#!/usr/bin/python
-from __future__ import division
-from __future__ import print_function
-import pandas as pd
+		elif "CHEMKIN_PRO" in target.add["solver"]:
+			instring = """#!/usr/bin/env python
+# encoding: utf-8
+
+import os
+import csv
 import numpy as np
-import time
-import cantera as ct
-from scipy.interpolate import CubicSpline
+from chemkin import ChemkinJob, getIgnitionDelay, getIgnitionDelayOH
+import pandas as pd
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
 import matplotlib.pyplot as plt
-from scipy.integrate import ode
+from scipy.ndimage import gaussian_filter1d
+from scipy.signal import find_peaks
 
-class TemperatureFromPressure(object):
-    def __init__(self, pressure, T_initial, chem_file='species.cti', cti_source=None,init_X=None):
-        if cti_source is None:
-            gas = ct.Solution(chem_file)
-        else:
-            gas = ct.Solution(source=cti_source)
-        if init_X is None:
-            gas.TP = T_initial, pressure[0]*1e5
-        else:
-            gas.TPX = T_initial, pressure[0]*1e5,init_X
-        initial_entropy = gas.entropy_mass
-        self.temperature = np.zeros((len(pressure)))
-        for i, p in enumerate(pressure):
-            gas.SP = initial_entropy, p*1e5
-            self.temperature[i] = gas.T
+def find_first_slope_transition(time, temperature, temp_min, temp_max):
+	# Create a DataFrame for easier manipulation
+	df = pd.DataFrame({{"time": time, "temperature": temperature}})
 
-class VolumeProfile(object):
-    
-    def __init__(self, time, volume):
-        # The time and volume are stored as lists in the keywords
-        # dictionary. The volume is normalized by the first volume
-        # element so that a unit area can be used to calculate the
-        # velocity.
-        self.time = np.array(time)
-        self.volume = np.array(volume)/volume[0]
+	# Filter the data to the specified temperature range
+	filtered_df = df[(df["temperature"] >= temp_min) & (df["temperature"] <= temp_max)].reset_index(drop=True)
 
-        # The velocity is calculated by the forward difference.
-        # numpy.diff returns an array one element smaller than the
-        # input array, so we append a zero to match the length of the
-        # self.time array.
-        self.velocity = np.diff(self.volume)/np.diff(self.time)
-        self.velocity = np.append(self.velocity, 0)
+	# Compute the first derivative (slope) of the temperature
+	filtered_df["slope"] = np.gradient(filtered_df["temperature"], filtered_df["time"])
 
-    def __call__(self, t):
-       
+	# Find the first slope transition from positive to a smaller positive value
+	for i in range(1, len(filtered_df) - 1):
+		if filtered_df["slope"].iloc[i - 1] > 0 and filtered_df["slope"].iloc[i] < filtered_df["slope"].iloc[i - 1] and filtered_df["slope"].iloc[i] > 0:
+			# This is the first transition from positive to smaller positive slope
+			return {{
+				"time": filtered_df["time"].iloc[i],
+				"temperature": filtered_df["temperature"].iloc[i],
+				"slope": filtered_df["slope"].iloc[i]
+			}}
 
-        if t < self.time[-1]:
-            # prev_time_point is the previous value in the time array
-            # after the current simulation time
-            prev_time_point = self.time[self.time <= t][-1]
-            # index is the index of the time array where
-            # prev_time_point occurs
-            index = np.where(self.time == prev_time_point)[0][0]
-            return self.velocity[index]
-        else:
-            return 0
+	# If no transition is found, return None
+	return None
+
+
+def find_local_peak_in_range(time, temperature, time_min, time_max):
+	# Create a DataFrame for easier manipulation
+	df = pd.DataFrame({{"time": time, "temperature": temperature}})
+
+	# Filter the data to the specified time range
+	filtered_df = df[(df["time"] >= time_min) & (df["time"] <= time_max)].reset_index(drop=True)
+
+	# Compute the first derivative (slope) of the temperature
+	filtered_df["slope"] = np.gradient(filtered_df["temperature"], filtered_df["time"])
+
+	# Find the local peak by detecting where the slope changes from positive to negative
+	for i in range(1, len(filtered_df) - 1):
+		if filtered_df["slope"].iloc[i - 1] > 0 and filtered_df["slope"].iloc[i + 1] < 0:
+			# This is a local peak
+			return {{
+				"time": filtered_df["time"].iloc[i],
+				"temperature": filtered_df["temperature"].iloc[i],
+				"slope": filtered_df["slope"].iloc[i]
+			}}
+
+	# If no peak is found, return None
+	return None
+def find_critical_point(time, temperature, time_min, time_max):
+   
+	# Create a DataFrame for easier manipulation
+	df = pd.DataFrame({{"time": time, "temperature": temperature}})
+
+	# Filter the data to the specified time range
+	filtered_df = df[(df["time"] >= time_min) & (df["time"] <= time_max)].reset_index(drop=True)
+
+	# Compute the first derivative (slope)
+	filtered_df["slope"] = np.gradient(filtered_df["temperature"], filtered_df["time"])
+	
+	# Compute the second derivative (rate of change of slope)
+	filtered_df["slope_change"] = np.gradient(filtered_df["slope"], filtered_df["time"])
+
+	# 1. Find the first point where the slope is decreasing to zero or becomes negative
+	first_slope_decrease = None
+	for i in range(1, len(filtered_df)):
+		if filtered_df["slope"].iloc[i] < 0 and filtered_df["slope"].iloc[i-1] > 0:
+			first_slope_decrease = {{
+				"type": "slope_decrease",
+				"time": filtered_df["time"].iloc[i],
+				"temperature": filtered_df["temperature"].iloc[i],
+				"slope": filtered_df["slope"].iloc[i]
+			}}
+			break
+
+	# 2. Find the first local peak (local maximum) in the temperature profile
+	peak_idx = filtered_df["temperature"].idxmax()  # Index of max temperature
+	peak_point = {{
+		"type": "peak",
+		"time": filtered_df["time"].iloc[peak_idx],
+		"temperature": filtered_df["temperature"].iloc[peak_idx],
+		"slope": filtered_df["slope"].iloc[peak_idx]
+	}}
+
+	# Return the first detected significant point (slope decrease or peak)
+	if first_slope_decrease:
+		return first_slope_decrease
+	else:
+		return peak_point
+
+
+def find_slope_change_points(time, temperature, time_min, time_max):
+	
+	# Create a DataFrame for easier manipulation
+	df = pd.DataFrame({{"time": time, "temperature": temperature}})
+
+	# Filter the data within the specified time range
+	filtered_df = df[(df["time"] >= time_min) & (df["time"] <= time_max)].reset_index(drop=True)
+
+	# Calculate the first derivative (slope)
+	filtered_df["slope"] = np.gradient(filtered_df["temperature"], filtered_df["time"])
+
+	# Find the first slope decrease to near zero
+	first_slope_decrease_point = None
+	for i in range(1, len(filtered_df)):
+		if filtered_df["slope"].iloc[i] < filtered_df["slope"].iloc[i - 1] and filtered_df["slope"].iloc[i] > 0:
+			first_slope_decrease_point = {{
+				"time": filtered_df["time"].iloc[i],
+				"temperature": filtered_df["temperature"].iloc[i],
+				"slope": filtered_df["slope"].iloc[i]
+			}}
+			break
+
+	# Find the first major slope change
+	second_derivative = np.gradient(filtered_df["slope"], filtered_df["time"])
+	major_slope_change_idx = np.argmax(np.abs(second_derivative))  # Maximum absolute second derivative
+	first_major_slope_change_point = {{
+		"time": filtered_df["time"].iloc[major_slope_change_idx],
+		"temperature": filtered_df["temperature"].iloc[major_slope_change_idx],
+		"slope": filtered_df["slope"].iloc[major_slope_change_idx]
+	}}
+
+	return {{
+		"first_slope_decrease_point": first_slope_decrease_point,
+		"first_major_slope_change_point": first_major_slope_change_point
+	}}
+
+def find_nearest_temperature(time_list, temperature_list, target_time):
+	
+	# Convert to numpy arrays for easier computation
+	time_array = np.array(time_list)
+	temperature_array = np.array(temperature_list)
+	
+	# Find the index of the nearest time value
+	idx = np.abs(time_array - target_time).argmin()
+	
+	# Get the nearest time and its corresponding temperature
+	nearest_time = time_array[idx]
+	nearest_temperature = temperature_array[idx]
+	
+	return {{"time": nearest_time, "temperature": nearest_temperature}}
+
+def find_peak_point(time, temperature):
+	# Create a DataFrame for easier manipulation
+	df = pd.DataFrame({{"time": time, "temperature": temperature}})
+	
+	# Compute the derivative (slope) using finite differences
+	df["slope"] = np.gradient(df["temperature"], df["time"])
+	
+	# Find the index of the maximum temperature
+	max_temp_idx = df["temperature"].idxmax()
+	
+	# Get the time and temperature at the peak
+	peak_time = df.loc[max_temp_idx, "time"]
+	peak_temperature = df.loc[max_temp_idx, "temperature"]
+	
+	return {{"time": peak_time, "temperature": peak_temperature, "slope": df.loc[max_temp_idx, "slope"]}}
+
 
 def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
-
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
 def fast_nearest_interp(xi, x, y):
-    # Shift x points to centers
-    spacing = np.diff(x) / 2
-    x = x + np.hstack([spacing, spacing[-1]])
-    # Append the last point in y twice for ease of use
-    y = np.hstack([y, y[-1]])
-    return y[np.searchsorted(x, xi)]
-
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		tau = df[species].idxmax()
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
 	elif cond == "onset" and species != "p":
 		time = df.index.to_numpy()
 		conc = (df[species]).to_numpy()
@@ -772,9 +905,9 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				target = (target/avogadro)*unit_conversion
 				if exp_conc != "":
 					exp_conc = (exp_conc/avogadro)*unit_conversion
-					conc = conc*exp_conc
+					target = target/exp_conc
 			
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))			
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -783,9 +916,381 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				time = df.index.to_numpy()
 				conc = df[species].to_numpy()
 				if exp_conc != "":
-					conc = conc*exp_conc
+					target = target/exp_conc
 				
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+	return tau
+
+
+def getVolumeProfile_From_PressureProfile(gas,PressureProfile ):
+	rho_o,Po = gas.DP
+	gamma = gas.cp/gas.cv
+	VolumeProfile = []
+	for P_t in PressureProfile:
+		VolumeProfile.append((1/rho_o)*(P_t/Po)**(-1/gamma))
+	return np.asarray(VolumeProfile)
+	
+class VolumeProfile(object):
+	def __init__(self, keywords):
+		self.time = np.array(keywords["vproTime"])
+		self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+	def __call__(self, t):
+		if t < self.time[-1]:
+			prev_time_point = self.time[self.time <= t][-1]
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
+
+
+def convert_and_transpose_ckcsv(input_filepath, output_filepath):
+	with open(input_filepath, 'r') as ckcsv_file:
+		reader = csv.reader(ckcsv_file)
+
+		# Skip the first row (metadata) and read the actual data
+		rows = list(reader)
+		data_rows = rows[1:-2]  # Skip metadata row
+		
+		# Extract variables, units, and time series data
+		variables = [row[0] for row in data_rows]	 # First column as variable names
+		units = [row[1] for row in data_rows]		 # Second column as units
+		data_values = [row[2:] for row in data_rows]  # Time series data from the third column onward
+		headers = [f"{{row[0]}} {{row[1]}}" for row in data_rows]
+		#print(data_values[-1])	
+		# Transpose the data values so each variable has its data in columns
+		transposed_data = list(zip(*data_values))
+		with open(output_filepath, 'w', newline='') as csv_file:
+			writer = csv.writer(csv_file)
+
+			# Write headers (variable names)
+			writer.writerow(headers)
+
+			# Write units row
+			#writer.writerow(units)
+
+			# Write transposed data rows
+			writer.writerows(transposed_data)
+
+	print(f"Conversion and transposition complete. Data saved to {{output_filepath}}")
+
+#mechanism in yaml format: {mech}
+target_Temperature = {target_Temperature}
+# Parameters
+reactorTemperature = {temperature_K}  # Replace with your desired temperature in Kelvin
+reactorPressure = {pressure}  # Replace with your desired pressure in pa
+spec = {species_conc}
+conc_X = list(spec.items()) # Example species concentrations, adjust as needed
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
+# Set up the Chemkin simulation
+currentDir = os.path.dirname(__file__).strip("\\n")
+chemFile = os.path.join(currentDir, 'mechanism.inp')  # Update with the mechanism file path
+tempDir = os.path.join(currentDir, 'output')
+
+estimatedIgnitionDelayTime = {estimateTIG}
+variableVolumeProfileType = "{VP_FILE_TYPE}"
+if variableVolumeProfileType == "ck_file":
+	VP = "{volume_profile}"
+elif variableVolumeProfileType == "Dict" or variableVolumeProfileType == "csv_file":
+	df = pd.read_csv("{volume_profile}")
+	exp_time = df["time(s)"]
+	exp_volume = df["volume(cm3)"]
+	keywords = {{"vproTime": exp_time, "vproVol": exp_volume}}
+	VP = VolumeProfile(keywords)
+else:
+	VP = "{volume_profile}"
+
+# Initialize Chemkin job
+job = ChemkinJob(
+	name=conc_X[0][0],
+	chemFile=chemFile,
+	tempDir=tempDir,
+)
+
+job.preprocess()
+
+# Write Chemkin input for a single simulation
+input_file = job.writeInputHomogeneousBatch(
+	problemType='constrainVandSolveE',  # Problem type in Chemkin
+	reactants=conc_X,
+	temperature=reactorTemperature,
+	pressure=reactorPressure,
+	endTime= {estimateTIG},  # Simulation end time in seconds
+	variableVolume = True,
+	variableVolumeProfile = VP,
+	variableVolumeProfileType = "{VP_FILE_TYPE}"
+)
+
+# Run the Chemkin simulation
+job.run(input_file, model='CKReactorGenericClosed', pro=True)
+job.postprocess(sens=False, rop=False, all=True, transpose=False)
+
+#tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
+
+# Calculate ignition delay
+try:
+	tau = getIgnitionDelayOH(job.ckcsvFile)
+except ValueError:
+	print("Value Error")
+	tau = None
+
+saveAll = {saveAll}
+if saveAll:
+	convert_and_transpose_ckcsv(job.ckcsvFile, "time_history.csv")
+
+timeHistory = pd.read_csv("time_history.csv")
+pressureList = timeHistory["Pressure  (bar)"]
+#tau = ignitionDelay(timeHistory,pressureList,"CHV","max","None",)
+
+#Actual defination for RCM using temperature profile
+tempe = timeHistory["Temperature  (K)"].to_numpy()
+time_ = timeHistory.index.to_numpy()
+smooth_temperature = gaussian_filter1d(tempe, sigma=5)  # Adjust sigma for smoothness
+
+# Plot
+plt.plot(time_, tempe, label="Original")
+plt.plot(time_, smooth_temperature, label="Smoothed")
+plt.legend()
+plt.savefig("Gaussian_smoothness.pdf")
+#tempe = smooth_temperature
+slope_change_point_1 = find_first_slope_transition(time_,smooth_temperature,0.8*target_Temperature,target_Temperature+10)#, direction='forward')
+t1 = slope_change_point_1['time']
+T_1 = slope_change_point_1['temperature']
+slope_change_point_2 = find_peak_point(time_,tempe)
+t2 = slope_change_point_2["time"]
+T_2 = slope_change_point_2['temperature']
+max_T_1 = find_slope_change_points(time_,tempe,t1,0.9*t2) #Find the maxima in between t1 and t2
+if max_T_1['first_slope_decrease_point']:
+	t1_dash = max_T_1['first_slope_decrease_point']['time']
+	T_1_dash = max_T_1['first_slope_decrease_point']['temperature']
+else:   
+	print(t1)
+	new_T_1 = find_local_peak_in_range(time_,tempe,t1,1.06*t1)
+	t1_dash = new_T_1['time']
+	T_1_dash = new_T_1['temperature']
+max_T_2 = find_slope_change_points(time_,smooth_temperature,t2,1.5*t2)
+
+if max_T_2['first_slope_decrease_point']:
+	t2_dash = max_T_2['first_slope_decrease_point']['time']
+	T_2_dash = max_T_2['first_slope_decrease_point']['temperature']
+else:   
+	new_T_2 = find_critical_point(time_,smooth_temperature,t2,1.5*t2)
+	
+	t2_dash = new_T_2['time']
+	T_2_dash = new_T_2['temperature']
+
+
+max_T_3 = find_nearest_temperature(time_,tempe,(t2+t2_dash)/2)
+t3 = max_T_3['time']
+T_3 = max_T_3['temperature']
+print(f"EOC:\\t{{t1_dash}},{{T_1_dash}}")
+tau = t3-t1_dash
+fig = plt.figure()
+plt.plot(t1_dash,T_1_dash,"o")
+plt.plot(t3,T_3,"o")
+plt.plot(time_,tempe,"-")
+plt.savefig("Ignition_def.pdf")
+# Output the results
+if tau:
+	print(f"Ignition delay at {{reactorTemperature}} K and {{reactorPressure}} atm: {{tau*1e3}} ms")
+	with open("output/RCM.out", 'w') as tau_file:
+		tau_file.write(f"#T(K)	tau(us)\\n{{T_1_dash}}	{{tau * 1e6}}\\n")
+
+import glob
+
+def delete_files(directory):
+	# Patterns for files to delete
+	patterns = ["*.out", "*.asc", "*.zip"]
+	exception_file = "tau.out"
+	
+	for pattern in patterns:
+		# Get all files matching the pattern in the directory
+		files = glob.glob(os.path.join(directory, pattern))
+		
+		for file in files:
+			# Skip the exception file
+			if os.path.basename(file).lower() == exception_file.lower():
+				continue
+			
+			# Delete the file
+			try:
+				os.remove(file)
+				print(f"Deleted: {{file}}")
+			except Exception as e:
+				print(f"Error deleting {{file}}: {{e}}")
+
+# Specify the directory containing the files
+directory_path = "output/"
+delete_files(directory_path)
+""".format(mech = mech_file,target_Temperature = target.temperature,temperature_K = target.temperature_i,pressure=target.pressure_i,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)], volume_profile=target.add["volume_profile"][float(target.temperature)],VP_FILE_TYPE = target.add["volume_profile_type"],estimateTIG = float(target.add["estimateTIG"]),delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+
+		elif "cantera" in target.add["solver"] and "non_reactive" in target.add["RCM_type"]: 
+				instring="""#!/usr/bin/python
+from __future__ import division
+from __future__ import print_function
+import pandas as pd
+import numpy as np
+import time
+import cantera as ct
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
+import matplotlib.pyplot as plt
+from scipy.integrate import ode
+from scipy.signal import find_peaks
+class TemperatureFromPressure(object):
+	def __init__(self, pressure, T_initial, chem_file='species.cti', cti_source=None,init_X=None):
+		if cti_source is None:
+			gas = ct.Solution(chem_file)
+		else:
+			gas = ct.Solution(source=cti_source)
+		if init_X is None:
+			gas.TP = T_initial, pressure[0]*1e5
+		else:
+			gas.TPX = T_initial, pressure[0]*1e5,init_X
+		initial_entropy = gas.entropy_mass
+		self.temperature = np.zeros((len(pressure)))
+		for i, p in enumerate(pressure):
+			gas.SP = initial_entropy, p*1e5
+			self.temperature[i] = gas.T
+
+class VolumeProfile(object):
+	
+	def __init__(self, time, volume):
+		# The time and volume are stored as lists in the keywords
+		# dictionary. The volume is normalized by the first volume
+		# element so that a unit area can be used to calculate the
+		# velocity.
+		self.time = np.array(time)
+		self.volume = np.array(volume)/volume[0]
+
+		# The velocity is calculated by the forward difference.
+		# numpy.diff returns an array one element smaller than the
+		# input array, so we append a zero to match the length of the
+		# self.time array.
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+
+	def __call__(self, t):
+	   
+
+		if t < self.time[-1]:
+			# prev_time_point is the previous value in the time array
+			# after the current simulation time
+			prev_time_point = self.time[self.time <= t][-1]
+			# index is the index of the time array where
+			# prev_time_point occurs
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
+
+def find_nearest(array, value):
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
+def fast_nearest_interp(xi, x, y):
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
+
+
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
+	if cond == "max":
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff(conc)
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "dt-max" and species == "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(np.asarray(pList))
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "dt-max" and species != "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "specific":
+		if specified_value.split(";")[0] == None:
+			raise Assertionerror("Input required for specified_value in ignition delay")
+		else:
+			target = float(specified_value.split(";")[0])
+			unit = specified_value.split(";")[1]
+			if unit == "molecule":
+				avogadro = 6.02214E+23
+				target = target/avogadro
+				molecular_wt = gas.atomic_weight(species)
+				target = molecular_wt*target	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
+			
+			elif unit == "molecule/cm3":
+				unit_conversion = 10**(6)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				avogadro = 6.02214E+23
+				target = (target/avogadro)*unit_conversion
+				if exp_conc != "":
+					exp_conc = (exp_conc/avogadro)*unit_conversion
+					target = target/exp_conc
+			
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))			
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+				
+			elif unit == "mole/cm3":
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				if exp_conc != "":
+					target = target/exp_conc
+				
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -812,9 +1317,250 @@ def doNonReactive(gas,inp_time,inp_vol):
 		t = reactorNetwork.step()
 		#print(t)
 		if (counter%1 == 0):
-		    timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
-		    pressureList.append(gas.P)
-		    volumeList.append(r.volume)
+			timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+			pressureList.append(gas.P)
+			volumeList.append(r.volume)
+		counter+=1
+	
+	return timeHistory,pressureList,volumeList
+
+VP_file_type = "{VP_FILE_TYPE}"
+if VP_file_type == "ck_file":
+	file_ = "{volumeProfile}"
+	df = pd.read_csv(file_, delim_whitespace=True, header=None)
+	df.columns = ["Tag", "Time", "Volume"]
+	inp_time = df["Time"]
+	inp_vol = df["Volume"]
+
+else:
+	file_ = "{volumeProfile}"
+	df = pd.read_csv(file_, sep=",")
+	inp_time = df["time(s)"]
+	inp_vol = df["volume(cm3)"]
+
+TDC_time = inp_time[list(inp_vol).index(min(inp_vol))]
+time = []
+temperature = []
+pressure = []
+#input_volume = volume
+simulated_volume = []
+end_temp = 2500.
+end_time = 0.2
+
+gas = ct.Solution('{mech}')
+gas_nr = ct.Solution("{mech}")
+
+reactorTemperature = {temperature} #Kelvin
+reactorPressure = {pressure}
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
+gas.TPX = reactorTemperature, reactorPressure,{species_conc}
+gas_nr.TPX = reactorTemperature, reactorPressure,{species_conc}
+
+timeHistory_nonreactive,pressureList_nonreactive,vol_nonreactive = doNonReactive(gas_nr,inp_time,inp_vol)
+
+
+fig = plt.figure()
+plt.plot(timeHistory_nonreactive,pressureList_nonreactive,"r-",label="Non-reactive pressure profile")
+plt.savefig("p_profile.png",bbox_inches="tight")""".format(mech = mech_file,volumeProfile = target.add["volume_profile"][float(target.temperature)],temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],VP_FILE_TYPE = target.add["volume_profile_type"],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+		
+		else:
+			raise AssertionError("Invalid solver name for RCM simulations !!!")
+	elif "Tig" in target.target:
+		#print(target.ignition_type)
+		#print(target.target)
+		if target.ig_mode == "RCM" and target.simulation == "VTIM":
+			if "cantera" in target.add["solver"]: 
+				instring="""#!/usr/bin/python
+from __future__ import division
+from __future__ import print_function
+import pandas as pd
+import numpy as np
+import time
+import cantera as ct
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
+import matplotlib.pyplot as plt
+from scipy.integrate import ode
+from scipy.signal import find_peaks
+class TemperatureFromPressure(object):
+	def __init__(self, pressure, T_initial, chem_file='species.cti', cti_source=None,init_X=None):
+		if cti_source is None:
+			gas = ct.Solution(chem_file)
+		else:
+			gas = ct.Solution(source=cti_source)
+		if init_X is None:
+			gas.TP = T_initial, pressure[0]*1e5
+		else:
+			gas.TPX = T_initial, pressure[0]*1e5,init_X
+		initial_entropy = gas.entropy_mass
+		self.temperature = np.zeros((len(pressure)))
+		for i, p in enumerate(pressure):
+			gas.SP = initial_entropy, p*1e5
+			self.temperature[i] = gas.T
+
+class VolumeProfile(object):
+	
+	def __init__(self, time, volume):
+		# The time and volume are stored as lists in the keywords
+		# dictionary. The volume is normalized by the first volume
+		# element so that a unit area can be used to calculate the
+		# velocity.
+		self.time = np.array(time)
+		self.volume = np.array(volume)/volume[0]
+
+		# The velocity is calculated by the forward difference.
+		# numpy.diff returns an array one element smaller than the
+		# input array, so we append a zero to match the length of the
+		# self.time array.
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+
+	def __call__(self, t):
+	   
+
+		if t < self.time[-1]:
+			# prev_time_point is the previous value in the time array
+			# after the current simulation time
+			prev_time_point = self.time[self.time <= t][-1]
+			# index is the index of the time array where
+			# prev_time_point occurs
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
+
+def find_nearest(array, value):
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
+def fast_nearest_interp(xi, x, y):
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
+
+
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
+	if cond == "max":
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff(conc)
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "dt-max" and species == "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(np.asarray(pList))
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "dt-max" and species != "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "specific":
+		if specified_value.split(";")[0] == None:
+			raise Assertionerror("Input required for specified_value in ignition delay")
+		else:
+			target = float(specified_value.split(";")[0])
+			unit = specified_value.split(";")[1]
+			if unit == "molecule":
+				avogadro = 6.02214E+23
+				target = target/avogadro
+				molecular_wt = gas.atomic_weight(species)
+				target = molecular_wt*target	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
+			
+			elif unit == "molecule/cm3":
+				unit_conversion = 10**(6)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				avogadro = 6.02214E+23
+				target = (target/avogadro)*unit_conversion
+				if exp_conc != "":
+					exp_conc = (exp_conc/avogadro)*unit_conversion
+					target = target/exp_conc
+			
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))			
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+				
+			elif unit == "mole/cm3":
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				if exp_conc != "":
+					target = target/exp_conc
+				
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+	return tau
+	
+def doNonReactive(gas,inp_time,inp_vol):
+	gas.set_multiplier(0)
+	#r = ct.Reactor(contents=gas)
+	r = ct.IdealGasReactor(gas)
+	reactorNetwork = ct.ReactorNet([r])
+	env = ct.Reservoir(ct.Solution('air.yaml'))
+	ct.Wall(r, env, A=1.0, velocity=VolumeProfile(inp_time, inp_vol))
+	
+	stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
+	timeHistory = pd.DataFrame(columns=stateVariableNames)
+
+	#t0 = time.time()
+	estimatedIgnitionDelayTime = 1
+	t = 0
+	pressureList = []
+	volumeList = []
+	counter = 1;
+	while(t < estimatedIgnitionDelayTime):
+		t = reactorNetwork.step()
+		#print(t)
+		if (counter%1 == 0):
+			timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+			pressureList.append(gas.P)
+			volumeList.append(r.volume)
 		counter+=1
 	
 	return timeHistory,pressureList,volumeList
@@ -837,7 +1583,13 @@ gas_nr = ct.Solution("{mech}")
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
-
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 gas_nr.TPX = reactorTemperature, reactorPressure,{species_conc}
 
@@ -852,7 +1604,7 @@ stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
 
 #t0 = time.time()
-estimatedIgnitionDelayTime = 0.2
+estimatedIgnitionDelayTime = 1.0
 t = 0
 pressureList = []
 volumeList = []
@@ -861,9 +1613,9 @@ while(t < estimatedIgnitionDelayTime):
 	t = reactorNetwork.step()
 	#print(t)
 	if (counter%1 == 0):
-	    timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
-	    pressureList.append(gas.P)
-	    volumeList.append(r.volume)
+		timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+		pressureList.append(gas.P)
+		volumeList.append(r.volume)
 	counter+=1
 
 tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
@@ -872,10 +1624,10 @@ tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{spec
 #Pc = pressureList_nonreactive[TDC_point]
 
 tau_file = open("output/tau.out",'w')
-tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,(tau-TDC_time)*(10**6)))
+tau_file.write("#T(K)	tau(us)"+"\\n"+"{{}}	{{}}".format(reactorTemperature,(tau-TDC_time)*(10**6)))
 tau_file.close()
 #T_file = open("output/TP.out",'w')
-#T_file.write("#T(K)    P(bar)"+"\\n"+"{{}}    {{}}".format(Tc,Pc/1e5))
+#T_file.write("#T(K)	P(bar)"+"\\n"+"{{}}	{{}}".format(Tc,Pc/1e5))
 #T_file.close()
 {saveAll}timeHistory.to_csv("time_history.csv")""".format(mech = mech_file,volumeProfile = target.add["volumeProfile"],temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 		elif target.ignition_type == "reflected":
@@ -890,25 +1642,43 @@ import numpy
 import time
 import cantera as ct
 import scipy.integrate
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
 import matplotlib.pyplot as plt
-
+from scipy.signal import find_peaks
+global dt
+dt = {dt}
 def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
-
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
 def fast_nearest_interp(xi, x, y):
-    # Shift x points to centers
-    spacing = np.diff(x) / 2
-    x = x + np.hstack([spacing, spacing[-1]])
-    # Append the last point in y twice for ease of use
-    y = np.hstack([y, y[-1]])
-    return y[np.searchsorted(x, xi)]
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		tau = df[species].idxmax()
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
 	elif cond == "onset" and species != "p":
 		time = df.index.to_numpy()
 		conc = (df[species]).to_numpy()
@@ -959,9 +1729,9 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				target = (target/avogadro)*unit_conversion
 				if exp_conc != "":
 					exp_conc = (exp_conc/avogadro)*unit_conversion
-					conc = conc*exp_conc
+					target = target/exp_conc
 			
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))			
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -970,9 +1740,9 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				time = df.index.to_numpy()
 				conc = df[species].to_numpy()
 				if exp_conc != "":
-					conc = conc*exp_conc
+					target = target/exp_conc
 				
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -980,7 +1750,7 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 
 
 def getTimeProfile(t1,t2):
-	time =np.arange(t1,t2,2e-6)
+	time =np.arange(t1,t2,{dt})
 	return time
 
 	
@@ -988,9 +1758,9 @@ def getPressureProfile(gas,time,dpdt):
 	p = gas.P
 	p_new = p
 	PressureProfile = []
-	dt = 2e-6
+	dt = {dt}
 	for t in time:
-		PressureProfile.append(p_new + dt*(0.01*dpdt*p_new*1000))
+		PressureProfile.append(p_new)
 		p_new = p_new + dt*(0.01*dpdt*p_new*1000)
 	return np.asarray(PressureProfile)
 
@@ -1003,19 +1773,19 @@ def getVolumeProfile_From_PressureProfile(gas,PressureProfile ):
 	return np.asarray(VolumeProfile)
 	
 class VolumeProfile(object):
-    def __init__(self, keywords):
-        self.time = np.array(keywords["vproTime"])
-        self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
-        self.velocity = np.diff(self.volume)/np.diff(self.time)
-        self.velocity = np.append(self.velocity, 0)
-    def __call__(self, t):
-        if t < self.time[-1]:
-            prev_time_point = self.time[self.time <= t][-1]
-            index = np.where(self.time == prev_time_point)[0][0]
-            return self.velocity[index]
-        else:
-            return 0
-            
+	def __init__(self, keywords):
+		self.time = np.array(keywords["vproTime"])
+		self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+	def __call__(self, t):
+		if t < self.time[-1]:
+			prev_time_point = self.time[self.time <= t][-1]
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
+			
 
 ###========================================================================================######
 ### Main code starts #####
@@ -1025,19 +1795,20 @@ gas = ct.Solution('{mech}')
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
 
-criteria = 1800
-
-if (reactorTemperature >= criteria):
-	criteria = reactorTemperature + 300
-elif (reactorTemperature - criteria)<=200:
-	criteria = reactorTemperature + 300
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
 
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
 env = ct.Reservoir(ct.Solution('{mech}'))
 
 dpdt = {dpdt}#%/ms
-estimatedIgnitionDelayTime = 0.2
+estimatedIgnitionDelayTime = {estimateTIG}
 flag = False
 time = getTimeProfile(0,estimatedIgnitionDelayTime)
 pressure_profile = getPressureProfile(gas,time,dpdt)
@@ -1052,7 +1823,7 @@ ct.Wall(r, env, velocity=VolumeProfile(keywords));
 
 reactorNetwork = ct.ReactorNet([r])
 
-reactorNetwork.max_time_step = np.min(np.diff(time))
+reactorNetwork.max_time_step = 0.0001
 
 stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
@@ -1060,7 +1831,7 @@ timeHistory = pd.DataFrame(columns=stateVariableNames)
 
 ####============================#####
 ### Solver specific information #####
-###    Do not change            #####
+###	Do not change			#####
 ####============================#####
 
 t = 0
@@ -1073,51 +1844,67 @@ gas_T.append(gas.T)
 time_profile = []
 time_profile.append(0)
 while t<estimatedIgnitionDelayTime:
-    t = reactorNetwork.step()
-    #print(t,gas.T)
-    time_profile.append(t)
-    gas_T.append(gas.T)
-    time_diff = np.diff(np.asarray(time_profile))
-    conc = np.diff(np.asarray(gas_T))
-    if len(conc) == 1:
-        slope = conc/time_diff
-        index = slope[0]
-    else:
-    	slope = conc/time_diff
-    	index = int(slope.argmax())
-    slope_arg_max.append(index)
-    count+=1
-    if max(slope_arg_max) == slope_arg_max[-1] and count==1:
-    	continue
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
-    	continue
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
-    	break
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
-    	break
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
-    	estimatedIgnitionDelayTime = t + 1e-4
-    	flag = True
-    if (counter%1 == 0):       	
-        timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
-        pressureList.append(gas.P)
-    counter+=1
+	t = reactorNetwork.step()
+	gas_T.append(gas.T)
+	if (counter%1 == 0):
+		#if reactorNetwork.get_state().astype('float64')[index_a] <0:
+		 #   raise AssertionError("Numerical error!!")			
+		timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+		pressureList.append(gas.P)
+	counter+=1
 
+#while t<estimatedIgnitionDelayTime:
+#	t = reactorNetwork.step()
+#	#print(t,gas.T)
+#	time_profile.append(t)
+#	gas_T.append(gas.T)
+#	time_diff = np.diff(np.asarray(time_profile))
+#	conc = np.diff(np.asarray(gas_T))
+#	if len(conc) == 1:
+#		slope = conc/time_diff
+#		index = slope[0]
+#	else:
+#		slope = conc/time_diff
+#		index = int(slope.argmax())
+#	slope_arg_max.append(index)
+#	count+=1
+#	if max(slope_arg_max) == slope_arg_max[-1] and count==1:
+#		continue
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
+#		continue
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
+#		break
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
+#		break
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
+#		estimatedIgnitionDelayTime = t + 1e-4
+#		flag = True
+#	if (counter%1 == 0):
+#		#if reactorNetwork.get_state().astype('float64')[index_a] <0:
+#		 #   raise AssertionError("Numerical error!!")			
+#		timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+#		pressureList.append(gas.P)
+#	counter+=1
 tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
 # Toc
 tau_file = open("output/tau.out",'w')
-tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,tau*(10**6)))
+tau_file.write("#T(K)	tau(us)"+"\\n"+"{{}}	{{}}".format(reactorTemperature,tau*(10**6)))
 tau_file.close()
 species = "{delay_def}"
 time = timeHistory.index.to_numpy()
 if species != "p":
 	conc = (timeHistory[species]).to_numpy()
+else:
+	conc = pressureList
+	
 fig = plt.figure()
 plt.plot(time,conc,"b-",label="{delay_def} profile")
 plt.legend()
 plt.savefig("profile.pdf")
-{saveAll}timeHistory.to_csv("time_history.csv")
-""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],dpdt = target.add["dpdt"][target.temperature], delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+saveAll = {saveAll}
+if saveAll == True:
+	timeHistory.to_csv("time_history.csv")
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],dpdt = target.add["dpdt"],dt = float(target.add["dt"]),estimateTIG = float(target.add["estimateTIG"]), delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 				
 			elif "cantera" in target.add["solver"] and target.add["BoundaryLayer"] != True:
 				instring = """#!/usr/bin/python
@@ -1127,46 +1914,63 @@ import pandas as pd
 import numpy as np
 import time
 import cantera as ct
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
 import matplotlib.pyplot as plt
-
+from scipy.signal import find_peaks
 def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
-
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
 def fast_nearest_interp(xi, x, y):
-    # Shift x points to centers
-    spacing = np.diff(x) / 2
-    x = x + np.hstack([spacing, spacing[-1]])
-    # Append the last point in y twice for ease of use
-    y = np.hstack([y, y[-1]])
-    return y[np.searchsorted(x, xi)]
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
 
 gas = ct.Solution('{mech}')
 
 reactorTemperature = {temperature} #Kelvin
 reactorPressure = {pressure}
 
-criteria = 1800
-
-if (reactorTemperature >= criteria):
-	criteria = reactorTemperature + 300
-elif (reactorTemperature - criteria)<=200:
-	criteria = reactorTemperature + 300
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
 
 gas.TPX = reactorTemperature, reactorPressure,{species_conc}
 r = ct.IdealGasReactor(contents=gas, name="Batch Reactor")
 reactorNetwork = ct.ReactorNet([r])
-reactorNetwork.max_time_step = 0.01
+reactorNetwork.max_time_step = 0.0001
 stateVariableNames = [r.component_name(item) for item in range(r.n_vars)]
 timeHistory = pd.DataFrame(columns=stateVariableNames)
 #index_a = stateVariableNames.index("{delay_def}")
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		tau = df[species].idxmax()
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
 	elif cond == "onset" and species != "p":
 		time = df.index.to_numpy()
 		conc = (df[species]).to_numpy()
@@ -1217,9 +2021,9 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				target = (target/avogadro)*unit_conversion
 				if exp_conc != "":
 					exp_conc = (exp_conc/avogadro)*unit_conversion
-					conc = conc*exp_conc
+					target = target/exp_conc
 			
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))			
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
@@ -1228,16 +2032,16 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 				time = df.index.to_numpy()
 				conc = df[species].to_numpy()
 				if exp_conc != "":
-					conc = conc*exp_conc
+					target = target/exp_conc
 				
-				f = CubicSpline(time,conc, bc_type='natural')
+				f = Akima1DInterpolator(time,conc)
 				time_new = np.arange(min(time),max(time),10**(-8))
 				conc_new = f(time_new)
 				tau = fast_nearest_interp(target,conc_new,time_new)
 	return tau
 
 t0 = time.time()
-estimatedIgnitionDelayTime = 1
+estimatedIgnitionDelayTime = {estimateTIG}
 flag = False
 t = 0
 pressureList = []
@@ -1249,47 +2053,592 @@ gas_T.append(gas.T)
 time_profile = []
 time_profile.append(0)
 while t<estimatedIgnitionDelayTime:
-    t = reactorNetwork.step()
-    #print(t,gas.T)
-    time_profile.append(t)
-    gas_T.append(gas.T)
-    time_diff = np.diff(np.asarray(time_profile))
-    conc = np.diff(np.asarray(gas_T))
-    if len(conc) == 1:
-        slope = conc/time_diff
-        index = slope[0]
-    else:
-    	slope = conc/time_diff
-    	index = int(slope.argmax())
-    slope_arg_max.append(index)
-    count+=1
-    if max(slope_arg_max) == slope_arg_max[-1] and count==1:
-    	continue
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
-    	continue
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
-    	break
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
-    	break
-    elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
-    	estimatedIgnitionDelayTime = t + 1e-4
-    	flag = True
-    if (counter%1 == 0):
-        #if reactorNetwork.get_state().astype('float64')[index_a] <0:
-         #   raise AssertionError("Numerical error!!")        	
-        timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
-        pressureList.append(gas.P)
-    counter+=1
+	t = reactorNetwork.step()
+	gas_T.append(gas.T)
+	if (counter%1 == 0):
+		#if reactorNetwork.get_state().astype('float64')[index_a] <0:
+		 #   raise AssertionError("Numerical error!!")			
+		timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+		pressureList.append(gas.P)
+	counter+=1
+
+#while t<estimatedIgnitionDelayTime:
+#	t = reactorNetwork.step()
+#	#print(t,gas.T)
+#	time_profile.append(t)
+#	gas_T.append(gas.T)
+#	time_diff = np.diff(np.asarray(time_profile))
+#	conc = np.diff(np.asarray(gas_T))
+#	if len(conc) == 1:
+#		slope = conc/time_diff
+#		index = slope[0]
+#	else:
+#		slope = conc/time_diff
+#		index = int(slope.argmax())
+#	slope_arg_max.append(index)
+#	count+=1
+#	if max(slope_arg_max) == slope_arg_max[-1] and count==1:
+#		continue
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t<estimatedIgnitionDelayTime:
+#		continue
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature <= 200 and t>estimatedIgnitionDelayTime:
+#		break
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 200 and t>estimatedIgnitionDelayTime:
+#		break
+#	elif max(slope_arg_max) == slope_arg_max[-1] and max(slope_arg_max) == slope_arg_max[-2] and gas.T - reactorTemperature >= 100 and t<estimatedIgnitionDelayTime and flag == False:
+#		estimatedIgnitionDelayTime = t + 1e-4
+#		flag = True
+#	if (counter%1 == 0):
+#		#if reactorNetwork.get_state().astype('float64')[index_a] <0:
+#		 #   raise AssertionError("Numerical error!!")			
+#		timeHistory.loc[t] = reactorNetwork.get_state().astype('float64')
+#		pressureList.append(gas.P)
+#	counter+=1
 
 tau = ignitionDelay(timeHistory,pressureList,"{delay_def}","{delay_cond}","{specific_cond}",{exp_conc})
 # Toc
 t1 = time.time()
 tau_file = open("output/tau.out",'w')
-tau_file.write("#T(K)    tau(us)"+"\\n"+"{{}}    {{}}".format(reactorTemperature,tau*(10**6)))
+tau_file.write("#T(K)	tau(us)"+"\\n"+"{{}}	{{}}".format(reactorTemperature,tau*(10**6)))
 tau_file.close()
-{saveAll}timeHistory.to_csv("time_history.csv")
-""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+saveAll = {saveAll}
+if saveAll == True:
+	timeHistory.to_csv("time_history.csv")
+""".format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],estimateTIG = target.add["estimateTIG"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
 			
+			elif "CHEMKIN_PRO" in target.add["solver"] and target.add["BoundaryLayer"] != True:
+				instring = """#!/usr/bin/env python
+# encoding: utf-8
+
+import os
+import csv
+import numpy as np
+from chemkin import ChemkinJob, getIgnitionDelay, getIgnitionDelayOH
+import pandas as pd
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
+from scipy.signal import find_peaks
+
+def find_nearest(array, value):
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
+
+def fast_nearest_interp(xi, x, y):
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
+
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
+	if cond == "max":
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff(conc)
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "dt-max" and species == "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(np.asarray(pList))
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "dt-max" and species != "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "specific":
+		if specified_value.split(";")[0] == None:
+			raise Assertionerror("Input required for specified_value in ignition delay")
+		else:
+			target = float(specified_value.split(";")[0])
+			unit = specified_value.split(";")[1]
+			if unit == "molecule":
+				avogadro = 6.02214E+23
+				target = target/avogadro
+				molecular_wt = gas.atomic_weight(species)
+				target = molecular_wt*target	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
+			
+			elif unit == "molecule/cm3":
+				unit_conversion = 10**(6)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				avogadro = 6.02214E+23
+				target = (target/avogadro)*unit_conversion
+				if exp_conc != "":
+					exp_conc = (exp_conc/avogadro)*unit_conversion
+					target = target/exp_conc
+			
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))			
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+				
+			elif unit == "mole/cm3":
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				if exp_conc != "":
+					target = target/exp_conc
+				
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+	return tau
+
+
+def convert_and_transpose_ckcsv(input_filepath, output_filepath):
+	with open(input_filepath, 'r') as ckcsv_file:
+		reader = csv.reader(ckcsv_file)
+
+		# Skip the first row (metadata) and read the actual data
+		rows = list(reader)
+		data_rows = rows[1:-2]  # Skip metadata row
+		
+		# Extract variables, units, and time series data
+		variables = [row[0] for row in data_rows]	 # First column as variable names
+		units = [row[1] for row in data_rows]		 # Second column as units
+		data_values = [row[2:] for row in data_rows]  # Time series data from the third column onward
+		headers = [f"{{row[0]}} {{row[1]}}" for row in data_rows]
+		#print(data_values[-1])	
+		# Transpose the data values so each variable has its data in columns
+		transposed_data = list(zip(*data_values))
+		with open(output_filepath, 'w', newline='') as csv_file:
+			writer = csv.writer(csv_file)
+
+			# Write headers (variable names)
+			writer.writerow(headers)
+
+			# Write units row
+			#writer.writerow(units)
+
+			# Write transposed data rows
+			writer.writerows(transposed_data)
+
+	print(f"Conversion and transposition complete. Data saved to {{output_filepath}}")
+
+#mechanism in yaml format: {mech}
+
+# Parameters
+reactorTemperature = {temperature_K}  # Replace with your desired temperature in Kelvin
+reactorPressure = {pressure}  # Replace with your desired pressure in atm
+spec = {species_conc}
+conc_X = list(spec.items()) # Example species concentrations, adjust as needed
+
+# Set up the Chemkin simulation
+currentDir = os.path.dirname(__file__).strip("\\n")
+chemFile = os.path.join(currentDir, 'mechanism.inp')  # Update with the mechanism file path
+tempDir = os.path.join(currentDir, 'output')
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
+
+# Initialize Chemkin job
+job = ChemkinJob(
+	name=conc_X[0][0],
+	chemFile=chemFile,
+	tempDir=tempDir,
+)
+
+job.preprocess()
+
+# Write Chemkin input for a single simulation
+input_file = job.writeInputHomogeneousBatch(
+	problemType='constrainVandSolveE',  # Problem type in Chemkin
+	reactants=conc_X,
+	temperature=reactorTemperature,
+	pressure=reactorPressure,
+	endTime= {End_Time}  # Simulation end time in seconds
+)
+
+# Run the Chemkin simulation
+job.run(input_file, model='CKReactorGenericClosed', pro=True)
+job.postprocess(sens=False, rop=False, all=True, transpose=False)
+
+# Calculate ignition delay
+#try:
+#	tau = getIgnitionDelayOH(job.ckcsvFile)
+#except ValueError:
+#	print("Value Error")
+#	tau = None
+
+saveAll = True 
+if saveAll:
+	convert_and_transpose_ckcsv(job.ckcsvFile, "time_history.csv")
+
+timeHistory = pd.read_csv("time_history.csv",index_col=0)
+pressureList = timeHistory["Pressure  (bar)"]
+species = f"Mole_fraction_{delay_def}  ()"
+tau = ignitionDelay(timeHistory,pressureList,species,"{delay_cond}","{specific_cond}",{exp_conc})
+
+# Output the results
+if tau:
+	print(f"Ignition delay at {{reactorTemperature}} K and {{reactorPressure}} atm: {{tau*1e3}} ms")
+	with open("output/tau.out", 'w') as tau_file:
+		tau_file.write(f"#T(K)	tau(us)\\n{{reactorTemperature}}	{{tau * 1e6}}\\n")
+
+import glob
+
+def delete_files(directory):
+	# Patterns for files to delete
+	patterns = ["*.out", "*.asc", "*.zip"]
+	exception_file = "tau.out"
+	
+	for pattern in patterns:
+		# Get all files matching the pattern in the directory
+		files = glob.glob(os.path.join(directory, pattern))
+		
+		for file in files:
+			# Skip the exception file
+			if os.path.basename(file).lower() == exception_file.lower():
+				continue
+			
+			# Delete the file
+			try:
+				os.remove(file)
+				print(f"Deleted: {{file}}")
+			except Exception as e:
+				print(f"Error deleting {{file}}: {{e}}")
+
+# Specify the directory containing the files
+directory_path = "output/"
+delete_files(directory_path)
+""".format(mech = mech_file,temperature_K = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)],End_Time = target.add["estimateTIG"], delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+
+			elif "CHEMKIN_PRO" in target.add["solver"] and target.add["BoundaryLayer"] == True:
+				instring = """#!/usr/bin/env python
+# encoding: utf-8
+
+import os
+import csv
+import numpy as np
+from chemkin import ChemkinJob, getIgnitionDelay, getIgnitionDelayOH
+import pandas as pd
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
+import cantera as ct
+from scipy.signal import find_peaks
+
+global dt
+dt = {dt}
+def find_nearest(array, value):
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]
+def fast_nearest_interp(xi, x, y):
+	# Shift x points to centers
+	spacing = np.diff(x) / 2
+	x = x + np.hstack([spacing, spacing[-1]])
+	# Append the last point in y twice for ease of use
+	y = np.hstack([y, y[-1]])
+	return y[np.searchsorted(x, xi)]
+
+def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
+	if cond == "max":
+		T = df["temperature"]
+		time = df.index.to_numpy()
+		conc = df[species].to_numpy()
+		dt = np.diff(time)
+		dT = np.diff(T.to_numpy())
+		slope = dT/dt
+		index = int(slope.argmax())
+		peaks,_ = find_peaks(conc)
+		if len(peaks)>1:
+			peak_ind = abs(np.asarray(peaks) - index).argmin()
+		elif len(peaks) == 1:
+			peak_ind = 0
+		else:
+			raise AssertionError("No ignition!!")
+		tau = time[peaks[peak_ind]]
+	elif cond == "onset" and species != "p":
+		time = df.index.to_numpy()
+		conc = (df[species]).to_numpy()
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff((df[species]).to_numpy())
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "onset" and species == "p":
+		time = df.index.to_numpy()
+		conc = np.asarray(pList)
+		dtime = np.diff(df.index.to_numpy())
+		dconc = np.diff(conc)
+		slope = dconc/dtime
+		intercept = int(np.diff(slope).argmax())
+		tau = df.index.to_numpy()[intercept]
+	elif cond == "dt-max" and species == "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(np.asarray(pList))
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "dt-max" and species != "p":
+		time = np.diff(df.index.to_numpy())
+		conc = np.diff(df[species].to_numpy())
+		slope = conc/time
+		index = int(slope.argmax())
+		tau = df.index.to_numpy()[index]
+	elif cond == "specific":
+		if specified_value.split(";")[0] == None:
+			raise Assertionerror("Input required for specified_value in ignition delay")
+		else:
+			target = float(specified_value.split(";")[0])
+			unit = specified_value.split(";")[1]
+			if unit == "molecule":
+				avogadro = 6.02214E+23
+				target = target/avogadro
+				molecular_wt = gas.atomic_weight(species)
+				target = molecular_wt*target	
+				index,value = find_nearest(df[species],target)
+				tau = df.index.to_numpy()[index[0]]	
+			
+			elif unit == "molecule/cm3":
+				unit_conversion = 10**(6)
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				avogadro = 6.02214E+23
+				target = (target/avogadro)*unit_conversion
+				if exp_conc != "":
+					exp_conc = (exp_conc/avogadro)*unit_conversion
+					target = target/exp_conc
+			
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))			
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+				
+			elif unit == "mole/cm3":
+				time = df.index.to_numpy()
+				conc = df[species].to_numpy()
+				if exp_conc != "":
+					target = target/exp_conc
+				
+				f = Akima1DInterpolator(time,conc)
+				time_new = np.arange(min(time),max(time),10**(-8))
+				conc_new = f(time_new)
+				tau = fast_nearest_interp(target,conc_new,time_new)
+	return tau
+
+def getTimeProfile(t1,t2):
+	time =np.arange(t1,t2,{dt})
+	return time
+
+	
+def getPressureProfile(gas,time,dpdt):
+	p = gas.P
+	p_new = p
+	PressureProfile = []
+	dt = {dt}
+	for t in time:
+		PressureProfile.append(p_new)
+		p_new = p_new + dt*(0.01*dpdt*p_new*1000)
+	return np.asarray(PressureProfile)
+
+def getVolumeProfile_From_PressureProfile(gas,PressureProfile ):
+	rho_o,Po = gas.DP
+	gamma = gas.cp/gas.cv
+	VolumeProfile = []
+	for P_t in PressureProfile:
+		VolumeProfile.append((1/rho_o)*(P_t/Po)**(-1/gamma))
+	return np.asarray(VolumeProfile)
+	
+class VolumeProfile(object):
+	def __init__(self, keywords):
+		self.time = np.array(keywords["vproTime"])
+		self.volume = np.array(keywords["vproVol"])/keywords["vproVol"][0]
+		self.velocity = np.diff(self.volume)/np.diff(self.time)
+		self.velocity = np.append(self.velocity, 0)
+	def __call__(self, t):
+		if t < self.time[-1]:
+			prev_time_point = self.time[self.time <= t][-1]
+			index = np.where(self.time == prev_time_point)[0][0]
+			return self.velocity[index]
+		else:
+			return 0
+
+
+def convert_and_transpose_ckcsv(input_filepath, output_filepath):
+	with open(input_filepath, 'r') as ckcsv_file:
+		reader = csv.reader(ckcsv_file)
+
+		# Skip the first row (metadata) and read the actual data
+		rows = list(reader)
+		data_rows = rows[1:-2]  # Skip metadata row
+		
+		# Extract variables, units, and time series data
+		variables = [row[0] for row in data_rows]	 # First column as variable names
+		units = [row[1] for row in data_rows]		 # Second column as units
+		data_values = [row[2:] for row in data_rows]  # Time series data from the third column onward
+		headers = [f"{{row[0]}} {{row[1]}}" for row in data_rows]
+		#print(data_values[-1])	
+		# Transpose the data values so each variable has its data in columns
+		transposed_data = list(zip(*data_values))
+		with open(output_filepath, 'w', newline='') as csv_file:
+			writer = csv.writer(csv_file)
+
+			# Write headers (variable names)
+			writer.writerow(headers)
+
+			# Write units row
+			#writer.writerow(units)
+
+			# Write transposed data rows
+			writer.writerows(transposed_data)
+
+	print(f"Conversion and transposition complete. Data saved to {{output_filepath}}")
+
+#mechanism in yaml format: {mech}
+gas = ct.Solution('{mech}')
+
+# Parameters
+reactorTemperature = {temperature_K}  # Replace with your desired temperature in Kelvin
+reactorPressure = {pressure}  # Replace with your desired pressure in atm
+spec = {species_conc}
+conc_X = list(spec.items()) # Example species concentrations, adjust as needed
+gas.TPX = reactorTemperature, reactorPressure,spec
+# Set up the Chemkin simulation
+currentDir = os.path.dirname(__file__).strip("\\n")
+chemFile = os.path.join(currentDir, 'mechanism.inp')  # Update with the mechanism file path
+tempDir = os.path.join(currentDir, 'output')
+
+global criteria
+if reactorTemperature>= 1800:
+	criteria = reactorTemperature + 7
+elif reactorTemperature>= 1400 and reactorTemperature< 1800:
+	criteria = reactorTemperature + 50
+else:
+	criteria = reactorTemperature + 100
+
+dpdt = {dpdt}#%/ms
+estimatedIgnitionDelayTime = {estimateTIG}
+time = getTimeProfile(0,estimatedIgnitionDelayTime)
+pressure_profile = getPressureProfile(gas,time,dpdt)
+volume_profile = getVolumeProfile_From_PressureProfile(gas,pressure_profile)
+
+keywords = {{"vproTime": time, "vproVol": volume_profile}}
+VP = VolumeProfile(keywords)
+
+# Initialize Chemkin job
+job = ChemkinJob(
+	name=conc_X[0][0],
+	chemFile=chemFile,
+	tempDir=tempDir,
+)
+
+job.preprocess()
+
+# Write Chemkin input for a single simulation
+input_file = job.writeInputHomogeneousBatch(
+	problemType='constrainVandSolveE',  # Problem type in Chemkin
+	reactants=conc_X,
+	temperature=reactorTemperature,
+	pressure=reactorPressure,
+	endTime= estimatedIgnitionDelayTime,  # Simulation end time in seconds
+	variableVolume = True,
+	variableVolumeProfile = VP,
+	variableVolumeProfileType = "Dict"
+)
+
+# Run the Chemkin simulation
+job.run(input_file, model='CKReactorGenericClosed', pro=True)
+job.postprocess(sens=False, rop=False, all=True, transpose=False)
+
+
+# Calculate ignition delay
+#try:
+#	tau = getIgnitionDelayOH(job.ckcsvFile)
+#except ValueError:
+#	print("Value Error")
+#	tau = None
+
+
+saveAll = True 
+if saveAll:
+	convert_and_transpose_ckcsv(job.ckcsvFile, "time_history.csv")
+
+timeHistory = pd.read_csv("time_history.csv",index_col=0)
+pressureList = timeHistory["Pressure  (bar)"]
+species = f"Mole_fraction_{delay_def}  ()"
+tau = ignitionDelay(timeHistory,pressureList,species,"{delay_cond}","{specific_cond}",{exp_conc})
+
+# Output the results
+if tau:
+	print(f"Ignition delay at {{reactorTemperature}} K and {{reactorPressure}} atm: {{tau*1e3}} ms")
+	with open("output/tau.out", 'w') as tau_file:
+		tau_file.write(f"#T(K)	tau(us)\\n{{reactorTemperature}}	{{tau * 1e6}}\\n")
+
+
+import glob
+
+def delete_files(directory):
+	# Patterns for files to delete
+	patterns = ["*.out", "*.asc", "*.zip"]
+	exception_file = "tau.out"
+	
+	for pattern in patterns:
+		# Get all files matching the pattern in the directory
+		files = glob.glob(os.path.join(directory, pattern))
+		
+		for file in files:
+			# Skip the exception file
+			if os.path.basename(file).lower() == exception_file.lower():
+				continue
+			
+			# Delete the file
+			try:
+				os.remove(file)
+				print(f"Deleted: {{file}}")
+			except Exception as e:
+				print(f"Error deleting {{file}}: {{e}}")
+
+# Specify the directory containing the files
+directory_path = "output/"
+delete_files(directory_path)
+""".format(mech = mech_file,temperature_K = target.temperature,pressure=target.pressure,species_conc = target.species_dict,exp_conc = target.add["exp_conc"][float(target.temperature)], dpdt = target.add["dpdt"],dt = float(target.add["dt"]),estimateTIG = float(target.add["estimateTIG"]),delay_def = target.add["ign_delay_def"],delay_cond = target.add["ign_cond"],specific_cond = target.add["specific_cond"],saveAll=target.add["saveAll"])
+
 			elif "FlameMaster" in target.add["solver"] and target.add["BoundaryLayer"] == True:
 				instring = """############
 # Numerics #
@@ -1336,6 +2685,7 @@ NOutputs = 2000
 #############
 
 MechanismFile is mechanism.pre
+{}
 globalReaction is {g_r};
 
 {fuel_is}
@@ -1374,14 +2724,16 @@ import os
 import pandas as pd
 import scipy as sp
 from scipy.interpolate import InterpolatedUnivariateSpline
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
 import matplotlib.pyplot as plt
 def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
-    
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]	
 os.chdir("output")
 list_files = os.listdir()
 
@@ -1569,14 +2921,16 @@ import os
 import pandas as pd
 import scipy as sp
 from scipy.interpolate import InterpolatedUnivariateSpline
-from scipy.interpolate import CubicSpline
+from scipy.interpolate import CubicSpline, Akima1DInterpolator
 import matplotlib.pyplot as plt
 def find_nearest(array, value):
-    array = np.asarray(np.abs(np.log(array)))
-    value = np.abs(np.log(value))
-    idx = (np.abs(array - value)).argmin()
-    return idx,array[idx]
-    
+	array = np.asarray(np.abs(np.log(array)))
+	value = np.abs(np.log(value))
+	idx = (np.abs(array - value)).argmin()
+	return idx,array[idx]
+def find_nearest_value(xi,x,y):
+	index = min(range(len(x)),key=lambda i: abs(x[i] - xi))
+	return y[index]   
 os.chdir("output")
 list_files = os.listdir()
 
@@ -1587,10 +2941,13 @@ atomic_weight = {molecular_weight}
 
 def ignitionDelay(df,species,cond="max",specified_value ="None;None"):
 	for i in df:
-	#if "p" in ignitionDelayDefination:
 		a = i.strip(" ")
 		if a == "X-"+species or species.upper() in i:
 			Y = list(df[i])
+		elif "P" in i:
+			Y = list(df[i])
+		else:
+			print(f"Data for {{species}} not found")
 		if a == "t[ms]":
 			X = list(df[i])
 	time = np.asarray(X)
@@ -1708,7 +3065,7 @@ flame.transport_model = "Multi"
 flame.solve(loglevel=loglevel,refine_grid = True, auto={auto})#1,True
 Su0 = flame.velocity[0] #m/s
 Su_file = open("output/Su.out",'w')
-Su_file.write("#T(K)    Su(cm/s)"+"\\n"+"{{}}    {{}}".format(To,Su0*(100)))
+Su_file.write("#T(K)	Su(cm/s)"+"\\n"+"{{}}	{{}}".format(To,Su0*(100)))
 Su_file.close()
 """.format(mech = mech_file,temperature = target.temperature,pressure=target.pressure,species_conc = target.species_dict,width = target.add["width"],ratio = target.add["ratio"],slope = target.add["slope"],curve = target.add["curve"],loglevel = target.add["loglevel"],auto = target.add["auto"])
 				
@@ -1737,7 +3094,7 @@ flame.transport_model = "Multi"
 flame.solve(loglevel=loglevel,refine_grid = True, auto={auto})#1,True
 Su0 = flame.velocity[0] #m/s
 Su_file = open("output/Su.out",'w')
-Su_file.write("#T(K)    Su(cm/s)"+"\\n"+"{{}}    {{}}".format(To,Su0*(100)))
+Su_file.write("#T(K)	Su(cm/s)"+"\\n"+"{{}}	{{}}".format(To,Su0*(100)))
 Su_file.close()
 """.format(mech = mech_file,temperature = target.temperature,phi = target.phi,fuel= target.add["fuel"],pressure=target.pressure,species_conc = target.species_dict,width = target.add["width"],ratio = target.add["ratio"],slope = target.add["slope"],curve = target.add["curve"],loglevel = target.add["loglevel"],auto = target.add["auto"])
 		
@@ -1912,11 +3269,11 @@ f.set_refine_criteria(ratio={ratio}, slope={slope_bsf}, curve={curve})
 #f.solve(loglevel, refine_grid)
 f.solve({solve_bsf})
 try:
-    # save to HDF container file if h5py is installed
-    f.write_hdf('burner_flame.h5', group='{group}', mode='w',
-                description='{description}')
+	# save to HDF container file if h5py is installed
+	f.write_hdf('burner_flame.h5', group='{group}', mode='w',
+				description='{description}')
 except ImportError:
-    f.save('burner_flame.xml', '{group}', '{description}')
+	f.save('burner_flame.xml', '{group}', '{description}')
 f.write_csv('burner_flame.csv', quiet=False)
 f.show_stats()
 df = pd.read_csv("burner_flame.csv")
@@ -2111,12 +3468,12 @@ z1 = np.zeros_like(t1)
 u1 = np.zeros_like(t1)
 states1 = ct.SolutionArray(r1.thermo)
 for n1, t_i in enumerate(t1):
-    # perform time integration
-    sim1.advance(t_i)
-    # compute velocity and transform into space
-    u1[n1] = mdot/ area / r1.thermo.density
-    z1[n1] = z1[n1 - 1] + u1[n1] * dt
-    states1.append(r1.thermo.state)
+	# perform time integration
+	sim1.advance(t_i)
+	# compute velocity and transform into space
+	u1[n1] = mdot/ area / r1.thermo.density
+	z1[n1] = z1[n1 - 1] + u1[n1] * dt
+	states1.append(r1.thermo.state)
 os.chdir("output")
 #####################################################################
 #plt.figure()
@@ -2178,19 +3535,19 @@ def getTimeStamp(target,array):
 				x = array.index(i)
 				y = len(array[x+1:])
 				array = np.asarray(array)
-	else:       
+	else:	   
 		idx = getNearest(target,array)
 		if array[idx] > target:
-        #between idx-1 and idx
+		#between idx-1 and idx
 			x = idx-1
 			y = len(array[x:])
 			new = populate(target,array,x)
 			array = new	
-        #can use chebychev interpolation technique
-        #start with linear interpolation
+		#can use chebychev interpolation technique
+		#start with linear interpolation
 		else: 
-        #array[idx] < target:
-        #between idx and idx+1
+		#array[idx] < target:
+		#between idx and idx+1
 			x = idx
 			y = len(array[x:])
 			new = populate(target,array,x)
@@ -2208,28 +3565,28 @@ def timeScaleShift(target,array,x,y):
 				top = array[mid-x:mid]
 				bottom = array[mid+1:mid+y+1]
 				scale_shift = np.asarray(top+middle+bottom)
-	else:         
+	else:		 
 		idx = getNearest(target,array)
 		if array[idx] > target:
-        #between idx-1 and idx
+		#between idx-1 and idx
 			x_ = idx-1
 			y_ = idx
 			new = populate(target,array,x_-1)
 			array = new
 			scale_shift = timeScaleShift(target,array,x,y)
-#         
+#		 
 #can use chebychev interpolation technique
-#         #start with linear interpolation
+#		 #start with linear interpolation
 		else: 
-#         #array[idx] < target:
-#         #between idx and idx+1
+#		 #array[idx] < target:
+#		 #between idx and idx+1
 			x_ = idx
 			y_ = idx+1
 			new = populate(target,array,x_-1)
 			#print(new)
 			array = new
 			scale_shift = timeScaleShift(target,array,x,y)
-			#             array = new
+			#			 array = new
 	return scale_shift
 
 def rateDefination(g1,g2):
@@ -2260,12 +3617,12 @@ def getDataPoints(arr_t,arr_x,X):
 			t2 = arr_t[idx]
 			t_p = interpolation2D(np.array([[arr_x[x1_],t1],[arr_x[x2_],t2]]),X)
 			x_p = X  
-#         
+#		 
 #can use chebychev interpolation technique
-#         #start with linear interpolation
+#		 #start with linear interpolation
 		else: 
-#         #array[idx] < target:
-#         #between idx and idx+1
+#		 #array[idx] < target:
+#		 #between idx and idx+1
 			x1_ = idx
 			x2_ = idx+1
 			t1 = arr_t[idx]
@@ -2273,7 +3630,7 @@ def getDataPoints(arr_t,arr_x,X):
 			t_p = interpolation2D(np.array([[arr_x[x1_],t1],[arr_x[x2_],t2]]),X)
 			x_p = X  
 	return (t_p,x_p)   
-    
+	
 def getRate(xo,t_half,X,t,add):
 	if "slope" in add["method"]:	
 		if "percentage" in add["unit"]:
@@ -2499,19 +3856,19 @@ def getTimeStamp(target,array):
 				x = array.index(i)
 				y = len(array[x+1:])
 				array = np.asarray(array)
-	else:       
+	else:	   
 		idx = getNearest(target,array)
 		if array[idx] > target:
-        #between idx-1 and idx
+		#between idx-1 and idx
 			x = idx-1
 			y = len(array[x:])
 			new = populate(target,array,x)
 			array = new	
-        #can use chebychev interpolation technique
-        #start with linear interpolation
+		#can use chebychev interpolation technique
+		#start with linear interpolation
 		else: 
-        #array[idx] < target:
-        #between idx and idx+1
+		#array[idx] < target:
+		#between idx and idx+1
 			x = idx			
 			y = len(array[x:])
 			new = populate(target,array,x)
@@ -2531,28 +3888,28 @@ def timeScaleShift(target,array,x,y):
 				top = array[mid-x:mid]
 				bottom = array[mid+1:mid+y+1]
 				scale_shift = np.asarray(top+middle+bottom)
-	else:         
+	else:		 
 		idx = getNearest(target,array)
 		if array[idx] > target:
-        #between idx-1 and idx
+		#between idx-1 and idx
 			x_ = idx-1
 			y_ = idx
 			new = populate(target,array,x_-1)
 			array = new
 			scale_shift = timeScaleShift(target,array,x,y)
-#         
+#		 
 #can use chebychev interpolation technique
-#         #start with linear interpolation
+#		 #start with linear interpolation
 		else: 
-#         #array[idx] < target:
-#         #between idx and idx+1
+#		 #array[idx] < target:
+#		 #between idx and idx+1
 			x_ = idx
 			y_ = idx+1
 			new = populate(target,array,x_-1)
 			#print(new)
 			array = new
 			scale_shift = timeScaleShift(target,array,x,y)
-	#print(len(scale_shift))		#             array = new
+	#print(len(scale_shift))		#			 array = new
 	return scale_shift
 
 def rateDefination(g1,g2):
@@ -2574,7 +3931,7 @@ def getDataPoints(arr_t,arr_x,X):
 				t_p = arr_t[i]
 	else:
 		idx = getNearest(X,arr_x)
-       
+	   
 		if arr_x[idx] > X:
 			x1_ = idx-1
 			x2_ = idx
@@ -2582,12 +3939,12 @@ def getDataPoints(arr_t,arr_x,X):
 			t2 = arr_t[idx]
 			t_p = interpolation2D(np.array([[arr_x[x1_],t1],[arr_x[x2_],t2]]),X)
 			x_p = X  
-#         
+#		 
 #can use chebychev interpolation technique
-#         #start with linear interpolation
+#		 #start with linear interpolation
 		else: 
-#         #array[idx] < target:
-#         #between idx and idx+1
+#		 #array[idx] < target:
+#		 #between idx and idx+1
 			x1_ = idx
 			x2_ = idx+1
 			t1 = arr_t[idx]
@@ -2595,7 +3952,7 @@ def getDataPoints(arr_t,arr_x,X):
 			t_p = interpolation2D(np.array([[arr_x[x1_],t1],[arr_x[x2_],t2]]),X)
 			x_p = X  
 	return (t_p,x_p)   
-    
+	
 def getRate(xo,t_half,X,t,add):
 	if "slope" in add["method"]:	
 		if "percentage" in add["unit"]:
@@ -2653,8 +4010,17 @@ python3.9 cantera_.py &> solve"""
 
 		extract = """
 		"""
+	elif target.add["solver"] == "CHEMKIN_PRO":
+		s_convert = """#!/bin/bash
+ck2yaml --input=mechanism.mech --thermo=thermo.therm --transport=transport.trans &> out """
+		s_run = """#!/bin/bash
+export NUMEXPR_MAX_THREADS=1
+python3.9 {MUQSAC}/soln2ck_2.py --mechanism=mechanism.inp --thermo=thermo.dat {mech} &> soln2ck.out
+python3.9 cantera_.py &> solve
+		""".format(MUQSAC = opt_dict["Bin"]["bin"] ,Bin=opt_dict["Bin"]["solver_bin"],mech = mech_file,thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command)
+		extract = """
+		"""
 	else:
-		
 		s_convert = """#!/bin/bash
 python3.9 /home/krithika/Desktop/KineticMechanismOptimization/sc_v2/v2.1/soln2ck.py &>sol2yaml_out
 {Bin}/ScanMan -i mechanism.mech -t mechanism.therm -m mechanism_tranport.dat {fsc} -3sr -N 0.05 -E -o mechanism.pre &> ScanMan.log
@@ -2663,6 +4029,10 @@ rm -f ScanMan.log
 
 			
 		s_run = """#!/bin/bash
+python3.9 {MUQSAC}/soln2ck_2.py {mech} 
+{Bin}/ScanMan -i mechanism.inp -t {thermo_file} -m {trans_file} -f chemkin -3sr -N 0.05 -E -o mechanism.pre &> ScanMan.log
 {Bin}/FlameMan &> Flame.log && python3.9 extract.py &> extract.log
-		""".format(Bin=opt_dict["Bin"]["solver_bin"],thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command) 
+		""".format(MUQSAC = opt_dict["Bin"]["bin"] ,Bin=opt_dict["Bin"]["solver_bin"],mech = mech_file,thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command)
+		extract = """
+		"""
 	return instring,s_convert,s_run,extract

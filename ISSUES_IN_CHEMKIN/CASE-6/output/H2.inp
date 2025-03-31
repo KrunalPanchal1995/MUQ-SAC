@@ -1,0 +1,53 @@
+! 
+! problem type definition
+!
+CONV   ! Constrain Volume And Solve Energy Equation
+ENRG   ! Solve Gas Energy Equation
+TRAN   ! Transient Solver
+! 
+! physical property
+! 
+!Surface_Temperature   ! Surface Temperature Same as Gas Temperature
+IFAC 0.1   ! Ignition Noise Filtering Factor
+PRES 1.10535   ! Pressure (atm)
+QLOS 0.0   ! Heat Loss (cal/sec)
+TEMP 1944.00   ! Temperature (K)
+VOL 1.0   ! Volume (cm3)
+!
+! species property
+!
+REAC H2 0.0017 ! Reactant Fraction (mole fraction) 
+REAC CO 0.033 ! Reactant Fraction (mole fraction) 
+REAC O2 0.0347 ! Reactant Fraction (mole fraction) 
+REAC AR 0.9306 ! Reactant Fraction (mole fraction) 
+! 
+! solver control
+! 
+ADAP   ! Save Additional Adaptive Points
+NNEG   !Forced Non-Negative Solutions
+!ASTEPS 20   ! Use Solver Integration Steps (Uncomment this only when needed)
+!ATLS 1.0E-6   ! Sensitivity Absolute Tolerance
+!ATOL 1.0E-8   ! Absolute Tolerance
+!MAXIT 4   ! Maximum Number of Iterations
+!RTLS 0.0001   ! Sensitivity Relative Tolerance
+!RTOL 1.0E-4   ! Relative Tolerance
+!STPT 1.0E-6   ! Solver Maximum Step Time (sec)
+TIME 0.10000                 ! End Time (sec)
+! 
+! output control and other misc. property
+! 
+!CSVOUTPUT_KOUT CO2 FIXED_mass_fraction   ! Table Output Parameter
+!CSVOUTPUT_KOUT H2O FIXED_mass_fraction   ! Table Output Parameter
+!CSVOUTPUT_KOUT MB-C5H10O2 FIXED_mass_fraction   ! Table Output Parameter
+!CSVOUTPUT_KOUT OH FIXED_mass_fraction   ! Table Output Parameter
+!CSVOUTPUT_WRITE   ! Write CSV Output File
+EPSR 0.01   ! Threshold for Rate of Production
+EPSS 0.001   ! Threshold for Species Sensitivity
+EPST 0.001   ! Threshold for Temperature Sensitivity
+GFAC 1.0   ! Gas Reaction Rate Multiplier
+IEEE_CHECK_USUAL 0   ! Disable Over/Underflow Check
+PRNT 1   ! Print Level Control
+!SDOUTPUT_WRITE   ! Write Standard Diagnostic Output
+SIZE 100000000   ! Solution Data Block Size (bytes)
+!XMLOUTPUT_WRITE   ! Write XML Solution File
+END

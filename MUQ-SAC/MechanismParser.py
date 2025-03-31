@@ -4,7 +4,14 @@ except ImportError:
     from ruamel import yaml
 import yaml
 import os,re
+class MySafeLoader(yaml.SafeLoader):
+    pass
 
+# Remove the default resolvers for booleans
+def bool_as_string_constructor(loader, node):
+    return loader.construct_scalar(node)
+yaml.add_implicit_resolver('tag:yaml.org,2002:str', None, ['T', 'F', 'Y', 'N'])
+MySafeLoader.add_constructor('tag:yaml.org,2002:bool', bool_as_string_constructor)
 #rxn = ["AC3H5OOH <=> C2H3CHO + H2O"]
 #rxn = ["C3H6 + OH <=> C3H6OH1-2:A","C3H6 + OH <=> C3H6OH1-2:B","C3H6 + OH <=> C3H6OH1-2:A","C3H6 + OH <=> C3H6OH1-2:B","C2H + CH3 <=> C3H4-P","C4H10 (+M) <=> 2 C2H5 (+M)","C4H8OOH1-4O2 <=> C4H72-1,4OOH:A","C4H8OOH1-4O2 <=> C4H72-1,4OOH:B","C4H71-3OOH => C2H3CHO + CH3 + OH:B1","C4H71-3OOH => CH3CHO + C2H3 + OH:B2"]
 
@@ -13,10 +20,8 @@ import os,re
 class Parser:
 	def __init__(self,MechFile):
 		self.file_yaml = open(MechFile,"r").read()
-		self.mech = yaml.safe_load(self.file_yaml)
+		self.mech = yaml.load(self.file_yaml,Loader=MySafeLoader)
 		self.rxnList = self.rxn_list()
-		#print(self.mech["phases"][0]["species"])
-		#raise AssertionError("Stop")
 	
 	def rxn_list(self):
 		rxnList = []

@@ -1,0 +1,18 @@
+654 species 4846 reactions
+
+
+
+
+
+Taken from https://combustion.llnl.gov/mechanisms/alkanes/n-heptane-detailed-mechanism-version-3
+
+Mehl M., W.J. Pitz, C.K. Westbrook, H.J. Curran, "Kinetic Modeling of Gasoline Surrogate Components and Mixtures Under Engine Conditions
+
+," Proceedings of the Combustion Institute 33:193-200 (2011).
+
+M. Mehl, W. J. Pitz, M. Sjöberg and J. E. Dec, "Detailed kinetic modeling of low-temperature heat release for PRF fuels in an HCCI engine," SAE 2009 International Powertrains, Fuels and Lubricants Meeting, SAE Paper No. 2009-01-1806, Florence, Italy, 2009. Available at www.sae.org
+.
+
+based on 
+
+[1] Curran, H. J., P. Gaffuri, W. J. Pitz, and C. K. Westbrook, "A Comprehensive Modeling Study of n-Heptane Oxidation" Combustion and Flame 114:149-177 (1998).

@@ -892,6 +892,8 @@ class UncertaintyExtractor(object):
 
 	def constraint_d_n(self,z):
 		return 2 - np.array(self.L.dot(z)).flatten()[1]	
+	
+	
 	def getZeta_typeA(self,kappa):
 		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
 		self.theta_for_kappa = np.array([T/T,np.log(T),-1/T])
@@ -933,6 +935,7 @@ class UncertaintyExtractor(object):
 		#print(P)
 		self.kappa_0 = self.theta_for_kappa.T.dot(P)
 		self.kappa_d_n = kappa
+	
 	def getZetaFromGen(self,generator):
 		P = self.ArrheniusParams
 		self.cov = self.getCovariance()
@@ -1258,6 +1261,59 @@ class reaction(UncertaintyExtractor):
 		T = np.array([self.temperatures[0],(self.temperatures[0]+self.temperatures[-1])/2,self.temperatures[-1]])
 		theta = np.array([T/T,np.log(T),-1/T])
 		return np.asarray(theta.T.dot(self.P_max)).flatten()
+	
+	def extract_submatrix_with_vectors(self,L, x, y):
+		"""
+		Extracts a submatrix using x and y vectors based on their non-zero values.
+
+		Parameters:
+		    L (ndarray): Cholesky decomposed covariance matrix (NumPy array).
+		    x (ndarray): Row selector vector (selection_matrix,non-zero indicates rows to include).
+		    y (ndarray): Column selector vector (Zeta,non-zero indicates columns to include).
+
+		Returns:
+		    ndarray: The extracted submatrix.
+		"""
+		Sigma = L.dot(L.T)
+		
+		row_indices = np.nonzero(x)[0]  # Indices of non-zero elements in x
+		col_indices = np.nonzero(y)[0]  # Indices of non-zero elements in y
+		return Sigma,Sigma[np.ix_(row_indices, col_indices)]
+	
+	def perturbe_partial_values(self,po,L,x,zeta):
+		Sigma,Sigma_reduce = self.extract_submatrix_with_vectors(L,x,zeta)
+		p,Lr = self.process_with_cholesky(Sigma_reduce,po,zeta)
+		return Sigma,Sigma_reduce,p,Lr
+	
+	def process_with_cholesky(self,cov_matrix_reduced, p_o, y):
+		"""
+		Performs Cholesky decomposition and updates p_o based on the reduced cov_matrix and y.
+
+		Parameters:
+		    cov_matrix_reduced (ndarray): The reduced covariance matrix.
+		    p_o (ndarray): The initial vector with values for non-zero indices of y.
+		    y (ndarray): The vector with non-zero entries indicating the indices to update.
+
+		Returns:
+		    ndarray: Updated vector p.
+		"""
+		# Cholesky decomposition of the reduced covariance matrix
+		L_reduced = np.linalg.cholesky(cov_matrix_reduced)
+
+		# Select p_o and y_ corresponding to non-zero indices of y
+		non_zero_indices = np.nonzero(y)[0]
+		p_o_reduced = np.copy(p_o)[non_zero_indices]
+		y_reduced = y[non_zero_indices]
+
+		# Perform the update p = p_o + L_reduced @ y_
+		p_reduced = p_o_reduced + L_reduced @ y_reduced
+
+		# Create the final vector p
+		p = np.copy(p_o)
+		p[non_zero_indices] = p_reduced
+
+		return p,L_reduced
+
 	
 	def readJPDAP(self):
 		input_dict = {}

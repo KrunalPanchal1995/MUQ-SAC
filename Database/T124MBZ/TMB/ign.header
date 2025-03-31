@@ -1,0 +1,84 @@
+#######################################
+##   Shochtube Ignition Delay        ##
+#######################################
+
+###########
+#  	I/O  ##
+#        ##
+########### #############################################
+# Only provide info if the variable is constant         #
+#------------------------------------------------------ #
+# (i.e if you wish to create a file for each and every  #
+# dataset saperately. You can create a single file wrt  #
+# the type of exp also. The given sample is for dataSet #
+# wrt experiment type.                                  #
+#-------------------------------------------------------#
+# Data can be given in both header and body. By providi-#
+#-ng the structure for body, one can create dataset of  #
+# any type.                                             # 
+#########################################################
+
+DataSet: RCM_
+
+Target: RCM 
+
+Fuel_type: Multi
+
+Fuel: {a: T124MBZ,b: NC7H16}
+
+#Fuel_x:
+
+Oxidizer: O2
+
+#Oxidizer_x:
+
+Bath_gas: {bg1: N2,bg2: AR, bg3: CO2, bg4: HE, bg5: H2O}
+
+#Bath_gas_x:
+
+#Pressure:	
+
+#Temperature:	
+
+#Phi:
+
+Simulation_type: Isochor Homo Reactor
+
+Measurnment_type: timeDelay
+
+#Flame_type:	 
+
+Ignition_mode: reflected
+
+#Reactor_type:
+
+#startprofile:  
+
+#flow_rate:	
+
+#flow_unit:	
+
+############
+# Data #####
+############
+
+Unsrt: {type: absolute}
+
+Unit: {conc: mol,Pi: atm, P: atm, T: K, Ti: K, observed: ms}
+
+Data_structure:
+ - Sr
+ - a
+ - b
+ - Ox
+ - bg1
+ - bg2
+ - bg3
+ - bg4
+ - bg5
+ - T
+ - Ti
+ - P
+ - Pi
+ - RCM
+ - sigma

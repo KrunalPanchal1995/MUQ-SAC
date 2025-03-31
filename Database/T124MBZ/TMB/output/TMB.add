@@ -1,0 +1,99 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: CHEMKIN_PRO
+#Butanoate
+#solver: cantera_non_reactive
+
+RCM__TMB_100_PHI_0_5_P_10:
+ saveAll: True
+ solver: cantera
+ RCM_type: non_reactive
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile_type: csv_file
+ volume_profile:
+  921.0 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_921.csv
+  950.0 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_972.csv
+  972.0 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1004.csv
+  973.0 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1004.csv
+  1004.0 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1040_.csv
+  1039 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1040.csv
+  1040 :  /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_10/TMB_100_PHI_0_5_P_10_T_1040.csv
+ saveAll: True
+
+RCM__TMB_100_PHI_1_P_10:
+ solver: cantera
+ RCM_type: non_reactive
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile_type: ck_file
+ volume_profile:
+  1008 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_1008.csv
+  1040 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_1040.csv
+  921 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_921.csv
+  1004 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_1004.csv
+  918 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_918.csv
+  1036 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_1036.csv
+  971 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_971.csv
+  893 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_893.csv
+  947 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_1_P_10/T_947.csv
+ saveAll: True
+
+RCM__TMB_100_PHI_0_5_P_30:
+ solver: cantera
+ RCM_type: non_reactive
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile_type: ck_file
+ volume_profile:
+  949 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_949.csv
+  974 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_974.csv
+  828 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_907.csv
+  856 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_856.csv
+  878 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_779.csv
+  907 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_949.csv
+  710 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_974.csv
+  750 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_828.csv
+  779 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_779.csv
+  677 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_677.csv
+  697 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_721.csv
+  721 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TMB_100_PHI_0_5_P_30/T_907.csv
+ saveAll: True
+
+RCM__TMB_100_PHI_1_P_30:
+ solver: cantera
+ RCM_type: non_reactive
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile_type: ck_file
+ volume_profile:
+  697 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_697.csv
+  720 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_720.csv
+  747 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_747.csv
+  769 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_769.csv
+  790 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_790.csv
+  815 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_815.csv
+  838 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_838.csv
+  868 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_868.csv
+  897 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_897.csv
+  925 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_925.csv
+  949 : /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/rcm_profiles/RCM_TBM_100_PHI_1_P_30/T_949.csv
+ saveAll: True

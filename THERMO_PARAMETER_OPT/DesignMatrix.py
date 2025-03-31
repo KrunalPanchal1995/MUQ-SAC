@@ -25,12 +25,13 @@ class DesignMatrix(object):
 		#self.rxn_len = ind
 		self.n = ind
 		
-		allowed_count = int(0.70*multiprocessing.cpu_count())
+		allowed_count = 100#int(0.70*multiprocessing.cpu_count())
 		self.allowed_count = allowed_count
 	
 	def main(self,V_, num_threads, unsrt, sim):
 		shuffle.shuffle_arrays(V_, num_threads, unsrt, sim)
 		return V_
+	
 	def create_memory_mapped_files(self,data_dict):
 		mmap_dict = {}
 		temp_dir = tempfile.mkdtemp()
@@ -40,6 +41,7 @@ class DesignMatrix(object):
 			mmap[:] = value[:]
 			mmap_dict[key] = filename
 		return mmap_dict, temp_dir
+	
 	def create_shared_memory_dict(self,data_dict):
 		shm_dict = {}
 		for key, value in data_dict.items():
@@ -64,20 +66,301 @@ class DesignMatrix(object):
 
 		column = np.concatenate(column)
 		return rxn, column
+	
+	
+	def get_thermo_ConstantCurves(self,n_a):
+		"""
+			This defination generates n_a numbers of class-A type curves 
+		"""
+		Class_thermo_Curve_dict = {}
+		Generator_dict = {}
+		
+		for index,species in enumerate(self.unsrt):
+			#print(species)
+			species_name = self.unsrt[species].species
+			generator = []
+			Cp_T_mid = []
+			a1_ = []
+			T = self.unsrt[species].common_temp
+			Theta = np.array([T/T,T,T**2,T**3,T**4])
+			#if self.unsrt[species].a1 == None:
+			if self.unsrt[species].a1_C is None or np.all(self.unsrt[species].a1_C)==None:
+				for i in range(n_a):
+					a1 = np.random.uniform(-1,1,(1,1))[0]
+					P_C = self.unsrt[species].NominalParams + a1*np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten()
+					Cp_T_mid.append(Theta.dot(P_C))
+					a1_.append(a1)
+					generator.append([a1])
+				for spec in self.unsrt:
+					if self.unsrt[spec].species == species_name:
+						self.unsrt[spec].a1_C = a1_
+						self.unsrt[spec].Cp_T_mid_C = Cp_T_mid
+						#print("\n index", index  )
+						#print("\n generator",generator )
+						#print("\n self.unsrt",self.unsrt[spec].a1 	)			
+					else:
+						continue
+					
+			else:
+				generator = []
+				species_name = self.unsrt[species].species
+			
+				T = self.unsrt[species].common_temp
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				#print(f"{species} high")
+				#print("\n"+str(species))
+				a1_ = self.unsrt[species].a1_C
+				Cp_T_mid = self.unsrt[species].Cp_T_mid_C
+				a1_dash = []
+				for i in range(len(a1_)):
+					a1 = ((Cp_T_mid[i] - Theta.dot(self.unsrt[species].NominalParams))/abs(Theta.dot(np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten())))
+					a1_dash.append(np.array([a1]))
+					generator.append([a1])
+				self.unsrt[species].a1_C = a1_dash
+				
+			data = self.unsrt[species].data
+			zeta_A = self.unsrt[species].zeta_max.x
+			ConstantCurves = []
+			for gen in generator:
+				ConstantCurves.append(gen*zeta_A)
+			Class_thermo_Curve_dict[species] = ConstantCurves
+			Generator_dict[species] = generator
+				
+		return Class_thermo_Curve_dict,Generator_dict
+		
+	
+	def get_thermo_LinearCurves(self,n_a):
+		"""
+			This defination generates n_a numbers of class-A type curves 
+		"""
+		Class_thermo_Curve_dict = {}
+		Generator_dict = {}
+		for index,species in enumerate(self.unsrt):
+			print(species)
+			
+			if self.unsrt[species].a1_L is None or np.all(self.unsrt[species].a1_L) == None:
+				species_name = self.unsrt[species].species
+			
+				T = self.unsrt[species].common_temp
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				a1_ = []
+				a2_ = []
+				a3_ = []
+				Cp_T_mid = []
+				generator = []
+				for i in range(n_a):
+					a1 = np.random.uniform(-1,1,(1,1))[0]
+					a2 = np.random.uniform(a1,1,(1,1))[0]
+					P_2 = self.unsrt[species].NominalParams + a2*np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten()
+					Cp_T_mid.append(Theta.dot(P_2))
+					a3 = np.random.uniform(a2,1,(1,1))[0]
+					a1_.append(a1)
+					a2_.append(a2)
+					a3_.append(a3)
+					generator.append([a1,a2,a3])
+				
+				for spec in self.unsrt:
+					if self.unsrt[spec].species == species_name:
+						self.unsrt[spec].a1_L = a1_
+						self.unsrt[spec].a2_L = a2_
+						self.unsrt[spec].a3_L = a3_
+						self.unsrt[spec].Cp_T_mid_L = Cp_T_mid
+							
+					
+			else:
+				generator = []
+				species_name = self.unsrt[species].species
+			
+				T = self.unsrt[species].common_temp
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				#print(f"{species} high")
+				#print("\n"+str(species))
+				a1_ = self.unsrt[species].a1_L
+				a2_ = self.unsrt[species].a2_L
+				#print("\n")
+				#print(a2_)
+				a2_dash = []
+				a3_dash = []
+				a3_ = self.unsrt[species].a3_L
+				Cp_T_mid = self.unsrt[species].Cp_T_mid_L
+				for i in range(len(a1_)):
+					a1 = a1_[i][0]
+					a2 = ((Cp_T_mid[i] - Theta.dot(self.unsrt[species].NominalParams))/abs(Theta.dot(np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten())))
+					a2_dash.append(np.array([a2]))
+					a3 = np.random.uniform(a2,1,(1,1))[0]
+					a3_dash.append(a3)
+					
+					generator.append([[a1],[a2],a3])
+				self.unsrt[species].a2_L = a2_dash
+				self.unsrt[species].a3_L = a3_dash
+			#print(generator)
+			generator = np.asarray(generator,dtype="object")
+			#print(len(generator))
+			data = self.unsrt[species].data
+			chunk_size = 3000
+			params = [generator[i:i+chunk_size] for i in range(0, len(generator), chunk_size)]
+			Class_thermo_curves = []
+			generator_thermo = []
+			for set_ in tqdm(params,desc="Set. progress"):
+				
+				data["generators_thermo"] = set_
+				callWorkForce = Worker(self.allowed_count)	
+				Class_thermo_curves_,f_c,generator_thermo_ = callWorkForce.do_unsrt_thermoLinear(data,len(set_))
+				Class_thermo_curves.extend(Class_thermo_curves_)
+				generator_thermo.extend(generator_thermo_)
+				del callWorkForce#,generator_thermo_,Class_thermo_curves_
+			Class_thermo_Curve_dict[species] = np.asarray(Class_thermo_curves)
+			Generator_dict[species] = generator_thermo
+		return Class_thermo_Curve_dict,Generator_dict
+	
+	
+	def get_thermo_Hybrid_Constant_LinearCurves(self,n_a):
+		"""
+			This defination generates n_a numbers of class-C_L type thermo curves 
+		"""
+		Class_thermo_Curve_dict = {}
+		Generator_dict = {}
+		
+		for index,species in enumerate(self.unsrt):
+			#print(species)
+			species_name = self.unsrt[species].species
+			generator = []
+			Cp_T_mid = []
+			a1_ = []
+			T = self.unsrt[species].common_temp
+			Theta = np.array([T/T,T,T**2,T**3,T**4])
+			#if self.unsrt[species].a1 == None:
+			if self.unsrt[species].a1_CL is None or np.all(self.unsrt[species].a1_CL)==None:
+				for i in range(n_a):
+					a1 = np.random.uniform(-1,1,(1,1))[0]
+					P_C = self.unsrt[species].NominalParams + a1*np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten()
+					Cp_T_mid.append(Theta.dot(P_C))
+					a1_.append(a1)
+					generator.append([a1])
+				for spec in self.unsrt:
+					if self.unsrt[spec].species == species_name:
+						self.unsrt[spec].a1_CL = a1_
+						self.unsrt[spec].a2_CL = a1_
+						self.unsrt[spec].a3_CL = a1_
+						self.unsrt[spec].Cp_T_mid_CL = Cp_T_mid
+						#print("\n index", index  )
+						#print("\n generator",generator )
+						#print("\n self.unsrt",self.unsrt[spec].a1 	)			
+					else:
+						continue
+					
+			else:
+				generator = []
+				species_name = self.unsrt[species].species
+			
+				T = self.unsrt[species].common_temp
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				#print(f"{species} high")
+				#print("\n"+str(species))
+				a1_ = self.unsrt[species].a1_CL
+				a2_ = self.unsrt[species].a2_CL
+				#print("\n")
+				#print(a2_)
+				a2_dash = []
+				a3_dash = []
+				a3_ = self.unsrt[species].a3_L
+				Cp_T_mid = self.unsrt[species].Cp_T_mid_CL
+				for i in range(len(a1_)):
+					a1 = a1_[i][0]
+					a2 = ((Cp_T_mid[i] - Theta.dot(self.unsrt[species].NominalParams))/abs(Theta.dot(np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten())))
+					a2_dash.append(np.array([a2]))
+					a3 = np.random.uniform(a2,1,(1,1))[0]
+					a3_dash.append(a3)
+					
+					generator.append([[a1],[a2],a3])
+				self.unsrt[species].a2_CL = a2_dash
+				self.unsrt[species].a3_CL = a3_dash
+			#print(generator)
+			generator = np.asarray(generator,dtype="object")
+			#print(len(generator))
+			data = self.unsrt[species].data
+			chunk_size = 3000
+			params = [generator[i:i+chunk_size] for i in range(0, len(generator), chunk_size)]
+			Class_thermo_curves = []
+			generator_thermo = []
+			for set_ in tqdm(params,desc="Set. progress"):
+				
+				data["generators_thermo"] = set_
+				callWorkForce = Worker(self.allowed_count)	
+				Class_thermo_curves_,f_c,generator_thermo_ = callWorkForce.do_unsrt_thermoLinear(data,len(set_))
+				Class_thermo_curves.extend(Class_thermo_curves_)
+				generator_thermo.extend(generator_thermo_)
+				del callWorkForce#,generator_thermo_,Class_thermo_curves_
+			Class_thermo_Curve_dict[species] = np.asarray(Class_thermo_curves)
+			Generator_dict[species] = generator_thermo
+		return Class_thermo_Curve_dict,Generator_dict
+	
 	def get_thermo_curves(self , n_a):
 		
 		Class_thermo_Curve_dict = {}
 		Generator_dict = {}
-		for species in self.unsrt:
-			generator = np.random.random_sample((n_a,2))
+		for index,species in enumerate(self.unsrt):
+			#print(species)
+			species_name = self.unsrt[species].species
+			generator = []
+			T = self.unsrt[species].common_temp
+			Theta = np.array([T/T,T,T**2,T**3,T**4])
+			if self.unsrt[species].a1_H is None or np.all(self.unsrt[species].a1_H)==None:
+				a1_ = []
+				a2_ = []
+				a3_ = []
+				Cp_T_mid = []
+				for i in range(n_a):
+					a1 = np.random.uniform(-1,1,(1,1))[0]
+					a2 = np.random.uniform(a1,1,(1,1))[0]
+					#a1 = -0.7
+					#a2 = 0.1
+					P_2 = self.unsrt[species].NominalParams + a2*np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten()
+					Cp_T_mid.append(Theta.dot(P_2))
+					#print(a2)
+					#print(Theta.dot(P_2))
+					a3 = np.random.uniform(a2,1,(1,1))[0]
+					a1_.append(a1)
+					a2_.append(a2)
+					a3_.append(a3)
+					generator.append([[a1],[a2],a3])
+				for spec in self.unsrt:
+					if self.unsrt[spec].species == species_name:
+						self.unsrt[spec].a1_H = a1_
+						self.unsrt[spec].a2_H = a2_
+						self.unsrt[spec].a3_H = a3_
+						self.unsrt[spec].Cp_T_mid_H = Cp_T_mid
+							
+					else:
+						continue
+					
+			else:
+				a1_ = self.unsrt[species].a1_H
+				a2_ = self.unsrt[species].a2_H
+				a2_dash = []
+				a3_dash = []
+				a3_ = self.unsrt[species].a3_H
+				Cp_T_mid = self.unsrt[species].Cp_T_mid_H
+				for i in range(len(a1_)):
+					a1 = a1_[i][0]
+					a2 = ((Cp_T_mid[i] - Theta.dot(self.unsrt[species].NominalParams))/abs(Theta.dot(np.asarray(np.dot(self.unsrt[species].cov,self.unsrt[species].zeta_max.x)).flatten())))
+					a2_dash.append(a2)
+					a3 = np.random.uniform(a2,1,(1,1))[0]
+					a3_dash.append(a3)
+					generator.append([a1,a2,a3])
+				self.unsrt[species].a2_H = a2_dash
+				self.unsrt[species].a3_H = a3_dash
+			#print(generator)
+			generator = np.asarray(generator,dtype="object")
 			data = self.unsrt[species].data
 			data["generators_thermo"] = generator
 			callWorkForce = Worker(self.allowed_count)	
-			Class_thermo_curves,generator_thermo = callWorkForce.do_unsrt_thermo(data,len(generator))
+			Class_thermo_curves,generator_thermo = callWorkForce.do_unsrt_thermoHigherOrder(data,len(generator))
 			del callWorkForce
 			Class_thermo_Curve_dict[species] = np.asarray(Class_thermo_curves)
 			Generator_dict[species] = generator_thermo	
 		return Class_thermo_Curve_dict,Generator_dict
+	
 	def getClassA_Curves(self,n_a):
 		"""
 			This defination generates n_a numbers of class-A type curves 
@@ -192,8 +475,8 @@ class DesignMatrix(object):
 
 		# Place each vector on the diagonal
 		for i in range(num_vectors):
-		    # Insert the vector into the appropriate diagonal position
-		    design_matrix[i, i*vector_size:(i+1)*vector_size] = new_zeta[i]
+			# Insert the vector into the appropriate diagonal position
+			design_matrix[i, i*vector_size:(i+1)*vector_size] = new_zeta[i]
 			
 		return np.asarray(design_matrix)
 	
@@ -207,233 +490,158 @@ class DesignMatrix(object):
 		elif self.design == "Tcube":
 			tic = time.time()
 			design_matrix = []
+			UNSHUFFLED_DM = int(self.sim*0.2)
+			SHUFFLED_DM = 4*UNSHUFFLED_DM 
+			if int(self.sim*0.2) > 3:
+				n_C = int(UNSHUFFLED_DM*0.33)
+				n_L = int(UNSHUFFLED_DM*0.33)
+				n_H = UNSHUFFLED_DM - n_C - n_L
+			else:
+				n_C = 5
+				n_L = 5
+				n_H = 5
+				UNSHUFFLED_DM = 5
+				SHUFFLED_DM = 4*UNSHUFFLED_DM
+				self.sim =  UNSHUFFLED_DM + SHUFFLED_DM
+			#print(self.sim,n_C,n_L,n_H,SHUFFLED_DM)
 			
-			n_a =  int(self.sim*0.2)
-			print(n_a)
-			if "thermo_samples.pkl" not in os.listdir():
-				curves_dict, generator_a = self.get_thermo_curves(n_a)# Returns 100 class-A Arrhenius samples
-				with open('thermo_samples.pkl', 'wb') as file_:
-					pickle.dump(curves_dict, file_)
+			if "thermo_ConstantSamples.pkl" not in os.listdir():
+				curves_dict_C, generator_C = self.get_thermo_ConstantCurves(n_C)# Returns 100 class-A Arrhenius samples
+				with open('thermo_ConstantSamples.pkl', 'wb') as file_:
+					pickle.dump(curves_dict_C, file_)
 				print("\nThermo curves generated")
 			else:
 				# Load the object from the file
-				with open('thermo_samples.pkl', 'rb') as file_:
-					curves_dict = pickle.load(file_)
+				with open('thermo_ConstantSamples.pkl', 'rb') as file_:
+					curves_dict_C = pickle.load(file_)
 				print("\nThermo curves generated")
 			
+			if "thermo_LinearSamples.pkl" not in os.listdir():
+				curves_dict_L, generator_L = self.get_thermo_LinearCurves(n_L)# Returns 100 class-A Arrhenius samples
+				with open('thermo_LinearSamples.pkl', 'wb') as file_:
+					pickle.dump(curves_dict_L, file_)
+				print("\nThermo curves generated")
+			else:
+				# Load the object from the file
+				with open('thermo_LinearSamples.pkl', 'rb') as file_:
+					curves_dict_L = pickle.load(file_)
+				print("\nThermo curves generated")
+
+			if "thermo_HigherOrderSamples.pkl" not in os.listdir():
+				curves_dict_H, generator_H = self.get_thermo_curves(n_H)# Returns 100 class-A Arrhenius samples
+				with open('thermo_HigherOrderSamples.pkl', 'wb') as file_:
+					pickle.dump(curves_dict_H, file_)
+				print("\nThermo curves generated")
+			else:
+				# Load the object from the file
+				with open('thermo_HigherOrderSamples.pkl', 'rb') as file_:
+					curves_dict_H = pickle.load(file_)
+				print("\nThermo curves generated")
+
 			
+			V_ = {}
+			pairings = []
+
+			for species in tqdm(self.unsrt, desc="Populating V_"):
+				species_name = self.unsrt[species].species  # Name of the species
+				if not self.unsrt[species].grouped:  # Only process ungrouped species
+					pair = []
+
+					# Find all species with the same name
+					for spec in self.unsrt:
+						if self.unsrt[spec].species == species_name:
+							self.unsrt[spec].grouped = True  # Mark species as grouped
+							pair.append(spec)
+					#print(pair)
+					# Ensure two entries exist for low and high T polynomials
+					if len(pair) != 2:
+						print(f"Warning: Incomplete pairing for species {species_name}")
+						continue
+					
+					# Extract curves for the two paired species
+					list_c1 = curves_dict_C[pair[0]]  # First pair (NASA coefficients at condition C)
+					list_c2 = curves_dict_C[pair[1]]  # Second pair
+					#print(species,list_c1[0],list_c2[0])
+					#print(len(list_c1))
+					list_l1 = curves_dict_L[pair[0]]  # Low temperature polynomials for pair 0
+					list_l2 = curves_dict_L[pair[1]]  # Low temperature polynomials for pair 1
+					#print(species,list_l1[0],list_l2[0])
+					list_h1 = curves_dict_H[pair[0]]  # High temperature polynomials for pair 0
+					list_h2 = curves_dict_H[pair[1]]  # High temperature polynomials for pair 1
+
+					# Combine low-temperature (L), high-temperature (H), and other coefficients (C)
+					result = []
+					result.extend([np.asarray([np.asarray(c1).flatten(),np.asarray(c2).flatten()]).flatten() for c1, c2 in zip(list_c1, list_c2)])
+					result.extend([np.asarray([np.asarray(l1).flatten(),np.asarray(l2).flatten()]).flatten() for l1, l2 in zip(list_l1, list_l2)])
+					result.extend([np.asarray([np.asarray(h1).flatten(),np.asarray(h2).flatten()]).flatten() for h1, h2 in zip(list_h1, list_h2)])
+					
+					#print(result[0])
+					# Store the result in V_
+					V_[species_name] = result  # Use species name as key
+					pairings.append(species_name)  # Track paired species
+
+				else:
+					continue
+			'''
 			V_ = {}
 			for species in tqdm(self.unsrt,desc="Populating V_"):
 				temp = []
-				for sample_a in curves_dict[species]: 
-					temp.append(sample_a)
+				for sample_c in curves_dict_C[species]: 
+					temp.append(sample_c)
+				for sample_l in curves_dict_L[species]: 
+					temp.append(sample_l)
+				for sample_h in curves_dict_H[species]: 
+					temp.append(sample_h)
 				V_[species] = np.asarray(temp)
-			
+			'''
 			V_s = {}#Doing random shuffling
 			
 			V_copy = copy.deepcopy(V_)
 			
-			for rxn in tqdm(self.unsrt, desc="Doing random shuffling"):
+			for species in tqdm(pairings, desc="Doing random shuffling"):
 				column = []
 				# Number of shuffles
-				num_shuffles = int(self.sim * 0.8)
+				num_shuffles = SHUFFLED_DM
 				# Get the values to shuffle
-				values = V_copy[rxn]
-
+				values = V_copy[species]
+				#print(len(values))
 				# Repeat the shuffle process
 				for i in range(4):
 					np.random.shuffle(values)
-					column.append(values.copy())
+					column.extend(values.copy())
 
 				# Flatten the list of arrays
-				column = np.concatenate(column)
-				V_s[rxn] = column
+				#print(len(column))
+				#column = np.concatenate(column)
+				#print(column[len(list_c1)])
+				V_s[species] = column
 			
-			"""						
-			delta_n = {}
-			p = {}
-			V_opt = {}
-			V = {}#Populating V for unshuffled portion of the design matrix
-			ch = {}
-			nominal = {}
-			p_max = {}
-			p_min = {}
-			theta = {}
-			Temp ={}
-			zeta = {}
-			for rxn in tqdm(self.unsrt,desc="Populating unshuffled portion of DM"):
-				ch[rxn] = self.unsrt[rxn].cholskyDeCorrelateMat
-				nominal[rxn] = self.unsrt[rxn].nominal
-				p_max[rxn] = self.unsrt[rxn].P_max
-				p_min[rxn] = self.unsrt[rxn].P_min
-				theta[rxn] = self.unsrt[rxn].Theta
-				Temp[rxn] = self.unsrt[rxn].temperatures
-				zeta[rxn] = self.unsrt[rxn].zeta.x
-			d_n = {}
-			_delta_n = {}
-			dict_delta_n = {}
-			percentage = {}
-			for rxn in tqdm(self.unsrt,desc="Generating fSAC samples"):
-				T =np.array([Temp[rxn][0],(Temp[rxn][0] + Temp[rxn][-1])/2,Temp[rxn][-1]])	
-				Theta = np.array([T/T,np.log(T),-1/(T)])
-				P = nominal[rxn]
-				cov = ch[rxn]
-				zet = zeta[rxn]
-				Tp = Temp[rxn]
-				#Tp = np.linspace(300,2500,50)
-				Theta_p = np.array([Tp/Tp,np.log(Tp),-1/(Tp)])
-				P_max = P + np.asarray(np.dot(cov,zet)).flatten();
-				P_min = P - np.asarray(np.dot(cov,zet)).flatten();
-				
-				d_n[rxn] = abs(P[1]-P_max[1])
-				kmax = Theta_p.T.dot(P_max)
-				kmin = Theta_p.T.dot(P_min)
-				ka_o = Theta_p.T.dot(P)
-				M = Theta.T.dot(cov)
-				f = abs(kmax-ka_o)
-				temp = []
-				outside = []
-				not_selected = []
-				temp_n = []
-				while len(temp)<100:
-					random = 2*np.random.rand(3)-1
-					P_right = P + random[0]*np.asarray(np.dot(cov,zet)).flatten()
-					P_mid = P + random[1]*(7/8)*np.asarray(np.dot(cov,zet)).flatten()
-					P_left = P + random[2]*np.asarray(np.dot(cov,zet)).flatten()
-					Theta_left = np.array([T[0]/T[0],np.log(T[0]),-1/(T[0])])
-					Theta_mid = np.array([T[1]/T[1],np.log(T[1]),-1/(T[1])])
-					Theta_right = np.array([T[2]/T[2],np.log(T[2]),-1/(T[2])])
-					kappa_left = Theta_left.T.dot(P_left)
-					kappa_mid = Theta_mid.T.dot(P_mid)
-					kappa_right = Theta_right.T.dot(P_right)
-					kappa_o1 = Theta_left.T.dot(P)
-					kappa_o2= Theta_mid.T.dot(P)
-					kappa_o3 = Theta_right.T.dot(P)
-					kappa = np.array([kappa_left,kappa_mid,kappa_right])
-					kappa_o = np.array([kappa_o1,kappa_o2,kappa_o3])
-					y = kappa - kappa_o
-					zeta_ = np.linalg.solve(M,y)
-					func = np.asarray([(i.T.dot(cov.dot(zeta_))) for i in Theta_p.T])
-					P_found = P + np.asarray(np.dot(cov,zeta_)).flatten()
-					n_ = abs(P[1]-P_found[1])
-					temp_n.append(n_)
-					kappa_found = Theta_p.T.dot(P_found)
-					f_found = abs(kappa_found-ka_o)
-					if max(f)<max(f_found):
-						outside.append(zeta_)
-					if n_ > 2:	
-						#plt.plot(1/Tp,kappa_found,"r-",linewidth=0.25)
-						#temp.append(zeta_)#for unconstrained zeta
-						not_selected.append(zeta_)
-						_delta_n[n_] = zeta_
-						
-					else:
-						temp.append(zeta_)
-						_delta_n[n_] = zeta_
-					#print(zeta_)
-				percentage[rxn] = (len(not_selected)/len(temp))*100
-				delta_n[rxn] = max(temp_n)				
-				dict_delta_n[rxn] = _delta_n[max(temp_n)]
-				V[rxn] = temp
-				
+			SHUFFLED_DM = 4* UNSHUFFLED_DM
 			
-			"""		
-			for i in range(int(self.sim*0.2)):
+			for i in range(UNSHUFFLED_DM):
 				row = []
-				for rxn in self.unsrt:
-					row.extend(V_[rxn][i])
+				for species in pairings:
+					#print(V_[species][len(list_c1)])					
+					#raise AssertionError("Stop!")
+					row.extend(V_[species][i])
 					
 				design_matrix.append(row)
-			
 			
 			#RANDOM SHUFFLING
-			for i in range(int(self.sim*0.8)):
+			for i in range(SHUFFLED_DM):
 				row = []
-				for rxn in self.unsrt:
-					row.extend(V_s[rxn][i])
+				for species in pairings:
+					row.extend(V_s[species][i])
 				design_matrix.append(row)
 				
-			"""
-			for i in range(100):
-				row = []
-				for rxn in self.unsrt:
-					row.extend(V[rxn][i])
-					
-				design_matrix.append(row)
-			"""
 			tok = time.time()
 			print("Time taken to construct Design Matrix: {}".format(tok - tic))
-			
-			'''
-			Lcp = self.unsrt["AR:Low"].Lcp  # Access the Lcp attribute
-			NominalParam = np.asarray(self.unsrt["AR:Low"].NominalParams).reshape(-1,1) # Convert to array and reshape to 5x1 if needed
-			print(NominalParam)
-			T = np.linspace(298, 1000, 100) 
-			theta = np.array([T / T, T, T**2, T**3, T**4]) # Each row is a theta vector for a temperature
-			nominal_param_theta = [the.T.dot(NominalParam) for the in theta.T] # Calculate NominalParam * Theta
-			print(nominal_param_theta)
-			for i, row in enumerate(design_matrix):
-				#Extract the first 5 elements to form zeta (5x1 vector)
-				zeta = np.asarray(row[:5]).reshape(-1, 1)  # Ensure zeta is a 5x1 vector
-				result = NominalParam + np.asarray(np.dot(Lcp, zeta)).flatten()
-				plt.figure(figsize=(10, 6))
-				plt.plot(T, result, label='Sample Curve', color='blue')
-				plt.plot(T, nominal_param_theta, label='Nominal', color='red')
-				plt.title(f'Zeta Samples for Design Matrix Row {i}')
-				plt.xlabel('Temperature (K)')
-				plt.ylabel('Values')
-				plt.legend()
-				plt.grid(True)
-
-				# Save the plot to the 'sample_plots' directory
-				plt.savefig(f'sample_plots/zeta_samples_row_{i}.png')
-				plt.close()  
-
-				print("Plots have been saved to the 'sample_plots' directory.")
-							
-			
-			Lcp = self.unsrt["AR:Low"].Lcp  # Access the Lcp attribute
-			NominalParam = np.asarray(self.unsrt["AR:Low"].NominalParams).reshape(-1, 1)  # Convert to array and reshape to 5x1 if needed
-
-			# Print NominalParam to check its value
-			print("NominalParam:\n", NominalParam)
-
-			# Define the temperature range
-			T = np.linspace(298, 1000, 100)  # Temperature range from 298 K to 1000 K
-
-			# Calculate theta = [T/T, T, T^2, T^3, T^4] for each temperature
-			theta = np.array([T / T, T, T**2, T**3, T**4]).T  # Transposed to get a 100x5 matrix
-
-			# Calculate NominalParam * Theta for each temperature (resulting in a 100x1 vector)
-			nominal_param_theta = np.dot(theta, NominalParam)
-
-			# Iterate over each row of the design_matrix to create and save individual plots
-			for i, row in enumerate(design_matrix):
-			    # Extract the first 5 elements to form zeta (5x1 vector)
-			    zeta = np.asarray(row[:5]).reshape(-1, 1)  # Ensure zeta is a 5x1 vector
-			    
-			    # Compute the result: NominalValues + Lcp * zeta
-			    result = NominalParam + np.dot(Lcp, zeta)
-			    result = result.flatten()  # Flatten to ensure it's 1D for plotting
-
-			    # Plotting the curves
-			    plt.figure(figsize=(10, 6))
-			    plt.plot(T, result, label='Sample Curve', color='blue')
-			    plt.plot(T, nominal_param_theta, label='Nominal', color='red')
-
-			    # Adding plot details
-			    plt.title(f'Zeta Samples for Design Matrix Row {i}')
-			    plt.xlabel('Temperature (K)')
-			    plt.ylabel('Values')
-			    plt.legend()
-			    plt.grid(True)
-
-			    # Save the plot to the 'sample_plots' directory
-			    plt.savefig(f'sample_plots/zeta_samples_row_{i}.png')
-			    plt.close()  # Close the plot to free up memory
-
-			print("Plots have been saved to the 'sample_plots' directory.")	
-			'''		
+			s =""
+			for row in design_matrix:
+				for element in row:
+					s+=f"{element},"
+				s+="\n"
+			ff = open('DesignMatrix.csv','w').write(s)	
 			return np.asarray(design_matrix)
 
 	
@@ -447,15 +655,6 @@ class DesignMatrix(object):
 		elif self.design == "A1+B1+C1":
 			tic = time.time()
 			design_matrix = []
-			#Take the sample_length and divide it into following
-			# 		n_a:n_b:n_c = 10:45:45
-			#               Original samples = 3000
-			#		Random shuffle = 4000
-			#              Linear combination =  5000
-			#      
-			#      V: Unshuffled vector (numpy-array)
-			#	 V_s: Shuffled vector (
-			
 			n_a = int(0.1*self.sim*0.2)
 			n_b = int(0.45*self.sim*0.2)
 			n_c = int(self.sim*0.2-n_a-n_b)
@@ -816,17 +1015,29 @@ def run_sampling_b(sample,data,generator,length):
 	del A
 	return (sample,generator,zeta,length)
 	
-def run_sampling_thermo(sample,data,generator,length):
+def run_sampling_thermo_HigherOrder(sample,data,generator,length,row):
 	A = Uncertainty.ThermoUncertaintyExtractor(data)
 	a1 = generator[0]
 	a2 = generator[1]
-	A.populateValues(a1,a2)
-	#print(a1,a2)
+	a3 = generator[2]
+	A.populateValues(a1,a2,a3)
 	A.getCovariance(flag=False)
 	A.getUnCorrelated(flag = False)
-	zeta = A.get_thermo_Zeta(flag=True)
+	zeta = A.get_thermo_ZetaHigherOrder(flag=True)
 	del A
-	return (sample,generator,zeta,length)
+	return (sample,row,generator,zeta,length)
+
+def run_sampling_thermo_LinearCurce(sample, data, generator, length, row):
+	A = Uncertainty.ThermoUncertaintyExtractor(data)
+	a1 = generator[0]
+	a2 = generator[1]
+	a3 = generator[2]
+	A.populateValues(a1, a2, a3)
+	A.getCovariance(flag=False)
+	A.getUnCorrelated(flag=False)
+	zeta, Yu = A.get_thermo_ZetaLinear(row, flag=True)
+	del A
+	return (sample,row, generator, zeta, Yu, length) 
 
 def run_sampling_c(sample,data,generator,length):
 	A = Uncertainty.UncertaintyExtractor(data)
@@ -843,20 +1054,23 @@ class Worker():
 	def __init__(self, workers):
 		self.pool = multiprocessing.Pool(processes=workers)
 		self.progress = []
+		self.results= []
 		self.parallized_zeta = []
 		self.generator = []
+		self.f_c = []
 		self.parallel_zeta_dict = {}
 
 	def callback(self,result):
 		#print("Entered callback\n")
 		self.progress.append(result[0])
+		self.results.append(result)
 		self.generator.append(result[1])
 		self.parallized_zeta.append(result[2])
 		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
 		sys.stdout.flush()
 	def callback_error(self,result):
-    		print('error', result)
-    		
+			print('error', result)
+			
 	def do_unsrt(self,data,sampling_points):
 		#generators = data["generators"]
 		for args in range(sampling_points):
@@ -867,6 +1081,7 @@ class Worker():
 		self.pool.join()
 		self.pool.terminate()
 		return self.generator,self.parallized_zeta
+	
 	def do_unsrt_b(self,data,sampling_points):
 		#generators = data["generators"]
 		for args in range(sampling_points):
@@ -877,16 +1092,48 @@ class Worker():
 		self.pool.join()
 		self.pool.terminate()
 		return self.parallized_zeta,self.generator
-	def do_unsrt_thermo(self,data,sampling_points):
+	
+	def do_unsrt_thermoHigherOrder(self,data,sampling_points):
 		#generators = data["generators"]
 		for args in range(sampling_points):
-			self.pool.apply_async(run_sampling_thermo, 
-				  args=(1,data,data["generators_thermo"][args],sampling_points,), 
+			self.pool.apply_async(run_sampling_thermo_HigherOrder, 
+				  args=(1,data,data["generators_thermo"][args],sampling_points,args,), 
 				  callback=self.callback,error_callback=self.callback_error)
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
-		return self.parallized_zeta,self.generator
+		
+		
+		self.results.sort(key=lambda x: x[1])  # Sort by the second-to-last element (row identifier)
+		
+		# Extract sorted values
+		sorted_generators = [result[2] for result in self.results]
+		sorted_zeta = [result[3] for result in self.results]
+		return sorted_zeta, sorted_generators
+	
+	def do_unsrt_thermoLinear(self, data, sampling_points):
+		for args in range(sampling_points):
+			self.pool.apply_async(
+				run_sampling_thermo_LinearCurce, 
+				args=(1, data, data["generators_thermo"][args], sampling_points, args,), 
+				callback=self.callback, 
+				error_callback=self.callback_error
+			)
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()
+
+		# Sort results based on the identifier (row index)
+		self.results.sort(key=lambda x: x[1])  # Sort by the second-to-last element (row identifier)
+		
+		# Extract sorted values
+		sorted_generators = [result[2] for result in self.results]
+		sorted_zeta = [result[3] for result in self.results]
+		sorted_fc = [result[4] for result in self.results]
+		
+		return sorted_zeta, sorted_fc, sorted_generators
+		#return self.parallized_zeta,self.f_c,self.generator
+	
 	def do_unsrt_c(self,data,sampling_points):
 		#generators = data["generators"]
 		for args in range(sampling_points):

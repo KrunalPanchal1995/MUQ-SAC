@@ -1,0 +1,9 @@
+For cantera or mechanism parsing purpose (Read mechanism and manipulate)
+
+ - ck2yaml code in cantera- convert chemkin to yaml format
+
+ - soln2ck converts the solution class of cantera to chemkin format
+
+run "python3.9 soln2ck.py" in terminal. Note the python version may differ with respect to your installed evrsion
+
+	"write(gas, output_path='heptane.inp', input_yaml='heptane_632.yaml',skip_thermo=False, same_file_thermo=True, skip_transport=False)" is the syntax to be changed according to the mechanism

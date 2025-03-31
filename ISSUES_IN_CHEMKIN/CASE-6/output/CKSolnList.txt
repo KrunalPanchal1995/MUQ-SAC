@@ -1,0 +1,27 @@
+VARIABLE VAR ALL
+VARIABLE SEN ALL
+VARIABLE ROP ALL
+VARIABLE volume  1  0  0
+VARIABLE external_surface_area  0  0  0
+VARIABLE volumetric_heat_production_rate  0  0  0
+VARIABLE surface_temperature  0  0  0
+VARIABLE heat_loss_rate  0  0  0
+VARIABLE temperature  1  0  0
+VARIABLE mass  0  0  0
+VARIABLE pressure  1  0  0
+VARIABLE molar_conversion  0  0  0
+VARIABLE net_reaction_rate  0  0  0
+VARIABLE heat_production_per_reaction  0  0  0
+VARIABLE molecular_weight  0  0  0
+VARIABLE mass_density  0  0  0
+VARIABLE mixture_enthalpy  0  0  0
+VARIABLE sensible_enthalpy  0  0  0
+VARIABLE unburned_hydrocarbons  0  0  0
+VARIABLE volatile_organic_compounds  0  0  0
+VARIABLE exhaust_in_ppmvd  0  0  0
+VARIABLE all_single_point_values  0  0  0
+VARIABLE use_reaction_string_instead_of_index  1  0  0
+UNIT  Time  (sec)
+UNIT  Temperature  (K)
+UNIT  Pressure  (bar)
+UNIT  Volume  (cm3)

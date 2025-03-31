@@ -1,0 +1,68 @@
+GRI_PHI_1_P_1_66_OH:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile
+ species: OH 
+ saveAll: True
+ mol_wt: 30
+ 
+GRI_PHI_1_P_1_55_OH:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: OH
+ 
+GRI_PHI_1_P_1_66_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO
+
+GRI_PHI_1_P_1_55_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: OH
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO
+
+GRI_Methane_Phi_1_P_1:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: ignition_delay 
+ saveAll: True
+ mol_wt: 54
+ species: OH
+ 
+GRI_Methane_Phi_1_P_4_Sp_Prof_CO2:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO2
+ 
+GRI_Methane_Phi_1_P_1_12_Sp_Prof_CO:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: onset
+ op_type: species_profile 
+ saveAll: True
+ mol_wt: 30
+ species: CO
+ 
+
+ 
+
+ 
+

@@ -303,9 +303,16 @@ class SM(object):
 				if self.pert_mech_file == "":
 					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = mani.doPerturbation()				
 					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+					#print(instring_dict[str(dir_name)])
+					#print(extract[str(dir_name)])
+					#raise AssertionError("STOP")
+					
 				else:
 					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = "",""
 					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = mech_file) #generate input file
+					#print(instring_dict[str(dir_name)])
+					#print(extract[str(dir_name)])
+					#raise AssertionError("STOP")
 				dir_list.append(str(dir_name))
 				run_convert_dict[str(dir_name)] = start+"/"+str(dir_name)
 				run_list[str(dir_name)] = start+"/"+str(dir_name)
@@ -314,9 +321,15 @@ class SM(object):
 				if self.pert_mech_file == "":
 					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = mani.doPerturbation()				
 					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+					#print(instring_dict[str(dir_name)])
+					#print(extract[str(dir_name)])
+					#raise AssertionError("STOP")
 				else:
 					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = "",""
 					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = mech_file) #generate input file
+					#print(instring_dict[str(dir_name)])
+					#print(extract[str(dir_name)])
+					#raise AssertionError("STOP")
 				dir_list.append(str(dir_name))
 				run_convert_dict[str(dir_name)] = start+"/"+str(dir_name)
 				run_list[str(dir_name)] = start+"/"+str(dir_name)

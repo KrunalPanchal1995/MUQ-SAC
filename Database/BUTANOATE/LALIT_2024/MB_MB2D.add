@@ -17,46 +17,52 @@ ing_Ethyl_Butanoate:
  mol_wt: 99
 
 ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_1:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
 
 ign_BUTANOATE_phi_1_IGN_PHI_0_25_P_4:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
  
 ign_BUTANOATE_phi_1_IGN_PHI_1_P_1:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
 
 ign_BUTANOATE_phi_1_IGN_PHI_1_P_4:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
 
 ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_1:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
 
 ign_BUTANOATE_phi_1_IGN_PHI_1_5_P_4:
- solver: cantera
+ solver: FlameMaster
  ign_delay_def: CHV
  ign_cond: max
  specific_cond: 
  mol_wt: 13
+ estimateTIG: 0.01
  
 ing_Butanoate:
  solver: CHEMKIN_PRO
@@ -70,7 +76,7 @@ fls_1a:
  type: phi
  fuel: MB-C5H10O2
 
-RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5:
+RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5_15:
  solver: cantera
  ign_delay_def: p
  ign_cond: onset
@@ -81,7 +87,132 @@ RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5:
   935.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_935.csv  
   958.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_958.csv
   982.0 : /home/krithika/Desktop/MUQ-SAC/Database/BUTANOATE/DATA/RCM/RCM_phi_1_mix_5_P_15_T_982.csv
- 
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_mix_5_30:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  884.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_5_P_30_T_884.csv
+  909.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_5_P_30_T_909.csv
+  918.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_5_P_30_T_918.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_mix_4_20:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  921.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_4_P_20_T_921.csv
+  940.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_4_P_20_T_940.csv
+  959.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_mix_4_P_20_T_959.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_0_5_mix_3_40:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  886.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_40_T_886.csv 
+  909.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_40_T_909.csv
+  936.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_40_T_936.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_0_5_mix_3_30:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  914.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_30_T_914.csv 
+  936.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_30_T_936.csv
+  964.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_3_P_30_T_964.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_0_5_mix_1_10:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  1016.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_10_T_1016.csv 
+  1037.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_10_T_1037.csv
+  1054.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_10_T_1054.csv
+  1083.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_10_T_1083.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_0_5_mix_1_15:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  1024.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_15_T_1024.csv
+  1051.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_15_T_1051.csv
+  1066.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_1_P_15_T_1066.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_0_5_mix_2_15:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  966.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_2_P_15_T_966.csv  
+  986.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_2_P_15_T_986.csv
+  1004.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_0_5_mix_2_P_15_T_1004.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_5_mix_6_40:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  890.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_6_P_40_T_890.csv
+  914.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_6_P_40_T_914.csv
+  931.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_6_P_40_T_931.csv
+  948.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_6_P_40_T_948.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_5_mix_7_30:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  919.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_30_T_919.csv
+  942.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_30_T_942.csv
+  969.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_30_T_969.csv
+  995.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_30_T_995.csv
+
+RCM_BUTANOATE_phi_1_RCM_phi_1_5_mix_7_20:
+ solver: cantera
+ ign_delay_def: p
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 99
+ species: MB-C5H10O2
+ volume_profile:
+  992.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_20_T_992.csv
+  1012.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_20_T_1012.csv
+  1050.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_20_T_1050.csv
+  1073.0 : /home/krithika/MUQ-SAC/Database/BUTANOATE/DATA/VOLUME_PROFILES/RCM_phi_1_5_mix_7_P_20_T_1073.csv
+
+
 JSR_BUTANOATE_phi_1_JSR_MB:
  solver: cantera
  species: MB-C5H10O2

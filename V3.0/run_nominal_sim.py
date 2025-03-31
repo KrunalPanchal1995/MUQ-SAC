@@ -319,7 +319,7 @@ for d_set in dataset:
 	string_2 = "DS_ID,T,P,Phi,Fuel,Ox,BathGas,Obs(us),Nominal\n"
 	flag = None
 	for case,target in enumerate(target_list):
-		if target.target == "Tig" or target.target == "JSR":
+		if target.target == "Tig" or target.target == 'RCM' or target.target == "JSR":
 			#print(d_set)
 			#print(target.target)
 			if target.dataSet_id == d_set:

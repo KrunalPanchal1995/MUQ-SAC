@@ -1,0 +1,5 @@
+#!/bin/bash
+export NUMEXPR_MAX_THREADS=1
+python3.9 /home/krithika/MUQ-SAC/V3.0/soln2ck_2.py --mechanism=mechanism.inp --thermo=thermo.dat /data/TEST-THERMO-sens/FFCM_THERMO_UQ_OPT/PRS_INVESTIGATION_ID_1029_TIG_CHEMKIN/Perturbed_Mech/mechanism_0.yaml &> soln2ck.out
+python3.9 cantera_.py &> solve
+		

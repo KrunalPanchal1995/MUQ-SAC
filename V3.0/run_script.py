@@ -93,11 +93,11 @@ global A_fact_samples
 
 A_fact_samples = stats_["Sampling_of_PRS"]
 if "sensitive_parameters" not in stats_:
-	stats_["sensitive_parameters"] = "zeta"
-	optInputs["Stats"]["sensitive_parameters"] = "zeta"
+	stats_["sensitive_parameters"] = "Principle_SubMatrix"
+	optInputs["Stats"]["sensitive_parameters"] = "Principle_SubMatrix"
 if "Arrhenius_Selection_Type" not in stats_:
-	stats_["Arrhenius_Selection_Type"] = "all"
-	optInputs["Stats"]["Arrhenius_Selection_Type"] = "all"
+	stats_["Arrhenius_Selection_Type"] = "some"
+	optInputs["Stats"]["Arrhenius_Selection_Type"] = "some"
 unsrt_location = locations[unsrt]
 mech_file_location = locations[mech]
 thermo_file_location = locations[thermoF]
@@ -111,7 +111,9 @@ if fileType == "chemkin":
 else:
 	file_specific_input = ""
 fuel = inputs[fuel]
-global_reaction = inputs[globRxn]
+gr = inputs[globRxn]
+global_reaction = gr
+
 design_type = stats_[design]
 parallel_threads = dataCounts[countThreads]
 targets_count = int(dataCounts["targets_count"])
@@ -143,7 +145,7 @@ for target in targetLines[:targets_count]:
 	target_list.append(t)
 case_dir = range(0,len(target_list))
 print(case_dir)
-print("optimization targets identified\n")
+print("\n\nOptimization targets identified.\nStarted the MUQ process.......\n")
 target_file = open("target_data.txt","w")
 target_file.write(string_target)
 target_file.close()
@@ -227,8 +229,9 @@ manipulationDict["Cholesky"] = deepcopy(Cholesky_list)#.deepcopy()
 manipulationDict["zeta"] = deepcopy(zeta_list)#.deepcopy()
 manipulationDict["activeParameters"] = deepcopy(activeParameters)#.deepcopy()
 manipulationDict["nominal"] = deepcopy(nominal_list)#.deepcopy()
-print("\nFollowing list is the choosen reactions\n")
-print(manipulationDict["activeParameters"])
+print(f"\n\n################################################\nThe total reactions choosen for this study: {len(manipulationDict['activeParameters'])}\n\tThe list is as follows:\n\t")
+print("\t"+f"{manipulationDict['activeParameters']}")
+print("\n################################################\n\n")
 
 
 """
@@ -247,6 +250,7 @@ if PRS_type == "Partial":
 	print("\nPartial Polynomial Response Surface is choosen as a Solution Mapping Technique\n\n\tStarting the Sensitivity Analysis: \n\t\tKindly be Patient\n")
 	if "A-facto" in design_type:
 		if "sens_parameters.pkl" not in os.listdir():
+			status_ = "Pending"
 			# Arguments to pass to script2.py
 			args = [sys.argv[1], 'rxn_list_a_fact.csv','&>SA.out']
 
@@ -255,7 +259,7 @@ if PRS_type == "Partial":
 			f = open("SA_tool.out","+a")
 			f.write(result.stdout+"\n")
 			
-			print("\nSensitivity Analysis for A-factor is Done!!")
+			print("\n\nSensitivity Analysis for A-factor is Done!!")
 			# Printing the errors of script2.py, if any
 			if result.stderr:
 			#	print("Errors:")
@@ -265,6 +269,7 @@ if PRS_type == "Partial":
 			with open('sens_parameters.pkl', 'rb') as file_:
 				sensitivity_analysis = pickle.load(file_)
 		else:
+			status_ = "Pending"
 			print("\n\tBrute-force Sensitivity analysis is alsready over!!\n")
 			with open('sens_parameters.pkl', 'rb') as file_:
 				sensitivity_analysis = pickle.load(file_)
@@ -272,9 +277,9 @@ if PRS_type == "Partial":
 	else:
 		#if design_type !="A-facto":
 		if "sens_3p_parameters.pkl" not in os.listdir() :
-
+			status_ = "Pending"
 			args = [sys.argv[1], 'rxn_list.csv','&>SA_3p.out']
-			print("\tRunning sens_3_params.py code\n")
+			print("\n\tRunning sens_3_params.py code\n")
 			result = subprocess.run(['python3.9', binLoc["SA_tool_3p"]] + args, capture_output=True, text=True)
 			f = open("SA_tool_3p.out","+a")
 			f.write(result.stdout+"\n")
@@ -284,19 +289,21 @@ if PRS_type == "Partial":
 			with open('sens_3p_parameters.pkl', 'rb') as file_:
 				sensitivity_analysis = pickle.load(file_)
 		else:
+			status_ = "Pending"
 			print("\n\t3-Parameter Sensitivity analysis is alsready over!!\n")
 			with open('sens_3p_parameters.pkl', 'rb') as file_:
 				sensitivity_analysis = pickle.load(file_)
+	#print(sensitivity_analysis)
 	#raise AssertionError("Stop")
 	partialPRS_Object = []
 	selected_params_dict = {}
 	design_matrix_dict = {}
 	yaml_loc_dict = {}
 	no_of_sim = {}
-	print("\n################################################\n###  Starting to generate Design Matrix      ###\n###  for all targets                        ###\n################################################\n")
+	print("\n################################################\n###  Starting to generate Design Matrix      ###\n###  for all targets                        ###\n################################################\n\n")
 	for case in case_dir:
 		#PPRS_system = P_PRS.PartialPRS(sensitivity_analysis[str(case)],unsrt_data,optInputs,target_list,case,activeParameters,design_type)
-		PPRS_system = P_PRS.PartialPRS(sensitivity_analysis[str(case)],unsrt_data,optInputs,target_list,str(case),activeParameters,design_type,status="Done")
+		PPRS_system = P_PRS.PartialPRS(sensitivity_analysis[str(case)],unsrt_data,optInputs,target_list,str(case),activeParameters,design_type,status=status_)
 		yaml_loc,design_matrix,selected_params = PPRS_system.partial_DesignMatrix()
 		#print(len(design_matrix))
 		partialPRS_Object.append(PPRS_system)
@@ -337,7 +344,7 @@ else:
 		return sim
 	no_of_sim = {}
 	if "DesignMatrix.csv" not in os.listdir():
-		print(f"\nNo. of Simulations required: {getSim(len(manipulationDict['activeParameters']),design)}\n")
+		print(f"\n\n\tNo. of Simulations required: {getSim(len(manipulationDict['activeParameters']),design)}\n")
 		no_of_sim_ = getSim(len(manipulationDict["activeParameters"]),design_type)
 		design_matrix = DM.DesignMatrix(unsrt_data,design_type,getSim(len(manipulationDict["activeParameters"]),design_type),len(manipulationDict["activeParameters"])).getSamples()
 		no_of_sim_ = len(design_matrix)
@@ -593,7 +600,7 @@ if "solution_zeta.save" not in os.listdir():
 	new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
 
 	#new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-	string = yaml.dump(new_mechanism,default_flow_style=False)
+	string = yaml.safe_dump(new_mechanism,default_flow_style=False)
 	f = open("new_mech.yaml","w").write(string)
 else:
 	
@@ -605,9 +612,9 @@ else:
 	originalMech = Parser(mech_file_location).mech
 	copy_of_mech = deepcopy(originalMech)#.deepcopy()
 	new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
-
+	#print(new_mechanism)
 	#new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-	string = yaml.dump(new_mechanism,default_flow_style=False)
+	string = yaml.safe_dump(new_mechanism,default_flow_style=False)
 	f = open("new_mech.yaml","w").write(string)
 
 

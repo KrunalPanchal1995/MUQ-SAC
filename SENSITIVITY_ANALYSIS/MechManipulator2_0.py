@@ -66,6 +66,7 @@ class Manipulator:
 		"""
 		The new perturbed reaction replaces the prior Arrhenius parameters 
 		"""
+		print()
 		#print("Before")
 		#print(mechanism["reactions"][index]["rate-constant"])
 		reaction_details = mechanism["reactions"][index]["rate-constant"]

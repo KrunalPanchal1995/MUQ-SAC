@@ -12,14 +12,20 @@ import time
 import copy
 import concurrent.futures
 #try:
-#    import ruamel_yaml as yaml
+#	import ruamel_yaml as yaml
 #except ImportError:
-#    from ruamel import yaml
+#	from ruamel import yaml
 import yaml
+sys.path.append('/yamlwriter.so')  # Adjust this path to the correct build directory
+#print(sys.path)
+import yamlwriter
+
+sys.path.append('/parallel_yaml_writer.so')
+import parallel_yaml_writer
 ############################################
 ##  This module is to create directroies  ##
 ##  is systematic ways. Prallel computing ##
-##  is done to make the process fast      ##
+##  is done to make the process fast	  ##
 ############################################
 from typing import Tuple
 """
@@ -46,9 +52,16 @@ def run_executable_files_with_timeout(args: Tuple[str, str], total: int, timeout
 		
 	except subprocess.TimeoutExpired:
 		error_log_path = os.path.join(args[0], "error.log")
-		f = open(error_log_path,"w").write("Process {args[1]} in directory {args[0]} exceeded {timeout} seconds and was terminated.")
+		f = open(error_log_path,"w").write(f"Process {args[1]} in directory {args[0]} exceeded {timeout} seconds and was terminated.")
 		return (args[0], total)
 
+def run_executable_files_(args,total):
+	os.chdir(args[0])
+	#print("Simulation started!!")
+	subprocess.call(["./"+args[1]])
+	#print("Simulation done!!")
+	return (args[0],total)
+	
 def run_executable_files(location,file_name,n):
 	os.chdir(location)
 	subprocess.call(["./"+file_name])
@@ -58,30 +71,57 @@ def run_generate_dir(location,total):
 	os.mkdir(location+"/output")
 	return (location,total)
 
+def run_map_3(params,total):
+	#sys.path.append('/yamlwriter.so')  # Adjust this path to the correct build directory
+	#print(sys.path)
+	#import yamlwriter
+	location = str(params[1])
+	yamlwriter.dump_to_yaml(location,f"mechanism_{params[2]}.yaml",params[0])
+	#yaml_string = yaml.dump(params[1],default_flow_style=False)
+	#with open(location+"/mechanism.yaml","w") as yamlfile:
+	#	yamlfile.write(yaml_string)
+	#	yamlfile.close()
+	return (params[0],total)
 def run_map_2(params,total):
+	#sys.path.append('/yamlwriter.so')  # Adjust this path to the correct build directory
+	#print(sys.path)
+	#import yamlwriter
 	location = str(params[0])
-	yaml_string = yaml.dump(params[1],default_flow_style=False)
-	with open(location+"/mechanism.yaml","w") as yamlfile:
-		yamlfile.write(yaml_string)
-		yamlfile.close()
+	parallel_yaml_writer.dump_to_yaml(location,"mechanism.yaml",params[1])
+	#yaml_string = yaml.dump(params[1],default_flow_style=False)
+	#with open(location+"/mechanism.yaml","w") as yamlfile:
+	#	yamlfile.write(yaml_string)
+	#	yamlfile.close()
 	return (params[0],total)
 
-
+def run_map_opt(params,total):
+	location = str(params[2])
+	sim1 = open(location+"/cantera_.py",'w').write(params[0])
+	sim2= open(location+"/FlameMaster.input",'w').write(params[0])
+	extract = open(location+"/extract.py",'w').write(params[3])
+	runScript = open(location+"/run","w").write(params[1])
+	subprocess.call(["chmod","+x",location+"/run"])
+	del location#,yaml_string
+	del sim1, sim2,extract,runScript
+	#del params[1]
+	return (params[2],total)
+	
 def run_map(params,total):
 	location = str(params[2])
 	
 	sim1 = open(location+"/cantera_.py",'w').write(params[0])
 	sim2= open(location+"/FlameMaster.input",'w').write(params[0])
 	extract = open(location+"/extract.py",'w').write(params[3])
-	perturb = open(location+"/perturb.txt",'w').write(params[4])
 	#runConvertorScript = open(location+"/run_convertor",'w').write(params[2])
 	runScript = open(location+"/run","w").write(params[1])
 	#subprocess.call(["chmod","+x",location+"/run_convertor"])
 	subprocess.call(["chmod","+x",location+"/run"])
-	#yaml_string = yaml.dump(params[-1],default_flow_style=False)
-	#with open(location+"/mechanism.yaml","w") as yamlfile:
-	#	yamlfile.write(yaml_string)
-	#	yamlfile.close()
+	yaml_string = yaml.dump(params[-2],default_flow_style=False)
+	with open(location+"/mechanism.yaml","w") as yamlfile:
+		yamlfile.write(yaml_string)
+
+	subprocess.call(["cp",params[-1],location])
+	#subprocess.call(["cp",params[-2],location])
 	del location#,yaml_string
 	del sim1, sim2,extract,runScript
 	#del params[1]
@@ -120,15 +160,16 @@ def run_sampling_direct(sample,rxn,data,generator,length):
 	del A
 	return (sample,rxn,generator,zeta,length)
 
-
-
 class Worker():
-	def __init__(self, workers):
+	def __init__(self, workers,path_to_yamlwriter="/data2/STUDY_OF_PARALLEL_COMPUTING/build/yamlwriter.so"):
 		self.pool = multiprocessing.Pool(processes=workers)
+		self.pool1 = concurrent.futures.ProcessPoolExecutor(max_workers=workers)
 		self.progress = []
 		self.parallized_zeta = []
 		self.parallel_zeta_dict = {}
 		self.generator = []
+		sys.path.append(path_to_yamlwriter)  
+		#self.yamlwriter = import_module('yamlwriter')
 	def update_progress(self, total):
         	update_progress(self.progress, total)
 	def callback_runConvertor(self, result):
@@ -148,7 +189,6 @@ class Worker():
 		self.progress.append(result[0])
 		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
 		sys.stdout.flush()
-		
 	def callback_run(self, result):
 		self.progress.append(result[0])
 		sys.stdout.write("\t\t\r{:06.2f}% is complete".format(len(self.progress)/float(result[-1])*100))
@@ -160,6 +200,7 @@ class Worker():
 	def callback_create(self, future):
 		result = future.result()
 		self.progress.append(result[0])
+		self.update_progress(result[-1])
 	def custom_error_callback(self,error):
    	 	print(f'Got an error: {error}')
    
@@ -202,6 +243,14 @@ class Worker():
 	def handler(self,error):
 		print(f'Error: {error}', flush=True)
 	
+	def do_job_map_create_3(self,params):
+		for param in params:
+			self.pool.apply_async(run_map_3,args=(param,len(params)),callback=self.callback_run_,error_callback=self.custom_error_callback)
+		
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()
+	
 	def do_job_map_create_2(self,params):
 		for param in params:
 			self.pool.apply_async(run_map_2,args=(param,len(params)),callback=self.callback_run_,error_callback=self.custom_error_callback)
@@ -209,7 +258,6 @@ class Worker():
 		self.pool.close()
 		self.pool.join()
 		self.pool.terminate()
-	
 	def do_job_async_convertor(self,location,file_name):
 		for args in location:
 			self.pool.apply_async(run_executable_files, 
@@ -228,7 +276,16 @@ class Worker():
 		self.pool.terminate()
 		del self.pool, params
 		del self.progress, self.parallized_zeta, self.parallel_zeta_dict, self.generator
+	
+	def do_job_create_opt(self,params):
+		for param in params:
+			self.pool.apply_async(run_map_opt, 
+			     args=(param,len(params)),callback=self.callback_run_,error_callback=self.custom_error_callback)
 		
+		self.pool.close()
+		self.pool.join()
+		self.pool.terminate()	
+	
 	def do_job_map_create(self,params):
 		for param in params:
 			self.pool.apply_async(run_map, 
@@ -244,8 +301,10 @@ class Worker():
 
 
 
+
+
 class SM(object):
-	def __init__(self,target_list,target_data,parameter_dict,designMatrix, flag="reactions"):
+	def __init__(self,target_list,target_data,parameter_dict,designMatrix, flag="reactions", tag="Full"):
 		"""
 			
 		target_list   = list of combustion_target_class object 
@@ -273,8 +332,17 @@ class SM(object):
 				self.parameter_list.append(parameter_dict[key])				
 		self.unsrt = self.parameter_list
 		self.design_matrix = designMatrix
+		
 		#print(len(self.design_matrix))
 		self.case_dir = range(0,len(target_list))
+		
+		if tag == "Full":
+			self.design_matrix_dict = {}
+			for case in self.case_dir:
+				self.design_matrix_dict[case] = designMatrix
+		else:
+			self.design_matrix_dict = designMatrix
+		
 		self.file_type = target_data["Inputs"]["fileType"]
 		self.order = target_data["Stats"]["Order_of_PRS"]
 		self.parallel_threads = target_data["Counts"]["parallel_threads"]
@@ -286,12 +354,46 @@ class SM(object):
 			self.pert_mech_file = ""
 		Prior_Mechanism = Parser(self.mech_loc).mech
 		self.prior_mech = copy.deepcopy(Prior_Mechanism)
+		#print(self.prior_mech)
 		#self.copy_of_mech = copy.deepcopy(Prior_Mechanism)
 		self.allowed_count = target_data["Counts"]["parallel_threads"]
 		self.fuel = target_data["Inputs"]["fuel"]
+		self.build_path = target_data["Bin"]["yaml_writer"]
 	
 	
-	def getDirectoryList(self,case,ind):
+	def getPerturbedMechLocation(self,yaml_list,location_mech,index_list):
+		params = list(zip(yaml_list,location_mech,index_list))
+		W = Worker(self.allowed_count,self.build_path)
+		W.do_job_map_create_3(params)
+		del W
+	
+	
+	
+	def getYAML_List(self,params,selection=[]):
+		yaml_list = []
+		#yaml_dict = {}
+		sim_dict = []
+		#print(selection)
+		if len(selection) != 0:
+			selection_params = selection
+			for i in tqdm(range(len(params)),desc="Create Perturbed YAML files"):
+				beta_ = params[i]
+				select = selection_params[i]
+				mani = manipulator(self.prior_mech,self.unsrt,beta_,selection = select,flag='thermo')
+				yaml,sim = mani.doPerturbation()
+				yaml_list.append(yaml)		
+		
+		else:
+			for i in tqdm(range(len(params)),desc="Create Perturbed YAML files"):
+				beta_ = params[i]
+				mani = manipulator(self.prior_mech,self.parameter_dict,beta_,perturbation_type = "opt",parameter_dict=self.parameter_dict ,flag='thermo')
+				#mani = manipulator(self.prior_mech,self.unsrt,beta_)
+				yaml,sim = mani.doPerturbation()
+				yaml_list.append(yaml)		
+			
+		return yaml_list
+	
+	def getDirectoryList(self,case,ind,yaml_loc_dict):
 		"""
 		Creating each directories in parallel
 		_____________________________________
@@ -309,8 +411,9 @@ class SM(object):
 			os.mkdir("case-"+str(case))
 			os.chdir("case-"+str(case))
 		
+		
 		start = str(os.getcwd())
-		yaml_dict = {}
+		#yaml_dict = {}
 		instring_dict = {}
 		s_convert_dict = {}
 		s_run_dict = {}
@@ -318,147 +421,142 @@ class SM(object):
 		run_convert_dict = {}
 		dir_list = []
 		run_list = {}
-		sim_dict = {}
-		
-		for i in tqdm(range(len(self.design_matrix)),desc="Zipping all files"):
-			dir_name = self.parameter_index[i]
-			if self.pert_mech_file == "":
-				self.beta_ = self.design_matrix[i]
-				mani = manipulator(self.prior_mech,self.unsrt,self.beta_,perturbation_type = "SA",parameter_dict=self.parameter_dict ,flag='thermo')
-			else:
-				mech_file = self.pert_mech_file[i].strip("\n")
-			#print(self.beta_)
-			if os.path.isdir(os.getcwd()+"/"+str(dir_name)) == True and os.path.isdir(os.getcwd()+"/"+str(dir_name)+"/output") != True:
-				shutil.rmtree(str(dir_name))
+		#sim_dict = {}
+		#memo = {}
+		#print(len(self.designMatrix))
+		yaml_loc = yaml_loc_dict[case]
+		#if self.prs_type == "Full":
+		#	design_matrix = self.design_matrix[case]
+		#else:
+		design_matrix = self.design_matrix_dict[case]
+		#print(len(design_matrix))	
+		for i in tqdm(range(len(design_matrix)),desc="Zipping all files"):
+			
+			if os.path.isdir(os.getcwd()+"/"+str(i)) == True and os.path.isdir(os.getcwd()+"/"+str(i)+"/output") != True:
+				shutil.rmtree(str(i))
 				if self.pert_mech_file == "":
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = mani.doPerturbation()				
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+					#yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
 				else:
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = "",""
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = mech_file) #generate input file
-				dir_list.append(str(dir_name))
-				run_convert_dict[str(dir_name)] = start+"/"+str(dir_name)
-				run_list[str(dir_name)] = start+"/"+str(dir_name)
-				self.dir_list.append(start+"/"+str(dir_name)+"/run")
-			elif os.path.isdir(os.getcwd()+"/"+str(dir_name)) != True:
+					#yaml_dict[str(i)],sim_dict[str(i)] = "",""
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
+				dir_list.append(str(i))
+				run_convert_dict[str(i)] = start+"/"+str(i)
+				run_list[str(i)] = start+"/"+str(i)
+				self.dir_list.append(start+"/"+str(i)+"/run")
+			elif os.path.isdir(os.getcwd()+"/"+str(i)) != True:
 				if self.pert_mech_file == "":
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = mani.doPerturbation()				
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+					#yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
 				else:
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = "",""
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = mech_file) #generate input file
-				dir_list.append(str(dir_name))
-				run_convert_dict[str(dir_name)] = start+"/"+str(dir_name)
-				run_list[str(dir_name)] = start+"/"+str(dir_name)
-				self.dir_list.append(start+"/"+str(dir_name)+"/run")
+					#yaml_dict[str(i)],sim_dict[str(i)] = "",""
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
+				dir_list.append(str(i))
+				run_convert_dict[str(i)] = start+"/"+str(i)
+				run_list[str(i)] = start+"/"+str(i)
+				self.dir_list.append(start+"/"+str(i)+"/run")
 				
 			else:
 				
 				if self.pert_mech_file == "":
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = mani.doPerturbation()				
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case]) #generate input file
+					#yaml_dict[str(i)],sim_dict[str(i)] = mani.doPerturbation()				
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
 				else:
-					yaml_dict[str(dir_name)],sim_dict[str(dir_name)] = "",""
-					instring_dict[str(dir_name)],s_convert_dict[str(dir_name)],s_run_dict[str(dir_name)],extract[str(dir_name)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = mech_file) #generate input file
-				run_convert_dict[str(dir_name)] = start+"/"+str(dir_name)
-				run_list[str(dir_name)] = start+"/"+str(dir_name)
-				self.dir_list.append(start+"/"+str(dir_name)+"/run")
+					#yaml_dict[str(i)],sim_dict[str(i)] = "",""
+					instring_dict[str(i)],s_convert_dict[str(i)],s_run_dict[str(i)],extract[str(i)] = make_input_file.create_input_file(case,self.target_data,self.target_list[case],mech_file = yaml_loc[i]) #generate input file
+				run_convert_dict[str(i)] = start+"/"+str(i)
+				run_list[str(i)] = start+"/"+str(i)
+				self.dir_list.append(start+"/"+str(i)+"/run")
 				continue	
 		#print(yaml_dict)
-		return  yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract,sim_dict
-	
-	def make_dir_in_parallel(self):
+		return instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract
+	def make_dir_in_parallel(self,yaml_loc):
+		
+		#Prior_Mechanism = Parser(self.mech_loc).mech
+		#self.copy_of_mech = copy.deepcopy(Prior_Mechanism)
+		
 		start_time = time.time()
-		print("\n\t\tCreating Directories for simulations......\n\n\n \t\tThis may take a while... Please be patient...\n\n ")
+		print("Creating Directories for simulations......\n\n\n This may take a while... Please be patient...\n\n ")
+		#Parallel_jobs = multiprocessing.Pool(self.allowed_count-1)
+		self.case_manipulation = {}
 		allowed_count = int(self.parallel_threads)
-		SADir = os.getcwd()
-		self.dir_list = []			
+		self.dir_list = []
+		self.generator_list = []
+		self.generators = []
+		optDir = os.getcwd()
+		#self.n = 0
+		#for i in self.unsrt:
+		#	self.n+=len(self.unsrt[i].activeparameters)
+		
+		"""
+		1] Number of required simulations
+		2] Generating the sampling matrix:
+			A.x = b
+		
+		"""
+		sim_location = []	
 		for case_index,case in enumerate(self.case_dir):
-			dir_ = "case-"+str(case_index)
-			if "case-"+str(case_index) in os.listdir():# and len(os.listdir(dir_)) !=0 and len(os.listdir(dir_+f"/{os.listdir(dir_)[0]}/output/")) != 0:
-				print("\n\t\tCase-{index} is generated".format(index = case_index))
+			if "case-"+str(case_index) in os.listdir():
+				print("Case-{index} is generated".format(index = case_index))
 			else:
-				###############################################
-				#####    Generating files for perturbation  ###
-				#####	  of all reactions by x2            ###
-				###############################################
+				#Old version of the code
+				#yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract_list,sim_dict = self.getDirectoryList(case,case_index)
 				
-				yaml_dict,instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract_list,sim_dict = self.getDirectoryList(case,case_index)
-						
+				instring_dict,s_run_dict,dir_list,run_convert_dict,run_list,extract_list = self.getDirectoryList(case,case_index,yaml_loc)
+
 				
+				design_matrix = self.design_matrix_dict[case]
 				###########################################
 				##   Generated directories in parallel   ##
-				##                                       ##
+				##									   ##
 				###########################################
 				start_time = time.time()
-				W = Worker(allowed_count)
+				W = Worker(allowed_count,self.build_path)
 				
 				W.do_job_map(dir_list)
-				print("\n\n\t\tDirectories for case - {} is generated\n".format(case))
+				print("\n\tDirectories for case - {} is generated\n".format(case))
 				del W
 				
 				###########################################
-				##   Generated required files            ##
-				##        in parallel                    ##
+				##   Generated required files			##
+				##		in parallel					##
 				###########################################
 				
-				yaml_list = []
-				mech = []
+				#yaml_list = []
+				#mech = []
 				thermo = []
 				trans = []
 				instring = []
 				run = []
 				locations = []
 				extract = []
-				perturb = []
-				for i in tqdm(yaml_dict):
+				for i in tqdm(range(len(design_matrix))):
 					instring.append(instring_dict[str(i)])
-					yaml_list.append(yaml_dict[str(i)])
+					#yaml_list.append(yaml_dict[str(i)])
 					run.append(s_run_dict[str(i)])
 					locations.append(run_list[str(i)])
 					extract.append(extract_list[str(i)])
-					perturb.append(sim_dict[str(i)])
 
 				##############################################################
-				##   Generated required files       			     ##
-				##        in parallel     (EXCEPT YAML files)               ##
+				##   Generated required files	   				 ##
+				##		in parallel	 (EXCEPT YAML files)			   ##
 				##############################################################
 				
-				params = list(zip(instring,run,locations,extract,perturb))
+				params = list(zip(instring,run,locations,extract))
 				tic = time.time()
 				
-				V = Worker(allowed_count)
-				V.do_job_map_create(params)
+				V = Worker(allowed_count,self.build_path)
+				V.do_job_create_opt(params)
 				del V
+				
 				print("\n\t\tImportant files other than yaml mechanism file is created\n")
 				
-				###############################################################
-				##   Generated required files      (YAML files)    	      ##
-				##       				                     ##
-				##############################################################
-				params_yaml = list(zip(locations,yaml_list))
-				chunk_size = 100
-				chunks = [params_yaml[i:i+chunk_size] for i in range(0, len(params_yaml), chunk_size)]
-				
-				tic = time.time()
-				for args in chunks:
-					W = Worker(allowed_count)
-					W.do_job_map_create_2(args)
-					del W
-				
-				tok = time.time()
-				print("\n\t\tRequired files for case - {} is generated in {:.2f} hours, {:.2f} minutes, {:.2f} seconds time\n".format(case,(tok-tic)/3600,((tok-tic)%3600)/60,(tok-tic)%60))
-				
 				###########################################
-				##   Running the files                   ##
-				##        in parallel                    ##
+				##   Running the files				   ##
+				##		in parallel					##
 				###########################################
-				simulation_locations = open(SADir+"/locations",'+a')
-				for loc in locations:
-					simulation_locations.write(loc+"/run\n")
-				simulation_locations.close()
 				
-				X = Worker(allowed_count)
+				X = Worker(allowed_count,self.build_path)
 				file_n = []
 				length = []
 				for i in locations:
@@ -467,22 +565,21 @@ class SM(object):
 				X.do_job_async_(args)
 				
 				del X
-				print("\t\tSimulations for case - {} is Done!!".format(case))
+				print("\tSimulations for case - {} is Done!!".format(case))
 					
 				dt = int(time.time() - start_time)
 				hours = dt/3600
 				minutes = (dt%3600)/60
 				seconds = dt%60
-				print("\n\t\tPerformed {} Simulations....".format(len(locations)))
-				print("\n\t\tTime for performing simulations : {h:.3f} hours,  {m:.2f} minutes, {s:.2f} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
-				#simulation_locations = open(SADir+"/locations",'+a')
-				#for loc in locations:
-				#	simulation_locations.write(loc+"/run\n")
-				#simulation_locations.close()
+				print("Performed {} Simulations....".format(len(locations)))
+				print("Time for performing simulations : {h:.5f} hours,  {m:.3f} minutes, {s:.2f} seconds\n................................................ \n".format(h = hours, m = minutes, s =seconds))
+				simulation_locations = open(optDir+"/locations",'+a')
+				
+				for loc in locations:
+					simulation_locations.write(loc+"/run\n")
+					sim_location.append(loc+"/run\n")
+				simulation_locations.close()
 			
 				os.chdir('..')
-		FlameMaster_Execution_location = []
-		with open(SADir+"/locations") as infile:
-			for line in infile:
-				FlameMaster_Execution_location.append(line)
-		return FlameMaster_Execution_location
+		return sim_location
+

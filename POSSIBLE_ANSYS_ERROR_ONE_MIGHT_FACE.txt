@@ -1,0 +1,49 @@
+
+
+     *****************************************************************
+     *                   ANSYS Chemkin-Pro 2023 R1                   *
+     *                      AURORA Application                       *
+     *         PERFECTLY STIRRED OR PLUG FLOW REACTOR MODEL          *
+     *                 Copyright(c) 2023 ANSYS, Inc.                 *                
+     *Run Date and Time: Dec 02, 2024   10:03:28     330 min from UTC*
+     *****************************************************************
+
+
+
+Running CHEMKIN-PRO
+Running Multi-threaded mode
+
+                WORKING SPACE REQUIREMENTS
+                 PROVIDED        REQUIRED 
+ LOGICAL             1304           1304
+ INTEGER           768223         768223
+ REAL             1871161        1871161
+ CHARACTER           1283           1283
+
+This problem requires     14.276MB of memory for the REAL array.
+
+Initializing CHEMKIN Gas-phase Library a component of ANSYS Chemkin-Pro 2023 R1, Build date: Nov 17, 2022
+This and All Other CHEMKIN(R) Libraries are Copyright (c) 2023 Ansys, Inc.  Unauthorized use, distribution, or duplication is prohibited.This product is subject to U.S. laws governing export andre-export.  For full Legal Notice, see documentation.
+
+
+ERROR: could not get a license
+Flexlm error report: 
+
+Failover feature 'Ansys HPC' is not available.
+Request name anshpc does not exist in the licensing pool.
+Cannot connect to license server system.
+ The license server manager (lmgrd) has not been started yet,
+ the wrong port@host or license file is being used, or the
+ port or hostname in the license file has been changed.
+Feature:       anshpc
+Server name:   cclicserver.iitm.ac.in
+License path:  1055@cclicserver.iitm.ac.in:
+FlexNet Licensing error:-15,570.  System Error: 115 "Operation now in progress"      
+ ERROR READING CHEMKIN LINKING FILE, IFLAG =  99
+
+***NOTE:  There are ERROR messages in the printout above***
+
+ERROR condition returned from AURORA
+
+
+ Total CPUtime: 10 (seconds)

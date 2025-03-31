@@ -17,10 +17,12 @@ except ImportError:
 import concurrent.futures
 import Uncertainty
 ### Program specific modules
-import make_input_file 
+import make_input_file
+#import make_input_file2_0_A_factor 
 from MechManipulator2_0 import Manipulator as manipulator
-import data_management
-from MechanismParser import Parser
+#from MechManipulator3_0_A_factor import Manipulator as manipulator
+import data_management2_0_A_factor as data_management
+from MechanismParser2_0_A_factor import Parser
 from importlib import import_module
 
 sys.path.append('/yamlwriter.so')  # Adjust this path to the correct build directory
@@ -97,9 +99,10 @@ def run_map(params,total):
 	runScript = open(location+"/run","w").write(params[1])
 	#subprocess.call(["chmod","+x",location+"/run_convertor"])
 	subprocess.call(["chmod","+x",location+"/run"])
-	yaml_string = yaml.dump(params[-2],default_flow_style=False)
-	with open(location+"/mechanism.yaml","w") as yamlfile:
-		yamlfile.write(yaml_string)
+	yamlwriter.dump_to_yaml(location,f"mechanism.yaml",params[-2])
+	#yaml_string = yaml.dump(params[-2],default_flow_style=False)
+	#with open(location+"/mechanism.yaml","w") as yamlfile:
+	#	yamlfile.write(yaml_string)
 
 	subprocess.call(["cp",params[-1],location])
 	#subprocess.call(["cp",params[-2],location])
@@ -515,7 +518,7 @@ class SM(object):
 		dir_run_list = []
 		output_list = []
 		beta_transformed = np.ones(len(beta))
-		for ind,case in enumerate(case_index):
+		for ind,case in enumerate(range(cases)):
 			file_dict = {}
 			file_dict["beta"] = beta
 			"""
@@ -528,7 +531,7 @@ class SM(object):
 			beta_ = np.asarray(beta)
 			
 			file_dict["mechanism"],sim = manipulator(self.copy_of_mech,self.unsrt,beta_).doPerturbation()
-			file_dict["simulationInputString"],file_dict["file_convertor_script"],file_dict["run_script"],file_dict["extractString"] = make_input_file.create_input_file(case,self.target_data,self.target_list[case])	
+			file_dict["simulationInputString"],file_dict["file_convertor_script"],file_dict["run_script"],file_dict["extractString"] = make_input_file2_0_A_factor.create_input_file(case,self.target_data,self.target_list[case])	
 			file_dict["run_convert"] = start+"/case-"+str(case)+"/run_convertor"
 			file_dict["run_list"] = start+"/case-"+str(case)+"/run"
 			file_dict["mkdir"] = start+"/case-"+str(case)
@@ -545,7 +548,7 @@ class SM(object):
 
 		#Prior_Mechanism = Parser(self.mech_loc).mech
 		#self.copy_of_mech = copy.deepcopy(Prior_Mechanism)
-		print(f"Starting direct simulations: Iteration number {iter_number}, total cases to simulate: {len(case_index)}")
+		print(f"Starting direct simulations: Iteration number {iter_number}, total cases to simulate: {cases}")
 		dictionary_list,mkdir_list,dir_run_list,run_convert_list,output_list = self.getSimulationFiles(case_index,cases,beta,iter_number)
 		start_time = time.time()
 			
@@ -585,7 +588,7 @@ class SM(object):
 		os.chdir('..')
 		directSimulation = []
 		#print(case_index)
-		for i,index in enumerate(case_index):
+		for i,index in enumerate(range(cases)):
 			eta_list = data_management.extract_direct_simulation_values(index,output_list[i],self.target_list,self.fuel)
 			directSimulation.extend(eta_list)
 		os.chdir("..")
@@ -593,6 +596,10 @@ class SM(object):
 		#sample.write(f"{iter_number},{objective}\n")
 		return directSimulation
 	
+	def do_direct_sim(self,beta,case_index,cases,iter_number,objective):
+		directSimulation = self.getSimulatedValues(beta,case_index,cases,iter_number,objective)
+		return np.asarray(directSimulation)
+		
 	def make_nominal_dir_in_parallel(self):
 		#Prior_Mechanism = Parser(self.mech_loc).mech
 		#self.copy_of_mech = copy.deepcopy(Prior_Mechanism)

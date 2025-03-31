@@ -1,0 +1,77 @@
+<!-- ***********************************************************************BEGIN-HDR
+!
+!  Copyright (c) 2022 ANSYS, Inc.  Unauthorized use, distribution, or duplication is prohibited.
+!
+!***********************************************************************END-HDR -->
+<!-- CHEMKIN version 4.6 -->
+<!ELEMENT chemkindata (header, solutiondata?)>
+<!ELEMENT header (datatitle?, datadescription?, datasize*)>
+        <!ATTLIST header date CDATA "0000/00/00">
+        <!ATTLIST header time CDATA "00:00:00">
+        <!ATTLIST header release CDATA "1.0">
+<!ELEMENT datatitle (#PCDATA)>
+<!ELEMENT datadescription (#PCDATA)>
+<!ELEMENT datasize EMPTY>
+        <!ATTLIST datasize type (int | float | char) "int">
+        <!ATTLIST datasize size (1 | 2 | 4 | 8 | 16 | 32 | 64) "4">
+        <!ATTLIST datasize measure (bytes | bits) "bytes">
+<!ELEMENT solutiondata (linkingdata*, solutionset*)>
+        <!ATTLIST solutiondata name (AURORA | CRESLAF | EQUIL | OPPDIF | OVEND |
+                                     PASR | PLUG | PREMIX | SENKIN | SHOCK | SPIN |
+                                     SURFTHERM | TWAFER) "AURORA">
+<!ELEMENT linkingdata (constants*, indices*, workarray*)>
+        <!ATTLIST linkingdata type (gas | surface | transport) "gas">
+<!ELEMENT constants (constantvalue*)>
+        <!ATTLIST constants type (int | float | string) "int">
+        <!ATTLIST constants length CDATA "1">
+<!ELEMENT constantvalue (#PCDATA)>
+<!ELEMENT indices (indexvalue*)>
+        <!ATTLIST indices type (int | float | string) "int">
+        <!ATTLIST indices length CDATA "1">
+<!ELEMENT indexvalue (#PCDATA)>
+<!ELEMENT workarray (workitem*)>
+        <!ATTLIST workarray type (int | float | string) "int">
+        <!ATTLIST workarray length CDATA "1">
+        <!ATTLIST workarray precision (single | double) "double">
+<!ELEMENT workitem (#PCDATA)>
+<!ELEMENT solutionset (solutionsize*, timepoint*, inputparameter*)>
+<!ELEMENT solutionsize (#PCDATA)>
+        <!ATTLIST solutionsize name CDATA #REQUIRED>
+<!ELEMENT timepoint (timevalue, grid*, state*)>
+<!ELEMENT timevalue (#PCDATA)>
+        <!ATTLIST timevalue units (s | min | hr | day | yr) "s">
+<!ELEMENT grid (space*)>
+        <!ATTLIST grid coordsystem (planar | cylindrical | spherical) "planar">
+        <!ATTLIST grid numbercoords (1 | 2 | 3) "1">
+        <!ATTLIST grid units (cm | m | km) "cm">
+<!ELEMENT space (coordvalue+, state*)>
+<!ELEMENT coordvalue (#PCDATA)>
+        <!ATTLIST coordvalue index (1 | 2 | 3) "1">
+<!ELEMENT state (statevalue, speciesid?, derivative?, sensitivity*, rateofproduction*)>
+        <!ATTLIST state name CDATA #REQUIRED>
+        <!ATTLIST state type (mixture | species) "mixture">
+        <!ATTLIST state phase (gas | surface | bulk) "gas">
+        <!ATTLIST state material CDATA "">
+        <!ATTLIST state stream CDATA "">
+        <!ATTLIST state units CDATA "">
+<!ELEMENT statevalue (#PCDATA)>
+<!ELEMENT speciesid (#PCDATA)>
+<!ELEMENT derivative (#PCDATA)>
+<!ELEMENT sensitivity (senscoeff*)>
+        <!ATTLIST sensitivity item (gasreactions | surfacereactions | heatsofformation) "gasreactions">
+        <!ATTLIST sensitivity order CDATA "first">
+        <!ATTLIST sensitivity normalization (local | maximum | none) "local">
+<!ELEMENT senscoeff (#PCDATA)>
+        <!ATTLIST senscoeff parameterid CDATA "1">
+<!ELEMENT rateofproduction (speciesrop*)>
+        <!ATTLIST rateofproduction item (gasreactions | surfacereactions) "gasreactions">
+        <!ATTLIST rateofproduction normalization (local | maximum | none) "none">
+        <!ATTLIST rateofproduction units CDATA "mole/cm3-s">
+<!ELEMENT speciesrop (#PCDATA)>
+        <!ATTLIST speciesrop parameterid CDATA "1">
+<!ELEMENT inputparameter ((speciesid | materialid)?, inputvalue*)>
+        <!ATTLIST inputparameter name CDATA "">
+        <!ATTLIST inputparameter type (int | float | string) "int">
+        <!ATTLIST inputparameter units CDATA "">
+<!ELEMENT materialid (#PCDATA)>
+<!ELEMENT inputvalue (#PCDATA)>

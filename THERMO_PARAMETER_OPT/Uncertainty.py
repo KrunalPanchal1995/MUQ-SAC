@@ -73,15 +73,21 @@ class workers(object):
 class ThermoUncertaintyExtractor(object):
 	def __init__(self,data):
 		self.data = data
-		self.temperatures = data["temperatures"]
-		self.uncertainties = data["uncertainties"]
+		#self.temperatures = data["temperatures"]
+		#self.uncertainties = data["uncertainties"]
+		#print("uncertainities data \t ", self.uncertainties)	
+		#print("\n \n")
 		#cs = CubicSpline(self.temperatures,self.uncertainties)
 		#self.temperatures = np.arange(self.temperatures[0],self.temperatures[-1],25)
 		#self.uncertainties = cs(self.temperatures)
+		self.species = data["species"]
+		self.temp_limit = data["temp_limit"] 
 		self.NominalParams = data["HeatCapacity"][0:5]
-		self.M = 3.0/np.log(10.0)
+		#self.M = 3.0/np.log(10.0)
+		self.M = 3.0
 		Tscale = 5000
-		t = self.temperatures["Hcp"]  # t is assumed to be a NumPy array
+		t_z = data["temperatures"]["Hcp"]
+		t = data["temperatures"]["Hcp"]/Tscale  # t is assumed to be a NumPy array
 		self.uncertainties = data["uncertainties"]["Hcp"]
 		#print(data)
 		self.temperatures = data["temperatures"]["Hcp"]
@@ -96,14 +102,14 @@ class ThermoUncertaintyExtractor(object):
 		# Compute Theta
 		self.Theta = np.array([
 			(t/t),
-			t / Tscale,
-			(t / Tscale)**2,
-			(t / Tscale)**3,
-			(t / Tscale)**4
+			t ,
+			t**2,
+			t**3,
+			t**4
 			])
-
+		self.Theta_z = np.array([t_z/t_z,t_z,t_z**2,t_z**3,t_z**4])
 		#self.guess = np.array([-10.0,-10.0,0.5,200.0,10.0,5.0,1,1])
-		self.guess = np.zeros(15)
+		self.guess = np.ones(15)
 		self.parallized_zeta = []
 		#print("t values \t",t)
 		#print("t scale values \n", Tscale)
@@ -113,12 +119,15 @@ class ThermoUncertaintyExtractor(object):
 		self.T_low_fact = None
 		self.T_high_fact = None
 		self.T_mid_fact = None
-		self.guess_z = np.ones(5)
-		
+		self.guess_z = 0.01*np.ones(5)
+	
 	def doUnsrtAnalysis(self):
+		self.getCovariance()
+		self.zeta_max = self.getUnCorrelated()
+	def doUnsrtAnalysis_(self):
 		#T = self.temperatures[self.branches.split(",")[0]]
 		T = self.temperatures
-		guess = 0.001*np.ones(17)
+		guess = np.ones(17)
 		self.solution = minimize(self.uncertPriorObjective,guess,method="Nelder-Mead",options={'maxiter': 100000, 'maxfev': 100000, 'disp': False, 'return_all': False, 'initial_simplex': None, 'xatol': 1E-05, 'fatol': 1E-05, 'adaptive': True})
 		Tscale = 5000
 		#print(self.solution)
@@ -153,8 +162,9 @@ class ThermoUncertaintyExtractor(object):
 		theta_S = np.array([T/T])
 		
 		#Find zeta values
-		guess_zeta = 0.01*np.array([1,1,1,1,1,1,1])
+		guess_zeta = 0.001*np.array([1,1,1,1,1,1,1])
 		self.zeta = minimize(self.obj_zeta,guess_zeta)
+		print(self.zeta)
 		self.zeta_cp = self.zeta.x[0:5]
 		self.zeta_h = self.zeta.x[5]
 		self.zeta_s = self.zeta.x[6]
@@ -277,6 +287,7 @@ class ThermoUncertaintyExtractor(object):
 	def getCovariance(self,flag = False):
 		#print("Entered Covarance")
 		#print(flag)
+		Tscale =5000
 		if flag == True:
 			#print("Ho")
 			constraints = {'type': 'ineq', 'fun': self.const_func }
@@ -292,25 +303,184 @@ class ThermoUncertaintyExtractor(object):
 			STOP_MUQ = time.time()
 			#print(f"\nMUQ-SAC method takes {STOP_MUQ-START_MUQ}\n")
 			
-		self.Lcp = np.array([[self.solution.x[0],0,0,0,0],
-			[self.solution.x[1],self.solution.x[2],0,0,0],
-			[self.solution.x[3],self.solution.x[4],self.solution.x[5],0,0],
-			[self.solution.x[6],self.solution.x[7],self.solution.x[8],self.solution.x[9],0],
-			[self.solution.x[10],self.solution.x[11],self.solution.x[12],self.solution.x[13],self.solution.x[14]]]);#cholesky lower triangular matric
+		L11 = self.solution.x[0]
+		L21 = self.solution.x[1]/Tscale
+		L22 = self.solution.x[2]/Tscale
+		L31 = self.solution.x[3]/Tscale**2
+		L32 = self.solution.x[4]/Tscale**2
+		L33 = self.solution.x[5]/Tscale**2
+		L41 = self.solution.x[6]/Tscale**3
+		L42 = self.solution.x[7]/Tscale**3
+		L43 = self.solution.x[8]/Tscale**3
+		L44 = self.solution.x[9]/Tscale**3
+		L51 = self.solution.x[10]/Tscale**4
+		L52 = self.solution.x[11]/Tscale**4
+		L53 = self.solution.x[12]/Tscale**4
+		L54 = self.solution.x[13]/Tscale**4
+		L55 = self.solution.x[14]/Tscale**4
+		self.Lcp = np.asarray([[L11,0,0,0,0],
+					[L21,L22,0,0,0],
+					[L31,L32,L33,0,0],
+					[L41,L42,L43,L44,0],
+					[L51,L52,L53,L54,L55],])#cholesky lower triangular matric
 		cov1 = self.Lcp
 		cov2 = np.dot(self.Lcp,self.Lcp.T)
 		D,Q = np.linalg.eigh(cov2)
 		self.A = Q.dot(sp.linalg.sqrtm(np.diag(D)))
 		self.cov = self.Lcp
 	
-	def get_thermo_Zeta(self,flag): 
+	
+	def get_thermo_ZetaLinear(self,row,flag): 
 		self.getUnCorrelated(flag=False)
+		#self.kleft_fact = 0.1
+		#self.kright_fact = -0.5
+		if flag == True:
+			if self.kleft_fact <0:
+				M = self.M
+				P = self.NominalParams
+				T = self.temperatures[0]
+				cov = self.cov
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				P_left = P - abs(self.kleft_fact)*np.asarray(np.dot(self.cov,self.zeta_max.x)).flatten()
+				k0_left = Theta.dot(P)
+				k_left = Theta.dot(P_left)
+				
+				
+			elif self.kleft_fact>0:
+				M = self.M
+				P = self.NominalParams
+				T = self.temperatures[0]
+				cov = self.cov
+				P_left = P + abs(self.kleft_fact)*np.asarray(np.dot(self.cov,self.zeta_max.x)).flatten()
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				k0_left = Theta.dot(P)
+				k_left = Theta.dot(P_left)
+				
+				
+			else:
+				M = self.M
+				P = self.NominalParams
+				#T = self.temperatures
+				T = self.temperatures[0]
+				cov = self.cov
+				P_right = P 
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				k0_left = Theta.dot(P)
+				k_left = Theta.dot(P_right)
+				
+			
+			if self.kright_fact <0:
+				M = self.M
+				P = self.NominalParams
+				T = self.temperatures[-1]
+				cov = self.cov
+				P_right = P - abs(self.kright_fact)*np.asarray(np.dot(self.cov,self.zeta_max.x)).flatten()
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				k0_right = Theta.dot(P)
+				k_right = Theta.dot(P_right)
+				
+				
+			elif self.kright_fact >0:
+				M = self.M
+				P = self.NominalParams
+				T = self.temperatures[-1]
+				cov = self.cov
+				P_right = P + abs(self.kright_fact)*np.asarray(np.dot(self.cov,self.zeta_max.x)).flatten()
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				k0_right = Theta.dot(P)
+				k_right = Theta.dot(P_right)
+				
+				
+			else:
+				M = self.M
+				P = self.NominalParams
+				#T = self.temperatures
+				T = self.temperatures[-1]
+				
+				cov = self.cov
+				P_right = P 
+				Theta = np.array([T/T,T,T**2,T**3,T**4])
+				k0_right = Theta.dot(P)
+				k_right = Theta.dot(P_right)
+				
+			
+			"""
+			Find slope
+			------
+			To find that we need the f(T) from the kappa_left and kappa_right
+			"""
+			T1 = self.temperatures[0]
+			FT1 = k_left-k0_left
+			T2 = self.temperatures[-1]
+			FT2 = k_right-k0_right
+			
+			slope = (FT2 - FT1)/(T2-T1)
+			constant = FT2-slope*(T2)
+			self.Yu = slope*(self.temperatures) + constant
+			#print(self.Yu)
+			#fig, ax = plt.subplots(figsize=(8, 6))
+			#plt.plot(self.temperatures,8.314*self.Yu,"r--",label=r"$f_o(T)$")
+			con1 = {'type': 'eq', 'fun': self.const_1_typeB2_Zeta}
+			#con2 = {'type': 'eq', 'fun': self.const_2_typeB2_Zeta}
+			con3 = {'type': 'eq', 'fun': self.const_3_typeB2_Zeta}
+			
+			con6 = {'type': 'ineq', 'fun': self.cons_6_derivative_positive}
+			self.const_zeta = [con1,con3,con6]				
+			start = time.time()
+			zeta = minimize(self.obj_func_zeta_thermo_Linear,self.guess_z,method="SLSQP",options={'maxiter': 10000},constraints=self.const_zeta)
+		else:
+			con5 = {'type': 'ineq', 'fun': self.cons_T}
+			self.const_zeta = [con5]
+			bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(200,3500))
+			start = time.time()
+			zeta = minimize(self.obj_func_zeta_thermo_Linear,self.guess_z2,method="SLSQP",constraints=self.const_zeta,bounds=bnds)
+		#print(zeta)
+		if "TH_DATA" not in os.listdir():
+			os.mkdir("TH_DATA")
+		#P_linear = P + np.asarray(np.dot(self.cov,zeta.x)).flatten()
+		#print(P_linear)
+		#T = self.temperatures
+		#Theta = np.array([T/T,T,T**2,T**3,T**4])
+		#cp_nominal = np.asarray([(i.T.dot(P)) for i in Theta.T])
+		#cp_linear = np.asarray([(i.T.dot(P_linear)) for i in Theta.T])
+		#print(cp_linear)
+		#cp_linear = Theta.dot(P_linear)
+		#for spine in ax.spines.values():
+		#	spine.set_edgecolor("black")  # Set border color
+		#	spine.set_linewidth(1)		# Set border width
+		#plt.plot(self.temperatures,8.314*self.Yu,"r--",label="$f_l(T)$")
+		#plt.plot(self.temperatures,8.314*(cp_nominal+self.Yu),"r-",label=r"$Cp_o$+ $f_l(T)$")
+		#plt.plot(self.temperatures,8.314*cp_linear,"b-",label=r"$Cp_o + \Theta^T L_{cp} \vec{\zeta_{l}}$")
+		#plt.ylabel(f"Heat capacity ({self.species})")
+		#plt.xlabel("Temperature (K)")
+		#plt.legend()
+		#plt.grid(False)
+		#plt.savefig(f"TH_DATA/linear_curves_{self.species}_{row}.pdf",bbox_inches="tight")
+		
+		#string = "T,f_o,Cp_l"
+		#for index,i in enumerate(cp_linear):
+		#	string+=f"{self.temperatures[index]},{self.Yu[index]},{i}\n"
+		#g = open(f"TH_DATA/linear_curves_row_{self.species}_{row}.csv","w").write(string)
+		stop = time.time()
+		opt_time = stop - start
+		#print(f"{zeta}\n,Time:{opt_time}")
+		return zeta.x,self.Yu
+	
+	
+	
+	def get_thermo_ZetaHigherOrder(self,flag): 
+		self.getUnCorrelated(flag=False)
+		#print(self.kright_fact,self.kleft_fact)
 		if flag == True:
 			con1 = {'type': 'eq', 'fun': self.const_1_typeB2_Zeta}
 			#con2 = {'type': 'eq', 'fun': self.const_2_typeB2_Zeta}
 			con3 = {'type': 'eq', 'fun': self.const_3_typeB2_Zeta}
 			#con4 = {'type': 'eq', 'fun': self.cons_derivative_b2}
-			self.const_zeta = [con1,con3]
+			con6 = {'type': 'ineq', 'fun': self.cons_6_derivative_positive}
+			con7 = {'type': 'ineq', 'fun': self.cons_7_double_derivative_positive}
+			self.const_zeta = [con1, con3, con6,con7]
+
+			#self.const_zeta = [con1,con3]
 			#bnds = ((float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")),(float("-inf"),float("inf")))
 			
 			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method='SLSQP', options={'maxiter': 10000},constraints=self.const_zeta)#,bounds=bnds)#, options={'eps': 1})
@@ -324,19 +494,33 @@ class ThermoUncertaintyExtractor(object):
 		#print(zeta)
 		return zeta.x
 		
+	def obj_func_zeta_thermo_Linear(self,guess):
+		M = self.M
+		T = self.temperatures
+		cov = self.cov
+		Theta = self.Theta_z
+		f = (self.Yu-self.getZetaUnsrtFunc(cov,guess))
+		obj = np.dot(f,f)
+		return obj
 	def obj_func_zeta_thermo(self,guess):
 		M = self.M
 		T = self.temperatures
-		cov = self.Lcp
-		Theta = self.Theta
+		cov = self.cov
+		#Theta = np.array([T/T,T,T**2,T**3,T**4])
+		Theta = self.Theta_z
 		#Theta = np.array([T/T,np.log(T),-1/(T)])
 		f = (self.uncertainties-self.getZetaUnsrtFunc(cov,guess))
+		#print("f = ",f)
 		obj = np.dot(f,f)
 		return obj
 		
-	def populateValues(self,a1,a2):
-		self.kleft_fact = a1
-		self.kright_fact = a2
+	def populateValues(self,a1,a2,a3):
+		if self.temp_limit == "High":		
+			self.kleft_fact = a2
+			self.kright_fact = a3
+		else:
+			self.kleft_fact = a1
+			self.kright_fact = a2
 		self.kmiddle_fact = 1.0
 		#print(f"In populate{a1},{a2}\n")
 	
@@ -344,60 +528,102 @@ class ThermoUncertaintyExtractor(object):
 		M = self.M
 		P = self.NominalParams
 		T = self.temperatures[0]
-		Tscale = 5000
-		cov = self.Lcp
-		eta = self.zeta.x
-		Theta = np.array([T/T,T/Tscale, (T/Tscale)**2,(T/Tscale)**3,(T/Tscale)**4]).astype(float)
+		Tscale = 1
+		cov = self.cov
+		eta = self.zeta_max.x
+		Theta = np.array([T/T,T,T**2,T**3,T**4])
 		if self.kleft_fact <0:
 			P_left = P - abs(self.kleft_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
 			
 			k_left = Theta.dot(P_left)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
 		
 		elif self.kleft_fact>0:
 			P_left = P + abs(self.kleft_fact)*np.asarray(np.dot(self.cov,eta)).flatten()
 			k_left = Theta.dot(P_left)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
 		else:
 			P_left = P 
 			k_left = Theta.dot(P_left)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
+		#print(8.314*k_left)
 		return k_left - f
 	
 	
-	
+	def cons_6_derivative_positive(self, z):
+
+		# Generate 100 evenly spaced points in the temperature range
+		P = self.NominalParams
+		cov = self.cov
+		linspace_points = np.linspace(self.temperatures[0], self.temperatures[-1], 100)
+		
+		
+		# Initialize an array to store the gradient at each point
+		gradients = []
+		for T in linspace_points:
+			Theta_derivative = np.array([0 , T/T ,2*T , 3 * T**2 , 4 * T **3 ])
+			QtLZ = (Theta_derivative.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta_derivative.dot(P)).flatten()+QtLZ
+			gradients.append(f)
+
+		# Ensure all gradient values are >= 0
+		gradients = np.array(gradients)
+		return gradients.min()
+		
+	def cons_7_double_derivative_positive(self, z):
+
+		# Generate 100 evenly spaced points in the temperature range
+		P = self.NominalParams
+		cov = self.cov
+		linspace_points = np.linspace(self.temperatures.min(), self.temperatures.max(), 100)
+		
+		
+		# Initialize an array to store the gradient at each point
+		gradients = []
+		for T in linspace_points:
+			Theta_derivative = np.array([0 , 0 ,2 , 6*T , 12*T**2 ])
+			QtLZ = (Theta_derivative.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta_derivative.dot(P)).flatten()+QtLZ
+			#f = -1 * f
+			gradients.append(f)
+
+		# Ensure all gradient values are <= 0
+		gradients = np.asarray(gradients)
+		return -gradients.max()# + 0.5*gradients.min()
+
 	def const_3_typeB2_Zeta(self,z):
 		M = self.M
 		P = self.NominalParams
 		T = self.temperatures[-1]
-		Tscale = 5000
-		cov = self.Lcp
-		eta = self.zeta.x
+		Tscale = 1
+		cov = self.cov
+		eta = self.zeta_max.x
 		#print(eta)
-		Theta = np.array([T/T,T/Tscale, (T/Tscale)**2,(T/Tscale)**3,(T/Tscale)**4]).astype(float)
+		Theta = np.array([T/T,T,T**2,T**3,T**4])
 		#print(T)
 		if self.kright_fact <0:
 			P_right = P - abs(self.kright_fact)*np.asarray(np.dot(cov,eta)).flatten()
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
 		elif self.kright_fact >0:
 			P_right = P + abs(self.kright_fact)*np.asarray(np.dot(cov,eta)).flatten()
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
 		else:
 			P_right = P 
 			k_right = Theta.dot(P_right)
-			QtLZ = (Theta.T.dot(cov.dot(z)))
-			f = Theta.dot(P)+QtLZ
+			QtLZ = (Theta.T.dot(cov.dot(z))).flatten()
+			f = np.asarray(Theta.dot(P)).flatten()+QtLZ
+		#print(8.314*k_right)
 		return k_right - f
 	
 	def getZetaUnsrtFunc(self,L,z):
-		func = [(i.T.dot(L.dot(z))) for i in self.Theta.T]
+		func = [(i.T.dot(L.dot(z))) for i in self.Theta_z.T]
 		return np.asarray(func)
 	
 	def getUncertFunc(self,L):
@@ -415,32 +641,6 @@ class ThermoUncertaintyExtractor(object):
 		obj = np.dot(f,f)
 		return obj		
 		
-	def const_1_typeB_Zeta(self,z):
-		M = self.M
-		#T = self.temperatures
-		P = self.NominalParams
-		T = self.temperatures[0]
-		cov = self.Lcp
-		Pmin = self.P_min
-		
-		Theta = np.array([1 , T , T**2 , T**3, T**4])
-		cp_min = Theta.dot(Pmin)
-		QtLZ = (Theta.T.dot(cov.dot(z)))
-		f = Theta.dot(P)-QtLZ
-		return cp_min - f
-	
-	def const_2_typeB_Zeta(self,z):
-		M = self.M
-		#T = self.temperatures
-		T = self.const_T
-		cov = self.Lcp
-		Pmax = self.P_max
-		P = self.NominalParams
-		Theta = np.array([T/T , T , T**2 , T**3, T**4])
-		cp_max = Theta.dot(Pmax)
-		QtLZ = (Theta.T.dot(cov.dot(z)))
-		f = (Theta.dot(P)-QtLZ)
-		return cp_max - f
 	
 	
 	def getZeta_typeB(self,kappa):
@@ -451,44 +651,7 @@ class ThermoUncertaintyExtractor(object):
 		self.kappa_0 = self.theta_for_kappa.T.dot(P)
 		self.kappa_d_n = kappa
 	
-	def getConstrainedUnsrtZeta(self,flag=False):
-		if flag == True:
-			con1 = {'type': 'eq', 'fun': self.const_1_typeB_Zeta}
-			con2 = {'type': 'eq', 'fun': self.const_2_typeB_Zeta}
-			#con3 = {'type': 'eq', 'fun': self.const_3_typeB_Zeta}
-			#self.const_zeta = [con1,con2,con3]
-			self.const_zeta = [con1,con2]
-			zeta_list = []
-			obj_val = []
-			alpha = []
-			n = []
-			epsilon = []
-			
-			for i,T in enumerate(self.temperatures):
-				if T<self.temperatures[-1]-300 and T> self.temperatures[0]+300:
-					self.const_T = T
-					zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method="SLSQP",constraints=self.const_zeta)
-					#zeta = minimize(self.obj_curved_zeta,self.guess_z,method="Nelder-Mead")
-					zeta_list.append(zeta.x)
-					alpha.append(zeta.x[0])
-					n.append(zeta.x[1])
-					epsilon.append(zeta.x[2])
-					obj_val.append(abs(self.obj_func_zeta(zeta.x))+abs(self.const_1_typeB_Zeta(zeta.x))+abs(self.const_2_typeB_Zeta(zeta.x)))#+abs(self.const_3_typeB_Zeta(zeta.x)))
-			#print(self.rIndex)
-			#print(obj_val)
-			alpha_square = [i**2 for i in alpha]
-			n_square = [i**2 for i in n]
-			epsilon_square = [i**2 for i in epsilon]
-			index = obj_val.index(min(obj_val))
-			
-			return [zeta_list[index]],index,np.array([alpha[alpha_square.index(max(alpha_square))],n[n_square.index(max(n_square))],epsilon[epsilon_square.index(max(epsilon_square))]])
-		else:
-			con1 = {'type': 'eq', 'fun': self.const_1_typeB_Zeta}
-			con2 = {'type': 'eq', 'fun': self.const_2_typeC_Zeta}
-			#con3 = {'type': 'ineq', 'fun': self.const_func_zeta_2}
-			self.const_zeta = [con1,con2]
-			zeta = minimize(self.obj_func_zeta,self.guess_z,constraints=self.const_zeta)
-			return zeta
+	
 		#return zeta_list
 	
 	def getUnCorrelated(self,flag = False):
@@ -503,15 +666,15 @@ class ThermoUncertaintyExtractor(object):
 		else:
 			zeta = minimize(self.obj_func_zeta_thermo,self.guess_z,method="SLSQP")#method="Nelder-Mead")
 
-		self.zeta = zeta
+		self.zeta_max = zeta
 		#print(self.zeta)
 		P = self.NominalParams
-		self.P_max = P + np.asarray(np.dot(self.Lcp,self.zeta.x)).flatten();
-		self.P_min = P - np.asarray(np.dot(self.Lcp,self.zeta.x)).flatten();
+		self.P_max = P + np.asarray(np.dot(self.Lcp,self.zeta_max.x)).flatten();
+		self.P_min = P - np.asarray(np.dot(self.Lcp,self.zeta_max.x)).flatten();
 		
-		self.kmax = self.Theta.T.dot(self.P_max)
-		self.kmin = self.Theta.T.dot(self.P_min)
-		self.kappa = self.Theta.T.dot(P)
+		self.Cp_max = self.Theta_z.T.dot(self.P_max)
+		self.Cp_min = self.Theta_z.T.dot(self.P_min)
+		self.Cp_nominal = self.Theta_z.T.dot(P)
 		return zeta
 	
 	def getUncorreationMatrix(self,tag):
@@ -590,7 +753,97 @@ class ThermoUncertaintyExtractor(object):
 			zeta_hcp = self.getHCPZeta(flag=True)
 			self.samples.append(zeta_hcp)
 		return self.zeta_HCP  
+	def ENCODER(self,v):
+		z = []
+		return z
+	def const_1_thermo(self,z):
+		f = self.cp_0[0] + np.asarray([i.dot(np.asarray(self.cov.dot(z)).flatten()) for i in self.theta_for_cp]).flatten()[0]
+		return self.cp_star[0] - f
+	def const_3_thermo(self,z):
+		f = self.cp_0[-1] + np.asarray([i.dot(np.asarray(self.cov.dot(z)).flatten()) for i in self.theta_for_cp]).flatten()[-1]
+		return self.cp_star[-1] - f
 	
+	def _obj_thermo_decode(self,z):
+		QTLZ = np.asarray([i.dot(np.asarray(self.cov.dot(z)).flatten()) for i in self.theta_for_cp]).flatten()
+		#print(QTLZ)
+		f = ((self.cp_star-self.cp_0)-QTLZ)
+		#print(f)
+		obj = np.dot(f,f)
+		return obj
+	
+	def DECODER(self,cp,T_inp,species,iter_no,tag="Low"):
+		"""
+		From a give list of cp values between 300 to 5000K, generate two sets of NASA7 polynomials for Low and High Temperature range
+		"""
+		self.T = T_inp
+		T_ = []
+		if tag == "High":
+			#print(self.temperatures)
+			T_.append(self.temperatures[0])
+			T_.extend([i for i in T_inp])
+		else:
+			T_ = np.asarray([i for i in self.T])
+		#print("Inside Decoder!!\n")
+		#print(T_)
+		T = np.asarray(T_)
+		po = self.NominalParams
+		cp_o = []
+		self.theta_for_cp = []
+		for t in T:
+			theta = np.asarray([1,t,t**2,t**3,t**4])
+			cp_o.append(theta.dot(po))
+			self.theta_for_cp.append(theta)
+		#print(P)
+		self.theta_for_cp = np.asarray(self.theta_for_cp)
+		#print(po)
+		#print(self.theta_for_cp)
+		self.cp_0 = np.asarray(cp_o).flatten()
+		self.cp_star = cp
+		#print(self.cp_0)
+		#print(cp)
+		"""
+		Constrained zeta
+		"""
+		guess = np.ones(len(po))
+		
+		con1 = {'type': 'ineq', 'fun': self.cons_6_derivative_positive} #The gradients are calculated using the zeta values within the iterator
+		con2 = {'type': 'eq', 'fun': self.const_1_thermo}
+		con3 = {'type': 'eq', 'fun': self.const_3_thermo}
+		
+		#con7 = {'type': 'ineq', 'fun': self.cons_7_double_derivative_positive}
+		cons = [con1,con2,con3]#,con7]
+		fit = minimize(self._obj_thermo_decode,guess,constraints=cons)
+		zeta = fit.x
+		
+		
+		P_linear = po + np.asarray(np.dot(self.cov,fit.x)).flatten()
+		#print(P_linear)
+		#T = self.temperatures
+		Theta = np.array([T/T,T,T**2,T**3,T**4])
+		#cp_nominal = np.asarray([(i.T.dot(P)) for i in Theta.T])
+		cp_linear = np.asarray([(i.T.dot(P_linear)) for i in Theta.T])
+		#print(cp_linear)
+		#print(self.cp_star)
+		#cp_linear = Theta.dot(P_linear)
+		#fig, ax = plt.subplots(figsize=(8, 6))
+		#plt.plot(T,8.314*self.cp_0,"k-",label=r"$f_o(T)$")
+		#for spine in ax.spines.values():
+		#	spine.set_edgecolor("black")  # Set border color
+		#	spine.set_linewidth(1)		# Set border width
+		#plt.plot(T,8.314*self.cp_star,"r--",label="$f_l(T)$")
+		#plt.plot(self.temperatures,8.314*(cp_nominal+),"r-",label=r"$Cp_o$+ $f_l(T)$")
+		#plt.plot(T,8.314*cp_linear,"b-",label=r"$Cp_o + \Theta^T L_{cp} \vec{\zeta_{l}}$")
+		#plt.ylabel(f"Heat capacity ({self.species})")
+		#plt.xlabel("Temperature (K)")
+		#plt.legend()
+		#plt.grid(False)
+		#plt.savefig(f"Plots/Search_iteration_{species}_{tag}_{iter_no}.pdf",bbox_inches="tight")
+		
+		
+		
+		#print(fit,zeta)
+		#raise AssertionError("Stop!")
+		return zeta
 ###############################################################################################	
 ###########################################################################################################	
 class UncertaintyExtractor(object):
@@ -2447,7 +2700,27 @@ class fallOffCurve:
 class thermodynamic(ThermoUncertaintyExtractor):
 	def __init__(self, Element,thermo_loc):
 		self.species = self.classification = self.type = self.sub_type =  self.branching = self.branches  = self.pressure_limit  = self. common_temp = self.temp_limit= None
+		self.a1_C = self.a2_C = self.a3_C  = self.Cp_T_mid_C= None
+		self.a1_CL = self.a2_CL = self.a3_CL  = self.Cp_T_mid_CL= None
+		self.a1_CH = self.a2_CH = self.a3_CH  = self.Cp_T_mid_CH= None
+		self.a1_LC = self.a2_LC = self.a3_LC  = self.Cp_T_mid_LC= None
+		self.a1_HC = self.a2_HC = self.a3_HC  = self.Cp_T_mid_HC= None
+		self.a1_LH = self.a2_LH = self.a3_LH  = self.Cp_T_mid_LH= None
+		self.a1_HL = self.a2_HL = self.a3_HL  = self.Cp_T_mid_HL= None
+		self.a1_L = None
+		self.a2_L = None
+		self.a3_L  = None
+		self.Cp_T_mid_L= None
+		self.a1_H = None
+		self.a2_H = None
+		self.a3_H  = None
+		self.Cp_T_mid_H = None
+		self.a1_star = None
+		self.a2_star = None
+		self.a3_star = None
+		self.Cp_T_mid_star = None
 		self.tag = Element.tag
+		self.grouped = False
 		#IFRT = IFR.ThermoParsing(thermo_loc)
 		#species_Data =	#Name: self.species, 
 		self.exp_data_type = {}
@@ -2458,12 +2731,13 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		self.species = Element.attrib["species"]
 		self.rIndex = Element.attrib["no"]
 		self.nominal = {}
+		self.max_count = 5
 		try:
 			self.species_Data =  self.extract_nasa_coeffs(thermo_loc)[self.species]
 		except KeyError:
 			raise AssertionError(f"Keyword error: {self.species} not in def extract_nasa_coeffs:")
 		#print(self.species_Data)
-		
+		self.thermo_dict = {}
 		for item in Element:
 			#print(item.tag)
 			if item.tag == "class":
@@ -2487,17 +2761,21 @@ class thermodynamic(ThermoUncertaintyExtractor):
 						self.pressure_limit = str(subitem.text)
 						continue
 					if "common_temp" in subitem.tag:
-						self.common_temp = str(subitem.text)
+						self.common_temp = float(subitem.text)
 						continue
 					if  "temp_limit" in subitem.tag :
 						self.temp_limit = str(subitem.text)
 						#print(self.temp_limit)
 						if self.temp_limit == "Low":
 							self.nominal = self.species_Data["low_coeffs"]
-							#self.thermo_dict = IFR.ThermoParsing(thermo_loc).getThermoLow(self.species)
+							self.thermo_dict["Hcp"] = self.species_Data["low_coeffs"][0:5]
+							self.thermo_dict["h"] = [self.species_Data["low_coeffs"][5]]
+							self.thermo_dict["e"] = [self.species_Data["low_coeffs"][6]]
 						else:
 							self.nominal = self.species_Data["high_coeffs"]
-							#self.thermo_dict = IFR.ThermoParsing(thermo_loc).getThermoHigh(self.species)
+							self.thermo_dict["Hcp"] = self.species_Data["high_coeffs"][0:5]
+							self.thermo_dict["h"] = [self.species_Data["high_coeffs"][5]]
+							self.thermo_dict["e"] = [self.species_Data["high_coeffs"][6]]
 						continue
 				continue
 				
@@ -2529,7 +2807,7 @@ class thermodynamic(ThermoUncertaintyExtractor):
 			elif self.exp_data_type[str(i)].split(";")[0] == "percentage":
 				if self.exp_data_type[str(i)].split(";")[1] == "array":
 					a = self.thermo_dict[str(i)]
-					func = IFRT.function(str(i),a,self.temperatures[str(i)])
+					func = self.function(str(i),a,self.temperatures[str(i)])
 					y = self.uncertainties[str(i)]
 					#print(y)						
 					self.uncertainties[str(i)] = np.asarray(np.dot(y,func)).flatten()
@@ -2541,7 +2819,7 @@ class thermodynamic(ThermoUncertaintyExtractor):
 					self.uncertainties[str(i)] = np.linspace(self.uncertainties[str(i)][0],self.uncertainties[str(i)][1],20)
 
 					a = self.thermo_dict[str(i)]
-					func = IFRT.function(str(i),a,self.temperatures[str(i)])
+					func = self.function(str(i),a,self.temperatures[str(i)])
 					#print(str(i),a,self.temperatures[str(i)])
 					#print(func)
 					y = self.uncertainties[str(i)]						
@@ -2549,11 +2827,13 @@ class thermodynamic(ThermoUncertaintyExtractor):
 					self.uncertainties[str(i)] = np.asarray((y*func)).flatten()
 					continue
 			
-		
+		#print(self.uncertainties["Hcp"])
 		data = {}
+		data["species"] = self.species
 		data["temperatures"] = self.temperatures
 		data["uncertainties"] = self.uncertainties
 		data["HeatCapacity"] = self.nominal
+		data["temp_limit"] =  self.temp_limit
 		super().__init__(data)
 			
 		self.doUnsrtAnalysis()
@@ -2566,10 +2846,18 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		
 		
 		self.activeParameters = [self.rIndex+'_a1',self.rIndex+'_a2',self.rIndex+'_a3',self.rIndex+'_a4',self.rIndex+'_a5']
-		self.perturb_factor = self.zeta.x
+		self.perturb_factor = self.zeta_max.x
 		self.selection = [1.0,1.0,1.0,1.0,1.0]
 		
 		
+	def function(self,string,coeff,T):
+		if string == "Hcp":
+			func = coeff[0]*(T/T) + coeff[1]*T + coeff[2]*T**2  +coeff[3]*T**3 + coeff[4]*T**4
+		if string == "h":
+			func = coeff[0]*(T/T)
+		if string == "e":
+			func = coeff[0]*(T/T)
+		return func
 	def extract_nasa_coeffs(self, yaml_input_file) :
 		with open (yaml_input_file, 'r') as file:
 			yaml_data = yaml.safe_load(file)
@@ -2583,9 +2871,9 @@ class thermodynamic(ThermoUncertaintyExtractor):
 				t_low = thermo_data['temperature-ranges'][0]
 				t_mid = thermo_data['temperature-ranges'][1]
 				t_high = thermo_data['temperature-ranges'][2]
-				high_coeffs = thermo_data['data'][0]
+				high_coeffs = thermo_data['data'][1]
 				
-				low_coeffs = thermo_data['data'][1]
+				low_coeffs = thermo_data['data'][0]
 				#print(name)
 				species_data[name] = {'t_low': t_low , 't_mid':t_mid,'t_high':t_high,
 				'low_coeffs': low_coeffs , 'high_coeffs': high_coeffs

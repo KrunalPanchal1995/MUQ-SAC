@@ -6,6 +6,8 @@ import simulation_manager2_0 as simulator
 
 class PartialPRS(object):
 	def __init__(self,sensitivity_dict,unsrt_data,optInputs,target_list,case_index,active_parameters,design,status="Pending"):
+		
+		#print(sensitivity_dict)
 		#print(len(sensitivity_dict),len(active_parameters))
 		self.target_list = target_list
 		self.optInputs = optInputs
@@ -14,7 +16,7 @@ class PartialPRS(object):
 		if "Arrhenius_Selection_Type" in optInputs["Stats"]:
 			self.Arrhenius_Selection = optInputs["Stats"]["Arrhenius_Selection_Type"]
 		else:
-			self.Arrhenius_Selection = "all"
+			self.Arrhenius_Selection = "some"
 		self.design = design
 		self.case_index = case_index
 		self.unsrt = unsrt_data
@@ -109,6 +111,7 @@ class PartialPRS(object):
 					else:
 						self.abs_coeff.extend(self.getSelectionList(abs(sa),abs(self.s_n[index]),abs(self.s_Ea[index]),self.Arrhenius_Selection))
 				#Looking on the method of selecting the Arrhenius Parameters
+				#print(self.abs_coeff)
 				self.selected_rxn_string = ""
 				for ind,active_params in enumerate(self.active_params):
 					if self.abs_coeff[ind]>self.cut_off/100:
@@ -120,6 +123,7 @@ class PartialPRS(object):
 					else:
 						self.partial_active[active_params] = 0
 						self.selected.append(0)
+				#print(self.partial_active)
 				self.selected_rxn_count = sum(self.selected)
 			else:
 				self.active_params = []
@@ -129,6 +133,7 @@ class PartialPRS(object):
 				self.abs_coeff = []
 				self.selected_rxn_string = ""
 				self.selected_rxn_count = 0
+	
 	def getSelectionListZeta(self,sa,sn,se,case):
 		cf = self.cut_off/100
 		s_list = [sa,sn,se]			
@@ -136,15 +141,17 @@ class PartialPRS(object):
 			return [max(s_list),max(s_list),max(s_list)]
 		else:
 			return s_list
+	
 	def populateCheckList(self,sa,activeParams):
 		cf = self.cut_off/100
 		#print(sa,activeParams)
 		if abs(sa)>cf:
 			#print(activeParams)
 			self.check_list.append(activeParams)
+	
 	def getSelectedLinkedRxn(self,sa,activeParams):
 		cf = self.cut_off/100
-		if abs(sa)>cf:
+		if abs(sa)>=cf:
 			s_list = [1.0]
 			#return s_list
 		elif abs(sa)<cf and str(self.linked_list[activeParams])+"_A" in self.check_list:
@@ -160,17 +167,20 @@ class PartialPRS(object):
 		cf = self.cut_off/100
 		if sa>cf and sn<cf and se<cf:
 			s_list = [1.0,0.0,0.0]
+		
 		elif sa>cf and sn>cf and se<cf or sa<cf and sn>cf and se<cf:
 			s_list = [1.0,1.0,0.0]
 		elif se>cf:
 			s_list = [1.0,1.0,1.0]
 		else:
 			s_list = [0.0,0.0,0.0]
-			
+		
+		#print(sa,sn,se)	
+		
 		if case == "all":
 			return [max(s_list),max(s_list),max(s_list)]
 		else:
-			return s_list	
+			return [sa,sn,se]	
 	
 	def getTotalUnknowns(self,N):
 		n_ = 1 + 2*N + (N*(N-1))/2
@@ -215,7 +225,7 @@ class PartialPRS(object):
 			selected_parameters = open(f"DM_FOR_PARTIAL_PRS/{self.case_index}/selected_parameters.csv").readlines()
 			selected_parameters = [i.strip() for i in selected_parameters]
 			self.selected_rxn_count = len(selected_parameters)
-			#print(selected_parameters)
+			#print(p_selection_matrix_file)
 			for rxn in self.active_params:
 				if rxn in selected_parameters:
 					self.selected.append(1)
@@ -252,6 +262,7 @@ class PartialPRS(object):
 			
 			chunk_size = 500
 			params_yaml = [design_matrix[i:i+chunk_size] for i in range(0, len(design_matrix), chunk_size)]
+			print(self.sens_param)
 			if self.sens_param == "zeta":
 				params_selection_yaml = [selection_matrix[i:i+chunk_size] for i in range(0, len(selection_matrix), chunk_size)]
 			else:

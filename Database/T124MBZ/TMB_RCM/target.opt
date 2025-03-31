@@ -1,0 +1,154 @@
+#count (H2):785
+#count (H2CO):36
+#targets_count(Tig_all): 1334
+#targets_count: 152
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+ 
+ optimization_type: PRS
+ 
+ Algorithm_type: gradient-based
+ 
+ Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+
+ total_reactions: 20
+
+ parallel_threads: 15
+ 
+ targets_count: 50
+#################################################
+# 		Chemical Kinetics  Data  	 #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono              ----#
+# -----fuel/s : written in YAML format    ------#
+#################################################
+
+Bin:
+
+ bin: /home/user/Desktop/MUQ-SAC/V3.0
+
+ solver_bin: /home/user/Desktop/FlameMaster/Bin/bin
+ 
+ yaml_writer: /home/user/Desktop/Desktop/MUQ-SAC/lib/YAML_WRITER/yamlwriter.so
+ 
+ samap_executable: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+ 
+ jpdap_executable: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+ 
+Inputs:
+
+ fileType: chemkin 
+
+ fuelClass: Multi
+
+ fuel: {a: MB-C5H10O2, b: NC7H16}
+
+ global_reaction: MB-C5H10O2+6.5O2==5CO2+5H2O
+
+#########################
+# Input file Location   #
+#	Data            #
+#########################
+
+Locations: 
+ 
+ mechanism: /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB_RCM/tmb_nc7.yaml
+ 
+ Initial_pre_file: /home/user/Desktop/FlameMaster/Data/H2.allstar3.pre
+ 
+ uncertainty_data: /home/user/Desktop/Desktop/MUQ-SAC/Database/BUTANOATE/STAGE_OPTIMIZATION/HTC/MB_HTC_A_fact.xml
+ 
+ thermo_file: /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB_RCM/tmb_nc7.dat
+
+ trans_file: /home/user/Desktop/AROMATICS/TRI_METHYL_BENZENE_2023/TMB_RCM/dummy.dat
+ 
+ targets: /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/TMB.target
+ 
+# targets: /home/user/Desktop/Desktop/MUQ-SAC/Database/BUTANOATE/STAGE_OPTIMIZATION/HTC/MB_HTC.target
+ 
+ addendum: /home/krithika/MUQ-SAC/Database/T124MBZ/TMB/output/TMB.add
+
+################################################
+# 	 Start file Generator 			#
+#______________________________________________#
+#						#			
+#----only in use if solver choosen is FM-------#
+#----and there are flame speeds in the --------#
+#----optimization targets ---------------------#
+################################################
+##---FlS -------#####
+StartProfilesData:
+
+ Fls:
+  Flame: UnstretchedPremixed
+
+  StartProfilesFile: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+  
+  CopyTo: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+  
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: N2}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+
+##---Flf--------#####
+
+ Flf:
+  Flame: UnstretchedPremixed
+ 
+  StartProfilesFile: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+
+  CopyTo: /home/user/Desktop/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+
+  fuel: {key: Mono,From: H2}
+ 
+  oxidizer: {key: Mono, From: O2}
+ 
+  bathGas: {key: Mono, From: AR}
+ 
+  globalReaction: {FromRxn: 2H2+O2==2H2O}
+ 
+  units: {pressure: Pa, temperature: K, concentration: mol_fraction}
+ 
+#####################################
+# 	Stastical Parameters        #
+#           Data                    #
+#####################################
+
+Stats:
+ 
+#Design_of_PRS: Monte-Carlo-All
+
+#Design_of_PRS: Monte-Carlo
+
+#Design_of_PRS: LHS-maximin
+
+#Design_of_PRS: B1
+ 
+# Design_of_PRS: A1+B1+C1
+  
+ Design_of_PRS: A-facto
+ 
+ Order_of_PRS: 2
+ 
+ Sampling_of_PRS: 4
+ 
+ PRS_type: Full

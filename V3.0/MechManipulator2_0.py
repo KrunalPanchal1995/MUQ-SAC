@@ -20,7 +20,7 @@ class Manipulator:
 			self.Arrhenius_Params_Selection = "some"
 			self.selection = selection
 		else:
-			self.Arrhenius_Params_Selection = "all"
+			self.Arrhenius_Params_Selection = "some"
 			self.selection = np.ones(len(perturbation))
 			#print(len(self.selection))
 	def getRxnPerturbationDict(self):
@@ -51,49 +51,75 @@ class Manipulator:
 		
 	def ElementaryPerturbation(self,rxn,beta,mechanism):
 		if self.Arrhenius_Params_Selection != "all":
-			convertor = np.asarray(self.select_dict[rxn])
+			#convertor = np.asarray(self.select_dict[rxn])
+			convertor = np.asarray(self.unsrt[rxn].selection)
+			index = self.unsrt[rxn].index# To search the reaction from Yaml dictionary
+			cov = self.unsrt[rxn].cholskyDeCorrelateMat #The L matrix storing the uncertainty data
+			p0 = self.unsrt[rxn].nominal
+			unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
+			p = p0+convertor*unsrt_perturbation
+			
+			"""
+			The new perturbed reaction replaces the prior Arrhenius parameters 
+			"""
+			#print(cov,convertor,beta)
+			#print(p,p0)
+			#raise AssertionError("Stop!")
+			reaction_details = mechanism["reactions"][index]["rate-constant"]
+			reaction_details["A"] = float(np.exp(p[0]))
+			reaction_details["b"] = float(p[1])
+			reaction_details["Ea"] = float(p[2]*1.987)
+			mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
+			
 		else:
 			convertor = np.asarray(self.unsrt[rxn].selection)
-		"""
-		This function perturbes the Elementary reactions:
-			Inputs:
-				1) Rxn object
-				2) Rxn perturbation factor (beta)
-					- For A-factor type perturbation the L (choleskyDeCorrelateMat) is a factor
-					- For all Arrhenius parameter perturbation, L is a matrix storing the uncertainty data
-			Output:
-				perturbed reaction using the following formula
-				
-				$p = p_0 + L\zeta$		
-		
-		"""
-		
-		
-		index = self.unsrt[rxn].index# To search the reaction from Yaml dictionary
-		cov = self.unsrt[rxn].cholskyDeCorrelateMat #The L matrix storing the uncertainty data
-		zeta = self.unsrt[rxn].solution
-		perturbation_factor = self.unsrt[rxn].perturb_factor
-		p0 = self.unsrt[rxn].nominal
-		unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
-		p = p0+convertor*unsrt_perturbation
-		
-		"""
-		The new perturbed reaction replaces the prior Arrhenius parameters 
-		"""
-		#print("Before")
-		#print(mechanism["reactions"][index]["rate-constant"])
-		reaction_details = mechanism["reactions"][index]["rate-constant"]
-		reaction_details["A"] = float(np.exp(p[0]))
-		reaction_details["b"] = float(p[1])
-		reaction_details["Ea"] = float(p[2]*1.987)
-		mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
-		#print("After")
-		#print(mechanism["reactions"][index]["rate-constant"])
+			"""
+			This function perturbes the Elementary reactions:
+				Inputs:
+					1) Rxn object
+					2) Rxn perturbation factor (beta)
+						- For A-factor type perturbation the L (choleskyDeCorrelateMat) is a factor
+						- For all Arrhenius parameter perturbation, L is a matrix storing the uncertainty data
+				Output:
+					perturbed reaction using the following formula
+					
+					$p = p_0 + L\zeta$		
+			
+			"""
+			
+			
+			index = self.unsrt[rxn].index# To search the reaction from Yaml dictionary
+			cov = self.unsrt[rxn].cholskyDeCorrelateMat #The L matrix storing the uncertainty data
+			p0 = self.unsrt[rxn].nominal
+			unsrt_perturbation = np.asarray(cov.dot(beta)).flatten()
+			p = p0+convertor*unsrt_perturbation
+			S,Sr,p,Lr = self.unsrt[rxn].perturbe_partial_values(p0,cov,convertor,beta)
+			#print("\n")
+			#print(convertor,beta)
+			#print("\n")
+			#print(p0,p)
+			#print("\n")
+			#print(S,Sr)
+			#print("\n")
+			#print(f"{cov},\t{Lr}")
+			"""
+			The new perturbed reaction replaces the prior Arrhenius parameters 
+			"""
+			#print("Before")
+			#print(mechanism["reactions"][index]["rate-constant"])
+			reaction_details = mechanism["reactions"][index]["rate-constant"]
+			reaction_details["A"] = float(np.exp(p[0]))
+			reaction_details["b"] = float(p[1])
+			reaction_details["Ea"] = float(p[2]*1.987)
+			mechanism["reactions"][index]["rate-constant"] = deepcopy(reaction_details)
+			#print("After")
+			#print(mechanism["reactions"][index]["rate-constant"])
+			#raise AssertionError("Stop!")
 		return mechanism
 				
 	def PlogPerturbation(self,rxn,beta,mechanism):
 		if self.Arrhenius_Params_Selection != "all":
-			convertor = np.asarray(self.select_dict[rxn])
+			convertor = np.asarray(self.unsrt[rxn].selection)
 		else:
 			convertor = np.asarray(self.unsrt[rxn].selection)
 		
@@ -131,7 +157,7 @@ class Manipulator:
 		
 	def BranchingReactions(self,rxn,beta,mechanism):
 		if self.Arrhenius_Params_Selection != "all":
-			convertor = np.asarray(self.select_dict[rxn])
+			convertor = np.asarray(self.unsrt[rxn].selection)
 		else:
 			convertor = np.asarray(self.unsrt[rxn].selection)
 		indexes = []
@@ -174,7 +200,8 @@ class Manipulator:
 		
 	def TroePerturbation(self,rxn,beta,mechanism):
 		if self.Arrhenius_Params_Selection != "all":
-			convertor = np.asarray(self.select_dict[rxn])
+			#convertor = np.asarray(self.select_dict[rxn])
+			convertor  = np.asarray(self.unsrt[rxn].selection)
 		else:
 			convertor = np.asarray(self.unsrt[rxn].selection)
 		P_limit = self.unsrt[rxn].pressure_limit

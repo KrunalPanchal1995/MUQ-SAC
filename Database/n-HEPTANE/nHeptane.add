@@ -1,0 +1,140 @@
+#!!------------------------------------------------------------------------------------------!!
+#!!---Additional information regarding perticular dataset, important wrt to simulations------!!
+#!! format:																					!!
+#!! { "dataset_id":,"specific details": , etc .....}										!!
+#!!------------------------------------------------------------------------------------------!!
+# ----------------Defaults---------------------------------------#######
+#---solver: FlameMaster          --------------------------------#######
+#---                             --------------------------------#######
+#solver: CHEMKIN_PRO
+
+#ign_phi0_5_p13_5
+#ign_phi0_75_p6_5_HT_CRV
+#ign_phi0_75_p6_5_HT_C
+#ign_phi1_0_p13_5
+#ign_phi1_0_p42
+#ign_phi2_0_p13_5
+#ign_phi3_0_p13_5
+
+#ign_phi0_1_p50_0
+#ign_phi0_2_p50_0
+#ign_phi0_3_p50_0
+
+#actual
+#x10001001:
+# solver: CHEMKIN_PRO
+# ign_delay_def: p
+# ign_cond: dt-max
+# specific_cond: 
+# mol_wt: 17
+
+flf_NC7H16:
+ solver: CHEMKIN_PRO
+ residenceTime: 1
+ maxSimulationTime: 10
+ species: NC7H16
+ 
+ign_phi0_5_p13_5:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_5_p42:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_75_p6_5_CFS:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_75_p6_5_CRV_FS:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ign_phi0_75_p6_5_CRV_SS:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_75_p6_5_HT_CRV:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_75_p6_5_HT_C:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi1_0_p13_5:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi1_0_p42:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi2_0_p13_5:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ign_phi2_0_p42:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+ 
+ign_phi3_0_p13_5:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH*
+ ign_cond: max
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_1_p50_0:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_2_p50_0:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 13
+
+ign_phi0_3_p50_0:
+ solver: CHEMKIN_PRO
+ ign_delay_def: CH*
+ ign_cond: onset
+ specific_cond: 
+ mol_wt: 13
