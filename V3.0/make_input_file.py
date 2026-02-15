@@ -493,7 +493,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -849,7 +850,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1221,7 +1223,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1462,7 +1465,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1673,7 +1677,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1965,7 +1970,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -2147,7 +2153,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -2390,7 +2397,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:

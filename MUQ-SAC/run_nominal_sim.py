@@ -36,28 +36,28 @@ import yaml
 #import test,Nominal,Optimal
 #import generate
 #import solution
-from MechManipulator2_0 import Manipulator
+from MechManipulator2_0 import Manipulator  ### not used
 #program specific modules
-from MechanismParser import Parser
+from MechanismParser import Parser     ## mot used
 #import make_input_file
 #import FlameMaster_in_parallel
 #import combustion_dataset_class
 #import combustion_variable_class
 #from combustion_optimization_class import OptimizationTool
-from OptimizationTool import OptimizationTool as Optimizer
-import combustion_target_class
-import data_management
+from OptimizationTool import OptimizationTool as Optimizer  # not used
+import combustion_target_class # is used
+import data_management           # is used
 #import data_management as dm
-import simulation_manager2_0 as simulator
-import Uncertainty as uncertainty
+import simulation_manager2_0 as simulator # is sued 
+import Uncertainty as uncertainty     # is not used 
 #import MechanismManipulator
 #import plotter
 #import Input_file_reader
 #import statistics
 #import ParallelWorkers as pk
 from mpire import WorkerPool
-import DesignMatrix as DM
-import ResponseSurface as PRS
+import DesignMatrix as DM # not used
+import ResponseSurface as PRS # not used 
 ### KEY WORDS #######
 optType = "optimization_type"
 targets = "targets"

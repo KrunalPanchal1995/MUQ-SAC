@@ -54,6 +54,9 @@ class combustion_target():
 		self.stoichiometry["NC7H16"] = 11
 		self.stoichiometry["MB-C5H10O2"] = 6.5
 		self.stoichiometry["T124MBZ"] = 6.5
+		self.stoichiometry["C12H23"] = 17.75
+		self.stoichiometry["C3H8"] = 5.0
+		
 		self.data = data
 		parameters = self.data.split('|')
 		self.dataSet_id = parameters[1].strip("\t")

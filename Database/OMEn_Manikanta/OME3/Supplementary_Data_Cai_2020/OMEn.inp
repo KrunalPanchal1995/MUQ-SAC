@@ -1,0 +1,1884 @@
+ELEMENTS
+N  AR C  O  H  HE 
+END
+SPECIES
+N2                AR                IXCO              IXCO2             IXH2O             IXH2              IXN2              H                 
+O2                O                 OH                H2                H2O               HE                HO2               H2O2              
+CO                CO2               HCO               C                 CH                TXCH2             CH3               CH2O              
+HCCO              C2H               CH2CO             C2H2              SXCH2             CH3OH             CH2OH             CH3O              
+CH4               CH3O2             C2H3              C2H4              C2H5              HCCOH             CH2CHO            CH3CHO            
+H2C2              C2H5O             NXC3H7            C2H6              C3H8              C3H6              C3H3              PXC3H4            
+AXC3H4            SXC3H5            NXC4H3            C2H3CHO           AXC3H5            C2O               C4H4              C3H2              
+C3H2O             C4H2              IXC4H3            TXC3H5            C3H5O             C4H               C8H2              C6H2              
+C4H6              NXC4H5            IXC4H5            A1XC6H6           C2H4OH            HOC2H4O2          CH3O2H            O2CHO             
+HO2CHO            OCHO              C2H3O1X2          CH3CO             C2H4O2H           C2H5O2            C2H5OH            CH3CHOH           
+CH3OCH2OCH3       CH3OCH2O          CH3OCH2           CH3OCH3           CH3OCH2OCH2       CH3OCHOCH3        CH2OCHO           CH3OCHO           
+CH3OCO            CH3OCH2OCH2OO     CH3OCH2OCH2OOH    CH3OCOOHOCH3      CH3OCOOHHOCH3     HOCHO             CH3OCH2OCH2O      CH3OCOHOCH3       
+CH2OCH2OCH2OOH    CH3OCHOCH2OOH     CH3OCH2OCHO       OCH2OCHO          CH2OCH2OCHO       CH3OCH2OCO        CH3OCHOCHO        OCHOCHO           
+C3H6O3CY13        TRIOXAN           HO2CH2OCHO        CH2O2H            CH2OCH2O2H        O2CH2OCH2OCH2OOH  CH3OCOOHOCH2OOH   HO2CH2OCH2OCHO    
+HO2CH2OCHOCH2OOH  C3H6O3CY13_OOH    CH3OCOOHHOCHO     CH3OCOOCH2OOH     CH3OCOOHHOCH2OO   CH2OCOOHHOCH2OOH  TRIOXAN_OOH       CH3OCOHOCHO       
+OCH2OCH2OCHO      CH3OCOOHHOCH2     CH3OCOOCH3        CH3OCOOCH2        CH3OCOO           CH3OCOOH          CH2OCOOH          CH3OCOOCH2O       
+CH3OCH2O2         CH3OCH2O2H        O2CH2OCH2O2H      HOCH2OCO          HOCH2O            OME2              OME2RX1           OME2RX3           
+OME2ROOX1         OME2ROOX3         OME2ROX1          OME2ROX3          OME2QOOHX5X1      OME2QOOHX3X1      OME2QOOHX1X3      OME2QOOHX5X3      
+OME2QOOHX7X3      OME2ROOHX1        OME2ROOHX3        OME2CYC6          OME2CYC4A         OME2CYC4B         OME2X1OOHX5OO     OME2X1OOHX3OO     
+OME2X3OOHX1OO     OME2X3OOHX5OO     OME2X3OOHX7OO     OME2XKET1X5       OME2XKET1X3       OME2XKET3X1       OME2XKET3X5       OME2XKET3X7       
+CH3OCH2OCOO       OME3              OME3RX3           OME3RX1           OME3RX5           CH3OCH2OCH2OCHO   OME3ROOX3         OME3ROOX1         
+OME3ROOX5         OME3ROX3          OME3ROX1          OME3ROX5          OME3QOOHX7X3      OME3QOOHX1X3      OME3QOOHX5X3      OME3QOOHX3X1      
+OME3QOOHX5X1      OME3QOOHX3X5      OME3QOOHX1X5      OME3ROOHX3        OME3ROOHX1        OME3ROOHX5        OME3CYC6A         OME3CYC4A         
+OME3CYC4B         OME3CYC6B         CH3OCH2OCHOCHO    CH3OCH2OCH2OCO    OME3X3OOHX7OO     OME3X3OOHX1OO     OME3X3OOHX5OO     OME3X1OOHX3OO     
+OME3X1OOHX5OO     OME3X5OOHX3OO     OME3X5OOHX1OO     OME3XKET1X5       OME3XKET3X7       OME3XKET5X1       OME3XKET1X3       OME3XKET3X1       
+OME3XKET3X5       OME3XKET5X3       CH3OCH2OCH2OCOO   CH3OCH2OCOOCH2O   OME4              OME4RX5           OME4RX3           OME4RX1           
+C4H9O4CHO         OME4ROOX5         OME4ROOX3         OME4ROOX1         OME4ROX5          OME4ROX3          OME4ROX1          OME4QOOHX1X5      
+OME4QOOHX7X3      OME4QOOHX5X1      OME4QOOHX9X5      OME4QOOHX1X3      OME4QOOHX3X5      OME4QOOHX5X5      OME4QOOHX5X3      OME4QOOHX3X1      
+OME4ROOHX5        OME4ROOHX3        OME4ROOHX1        OME4CYC6A         OME4CYC4A         OME4CYC4B         OME4CYC6B         OME4CYC4C         
+C4H8O4CHO         C4H9O4CO          OME4X7OOHX3OO     OME4X7OOHX9OO     OME4X7OOHX5OO     OME4X5OOHX1OO     OME4X3OOHX7OO     OME4X3OOHX5OO     
+OME4X3OOHX1OO     OME4X1OOHX3OO     OME4X1OOHX5OO     OME4XKET1X5       OME4XKET5X9       OME4XKET5X1       OME4XKET3X7       OME4XKET1X3       
+OME4XKET5X3       OME4XKET5X7       OME4XKET3X5       OME4XKET3X1       C3H7O3COOCH2O     C4H9O4COO         C5H4CH2           A1XXC6H5          
+A1C2H2            A1C2H3            A1C2H             A1C2HY            A1C2H3Y           A2XXC10H7         A2XC10H8          A2YXC10H7         
+A2C2H2A           A2C2H2B           A2C2HA            A2C2HB            A2C2HAY           A2C2HBY           A2R5              A2R5X             
+A2R5C2H2          A2R5C2H           A2R5C2HY          P2XC12H10         P2XXC12H9         A3XXC14H9         A3XC14H10         A3YXC14H9         
+A3R5X             A3R5              A4XC16H10         A4XXC16H9         A4R5              FLTN              C5H6              C5H5              
+TXC5H5O           C5H4O             SXC5H5O           C9H8              C9H7              A1CH2             C9H6O             OXC6H4            
+A1CH3             A1OH              HOA1CH3           OA1CH3            A1CH2O            A1CH2OH           A1CHO             A1OXC6H5O         
+A1CH3Y            A1C2H4            A1C2H5            C8H9O2            C8H8OOH           OC8H7OOH          A1CH3CH3          A1CH3CH2          
+A1CH3CHO          A2CH3             A1CHOCH2          A1CHOCHO          A2OH              A2CH2             A2CH2O            A2CHO             
+A2OXC10H7O        OC6H4O            
+END
+REACTIONS
+H+O2<=>O+OH                              1.040e+14    0.000  15286.09
+O+H2<=>H+OH                              3.818e+12    0.000   7947.90
+     DUPLICATE
+O+H2<=>H+OH                              8.792e+14    0.000  19169.93
+     DUPLICATE
+H2+OH<=>H2O+H                            2.160e+08    1.510   3429.97
+2OH<=>O+H2O                              3.340e+04    2.420  -1929.97
+H2+M<=>2H+M                              4.577e+19   -1.400 104380.02
+AR/0.00/ H2/2.50/ H2O/12.00/ HE/0.00/ CO/1.90/ CO2/3.80/ 
+H2+AR<=>2H+AR                            5.840e+18   -1.100 104380.02
+H2+HE<=>2H+HE                            5.840e+18   -1.100 104380.02
+2O+M<=>O2+M                              6.165e+15   -0.500      0.00
+AR/0.00/ H2/2.50/ H2O/12.00/ HE/0.00/ CO/1.90/ CO2/3.80/ 
+2O+AR<=>O2+AR                            1.886e+13    0.000  -1788.00
+2O+HE<=>O2+HE                            1.886e+13    0.000  -1788.00
+O+H+M<=>OH+M                             4.714e+18   -1.000      0.00
+AR/0.75/ H2/2.50/ H2O/12.00/ HE/0.75/ CO/1.90/ CO2/3.80/ 
+H2O+M<=>H+OH+M                           6.064e+27   -3.322 120789.91
+N2/2.00/ O2/1.50/ H2/3.00/ H2O/0.00/ HE/1.10/ CO/1.90/ CO2/3.80/ 
+2H2O<=>H+OH+H2O                          1.006e+26   -2.440 120179.97
+H+O2(+M)<=>HO2(+M)                       4.651e+12    0.440      0.00
+AR/0.67/ O2/0.78/ H2/2.00/ H2O/14.00/ HE/0.80/ CO/1.90/ CO2/3.80/ 
+     LOW  /  6.366e+20   -1.720    524.86 /
+!     FCCHECK/     0.5     1e-30    0.5     1e+30      0         0
+     TROE/     0.5    1e-30     1e+30        /
+HO2+H<=>H2+O2                            2.750e+06    2.090  -1451.00
+HO2+H<=>2OH                              7.079e+13    0.000    294.93
+HO2+O<=>O2+OH                            2.850e+10    1.000   -723.95
+HO2+OH<=>H2O+O2                          2.890e+13    0.000   -496.89
+2HO2<=>H2O2+O2                           4.200e+14    0.000  11982.07
+     DUPLICATE
+2HO2<=>H2O2+O2                           1.300e+11    0.000  -1629.30
+     DUPLICATE
+H2O2(+M)<=>2OH(+M)                       2.000e+12    0.900  48749.04
+N2/1.50/ O2/1.20/ H2/3.70/ H2O/7.50/ HE/0.65/ H2O2/7.70/ CO/2.80/ CO2/1.60/ 
+     LOW  /  2.490e+24   -2.300  48750.00 /
+!     FCCHECK/    0.57     1e-30   0.43     1e+30      0         0
+     TROE/    0.43    1e-30     1e+30        /
+H2O2+H<=>H2O+OH                          2.410e+13    0.000   3969.89
+H2O2+H<=>HO2+H2                          4.820e+13    0.000   7950.05
+H2O2+O<=>OH+HO2                          9.550e+06    2.000   3969.89
+H2O2+OH<=>HO2+H2O                        1.740e+12    0.000    318.12
+     DUPLICATE
+H2O2+OH<=>HO2+H2O                        7.590e+13    0.000   7270.08
+     DUPLICATE
+CO+O(+M)<=>CO2(+M)                       1.800e+10    0.000   2385.28
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ 
+     LOW  /  1.550e+24   -2.790   4192.16 /
+!     FCCHECK/       0         0      0         0      1         0
+     TROE/       1     1.00 10000000.00 10000000.00 /
+CO+OH<=>CO2+H                            7.046e+04    2.053   -355.64
+     DUPLICATE
+CO+OH<=>CO2+H                            5.757e+12   -0.664    331.74
+     DUPLICATE
+CO+O2<=>CO2+O                            1.050e+12    0.000  47700.05
+CO+HO2<=>CO2+OH                          1.570e+05    2.180  17942.64
+HCO+H<=>CO+H2                            1.200e+14    0.000      0.00
+HCO+O<=>CO+OH                            3.000e+13    0.000      0.00
+HCO+O<=>CO2+H                            3.000e+13    0.000      0.00
+HCO+OH<=>CO+H2O                          3.020e+13    0.000      0.00
+HCO+M<=>CO+H+M                           4.748e+11    0.659  14873.80
+H2/2.00/ H2O/0.00/ CO/1.75/ CO2/3.60/ 
+HCO+O2<=>CO+HO2                          7.580e+12    0.000    409.89
+C+OH<=>CO+H                              5.000e+13    0.000      0.00
+C+O2<=>CO+O                              5.800e+13    0.000    576.00
+CH+H<=>C+H2                              1.650e+14    0.000      0.00
+CH+O<=>CO+H                              5.700e+13    0.000      0.00
+CH+OH<=>HCO+H                            3.000e+13    0.000      0.00
+CH+H2<=>TXCH2+H                          1.080e+14    0.000   3109.46
+CH+H2(+M)<=>CH3(+M)                      1.970e+12    0.430   -370.46
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.820e+25   -2.800    590.34 /
+     TROE/   0.578      122      2535      9365 /
+CH+H2O<=>CH2O+H                          5.710e+12    0.000   -755.26
+CH+O2<=>HCO+O                            6.710e+13    0.000      0.00
+CH+CO(+M)<=>HCCO(+M)                     5.000e+13    0.000      0.00
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.690e+28   -3.740   1935.95 /
+     TROE/  0.5757      237      1652      5069 /
+CH+CO2<=>HCO+CO                          1.900e+14    0.000  15791.11
+CO+H2(+M)<=>CH2O(+M)                     4.300e+07    1.500  79600.86
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  5.070e+27   -3.420  84349.90 /
+     TROE/   0.932      197      1540     10300 /
+HCO+H(+M)<=>CH2O(+M)                     1.090e+12    0.480   -260.52
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.470e+24   -2.570    425.43 /
+     TROE/  0.7824      271      2755      6570 /
+TXCH2+H(+M)<=>CH3(+M)                    6.000e+14    0.000      0.00
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.040e+26   -2.760   1598.95 /
+     TROE/   0.562       91      5836      8552 /
+TXCH2+O<=>HCO+H                          8.000e+13    0.000      0.00
+TXCH2+OH<=>CH2O+H                        2.000e+13    0.000      0.00
+TXCH2+OH<=>CH+H2O                        1.130e+07    2.000   2999.52
+TXCH2+H2<=>H+CH3                         5.000e+05    2.000   7229.92
+TXCH2+O2=>CO2+2H                         5.800e+12    0.000   1500.96
+TXCH2+O2<=>CH2O+O                        2.400e+12    0.000   1500.96
+TXCH2+O2=>OH+H+CO                        5.000e+12    0.000   1500.96
+TXCH2+HO2<=>CH2O+OH                      2.000e+13    0.000      0.00
+TXCH2+C<=>C2H+H                          5.000e+13    0.000      0.00
+TXCH2+CO(+M)<=>CH2CO(+M)                 8.100e+11    0.500   4510.04
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.690e+33   -5.110   7096.08 /
+     TROE/  0.5907      275      1226      5185 /
+TXCH2+CH<=>C2H2+H                        4.000e+13    0.000      0.00
+2TXCH2<=>C2H2+H2                         1.600e+15    0.000  11943.12
+2TXCH2=>C2H2+2H                          2.000e+14    0.000  10989.48
+SXCH2+N2<=>TXCH2+N2                      1.500e+13    0.000    599.90
+SXCH2+AR<=>TXCH2+AR                      9.000e+12    0.000    599.90
+SXCH2+H<=>CH+H2                          3.000e+13    0.000      0.00
+SXCH2+O<=>CO+H2                          1.500e+13    0.000      0.00
+SXCH2+O<=>HCO+H                          1.500e+13    0.000      0.00
+SXCH2+OH<=>CH2O+H                        3.000e+13    0.000      0.00
+SXCH2+H2<=>CH3+H                         7.000e+13    0.000      0.00
+SXCH2+O2<=>H+OH+CO                       2.800e+13    0.000      0.00
+SXCH2+O2<=>CO+H2O                        1.200e+13    0.000      0.00
+SXCH2+H2O(+M)<=>CH3OH(+M)                4.820e+17   -1.160   1144.84
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.880e+38   -6.360   5040.63 /
+     TROE/  0.6027      208      3922     10180 /
+SXCH2+H2O<=>TXCH2+H2O                    3.000e+13    0.000      0.00
+SXCH2+H2O=>H2+CH2O                       6.820e+10    0.250   -934.51
+SXCH2+CO<=>TXCH2+CO                      9.000e+12    0.000      0.00
+SXCH2+CO2<=>TXCH2+CO2                    7.000e+12    0.000      0.00
+SXCH2+CO2<=>CH2O+CO                      1.400e+13    0.000      0.00
+CH2O+H(+M)<=>CH2OH(+M)                   5.400e+11    0.450   3599.43
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.270e+32   -4.820   6529.64 /
+     TROE/  0.7187      103      1291      4160 /
+CH2O+H(+M)<=>CH3O(+M)                    5.400e+11    0.450   2600.38
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.200e+30   -4.800   5559.27 /
+     TROE/   0.758       94      1555      4200 /
+CH2O+H<=>HCO+H2                          5.740e+07    1.900   2741.40
+CH2O+O<=>HCO+OH                          3.900e+13    0.000   3539.67
+CH2O+OH<=>HCO+H2O                        3.430e+09    1.180   -446.94
+CH2O+O2<=>HCO+HO2                        1.000e+14    0.000  40000.00
+CH2O+HO2<=>HCO+H2O2                      5.600e+06    2.000  12000.48
+CH2O+CH<=>CH2CO+H                        9.460e+13    0.000   -516.25
+CH3+H(+M)<=>CH4(+M)                      6.920e+13    0.180      0.00
+AR/0.70/ H2/2.00/ H2O/6.00/ CO/1.50/ CO2/2.00/ CH4/3.00/ C2H6/3.00/ 
+     LOW  /  3.470e+38   -6.300   5074.09 /
+     TROE/   0.783       74      2941      6964 /
+CH3+O<=>CH2O+H                           5.060e+13    0.000      0.00
+CH3+O=>H+H2+CO                           3.370e+13    0.000      0.00
+CH3+OH(+M)<=>CH3OH(+M)                   2.790e+18   -1.430   1331.26
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.000e+36   -5.920   3140.54 /
+     TROE/   0.412      195      5900      6394 /
+CH3+OH<=>TXCH2+H2O                       5.600e+07    1.600   5420.65
+CH3+OH=>H2+CH2O                          8.000e+09    0.000  -1754.30
+CH3+OH<=>SXCH2+H2O                       6.440e+17   -1.340   1417.30
+CH3+O2<=>CH3O+O                          1.380e+13    0.000  30521.03
+CH3+O2<=>CH2O+OH                         5.870e+11    0.000  13840.82
+CH3+O2(+M)<=>CH3O2(+M)                   1.010e+08    1.630      0.00
+
+     LOW  /  3.820e+31   -4.890   3432.12 /
+     TROE/   0.045    880.1   2.5e+09 1.786e+09 /
+CH3O2+CH3<=>2CH3O                        1.000e+13    0.000  -1199.81
+2CH3O2=>2CH3O+O2                         1.400e+16   -1.610   1859.46
+CH3O2+HO2=>CH3O+OH+O2                    2.470e+11    0.000  -1570.27
+CH3O2+CH2O=>CH3O+OH+HCO                  1.990e+12    0.000  11670.65
+CH3+HO2<=>CH3O+OH                        1.000e+13    0.000      0.00
+CH3+HO2<=>CH4+O2                         3.610e+12    0.000      0.00
+CH3+H2O2<=>CH4+HO2                       2.450e+04    2.470   5179.25
+CH3+C<=>C2H2+H                           5.000e+13    0.000      0.00
+CH3+CH<=>C2H3+H                          3.000e+13    0.000      0.00
+CH3+HCO<=>CH4+CO                         2.650e+13    0.000      0.00
+CH3+CH2O<=>CH4+HCO                       3.320e+03    2.810   5860.42
+CH3+TXCH2<=>C2H4+H                       1.000e+14    0.000      0.00
+CH3+SXCH2<=>C2H4+H                       1.200e+13    0.000   -571.22
+2CH3<=>C2H5+H                            6.840e+12    0.100  10599.90
+CH3O+H(+M)<=>CH3OH(+M)                   2.430e+12    0.520     50.19
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.660e+41   -7.440  14079.83 /
+     TROE/     0.7      100     90000     10000 /
+CH3O+H<=>CH2OH+H                         4.150e+07    1.630   1924.00
+CH3O+H<=>CH2O+H2                         2.000e+13    0.000      0.00
+CH3O+H<=>CH3+OH                          1.500e+12    0.500   -109.94
+CH3O+H<=>SXCH2+H2O                       2.620e+14   -0.230   1070.75
+CH3O+O<=>CH2O+OH                         1.000e+13    0.000      0.00
+CH3O+OH<=>CH2O+H2O                       5.000e+12    0.000      0.00
+CH3O+O2<=>CH2O+HO2                       4.280e-13    7.600  -3530.11
+CH2OH+H(+M)<=>CH3OH(+M)                  1.060e+12    0.500     86.04
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.360e+31   -4.650   5081.26 /
+     TROE/     0.6      100      9000     10000 /
+CH2OH+H<=>CH2O+H2                        2.000e+13    0.000      0.00
+CH2OH+H<=>CH3+OH                         1.650e+11    0.650   -284.42
+CH2OH+H<=>SXCH2+H2O                      3.280e+13   -0.090    609.46
+CH2OH+O<=>CH2O+OH                        1.000e+13    0.000      0.00
+CH2OH+OH<=>CH2O+H2O                      5.000e+12    0.000      0.00
+CH2OH+O2<=>CH2O+HO2                      1.800e+13    0.000    901.05
+CH4+H<=>CH3+H2                           6.600e+08    1.620  10841.30
+CH4+O<=>CH3+OH                           1.020e+09    1.500   8599.43
+CH4+OH<=>CH3+H2O                         1.000e+08    1.600   3119.02
+CH4+CH<=>C2H4+H                          6.000e+13    0.000      0.00
+CH4+TXCH2<=>2CH3                         2.460e+06    2.000   8269.60
+CH4+SXCH2<=>2CH3                         1.600e+13    0.000   -571.22
+CH3OH+H<=>CH2OH+H2                       1.700e+07    2.100   4870.94
+CH3OH+H<=>CH3O+H2                        4.200e+06    2.100   4870.94
+CH3OH+O<=>CH2OH+OH                       3.880e+05    2.500   3099.90
+CH3OH+O<=>CH3O+OH                        1.300e+05    2.500   5000.00
+CH3OH+OH<=>CH2OH+H2O                     1.440e+06    2.000   -841.30
+CH3OH+OH<=>CH3O+H2O                      6.300e+06    2.000   1500.96
+CH3OH+CH3<=>CH2OH+CH4                    3.000e+07    1.500   9940.25
+CH3OH+CH3<=>CH3O+CH4                     1.000e+07    1.500   9940.25
+C2H+H(+M)<=>C2H2(+M)                     1.000e+17   -1.000      0.00
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.600e+33   -4.800   1900.10 /
+     TROE/  0.6464      132      1315      5566 /
+C2H+O<=>CH+CO                            5.000e+13    0.000      0.00
+C2H+OH<=>H+HCCO                          2.000e+13    0.000      0.00
+C2H+O2<=>HCO+CO                          1.000e+13    0.000   -755.26
+C2H+H2<=>C2H2+H                          3.310e+06    2.260    901.05
+HCCO+H<=>SXCH2+CO                        1.000e+14    0.000      0.00
+HCCO+O<=>H+2CO                           1.000e+14    0.000      0.00
+HCCO+O2<=>OH+2CO                         4.200e+10    0.000    853.25
+HCCO+CH<=>C2H2+CO                        5.000e+13    0.000      0.00
+HCCO+TXCH2<=>C2H3+CO                     3.000e+13    0.000      0.00
+2HCCO<=>C2H2+2CO                         1.000e+13    0.000      0.00
+C2H2+H(+M)<=>C2H3(+M)                    1.710e+10    1.270   2707.93
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  6.340e+31   -4.660   3781.07 /
+!     FCCHECK/  0.2122    -10212      0         1      0         1
+     TROE/  0.2122     1.00    -10212 /
+C2H2+O<=>HCCO+H                          8.100e+06    2.000   1900.10
+C2H2+O<=>TXCH2+CO                        1.250e+07    2.000   1900.10
+C2H+OH<=>C2H2+O                          1.810e+13    0.000      0.00
+C2H2+OH<=>C2H+H2O                        2.630e+06    2.140  17060.23
+C2H2+OH<=>HCCOH+H                        2.410e+06    2.000  12712.72
+C2H2+OH<=>CH2CO+H                        7.530e+06    1.550   2105.64
+C2H2+OH<=>CH3+CO                         1.280e+09    0.730   2578.87
+CH2CO+H<=>HCCO+H2                        5.000e+13    0.000   7999.52
+CH2CO+H<=>CH3+CO                         1.500e+09    1.380    614.24
+CH2CO+O<=>HCCO+OH                        1.000e+13    0.000   7999.52
+CH2CO+O<=>TXCH2+CO2                      1.750e+12    0.000   1350.38
+CH2CO+OH<=>HCCO+H2O                      7.500e+12    0.000   2000.48
+HCCOH+H<=>CH2CO+H                        1.000e+13    0.000      0.00
+C2H3+H(+M)<=>C2H4(+M)                    6.080e+12    0.270    279.64
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.400e+30   -3.860   3319.79 /
+     TROE/   0.782    207.5      2663      6095 /
+C2H3+H<=>C2H2+H2                         3.000e+13    0.000      0.00
+C2H3+O<=>CH2CHO                          1.030e+13    0.210   -427.82
+C2H3+OH<=>C2H2+H2O                       5.000e+12    0.000      0.00
+C2H3+O2<=>C2H2+HO2                       1.340e+06    1.610   -384.80
+C2H3+O2<=>CH2CHO+O                       3.030e+11    0.290     11.95
+C2H3+O2<=>HCO+CH2O                       4.580e+16   -1.390   1015.77
+CH2CHO<=>CH2CO+H                         1.320e+34   -6.570  49457.46
+CH2CHO<=>CH3+CO                          6.510e+34   -6.870  47194.07
+CH2CHO+O<=>CH2O+HCO                      3.170e+13    0.030   -394.36
+CH2CHO+O2=>OH+CO+CH2O                    1.810e+10    0.000      0.00
+CH2CHO+O2=>OH+2HCO                       2.350e+10    0.000      0.00
+CH2CHO+H<=>CH3+HCO                       2.200e+13    0.000      0.00
+CH2CHO+H<=>CH2CO+H2                      1.100e+13    0.000      0.00
+CH2CHO+OH<=>H2O+CH2CO                    1.200e+13    0.000      0.00
+CH2CHO+OH<=>HCO+CH2OH                    3.010e+13    0.000      0.00
+CH3+HCO<=>CH3CHO                         5.000e+13    0.000      0.00
+CH3CHO+O<=>CH2CHO+OH                     2.920e+12    0.000   1809.27
+CH3CHO+H<=>CH2CHO+H2                     2.050e+09    1.160   2404.40
+CH3CHO+H=>CH3+CO+H2                      2.050e+09    1.160   2404.40
+CH3CHO+O=>CH3+CO+OH                      2.920e+12    0.000   1809.27
+CH3CHO+O2=>CH3+CO+HO2                    3.010e+13    0.000  39149.14
+CH3CHO+OH=>CH3+CO+H2O                    2.340e+10    0.730  -1113.77
+CH3CHO+HO2=>CH3+CO+H2O2                  3.010e+12    0.000  11924.00
+CH3CHO+CH3=>CH3+CO+CH4                   2.720e+06    1.770   5920.17
+C2H4(+M)<=>H2C2+H2(+M)                   8.000e+12    0.440  88800.19
+AR/0.70/ H2/2.00/ H2O/6.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  7.000e+50   -9.310  99899.62 /
+     TROE/   0.735      180      1035      5417 /
+C2H4+H(+M)<=>C2H5(+M)                    1.370e+09    1.460   1355.16
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.030e+39   -6.640   5769.60 /
+     TROE/  -0.569      299     -9147     152.4 /
+C2H4+H<=>C2H3+H2                         1.270e+05    2.750  11649.14
+C2H4+O<=>CH2CHO+H                        7.660e+09    0.880   1140.06
+C2H4+O<=>TXCH2+CH2O                      7.150e+04    2.470    929.73
+C2H4+O<=>CH3+HCO                         3.890e+08    1.360    886.71
+C2H4+OH<=>C2H3+H2O                       1.310e-01    4.200   -860.42
+C2H4+OH<=>C2H5O                          3.750e+36   -7.800   7060.23
+C2H4+CH3<=>C2H3+CH4                      2.270e+05    2.000   9199.33
+C2H4+CH3(+M)<=>NXC3H7(+M)                2.550e+06    1.600   5700.29
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  3.000e+63  -14.600  18169.22 /
+     TROE/  0.1894      277      8748      7891 /
+C2H5+H(+M)<=>C2H6(+M)                    5.210e+17   -0.990   1579.83
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.990e+41   -7.080   6684.99 /
+     TROE/  0.8422      125      2219      6882 /
+C2H5+H<=>C2H4+H2                         2.000e+12    0.000      0.00
+C2H5+CH3<=>C2H4+CH4                      1.180e+04    2.450   2920.65
+C2H5+O<=>C2H5O                           3.170e+13    0.030   -394.36
+C2H5O<=>CH3+CH2O                         1.320e+20   -2.020  20750.48
+C2H5O<=>CH3CHO+H                         5.450e+15   -0.690  22229.92
+C2H5O+O2<=>CH3CHO+HO2                    2.290e+10    0.000    874.76
+C2H5+O2<=>C2H4+HO2                       1.920e+07    1.020  -2033.94
+C3H8(+M)<=>C2H5+CH3(+M)                  1.290e+37   -5.840  97387.67
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  5.640e+74  -15.740  98718.93 /
+     TROE/    0.31       50      3000      9000 /
+C2H6(+M)<=>2CH3(+M)                      1.880e+50   -9.720 107342.26
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  3.720e+65  -13.140 101579.83 /
+     TROE/    0.39      100      1900      6000 /
+C2H6+H<=>C2H5+H2                         1.700e+05    2.700   5740.92
+C2H6+O<=>C2H5+OH                         3.170e+01    3.800   3130.98
+C2H6+OH<=>C2H5+H2O                       1.610e+06    2.220    740.92
+C2H6+SXCH2<=>C2H5+CH3                    4.000e+13    0.000   -549.71
+C2H6+CH3<=>C2H5+CH4                      8.430e+14    0.000  22256.21
+NXC3H7+O<=>C2H5+CH2O                     3.170e+13    0.030   -394.36
+NXC3H7+H(+M)<=>C3H8(+M)                  3.610e+13    0.000      0.00
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.420e+61  -13.550  11357.55 /
+     TROE/   0.315      369      3285      6667 /
+NXC3H7+OH<=>C3H6+H2O                     2.410e+13    0.000      0.00
+NXC3H7+CH3<=>C3H6+CH4                    3.310e+12    0.000   -769.60
+C3H6+H(+M)<=>NXC3H7(+M)                  3.060e+14   -0.370   4032.03
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  6.260e+38   -6.660   7000.48 /
+     TROE/       1     1000      1310     48097 /
+NXC3H7+O2<=>C3H6+HO2                     3.700e+16   -1.630   3417.78
+C3H8+H<=>NXC3H7+H2                       5.800e-02    4.710   6211.76
+C3H8+O<=>NXC3H7+OH                       2.350e+00    4.090   2545.41
+C3H8+OH<=>NXC3H7+H2O                     5.360e+06    2.010    365.68
+C3H8+CH3<=>NXC3H7+CH4                    9.030e-01    3.650   7153.44
+C3H8+HO2<=>NXC3H7+H2O2                   9.640e+03    2.600  13910.13
+C2H2+M<=>H2C2+M                          2.450e+15   -0.640  49698.85
+AR/0.70/ H2/2.00/ H2O/6.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+H2C2+O2<=>TXCH2+CO2                      3.300e+12    0.000      0.00
+H2C2+O2<=>2HCO                           1.000e+13    0.000      0.00
+C2H2+SXCH2<=>C3H3+H                      1.900e+14    0.000      0.00
+PXC3H4+H<=>C2H2+CH3                      3.460e+12    0.440   5463.67
+AXC3H4+H<=>C2H2+CH3                      8.950e+13   -0.020  11250.00
+C2H2+CH3<=>SXC3H5                        7.450e+43  -10.130  18522.94
+C2H2+C2H<=>NXC4H3                        7.800e+13    0.000      0.00
+C2H2+HCCO<=>C3H3+CO                      1.000e+11    0.000   2999.52
+C2H3+H2O2<=>C2H4+HO2                     1.210e+10    0.000   -595.12
+C2H3+HCO<=>C2H4+CO                       9.000e+13    0.000      0.00
+C2H3+HCO<=>C2H3CHO                       1.800e+13    0.000      0.00
+C2H3+CH3<=>C2H2+CH4                      9.030e+12    0.000   -764.82
+C3H6<=>C2H3+CH3                          4.040e+42   -7.670 111830.78
+C2H3+CH3<=>AXC3H5+H                      1.930e+18   -1.250   7669.69
+AXC3H5+H<=>C3H6                          5.930e+54  -11.760  23549.24
+C2H+CH3<=>C3H3+H                         2.410e+13    0.000      0.00
+C2O+H<=>CH+CO                            5.000e+13    0.000      0.00
+C2O+O<=>2CO                              5.000e+13    0.000      0.00
+C2O+OH<=>H+2CO                           2.000e+13    0.000      0.00
+C2O+O2<=>O+2CO                           2.000e+13    0.000      0.00
+HCCO+CH3<=>C2H4+CO                       5.000e+13    0.000      0.00
+HCCO+OH<=>C2O+H2O                        3.000e+13    0.000      0.00
+HCCO+OH<=>2HCO                           1.000e+13    0.000      0.00
+CH2CO+OH<=>CH2OH+CO                      5.000e+12    0.000      0.00
+CH2CO+TXCH2<=>C2H4+CO                    1.000e+12    0.000      0.00
+CH2CO+TXCH2<=>HCCO+CH3                   3.600e+13    0.000  10999.04
+CH2CO+CH3<=>C2H5+CO                      9.000e+10    0.000      0.00
+CH2CO+CH3<=>HCCO+CH4                     7.500e+12    0.000  12999.52
+CH2CHO+CH3<=>C2H5+HCO                    4.900e+14   -0.500      0.00
+C2H4+C2H<=>C4H4+H                        1.200e+13    0.000      0.00
+C2H4+O2<=>C2H3+HO2                       4.220e+13    0.000  62100.86
+C2H4+O2=>CH3+CO2+H                       4.900e+12    0.420  75800.67
+C2H5+HCO<=>C2H6+CO                       1.200e+14    0.000      0.00
+C2H5+HO2<=>C2H6+O2                       3.000e+11    0.000      0.00
+C2H5+HO2<=>C2H4+H2O2                     3.000e+11    0.000      0.00
+C2H5+HO2<=>C2H5O+OH                      3.100e+13    0.000      0.00
+C2H6+HO2<=>C2H5+H2O2                     2.610e+02    3.370  15913.00
+C3H2+O<=>C3H2O                           1.360e+14    0.000      0.00
+C3H2+OH<=>C2H2+HCO                       1.000e+13    0.000      0.00
+C3H2+O2<=>HCCO+CO+H                      1.250e+11    0.000    999.04
+C3H2+CH<=>C4H2+H                         5.000e+13    0.000      0.00
+C3H2+TXCH2<=>NXC4H3+H                    5.000e+13    0.000      0.00
+C3H2+CH3<=>C4H4+H                        5.000e+12    0.000      0.00
+C3H2+HCCO<=>NXC4H3+CO                    1.000e+13    0.000      0.00
+C2H+HCO<=>C3H2O                          5.000e+13    0.000      0.00
+C3H2O+H<=>C2H2+HCO                       3.460e+12    0.440   5463.67
+C3H2O+H=>C2H+CO+H2                       2.050e+09    1.160   2404.40
+C3H2O+O=>C2H+CO+OH                       2.920e+12    0.000   1809.27
+C3H2O+O2=>C2H+CO+HO2                     3.010e+13    0.000  39149.14
+C3H2O+OH=>C2H+CO+H2O                     2.340e+10    0.730  -1113.77
+C3H2O+HO2=>C2H+CO+H2O2                   3.010e+12    0.000  11924.00
+C3H2O+CH3=>C2H+CO+CH4                    2.720e+06    1.770   5920.17
+C3H2+H(+M)<=>C3H3(+M)                    1.020e+13    0.270    279.64
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.800e+30   -3.860   3319.79 /
+     TROE/   0.782    207.5      2663      6095 /
+C3H3+H<=>C3H2+H2                         1.100e+10    1.130  13929.25
+C3H3+H<=>PXC3H4                          7.940e+29   -5.060   4861.38
+C3H3+H<=>AXC3H4                          3.160e+29   -5.000   4710.80
+C3H3+OH<=>C2H3CHO                        7.530e+06    1.550   2105.64
+C3H3+OH<=>C2H4+CO                        1.280e+09    0.730   2578.87
+C3H3+OH<=>C3H2+H2O                       1.130e+05    2.280   2466.54
+C3H3+OH<=>CH2O+C2H2                      1.880e+36   -7.800   7060.23
+C3H3+O<=>C3H2O+H                         1.380e+14    0.000      0.00
+C3H3+O2<=>CH2CO+HCO                      1.700e+05    1.700   1500.96
+C3H3+HO2<=>OH+CO+C2H3                    8.000e+11    0.000      0.00
+C3H3+HO2<=>AXC3H4+O2                     3.000e+11    0.000      0.00
+C3H3+HO2<=>PXC3H4+O2                     3.000e+11    0.000      0.00
+PXC3H4+O2<=>CH3+HCO+CO                   4.000e+14    0.000  41928.78
+C3H3+HCO<=>AXC3H4+CO                     2.500e+13    0.000      0.00
+C3H3+HCO<=>PXC3H4+CO                     2.500e+13    0.000      0.00
+C3H3+CH<=>IXC4H3+H                       5.000e+13    0.000      0.00
+C3H3+TXCH2<=>C4H4+H                      5.000e+13    0.000      0.00
+AXC3H4<=>PXC3H4                          7.760e+39   -7.800  78446.46
+AXC3H4+H<=>PXC3H4+H                      2.470e+15   -0.330   6436.42
+AXC3H4+H<=>AXC3H5                        2.010e+49  -10.770  19622.37
+AXC3H4+H<=>TXC3H5                        6.700e+42  -12.460  16359.94
+PXC3H4+H<=>TXC3H5                        8.830e+52  -12.360  16445.98
+PXC3H4+H<=>SXC3H5                        1.530e+49  -11.970  14144.36
+PXC3H4+H<=>C3H3+H2                       8.500e+04    2.700   5740.92
+PXC3H4+O<=>C3H3+OH                       4.490e+07    1.920   5690.73
+PXC3H4+OH<=>C3H3+H2O                     8.050e+05    2.220    740.92
+PXC3H4+CH3<=>C3H3+CH4                    4.220e+14    0.000  22256.21
+PXC3H4+HO2<=>C3H3+H2O2                   1.300e+02    3.370  15913.00
+AXC3H4+H<=>C3H3+H2                       1.330e+06    2.530  12239.48
+AXC3H4+OH<=>C3H3+H2O                     1.310e-01    4.200   -860.42
+AXC3H4+CH3<=>C3H3+CH4                    2.270e+05    2.000   9199.33
+AXC3H4+HO2<=>C3H3+H2O2                   9.760e+10    0.120  23369.98
+AXC3H4+O<=>CH2CO+TXCH2                   9.630e+06    2.050    179.25
+PXC3H4+O<=>HCCO+CH3                      4.050e+06    2.000   1900.10
+PXC3H4+O<=>C2H4+CO                       6.250e+06    2.000   1900.10
+AXC3H4+C2H<=>C2H2+C3H3                   1.000e+13    0.000      0.00
+PXC3H4+C2H<=>C2H2+C3H3                   1.000e+13    0.000      0.00
+PXC3H4+OH<=>HCCOH+CH3                    2.410e+06    2.000  12712.72
+PXC3H4+OH<=>CH2CO+CH3                    7.530e+06    1.550   2105.64
+PXC3H4+OH<=>C2H5+CO                      1.280e+09    0.730   2578.87
+C2H3CHO+H=>C2H3+CO+H2                    4.090e+09    1.160   2404.40
+C2H3CHO+O=>C2H3+CO+OH                    5.840e+12    0.000   1809.27
+C2H3CHO+OH=>C2H3+CO+H2O                  2.890e+08    1.350  -1572.66
+C2H3CHO+HO2=>C2H3+CO+H2O2                4.090e+04    2.500  10203.15
+C2H3CHO+CH3=>C2H3+CO+CH4                 3.490e-08    6.210   1630.02
+AXC3H5<=>TXC3H5                          7.060e+56  -14.080  75867.59
+AXC3H5<=>SXC3H5                          5.000e+51  -13.020  73300.67
+TXC3H5<=>SXC3H5                          1.500e+48  -12.710  53900.57
+AXC3H5+H<=>AXC3H4+H2                     9.560e+03    2.800   3291.11
+AXC3H5+OH<=>AXC3H4+H2O                   6.030e+12    0.000      0.00
+AXC3H5+CH3<=>AXC3H4+CH4                  4.860e+11   -0.320   -131.45
+AXC3H5+C2H3<=>AXC3H4+C2H4                2.410e+12    0.000      0.00
+AXC3H5+C2H5<=>AXC3H4+C2H6                9.640e+11    0.000   -131.45
+2AXC3H5<=>AXC3H4+C3H6                    1.000e+12    0.000      0.00
+AXC3H5+O2<=>AXC3H4+HO2                   2.060e+04    2.190  17590.82
+AXC3H5+O2<=>C2H3CHO+OH                   3.360e+05    1.810  19189.77
+AXC3H5+O2=>C2H2+CH2O+OH                  9.710e+20   -2.700  24980.88
+AXC3H5+O2<=>CH2CHO+CH2O                  3.080e+09    0.370  16909.66
+AXC3H5+O<=>C3H5O                         3.170e+13    0.030   -394.36
+AXC3H5+OH<=>C2H3CHO+H2                   4.200e+32   -5.160  30126.67
+AXC3H5+HCO<=>C3H6+CO                     6.000e+13    0.000      0.00
+AXC3H5+HO2<=>C3H6+O2                     2.660e+12    0.000      0.00
+AXC3H5+HO2<=>C3H5O+OH                    1.060e+16   -0.940   2523.90
+AXC3H5+CH3O2<=>C3H5O+CH3O                7.000e+12    0.000   -999.04
+TXC3H5+H<=>PXC3H4+H2                     3.340e+12    0.000      0.00
+TXC3H5+O<=>CH3+CH2CO                     6.000e+13    0.000      0.00
+TXC3H5+OH=>CH3+CH2CO+H                   5.000e+12    0.000      0.00
+TXC3H5+HO2<=>CH3+CH2CO+OH                2.000e+13    0.000      0.00
+TXC3H5+HCO<=>C3H6+CO                     9.000e+13    0.000      0.00
+TXC3H5+CH3<=>PXC3H4+CH4                  1.000e+11    0.000      0.00
+SXC3H5+H<=>PXC3H4+H2                     3.340e+12    0.000      0.00
+SXC3H5+O<=>C2H4+HCO                      6.000e+13    0.000      0.00
+SXC3H5+OH=>C2H4+HCO+H                    5.000e+12    0.000      0.00
+SXC3H5+HO2<=>C2H4+HCO+OH                 2.000e+13    0.000      0.00
+SXC3H5+HCO<=>C3H6+CO                     9.000e+13    0.000      0.00
+SXC3H5+CH3<=>PXC3H4+CH4                  1.000e+11    0.000      0.00
+TXC3H5+O2<=>PXC3H4+HO2                   1.340e+06    1.610   -384.80
+SXC3H5+O2<=>PXC3H4+HO2                   6.700e+05    1.610   -384.80
+TXC3H5+O2=>CH2CO+CH3+O                   3.030e+11    0.290     11.95
+SXC3H5+O2=>C2H3CHO+H+O                   3.030e+11    0.290     11.95
+TXC3H5+O2=>CH3+CO+CH2O                   4.580e+16   -1.390   1015.77
+SXC3H5+O2<=>CH3CHO+HCO                   4.580e+16   -1.390   1015.77
+TXC3H5+O2<=>AXC3H4+HO2                   1.920e+07    1.020  -2033.94
+C3H5O+O2=>C2H3CHO+HO2                    1.000e+12    0.000   5999.04
+C3H5O<=>C2H3CHO+H                        1.000e+14    0.000  29098.95
+C3H5O=>C2H3+CH2O                         2.030e+12    0.090  23561.19
+C3H6+H<=>C2H4+CH3                        8.000e+21   -2.390  11180.69
+C3H6+O<=>CH2CHO+CH3                      1.200e+08    1.600    327.44
+C3H6+O<=>C2H5+HCO                        3.500e+07    1.600   -972.75
+C3H6+H<=>AXC3H5+H2                       6.600e+05    2.540   6756.69
+C3H6+O<=>AXC3H5+OH                       9.650e+04    2.680   3716.54
+C3H6+OH<=>AXC3H5+H2O                     2.000e+08    1.460    537.76
+C3H6+HO2<=>AXC3H5+H2O2                   9.600e+03    2.600  13910.13
+C3H6+CH3<=>AXC3H5+CH4                    4.520e-01    3.650   7153.44
+C3H6+H<=>TXC3H5+H2                       4.000e+05    2.500   9789.67
+C3H6+O<=>TXC3H5+OH                       6.000e+10    0.700   7629.06
+C3H6+OH<=>TXC3H5+H2O                     1.100e+06    2.000   1450.76
+C3H6+CH3<=>TXC3H5+CH4                    8.400e-01    3.500  11661.09
+C3H6+H<=>SXC3H5+H2                       6.650e+05    2.530  12239.48
+C3H6+O<=>SXC3H5+OH                       1.210e+11    0.700   8960.33
+C3H6+OH<=>SXC3H5+H2O                     6.550e-02    4.200   -860.42
+C3H6+CH3<=>SXC3H5+CH4                    1.140e+05    2.000   9199.33
+C4H+O2<=>C2H+2CO                         1.000e+13    0.000   -755.26
+C4H+H<=>C4H2                             6.000e+13    0.000      0.00
+C4H2+H<=>C4H+H2                          3.200e+09    1.800  30107.55
+C4H2+H2<=>C4H4                           4.000e+14    0.000  53900.57
+2C4H2=>C8H2+2H                           1.510e+14    0.000  55999.04
+2C4H2<=>C8H2+H2                          1.510e+13    0.000  42700.76
+C4H2+O2<=>2HCCO                          9.560e+12    0.000  31099.43
+C4H2+O<=>C3H2+CO                         2.060e+07    2.000   1900.10
+C4H2+H(+M)<=>IXC4H3(+M)                  4.310e+10    1.160   1751.91
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.300e+45   -8.100   2507.17 /
+!     FCCHECK/  0.0748     -4216      0         1      0         1
+     TROE/  0.0748     1.00     -4216 /
+C4H2+H<=>NXC4H3                          1.370e+39   -7.870  15442.16
+C4H2+OH<=>C4H+H2O                        9.150e+09    1.030  21747.13
+C4H2+OH<=>C3H3+CO                        3.300e+12   -0.250   2375.72
+NXC4H3<=>IXC4H3                          4.100e+43   -9.500  52999.52
+NXC4H3+H<=>IXC4H3+H                      2.500e+20   -1.670  10800.67
+NXC4H3+H<=>C4H4                          2.000e+47  -10.260  13068.83
+IXC4H3+H<=>C4H4                          3.400e+43   -9.010  12119.98
+NXC4H3+H<=>2C2H2                         6.300e+25   -3.340  10009.56
+IXC4H3+H<=>2C2H2                         2.800e+23   -2.550  10779.16
+NXC4H3+H<=>C4H2+H2                       1.500e+13    0.000      0.00
+IXC4H3+H<=>C4H2+H2                       3.000e+13    0.000      0.00
+NXC4H3+OH<=>C4H2+H2O                     2.500e+12    0.000      0.00
+IXC4H3+OH<=>C4H2+H2O                     5.000e+12    0.000      0.00
+NXC4H3+O2<=>C4H2+HO2                     6.700e+05    1.610   -384.80
+IXC4H3+O2<=>C4H2+HO2                     1.340e+06    1.610   -384.80
+IXC4H3+O<=>CH2CO+C2H                     2.000e+13    0.000      0.00
+IXC4H3+O2<=>HCCO+CH2CO                   1.630e+11    0.000  -1799.71
+IXC4H3+O2<=>HCO+C2H2+CO                  1.700e+05    1.700   1500.96
+C4H4+H<=>NXC4H3+H2                       1.270e+05    2.750  11649.14
+C4H4+H<=>IXC4H3+H2                       6.350e+04    2.750  11649.14
+C4H4+OH<=>NXC4H3+H2O                     6.550e-02    4.200   -860.42
+C4H4+OH<=>IXC4H3+H2O                     3.280e-02    4.200   -860.42
+C4H4+CH3<=>NXC4H3+CH4                    1.140e+05    2.000   9199.33
+C4H4+CH3<=>IXC4H3+CH4                    5.680e+04    2.000   9199.33
+C4H4+O<=>AXC3H4+CO                       6.250e+06    2.000   1900.10
+C4H4+O<=>C3H2+CH2O                       3.580e+04    2.470    929.73
+C4H4+O<=>C3H3+HCO                        1.950e+08    1.360    886.71
+C4H2+C2H<=>C6H2+H                        7.800e+13    0.000      0.00
+C2H2+C4H<=>C6H2+H                        7.800e+13    0.000      0.00
+C6H2+C2H<=>C8H2+H                        7.800e+13    0.000      0.00
+C4H2+C4H<=>C8H2+H                        7.800e+13    0.000      0.00
+H2C2+C2H4<=>C4H6                         1.000e+12    0.000      0.00
+H2C2+C2H2<=>C4H4                         1.900e+14    0.000      0.00
+C2H3+C2H2<=>NXC4H5                       1.320e+12    0.160   8312.62
+2C2H3<=>C4H6                             8.430e+13    0.000      0.00
+2C2H3<=>IXC4H5+H                         1.200e+22   -2.440  13654.40
+2C2H3<=>NXC4H5+H                         2.400e+20   -2.040  15363.29
+2C2H3<=>C2H2+C2H4                        9.600e+11    0.000      0.00
+C3H3+CH3(+M)<=>C4H6(+M)                  1.500e+12    0.000      0.00
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  2.600e+57  -11.940   9772.94 /
+     TROE/   0.175   1340.6     60000    9769.8 /
+C3H6+C2H3<=>C4H6+CH3                     7.230e+11    0.000   5000.00
+C4H6<=>IXC4H5+H                          5.700e+36   -6.270 112354.21
+C4H6<=>NXC4H5+H                          5.300e+44   -8.620 123608.99
+C4H6<=>C4H4+H2                           2.500e+15    0.000  94698.85
+PXC3H4+CH3<=>C4H6+H                      8.940e+07    1.140  12380.50
+AXC3H4+CH3<=>C4H6+H                      2.830e+08    1.060  11161.57
+C4H6+H<=>NXC4H5+H2                       1.330e+06    2.530  12239.48
+C4H6+H<=>IXC4H5+H2                       6.650e+05    2.530   9239.96
+NXC4H5+OH<=>C4H6+O                       2.200e+11    0.000      0.00
+C4H6+O<=>IXC4H5+OH                       7.500e+06    1.900   3740.44
+C4H6+OH<=>NXC4H5+H2O                     6.200e+06    2.000   3429.73
+C4H6+OH<=>IXC4H5+H2O                     3.100e+06    2.000    430.21
+C4H6+CH3<=>NXC4H5+CH4                    2.000e+14    0.000  22834.61
+C4H6+CH3<=>IXC4H5+CH4                    1.000e+14    0.000  19799.24
+C4H6+C2H3<=>NXC4H5+C2H4                  5.000e+13    0.000  22834.61
+C4H6+C2H3<=>IXC4H5+C2H4                  2.500e+13    0.000  19799.24
+C4H6+O=>AXC3H5+CO+H                      7.660e+09    0.880   1140.06
+C4H6+O<=>PXC3H4+CH2O                     7.150e+04    2.470    929.73
+C4H6+O<=>AXC3H5+HCO                      3.890e+08    1.360    886.71
+C4H6+OH<=>AXC3H5+CH2O                    3.750e+36   -7.800   7060.23
+C4H4+H<=>NXC4H5                          1.300e+51  -11.920  16500.96
+C4H4+H<=>IXC4H5                          4.900e+51  -11.920  17700.76
+NXC4H5<=>IXC4H5                          1.500e+67  -16.890  59106.12
+NXC4H5+H<=>IXC4H5+H                      3.100e+26   -3.350  17423.52
+NXC4H5+H<=>C4H4+H2                       1.500e+13    0.000      0.00
+NXC4H5+OH<=>C4H4+H2O                     2.000e+12    0.000      0.00
+NXC4H5+HCO<=>C4H6+CO                     5.000e+12    0.000      0.00
+NXC4H5+H2O2<=>C4H6+HO2                   1.210e+10    0.000   -595.12
+NXC4H5+HO2<=>C4H6+O2                     6.000e+11    0.000      0.00
+NXC4H5+O<=>AXC3H5+CO                     1.030e+13    0.210   -427.82
+NXC4H5+O2<=>C4H4+HO2                     1.340e+06    1.610   -384.80
+NXC4H5+O2=>AXC3H5+CO+O                   3.030e+11    0.290     11.95
+NXC4H5+O2<=>HCO+C2H3CHO                  4.580e+16   -1.390   1015.77
+IXC4H5+H<=>C4H4+H2                       3.000e+13    0.000      0.00
+IXC4H5+H<=>C3H3+CH3                      2.000e+13    0.000   2000.48
+IXC4H5+OH<=>C4H4+H2O                     4.000e+12    0.000      0.00
+IXC4H5+HCO<=>C4H6+CO                     5.000e+12    0.000      0.00
+IXC4H5+HO2<=>C4H6+O2                     6.000e+11    0.000      0.00
+IXC4H5+H2O2<=>C4H6+HO2                   1.210e+10    0.000   -595.12
+IXC4H5+O2<=>CH2CO+CH2CHO                 2.160e+10    0.000   2500.00
+IXC4H5+O<=>C3H3+CH2O                     3.170e+13    0.030   -394.36
+NXC4H5+C2H3<=>A1XC6H6+H2                 1.840e-13    7.070  -3611.38
+C2H4OH<=>C2H4+OH                         1.293e+12   -0.370  26849.90
+HOC2H4O2<=>C2H4OH+O2                     3.900e+16   -1.000  30000.00
+HOC2H4O2=>OH+2CH2O                       1.250e+10    0.000  18900.10
+CH3O2H<=>CH3O+OH                         6.310e+14    0.000  42299.95
+O2CHO=>HCO+O2                            7.766e+26   -3.960  44229.92
+HCO+O2=>O2CHO                            1.200e+11    0.000  -1099.90
+CH2O+O2CHO=>HCO+HO2CHO                   1.990e+12    0.000  11669.93
+HO2CHO=>OCHO+OH                          5.010e+14    0.000  40150.10
+C2H2+O2=>HCCO+OH                         2.000e+08    1.500  30099.90
+C2H4(+M)=>C2H2+H2(+M)                    1.800e+13    0.000  76000.00
+
+     LOW  /  1.500e+15    0.000  55440.01 /
+!     FCCHECK/       0         0      0         0      1         0
+     TROE/       1     1.00 10000000.00 10000000.00 /
+HCCO+O2=>CO2+HCO                         2.400e+11    0.000   -853.97
+C2H3O1X2<=>CH3CO                         8.500e+14    0.000  14000.00
+C2H3O1X2<=>CH2CHO                        1.000e+14    0.000  14000.00
+CH3CO(+M)<=>CH3+CO(+M)                   3.000e+12    0.000  16719.89
+
+     LOW  /  1.200e+15    0.000  12520.08 /
+!     FCCHECK/       0         0      0         0      1         0
+     TROE/       1     1.00 10000000.00 10000000.00 /
+C2H5+O2=>C2H4O2H                         2.420e+35   -8.030   8311.90
+CH3O2+C2H5=>CH3O+C2H5O                   7.000e+12    0.000  -1000.00
+C2H5O2<=>C2H5+O2                         4.930e+50  -11.500  42250.00
+C2H5O2<=>C2H4+HO2                        3.370e+55  -13.420  44669.93
+C2H5O2=>C2H4O2H                          5.640e+47  -11.440  37320.03
+C2H4O2H<=>C2H4+HO2                       9.290e+30   -6.100  19929.97
+CH3OH+O2<=>CH2OH+HO2                     2.050e+13    0.000  44900.10
+CH3OH+HO2<=>CH2OH+H2O2                   2.277e-05    5.060  10214.53
+CH3OH+HO2<=>CH3O+H2O2                    3.337e-02    4.120  16235.66
+CH3OH+HCO<=>CH2OH+CH2O                   9.635e+03    2.900  13109.94
+CH3O+CH3OH<=>CH3OH+CH2OH                 3.000e+11    0.000   4059.99
+CH2OH+HCO<=>2CH2O                        1.500e+13    0.000      0.00
+CH2OH+HO2<=>CH2O+H2O2                    1.200e+13    0.000      0.00
+CH2OH+CH3O<=>CH3OH+CH2O                  2.400e+13    0.000      0.00
+CH2OH+HCO<=>CH3OH+CO                     1.000e+13    0.000      0.00
+2CH2OH<=>CH3OH+CH2O                      3.000e+12    0.000      0.00
+CH3O+HCO<=>CH3OH+CO                      9.000e+13    0.000      0.00
+     DUPLICATE
+CH3O+HO2<=>CH2O+H2O2                     3.000e+11    0.000      0.00
+2CH3O<=>CH3OH+CH2O                       6.000e+13    0.000      0.00
+C2H5OH+O<=>CH3CHOH+OH                    1.880e+07    1.850   1824.09
+C2H5OH+O<=>C2H4OH+OH                     9.410e+07    1.700   5458.89
+C2H5OH+O<=>C2H5O+OH                      1.580e+07    2.000   4447.90
+C2H5OH(+M)<=>CH3+CH2OH(+M)               5.940e+23   -1.680  91163.00
+N2/1.26/ H2/2.00/ H2O/5.00/ CO/2.00/ CO2/3.00/ 
+     LOW  /  2.880e+85  -18.900 109900.10 /
+     TROE/     0.5      200       890      4600 /
+C2H5OH(+M)<=>C2H4+H2O(+M)                2.790e+13    0.090  66135.99
+H2O/5.00/ 
+     LOW  /  2.570e+83  -18.850  86450.05 /
+     TROE/     0.7      350       800      3800 /
+C2H5OH(+M)<=>CH3CHO+H2(+M)               7.240e+11    0.095  91006.93
+N2/1.26/ H2O/5.00/ 
+     LOW  /  4.460e+87  -19.420 115599.90 /
+     TROE/     0.9      900      1100      3500 /
+C2H5OH(+M)<=>C2H5+OH(+M)                 1.250e+23   -1.540  96005.02
+H2/2.00/ H2O/5.00/ CO/2.00/ CO2/3.00/ 
+     LOW  /  3.250e+85  -18.810 114900.10 /
+     TROE/     0.5      300       900      5000 /
+C2H5OH+OH<=>C2H4OH+H2O                   6.200e+03    2.680   -576.00
+C2H5OH+OH<=>C2H5O+H2O                    2.810e+02    2.970   -580.07
+C2H5OH+OH<=>CH3CHOH+H2O                  3.090e+10    0.500   -380.02
+C2H5OH+H<=>C2H4OH+H2                     1.878e+03    3.200   7150.10
+C2H5OH+H<=>CH3CHOH+H2                    1.794e+05    2.530   3419.93
+C2H5OH+H<=>C2H5O+H2                      5.550e-23   10.600  -4458.89
+C2H5OH+CH3<=>C2H4OH+CH4                  9.900e+02    3.300  12291.11
+C2H5OH+CH3<=>CH3CHOH+CH4                 5.970e+01    3.370   7635.04
+C2H5OH+CH3<=>C2H5O+CH4                   6.105e+00    3.570   7722.04
+C2H5OH+HO2<=>CH3CHOH+H2O2                8.200e+03    2.550  10750.00
+C2H5OH+HO2<=>C2H4OH+H2O2                 1.230e+04    2.550  15750.00
+C2H5OH+HO2<=>C2H5O+H2O2                  2.500e+12    0.000  24000.00
+CH3CHO+HO2<=>CH2CHO+H2O2                 2.320e+11    0.400  14864.01
+CH3CHO+OH<=>CH2CHO+H2O                   3.370e+11    0.000   -619.98
+CH3CHO+CH3<=>CH2CHO+CH4                  2.450e+01    3.150   5727.06
+CH2CHO+HO2<=>CH3CHO+O2                   3.000e+12    0.000      0.00
+CH2CHO+HO2<=>CH2O+HCO+OH                 7.000e+12    0.000      0.00
+C2H5O+OH<=>CH3CHO+H2O                    1.000e+13    0.000      0.00
+C2H5O+H<=>C2H4+H2O                       3.000e+13    0.000      0.00
+C2H5O+H<=>CH3+CH2OH                      3.000e+13    0.000      0.00
+C2H5O+CO<=>C2H5+CO2                      4.680e+02    3.160   5380.02
+CH3CHOH+O<=>CH3CHO+OH                    1.000e+14    0.000      0.00
+CH3CHOH+OH<=>CH3CHO+H2O                  5.000e+12    0.000      0.00
+CH3CHOH+O2<=>CH3CHO+HO2                  1.000e+13    0.000   5569.07
+CH3CHOH+H<=>C2H4+H2O                     3.000e+13    0.000      0.00
+CH3CHOH+H<=>CH3+CH2OH                    3.000e+13    0.000      0.00
+CH3CHOH+M<=>CH3CHO+H+M                   5.000e+13    0.000  21876.91
+
+CH3CHOH+HO2<=>CH3CHO+2OH                 4.000e+13    0.000      0.00
+CH3OCH2OCH3(+M)<=>CH3OCH2O+CH3(+M)       2.331e+19   -0.661  84139.10
+
+     LOW  /  1.720e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+CH3OCH2OCH3(+M)<=>CH3O+CH3OCH2(+M)       2.600e+23   -1.960  88385.99
+
+     LOW  /  1.074e+76  -16.420  98830.07 /
+!     FCCHECK/  0.9999     589.9 8.762e-05      6892      1      1968
+CH3OCH2OCH3(+M)=>CH3OH+CH3+HCO(+M)       1.000e+14    0.000  65200.05
+
+     LOW  /  5.720e+96  -23.040  80809.99 /
+!     FCCHECK/  0.9988     379.1 0.001176 1.581e+07      1      4728
+CH3OCH2OCH3(+M)<=>CH3OCH3+CH2O(+M)       1.000e+14    0.000  65200.05
+
+     LOW  /  5.720e+96  -23.040  80809.99 /
+!     FCCHECK/  0.9988       379 0.001177  1.58e+07      1      4728
+CH3OCH2OCH3<=>CH3OCH2OCH2+H              1.895e+17    0.000  98119.98
+CH3OCH2OCH3<=>CH3OCHOCH3+H               1.895e+17    0.000  98119.98
+CH3OCH2OCH3+O2<=>CH3OCH2OCH2+HO2         1.880e+04    2.822  42590.82
+CH3OCH2OCH3+O<=>CH3OCH2OCH2+OH           5.430e+06    2.148   3080.78
+CH3OCH2OCH3+HO2<=>CH3OCH2OCH2+H2O2       1.320e+01    3.560  12691.20
+CH3OCH2OCH3+CH3O2<=>CH3OCH2OCH2+CH3O2H   1.060e+01    3.560  12691.20
+CH3OCH2OCH3+CH3O<=>CH3OCH2OCH2+CH3OH     1.960e+03    2.930   3441.68
+CH3OCH2OCH3+CH2OH<=>CH3OCH2OCH2+CH3OH    2.240e+12    0.000  19646.27
+CH3OCH2OCH3+HCO<=>CH3OCH2OCH2+CH2O       3.680e+13    0.000  24713.19
+CH3OCH2OCH3+CH2OCHO<=>CH3OCH2OCH2+CH3OCHO 9.560e+11    0.000  17088.91
+CH3OCH2OCH3+CH3OCO<=>CH3OCH2OCH2+CH3OCHO 4.040e+12    0.000  15989.48
+CH3OCH2OCH3+CH3OCH2<=>CH3OCH2OCH2+CH3OCH3 1.300e+12    0.000  19168.26
+CH3OCH2OCH3+CH3OCH2OCH2OO<=>CH3OCH2OCH2+CH3OCH2OCH2OOH 5.000e+12    0.000  17690.01
+CH3OCH2OCH3+CH3OCOOHOCH3<=>CH3OCH2OCH2+CH3OCOOHHOCH3 5.000e+12    0.000  17690.01
+CH3OCH2OCH3+O2CHO<=>CH3OCH2OCH2+HO2CHO   4.425e+04    2.600  13909.89
+CH3OCH2OCH3+OCHO<=>CH3OCH2OCH2+HOCHO     1.000e+13    0.000  17690.01
+CH3OCH2OCH3+H<=>CH3OCH2OCH2+H2           2.297e+04    2.898   5203.39
+CH3OCH2OCH3+CH3<=>CH3OCH2OCH2+CH4        1.458e-02    4.246   7543.74
+CH3OCH2OCH3+OH<=>CH3OCH2OCH2+H2O         6.064e+01    3.498  -2206.50
+CH3OCH2OCH3+CH3OCH2OCH2<=>CH3OCH2OCH3+CH3OCHOCH3 1.000e+11    0.000  10400.10
+CH3OCH2OCH3+O2<=>CH3OCHOCH3+HO2          1.260e+07    2.000  40344.17
+CH3OCH2OCH3+O<=>CH3OCHOCH3+OH            1.100e+06    2.450   2820.27
+CH3OCH2OCH3+HO2<=>CH3OCHOCH3+H2O2        2.260e+02    3.160  11759.08
+CH3OCH2OCH3+CH3O2<=>CH3OCHOCH3+CH3O2H    1.810e+02    3.160  11759.08
+CH3OCH2OCH3+CH3O<=>CH3OCHOCH3+CH3OH      6.760e+05    2.130   4493.31
+CH3OCH2OCH3+CH2OH<=>CH3OCHOCH3+CH3OH     6.050e+11    0.000  17304.02
+CH3OCH2OCH3+HCO<=>CH3OCHOCH3+CH2O        5.420e+13    0.000  22968.45
+CH3OCH2OCH3+CH2OCHO<=>CH3OCHOCH3+CH3OCHO 2.560e+11    0.000  14746.65
+CH3OCH2OCH3+CH3OCO<=>CH3OCHOCH3+CH3OCHO  1.080e+12    0.000  13647.23
+CH3OCH2OCH3+CH3OCH2<=>CH3OCHOCH3+CH3OCH3 3.520e+11    0.000  16826.00
+CH3OCH2OCH3+CH3OCH2OCH2OO<=>CH3OCHOCH3+CH3OCH2OCH2OOH 5.000e+12    0.000  17690.01
+CH3OCH2OCH3+CH3OCOOHOCH3<=>CH3OCHOCH3+CH3OCOOHHOCH3 5.000e+12    0.000  17690.01
+CH3OCH2OCH3+O2CHO<=>CH3OCHOCH3+HO2CHO    4.425e+04    2.600  13909.89
+CH3OCH2OCH3+OCHO<=>CH3OCHOCH3+HOCHO      1.000e+13    0.000  17690.01
+CH3OCH2OCH3+H<=>CH3OCHOCH3+H2            5.207e+07    1.886   5256.69
+CH3OCH2OCH3+CH3<=>CH3OCHOCH3+CH4         1.301e+02    3.123   7985.66
+CH3OCH2OCH3+OH<=>CH3OCHOCH3+H2O          1.419e+04    2.722  -1243.79
+CH3OCH2OCH2<=>CH3OCH2+CH2O               1.200e+32   -5.615  33263.86
+CH3OCH2OCH2<=>CH3OCHO+CH3                8.420e+30   -6.113  43021.03
+CH3OCH2OCH2<=>CH3OCHOCH3                 7.867e-32   11.753  11934.99
+CH3OCH2OCH2+O2<=>CH3OCH2OCH2OO           5.430e+17   -1.730   2210.09
+CH3OCH2OCH2+CH3OCH2OCH2OO<=>2CH3OCH2OCH2O 9.000e+12    0.000  -1000.00
+CH3OCH2OCH2+CH3OCOOHOCH3<=>CH3OCH2OCH2O+CH3OCOHOCH3 9.000e+12    0.000  -1000.00
+CH3OCH2OCH2+CH3O<=>CH3OCH2OCH3+CH2O      2.410e+13    0.000      0.00
+CH3OCH2OCH2+HO2<=>CH3OCH2OCH2O+OH        9.000e+12    0.000  -1000.00
+CH3OCH2OCH2+CH3O2<=>CH3OCH2OCH2O+CH3O    9.000e+12    0.000  -1000.00
+CH3OCH2OCH2OO<=>CH2OCH2OCH2OOH           6.700e+07    0.585  14125.24
+CH3OCH2OCH2OO<=>CH3OCHOCH2OOH            5.370e+08    0.765  14651.05
+2CH3OCH2OCH2OO=>2CH3OCH2OCH2O+O2         1.547e+23   -4.500      0.00
+CH3OCH2OCH2OOH+O2<=>CH3OCH2OCH2OO+HO2    3.746e+13   -0.791  33619.98
+CH3OCH2OCH2OOH+HO2<=>CH3OCH2OCH2OO+H2O2  2.400e+12    0.000  10000.00
+CH3OCH2OCH2OO+CH3O2=>CH3OCH2OCH2O+CH3O+O2 1.400e+16   -1.610   1859.94
+CH3OCH2OCH2OO+CH3OCOOHOCH3=>CH3OCH2OCH2O+CH3OCOHOCH3+O2 1.547e+23   -4.500      0.00
+CH3OCH2OCH2OO+CH2O<=>CH3OCH2OCH2OOH+HCO  1.000e+12    0.000  11659.89
+CH3OCH2OCH2OOH<=>CH3OCH2OCH2O+OH         2.000e+16    0.000  42000.00
+CH3OCH2O+CH2O<=>CH3OCH2OCH2O             1.000e+11    0.000   7960.09
+CH3OCH2OCH2O+O2<=>CH3OCH2OCHO+HO2        4.380e-19    9.500  -5500.96
+CH3OCH2OCH2O<=>CH3OCH2OCHO+H             3.300e+13    0.004  26136.23
+CH3OCHOCH2OOH<=>CH3OCH2OCHO+OH           1.620e+08    1.280  32839.39
+CH3OCH2OCH2OO<=>CH3OCH2OCHO+OH           2.820e+06    1.970  34894.84
+CH2OCH2OCH2OOH<=>CH3OCH2OCHO+OH          8.540e+12   -0.230  17065.01
+CH3OCH2OCHO<=>CH3+OCH2OCHO               2.331e+19   -0.661  84139.10
+CH3OCH2OCHO<=>CH3O+CH2OCHO               2.331e+19   -0.661  84139.10
+CH3OCH2OCHO<=>CH3OCH3+CO2                1.500e+12    0.000  59700.05
+CH3OCH2OCHO+H<=>CH2OCH2OCHO+H2           2.297e+04    2.898   5203.39
+CH3OCH2OCHO+H<=>CH3OCH2OCO+H2            6.500e+05    2.400   4471.08
+CH3OCH2OCHO+H<=>CH3OCHOCHO+H2            5.207e+07    1.886   5256.69
+CH3OCH2OCHO+OH<=>CH2OCH2OCHO+H2O         6.064e+01    3.498  -2206.50
+CH3OCH2OCHO+OH<=>CH3OCH2OCO+H2O          1.580e+07    1.800    934.03
+CH3OCH2OCHO+OH<=>CH3OCHOCHO+H2O          1.892e+04    2.722  -1243.79
+CH3OCH2OCHO+O<=>CH2OCH2OCHO+OH           5.430e+06    2.148   3080.78
+CH3OCH2OCHO+O<=>CH3OCH2OCO+OH            2.755e+05    2.450   2830.07
+CH3OCH2OCHO+O<=>CH3OCHOCHO+OH            1.100e+06    2.450   2820.27
+CH3OCH2OCHO+O2<=>CH2OCH2OCHO+HO2         1.880e+04    2.822  42590.82
+CH3OCH2OCHO+O2<=>CH3OCH2OCO+HO2          1.000e+13    0.000  49700.05
+CH3OCH2OCHO+O2<=>CH3OCHOCHO+HO2          1.260e+07    2.000  40344.17
+CH3OCH2OCHO+HO2<=>CH2OCH2OCHO+H2O2       1.320e+01    3.560  12691.20
+CH3OCH2OCHO+HO2<=>CH3OCH2OCO+H2O2        4.820e+03    2.600  13909.89
+CH3OCH2OCHO+HO2<=>CH3OCHOCHO+H2O2        2.260e+02    3.160  11759.08
+CH3OCH2OCHO+CH3<=>CH2OCH2OCHO+CH4        1.458e-02    4.246   7543.74
+CH3OCH2OCHO+CH3<=>CH3OCH2OCO+CH4         7.550e-01    3.460   5481.12
+CH3OCH2OCHO+CH3<=>CH3OCHOCHO+CH4         1.301e+02    3.123   7985.66
+CH3OCH2OCHO+CH3O2<=>CH3OCHOCHO+CH3O2H    1.810e+02    3.160  11759.08
+CH3OCH2OCHO+CH3O<=>CH3OCHOCHO+CH3OH      3.380e+05    2.130   4493.31
+CH3OCH2OCHO+HCO<=>CH3OCHOCHO+CH2O        5.420e+13    0.000  22968.45
+CH3OCH2OCHO+CH3O2<=>CH2OCH2OCHO+CH3O2H   1.060e+01    3.560  12691.20
+CH3OCH2OCHO+CH3O<=>CH2OCH2OCHO+CH3OH     9.800e+02    2.930   3441.68
+CH3OCH2OCHO+HCO<=>CH2OCH2OCHO+CH2O       3.680e+13    0.000  24713.19
+CH3OCH2OCHO+CH3O2<=>CH3OCH2OCO+CH3O2H    4.820e+03    2.600  13909.89
+CH3OCH2OCHO+CH3O<=>CH3OCH2OCO+CH3OH      5.480e+11    0.000   5000.00
+CH3OCH2OCHO+HCO<=>CH3OCH2OCO+CH2O        5.400e+06    1.900  17010.04
+CH2O+CH2OCHO<=>CH2OCH2OCHO               1.500e+11    0.000  11900.10
+CH3OCH2OCO<=>CH3OCH2+CO2                 8.690e+17   -1.810  13656.79
+CH3OCH2OCO<=>CH3OCH2O+CO                 2.825e+22   -3.440  23592.50
+CH3OCHO+HCO<=>CH3OCHOCHO                 1.500e+11    0.000  11900.10
+CH3OCHOCHO<=>CH3+OCHOCHO                 5.005e+10    0.986  14949.09
+OCHOCHO<=>HOCHO+CO                       9.000e+13    0.000      0.00
+CH3OCHOCH2OOH<=>C3H6O3CY13+OH            4.605e+13   -0.340  15798.28
+CH2OCH2OCH2OOH<=>TRIOXAN+OH              2.510e+16   -1.450  15607.07
+CH3OCHOCH2OOH<=>CH3+HO2CH2OCHO           9.280e+27   -4.652  22993.79
+CH3OCHOCH2OOH<=>CH3OCHO+CH2O2H           3.814e+28   -4.795  23559.27
+CH2OCH2OCH2OOH<=>CH2O+CH2OCH2O2H         3.390e+16   -1.230  23374.76
+CH2OCH2OCH2OOH+O2<=>O2CH2OCH2OCH2OOH     4.870e+12   -0.320    428.06
+CH3OCHOCH2OOH+O2<=>CH3OCOOHOCH2OOH       1.629e+18   -1.730   2210.09
+O2CH2OCH2OCH2OOH<=>HO2CH2OCH2OCHO+OH     5.680e+11   -0.040  18379.54
+     DUPLICATE
+O2CH2OCH2OCH2OOH<=>HO2CH2OCH2OCHO+OH     1.550e+02    3.310  34177.82
+     DUPLICATE
+O2CH2OCH2OCH2OOH<=>HO2CH2OCHOCH2OOH      5.370e+08    0.765  14651.05
+HO2CH2OCHOCH2OOH=>HO2CH2OCHO+CH2O+OH     6.770e+11    0.320  13021.03
+HO2CH2OCHOCH2OOH<=>C3H6O3CY13_OOH+OH     4.605e+13   -0.340  15798.28
+CH3OCOOHOCH2OOH<=>CH3OCOOHHOCHO+OH       9.480e+07    1.090  18594.65
+CH3OCOOHOCH2OOH<=>CH3OCOOCH2OOH+OH       2.030e+09    1.220  37810.71
+CH3OCOOHOCH2OOH<=>CH3OCOOHHOCH2OO        5.780e+13   -0.899  16781.07
+CH3OCOOHOCH2OOH<=>CH2OCOOHHOCH2OOH       1.850e+06    1.535  17238.05
+CH2OCOOHHOCH2OOH=>HO2CH2OCHO+CH2O+OH     5.020e+10    0.732  18614.01
+CH2OCOOHHOCH2OOH=>TRIOXAN_OOH+OH         2.510e+16   -1.450  15607.07
+CH2OCOOHHOCH2OOH=>C3H6O3CY13_OOH+OH      1.180e+13   -0.280  19431.17
+TRIOXAN_OOH=>CH2O+OCH2OCHO+OH            2.000e+16    0.000  42000.00
+C3H6O3CY13_OOH=>CH2O+OCH2OCHO+OH         2.000e+16    0.000  42000.00
+CH3OCOOHHOCHO<=>CH3OCOHOCHO+OH           2.000e+16    0.000  42000.00
+HO2CH2OCH2OCHO<=>OCH2OCH2OCHO+OH         2.000e+16    0.000  42000.00
+OCH2OCH2OCHO<=>CH2O+OCH2OCHO             2.330e+13    0.159  23398.66
+CH3OCOHOCHO<=>CH3OCHO+OCHO               1.530e+11    0.321   7646.03
+CH3OCOHOCHO<=>CH3O+OCHOCHO               2.690e+08    1.609  10568.12
+C3H6O3CY13+OH=>CH3OCO+CH2O+H2O           3.390e+06    2.070   -521.03
+C3H6O3CY13+OH=>CH3OCHO+HCO+H2O           3.390e+06    2.070   -521.03
+C3H6O3CY13+HO2=>CH3OCO+CH2O+H2O2         1.330e+13    0.000  16500.00
+C3H6O3CY13+HO2=>CH3OCHO+HCO+H2O2         1.330e+13    0.000  16500.00
+TRIOXAN+OH=>CH2O+CH2OCHO+H2O             3.390e+06    2.070   -521.03
+TRIOXAN+HO2=>CH2O+CH2OCHO+H2O2           1.330e+13    0.000  16500.00
+CH3OCHOCH3<=>CH3OCHO+CH3                 3.469e+23   -3.371  17385.52
+CH3OCHOCH3<=>CH3OCH2+CH2O                3.120e-01    2.347  30854.45
+CH3OCHOCH3+O2<=>CH3OCOOHOCH3             1.629e+18   -1.730   2210.09
+CH3OCHOCH3+CH3OCOOHOCH3<=>2CH3OCOHOCH3   9.000e+12    0.000  -1000.00
+CH3OCHOCH3+CH3OCH2OCH2OO<=>CH3OCOHOCH3+CH3OCH2OCH2O 9.000e+12    0.000  -1000.00
+CH3OCHOCH3+HO2<=>CH3OCOHOCH3+OH          9.000e+12    0.000  -1000.00
+CH3OCHOCH3+CH3O2<=>CH3OCOHOCH3+CH3O      9.000e+12    0.000  -1000.00
+CH3OCHOCH3+CH3O<=>CH3OCH2OCH3+CH2O       2.410e+13    0.000      0.00
+CH3OCOOHOCH3<=>CH3OCOOHHOCH2             1.850e+06    1.535  17238.05
+2CH3OCOOHOCH3<=>2CH3OCOHOCH3+O2          1.547e+23   -4.500      0.00
+CH3OCOOHHOCH3+O2<=>CH3OCOOHOCH3+HO2      4.380e+13   -0.812  33640.06
+CH3OCOOHHOCH3+HO2<=>CH3OCOOHOCH3+H2O2    2.400e+12    0.000  10000.00
+CH3OCOOHOCH3+CH3O2=>CH3OCOHOCH3+CH3O+O2  1.400e+16   -1.610   1859.94
+CH3OCOOHOCH3+CH2O<=>CH3OCOOHHOCH3+HCO    1.000e+12    0.000  11659.89
+CH3OCOOHHOCH3<=>CH3OCOHOCH3+OH           2.000e+16    0.000  42000.00
+CH3OCHO+CH3O<=>CH3OCOHOCH3               1.000e+11    0.000   7960.09
+CH3OCOHOCH3+O2<=>CH3OCOOCH3+HO2          4.380e-19    9.500  -5500.96
+CH3OCOHOCH3<=>CH3OCOOCH3+H               3.300e+13    0.004  26136.23
+CH3OCOOHOCH3<=>CH3OCOOCH3+OH             1.670e+07    1.773  34416.83
+CH3OCOOHHOCH2<=>CH3OCOOCH3+OH            4.860e+04    2.360  31859.46
+CH3OCOOCH3<=>CH3OCH3+CO2                 5.000e+11    0.190  69799.95
+CH3OCOOCH3+O2<=>CH3OCOOCH2+HO2           4.200e+13    0.000  53500.00
+CH3OCOOCH2+H<=>CH3OCOOCH3                5.000e+13    0.000      0.00
+CH3OCO+CH3O<=>CH3OCOOCH3                 3.000e+13    0.000      0.00
+CH3OCOO+CH3<=>CH3OCOOCH3                 3.000e+13    0.000      0.00
+CH3OCOOCH3+OH<=>CH3OCOOCH2+H2O           7.020e+07    1.610    -34.89
+CH3OCOOCH3+H<=>CH3OCOOCH2+H2             9.750e+05    2.400   4471.08
+CH3OCOOCH3+CH3<=>CH3OCOOCH2+CH4          4.060e+04    2.260   7287.05
+CH3OCOOCH3+O<=>CH3OCOOCH2+OH             7.160e+04    2.710   2109.94
+CH3OCOOCH3+HO2<=>CH3OCOOCH2+H2O2         8.400e+12    0.000  17700.05
+CH3OCOOCH3+CH3O2<=>CH3OCOOCH2+CH3O2H     8.400e+12    0.000  17700.05
+CH3OCOOCH3+CH3O<=>CH3OCOOCH2+CH3OH       3.160e+11    0.000   7000.00
+CH3OCOOCH3+C2H3<=>CH3OCOOCH2+C2H4        1.000e+12    0.000  18000.00
+CH3OCOOCH3+C2H5<=>CH3OCOOCH2+C2H6        1.000e+11    0.000  13400.10
+CH3OCOOCH3+H=>CH3OCOOH+CH3               3.790e+16   -1.390   5402.01
+CH3OCOOH+OH<=>CH2OCOOH+H2O               5.250e+09    0.970   1590.11
+CH3OCOOH+H<=>CH2OCOOH+H2                 9.400e+04    2.750   6280.11
+CH3OCOOH+CH3<=>CH2OCOOH+CH4              4.520e-01    3.650   7153.92
+CH3OCOOH+O<=>CH2OCOOH+OH                 9.650e+04    2.680   3716.06
+CH2OCOOH=>CH2O+CO+OH                     6.100e+21   -2.400  32520.08
+CH3OCO+CH2O<=>CH3OCOOCH2                 1.060e+11    0.000   7349.90
+CH3OCOOHHOCH2<=>C3H6O3CY13+OH            1.180e+13   -0.280  19431.17
+CH3OCOOHHOCH2=>CH2O+CH3OCHO+OH           5.020e+10    0.730  18614.01
+CH3OCOOHHOCH2+O2<=>CH3OCOOHHOCH2OO       5.430e+17   -1.730   2210.09
+CH3OCOOHHOCH2OO<=>CH3OCOOCH2OOH+OH       2.640e+10    0.810  17136.71
+CH3OCOOHHOCH2OO<=>CH3OCOOHHOCHO+OH       1.340e+04    2.930  36281.07
+CH3OCOOHHOCH2OO<=>CH2OCOOHHOCH2OOH       6.700e+07    0.585  14115.92
+CH3OCOOCH2OOH<=>CH3OCOOCH2O+OH           2.000e+16    0.000  42000.00
+CH3OCOOCH2O<=>CH3OCOO+CH2O               4.190e+11    0.785  25884.32
+CH3OCOOCH2O<=>CH3OCOOH+HCO               5.120e+10    0.653  13479.92
+CH3OCOO<=>CH3O+CO2                       3.470e+12    0.303  14746.65
+CH3OCH3(+M)<=>CH3+CH3O(+M)               2.330e+19   -0.661  84139.10
+N2/1.50/ H2/3.00/ H2O/9.00/ CO/2.25/ CO2/3.00/ CH4/3.00/ C2H6/4.50/ CH3OCH3/5.00/ 
+     LOW  /  1.720e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+CH3OCH3+OH<=>CH3OCH2+H2O                 9.350e+05    2.290   -780.59
+CH3OCH3+H<=>CH3OCH2+H2                   7.721e+06    2.090   3384.08
+CH3OCH3+O<=>CH3OCH2+OH                   7.750e+08    1.360   2250.00
+CH3OCH3+HO2<=>CH3OCH2+H2O2               3.170e-03    4.640  10555.93
+CH3OCH3+CH3O2<=>CH3OCH2+CH3O2H           1.268e-03    4.640  10555.93
+CH3OCH3+CH3<=>CH3OCH2+CH4                7.020e+00    3.780   9687.14
+CH3OCH3+O2<=>CH3OCH2+HO2                 4.100e+13    0.000  44909.89
+CH3OCH3+CH3O<=>CH3OCH2+CH3OH             6.020e+11    0.000   4074.09
+CH3OCH3+CH3OCH2O2<=>CH3OCH2+CH3OCH2O2H   5.000e+12    0.000  17690.01
+CH3OCH3+O2CHO<=>CH3OCH2+HO2CHO           4.425e+04    2.600  13909.89
+CH3OCH3+OCHO<=>CH3OCH2+HOCHO             1.000e+13    0.000  17690.01
+CH3OCH2+CH3O<=>CH3OCH3+CH2O              2.410e+13    0.000      0.00
+CH3OCH2+CH2O<=>CH3OCH3+HCO               5.490e+03    2.800   5862.09
+CH3OCH2+CH3CHO<=>CH3OCH3+CH3CO           1.260e+12    0.000   8499.04
+CH3OCH2<=>CH3+CH2O                       2.659e+29   -4.936  31785.61
+CH3OCH2+O2<=>CH3OCH2O2                   5.430e+17   -1.730   2210.09
+CH3OCH2+O2<=>CH2OCH2O2H                  1.620e+20   -2.810   8619.02
+CH3OCH2+O2=>2CH2O+OH                     2.410e+27   -4.550  16107.07
+CH3OCH2O2<=>CH2OCH2O2H                   3.700e+14   -1.130  20033.94
+CH3OCH2O2=>2CH2O+OH                      1.220e+30   -5.200  39549.00
+CH2OCH2O2H=>2CH2O+OH                     1.400e+22   -2.720  24407.03
+CH2OCH2O2H+O2<=>O2CH2OCH2O2H             4.870e+12   -0.320    428.06
+CH2OCH2O2H+O2<=>HO2CH2OCHO+OH            3.960e+18   -2.310  10500.00
+O2CH2OCH2O2H<=>HO2CH2OCHO+OH             3.860e+07    0.980  17467.02
+2CH3OCH2O2=>O2+2CH3OCH2O                 1.547e+23   -4.500      0.00
+CH3OCH2O2+CH2O<=>CH3OCH2O2H+HCO          1.000e+12    0.000  11659.89
+CH3OCH2O2+CH3CHO<=>CH3OCH2O2H+CH3CO      2.800e+12    0.000  13599.90
+CH3OCH2O+OH<=>CH3OCH2O2H                 2.000e+13    0.000      0.00
+HO2CH2OCHO<=>OCH2OCHO+OH                 5.000e+16    0.000  43000.00
+CH3O+CH2O<=>CH3OCH2O                     1.000e+11    0.000   7960.09
+CH3OCH2O+O2<=>CH3OCHO+HO2                4.380e-19    9.500  -5500.96
+CH3OCH2O<=>CH3OCHO+H                     3.300e+13    0.004  26136.23
+CH2O+OCHO<=>OCH2OCHO                     1.250e+11    0.000  11900.10
+OCH2OCHO<=>HOCH2OCO                      1.000e+11    0.000  14000.00
+HOCH2OCO<=>CH2OH+CO2                     1.117e+17   -1.526  20771.99
+HOCH2OCO<=>HOCH2O+CO                     2.920e+18   -1.965  19619.02
+CH2O+OH<=>HOCH2O                         4.500e+15   -1.100      0.00
+HOCH2O<=>HOCHO+H                         1.000e+14    0.000  14900.10
+CH2OH+HO2<=>HOCH2O+OH                    1.000e+13    0.000      0.00
+CH3O+HCO<=>CH3OCHO                       3.000e+13    0.000      0.00
+CH3O+HCO<=>CH3OH+CO                      9.000e+13    0.000      0.00
+     DUPLICATE
+CH3+OCHO<=>CH3OCHO                       1.000e+13    0.000      0.00
+CH2OCHO+H<=>CH3OCHO                      1.000e+14    0.000      0.00
+CH3OCO+H<=>CH3OCHO                       1.000e+14    0.000      0.00
+CH3OCHO+O2<=>CH3OCO+HO2                  1.000e+13    0.000  49700.05
+CH3OCHO+O2<=>CH2OCHO+HO2                 2.050e+13    0.000  52000.00
+CH3OCHO+OH<=>CH3OCO+H2O                  1.580e+07    1.800    934.03
+CH3OCHO+OH<=>CH2OCHO+H2O                 5.270e+09    0.970   1586.04
+CH3OCHO+HO2<=>CH3OCO+H2O2                4.820e+03    2.600  13909.89
+CH3OCHO+HO2<=>CH2OCHO+H2O2               2.380e+04    2.550  16489.96
+CH3OCHO+O<=>CH3OCO+OH                    2.755e+05    2.450   2830.07
+CH3OCHO+O<=>CH2OCHO+OH                   9.800e+05    2.430   4750.00
+CH3OCHO+H<=>CH3OCO+H2                    6.500e+05    2.400   4471.08
+CH3OCHO+H<=>CH2OCHO+H2                   6.650e+05    2.540   6755.98
+CH3OCHO+CH3<=>CH3OCO+CH4                 7.550e-01    3.460   5481.12
+CH3OCHO+CH3<=>CH2OCHO+CH4                4.520e-01    3.650   7153.92
+CH3OCHO+CH3O<=>CH3OCO+CH3OH              5.480e+11    0.000   5000.00
+CH3OCHO+CH3O<=>CH2OCHO+CH3OH             2.170e+11    0.000   6457.93
+CH3OCHO+CH3O2<=>CH3OCO+CH3O2H            4.820e+03    2.600  13909.89
+CH3OCHO+CH3O2<=>CH2OCHO+CH3O2H           2.380e+04    2.550  16489.96
+CH3OCHO+HCO<=>CH3OCO+CH2O                5.400e+06    1.900  17010.04
+CH3OCHO+HCO<=>CH2OCHO+CH2O               1.025e+05    2.500  18429.97
+CH3OCO<=>CH2OCHO                         1.629e+12   -0.180  40669.93
+CH3OCO<=>CH3+CO2                         8.690e+17   -1.810  13656.79
+CH3OCO<=>CH3O+CO                         2.825e+22   -3.440  23592.50
+CH2O+HCO<=>CH2OCHO                       1.500e+11    0.000  11900.10
+CH2O2H<=>CH2O+OH                         9.000e+14    0.000   1500.00
+H+CO2<=>OCHO                             7.500e+13    0.000  29000.00
+HOCHO<=>CO+H2O                           2.450e+12    0.000  60469.89
+HOCHO<=>CO2+H2                           2.950e+09    0.000  48520.08
+OCHO+HO2<=>HOCHO+O2                      3.500e+10    0.000  -3275.10
+OCHO+H2O2<=>HOCHO+HO2                    2.400e+12    0.000  10000.00
+HOCHO+H=>H2+CO2+H                        4.240e+06    2.100   4868.07
+HOCHO+H=>H2+CO+OH                        6.030e+13   -0.350   2988.05
+HOCHO+O=>CO+2OH                          1.770e+18   -1.900   2974.90
+HOCHO+OH=>H2O+CO2+H                      2.620e+06    2.060    916.11
+HOCHO+OH=>H2O+CO+OH                      1.850e+07    1.510   -962.00
+HOCHO+CH3=>CH4+CO+OH                     3.900e-07    5.800   2200.05
+HOCHO+HO2=>H2O2+CO+OH                    1.000e+12    0.000  11919.93
+OME2(+M)<=>CH3OCH2OCH2+CH3O(+M)          2.600e+23   -1.960  88385.99
+
+     LOW  /  1.074e+76  -16.420  98830.07 /
+!     FCCHECK/  0.9999     589.9 8.762e-05      6892      1      1968
+OME2(+M)<=>CH3OCH2O+CH3OCH2(+M)          9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME2(+M)<=>CH3+CH3OCH2OCH2O(+M)          9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME2<=>OME2RX1+H                         1.860e+17    0.000  98119.98
+OME2<=>OME2RX3+H                         1.860e+17    0.000  98119.98
+OME2+H<=>OME2RX1+H2                      7.268e+03    2.898   5203.39
+OME2+OH<=>OME2RX1+H2O                    6.424e+01    3.498  -2206.50
+OME2+O<=>OME2RX1+OH                      5.430e+06    2.148   3080.78
+OME2+CH3<=>OME2RX1+CH4                   5.832e-02    4.246   7543.74
+OME2+HO2<=>OME2RX1+H2O2                  5.280e+01    3.560  12691.20
+OME2+CH3O<=>OME2RX1+CH3OH                6.565e+02    2.930   3441.68
+OME2+O2<=>OME2RX1+HO2                    1.880e+04    2.822  42590.82
+OME2+C2H5<=>OME2RX1+C2H6                 1.000e+11    0.000  13400.10
+OME2+C2H3<=>OME2RX1+C2H4                 1.000e+12    0.000  18000.00
+OME2+CH3O2<=>OME2RX1+CH3O2H              2.343e+01    3.560  12691.20
+OME2+H<=>OME2RX3+H2                      2.604e+07    1.886   5256.69
+OME2+OH<=>OME2RX3+H2O                    7.095e+03    2.722  -1243.79
+OME2+O<=>OME2RX3+OH                      2.200e+06    2.450   2820.27
+OME2+CH3<=>OME2RX3+CH4                   1.041e+03    3.123   7985.66
+OME2+HO2<=>OME2RX3+H2O2                  1.808e+03    3.160  11759.08
+OME2+CH3O<=>OME2RX3+CH3OH                1.523e+06    2.130   4493.31
+OME2+O2<=>OME2RX3+HO2                    1.008e+08    2.000  40344.17
+OME2+C2H5<=>OME2RX3+C2H6                 2.000e+11    0.000  10400.10
+OME2+C2H3<=>OME2RX3+C2H4                 1.600e+12    0.000  16799.95
+OME2+CH3O2<=>OME2RX3+CH3O2H              9.050e+01    3.160  11759.08
+OME2RX1<=>CH3OCH2OCH2+CH2O               2.597e+35   -6.823  33753.11
+OME2RX3<=>CH3OCH2+CH3OCHO                2.597e+35   -6.823  33753.11
+OME2RX3<=>CH3+CH3OCH2OCHO                7.816e+21   -2.932  15091.30
+OME2RX1<=>OME2RX3                        7.867e-32   11.753  11934.99
+OME2RX1+O2<=>OME2ROOX1                   2.970e+22   -3.230   3781.07
+OME2RX3+O2<=>OME2ROOX3                   8.910e+22   -3.230   3781.07
+OME2RX1+HO2=>OME2ROX1+OH                 9.000e+12    0.000  -1000.00
+OME2RX3+HO2=>OME2ROX3+OH                 9.000e+12    0.000  -1000.00
+OME2RX1+CH3O2=>OME2ROX1+CH3O             1.045e+13    0.000  -1000.00
+OME2RX3+CH3O2=>OME2ROX3+CH3O             1.045e+13    0.000  -1000.00
+OME2ROOX1<=>OME2QOOHX5X1                 6.700e+07    0.585  11125.24
+OME2ROOX1<=>OME2QOOHX3X1                 5.370e+08    0.765  14651.05
+OME2ROOX3<=>OME2QOOHX1X3                 9.250e+05    1.535  17238.05
+OME2ROOX3<=>OME2QOOHX5X3                 5.370e+08    0.765  14651.05
+OME2ROOX3<=>OME2QOOHX7X3                 3.867e+07    0.585  14125.24
+OME2ROOHX1+O2<=>OME2ROOX1+HO2            3.076e+13   -0.791  33619.98
+OME2ROOHX3+O2<=>OME2ROOX3+HO2            4.380e+13   -0.812  33640.06
+OME2ROOHX1+HO2<=>OME2ROOX1+H2O2          2.400e+12    0.000  10000.00
+OME2ROOHX3+HO2<=>OME2ROOX3+H2O2          2.400e+12    0.000  10000.00
+OME2ROOX1+CH3O2<=>OME2ROX1+CH3O+O2       1.400e+16   -1.610   1859.94
+OME2ROOX3+CH3O2<=>OME2ROX3+CH3O+O2       1.400e+16   -1.610   1859.94
+OME2ROOHX1<=>OME2ROX1+OH                 2.000e+16    0.000  42000.00
+OME2ROOHX3<=>OME2ROX3+OH                 2.000e+16    0.000  42000.00
+CH3OCH2OCH2O+CH2O<=>OME2ROX1             1.000e+11    0.000   7960.09
+CH3OCH2O+CH3OCHO<=>OME2ROX3              1.000e+11    0.000   7960.09
+CH3O+CH3OCH2OCHO<=>OME2ROX3              1.000e+11    0.000   7960.09
+OME2QOOHX5X1<=>OME2CYC6+OH               6.275e+15   -1.450  15607.07
+OME2QOOHX3X1<=>OME2CYC4A+OH              3.654e+13   -0.280  19431.17
+OME2QOOHX1X3<=>OME2CYC4A+OH              3.654e+13   -0.280  19431.17
+OME2QOOHX5X3<=>OME2CYC4B+OH              3.654e+13   -0.280  19431.17
+OME2QOOHX7X3<=>OME2CYC6+OH               6.275e+15   -1.450  15607.07
+OME2CYC6+OH<=>CH2OCHO+CH3OCHO+H2O        3.390e+06    2.070   -521.03
+OME2CYC6+HO2<=>CH2OCHO+CH3OCHO+H2O2      1.330e+13    0.000  16500.00
+OME2CYC4A+OH<=>CH3OCH2OCO+CH2O+H2O       3.390e+06    2.070   -521.03
+OME2CYC4A+HO2<=>CH3OCH2OCO+CH2O+H2O2     1.330e+13    0.000  16500.00
+OME2CYC4B+OH<=>CH3OCO+CH3OCHO+H2O        3.390e+06    2.070   -521.03
+OME2CYC4B+HO2<=>CH3OCO+CH3OCHO+H2O2      1.330e+13    0.000  16500.00
+OME2QOOHX3X1=>CH3OCH2OCHO+CH2O+OH        5.984e+10    0.730  18614.01
+OME2QOOHX1X3=>CH2O+CH3OCH2OCHO+OH        5.984e+10    0.730  18614.01
+OME2QOOHX5X3=>2CH3OCHO+OH                5.984e+10    0.730  18614.01
+OME2QOOHX5X1+O2<=>OME2X1OOHX5OO          4.072e+17   -1.730   2210.09
+OME2QOOHX3X1+O2<=>OME2X1OOHX3OO          4.072e+17   -1.730   2210.09
+OME2QOOHX1X3+O2<=>OME2X3OOHX1OO          2.172e+18   -1.730   2210.09
+OME2QOOHX5X3+O2<=>OME2X3OOHX5OO          4.072e+17   -1.730   2210.09
+OME2QOOHX7X3+O2<=>OME2X3OOHX7OO          2.172e+18   -1.730   2210.09
+OME2X1OOHX5OO<=>OME2XKET1X5+OH           5.680e+11   -0.040  18379.54
+     DUPLICATE
+OME2X1OOHX5OO<=>OME2XKET1X5+OH           1.550e+02    3.310  34177.82
+     DUPLICATE
+OME2X1OOHX3OO<=>OME2XKET1X3+OH           3.680e+08    1.090  18594.65
+OME2X3OOHX1OO<=>OME2XKET3X1+OH           1.025e+11    0.810  17136.71
+OME2X3OOHX5OO<=>OME2XKET3X5+OH           1.025e+11    0.810  17136.71
+OME2X3OOHX7OO<=>OME2XKET3X7+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME2X3OOHX7OO<=>OME2XKET3X7+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME2XKET1X5=>CH3OCHO+OCH2OCHO+OH         6.000e+16    0.000  42000.00
+OME2XKET1X3=>CH3OCH2OCHO+OCHO+OH         6.000e+16    0.000  42000.00
+OME2XKET3X1=>CH2O+CH3OCH2OCOO+OH         6.000e+16    0.000  42000.00
+OME2XKET3X5=>CH3OCHO+CH3OCOO+OH          6.000e+16    0.000  42000.00
+OME2XKET3X7=>CH2O+CH3OCOOCH2O+OH         6.000e+16    0.000  42000.00
+CH3OCH2OCOO=>CO2+CH3OCH2O                2.000e+13    0.000  30999.04
+OME3(+M)<=>OME2RX1+CH3O(+M)              2.600e+23   -1.960  88385.99
+
+     LOW  /  1.074e+76  -16.420  98830.07 /
+!     FCCHECK/  0.9999     589.9 8.762e-05      6892      1      1968
+OME3(+M)<=>CH3OCH2OCH2+CH3OCH2O(+M)      9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME3(+M)<=>CH3+OME2ROX1(+M)              9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME3(+M)<=>CH3OCH2+CH3OCH2OCH2O(+M)      9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME3<=>OME3RX3+H                         1.860e+17    0.000  98119.98
+OME3<=>OME3RX1+H                         1.860e+17    0.000  98119.98
+OME3<=>OME3RX5+H                         1.860e+17    0.000  98119.98
+OME3+H<=>OME3RX3+H2                      2.604e+07    1.886   5256.69
+OME3+OH<=>OME3RX3+H2O                    7.095e+03    2.722  -1243.79
+OME3+O<=>OME3RX3+OH                      2.200e+06    2.450   2820.27
+OME3+CH3<=>OME3RX3+CH4                   1.041e+03    3.123   7985.66
+OME3+HO2<=>OME3RX3+H2O2                  1.808e+03    3.160  11759.08
+OME3+CH3O<=>OME3RX3+CH3OH                1.523e+06    2.130   4493.31
+OME3+O2<=>OME3RX3+HO2                    1.008e+08    2.000  40344.17
+OME3+C2H5<=>OME3RX3+C2H6                 1.000e+11    0.000  10400.10
+OME3+C2H3<=>OME3RX3+C2H4                 8.000e+11    0.000  16799.95
+OME3+CH3O2<=>OME3RX3+CH3O2H              9.050e+01    3.160  11759.08
+OME3+H<=>OME3RX1+H2                      7.268e+03    2.898   5203.39
+OME3+OH<=>OME3RX1+H2O                    6.424e+01    3.498  -2206.50
+OME3+O<=>OME3RX1+OH                      5.430e+06    2.148   3080.78
+OME3+CH3<=>OME3RX1+CH4                   5.832e-02    4.246   7543.74
+OME3+HO2<=>OME3RX1+H2O2                  5.280e+01    3.560  12691.20
+OME3+CH3O<=>OME3RX1+CH3OH                6.565e+02    2.930   3441.68
+OME3+O2<=>OME3RX1+HO2                    1.880e+04    2.822  42590.82
+OME3+C2H5<=>OME3RX1+C2H6                 1.000e+11    0.000  13400.10
+OME3+C2H3<=>OME3RX1+C2H4                 1.000e+12    0.000  18000.00
+OME3+CH3O2<=>OME3RX1+CH3O2H              2.343e+01    3.560  12691.20
+OME3+H<=>OME3RX5+H2                      1.302e+07    1.886   5256.69
+OME3+OH<=>OME3RX5+H2O                    3.548e+03    2.722  -1243.79
+OME3+O<=>OME3RX5+OH                      1.100e+06    2.450   2820.27
+OME3+CH3<=>OME3RX5+CH4                   5.204e+02    3.123   7985.66
+OME3+HO2<=>OME3RX5+H2O2                  9.040e+02    3.160  11759.08
+OME3+CH3O<=>OME3RX5+CH3OH                7.616e+05    2.130   4493.31
+OME3+O2<=>OME3RX5+HO2                    5.040e+07    2.000  40344.17
+OME3+C2H5<=>OME3RX5+C2H6                 5.000e+10    0.000  10400.10
+OME3+C2H3<=>OME3RX5+C2H4                 4.000e+11    0.000  16799.95
+OME3+CH3O2<=>OME3RX5+CH3O2H              4.525e+01    3.160  11759.08
+OME3RX3<=>CH3+CH3OCH2OCH2OCHO            7.816e+21   -2.932  15091.30
+OME3RX3<=>CH3OCH2OCH2+CH3OCHO            2.597e+35   -6.823  33753.11
+OME3RX1<=>OME2RX1+CH2O                   2.597e+35   -6.823  33753.11
+OME3RX5<=>CH3OCH2+CH3OCH2OCHO            2.597e+35   -6.823  33753.11
+OME3RX1<=>OME3RX5                        7.867e-32   11.753  11934.99
+OME3RX1<=>OME3RX3                        7.867e-32   11.753  11934.99
+OME3RX3<=>OME3RX5                        7.867e-32   11.753  11934.99
+OME3RX3+O2<=>OME3ROOX3                   8.910e+22   -3.230   3781.07
+OME3RX1+O2<=>OME3ROOX1                   2.970e+22   -3.230   3781.07
+OME3RX5+O2<=>OME3ROOX5                   8.910e+22   -3.230   3781.07
+OME3RX3+HO2=>OME3ROX3+OH                 9.000e+12    0.000  -1000.00
+OME3RX1+HO2=>OME3ROX1+OH                 9.000e+12    0.000  -1000.00
+OME3RX5+HO2=>OME3ROX5+OH                 9.000e+12    0.000  -1000.00
+OME3RX3+CH3O2=>OME3ROX3+CH3O             1.045e+13    0.000  -1000.00
+OME3RX1+CH3O2=>OME3ROX1+CH3O             1.045e+13    0.000  -1000.00
+OME3RX5+CH3O2=>OME3ROX5+CH3O             1.045e+13    0.000  -1000.00
+OME3ROOX3<=>OME3QOOHX7X3                 6.700e+07    0.585  11125.24
+OME3ROOX3<=>OME3QOOHX1X3                 9.250e+05    1.535  17238.05
+OME3ROOX3<=>OME3QOOHX5X3                 5.370e+08    0.765  14651.05
+OME3ROOX1<=>OME3QOOHX3X1                 5.370e+08    0.765  14651.05
+OME3ROOX1<=>OME3QOOHX5X1                 6.700e+07    0.585  11125.24
+OME3ROOX5<=>OME3QOOHX3X5                 1.074e+09    0.765  14651.05
+OME3ROOX5<=>OME3QOOHX1X5                 7.735e+07    0.585  14125.24
+OME3ROOX3+HO2<=>OME3ROOHX3+O2            4.380e+13   -0.812  33640.06
+OME3ROOX1+HO2<=>OME3ROOHX1+O2            3.076e+13   -0.791  33619.98
+OME3ROOX5+HO2<=>OME3ROOHX5+O2            4.380e+13   -0.812  33640.06
+OME3ROOX3+H2O2<=>OME3ROOHX3+HO2          2.400e+12    0.000  10000.00
+OME3ROOX1+H2O2<=>OME3ROOHX1+HO2          2.400e+12    0.000  10000.00
+OME3ROOX5+H2O2<=>OME3ROOHX5+HO2          2.400e+12    0.000  10000.00
+OME3ROOX3+CH3O2<=>OME3ROX3+CH3O+O2       1.400e+16   -1.610   1859.99
+OME3ROOX1+CH3O2<=>OME3ROX1+CH3O+O2       1.400e+16   -1.610   1859.99
+OME3ROOX5+CH3O2<=>OME3ROX5+CH3O+O2       1.400e+16   -1.610   1859.99
+OME3ROOHX3<=>OME3ROX3+OH                 2.000e+16    0.000  42000.00
+OME3ROOHX1<=>OME3ROX1+OH                 2.000e+16    0.000  42000.00
+OME3ROOHX5<=>OME3ROX5+OH                 2.000e+16    0.000  42000.00
+CH3O+CH3OCH2OCH2OCHO<=>OME3ROX3          1.000e+11    0.000   7960.09
+CH3OCH2OCH2O+CH3OCHO<=>OME3ROX3          1.000e+11    0.000   7960.09
+OME2ROX1+CH2O<=>OME3ROX1                 1.000e+11    0.000   7960.09
+CH3OCH2O+CH3OCH2OCHO<=>OME3ROX5          1.000e+11    0.000   7960.09
+OME3QOOHX7X3<=>OME3CYC6A+OH              6.275e+15   -1.450  15607.07
+OME3QOOHX1X3<=>OME3CYC4A+OH              3.654e+13   -0.280  19431.17
+OME3QOOHX5X3<=>OME3CYC4B+OH              3.654e+13   -0.280  19431.17
+OME3QOOHX3X1<=>OME3CYC4A+OH              3.654e+13   -0.280  19431.17
+OME3QOOHX5X1<=>OME3CYC6B+OH              6.275e+15   -1.450  15607.07
+OME3QOOHX3X5<=>OME3CYC4B+OH              3.654e+13   -0.280  19431.17
+OME3QOOHX1X5<=>OME3CYC6B+OH              6.275e+15   -1.450  15607.07
+OME3CYC6A+OH<=>CH3OCHOCHO+CH3OCHO+H2O    3.390e+06    2.070   -521.03
+OME3CYC6A+HO2<=>CH3OCHOCHO+CH3OCHO+H2O2  1.330e+13    0.000  16500.00
+OME3CYC6B+OH<=>CH3OCH2OCHOCHO+CH2O+H2O   3.390e+06    2.070   -521.03
+OME3CYC6B+HO2<=>CH3OCH2OCHOCHO+CH2O+H2O2 1.330e+13    0.000  16500.00
+OME3CYC4A+OH<=>CH3OCH2OCH2OCO+CH2O+H2O   3.390e+06    2.070   -521.03
+OME3CYC4A+HO2<=>CH3OCH2OCH2OCO+CH2O+H2O2 1.330e+13    0.000  16500.00
+OME3CYC4B+OH<=>CH3OCH2OCO+CH3OCHO+H2O    3.390e+06    2.070   -521.03
+OME3CYC4B+HO2<=>CH3OCH2OCO+CH3OCHO+H2O2  1.330e+13    0.000  16500.00
+OME3QOOHX1X3=>CH2O+CH3OCH2OCH2OCHO+OH    5.984e+10    0.730  18614.01
+OME3QOOHX5X3=>CH3OCH2OCHO+CH3OCHO+OH     5.984e+10    0.730  18614.01
+OME3QOOHX3X1=>CH3OCH2OCH2OCHO+CH2O+OH    5.984e+10    0.730  18614.01
+OME3QOOHX3X5=>CH3OCHO+CH3OCH2OCHO+OH     5.984e+10    0.730  18614.01
+OME3QOOHX7X3+O2<=>OME3X3OOHX7OO          4.072e+17   -1.730   2210.09
+OME3QOOHX1X3+O2<=>OME3X3OOHX1OO          2.172e+18   -1.730   2210.09
+OME3QOOHX5X3+O2<=>OME3X3OOHX5OO          4.072e+17   -1.730   2210.09
+OME3QOOHX3X1+O2<=>OME3X1OOHX3OO          4.072e+17   -1.730   2210.09
+OME3QOOHX5X1+O2<=>OME3X1OOHX5OO          4.072e+17   -1.730   2210.09
+OME3QOOHX3X5+O2<=>OME3X5OOHX3OO          4.072e+17   -1.730   2210.09
+OME3QOOHX1X5+O2<=>OME3X5OOHX1OO          2.172e+18   -1.730   2210.09
+OME3X1OOHX5OO<=>OME3XKET1X5+OH           5.680e+11   -0.040  18379.54
+     DUPLICATE
+OME3X1OOHX5OO<=>OME3XKET1X5+OH           1.550e+02    3.310  34177.82
+     DUPLICATE
+OME3X3OOHX7OO<=>OME3XKET3X7+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME3X3OOHX7OO<=>OME3XKET3X7+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME3X5OOHX1OO<=>OME3XKET5X1+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME3X5OOHX1OO<=>OME3XKET5X1+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME3X1OOHX3OO<=>OME3XKET1X3+OH           3.680e+08    1.090  18594.65
+OME3X3OOHX1OO<=>OME3XKET3X1+OH           1.025e+11    0.810  17136.71
+OME3X3OOHX5OO<=>OME3XKET3X5+OH           1.025e+11    0.810  17136.71
+OME3X5OOHX3OO<=>OME3XKET5X3+OH           1.025e+11    0.810  17136.71
+OME3XKET3X7=>CH3OCHO+CH3OCOOCH2O+OH      6.000e+16    0.000  42000.00
+OME3XKET3X1=>CH2O+CH3OCH2OCH2OCOO+OH     6.000e+16    0.000  42000.00
+OME3XKET3X5=>CH3OCH2OCHO+CH3OCOO+OH      6.000e+16    0.000  42000.00
+OME3XKET1X3=>CH3OCH2OCH2OCHO+OCHO+OH     6.000e+16    0.000  42000.00
+OME3XKET1X5=>CH3OCH2OCHO+OCH2OCHO+OH     6.000e+16    0.000  42000.00
+OME3XKET5X3=>CH3OCHO+CH3OCH2OCOO+OH      6.000e+16    0.000  42000.00
+OME3XKET5X1=>CH2O+CH3OCH2OCOOCH2O+OH     6.000e+16    0.000  42000.00
+CH3OCH2OCH2OCOO=>CO2+CH3OCH2OCH2O        2.000e+13    0.000  30999.04
+CH3OCH2OCOOCH2O=>CH2O+CH3OCH2OCOO        2.000e+13    0.000  30999.04
+OME4(+M)<=>OME2RX1+CH3OCH2O(+M)          9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME4(+M)<=>OME2ROX1+CH3OCH2(+M)          9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME4(+M)<=>CH3+OME3ROX1(+M)              9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME4(+M)<=>OME3RX1+CH3O(+M)              2.600e+23   -1.960  88385.99
+
+     LOW  /  1.074e+76  -16.420  98830.07 /
+!     FCCHECK/  0.9999     589.9 8.762e-05      6892      1      1968
+OME4(+M)<=>CH3OCH2OCH2+CH3OCH2OCH2O(+M)  9.324e+19   -0.661  84139.10
+
+     LOW  /  6.880e+59  -11.400  93299.95 /
+!     FCCHECK/       0     1e-30      1       880      0         0
+     TROE/       1    1e-30       880        /
+OME4<=>OME4RX5+H                         1.860e+17    0.000  98119.98
+OME4<=>OME4RX3+H                         1.860e+17    0.000  98119.98
+OME4<=>OME4RX1+H                         1.860e+17    0.000  98119.98
+OME4+H<=>OME4RX5+H2                      2.604e+07    1.886   5256.69
+OME4+OH<=>OME4RX5+H2O                    7.095e+03    2.722  -1243.79
+OME4+O<=>OME4RX5+OH                      2.200e+06    2.450   2820.27
+OME4+CH3<=>OME4RX5+CH4                   1.041e+03    3.123   7985.66
+OME4+HO2<=>OME4RX5+H2O2                  1.808e+03    3.160  11759.08
+OME4+CH3O<=>OME4RX5+CH3OH                1.523e+06    2.130   4493.31
+OME4+O2<=>OME4RX5+HO2                    1.008e+08    2.000  40344.17
+OME4+C2H5<=>OME4RX5+C2H6                 1.000e+11    0.000  10400.10
+OME4+C2H3<=>OME4RX5+C2H4                 8.000e+11    0.000  16799.95
+OME4+CH3O2<=>OME4RX5+CH3O2H              9.050e+01    3.160  11759.08
+OME4+H<=>OME4RX3+H2                      2.604e+07    1.886   5256.69
+OME4+OH<=>OME4RX3+H2O                    7.095e+03    2.722  -1243.79
+OME4+O<=>OME4RX3+OH                      2.200e+06    2.450   2820.27
+OME4+CH3<=>OME4RX3+CH4                   1.041e+03    3.123   7985.66
+OME4+HO2<=>OME4RX3+H2O2                  1.808e+03    3.160  11759.08
+OME4+CH3O<=>OME4RX3+CH3OH                1.523e+06    2.130   4493.31
+OME4+O2<=>OME4RX3+HO2                    1.008e+08    2.000  40344.17
+OME4+C2H5<=>OME4RX3+C2H6                 1.000e+11    0.000  10400.10
+OME4+C2H3<=>OME4RX3+C2H4                 8.000e+11    0.000  16799.95
+OME4+CH3O2<=>OME4RX3+CH3O2H              9.050e+01    3.160  11759.08
+OME4+H<=>OME4RX1+H2                      7.268e+03    2.898   5203.39
+OME4+OH<=>OME4RX1+H2O                    6.424e+01    3.498  -2206.50
+OME4+O<=>OME4RX1+OH                      5.430e+06    2.148   3080.78
+OME4+CH3<=>OME4RX1+CH4                   5.832e-02    4.246   7543.74
+OME4+HO2<=>OME4RX1+H2O2                  5.280e+01    3.560  12691.20
+OME4+CH3O<=>OME4RX1+CH3OH                6.565e+02    2.930   3441.68
+OME4+O2<=>OME4RX1+HO2                    1.880e+04    2.822  42590.82
+OME4+C2H5<=>OME4RX1+C2H6                 1.000e+11    0.000  13400.10
+OME4+C2H3<=>OME4RX1+C2H4                 1.000e+12    0.000  18000.00
+OME4+CH3O2<=>OME4RX1+CH3O2H              2.343e+01    3.560  12691.20
+OME4RX5<=>CH3OCH2+CH3OCH2OCH2OCHO        2.597e+35   -6.823  33753.11
+OME4RX5<=>CH3OCH2OCH2+CH3OCH2OCHO        2.597e+35   -6.823  33753.11
+OME4RX3<=>CH3+C4H9O4CHO                  7.816e+21   -2.932  15091.30
+OME4RX3<=>OME2RX1+CH3OCHO                2.597e+35   -6.823  33753.11
+OME4RX1<=>OME3RX1+CH2O                   2.597e+35   -6.823  33753.11
+OME4RX5<=>OME4RX3                        7.867e-32   11.753  11934.99
+OME4RX1<=>OME4RX5                        7.867e-32   11.753  11934.99
+OME4RX5+O2<=>OME4ROOX5                   8.910e+22   -3.230   3781.07
+OME4RX3+O2<=>OME4ROOX3                   8.910e+22   -3.230   3781.07
+OME4RX1+O2<=>OME4ROOX1                   2.970e+22   -3.230   3781.07
+OME4RX5+HO2=>OME4ROX5+OH                 9.000e+12    0.000  -1000.00
+OME4RX3+HO2=>OME4ROX3+OH                 9.000e+12    0.000  -1000.00
+OME4RX1+HO2=>OME4ROX1+OH                 9.000e+12    0.000  -1000.00
+OME4RX5+CH3O2=>OME4ROX5+CH3O             1.045e+13    0.000  -1000.00
+OME4RX3+CH3O2=>OME4ROX3+CH3O             1.045e+13    0.000  -1000.00
+OME4RX1+CH3O2=>OME4ROX1+CH3O             1.045e+13    0.000  -1000.00
+OME4ROOX5<=>OME4QOOHX1X5                 3.867e+07    0.585  14125.24
+OME4ROOX3<=>OME4QOOHX7X3                 6.700e+07    0.585  11125.24
+OME4ROOX1<=>OME4QOOHX5X1                 6.700e+07    0.585  11125.24
+OME4ROOX5<=>OME4QOOHX9X5                 6.700e+07    0.585  11125.24
+OME4ROOX3<=>OME4QOOHX1X3                 9.250e+05    1.535  17238.05
+OME4ROOX5<=>OME4QOOHX3X5                 5.370e+08    0.765  14651.05
+OME4ROOX5<=>OME4QOOHX5X5                 5.370e+08    0.765  14651.05
+OME4ROOX3<=>OME4QOOHX5X3                 5.370e+08    0.765  14651.05
+OME4ROOX1<=>OME4QOOHX3X1                 5.370e+08    0.765  14651.05
+OME4ROOX5+HO2<=>OME4ROOHX5+O2            4.380e+13   -0.812  33640.06
+OME4ROOX3+HO2<=>OME4ROOHX3+O2            4.380e+13   -0.812  33640.06
+OME4ROOX1+HO2<=>OME4ROOHX1+O2            3.076e+13   -0.791  33619.98
+OME4ROOX5+H2O2<=>OME4ROOHX5+HO2          2.400e+12    0.000  10000.00
+OME4ROOX3+H2O2<=>OME4ROOHX3+HO2          2.400e+12    0.000  10000.00
+OME4ROOX1+H2O2<=>OME4ROOHX1+HO2          2.400e+12    0.000  10000.00
+OME4ROOX5+CH3O2<=>OME4ROX5+CH3O+O2       1.400e+16   -1.610   1859.99
+OME4ROOX3+CH3O2<=>OME4ROX3+CH3O+O2       1.400e+16   -1.610   1859.99
+OME4ROOX1+CH3O2<=>OME4ROX1+CH3O+O2       1.400e+16   -1.610   1859.99
+OME4ROOHX5<=>OME4ROX5+OH                 2.000e+16    0.000  42000.00
+OME4ROOHX3<=>OME4ROX3+OH                 2.000e+16    0.000  42000.00
+OME4ROOHX1<=>OME4ROX1+OH                 2.000e+16    0.000  42000.00
+CH3OCH2O+CH3OCH2OCH2OCHO<=>OME4ROX5      1.000e+11    0.000   7960.09
+CH3OCH2OCH2O+CH3OCH2OCHO<=>OME4ROX5      1.000e+11    0.000   7960.09
+CH3O+C4H9O4CHO<=>OME4ROX3                1.000e+11    0.000   7960.09
+OME2ROX1+CH3OCHO<=>OME4ROX3              1.000e+11    0.000   7960.09
+OME3ROX1+CH2O<=>OME4ROX1                 1.000e+11    0.000   7960.09
+OME4QOOHX9X5<=>OME4CYC6A+OH              6.275e+15   -1.450  15607.07
+OME4QOOHX3X5<=>OME4CYC4A+OH              3.654e+13   -0.280  19431.17
+OME4QOOHX5X5<=>OME4CYC4B+OH              3.654e+13   -0.280  19431.17
+OME4QOOHX1X5<=>OME4CYC6B+OH              6.275e+15   -1.450  15607.07
+OME4QOOHX7X3<=>OME4CYC6A+OH              6.275e+15   -1.450  15607.07
+OME4QOOHX5X3<=>OME4CYC4A+OH              3.654e+13   -0.280  19431.17
+OME4QOOHX1X3<=>OME4CYC4C+OH              3.654e+13   -0.280  19431.17
+OME4QOOHX3X1<=>OME4CYC4C+OH              3.654e+13   -0.280  19431.17
+OME4QOOHX5X1<=>OME4CYC6B+OH              6.275e+15   -1.450  15607.07
+OME4CYC6A+OH<=>CH3OCH2OCHOCHO+CH3OCHO+H2O 3.390e+06    2.070   -521.03
+OME4CYC6A+HO2<=>CH3OCH2OCHOCHO+CH3OCHO+H2O2 1.330e+13    0.000  16500.00
+OME4CYC6A+OH<=>CH3OCHOCHO+CH3OCH2OCHO+H2O 3.390e+06    2.070   -521.03
+OME4CYC6A+HO2<=>CH3OCHOCHO+CH3OCH2OCHO+H2O2 1.330e+13    0.000  16500.00
+OME4CYC4A+OH<=>CH3OCH2OCH2OCO+CH3OCHO+H2O 3.390e+06    2.070   -521.03
+OME4CYC4A+HO2<=>CH3OCH2OCH2OCO+CH3OCHO+H2O2 1.330e+13    0.000  16500.00
+OME4CYC4B+OH<=>CH3OCH2OCO+CH3OCH2OCHO+H2O 3.390e+06    2.070   -521.03
+OME4CYC4B+HO2<=>CH3OCH2OCO+CH3OCH2OCHO+H2O2 1.330e+13    0.000  16500.00
+OME4CYC6B+OH<=>C4H8O4CHO+CH2O+H2O        3.390e+06    2.070   -521.03
+OME4CYC6B+HO2<=>C4H8O4CHO+CH2O+H2O2      1.330e+13    0.000  16500.00
+OME4CYC4C+OH<=>C4H9O4CO+CH2O+H2O         3.390e+06    2.070   -521.03
+OME4CYC4C+HO2<=>C4H9O4CO+CH2O+H2O2       1.330e+13    0.000  16500.00
+OME4QOOHX3X5=>CH3OCHO+CH3OCH2OCH2OCHO+OH 5.984e+10    0.730  18614.01
+OME4QOOHX5X5=>2CH3OCH2OCHO+OH            5.984e+10    0.730  18614.01
+OME4QOOHX5X3=>CH3OCH2OCH2OCHO+CH3OCHO+OH 5.984e+10    0.730  18614.01
+OME4QOOHX1X3=>CH2O+C4H9O4CHO+OH          5.984e+10    0.730  18614.01
+OME4QOOHX3X1=>C4H9O4CHO+CH2O+OH          5.984e+10    0.730  18614.01
+OME4QOOHX9X5+O2<=>OME4X7OOHX3OO          4.072e+17   -1.730   2210.09
+OME4QOOHX3X5+O2<=>OME4X7OOHX9OO          4.072e+17   -1.730   2210.09
+OME4QOOHX5X5+O2<=>OME4X7OOHX5OO          4.072e+17   -1.730   2210.09
+OME4QOOHX1X5+O2<=>OME4X5OOHX1OO          2.172e+18   -1.730   2210.09
+OME4QOOHX7X3+O2<=>OME4X3OOHX7OO          4.072e+17   -1.730   2210.09
+OME4QOOHX5X3+O2<=>OME4X3OOHX5OO          4.072e+17   -1.730   2210.09
+OME4QOOHX1X3+O2<=>OME4X3OOHX1OO          2.172e+18   -1.730   2210.09
+OME4QOOHX3X1+O2<=>OME4X1OOHX3OO          4.072e+17   -1.730   2210.09
+OME4QOOHX5X1+O2<=>OME4X1OOHX5OO          4.072e+17   -1.730   2210.09
+OME4X1OOHX5OO<=>OME4XKET1X5+OH           5.680e+11   -0.040  18379.54
+     DUPLICATE
+OME4X1OOHX5OO<=>OME4XKET1X5+OH           1.550e+02    3.310  34177.82
+     DUPLICATE
+OME4X7OOHX3OO<=>OME4XKET5X9+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME4X7OOHX3OO<=>OME4XKET5X9+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME4X5OOHX1OO<=>OME4XKET5X1+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME4X5OOHX1OO<=>OME4XKET5X1+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME4X3OOHX7OO<=>OME4XKET3X7+OH           5.680e+11   -0.040  15379.54
+     DUPLICATE
+OME4X3OOHX7OO<=>OME4XKET3X7+OH           1.550e+02    3.310  31177.82
+     DUPLICATE
+OME4X1OOHX3OO<=>OME4XKET1X3+OH           3.680e+08    1.090  18594.65
+OME4X7OOHX9OO<=>OME4XKET5X3+OH           1.025e+11    0.810  17136.71
+OME4X7OOHX5OO<=>OME4XKET5X7+OH           1.025e+11    0.810  17136.71
+OME4X3OOHX5OO<=>OME4XKET3X5+OH           1.025e+11    0.810  17136.71
+OME4X3OOHX1OO<=>OME4XKET3X1+OH           1.025e+11    0.810  17136.71
+OME4XKET5X9=>CH3OCHO+CH3OCH2OCOOCH2O+OH  6.000e+16    0.000  42000.00
+OME4XKET5X3=>CH3OCHO+CH3OCH2OCH2OCOO+OH  6.000e+16    0.000  42000.00
+OME4XKET5X7=>CH3OCH2OCHO+CH3OCH2OCOO+OH  6.000e+16    0.000  42000.00
+OME4XKET5X1=>CH2O+C3H7O3COOCH2O+OH       6.000e+16    0.000  42000.00
+OME4XKET3X7=>CH3OCH2OCHO+CH3OCOOCH2O+OH  6.000e+16    0.000  42000.00
+OME4XKET3X5=>CH3OCH2OCH2OCHO+CH3OCOO+OH  6.000e+16    0.000  42000.00
+OME4XKET3X1=>CH2O+C4H9O4COO+OH           6.000e+16    0.000  42000.00
+OME4XKET1X3=>C4H9O4CHO+OCHO+OH           6.000e+16    0.000  42000.00
+OME4XKET1X5=>CH3OCH2OCH2OCHO+OCH2OCHO+OH 6.000e+16    0.000  42000.00
+C3H7O3COOCH2O=>CO2+OME2ROX1              2.000e+13    0.000  30999.04
+C4H9O4COO=>CH2O+CH3OCH2OCH2OCOO          2.000e+13    0.000  30999.04
+CH3OCH2OCH2OCHO+H=>CH3OCH2OCH2OCO+H2     6.500e+05    2.400   4471.08
+CH3OCH2OCH2OCHO+OH=>CH3OCH2OCH2OCO+H2O   1.580e+07    1.800    934.03
+CH3OCH2OCH2OCHO+HO2=>CH3OCH2OCH2OCO+H2O2 4.820e+03    2.600  13909.89
+CH3OCH2OCH2OCHO+O=>CH3OCH2OCH2OCO+OH     2.755e+05    2.450   2830.07
+CH3OCH2OCH2OCHO+O2=>CH3OCH2OCH2OCO+HO2   1.000e+13    0.000  49700.05
+CH3OCH2OCH2OCHO+CH3=>CH3OCH2OCH2OCO+CH4  7.550e-01    3.460   5481.12
+CH3OCH2OCH2OCHO+CH3O=>CH3OCH2OCH2OCO+CH3OH 3.380e+05    2.130   4493.31
+CH3OCH2OCH2OCHO+CH3O2=>CH3OCH2OCH2OCO+CH3O2H 1.810e+02    3.160  11759.08
+CH3OCH2OCH2OCHO+HCO=>CH3OCH2OCH2OCO+CH2O 5.420e+13    0.000  22968.45
+CH3OCH2OCH2OCHO+H=>CH3OCH2OCHOCHO+H2     5.207e+07    1.886   5256.69
+CH3OCH2OCH2OCHO+OH=>CH3OCH2OCHOCHO+H2O   1.892e+04    2.722  -1243.79
+CH3OCH2OCH2OCHO+HO2=>CH3OCH2OCHOCHO+H2O2 2.260e+02    3.160  11759.08
+CH3OCH2OCH2OCHO+O=>CH3OCH2OCHOCHO+OH     1.100e+06    2.450   2820.27
+CH3OCH2OCH2OCHO+O2=>CH3OCH2OCHOCHO+HO2   1.260e+07    2.000  40344.17
+CH3OCH2OCH2OCHO+CH3=>CH3OCH2OCHOCHO+CH4  1.301e+02    3.123   7985.66
+CH3OCH2OCH2OCHO+CH3O=>CH3OCH2OCHOCHO+CH3OH 5.480e+11    0.000   5000.00
+CH3OCH2OCH2OCHO+CH3O2=>CH3OCH2OCHOCHO+CH3O2H 4.820e+03    2.600  13909.89
+CH3OCH2OCH2OCHO+HCO=>CH3OCH2OCHOCHO+CH2O 5.400e+06    1.900  17010.04
+CH3OCH2OCH2OCO=>CH3OCH2OCH2O+CO          2.825e+22   -3.440  23592.50
+CH3OCH2OCHOCHO=>OCHOCHO+CH3OCH2          5.005e+10    0.986  14949.09
+C4H9O4CHO+H=>C4H9O4CO+H2                 6.500e+05    2.400   4471.08
+C4H9O4CHO+OH=>C4H9O4CO+H2O               1.580e+07    1.800    934.03
+C4H9O4CHO+HO2=>C4H9O4CO+H2O2             4.820e+03    2.600  13909.89
+C4H9O4CHO+O=>C4H9O4CO+OH                 2.755e+05    2.450   2830.07
+C4H9O4CHO+O2=>C4H9O4CO+HO2               1.000e+13    0.000  49700.05
+C4H9O4CHO+CH3=>C4H9O4CO+CH4              7.550e-01    3.460   5481.12
+C4H9O4CHO+CH3O=>C4H9O4CO+CH3OH           3.380e+05    2.130   4493.31
+C4H9O4CHO+CH3O2=>C4H9O4CO+CH3O2H         1.810e+02    3.160  11759.08
+C4H9O4CHO+HCO=>C4H9O4CO+CH2O             5.420e+13    0.000  22968.45
+C4H9O4CHO+H=>C4H8O4CHO+H2                5.207e+07    1.886   5256.69
+C4H9O4CHO+OH=>C4H8O4CHO+H2O              1.892e+04    2.722  -1243.79
+C4H9O4CHO+HO2=>C4H8O4CHO+H2O2            2.260e+02    3.160  11759.08
+C4H9O4CHO+O=>C4H8O4CHO+OH                1.100e+06    2.450   2820.27
+C4H9O4CHO+O2=>C4H8O4CHO+HO2              1.260e+07    2.000  40344.17
+C4H9O4CHO+CH3=>C4H8O4CHO+CH4             1.301e+02    3.123   7985.66
+C4H9O4CHO+CH3O=>C4H8O4CHO+CH3OH          5.480e+11    0.000   5000.00
+C4H9O4CHO+CH3O2=>C4H8O4CHO+CH3O2H        4.820e+03    2.600  13909.89
+C4H9O4CHO+HCO=>C4H8O4CHO+CH2O            5.400e+06    1.900  17010.04
+C4H8O4CHO=>OCHOCHO+CH3OCH2OCH2           5.005e+10    0.986  14949.09
+C4H9O4CO=>OME2ROX1+CO                    2.825e+22   -3.440  23592.50
+C5H4CH2+H<=>A1XC6H6+H                    1.500e+12    0.500   2000.48
+NXC4H5+C2H2<=>C5H4CH2+H                  4.620e+15   -0.890   9141.97
+IXC4H5+C2H2<=>C5H4CH2+H                  6.800e+24   -3.450  20337.00
+C5H4CH2<=>A1XC6H6                        1.450e+45   -8.900  97002.87
+C5H4CH2<=>A1XXC6H5+H                     2.240e+68  -14.650 142576.48
+NXC4H3+C2H2<=>A1XXC6H5                   9.600e+70  -17.770  31300.19
+NXC4H5+C2H2<=>A1XC6H6+H                  1.380e+16   -1.000   8900.57
+IXC4H5+C2H2<=>A1XC6H6+H                  1.670e+23   -3.300  24959.37
+AXC3H5+C3H3=>C5H4CH2+2H                  2.160e+39   -7.740  23852.77
+2C3H3<=>C5H4CH2                          8.250e+46  -10.100  16959.85
+2C3H3<=>A1XC6H6                          1.070e+45   -9.570  17014.82
+2C3H3<=>A1XXC6H5+H                       5.770e+37   -7.000  31505.74
+A1XXC6H5+C2H2<=>A1C2H2                   3.290e+06    2.050   3162.05
+A1XXC6H5+C2H3<=>A1C2H3                   6.000e+12    0.000      0.00
+A1XC6H6+C2H3<=>A1C2H3+H                  1.870e+07    1.470   5532.98
+A1XXC6H5+C2H4<=>A1XC6H6+C2H3             9.450e-03    4.470   4471.80
+A1C2H<=>A1C2HY+H                         4.300e+60  -12.480 148085.56
+A1C2H+H<=>A1C2HY+H2                      1.290e+08    1.890  17578.87
+A1C2H+OH<=>A1C2HY+H2O                    7.800e+03    2.680    733.75
+A1C2H2<=>A1C2H3Y                         5.900e+10    0.540  27566.92
+A1C2H2<=>A1C2H+H                         7.180e+10    1.020  38673.52
+A1C2H2+H<=>A1C2H+H2                      1.650e+11    0.490  10630.98
+A1C2H2+OH<=>A1C2H+H2O                    2.500e+12    0.000      0.00
+A1C2H3<=>A1C2H3Y+H                       4.300e+60  -12.480 148085.56
+A1C2H3+H<=>A1C2H3Y+H2                    5.230e+06    2.360  16916.83
+A1C2H3+OH<=>A1C2H3Y+H2O                  1.340e+02    3.330   1455.54
+A1C2H3<=>A1C2H2+H                        3.010e+14    0.340 111254.78
+A1C2H3+H<=>A1C2H2+H2                     6.350e+04    2.750  11649.14
+A1C2H3+OH<=>A1C2H2+H2O                   6.550e-02    4.200   -860.42
+A1C2HY+C2H2<=>A2XXC10H7                  1.340e+04    2.500   1283.46
+A1C2H3Y+C2H2<=>A2XC10H8+H                3.020e+03    2.550   3181.17
+A1C2H2+C2H2<=>A2XC10H8+H                 3.800e+07    1.620   4438.34
+A1C2H+C2H3<=>A2XC10H8+H                  3.600e+17   -1.440  15757.65
+A1C2HY+C2H4<=>A2XC10H8+H                 3.620e+28   -4.240  23864.72
+A1XXC6H5+C4H4<=>A2XC10H8+H               1.260e+04    2.610   1434.03
+A2XC10H8<=>A2XXC10H7+H                   8.600e+60  -12.480 148076.00
+A2XC10H8+H<=>A2XXC10H7+H2                2.650e+08    1.870  17096.08
+A2XC10H8+OH<=>A2XXC10H7+H2O              9.630e+02    3.020   4373.80
+A2XC10H8<=>A2YXC10H7+H                   8.600e+60  -12.480 148076.00
+A2XC10H8+H<=>A2YXC10H7+H2                2.650e+08    1.870  17096.08
+A2XC10H8+OH<=>A2YXC10H7+H2O              9.630e+02    3.020   4373.80
+A2XXC10H7+C2H2<=>A2C2H2A                 1.280e+06    2.050   1931.17
+A2YXC10H7+C2H2<=>A2C2H2B                 3.290e+06    2.050   3162.05
+A2XXC10H7+C2H3<=>A2C2H2A+H               6.000e+12    0.000      0.00
+A2YXC10H7+C2H3<=>A2C2H2B+H               6.000e+12    0.000      0.00
+A2XC10H8+C2H3<=>A2C2H2A+H2               7.200e+17   -1.440  15757.65
+A2XC10H8+C2H3<=>A2C2H2B+H2               7.200e+17   -1.440  15757.65
+A2XXC10H7+C2H4<=>A2C2H2A+H2              3.620e+28   -4.240  23864.72
+A2YXC10H7+C2H4<=>A2C2H2B+H2              3.620e+28   -4.240  23864.72
+A2C2H2A<=>A2C2HA+H                       7.180e+10    1.020  38673.52
+A2C2H2A+H<=>A2C2HA+H2                    1.650e+11    0.490  10630.98
+A2C2H2A+OH<=>A2C2HA+H2O                  2.500e+12    0.000      0.00
+A2C2H2B<=>A2C2HB+H                       7.180e+10    1.020  38673.52
+A2C2H2B+H<=>A2C2HB+H2                    1.650e+11    0.490  10630.98
+A2C2H2B+OH<=>A2C2HB+H2O                  2.500e+12    0.000      0.00
+A2C2HA<=>A2C2HAY+H                       2.150e+60  -12.480 148076.00
+A2C2HA+H<=>A2C2HAY+H2                    1.320e+08    1.880  16821.22
+A2C2HA+OH<=>A2C2HAY+H2O                  6.720e+01    3.330   1455.54
+A2C2HB<=>A2C2HBY+H                       2.150e+60  -12.480 148076.00
+A2C2HB+H<=>A2C2HBY+H2                    1.320e+08    1.880  16821.22
+A2C2HB+OH<=>A2C2HBY+H2O                  6.720e+01    3.330   1455.54
+A2C2H2A<=>A2R5+H                         2.880e+11    0.230  17026.77
+A2C2HA+H<=>A2R5+H                        3.520e+12    0.000  13360.42
+A2R5<=>A2R5X+H                           8.600e+60  -12.480 148076.00
+A2R5+H<=>A2R5X+H2                        2.650e+08    1.870  17096.08
+A2R5+OH<=>A2R5X+H2O                      9.630e+02    3.020   4373.80
+A2R5X+C2H2<=>A2R5C2H2                    3.290e+06    2.050   3162.05
+A2R5X+C2H3<=>A2R5C2H2+H                  6.000e+12    0.000      0.00
+A2R5+C2H3<=>A2R5C2H2+H2                  3.600e+17   -1.440  15757.65
+A2R5X+C2H4<=>A2R5C2H2+H2                 3.620e+28   -4.240  23864.72
+A2R5C2H<=>A2R5C2HY+H                     2.150e+60  -12.480 148076.00
+A2R5C2H+H<=>A2R5C2HY+H2                  1.320e+08    1.880  16821.22
+A2R5C2H+OH<=>A2R5C2HY+H2O                6.720e+01    3.330   1455.54
+A2R5C2H2<=>A2R5C2H+H                     7.180e+10    1.020  38673.52
+A2R5C2H2+H<=>A2R5C2H+H2                  1.650e+11    0.490  10630.98
+A2R5C2H2+OH<=>A2R5C2H+H2O                2.500e+12    0.000      0.00
+A1XC6H6+A1XXC6H5<=>P2XC12H10+H           9.550e+11    0.000   2167.78
+2A1XXC6H5<=>P2XC12H10                    1.390e+13    0.000    112.33
+P2XC12H10<=>P2XXC12H9+H                  8.600e+60  -12.480 148076.00
+P2XC12H10+H<=>P2XXC12H9+H2               4.010e+08    1.800  16352.77
+P2XC12H10+OH<=>P2XXC12H9+H2O             2.690e+02    3.330   1455.54
+A2C2HAY+C2H2<=>A3XXC14H9                 1.340e+04    2.500   1283.46
+A2C2HBY+C2H2<=>A3XXC14H9                 1.340e+04    2.500   1283.46
+A2C2H2A+C2H2<=>A3XC14H10+H               3.800e+07    1.620   4438.34
+A2C2H2B+C2H2<=>A3XC14H10+H               3.800e+07    1.620   4438.34
+P2XXC12H9+C2H2<=>A3XC14H10+H             3.290e+06    2.050   3162.05
+A2C2HAY+C2H3<=>A3XC14H10                 6.000e+12    0.000      0.00
+A2C2HBY+C2H3<=>A3XC14H10                 6.000e+12    0.000      0.00
+A2C2HA+C2H3<=>A3XC14H10+H                1.800e+17   -1.440  15757.65
+A2C2HB+C2H3<=>A3XC14H10+H                1.800e+17   -1.440  15757.65
+A2C2HAY+C2H4<=>A3XC14H10+H               3.620e+28   -4.240  23864.72
+A2C2HBY+C2H4<=>A3XC14H10+H               3.620e+28   -4.240  23864.72
+A2XXC10H7+C4H4<=>A3XC14H10+H             1.260e+04    2.610   1434.03
+A2YXC10H7+C4H4<=>A3XC14H10+H             1.260e+04    2.610   1434.03
+A1C2H+A1XXC6H5<=>A3XC14H10+H             3.180e+11    0.000   2167.78
+A1C2HY+A1XC6H6<=>A3XC14H10+H             2.390e+11    0.000   2167.78
+A1C2HY+A1XXC6H5<=>A3XC14H10              1.390e+13    0.000    112.33
+A3XC14H10<=>A3XXC14H9+H                  4.300e+60  -12.480 148076.00
+A3XC14H10+H<=>A3XXC14H9+H2               2.000e+08    1.800  16352.77
+A3XC14H10+OH<=>A3XXC14H9+H2O             1.340e+02    3.330   1455.54
+A3XC14H10<=>A3YXC14H9+H                  4.300e+60  -12.480 148076.00
+A3XC14H10+H<=>A3YXC14H9+H2               2.650e+08    1.870  17096.08
+A3XC14H10+OH<=>A3YXC14H9+H2O             9.630e+02    3.020   4373.80
+A3XXC14H9<=>A2R5X+C2H2                   1.300e+11    1.080  70399.14
+A2R5C2HY+C2H2<=>A3R5X                    1.340e+04    2.500   1283.46
+A2R5C2H2+C2H2<=>A3R5+H                   3.800e+07    1.620   4438.34
+A3YXC14H9+C2H2<=>A3R5+H                  1.280e+06    2.050   1931.17
+A3YXC14H9+C2H3<=>A3R5+H2                 6.000e+12    0.000      0.00
+A2R5X+C4H4<=>A3R5+H                      1.260e+04    2.610   1434.03
+A3R5<=>A3R5X+H                           2.150e+60  -12.480 148076.00
+A3R5+H<=>A3R5X+H2                        2.650e+08    1.870  17096.08
+A3R5+OH<=>A3R5X+H2O                      9.630e+02    3.020   4373.80
+A3XXC14H9+C2H2<=>A4XC16H10+H             1.280e+06    2.050   1931.17
+A4XC16H10<=>A4XXC16H9+H                  1.720e+60  -12.480 148076.00
+A4XC16H10+H<=>A4XXC16H9+H2               5.300e+08    1.870  17096.08
+A4XC16H10+OH<=>A4XXC16H9+H2O             1.930e+03    3.020   4373.80
+A4XXC16H9+C2H2<=>A4R5+H                  1.280e+06    2.050   1931.17
+A3R5X+C2H2<=>A4R5+H                      1.280e+06    2.050   1931.17
+A2XC10H8+A1XXC6H5=>FLTN+H+H2             6.370e+11    0.000   2167.78
+A2XXC10H7+A1XC6H6=>FLTN+H+H2             9.550e+11    0.000   2167.78
+A2XXC10H7+A1XXC6H5=>FLTN+H2              1.390e+13    0.000    112.33
+C5H6<=>C5H5+H                            1.730e+68  -15.160 116371.89
+C5H6+H<=>C5H5+H2                         2.800e+13    0.000   2258.60
+C5H6+H<=>AXC3H5+C2H2                     3.300e+14    0.000  12344.65
+C5H6+H=>SXC3H5+C2H2                      3.300e+14    0.000  12344.65
+C5H6+O<=>C5H5+OH                         4.770e+04    2.710   1106.60
+C5H6+OH<=>C5H5+H2O                       3.080e+06    2.000      0.00
+C5H6+O2<=>C5H5+HO2                       1.000e+14    0.000  37151.05
+C5H6+HO2<=>C5H5+H2O2                     1.100e+04    2.600  12899.14
+C5H6+CH3<=>C5H5+CH4                      1.800e-01    4.000      0.00
+C5H6+C2H3<=>C5H5+C2H4                    6.000e+12    0.000      0.00
+C5H6+NXC4H5<=>C5H5+C4H6                  6.000e+12    0.000      0.00
+C5H6+O<=>TXC5H5O+H                       7.660e+09    0.880   1140.06
+C5H6+O=>C2H4+C2H2+CO                     3.890e+08    1.360    886.71
+C5H6+OH=>C4H6+HCO                        3.750e+36   -7.800   7060.23
+C5H6+OH=>C2H4+C2H2+HCO                   3.750e+36   -7.800   7060.23
+C3H3+C2H2<=>C5H5                         6.870e+55  -12.500  42065.01
+2C5H5=>A2XC10H8+2H                       6.390e+29   -4.030  35205.54
+C5H5+CH3=>C5H4CH2+2H                     4.910e+31   -4.850  24772.94
+C5H5+O<=>C5H4O+H                         7.000e+13    0.000      0.00
+C5H5+O2<=>C5H4O+OH                       4.340e+07    1.300  17667.30
+C5H5+HO2<=>SXC5H5O+OH                    3.100e+13    0.000      0.00
+C5H5+OH=>SXC5H5O+H                       1.020e+13    0.000      0.00
+SXC5H5O<=>C5H4O+H                        2.000e+13    0.000  30000.00
+TXC5H5O=>NXC4H5+CO                       1.000e+12    0.000  35999.04
+SXC5H5O+H=>C5H4O+H2                      6.670e+12    0.000      0.00
+SXC5H5O+O=>C5H4O+OH                      3.330e+12    0.000      0.00
+SXC5H5O+OH=>C5H4O+H2O                    1.670e+12    0.000      0.00
+SXC5H5O+O2=>C5H4O+HO2                    1.430e-13    7.600  -3530.11
+TXC5H5O+H=>C5H4O+H2                      1.330e+12    0.000      0.00
+TXC5H5O+O2=>C5H4O+HO2                    1.280e+07    1.020  -2033.94
+C5H4O=>2C2H2+CO                          3.370e+44   -8.000 108675.91
+C5H4O+H<=>TXC5H5O                        2.740e+09    1.460   1355.16
+C5H4O+O<=>C4H4+CO2                       1.000e+13    0.000   2000.48
+C5H5+C5H6=>C9H8+CH3                      7.860e-01    3.070   5728.97
+A1XXC6H5+C3H3<=>C9H8                     1.000e+13    0.000      0.00
+C9H8<=>C9H7+H                            1.730e+68  -15.160 116371.89
+C9H8+H<=>C9H7+H2                         2.800e+13    0.000   2258.60
+A1CH2+C2H2<=>C9H8+H                      3.160e+04    2.480  11061.19
+C9H8+O<=>C9H7+OH                         4.770e+04    2.710   1106.60
+C9H8+OH<=>C9H7+H2O                       3.080e+06    2.000      0.00
+C9H8+O2<=>C9H7+HO2                       1.000e+14    0.000  37151.05
+C9H8+HO2<=>C9H7+H2O2                     1.100e+04    2.600  12899.14
+C9H8+CH3<=>C9H7+CH4                      1.800e-01    4.000      0.00
+C9H8+O=>C9H6O+2H                         3.830e+09    0.880   1140.06
+C9H8+OH=>OXC6H4+C2H4+HCO                 1.880e+36   -7.800   7060.23
+C9H7+C5H5=>A3XC14H10+2H                  2.560e+29   -4.030  35205.54
+C9H7+CH3=>A2XC10H8+2H                    1.960e+31   -4.850  24772.94
+C9H7+O<=>C9H6O+H                         2.800e+13    0.000      0.00
+C9H7+O2<=>C9H6O+OH                       1.740e+07    1.300  17667.30
+C9H7+HO2=>C9H6O+H2O                      1.240e+13    0.000      0.00
+C9H7+OH=>C9H6O+2H                        4.080e+12    0.000      0.00
+C9H7+C3H3=>A2R5+2H                       4.320e+39   -7.740  23852.77
+C9H6O=>OXC6H4+C2H2+CO                    3.370e+44   -8.000 108675.91
+C9H6O+H=>A1C2H3Y+CO                      1.370e+09    1.460   1355.16
+A1CH3+H<=>A1XC6H6+CH3                    2.310e+06    2.170   4163.48
+A1CH3<=>A1CH2+H                          1.560e+13    0.680  89206.50
+A1CH3<=>A1XXC6H5+CH3                     4.350e+22   -1.730 104208.89
+A1CH2+H<=>A1XXC6H5+CH3                   5.830e+67  -14.150  68329.35
+A1CH2<=>C5H5+C2H2                        8.200e+14    0.000  80676.39
+A1CH3+O2<=>A1CH2+HO2                     2.180e+07    2.500  46044.46
+A1CH3+H<=>A1CH2+H2                       6.470e+00    3.980   3384.32
+A1CH3+OH<=>A1CH2+H2O                     1.770e+05    2.390   -602.29
+A1CH3+OH<=>A1OH+CH3                      7.830e+02    2.880   3221.80
+A1CH3+OH<=>HOA1CH3+H                     3.140e+01    3.370   4720.36
+A1CH3+O<=>A1CH2+OH                       1.180e+00    4.090   2545.41
+A1CH3+O<=>HOA1CH3                        1.690e+12    0.300   4402.49
+A1CH3+O<=>OA1CH3+H                       1.660e+07    1.800   3974.67
+A1CH3+CH3<=>A1CH2+CH4                    4.220e+14    0.000  22256.21
+A1CH3+HO2<=>A1CH2+H2O2                   9.330e+04    2.500  14684.51
+A1CH3+A1XXC6H5<=>A1CH2+A1XC6H6           7.940e+13    0.000  11950.29
+A1CH2+O<=>A1CH2O                         2.280e+14    0.000      0.00
+A1CH2+OH<=>A1CH2OH                       2.000e+13    0.000      0.00
+A1CH2+HO2<=>A1CH2O+OH                    1.190e+09    1.030  -2249.04
+A1CH2+C3H3=>A2XC10H8+2H                  4.320e+39   -7.740  23852.77
+A1CH2+O2<=>A1CHO+OH                      3.760e+15   -1.550  11321.70
+A1CH2+O2<=>A1OXC6H5O+CH2O                6.260e+37   -8.860  16582.22
+A1CH2O+H(+M)<=>A1CH2OH(+M)               2.430e+12    0.520     50.19
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  4.660e+41   -7.440  14079.83 /
+     TROE/     0.7      100     90000     10000 /
+A1CH2OH+H<=>A1CH2O+H2                    4.200e+06    2.100   4870.94
+A1CH2OH+O<=>A1CH2O+OH                    1.300e+05    2.500   5000.00
+A1CH2OH+OH<=>A1CH2O+H2O                  6.300e+06    2.000   1500.96
+A1CH2OH+CH3<=>A1CH2O+CH4                 1.000e+07    1.500   9940.25
+A1XXC6H5+CH2O<=>A1XC6H6+HCO              8.550e+04    2.190     38.24
+A1CH2O<=>A1CHO+H                         5.260e+28   -5.080  22249.04
+A1CH2O<=>A1XXC6H5+CH2O                   7.210e+33   -6.210  36849.90
+A1CH2O<=>A1XC6H6+HCO                     2.370e+32   -6.100  28809.75
+A1CH2O+H<=>A1CHO+H2                      1.330e+13    0.000      0.00
+A1CH2O+O<=>A1CHO+OH                      6.670e+12    0.000      0.00
+A1CH2O+OH<=>A1CHO+H2O                    3.330e+12    0.000      0.00
+A1CH2O+O2<=>A1CHO+HO2                    2.850e-13    7.600  -3530.11
+A1CHO=>A1XXC6H5+CO+H                     2.100e+16    0.000  81739.96
+A1CHO+H=>A1XXC6H5+CO+H2                  4.090e+09    1.160   2404.40
+A1CHO+O=>A1XXC6H5+CO+OH                  5.840e+12    0.000   1809.27
+A1CHO+OH=>A1XXC6H5+CO+H2O                2.890e+08    1.350  -1572.66
+A1CHO+O2=>A1XXC6H5+CO+HO2                1.200e+05    2.500  37554.97
+A1CHO+HO2=>A1XXC6H5+CO+H2O2              4.090e+04    2.500  10203.15
+A1CHO+CH3=>A1XXC6H5+CO+CH4               3.490e-08    6.210   1630.02
+HOA1CH3<=>OA1CH3+H                       1.010e+71  -15.920 124789.67
+HOA1CH3+H<=>OA1CH3+H2                    1.150e+14    0.000  12397.23
+HOA1CH3+O<=>OA1CH3+OH                    2.810e+13    0.000   7351.82
+HOA1CH3+OH<=>OA1CH3+H2O                  2.950e+06    2.000  -1312.14
+OA1CH3=>C5H4CH2+CO+H                     2.900e+10    0.000  36424.47
+A1CH3<=>A1CH3Y+H                         8.390e+60  -12.480 148085.56
+A1CH3+H<=>A1CH3Y+H2                      3.910e+08    1.800  16352.77
+A1CH3+O<=>A1CH3Y+OH                      2.600e+13    0.000  14698.85
+A1CH3+OH<=>A1CH3Y+H2O                    1.360e+04    2.690    619.02
+A1CH3+CH3<=>A1CH3Y+CH4                   1.790e-02    4.460  13637.67
+A1CH3Y+O<=>OA1CH3                        1.000e+14    0.000      0.00
+A1CH3Y+OH<=>OA1CH3+H                     3.000e+13    0.000      0.00
+A1CH3Y+HO2<=>OA1CH3+OH                   3.000e+13    0.000      0.00
+A1CH3Y+O2<=>OA1CH3+O                     8.570e+20   -2.270   7189.29
+A1CH3Y+O2=>C5H4CH2+CO2+H                 2.550e+13   -0.440  -1649.14
+A1CH3Y+O2=>PXC3H4+C2H3+2CO               2.550e+13   -0.440  -1649.14
+A1C2H4+H<=>A1C2H5                        3.610e+13    0.000      0.00
+A1CH2+CH3<=>A1C2H5                       2.000e+13    0.000      0.00
+A1XXC6H5+C2H5<=>A1C2H5                   2.000e+13    0.000      0.00
+A1C2H5+H<=>A1XC6H6+C2H5                  2.310e+06    2.170   4163.48
+A1C2H5+OH<=>A1OH+C2H5                    7.830e+02    2.880   3221.80
+A1C2H5+H<=>A1C2H4+H2                     4.830e-02    4.710   6211.76
+A1C2H5+O<=>A1C2H4+OH                     1.960e+00    4.090   2545.41
+A1C2H5+OH<=>A1C2H4+H2O                   4.470e+06    2.010    365.68
+A1C2H5+HO2<=>A1C2H4+H2O2                 8.030e+03    2.600  13910.13
+A1C2H5+CH3<=>A1C2H4+CH4                  7.530e-01    3.650   7153.44
+A1C2H4<=>A1XXC6H5+C2H4                   1.720e+11    0.780  38704.59
+A1C2H4<=>A1C2H3+H                        3.790e+06    2.080  32105.64
+A1C2H4+H<=>A1C2H3+H2                     1.670e+12    0.000      0.00
+A1C2H4+OH<=>A1C2H3+H2O                   2.410e+13    0.000      0.00
+A1C2H4+CH3<=>A1C2H3+CH4                  3.310e+12    0.000   -769.60
+A1C2H4+O2<=>A1C2H3+HO2                   3.700e+16   -1.630   3417.78
+A1C2H4+O<=>A1CH2+CH2O                    3.170e+13    0.030   -394.36
+A1C2H4+O<=>A1CHO+CH3                     3.170e+13    0.030   -394.36
+A1C2H4+HO2=>A1CH2+CH2O+OH                7.000e+12    0.000   -999.04
+A1C2H4+O2=>C8H9O2                        4.820e+36   -8.230   5167.30
+A1C2H4+O2=>A1CH2+HCO+OH                  3.880e+04    1.840   -578.39
+C8H9O2=>A1C2H4+O2                        1.210e+45  -10.150  40815.01
+C8H9O2=>A1C2H3+HO2                       2.450e+25   -4.480  32607.55
+C8H9O2=>A1CH2+HCO+OH                     1.230e+13   -1.120  27014.82
+C8H9O2=>C8H8OOH                          5.450e-02    3.570  16097.04
+C8H8OOH+O2=>OC8H7OOH+OH                  1.000e+11    0.000      0.00
+OC8H7OOH=>A1XXC6H5+CH2O+CO+OH            6.300e+14    0.000  43044.93
+A1C2H3=>A1XC6H6+H2C2                     2.400e+14    0.000  78130.98
+A1C2H3+O<=>A1CH2+HCO                     5.100e+07    1.660    657.27
+A1C2H3+CH3<=>A1C2H2+CH4                  1.140e+05    2.000   9199.33
+A1C2H3+OH<=>A1CHO+CH3                    1.880e+36   -7.800   7060.23
+A1C2H3+OH<=>A1CH2+CH2O                   1.880e+36   -7.800   7060.23
+A1C2H3+OH<=>C2H3+A1OH                    7.830e+02    2.880   3221.80
+A1C2H3+O<=>A1C2H3Y+OH                    1.330e+13    0.000  14698.85
+A1C2H2+O<=>A1CH2+CO                      1.030e+13    0.210   -427.82
+A1C2H2+O2<=>A1C2H+HO2                    6.700e+05    1.610   -384.80
+A1C2H2+O2=>A1CH2+CO+O                    3.030e+11    0.290     11.95
+A1C2H2+O2<=>A1CHO+HCO                    4.580e+16   -1.390   1015.77
+A1C2H+OH<=>A1XC6H6+HCCO                  1.000e+13    0.000      0.00
+A1CH3CH3<=>A1CH3CH2+H                    2.500e+18   -0.600  94787.28
+A1CH3CH3<=>A1CH3Y+CH3                    4.320e+29   -3.580 110164.91
+A1CH3CH3+H<=>A1CH3CH2+H2                 1.290e+01    3.980   3384.32
+A1CH3CH3+O<=>A1CH3CH2+OH                 2.360e+00    4.090   2545.41
+A1CH3CH3+OH<=>A1CH3CH2+H2O               3.540e+05    2.390   -602.29
+A1CH3CH3+O2<=>A1CH3CH2+HO2               4.360e+07    2.500  46044.46
+A1CH3CH3+HO2<=>A1CH3CH2+H2O2             1.870e+05    2.500  14684.51
+A1CH3CH3+CH3<=>A1CH3CH2+CH4              8.440e+14    0.000  22256.21
+A1CH3CH3+H<=>A1CH3+CH3                   4.620e+06    2.170   4163.48
+A1CH3CH3+OH<=>HOA1CH3+CH3                1.570e+03    2.880   3221.80
+A1CH3CH3+O=>A1CH3+CO+2H                  1.820e+08    1.550   3090.34
+A1CH3CH2=>A1XC6H6+H+C2H2                 8.200e+14    0.000  80676.39
+A1CH3CH2+H<=>A1CH3Y+CH3                  5.830e+67  -14.150  68329.35
+A1CH3CH2+O<=>A1CH3CHO+H                  4.370e+18   -1.340   1591.78
+A1CH3CH2+O<=>A1CH3Y+CH2O                 5.990e+23   -2.470  16192.64
+A1CH3CH2+O<=>A1CH3+HCO                   1.970e+22   -2.360   8152.49
+A1CH3CH2+OH=>A1CH3CHO+H2                 2.000e+13    0.000      0.00
+A1CH3CH2+O2<=>A1CH3CHO+OH                1.380e+02    2.420   7440.25
+A1CH3CH2+O2<=>OA1CH3+CH2O                6.570e+03    1.870   5002.39
+A1CH3CH2+HO2=>A1CH3CHO+H+OH              2.280e+13   -0.310   -657.27
+A1CH3CH2+HO2=>A1CH3Y+CH2O+OH             3.130e+18   -1.440  13943.59
+A1CH3CH2+HO2=>A1CH3+HCO+OH               1.030e+17   -1.330   5903.44
+A1CH3CH2+C3H3=>A2CH3+2H                  4.320e+39   -7.740  23852.77
+A1CH3CHO<=>A1CHOCH2+H                    1.250e+18   -0.600  94787.28
+A1CH3CHO=>A1XXC6H5+CO+CH3                2.160e+29   -3.580 110164.91
+A1CH3CHO=>A1CH3Y+CO+H                    2.100e+16    0.000  81739.96
+A1CH3CHO+H<=>A1CHOCH2+H2                 6.470e+00    3.980   3384.32
+A1CH3CHO+O<=>A1CHOCH2+OH                 1.180e+00    4.090   2545.41
+A1CH3CHO+OH<=>A1CHOCH2+H2O               1.770e+05    2.390   -602.29
+A1CH3CHO+O2<=>A1CHOCH2+HO2               2.180e+07    2.500  46044.46
+A1CH3CHO+HO2<=>A1CHOCH2+H2O2             9.330e+04    2.500  14684.51
+A1CH3CHO+CH3<=>A1CHOCH2+CH4              4.220e+14    0.000  22256.21
+A1CH3CHO+H=>A1CH3Y+CO+H2                 4.090e+09    1.160   2404.40
+A1CH3CHO+O=>A1CH3Y+CO+OH                 5.840e+12    0.000   1809.27
+A1CH3CHO+OH=>A1CH3Y+CO+H2O               2.890e+08    1.350  -1572.66
+A1CH3CHO+O2=>A1CH3Y+CO+HO2               1.200e+05    2.500  37554.97
+A1CH3CHO+HO2=>A1CH3Y+CO+H2O2             4.090e+04    2.500  10203.15
+A1CH3CHO+CH3=>A1CH3Y+CO+CH4              3.490e-08    6.210   1630.02
+A1CH3CHO+H<=>A1CH3+HCO                   2.310e+06    2.170   4163.48
+A1CH3CHO+H<=>A1CHO+CH3                   2.310e+06    2.170   4163.48
+A1CH3CHO+OH<=>HOA1CH3+HCO                7.830e+02    2.880   3221.80
+A1CH3CHO+OH=>A1OXC6H5O+H+CO+CH3          7.830e+02    2.880   3221.80
+A1CHOCH2+O<=>A1CHOCHO+H                  4.370e+18   -1.340   1591.78
+A1CHOCH2+O=>A1XXC6H5+CO+CH2O             5.990e+23   -2.470  16192.64
+A1CHOCH2+O<=>A1CHO+HCO                   1.970e+22   -2.360   8152.49
+A1CHOCH2+OH=>A1CHOCHO+H2                 2.000e+13    0.000      0.00
+A1CHOCH2+O2<=>A1CHOCHO+OH                1.380e+02    2.420   7643.40
+A1CHOCH2+HO2=>A1CHOCHO+OH+H              1.190e+09    1.030  -2249.04
+A1CHOCHO=>A1XXC6H5+2CO+H                 4.200e+16    0.000  81739.96
+A1CHOCHO+H=>A1CHO+CO+H                   8.180e+09    1.160   2404.40
+A1CHOCHO+O=>A1CHO+CO+O                   1.170e+13    0.000   1809.27
+A1CHOCHO+OH=>A1CHO+CO+OH                 5.780e+08    1.350  -1572.66
+A1CHOCHO+O2=>A1CHO+CO+O2                 2.400e+05    2.500  37554.97
+A1CHOCHO+HO2=>A1CHO+CO+HO2               8.180e+04    2.500  10203.15
+A1CHOCHO+CH3=>A1CHO+CO+CH3               6.980e-08    6.210   1630.02
+A1CHOCHO+H<=>A1CHO+HCO                   4.620e+06    2.170   4163.48
+A1CHOCHO+OH=>A1OXC6H5O+H+CO+HCO          1.570e+03    2.880   3221.80
+A2CH3+H<=>A2XC10H8+CH3                   2.310e+06    2.170   4163.48
+A2CH3+OH<=>A2OH+CH3                      7.830e+02    2.880   3221.80
+A2CH3<=>A2CH2+H                          1.250e+18   -0.600  94787.28
+A2CH3<=>A2XXC10H7+CH3                    3.200e+34   -5.020 114251.91
+A2CH2+H<=>A2XXC10H7+CH3                  5.830e+67  -14.150  68329.35
+A2CH2<=>C9H7+C2H2                        8.200e+14    0.000  80676.39
+A2CH3+H<=>A2CH2+H2                       6.470e+00    3.980   3384.32
+A2CH3+O<=>A2CH2+OH                       1.180e+00    4.090   2545.41
+A2CH3+OH<=>A2CH2+H2O                     1.770e+05    2.390   -602.29
+A2CH3+O2<=>A2CH2+HO2                     2.180e+07    2.500  46044.46
+A2CH3+CH3<=>A2CH2+CH4                    4.220e+14    0.000  22256.21
+A2CH3+HO2<=>A2CH2+H2O2                   9.330e+04    2.500  14684.51
+A2CH3+O=>A2XC10H8+CO+2H                  1.100e+13    0.000   4531.55
+A2CH3+O=>C9H7+CH3+CO                     1.470e+13    0.000   4531.55
+A2CH2+O<=>A2CH2O                         2.280e+14    0.000      0.00
+A2CH2+OH=>A2CH2O+H                       2.000e+13    0.000      0.00
+A2CH2+HO2<=>A2CH2O+OH                    1.190e+09    1.030  -2249.04
+A2CH2+C3H3=>A3XC14H10+2H                 4.320e+39   -7.740  23852.77
+A2CH2+O2<=>A2CHO+OH                      3.760e+15   -1.550  11321.70
+A2CH2+O2<=>A2OXC10H7O+CH2O               3.080e+09    0.370  16909.66
+A2CH2O<=>A2CHO+H                         5.260e+28   -5.080  22249.04
+A2CH2O<=>A2XXC10H7+CH2O                  7.210e+33   -6.210  36849.90
+A2CH2O+H<=>A2CHO+H2                      1.330e+13    0.000      0.00
+A2CH2O+O<=>A2CHO+OH                      6.670e+12    0.000      0.00
+A2CH2O+OH<=>A2CHO+H2O                    3.330e+12    0.000      0.00
+A2CH2O+O2<=>A2CHO+HO2                    2.850e-13    7.600  -3530.11
+A2CHO=>A2XXC10H7+CO+H                    2.100e+16    0.000  81739.96
+A2CHO+H=>A2XXC10H7+CO+H2                 4.090e+09    1.160   2404.40
+A2CHO+O=>A2XXC10H7+CO+OH                 5.840e+12    0.000   1809.27
+A2CHO+OH=>A2XXC10H7+CO+H2O               2.890e+08    1.350  -1572.66
+A2CHO+O2=>A2XXC10H7+CO+HO2               1.200e+05    2.500  37554.97
+A2CHO+HO2=>A2XXC10H7+CO+H2O2             4.090e+04    2.500  10203.15
+A2CHO+CH3=>A2XXC10H7+CO+CH4              3.490e-08    6.210   1630.02
+A1XC6H6<=>A1XXC6H5+H                     1.290e+61  -12.480 148085.56
+A1XXC6H5(+M)<=>OXC6H4+H(+M)              4.300e+12    0.620  77301.63
+AR/0.70/ H2/2.00/ H2O/12.00/ CO/1.75/ CO2/3.60/ CH4/2.00/ C2H6/3.00/ 
+     LOW  /  1.000e+84  -18.870  90100.38 /
+     TROE/   0.902      696       358      3856 /
+C4H2+C2H2<=>OXC6H4                       5.000e+78  -19.310  67920.65
+A1XC6H6+H<=>A1XXC6H5+H2                  6.020e+08    1.800  16352.77
+A1XC6H6+OH<=>A1XXC6H5+H2O                2.340e+04    2.680    733.75
+A1XC6H6+OH<=>A1OH+H                      1.320e+02    3.250   5590.34
+A1XC6H6+O2<=>A1XXC6H5+HO2                4.340e+14    0.000  64292.54
+A1XC6H6+O<=>A1OXC6H5O+H                  2.740e+08    1.550   3090.34
+     DUPLICATE
+A1XC6H6+O<=>A1OXC6H5O+H                  1.990e+07    1.800   3974.67
+     DUPLICATE
+A1XC6H6+O<=>A1OH                         2.030e+12    0.300   4402.49
+A1XC6H6+O<=>C5H6+CO                      5.800e+16   -0.770  15291.59
+A1XC6H6+O<=>A1XXC6H5+OH                  4.000e+13    0.000  14698.85
+A1XXC6H5+O2<=>A1OXC6H5O+O                8.570e+20   -2.270   7189.29
+A1XXC6H5+O2<=>OC6H4O+H                   3.000e+13    0.000   8981.84
+A1XXC6H5+O<=>A1OXC6H5O                   1.000e+14    0.000      0.00
+A1XXC6H5+OH<=>A1OXC6H5O+H                3.000e+13    0.000      0.00
+A1XXC6H5+HO2<=>A1OXC6H5O+OH              3.000e+13    0.000      0.00
+A1XXC6H5+CH4<=>A1XC6H6+CH3               3.890e-03    4.570   5258.13
+A1OH<=>C5H6+CO                           6.590e+15   -0.610  74118.07
+A1OH<=>A1OXC6H5O+H                       1.010e+71  -15.920 124789.67
+A1OH+H<=>A1OXC6H5O+H2                    6.830e+01    3.400   7232.31
+A1OH+OH<=>A1OXC6H5O+H2O                  1.730e+01    3.400  -1142.45
+A1OH+CH3<=>A1OXC6H5O+CH4                 3.700e-04    4.700   4827.92
+A1OH+O2<=>A1OXC6H5O+HO2                  7.320e+13    0.000  41400.57
+A1OXC6H5O<=>CO+C5H5                      2.900e+10    0.000  36424.47
+A1OXC6H5O+O<=>OC6H4O+H                   6.340e+13    0.030   -394.36
+A1OXC6H5O+O2<=>OC6H4O+OH                 6.510e+07    1.300  17667.30
+OC6H4O<=>C5H4O+CO                        7.400e+11    0.000  59000.96
+OC6H4O+H<=>TXC5H5O+CO                    4.300e+09    1.450   3867.11
+OC6H4O+O=>CH2CO+C2H2+2CO                 3.000e+13    0.000   5000.00
+A2XC10H8+O<=>A2OXC10H7O+H                1.830e+13    0.000   4529.16
+A2XC10H8+O<=>A2OH                        1.830e+13    0.000   4529.16
+A2XC10H8+OH<=>A2OH+H                     2.200e+02    3.250   5590.34
+A2XXC10H7+O2<=>A2OXC10H7O+O              8.570e+20   -2.270   7189.29
+A2YXC10H7+O2<=>A2OXC10H7O+O              8.570e+20   -2.270   7189.29
+A2XXC10H7+O2=>C9H6O+CO+H                 3.000e+13    0.000   8981.84
+A2YXC10H7+O2=>C9H6O+CO+H                 3.000e+13    0.000   8981.84
+A2XXC10H7+O<=>A2OXC10H7O                 1.000e+14    0.000      0.00
+A2YXC10H7+O<=>A2OXC10H7O                 1.000e+14    0.000      0.00
+A2XXC10H7+OH<=>A2OXC10H7O+H              3.000e+13    0.000      0.00
+A2YXC10H7+OH<=>A2OXC10H7O+H              3.000e+13    0.000      0.00
+A2OH<=>C9H8+CO                           8.620e+15   -0.610  74118.07
+A2OH<=>A2OXC10H7O+H                      1.010e+71  -15.920 124789.67
+A2OH+H<=>A2OXC10H7O+H2                   6.830e+01    3.400   7232.31
+A2OH+OH<=>A2OXC10H7O+H2O                 1.730e+01    3.400  -1142.45
+A2OH+CH3<=>A2OXC10H7O+CH4                3.700e-04    4.700   4827.92
+A2OXC10H7O<=>C9H7+CO                     2.900e+10    0.000  36424.47
+A2OXC10H7O+O=>C9H6O+CO+H                 1.680e+14    0.000      0.00
+A2OXC10H7O+O2=>C9H6O+CO+OH               6.510e+07    1.300  17667.30
+A3XXC14H9+O2=>A2C2H2B+2CO                8.570e+20   -2.270   7189.29
+A3YXC14H9+O2=>A2C2H2A+2CO                8.570e+20   -2.270   7189.29
+A4XXC16H9+O2=>A3XXC14H9+2CO              8.570e+20   -2.270   7189.29
+A2R5X+O2=>A2XXC10H7+2CO                  8.570e+20   -2.270   7189.29
+A3R5X+O2=>A3XXC14H9+2CO                  8.570e+20   -2.270   7189.29
+A3XC14H10+OH=>A2C2HA+CH3+CO              1.100e+02    3.250   5590.34
+A3XC14H10+OH=>A2C2HB+CH3+CO              1.100e+02    3.250   5590.34
+A4XC16H10+OH=>A3XC14H10+HCCO             2.200e+02    3.250   5590.34
+A2R5+OH=>A2XC10H8+HCCO                   1.760e+02    3.250   5590.34
+A3R5+OH=>A3XC14H10+HCCO                  2.200e+02    3.250   5590.34
+A4R5+OH=>A4XC16H10+HCCO                  2.200e+02    3.250   5590.34
+FLTN+OH=>A3XC14H10+HCCO                  2.200e+02    3.250   5590.34
+END

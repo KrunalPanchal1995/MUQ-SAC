@@ -861,7 +861,7 @@ class OptimizationTool(object):
 		for i,dif in enumerate(diff):
 			#obj+= multiplicating_factors[i]*(dif)**2
 			#obj+= multiplicating_factor*(dif)**2
-			obj+= multiplicating_factors[i]*(dif)**2
+			obj+= multiplicating_factors[i]*(target_stvd[i]*dif)**2
 						
 		
 		note = open("guess_values.txt","+a").write(f"{self.count},{x}\n")
@@ -870,6 +870,13 @@ class OptimizationTool(object):
 		return obj
 	
 	def _obj_func_MLE_no_PRS_A_facto(self,x):
+		
+		"""
+		Maximum Likelyhood Estimator (MLE)
+		Direct Optimization
+		Pre-Exponential factor of Arrhenius Parameters
+		"""
+		
 		string = ""
 		for i in x:
 			string+=f"{i},"
@@ -1427,6 +1434,7 @@ class OptimizationTool(object):
 					    method='SLSQP',  # Replace 'algorithm' with specific method if known
 					    options={"maxiter": 500000}  # Replace 'maxfev' with 'maxiter'
 					)
+			print(opt_output)
 			optimal_parameters = np.asarray(opt_output.x)
 			optimal_parameters_zeta = np.asarray(opt_output.x)
 			cov = []

@@ -1,0 +1,125 @@
+ing_BUTADIENE_LTC_phi0_5_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi0_5_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi0_5_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi1_0_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_BUTADIENE_LTC_phi1_0_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi1_0_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_BUTADIENE_LTC_phi2_0_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi2_0_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_LTC_phi2_0_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_BUTADIENE_HTC_phi0_5_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi0_5_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi0_5_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi1_0_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_BUTADIENE_HTC_phi1_0_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi1_0_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+ 
+ing_BUTADIENE_HTC_phi2_0_p10:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi2_0_p20:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13
+
+ing_BUTADIENE_HTC_phi2_0_p40:
+ solver: CHEMKIN_PRO
+ ign_delay_def: p
+ ign_cond: dt-max
+ specific_cond: 
+ mol_wt: 13

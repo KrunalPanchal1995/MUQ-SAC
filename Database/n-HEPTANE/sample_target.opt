@@ -1,0 +1,138 @@
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Type:
+  optimization_type: PRS
+  Algorithm_type: gradient-based
+  Algorithm: SLSQP
+
+##############################
+# Optimization and Processor #
+#      Core count            #
+##############################
+
+Counts:
+  total_reactions: 32
+  parallel_threads: 90
+  targets_count: 45
+
+#########################
+# Sensitivity Data      #
+#                       #
+#########################
+
+SA:
+  carbon_number: 0
+
+#################################################
+#       Chemical Kinetics Data                  #
+#-----------------------------------------------#
+# -----fileType : chemkin or FlameMaster--------#
+# -----fuelType: Multi or Mono                  #
+# -----fuel/s : written in YAML format          #
+#################################################
+
+Bin:
+  bin: /home/krithika/MUQ-SAC/V3.0
+  solver_bin: /home/krithika/FlameMaster/Bin/bin  # we are not using flame master
+  yaml_writer: /data/TEST-THERMO-sens/sens_code/yamlwriter.so
+  samap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/samap.x
+  jpdap_executable: /home/krithika/Desktop/KineticMechanismOptimization/source_code/lib/jpdap.x
+  SA_tool: /home/krithika/MUQ-SAC/SENSITIVITY_ANALYSIS/sens.py
+  SA_tool_3p: /home/krithika/MUQ-SAC/SENSITIVITY_ANALYSIS/sens_3_params.py
+
+Inputs:
+  fileType: chemkin
+  fuelClass: Multi
+  fuel:
+    a: NC7H16
+  global_reaction: NC7H16+11O2==7CO2+8H2O
+  AnalysisType: reaction  # 'thermo' for senstivity analysis of thermo data and  'reaction' for sensitivity analysis of reaction
+
+#########################
+# Input file Location   #
+#      Data             #
+#########################
+
+Locations:
+  mechanism: /home/krithika/MUQ-SAC/Database/n-HEPTANE/heptane_632.yaml
+  Initial_pre_file: /home/krithika/MUQ-SAC/Database/BUTANOATE/LALIT_2024/MB_MB2D_LALIT.pre
+  uncertainty_data: /home/krithika/MUQ-SAC/Database/n-HEPTANE/SA_DATABASE/HEPTANE_HTC_A_FACT.xml
+  thermo_file: /home/krithika/MUQ-SAC/Database/n-HEPTANE/thermo.dat
+  trans_file: /home/krithika/MUQ-SAC/Database/n-HEPTANE/Transport.dat
+  targets: /home/krithika/MUQ-SAC/Database/n-HEPTANE/HEPTANE_HTC.target
+  addendum: /home/krithika/MUQ-SAC/Database/n-HEPTANE/nHeptane.add
+
+################################################
+#       Start file Generator                   #
+#______________________________________________#
+#                                                #
+#----only in use if solver chosen is FM--------#
+#----and there are flame speeds in the ---------#
+#----optimization targets ---------------------#
+################################################
+
+##---FlS-------#####
+StartProfilesData:
+  Fls:
+    Flame: UnstretchedPremixed
+    StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Fls/H2_p01_0phi1_0000tu0298
+    CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+    fuel:
+      key: Mono
+      From: H2
+    oxidizer:
+      key: Mono
+      From: O2
+    bathGas:
+      key: Mono
+      From: N2
+    globalReaction:
+      FromRxn: 2H2+O2==2H2O
+    units:
+      pressure: Pa
+      temperature: K
+      concentration: mol_fraction
+
+##---Flf-------#####
+  Flf:
+    Flame: UnstretchedPremixed
+    StartProfilesFile: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/Init_profile/Flf/INIT_PROFILE
+    CopyTo: /home/krithika/Desktop/KineticMechanismOptimization/source_code/data/startProfiles
+    fuel:
+      key: Mono
+      From: H2
+    oxidizer:
+      key: Mono
+      From: O2
+    bathGas:
+      key: Mono
+      From: AR
+    globalReaction:
+      FromRxn: 2H2+O2==2H2O
+    units:
+      pressure: Pa
+      temperature: K
+      concentration: mol_fraction
+
+#####################################
+#       Statistical Parameters       #
+#             Data                  #
+#####################################
+
+Stats:
+  # Design_of_PRS: Monte-Carlo-All
+  # Design_of_PRS: Monte-Carlo
+  # Design_of_PRS: LHS-maximin
+  # Design_of_PRS: B1
+
+#  Design_of_PRS: A1+B1+C1
+  
+  Design_of_PRS: A-facto
+  Order_of_PRS: 2
+  Sampling_of_PRS: 4
+  PRS_type: Partial
+  cut_off_percentage: 1
+

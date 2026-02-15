@@ -193,6 +193,8 @@ target_file.close()
 ##  					   ##
 ############################################
 
+
+
 if "unsrt.pkl" not in os.listdir():
 
 	UncertDataSet = uncertainty.uncertaintyData(locations,binLoc);
@@ -212,6 +214,7 @@ else:
 	with open('unsrt.pkl', 'rb') as file_:
 		unsrt_data = pickle.load(file_)
 	print("Uncertainty analysis already finished")
+
 
 ########################################################################
 ## Analysis for temperature-exponent (n) and activation energies (Ea) ##
@@ -251,7 +254,7 @@ ap = len(activeParameters)
 zeta_b_max = DM.DesignMatrix(unsrt_data,design_type,ap,1).getB_TYPE_fSAC(1000,tag="MAX_N")
 zeta_c_max,gen = DM.DesignMatrix(unsrt_data,design_type,ap,1).getClassC_Curves(1,generator=np.array([[1,-1]]))
 
-
+print(zeta_b_max,zeta_c_max)
 if "zeta" in stats_["sensitive_parameters"]:
 	z_a = np.asarray([1,0,0])
 	z_n = np.asarray([0,1,0])

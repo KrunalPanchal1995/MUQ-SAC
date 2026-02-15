@@ -502,7 +502,7 @@ class OptimizationTool(object):
 		for i,dif in enumerate(diff):
 			#obj+= multiplicating_factors[i]*(dif)**2
 			#obj+= multiplicating_factor*(dif)**2
-			obj+= multiplicating_factors[i]*(dif)**2
+			obj+= multiplicating_factors[i]*(target_stvd[i]*dif)**2
 						
 		
 		note = open("guess_values.txt","+a").write(f"{self.count},{x}\n")

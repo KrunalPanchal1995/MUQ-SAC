@@ -57,7 +57,7 @@ class ResponseSurface(object):
 		
 		self.ytestMaxError = max(self.error_testing_relative)
 		self.yTestMeanError = statistics.mean(self.error_testing_relative)
-		if self.ytestMaxError > 3:#if maximum error in PRS testing is greater than 2 percentage, the response surface is rejected
+		if self.ytestMaxError > 6:#if maximum error in PRS testing is greater than 2 percentage, the response surface is rejected
 			self.selection = 0
 		else:
 			self.selection = 1

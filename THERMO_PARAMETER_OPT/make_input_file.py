@@ -493,7 +493,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -840,7 +841,7 @@ def fast_nearest_interp(xi, x, y):
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		T = df["temperature"]
+		T = df["Temperature  (K)"]
 		time = df.index.to_numpy()
 		conc = df[species].to_numpy()
 		dt = np.diff(time)
@@ -849,7 +850,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1111,7 +1113,7 @@ import glob
 def delete_files(directory):
 	# Patterns for files to delete
 	patterns = ["*.out", "*.asc", "*.zip"]
-	exception_file = "tau.out"
+	exception_file = "RCM.out"
 	
 	for pattern in patterns:
 		# Get all files matching the pattern in the directory
@@ -1221,7 +1223,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1462,7 +1465,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1673,7 +1677,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -1965,7 +1970,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -2138,7 +2144,7 @@ def fast_nearest_interp(xi, x, y):
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		T = df["temperature"]
+		T = df["Temperature  (K)"]
 		time = df.index.to_numpy()
 		conc = df[species].to_numpy()
 		dt = np.diff(time)
@@ -2147,7 +2153,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -2308,7 +2315,10 @@ if saveAll:
 
 timeHistory = pd.read_csv("time_history.csv",index_col=0)
 pressureList = timeHistory["Pressure  (bar)"]
-species = f"Mole_fraction_{delay_def}  ()"
+if "p" not in "{delay_def}":
+	species = f"Mole_fraction_{delay_def}  ()"
+else:
+	species = f"{delay_def}"
 tau = ignitionDelay(timeHistory,pressureList,species,"{delay_cond}","{specific_cond}",{exp_conc})
 
 # Output the results
@@ -2378,7 +2388,7 @@ def fast_nearest_interp(xi, x, y):
 
 def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_conc = "None"):
 	if cond == "max":
-		T = df["temperature"]
+		T = df["Temperature  (K)"]
 		time = df.index.to_numpy()
 		conc = df[species].to_numpy()
 		dt = np.diff(time)
@@ -2387,7 +2397,8 @@ def ignitionDelay(df,pList, species,cond="max",specified_value ="None;None",exp_
 		index = int(slope.argmax())
 		peaks,_ = find_peaks(conc)
 		if len(peaks)>1:
-			peak_ind = abs(np.asarray(peaks) - index).argmin()
+			peak_values = conc[peaks]
+			peak_ind = peak_values.argmax() 
 		elif len(peaks) == 1:
 			peak_ind = 0
 		else:
@@ -2847,7 +2858,7 @@ RelTol = 1.0e-9
 AbsTol = 1.0e-12
 
 TStart = 0.0
-TEnd = 0.04
+TEnd = {tend}
 
 ########################
 # Sensitivity Analysis #
@@ -2877,7 +2888,7 @@ WriteEverySolution is TRUE
 PrintMolarFractions is TRUE
 
 OutputPath is ./output
-NOutputs = 2000
+NOutputs = 1500
 
 #############
 # Chemistry #
@@ -2914,7 +2925,7 @@ InitialCond {{
 	{init_condition}
 	
 }}
-	""".format(pressure = target.pressure, init_condition = target.initialCond , temperature = target.temperature, phi = target.phi, simulation = target.simulation, fuel_is = target.fuel_is, g_r = global_reaction)
+	""".format(pressure = target.pressure, init_condition = target.initialCond , temperature = target.temperature, phi = target.phi, simulation = target.simulation, fuel_is = target.fuel_is, g_r = global_reaction,tend = float(target.add["estimateTIG"]))
 			extract = """#!/usr/bin/python
 import numpy as np
 import os
@@ -4017,6 +4028,8 @@ ck2yaml --input=mechanism.mech --thermo=thermo.therm --transport=transport.trans
 export NUMEXPR_MAX_THREADS=1
 python3.9 {MUQSAC}/soln2ck_2.py --mechanism=mechanism.inp --thermo=thermo.dat {mech} &> soln2ck.out
 python3.9 cantera_.py &> solve
+find ./output -type f ! -name 'RCM.out' ! -name 'tau.out' -delete &> delete.log
+find . -type f \( -name 'time_history.csv' -o -name 'ScanMan.log' \) -delete &> delete2.log
 		""".format(MUQSAC = opt_dict["Bin"]["bin"] ,Bin=opt_dict["Bin"]["solver_bin"],mech = mech_file,thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command)
 		extract = """
 		"""
@@ -4029,10 +4042,12 @@ rm -f ScanMan.log
 
 			
 		s_run = """#!/bin/bash
-python3.9 {MUQSAC}/soln2ck_2.py {mech} 
+python3.9 {MUQSAC}/soln2ck_FM.py --mechanism=mechanism.inp --thermo=therm.dat --transport=trans.dat {mech} &> soln2ck.log 
 {Bin}/ScanMan -i mechanism.inp -t {thermo_file} -m {trans_file} -f chemkin -3sr -N 0.05 -E -o mechanism.pre &> ScanMan.log
 {Bin}/FlameMan &> Flame.log && python3.9 extract.py &> extract.log
+find ./output -type f ! -name 'modified.csv' ! -name 'tau.out' -delete &> delete.log
+find . -type f \( -name 'mechanism.pre' -o -name 'ScanMan.log' \) -delete &> delete2.log
 		""".format(MUQSAC = opt_dict["Bin"]["bin"] ,Bin=opt_dict["Bin"]["solver_bin"],mech = mech_file,thermo_file = thermo_file_location, trans_file = trans_file_location, fsc = file_specific_command)
-		extract = """
-		"""
+		#extract = """
+		#"""
 	return instring,s_convert,s_run,extract

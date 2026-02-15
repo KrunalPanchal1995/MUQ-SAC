@@ -10,6 +10,7 @@ import make_input_file as MakeFile
 from tqdm import tqdm
 import multiprocessing
 import sys
+from curve_matching import match_curves, find_time
 class RunCmd(threading.Thread):
 	def __init__(self, cmd, timeout):
 		threading.Thread.__init__(self)
@@ -339,6 +340,7 @@ def extract_direct_simulation_values(case,loc,target_list,fuel):
 def extract_output(case,fuel,path,index,input_=None,caseID=None):
 	eta = string = ETA = None
 	#print(case.target)
+	
 	if case.target.strip() == "RCM":
 		if "cantera" in case.add["solver"]:
 			if "RCM.out" in os.listdir(path):
@@ -398,7 +400,7 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 				ETA = eta
 				string = path
 	
-	elif case.target.strip() == "Tig":
+	elif case.target.strip() == "Tig" and case.add["op_type"] != 'species_profile':
 		if "cantera" in case.add["solver"]:
 			if "tau.out" in os.listdir(path):
 				out_file = open(path+"tau.out",'r').readlines()
@@ -459,7 +461,34 @@ def extract_output(case,fuel,path,index,input_=None,caseID=None):
 			else:
 				eta = np.log(100*10000)
 				ETA = 100*10000
-			#return eta,string
+				
+	elif case.target.strip() == "Tig" and case.add["op_type"] == 'species_profile':
+		print("Species Profile!!")
+		out_file = open(path+"modified.csv",'r').readlines()
+		string = path +"modified.csv"
+		list1 = [0.01, 0.02, 0.05, 0.1, 0.2, 0.35, 0.5, 0.7, 0.9]
+		list2 = [0.99, 0.98, 0.97, 0.95, 0.91, 0.88]
+		species_name = case.add["species_name"]
+		data = pd.read_csv(loc, sep='\t', skipinitialspace=True)
+		data.columns = data.columns.str.strip()
+		time_full = np.array(data['t[ms]'], dtype=np.float64)
+		X_full = np.array(data[f'X-{species_name}'], dtype=np.float64)
+		end_index = np.searchsorted(time_full, 39.9, side='right')
+		time, X = time_full[:end_index], X_full[:end_index] 
+		time_exp,conc_exp = find_time(time,X)
+		output_list = []
+		output_list.append(time_exp)
+		output_list.append(conc_exp)
+		
+		print(time,X)
+		
+		
+		
+		
+		raise AssertionError("Stop")
+		return output_list
+		
+		
 	elif case.target.strip() == "Fls":
 		if "cantera" in case.add["solver"]:
 			out_file = open(path+"Su.out",'r').readlines()

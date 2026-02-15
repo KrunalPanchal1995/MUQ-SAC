@@ -7,9 +7,11 @@ class Manipulator:
 	def __init__(self, copy_of_mech, unsrt_object, perturbation, perturbation_type="opt", parameter_dict=None,flag="reaction"):
 		self.mechanism = deepcopy(copy_of_mech)
 		#print(unsrt_object)
+		#print(len(perturbation))
 		self.unsrt = unsrt_object
 		self.perturbation_type = perturbation_type
 		self.parameter_dict = parameter_dict
+		#print(parameter_dict)
 		self.flag = flag
 		if flag == "reaction":
 			self.rxn_type = parameter_dict["type"]
@@ -24,7 +26,8 @@ class Manipulator:
 			for species in self.unsrt:
 				temp = []
 				s = self.unsrt[species].selection
-				for i in self.unsrt[species].selection:
+				#s = self.unsrt[species] ## causing issues
+				for i in s:
 					temp.append(perturbation[count])
 					count+=1
 				self.perturbation.append(temp)
@@ -167,8 +170,7 @@ class Manipulator:
 		self.species_data = {}
 		for species in parameter_dict:
 			for index,dict_ in enumerate(self.mechanism["species"]):
-				#print(dict_["name"],species)
-				if dict_["name"] == parameter_dict[species].species:
+				if dict_["name"] == species:
 					self.species_data[species] = index
 		#print(self.species_data)
 
@@ -244,7 +246,7 @@ class Manipulator:
 			a5, a6 = self.get_High_a5_a6(T,c0_low,p)
 			thermo_details["data"][1] =  [p[0],p[1],p[2],p[3],p[4],a5,a6]
 			mechanism["species"][index]["thermo"] = deepcopy(thermo_details)
-		
+		#print(thermo_details)
 		return mechanism	
 	
 	def ElementaryPerturbation(self, index, beta, mechanism):
@@ -310,15 +312,17 @@ class Manipulator:
 			self._extract_species_data(self.parameter_dict)
 			perturb = ""
 			count = 0
-			for index,species in enumerate(self.species_data):
+			#print(self.species_data)
+			for index,species in enumerate(self.unsrt):
 				beta = np.asarray(self.perturbation[index])  # using the purturbation array to modify cp, h and s
-				index_ = self.species_data[species]
+				index_ = self.species_data[species.split(":")[0]]
 				#if float(abs(beta)) > 0:
 				perturb += f"{species}\t{beta}"
 				#type_of_rxn = rxn_type[index]
 				#data = rxn_data[rxn]
 
 				#if type_of_rxn == "Elementary":
+				#print("Entering the heat capacity perturbation")
 				new_mechanism = self.HeatCapacityPerturbation(index_,species, beta, mechanism)
 				#if float(abs(beta[0])) > 0:
 					#perturb += f"{species}_cp\n"

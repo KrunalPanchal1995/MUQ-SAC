@@ -304,7 +304,7 @@ class Worker():
 
 
 class SM(object):
-	def __init__(self,target_list,target_data,parameter_dict,designMatrix, flag="reactions", tag="Full"):
+	def __init__(self,target_list,target_data,parameter_dict,designMatrix,ParameterDictionary ={}, flag="reactions", tag="Full"):
 		"""
 			
 		target_list   = list of combustion_target_class object 
@@ -320,6 +320,7 @@ class SM(object):
 		self.parameter_list = []
 		self.parameter_index = []
 		self.parameter_dict = parameter_dict
+		self.param_dict = ParameterDictionary
 		self.flag = flag
 		if self.flag == "reactions":
 			for key in parameter_dict["reaction"]:
@@ -379,14 +380,14 @@ class SM(object):
 			for i in tqdm(range(len(params)),desc="Create Perturbed YAML files"):
 				beta_ = params[i]
 				select = selection_params[i]
-				mani = manipulator(self.prior_mech,self.unsrt,beta_,selection = select,flag='thermo')
+				mani = manipulator(self.prior_mech,self.unsrt,beta_,selection = select,parameter_dict=self.param_dict,flag='thermo')
 				yaml,sim = mani.doPerturbation()
 				yaml_list.append(yaml)		
 		
 		else:
 			for i in tqdm(range(len(params)),desc="Create Perturbed YAML files"):
 				beta_ = params[i]
-				mani = manipulator(self.prior_mech,self.parameter_dict,beta_,perturbation_type = "opt",parameter_dict=self.parameter_dict ,flag='thermo')
+				mani = manipulator(self.prior_mech,self.parameter_dict,beta_,perturbation_type = "opt",parameter_dict=self.param_dict ,flag='thermo')
 				#mani = manipulator(self.prior_mech,self.unsrt,beta_)
 				yaml,sim = mani.doPerturbation()
 				yaml_list.append(yaml)		

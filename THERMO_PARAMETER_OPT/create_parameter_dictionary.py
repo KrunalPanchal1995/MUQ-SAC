@@ -4,7 +4,7 @@ import sys
 import os
 import pickle
 
-def dictionary_creator(flag, mechanism, carbon_number, rxn_list, species_list):
+def dictionary_creator(unsrt_data,flag, mechanism, carbon_number, rxn_list, species_list):
     species = mechanism['phases'][0]["species"]  # Takes all the species available in the mechanism file
     species_data = mechanism["species"]
     reactions = mechanism["reactions"]
@@ -58,18 +58,22 @@ def dictionary_creator(flag, mechanism, carbon_number, rxn_list, species_list):
         g = open("selected_rxn.txt", "+w").write(string_reaction)
         return rxn_dict, selected_species, selected_reactions
     
-    if flag == 'thermo':  # Creating species dictionary 
+    elif flag == 'thermo':  # Creating species dictionary 
         species_dict = {}
         species_data = mechanism["species"] 
         reactions = mechanism["reactions"]
-
+        sellected_species =[]
+        for species in unsrt_data:
+        	sellected_species.append(species.split(":")[0])	
         # Loop through selected species to get their thermo data
         for species in species_data:
             species_name = species['name']  # Extract species name
-            if species_name in selected_species:
+            if species_name in sellected_species:
                 thermo_data = species['thermo']  # Extract thermo data
-                species_dict[species_name] = thermo_data 
-
+                species_dict[species_name] = thermo_data
+        sellected_species = []
+        for species in unsrt_data:
+        	sellected_species.append(species)
         """
         # Add reaction details only for selected reactions 
         reaction_details_list = []  # Create a list to store reaction details
@@ -87,5 +91,5 @@ def dictionary_creator(flag, mechanism, carbon_number, rxn_list, species_list):
             with open('SPECIES_DICT.pkl', 'wb') as file_:
                 pickle.dump(species_dict, file_)
         
-        return species_dict, selected_species, selected_reactions
+        return species_dict, sellected_species, selected_reactions
 

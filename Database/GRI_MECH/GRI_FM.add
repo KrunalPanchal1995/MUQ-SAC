@@ -112,12 +112,12 @@ GRI_Syn_PHI_0_5_20_80_Ar_0_79_P_1:
  
 GRI_Methane_Phi_1_P_4_Sp_Prof_CO2:
  solver: FlameMaster
- ign_delay_def: CO
+ ign_delay_def: CO2
  ign_cond: onset
  op_type: species_profile 
  saveAll: True
  mol_wt: 30
- species: CO2
+ species_name: CO2
  Akima_time_clip: 2 
  
 GRI_Methane_Phi_1_P_1_12_Sp_Prof_CO:
@@ -127,5 +127,5 @@ GRI_Methane_Phi_1_P_1_12_Sp_Prof_CO:
  op_type: species_profile 
  saveAll: True
  mol_wt: 30
- species: CO
+ species_name: CO
  Akima_time_clip: 2

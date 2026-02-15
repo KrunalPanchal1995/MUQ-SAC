@@ -516,13 +516,13 @@ class ThermoUncertaintyExtractor(object):
 		
 	def populateValues(self,a1,a2,a3):
 		if self.temp_limit == "High":		
-			self.kleft_fact = a2
-			self.kright_fact = a3
+			self.kleft_fact = a2.flatten()[0]
+			self.kright_fact = a3.flatten()[0]
 		else:
-			self.kleft_fact = a1
-			self.kright_fact = a2
+			self.kleft_fact = a1.flatten()[0]
+			self.kright_fact = a2.flatten()[0]
 		self.kmiddle_fact = 1.0
-		#print(f"In populate{a1},{a2}\n")
+		#print(f"In populate{a1},{a2},{a3}\n")
 	
 	def const_1_typeB2_Zeta(self,z):
 		M = self.M
@@ -767,6 +767,7 @@ class ThermoUncertaintyExtractor(object):
 		QTLZ = np.asarray([i.dot(np.asarray(self.cov.dot(z)).flatten()) for i in self.theta_for_cp]).flatten()
 		#print(QTLZ)
 		f = ((self.cp_star-self.cp_0)-QTLZ)
+		
 		#print(f)
 		obj = np.dot(f,f)
 		return obj
@@ -2729,6 +2730,7 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		self.cholskyDeCorrelateMat = {}
 		self.zeta = {}
 		self.species = Element.attrib["species"]
+
 		self.rIndex = Element.attrib["no"]
 		self.nominal = {}
 		self.max_count = 5
@@ -2843,9 +2845,12 @@ class thermodynamic(ThermoUncertaintyExtractor):
 		self.nametag = self.species+":"+self.temp_limit	
 		#print(self.cov,self.zeta.x)	
 		#self.corelate_block = block_diag(*(self.cholskyDeCorrelateMat["Hcp"],self.cholskyDeCorrelateMat["h"],self.cholskyDeCorrelateMat["e"]))
-		
-		
-		self.activeParameters = [self.rIndex+'_a1',self.rIndex+'_a2',self.rIndex+'_a3',self.rIndex+'_a4',self.rIndex+'_a5']
+		self.activeParameters = []
+		for species in self.species:
+			#self.activeParameters += [species+'_a1', species+'_a2', species+'_a3', species+'_a4', species+'_a5']
+			self.activeParameters += [species+'_l1', species+'_l2', species+'_l3', species+'_l4', species+'_l5'] +[species+'_h1', species+'_h2', species+'_h3', species+'_h4', species+'_h5']
+
+		#self.activeParameters = [self.rIndex+'_a1',self.rIndex+'_a2',self.rIndex+'_a3',self.rIndex+'_a4',self.rIndex+'_a5']
 		self.perturb_factor = self.zeta_max.x
 		self.selection = [1.0,1.0,1.0,1.0,1.0]
 		

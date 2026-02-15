@@ -29,15 +29,17 @@ class RunCmd(threading.Thread):
 			self.join()
 
 def run_sim(index,case,input_,caseID,path,total):
+	#print(path)
 	try:
 		start = os.getcwd()
 		os.chdir(path)
+		#print(os.getcwd())
 		os.chdir("..")
 		#dir_path = os.getcwd()
 		dir_name = path.split("/")[-3]
 		case_name = path.split("/")[-4]
 		Perturbed_location = "/".join(path.split("/")[:-5])+"/Perturbed_Mech"
-		run_cantera = "/".join(path.split("/")[:-2])+"/cantera_.py"
+		run_cantera = "/".join(path.split("/")[:-2])+"/cantera_1.py"
 		### For custom changes ###
 		#####______________________________________________#########
 		#case.add["estimateTIG"] = 2*float(case.add["estimateTIG"])
@@ -45,12 +47,13 @@ def run_sim(index,case,input_,caseID,path,total):
 		#####______________________________________________#########
 		
 		instring,a,b,c = MakeFile.create_input_file(caseID,input_,case,mech_file=f'{Perturbed_location}/mechanism_{dir_name}.yaml')
-		#if instring:
-			#print("Re-running the simulations")
+		if instring:
+			print("Re-running the simulations")
 		cantera_file = open(run_cantera,"w").write(instring)
-		#print(os.listdir())
+		print(os.listdir(),os.getcwd())
+		
 		try:
-			result = subprocess.call(['./run'])#, check=True, text=True, capture_output=True)
+			result = subprocess.call(['python3.9','cantera_1.py','&>solve_1.out'])#, check=True, text=True, capture_output=True)
 			#print("Script executed successfully!\n\n.........................\n")
 			#print("Output:", result.stdout)
 		except: #subprocess.CalledProcessError as e:
@@ -58,6 +61,7 @@ def run_sim(index,case,input_,caseID,path,total):
 			#print("Output:", e.stdout)
 			#print("Error Output:", e.stderr)
 			#subprocess.run([f"{d}/run"])
+		#raise AssertionError("Stop!")
 		os.chdir(start)
 		out_file = open(path+"tau.out",'r').readlines()
 		string = path +"tau.out"
@@ -272,7 +276,7 @@ def generate_target_value_tables(locations, t_list, case, fuel,input_={}):
 		sorted_eta,sorted_ETA,sorted_Path = W.do_job_async(re_run_loc,t_list[case],optInputs,case)
 		del W
 		print(f"\t\tSimulations ended successfully\n\n#############______________________################\n")
-	
+		#raise AssertionError("Stop!")
 	for i in data_loc:
 		pathList = i.split("/")
 		file_loc = open("./eta_file_location.txt","+a")

@@ -138,6 +138,7 @@ c_index = 0
 string_target = ""
 
 for target in targetLines[:targets_count]:
+	print(target)
 	if "#" in target:
 		target = target[:target.index('#')]	
 	add = deepcopy(addendum)
@@ -334,12 +335,13 @@ for d_set in dataset:
 				#raise AssertionError("Stop!")
 				flag =False	
 				string_2 += f"{target.uniqueID},{target.temperature},{target.pressure},{target.phi},{target.fuel_dict},{target.oxidizer_x},{target.BG_dict},{target.observed},{temp_sim_opt[str(target.index)][0]}\n"
+				
 		#else
 	if flag == True:
 		g = open(f"../Plot/Dataset/{folder}/"+d_set+".csv","+w").write(string_1)
 	else:
 		g = open("../Plot/Dataset/Fls/"+d_set+".csv","+w").write(string_2)
-#raise AssertionError("Stop!!")
+print("code run succesfully..return 0")
 
 
 

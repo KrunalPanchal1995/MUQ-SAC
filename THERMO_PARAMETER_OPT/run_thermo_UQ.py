@@ -1,8 +1,28 @@
+
 try:
     import ruamel_yaml as yaml
 except ImportError:
     from ruamel import yaml
 import yaml
+
+def custom_representer(dumper, value):
+    return dumper.represent_scalar('tag:yaml.org,2002:float', str(value))
+
+yaml.add_representer(float, custom_representer)
+
+def convert_to_builtin(obj):
+    if isinstance(obj, dict):
+        return {convert_to_builtin(k): convert_to_builtin(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [convert_to_builtin(i) for i in obj]
+    elif isinstance(obj, tuple):
+        return tuple(convert_to_builtin(i) for i in obj)
+    elif isinstance(obj, np.generic):
+        return obj.item()
+    else:
+        return obj
+
+
 import numpy as np
 import sys,os
 from copy import deepcopy
@@ -17,8 +37,12 @@ import simulation_manager as simulator # line 225
 import data_management
 import create_parameter_dictionary as create_dict
 import Uncertainty as uncertainty
-from sample_curve_plotter  import sample_plot
+from sample_generator  import sample_plot_all_species as sample_plot
 from OptimizationTool import OptimizationTool as Optimizer
+#from optimization_tool_GA_V2 import run_optimization_with_selected_PRS_thermo 
+
+from MechanismParser import Parser
+from MechManipulator import Manipulator
 ### KEY WORDS #######
 optType = "optimization_type"
 targets = "targets"
@@ -63,7 +87,6 @@ elif len(sys.argv) > 1:
 else:
     print("Please enter a valid input file name as arguement. \n Two arguments can be passed:\n\t1. Traget opt file\n\t2. List of reactions\nThe code will still work by passing only the first argument\n\nProgram exiting")
     exit()
-
 #print("list of reactions ::::",rxn_list)
 iFile = str(os.getcwd())+"/"+str(sys.argv[1])
 dataCounts = optInputs[count]
@@ -100,6 +123,7 @@ parallel_threads = dataCounts[countThreads]
 targets_count = int(dataCounts["targets_count"])
 rps_order = stats_[order]
 PRS_type = stats_["PRS_type"]
+
 #######################READ TARGET FILE ###################
 
 print("\nParallel threads are {}".format(parallel_threads))
@@ -115,6 +139,8 @@ carbon_number = optInputs["SA"]["carbon_number"]
 
 with open(MECH,'r') as file_:
     yaml_mech = file_.read()
+mechanism = yaml.safe_load(yaml_mech)
+analysis_type = optInputs['Inputs'].get('AnalysisType', None)
 
 """
 #mechanism = yaml.safe_load(yaml_mech)
@@ -191,25 +217,30 @@ else:
         unsrt_data = pickle.load(file_)
     print("Uncertainty analysis already finished")
 selected_species = []
-#parameter_dict,selected_species,selected_reactions = create_dict.dictionary_creator(analysis_type, mechanism,carbon_number,rxn_list,species_list)
+parameter_dictionary,sellected_species,selected_reactions = create_dict.dictionary_creator(unsrt_data, analysis_type, mechanism,carbon_number,rxn_list,species_list)
+#print(parameter_dictionary)
+#print("sellected_species for parameter_dict \t ", sellected_species)
 for species in unsrt_data:
     selected_species.append(species)
     #print(species ,dir(unsrt_data[species]) )
 
 print(f"Total species selected:  {len(selected_species)}\n")
+print(selected_species)
 #raise AssertionError
 analysis_type = optInputs['Inputs'].get('AnalysisType', None)
+if selected_species != sellected_species:
+	raise AssertionError('Species mismatch in unsrt_data and parameter_dictionary')
 
-"""
-For PLotting purpose
 
+#For PLotting purpose
+'''
 design_matrix = DM.DesignMatrix(unsrt_data,"Tcube",5,10).get_thermo_samples()
 #print(design_matrix)
 
 sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
 
-"""
-"""
+raise AsssertionError("check DM")   #### for plotting the samples
+'''
 def getTotalUnknowns(N):
     n_ = 1 + 5*N + (5*N*(5*N-1))/2
     return int(n_)
@@ -219,24 +250,29 @@ def getSim(n,design):
     if design == "A-facto":
         sim = int(A_fact_samples)*n_
     elif design == "Tcube":
-        sim = 7*n_
+        #sim = 7 *n_
+        sim = 9*n_
+        
     else:
-        sim = 7*n_    
+        sim = 9*n_    
     return sim
   
 
-design_matrix = DM.DesignMatrix(unsrt_data,"Tcube",5,len_active_params).get_thermo_samples()
-sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
-raise AssertionError("UQ analysis is Done!!")
-"""
-len_active_params = 5*len(selected_species)
+#design_matrix = DM.DesignMatrix(unsrt_data,"Tcube",5,len_active_params).get_thermo_samples()
+#sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
+#raise AssertionError("UQ analysis is Done!!")
+
+#len_active_params = 5*len(selected_species)
+len_active_params = 7*len(selected_species)
 thermo_design = "Tcube"
+#thermo_design = "sample"
+
 #no_sim = getSim(len_active_params,thermo_design)
 #########################################
 ###    Creating Design Matrix for    ####
 ###    sensitivity analysis          ####
 #########################################
-
+## no error upto here.. problem is in creating the design matrix 
 if analysis_type == "reaction":
     """
     For sensitivity analysis of reactions we create two design matrices:
@@ -244,7 +280,7 @@ if analysis_type == "reaction":
         - For the second, we divide all reactions by a factor of 0.5
     """
     if "DesignMatrix_x0_a_fact.csv" not in os.listdir():
-        design_matrix_x0 = DM.DesignMatrix(selected_reactions, design_type, len(parameter_dict)).getNominal_samples(flag=analysis_type)
+        design_matrix_x0 = DM.DesignMatrix(selected_reactions, design_type, len(parameter_dictionary)).getNominal_samples(flag=analysis_type)
         s = ""
         for row in design_matrix_x0:
             for element in row:
@@ -259,7 +295,7 @@ if analysis_type == "reaction":
             design_matrix_x0.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
 
     if "DesignMatrix_x2_a_fact.csv" not in os.listdir():
-        design_matrix_x2 = DM.DesignMatrix(selected_reactions, design_type, len(parameter_dict)).getSA_samples(flag=analysis_type)
+        design_matrix_x2 = DM.DesignMatrix(selected_reactions, design_type, len(parameter_dictionary)).getSA_samples(flag=analysis_type)
         s = ""
         for row in design_matrix_x2:
             for element in row:
@@ -292,7 +328,7 @@ elif analysis_type == "thermo":
             design_matrix_x0.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
     '''
     def getTotalUnknowns(N):
-        n_ = 1 + 2*N + (N*(N-1))/2
+        n_ = 1 + N + (N*(N+1))/2
         return int(n_)
         
     def getSim(n,design):
@@ -300,24 +336,27 @@ elif analysis_type == "thermo":
         if design == "A-facto":
             sim = int(A_fact_samples)*n_
         elif design == "Tcube":
-            sim = 3*n_
+            #sim = int(0.1*n_)
+            sim = 7*n_
         else:
             sim = 7*n_    
         return sim
-    
     no_of_sim = {}
-    if "DesignMatrix.csv" not in os.listdir():
+    if "DesignMatrix.csv" not in os.listdir(): ## 
         no_of_sim_ = getSim(len_active_params,thermo_design)
-        print(no_of_sim_)
-        design_matrix = DM.DesignMatrix(unsrt_data,thermo_design,no_of_sim_,len_active_params).get_thermo_samples()
+        print("no of simulations required",no_of_sim_)
+        design_matrix = DM.DesignMatrix(unsrt_data,thermo_design,no_of_sim_,len_active_params).get_thermo_samples()  # this is the line from where we are getting erros in samples
         no_of_sim_ = len(design_matrix)
     else:
         no_of_sim_ = getSim(len_active_params,thermo_design)
+        print("\n\n\n no of simulations ", no_of_sim_)
+        #raise AssertionError
         design_matrix_file = open("DesignMatrix.csv").readlines()
         design_matrix = []
         no_of_sim_ = len(design_matrix_file)
         for row in design_matrix_file:
             design_matrix.append([float(ele) for ele in row.strip("\n").strip(",").split(",")])
+        design_matrix = np.array(design_matrix) # <--- CONVERT TO NUMPY ARRAY  
     #raise AssertionError("Design Matrix created!!")
         #sample_plot(unsrt_data , design_matrix)
         #raise AssertionError("Stop!")
@@ -325,13 +364,15 @@ elif analysis_type == "thermo":
         for case in case_dir:
             design_matrix_dict[case] = design_matrix
             no_of_sim[case] = no_of_sim_
-############ ok upto here ##################################
+
 #print(design_matrix)
 #print("1st sample is plotted")
-#sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
 
+sample_plot(unsrt_data , design_matrix) # generating sample plots in the folder "sample_plots"
+#raise AssertionError
 ###################################################
-SSM = simulator.SM(target_list,optInputs,unsrt_data,design_matrix,flag = analysis_type)
+#raise AssertionError("stop")
+SSM = simulator.SM(target_list,optInputs,unsrt_data,design_matrix, ParameterDictionary = parameter_dictionary,flag = analysis_type)
 
 if "Perturbed_Mech" not in os.listdir():
     os.mkdir("Perturbed_Mech")
@@ -368,10 +409,13 @@ else:
 
 selected_params = []
 activeParameters = []
-activeParameters.extend(unsrt_data[species].activeParameters)
+#activeParameters.extend(unsrt_data[species].activeParameters)
+for species in selected_species:
+	activeParameters += [species+'_a1', species+'_a2', species+'_a3', species+'_a4', species+'_a5'] 
 for params in activeParameters:
     selected_params.append(1)
-
+#print("active parameters line 386 run.py\n\n\n",activeParameters)
+#print("\n\n selected_params", selected_params)
 selected_params_dict = {}
 design_matrix_dict = {}
 yaml_loc_dict = {}
@@ -447,43 +491,125 @@ for case in case_dir:
 ##                                           ##
 ###############################################
 
+
+
+
+# Define the absolute path for the pickle file
+'''
+pickle_file_path = "/data2/RANA/FINAL_RUN_7nc/FULL_RUN_1/Opt/ResponseSurfaces.pkl"
+
 ResponseSurfaces = {}
 selected_PRS = {}
-for case_index,case in enumerate(temp_sim_opt):
-    yData = np.asarray(temp_sim_opt[case]).flatten()#[0:no_of_sim[case_index]]
-    xData = np.asarray(design_matrix_dict[case_index])#[0:no_of_sim[case_index]]
-    #print(np.shape(xData))
-    #print(np.shape(yData))
-    #raise AssertionError("Stop!!")
-    
-    xTrain,xTest,yTrain,yTest = train_test_split(xData,yData,
-                                    random_state=104, 
-                                    test_size=0.9, 
-                                       shuffle=True)
-    #print(np.shape(xTest))
-    #print(np.shape(yTrain))
-    Response = PRS.ResponseSurface(xTrain,yTrain,case,case_index,prs_type=PRS_type,selected_params=selected_params_dict[case_index])
-    Response.create_response_surface()
-    if Response.generated == False:
-    	Response.test(xTest,yTest)
-    	Response.plot(case_index)
-    else:
-    	Response.test(xTest,yTest)
-    	Response.plot(case_index)
-    #Response.DoStats_Analysis() #Generates stastical analysis report
-    #print(Response.case)
-    ResponseSurfaces[case_index] = Response
-    #print(Response.selection)
-    del xTrain,xTest,yTrain,yTest
-raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
+
+if os.path.exists(pickle_file_path):
+    print(f"File {pickle_file_path} exists. Loading ResponseSurfaces from file.")
+    with open(pickle_file_path, "rb") as f:
+        ResponseSurfaces = pickle.load(f)
+    print(f"Loaded {len(ResponseSurfaces)} ResponseSurface objects.")
+else:	
+    print("creating response surface")
+    for case_index, case in enumerate(temp_sim_opt):
+        yData = np.asarray(temp_sim_opt[case]).flatten()
+        xData = np.asarray(design_matrix_dict[case_index])
+
+        xTrain, xTest, yTrain, yTest = train_test_split(
+            xData, yData,
+            random_state=104,
+            test_size=0.2,
+            shuffle=True
+        )
+
+        Response = PRS.ResponseSurface(
+            xTrain, yTrain, case, case_index,
+            prs_type=PRS_type,
+            selected_params=selected_params_dict[case_index]
+        )
+        Response.create_response_surface()
+
+        if Response.generated is False:
+            Response.test(xTest, yTest)
+            Response.plot(case_index)
+        else:
+            Response.test(xTest, yTest)
+            Response.plot(case_index)
+
+        ResponseSurfaces[case_index] = Response
+        del xTrain, xTest, yTrain, yTest
+
+    # Save the ResponseSurfaces dict using the same absolute path
+    with open(pickle_file_path, "wb") as f:
+        pickle.dump(ResponseSurfaces, f, protocol=pickle.HIGHEST_PROTOCOL)
+
+    print(f"Saved {len(ResponseSurfaces)} ResponseSurface objects to {pickle_file_path}")
+
 os.chdir("..")
+
+'''
+
+
+
+print("creating response surface")
+if "ResponseSurfaces.pkl" not in os.listdir():
+	ResponseSurfaces = {}
+	selected_PRS = {}
+	for case_index, case in enumerate(temp_sim_opt):
+	    yData = np.asarray(temp_sim_opt[case]).flatten()
+	    xData = np.asarray(design_matrix_dict[case_index])
+	    if xData.shape[0] != yData.shape[0]:
+	        print(f"Skipping case {case_index}: X rows={xData.shape[0]} != y len={yData.shape[0]}")
+	        raise AssertionError("STOP")
+	    xTrain, xTest, yTrain, yTest = train_test_split(
+		   xData, yData,
+		   random_state=104,
+		   test_size=0.2,
+		   shuffle=True
+	    )
+	    Response = PRS.ResponseSurface(
+		   xTrain, yTrain, case, case_index,
+		   prs_type=PRS_type,
+		   selected_params=selected_params_dict[case_index]
+	    )
+	    Response.create_response_surface()
+	    if Response.generated is False:
+	        Response.test(xTest, yTest)
+	        Response.plot(case_index)
+	    else:
+	        Response.test(xTest, yTest)
+	        Response.plot(case_index)
+	    ResponseSurfaces[case_index] = Response
+	    del xTrain, xTest, yTrain, yTest
+
+
+	# ✅ Save the ResponseSurfaces dict as a pickle file
+	with open("ResponseSurfaces.pkl", "wb") as f:
+	    pickle.dump(ResponseSurfaces, f, protocol=pickle.HIGHEST_PROTOCOL)
+	print(f"Saved {len(ResponseSurfaces)} ResponseSurface objects to ResponseSurfaces.pkl")
+else:
+	with open('ResponseSurfaces.pkl', 'rb') as file_:
+	    ResponseSurfaces = pickle.load(file_)
+	print("Construction of Response Surface already finished")
+
+os.chdir("..")
+
 ##################################################
 ##        Optimization Procedure                ##
 ##   Inputs: Traget list and Response Surfaces  ## 
 ##################################################
+#os.chdir("..")
+
+# for hit and trial purposes
+ ###################### trial 1 - GD alorithm with cp dreivative >=0 constraints except species O as O has -ve slope in nominal data
+#os.mkdir("GD_cp_dev_positive")
+#os.chdir("GD_cp_dev_positive")
+###########################################################################
+
+if "GA_cp_drivative_positive_trial" not in os.listdir(): # with initial population of DM
+ os.mkdir("GA_cp_drivative_positive_trial")
+os.chdir("GA_cp_drivative_positive_trial")	
 if "solution_zeta.save" not in os.listdir():
 
-    opt, opt_zeta,posterior_cov = Optimizer(target_list,opt_method="GD").run_optimization_with_selected_PRS_thermo(unsrt_data,ResponseSurfaces,optInputs)
+    opt, opt_zeta,posterior_cov = Optimizer(target_list,opt_method="GA").run_optimization_with_selected_PRS_thermo(unsrt_data,ResponseSurfaces,optInputs)
+    #opt, opt_zeta, posterior_cov = run_optimization_with_selected_PRS_thermo(unsrt_data, ResponseSurfaces, optInputs)
     
     with open('Z_star.pkl', 'wb') as file_:
         pickle.dump(opt, file_)
@@ -495,7 +621,8 @@ if "solution_zeta.save" not in os.listdir():
         pickle.dump(posterior_cov, file_)
     
     string_save = ""
-    for i, j in enumerate(activeParameters):
+    
+    for i, j in enumerate(activeParameters):   # the active parameters has only length five... but it should be no of species*5
         print("\n{}=\t{}".format(activeParameters[i], opt_zeta[i]))
         string_save+="{}=\t{}\n".format(activeParameters[i], opt_zeta[i])
     save = open("solution_zeta.save","w").write(string_save)
@@ -510,35 +637,41 @@ if "solution_zeta.save" not in os.listdir():
 
     originalMech = Parser(mech_file_location).mech
     copy_of_mech = deepcopy(originalMech)#.deepcopy()
-    new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
+    #new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
+    new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta,parameter_dict=parameter_dictionary,flag = "thermo").doPerturbation()
 
     #new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-    string = yaml.dump(new_mechanism,default_flow_style=False)
+    clean_mech = convert_to_builtin(new_mechanism)
+    string = yaml.safe_dump(clean_mech, default_flow_style=False)
     f = open("new_mech.yaml","w").write(string)
 else:
     
     save = open("solution_zeta.save","r").readlines()
-    with open('Z_star.pkl', 'rb') as file_:
-        opt = pickle.load(file_)
+    #with open('Z_star.pkl', 'rb') as file_:
+        #opt = pickle.load(file_)
     
-    with open('V_star.pkl', 'rb') as file_:
-        opt_zeta = pickle.load(file_)
+    #with open('V_star.pkl', 'rb') as file_:
+        #opt_zeta = pickle.load(file_)
     
-    with open('posterior_cov.pkl', 'rb') as file_:
-        posterior_cov = pickle.load(file_)
+    ##with open('posterior_cov.pkl', 'rb') as file_:
+        #posterior_cov = pickle.load(file_)
     opt_zeta = []
     for i in save:
         opt_zeta.append(float(i.split("=")[1].strip()))
+    #print("opt zetas \t \n ", opt_zeta)
     originalMech = Parser(mech_file_location).mech
     copy_of_mech = deepcopy(originalMech)#.deepcopy()
-    new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta).doPerturbation()
-
+    #print("opt zetas \t \n ", opt_zeta)
+    new_mechanism,a = Manipulator(copy_of_mech,unsrt_data,opt_zeta,parameter_dict=parameter_dictionary,flag = "thermo").doPerturbation()
+    clean_mech = convert_to_builtin(new_mechanism)
+    string = yaml.safe_dump(clean_mech, default_flow_style=False)
     #new_mechanism,a,b,c = self.MechManipulator.GeneratePerturbedMechanism(self.target_list[case],self.beta_[i],np.ones(len(selectedParams)),reactionList,self.simulation,"False",extra_arg = self.activeIndexDict)
-    string = yaml.dump(new_mechanism,default_flow_style=False)
+    
+    #string = yaml.safe_dump(new_mechanism,default_flow_style=False)
     f = open("new_mech.yaml","w").write(string)
 
 
 
 raise AssertionError("The Target class, Uncertainty class, Design Matrix and Simulations and Response surface")
-raise AssertionError()
+
 

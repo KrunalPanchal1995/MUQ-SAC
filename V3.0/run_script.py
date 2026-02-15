@@ -174,7 +174,7 @@ else:
 	print("Uncertainty analysis already finished")
 #for rxn in unsrt_data:
 #	print(unsrt_data[rxn].linked_rIndex)
-#raise AssertionError("Pull over")
+raise AssertionError("Pull over")
 ###########################################################
 #### Printing the reactions and their index in the file ###
 ###########################################################
@@ -550,7 +550,7 @@ for key in case_dict:
 ResponseSurfaces = {}
 selected_PRS = {}
 for case_index,case in enumerate(temp_sim_opt):
-	yData = np.asarray(temp_sim_opt[case]).flatten()#[0:no_of_sim[case_index]]
+	yData = np.asarray(temp_sim_opt[case]).flatten()
 	xData = np.asarray(design_matrix_dict[case_index])#[0:no_of_sim[case_index]]
 	#print(np.shape(xData))
 	#print(np.shape(yData))
